@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   // Deine Domain für die Sitemap-Generierung
-  site: 'https://xn--logopdiejobs-kcb.de',
+  site: 'https://www.xn--logopdiejobs-kcb.de',
   
   integrations: [sitemap()],
 
