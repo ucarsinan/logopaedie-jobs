@@ -6,7 +6,7 @@ const faqs = [
   },
   {
     q: "Wie hoch ist das Gehalt als Logopädin bei Praxis Şimşek?",
-    a: "Das Gehalt liegt deutlich über dem NRW-Branchendurchschnitt – je nach Erfahrung und Stundenzahl. Im persönlichen Gespräch nennen wir dir die genaue Zahl."
+    a: "Wir zahlen deutlich über dem NRW-Branchendurchschnitt für Logopädinnen – und das merkt man. Die genaue Zahl besprechen wir im persönlichen Gespräch, abhängig von Erfahrung und Stundenzahl."
   },
   {
     q: "Wie läuft die Bewerbung ab?",
@@ -15,6 +15,26 @@ const faqs = [
   {
     q: "Gibt es die 4-Tage-Woche wirklich?",
     a: "Ja. Es ist ein optionales Modell – wir sprechen es im Erstgespräch durch. Viele unserer Therapeutinnen arbeiten 4 Tage, weil wir glauben: ausgeruhte Therapeuten machen bessere Therapie."
+  },
+  {
+    q: "Sind Berufsanfänger willkommen?",
+    a: "Ja, ausdrücklich. Wir bieten strukturiertes Onboarding, kollegiale Fallbesprechungen und übernehmen 100 % der Fortbildungskosten. Du musst kein Profi auf allen Gebieten sein – nur die Bereitschaft zur Entwicklung mitbringen."
+  },
+  {
+    q: "Welche Spezialisierungen gibt es in der Praxis?",
+    a: "Wir behandeln in drei Schwerpunkten: Pädiatrie (SES, Wortschatz, Grammatik, LRS), Neurologie (Aphasie, Dysarthrie, Dysphagie) und Stimmtherapie (ISTP, Lax Vox®). Bilinguales Arbeiten auf Deutsch und Türkisch ist möglich und erwünscht."
+  },
+  {
+    q: "Werden Fortbildungskosten übernommen?",
+    a: "Ja, zu 100 %. Ob Zertifikatskurse, Fachkongresse oder Spezialisierungen – wir investieren in deine Weiterbildung, weil sie unseren Patienten zugutekommt."
+  },
+  {
+    q: "Wie gut ist die Praxis mit dem ÖPNV erreichbar?",
+    a: "Sehr gut. Die Praxis liegt an der Tonhallenstraße 21, direkt in der Duisburger Innenstadt – 2 Minuten zu Fuß vom Hauptbahnhof Duisburg. S-Bahn, U-Bahn und Fernzüge halten vor der Tür."
+  },
+  {
+    q: "Kann ich in Teilzeit als Logopädin arbeiten?",
+    a: "Ja. Wir bieten Stellen ab 20 Stunden pro Woche. Ob Teilzeit, Vollzeit oder 4-Tage-Woche – wir finden gemeinsam ein Modell, das zu deinem Leben passt."
   }
 ];
 ---
@@ -25,21 +45,18 @@ const faqs = [
     <p class="text-lg text-slate-600 text-center mb-16">Alles Wichtige auf einen Blick.</p>
 
     <div class="space-y-4">
-      {faqs.map((faq, i) => (
-        <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
-          <button
-            class="w-full text-left px-6 py-5 flex justify-between items-center gap-4 font-semibold text-slate-900 hover:bg-slate-50 transition-colors faq-btn"
-            data-target={`faq-${i}`}
-          >
+      {faqs.map((faq) => (
+        <details class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden group">
+          <summary class="w-full text-left px-6 py-5 flex justify-between items-center gap-4 font-semibold text-slate-900 hover:bg-slate-50 transition-colors cursor-pointer list-none">
             <span>{faq.q}</span>
-            <svg class="w-5 h-5 text-slate-400 flex-shrink-0 transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
-          </button>
-          <div id={`faq-${i}`} class="faq-body hidden px-6 pb-5">
+          </summary>
+          <div class="px-6 pb-5">
             <p class="text-slate-600 leading-relaxed">{faq.a}</p>
           </div>
-        </div>
+        </details>
       ))}
     </div>
 
@@ -51,15 +68,3 @@ const faqs = [
     </div>
   </div>
 </section>
-
-<script is:inline>
-  document.querySelectorAll('.faq-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const body = document.getElementById(btn.dataset.target);
-      const icon = btn.querySelector('.faq-icon');
-      const isOpen = !body.classList.contains('hidden');
-      body.classList.toggle('hidden', isOpen);
-      icon.style.transform = isOpen ? '' : 'rotate(180deg)';
-    });
-  });
-</script>
