@@ -4,10 +4,8 @@
 // 1. Datum: Festes Erstveröffentlichungsdatum (wichtig für Google for Jobs)
 const datePosted = "2025-12-18";
 
-// 2. Ablaufdatum automatisch auf "Heute + 3 Monate"
-const validUntil = new Date();
-validUntil.setMonth(validUntil.getMonth() + 3);
-const validThrough = validUntil.toISOString().split('T')[0];
+// 2. Ablaufdatum fest gesetzt (verhindert Ablauf ohne Rebuild)
+const validThrough = "2026-12-31";
 
 // 3. Deine ECHTEN Daten
 const jobData = {
@@ -17,7 +15,7 @@ const jobData = {
   
   // HIER SIND DIE PLATZHALTER JETZT ERSETZT:
   url: "https://xn--logopdiejobs-kcb.de/",
-  logo: "https://xn--logopdiejobs-kcb.de/logo.svg", // Achtung: Stelle sicher, dass logo.png im 'public' Ordner liegt!
+  logo: "https://xn--logopdiejobs-kcb.de/logo.png", // PNG mind. 112x112px für Google for Jobs
   
   location: {
     city: "Duisburg",
@@ -72,7 +70,10 @@ const jobData = {
   "datePosted": datePosted,
   "validThrough": validThrough,
   "employmentType": ["FULL_TIME", "PART_TIME"],
-  "directApply": true, 
-  "jobBenefits": "4-Tage-Woche möglich, 100% Fortbildungskosten, zentrale Lage am Hbf, modernes Material",
+  "directApply": true,
+  "jobBenefits": "4-Tage-Woche möglich, 100% Fortbildungskosten, zentrale Lage am Hbf, modernes Material, bilinguales Team",
+  "responsibilities": "Durchführung logopädischer Diagnostik und Therapie in den Bereichen Pädiatrie (SES, Wortschatz, Grammatik, LRS), Neurologie (Aphasie, Dysarthrie, Dysphagie) und Stimmtherapie (ISTP, Lax Vox®). Bilinguales Arbeiten in Deutsch und Türkisch möglich.",
+  "workHours": "20–40 Stunden pro Woche (Vollzeit oder Teilzeit möglich)",
+  "employerOverview": "Praxis für Logopädie Şimşek ist eine spezialisierte Praxis in Duisburg mit einem bilingualen Team (Deutsch-Türkisch). Schwerpunkte: Pädiatrie, Neurologie und Stimmtherapie. Zentrale Lage direkt am Duisburger Hauptbahnhof.",
   "occupationalCategory": "29-1127.00"
 })} />
