@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Impressum | Praxis für Logopädie Şimşek" description="Impressum der Praxis für Logopädie Şimşek, Tonhallenstraße 21, 47051 Duisburg">
+  <Navigation />
+  <main class="max-w-3xl mx-auto px-6 py-24">
+    <h1 class="text-4xl font-bold text-slate-900 mb-12 uppercase tracking-tight">Impressum</h1>
+
+    <div class="prose prose-slate max-w-none space-y-8 text-slate-700">
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">Angaben gemäß § 5 TMG</h2>
+        <p>Praxis für Logopädie Şimşek<br/>
+        Tonhallenstraße 21<br/>
+        47051 Duisburg</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">Kontakt</h2>
+        <p>Telefon: +49 (0) 203 3486 8690<br/>
+        E-Mail: <a href="mailto:info@logopaedie-simsek.de" class="text-simsek-blue hover:underline">info@logopaedie-simsek.de</a></p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+        <p>Emel Şimşek<br/>
+        Tonhallenstraße 21<br/>
+        47051 Duisburg</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 mb-3">Haftungsausschluss</h2>
+        <p class="text-sm">Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.</p>
+      </section>
+    </div>
+  </main>
+  <Footer />
+</Layout>
