@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Hier den Pfad zur generierten Sitemap angeben
-Sitemap: https://logopädiejobs.de/sitemap-index.xml
+Sitemap: https://xn--logopdiejobs-kcb.de/sitemap-index.xml

@@ -1,9 +1,8 @@
 ---
 // src/components/JobSchema.astro
 
-// 1. Datum automatisch auf "Heute" setzen (für Google Frische-Bonus)
-const today = new Date();
-const datePosted = today.toISOString().split('T')[0];
+// 1. Datum: Festes Erstveröffentlichungsdatum (wichtig für Google for Jobs)
+const datePosted = "2025-12-18";
 
 // 2. Ablaufdatum automatisch auf "Heute + 3 Monate"
 const validUntil = new Date();

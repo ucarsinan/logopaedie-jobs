@@ -1,0 +1,44 @@
+---
+// src/components/FaqSchema.astro
+// FAQ Schema targeting "Logopädin Jobs Duisburg" search intent
+// Generates expandable Q&A rich results in Google Search
+---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Welche Stelle bietet die Praxis Şimşek in Duisburg an?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Wir suchen eine Logopädin bzw. einen Logopäden (m/w/d) in Vollzeit oder Teilzeit für unsere Praxis in der Tonhallenstraße 21, 47051 Duisburg – nur 2 Minuten vom Hauptbahnhof."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie hoch ist das Gehalt als Logopädin bei Praxis Şimşek?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Wir bieten ein monatliches Gehalt von 3.800 € bis 5.200 € (je nach Erfahrung und Stundenzahl), deutlich über dem Branchendurchschnitt für Logopädinnen in NRW."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was sind die besonderen Vorteile dieser Logopädie-Stelle in Duisburg?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Flexibles 4-Tage-Wochen-Modell, 100 % Übernahme der Fortbildungskosten, bilinguales Team (Deutsch-Türkisch), Spezialisierungen in Pädiatrie, Neurologie und Stimmtherapie (ISTP, Lax Vox®), moderne Praxisräume mit Aufzug."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie kann ich mich auf den Logopädie-Job in Duisburg bewerben?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Schreib uns direkt per WhatsApp (+49 203 3486 8690) oder per E-Mail an info@logopaedie-simsek.de. Kein aufwendiges Bewerbungsverfahren – wir freuen uns auf eine kurze Nachricht."
+      }
+    }
+  ]
+})} />

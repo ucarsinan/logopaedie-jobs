@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css'; // Lädt Tailwind v4 inklusive deiner simsek-Farben
 import JobSchema from '../components/JobSchema.astro';
+import FaqSchema from '../components/FaqSchema.astro';
 
 interface Props {
     title: string;
@@ -36,7 +37,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         
-        <JobSchema /> 
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <JobSchema />
+        <FaqSchema />
     </head>
     <body class="bg-white text-slate-900 selection:bg-simsek-green/20 selection:text-simsek-blue antialiased">
         <slot />

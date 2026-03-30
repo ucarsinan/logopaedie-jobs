@@ -1,0 +1,17 @@
+name: Weekly SEO Redeploy
+
+on:
+  schedule:
+    # Jeden Montag um 06:00 UTC — hält validThrough im JobPosting-Schema frisch
+    - cron: '0 6 * * 1'
+  workflow_dispatch: # Manueller Trigger über GitHub Actions UI
+
+jobs:
+  redeploy:
+    name: Trigger Vercel Redeploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Vercel Deploy Hook
+        env:
+          DEPLOY_HOOK_URL: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
+        run: curl -s -X POST "$DEPLOY_HOOK_URL"
