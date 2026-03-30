@@ -337,7 +337,7 @@ FILE: src/components/Hero.astro
         <div class="absolute -bottom-6 -left-4 md:-left-10 bg-white p-4 md:p-6 rounded-3xl shadow-xl border border-slate-100 animate-bounce-slow z-20">
           <div class="flex items-center gap-4">
             <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-[#66cc33] font-bold">
-              4T
+              4 Tage
             </div>
             <div>
               <p class="text-xs text-slate-500 font-medium tracking-widest uppercase">Modell</p>
