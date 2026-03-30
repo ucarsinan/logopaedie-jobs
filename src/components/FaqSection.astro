@@ -1,0 +1,69 @@
+---
+const faqs = [
+  {
+    q: "Welche Stelle bietet die Praxis Şimşek an?",
+    a: "Wir suchen eine Logopädin bzw. einen Logopäden (m/w/d) in Vollzeit oder Teilzeit. Die Stelle ist an unserem Standort Tonhallenstraße 21, 47051 Duisburg – nur 2 Minuten vom Hauptbahnhof."
+  },
+  {
+    q: "Wie hoch ist das Gehalt?",
+    a: "3.800 – 5.200 € monatlich, je nach Erfahrung und Stundenzahl. Das liegt deutlich über dem Branchendurchschnitt für Logopädinnen in NRW."
+  },
+  {
+    q: "Muss ich Türkisch sprechen?",
+    a: "Nein. Deutsch ist Pflicht, Türkischkenntnisse sind ein Plus – aber kein Muss. Wir suchen in erster Linie fachliche Kompetenz und Lust auf ein diverses Team."
+  },
+  {
+    q: "Wie läuft die Bewerbung ab?",
+    a: "Schreib uns einfach per WhatsApp oder E-Mail – kein Lebenslauf nötig für den ersten Kontakt. Wir laden dich zu einem lockeren Kennenlerngespräch ein (Kaffee geht auf uns ☕)."
+  },
+  {
+    q: "Gibt es die 4-Tage-Woche wirklich?",
+    a: "Ja. Es ist ein optionales Modell – wir sprechen es im Erstgespräch durch. Viele unserer Therapeutinnen arbeiten 4 Tage, weil wir glauben: ausgeruhte Therapeuten machen bessere Therapie."
+  }
+];
+---
+
+<section id="faq" class="py-24 bg-slate-50">
+  <div class="max-w-3xl mx-auto px-6">
+    <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4 uppercase tracking-tight text-center">Häufige Fragen</h2>
+    <p class="text-lg text-slate-600 text-center mb-16">Alles Wichtige auf einen Blick.</p>
+
+    <div class="space-y-4">
+      {faqs.map((faq, i) => (
+        <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
+          <button
+            class="w-full text-left px-6 py-5 flex justify-between items-center gap-4 font-semibold text-slate-900 hover:bg-slate-50 transition-colors faq-btn"
+            data-target={`faq-${i}`}
+          >
+            <span>{faq.q}</span>
+            <svg class="w-5 h-5 text-slate-400 flex-shrink-0 transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div id={`faq-${i}`} class="faq-body hidden px-6 pb-5">
+            <p class="text-slate-600 leading-relaxed">{faq.a}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-12 text-center">
+      <p class="text-slate-500 mb-4">Noch eine Frage?</p>
+      <a href="https://api.whatsapp.com/send?phone=4920334868690&text=Hallo%20Emel!%20Ich%20habe%20eine%20Frage%20zum%20Job." target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-simsek-green text-white font-bold rounded-xl no-underline hover:scale-[1.02] transition-transform text-sm">
+        Direkt fragen (WhatsApp)
+      </a>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  document.querySelectorAll('.faq-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const body = document.getElementById(btn.dataset.target);
+      const icon = btn.querySelector('.faq-icon');
+      const isOpen = !body.classList.contains('hidden');
+      body.classList.toggle('hidden', isOpen);
+      icon.style.transform = isOpen ? '' : 'rotate(180deg)';
+    });
+  });
+</script>
