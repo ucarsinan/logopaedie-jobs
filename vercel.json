@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.xn--logopdiejobs-kcb.de" }],
+      "destination": "https://xn--logopdiejobs-kcb.de/$1",
+      "permanent": true
+    }
+  ]
+}
