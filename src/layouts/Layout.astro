@@ -16,17 +16,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <html lang="de" class="scroll-smooth">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
         <title>{title}</title>
-        <meta name="title" content={title} />
         <meta name="description" content={description} />
         <link rel="canonical" href={canonicalURL} />
         <link rel="alternate" hreflang="de" href={canonicalURL} />
         <link rel="alternate" hreflang="x-default" href={canonicalURL} />
 
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={Astro.url} />
+        <meta property="og:url" content={canonicalURL} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={new URL('/og-image.png', Astro.url)} /> 
