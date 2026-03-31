@@ -13,6 +13,7 @@
 ## Vorab-Review: Aktueller Stand
 
 ### Was funktioniert ✅
+
 - Canonical-URLs korrekt (www-Fix deployed)
 - Schema.org JobPosting + FAQ Schema vorhanden
 - QuickApply 3-Step Flow funktioniert
@@ -23,24 +24,26 @@
 - robots.txt korrekt
 
 ### Was fehlt / kaputt ist ❌
-| # | Problem | Auswirkung | Priorität |
-|---|---------|-----------|-----------|
-| 1 | `/og-image.png` fehlt (meta tags zeigen drauf) | Social Sharing zeigt leeres Bild | KRITISCH |
-| 2 | Mobile Navigation fehlt (kein Hamburger-Menü) | 60% der Nutzer haben keine Navigation | KRITISCH |
-| 3 | `addressRegion` fehlt in JobSchema | Google for Jobs Warning | HOCH |
-| 4 | Benefits nur 3 Karten (4-Tage-Woche, Bilingualität fehlen) | Wichtige USPs nicht sichtbar | HOCH |
-| 5 | FAQ nicht sichtbar (nur als LD+JSON) | Verpasste Trust-Signale, verpasster Content | HOCH |
-| 6 | Anforderungen/Qualifikationen Section fehlt | Bewerber wissen nicht, wen wir suchen | HOCH |
-| 7 | `team.jpg` nicht genutzt | Verpasster Trust-Faktor | MITTEL |
-| 8 | Bilder nicht mit Astro `<Image>` optimiert | Langsamere Ladezeit | MITTEL |
-| 9 | Impressum/Datenschutz verlinken auf external | Rechtlich + UX schwach | MITTEL |
-| 10 | Gehalt-Highlight Section fehlt | Stärkstes Argument nicht prominent | MITTEL |
+
+| #   | Problem                                                    | Auswirkung                                  | Priorität |
+| --- | ---------------------------------------------------------- | ------------------------------------------- | --------- |
+| 1   | `/og-image.png` fehlt (meta tags zeigen drauf)             | Social Sharing zeigt leeres Bild            | KRITISCH  |
+| 2   | Mobile Navigation fehlt (kein Hamburger-Menü)              | 60% der Nutzer haben keine Navigation       | KRITISCH  |
+| 3   | `addressRegion` fehlt in JobSchema                         | Google for Jobs Warning                     | HOCH      |
+| 4   | Benefits nur 3 Karten (4-Tage-Woche, Bilingualität fehlen) | Wichtige USPs nicht sichtbar                | HOCH      |
+| 5   | FAQ nicht sichtbar (nur als LD+JSON)                       | Verpasste Trust-Signale, verpasster Content | HOCH      |
+| 6   | Anforderungen/Qualifikationen Section fehlt                | Bewerber wissen nicht, wen wir suchen       | HOCH      |
+| 7   | `team.jpg` nicht genutzt                                   | Verpasster Trust-Faktor                     | MITTEL    |
+| 8   | Bilder nicht mit Astro `<Image>` optimiert                 | Langsamere Ladezeit                         | MITTEL    |
+| 9   | Impressum/Datenschutz verlinken auf external               | Rechtlich + UX schwach                      | MITTEL    |
+| 10  | Gehalt-Highlight Section fehlt                             | Stärkstes Argument nicht prominent          | MITTEL    |
 
 ---
 
 ## File Map
 
 ### Zu modifizieren:
+
 - `src/components/JobSchema.astro` — `addressRegion` hinzufügen
 - `src/components/Navigation.astro` — Mobile Hamburger-Menü
 - `src/components/Benefits.astro` — Auf 6 Karten erweitern
@@ -49,6 +52,7 @@
 - `src/layouts/Layout.astro` — og-image.png path korrekt, hreflang
 
 ### Neu zu erstellen:
+
 - `public/og-image.png` — Social Sharing Bild (1200×630px)
 - `src/components/SalaryBanner.astro` — Gehalt-Banner zwischen Hero und Aufgaben
 - `src/components/Anforderungen.astro` — Was wir uns wünschen
@@ -63,11 +67,13 @@
 ### Task 1: addressRegion in JobSchema hinzufügen
 
 **Files:**
+
 - Modify: `src/components/JobSchema.astro`
 
 - [ ] **Step 1: Datei öffnen und `addressRegion` ergänzen**
 
 In `src/components/JobSchema.astro`, Zeile 55 (nach `postalCode`):
+
 ```astro
 "addressLocality": jobData.location.city,
 "postalCode": jobData.location.zip,
@@ -76,6 +82,7 @@ In `src/components/JobSchema.astro`, Zeile 55 (nach `postalCode`):
 ```
 
 - [ ] **Step 2: Commit**
+
 ```bash
 git add src/components/JobSchema.astro
 git commit -m "fix: add addressRegion to JobSchema for Google for Jobs"
@@ -86,11 +93,13 @@ git commit -m "fix: add addressRegion to JobSchema for Google for Jobs"
 ### Task 2: OG-Image erstellen
 
 **Files:**
+
 - Create: `public/og-image.png`
 
 - [ ] **Step 1: OG-Image erstellen**
 
 Erstelle ein 1200×630px PNG mit folgendem Inhalt (kann mit einem Online-Tool wie Canva, Figma oder `sharp` CLI erstellt werden):
+
 - Hintergrund: `#1e293b` (slate-900)
 - Logo oben links (SVG als PNG exportiert)
 - Großer Text: "Logopädin Job Duisburg 2026"
@@ -98,9 +107,11 @@ Erstelle ein 1200×630px PNG mit folgendem Inhalt (kann mit einem Online-Tool wi
 - Accent-Bar unten: Grün `#81b728`
 
 **Minimal-Alternative:** Kopiere eines der Praxis-Bilder und speichere es als `og-image.png`:
+
 ```bash
 cp public/praxis-bild-1.jpg public/og-image.png
 ```
+
 (Nicht ideal, aber sofort funktionierend — Social Sharing zeigt dann ein echtes Bild.)
 
 - [ ] **Step 2: Verify**
@@ -109,6 +120,7 @@ cp public/praxis-bild-1.jpg public/og-image.png
 Trage die URL ein und prüfe, ob das Bild erscheint.
 
 - [ ] **Step 3: Commit**
+
 ```bash
 git add public/og-image.png
 git commit -m "feat: add og-image for social sharing"
@@ -119,6 +131,7 @@ git commit -m "feat: add og-image for social sharing"
 ### Task 3: Mobile Navigation mit Hamburger-Menü
 
 **Files:**
+
 - Modify: `src/components/Navigation.astro`
 
 - [ ] **Step 1: Navigation ersetzen**
@@ -202,6 +215,7 @@ import Logo from './Logo.astro';
 `npm run dev` starten, Browser auf < 768px verkleinern, Hamburger-Icon prüfen.
 
 - [ ] **Step 3: Commit**
+
 ```bash
 git add src/components/Navigation.astro
 git commit -m "feat: add responsive mobile navigation with hamburger menu"
@@ -214,6 +228,7 @@ git commit -m "feat: add responsive mobile navigation with hamburger menu"
 ### Task 4: Benefits auf 6 Karten erweitern
 
 **Files:**
+
 - Modify: `src/components/Benefits.astro`
 
 - [ ] **Step 1: Benefits-Grid auf 6 Karten erweitern**
@@ -249,7 +264,7 @@ Ersetze den gesamten Inhalt von `src/components/Benefits.astro`:
           <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
         </div>
         <h3 class="text-xl font-bold text-slate-900 mb-3">Beste Lage</h3>
-        <p class="text-slate-600 leading-relaxed text-sm">Tonhallenstraße 21 – direkt im Zentrum, nur 2 Min. Fußweg vom Duisburger Hbf. Kein Stress mit Parkplatz.</p>
+        <p class="text-slate-600 leading-relaxed text-sm">Tonhallenstraße 21 – direkt im Zentrum, nur 2 Min. Fußweg vom Duisburger Hbf.</p>
       </div>
 
       <!-- Fortbildung -->
@@ -297,6 +312,7 @@ Ersetze den gesamten Inhalt von `src/components/Benefits.astro`:
 `npm run dev` starten, Benefits-Sektion sichtet — 6 Karten, 2 Spalten × 3 Reihen auf Desktop, 1 Spalte auf Mobile.
 
 - [ ] **Step 3: Commit**
+
 ```bash
 git add src/components/Benefits.astro
 git commit -m "feat: expand benefits to 6 cards (add 4-Tage-Woche, bilingual, modern)"
@@ -307,6 +323,7 @@ git commit -m "feat: expand benefits to 6 cards (add 4-Tage-Woche, bilingual, mo
 ### Task 5: Anforderungen-Sektion erstellen
 
 **Files:**
+
 - Create: `src/components/Anforderungen.astro`
 - Modify: `src/pages/index.astro`
 
@@ -336,7 +353,7 @@ Erstelle `src/components/Anforderungen.astro`:
             </div>
             <div>
               <p class="font-semibold text-slate-900">Staatlich geprüfte Logopädin / Logopäde (m/w/d)</p>
-              <p class="text-sm text-slate-500">Abschluss Pflicht. Berufsanfänger willkommen.</p>
+              <p class="text-sm text-slate-500">Berufsanfänger sind willkommen.</p>
             </div>
           </div>
           <div class="flex items-start gap-4">
@@ -433,6 +450,7 @@ import Footer from '../components/Footer.astro';
 `npm run dev` starten, neue Sektion nach Aufgaben prüfen.
 
 - [ ] **Step 4: Commit**
+
 ```bash
 git add src/components/Anforderungen.astro src/pages/index.astro
 git commit -m "feat: add Anforderungen section with requirements and benefits overview"
@@ -443,6 +461,7 @@ git commit -m "feat: add Anforderungen section with requirements and benefits ov
 ### Task 6: Sichtbare FAQ-Sektion
 
 **Files:**
+
 - Create: `src/components/FaqSection.astro`
 - Modify: `src/pages/index.astro`
 
@@ -535,6 +554,7 @@ import FaqSection from '../components/FaqSection.astro';
 ```
 
 - [ ] **Step 3: Commit**
+
 ```bash
 git add src/components/FaqSection.astro src/pages/index.astro
 git commit -m "feat: add visible FAQ accordion section"
@@ -545,6 +565,7 @@ git commit -m "feat: add visible FAQ accordion section"
 ### Task 7: team.jpg in About-Sektion einbauen
 
 **Files:**
+
 - Modify: `src/components/About.astro`
 
 - [ ] **Step 1: team.jpg einbinden**
@@ -568,6 +589,7 @@ In `src/components/About.astro`, füge nach dem `<div class="space-y-6">` Block 
 `npm run dev` starten, About-Sektion — team.jpg sollte über dem Text erscheinen.
 
 - [ ] **Step 3: Commit**
+
 ```bash
 git add src/components/About.astro
 git commit -m "feat: add team photo to About section"
@@ -580,6 +602,7 @@ git commit -m "feat: add team photo to About section"
 ### Task 8: Impressum-Seite
 
 **Files:**
+
 - Create: `src/pages/impressum.astro`
 - Modify: `src/components/Footer.astro`
 
@@ -633,6 +656,7 @@ import Footer from '../components/Footer.astro';
 - [ ] **Step 2: Footer-Link auf eigene Seite umstellen**
 
 In `src/components/Footer.astro`, ändere:
+
 ```astro
 <!-- Alt: -->
 <a href="https://logopaedie-simsek.de/impressum" target="_blank" class="hover:text-white no-underline">Impressum</a>
@@ -642,6 +666,7 @@ In `src/components/Footer.astro`, ändere:
 ```
 
 - [ ] **Step 3: Commit**
+
 ```bash
 git add src/pages/impressum.astro src/components/Footer.astro
 git commit -m "feat: add local impressum page"
@@ -652,6 +677,7 @@ git commit -m "feat: add local impressum page"
 ### Task 9: Datenschutz-Seite
 
 **Files:**
+
 - Create: `src/pages/datenschutz.astro`
 - Modify: `src/components/Footer.astro`
 
@@ -708,6 +734,7 @@ import Footer from '../components/Footer.astro';
 - [ ] **Step 2: Footer-Link anpassen**
 
 In `src/components/Footer.astro`:
+
 ```astro
 <!-- Alt: -->
 <a href="https://logopaedie-simsek.de/datenschutz" target="_blank" class="no-underline">Datenschutz</a>
@@ -717,6 +744,7 @@ In `src/components/Footer.astro`:
 ```
 
 - [ ] **Step 3: Commit**
+
 ```bash
 git add src/pages/datenschutz.astro src/components/Footer.astro
 git commit -m "feat: add local datenschutz page"
@@ -729,6 +757,7 @@ git commit -m "feat: add local datenschutz page"
 ### Task 10: hreflang + Robots meta optimieren
 
 **Files:**
+
 - Modify: `src/layouts/Layout.astro`
 
 - [ ] **Step 1: hreflang für DE hinzufügen**
@@ -742,6 +771,7 @@ In `src/layouts/Layout.astro`, nach der `<link rel="canonical">` Zeile:
 ```
 
 - [ ] **Step 2: Commit**
+
 ```bash
 git add src/layouts/Layout.astro
 git commit -m "seo: add hreflang tags for German content"
@@ -752,6 +782,7 @@ git commit -m "seo: add hreflang tags for German content"
 ### Task 11: Bilder mit loading="lazy" optimieren
 
 **Files:**
+
 - Modify: `src/components/Gallery.astro`
 - Modify: `src/components/Hero.astro`
 
@@ -768,11 +799,13 @@ In `src/components/Gallery.astro`, füge `loading="lazy"` zu allen `<img>` Tags 
   decoding="async"
 />
 ```
+
 (Gleiches für praxis-bild-2.jpg und praxis-bild-3.jpg)
 
 - [ ] **Step 2: Hero image — eager (above-the-fold)**
 
 In `src/components/Hero.astro`, das Hauptbild sollte `loading="eager"` haben (es ist above-the-fold):
+
 ```astro
 <img
     src="/suche.jpg"
@@ -784,6 +817,7 @@ In `src/components/Hero.astro`, das Hauptbild sollte `loading="eager"` haben (es
 ```
 
 - [ ] **Step 3: Commit**
+
 ```bash
 git add src/components/Gallery.astro src/components/Hero.astro
 git commit -m "perf: add lazy loading to gallery images, eager to hero"
@@ -794,6 +828,7 @@ git commit -m "perf: add lazy loading to gallery images, eager to hero"
 ### Task 12: Navigation auf mobile um FAQ + Anforderungen erweitern
 
 **Files:**
+
 - Modify: `src/components/Navigation.astro`
 
 - [ ] **Step 1: Nav-Links erweitern**
@@ -806,11 +841,13 @@ Im Desktop-Nav, einen Link zu "#anforderungen" hinzufügen:
 ```
 
 Im Mobile-Dropdown:
+
 ```astro
 <a href="#anforderungen" class="mobile-nav-link block py-3 px-4 text-sm font-semibold text-slate-700 hover:bg-slate-50 rounded-xl no-underline transition-colors">Anforderungen</a>
 ```
 
 - [ ] **Step 2: Commit**
+
 ```bash
 git add src/components/Navigation.astro
 git commit -m "feat: add Anforderungen nav link to desktop and mobile"
@@ -839,7 +876,7 @@ Prüfe: keine Build-Fehler, alle Seiten ladbar.
 - [ ] team.jpg → sichtbar in About
 - [ ] /impressum → Seite ladbar
 - [ ] /datenschutz → Seite ladbar
-- [ ] Footer-Links → zeigen auf /impressum und /datenschutz (kein _blank)
+- [ ] Footer-Links → zeigen auf /impressum und /datenschutz (kein \_blank)
 - [ ] public/og-image.png → existiert
 
 - [ ] **Step 3: Commit & Push**
@@ -853,6 +890,7 @@ git push origin main
 - [ ] **Step 4: Search Console — neue Sitemap einreichen**
 
 Nach Deploy die Sitemap in Google Search Console neu einreichen, da neue Seiten (/impressum, /datenschutz) hinzugekommen sind:
+
 - URL: `https://xn--logopdiejobs-kcb.de/sitemap-index.xml`
 - Search Console → Sitemaps → URL eingeben → Senden
 
@@ -861,6 +899,7 @@ Nach Deploy die Sitemap in Google Search Console neu einreichen, da neue Seiten 
 ## Self-Review
 
 ### Spec Coverage ✅
+
 - OG-Image → Task 2 ✅
 - Mobile Navigation → Task 3 ✅
 - addressRegion → Task 1 ✅
@@ -873,6 +912,7 @@ Nach Deploy die Sitemap in Google Search Console neu einreichen, da neue Seiten 
 - hreflang → Task 10 ✅
 
 ### Reihenfolge im Seitenaufbau (von oben nach unten):
+
 1. Navigation (sticky)
 2. Hero (Titel + CTAs + Bild)
 3. Aufgaben (4 Fachbereiche)
