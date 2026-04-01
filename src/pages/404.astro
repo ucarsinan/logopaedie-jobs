@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Seite nicht gefunden | Logopädie Jobs Duisburg"
+  description="Diese Seite existiert nicht. Zurück zur Stellenanzeige für Logopädinnen und Sprachtherapeuten in Duisburg."
+>
+  <Navigation />
+  <main class="max-w-3xl mx-auto px-6 py-32 text-center">
+    <p class="text-simsek-green font-bold text-sm uppercase tracking-widest mb-4">404</p>
+    <h1 class="text-5xl font-bold text-slate-900 mb-6 uppercase tracking-tight">Seite nicht gefunden</h1>
+    <p class="text-lg text-slate-600 mb-10 max-w-md mx-auto">
+      Diese Seite existiert nicht – aber unsere offene Stelle für Logopädinnen in Duisburg schon.
+    </p>
+    <a
+      href="/"
+      class="inline-flex items-center gap-2 px-8 py-4 bg-simsek-green text-white font-bold rounded-2xl shadow-lg shadow-green-200 hover:scale-[1.02] transition-transform no-underline"
+    >
+      Zur Stellenanzeige
+    </a>
+  </main>
+  <Footer />
+</Layout>

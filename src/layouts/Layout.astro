@@ -3,12 +3,18 @@ import '../styles/global.css'; // Lädt Tailwind v4 inklusive deiner simsek-Farb
 import JobSchema from '../components/JobSchema.astro';
 import FaqSchema from '../components/FaqSchema.astro';
 
+interface BreadcrumbItem {
+    name: string;
+    url: string;
+}
+
 interface Props {
     title: string;
     description: string;
+    breadcrumbs?: BreadcrumbItem[];
 }
 
-const { title, description } = Astro.props;
+const { title, description, breadcrumbs } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -42,6 +48,18 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
         <JobSchema />
         <FaqSchema />
+        {breadcrumbs && breadcrumbs.length > 0 && (
+          <script type="application/ld+json" is:inline set:html={JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": breadcrumbs.map((item, index) => ({
+              "@type": "ListItem",
+              "position": index + 1,
+              "name": item.name,
+              "item": item.url
+            }))
+          })} />
+        )}
     </head>
     <body class="bg-white text-slate-900 selection:bg-simsek-green/20 selection:text-simsek-blue antialiased">
         <slot />
