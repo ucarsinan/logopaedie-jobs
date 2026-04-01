@@ -1,44 +1,51 @@
 ---
 // src/components/Gallery.astro
+import { Image } from 'astro:assets';
+import praxisBild1 from '../assets/praxis-bild-1.jpg';
+import praxisBild2 from '../assets/praxis-bild-2.jpg';
+import praxisBild3 from '../assets/praxis-bild-3.jpg';
 ---
 <section id="galerie" class="py-24 bg-slate-50">
   <div class="max-w-7xl mx-auto px-6 text-center">
     <h2 class="text-3xl font-bold text-slate-900 mb-12 uppercase">Einblicke in unsere Praxis</h2>
-    
+
     <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-      
+
       <div class="group relative">
         <div class="aspect-square rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white bg-white transition-transform duration-500 group-hover:scale-[1.02]">
-          <img
-            src="/praxis-bild-1.jpg"
-            alt="Einblick in die Praxisräume"
+          <Image
+            src={praxisBild1}
+            alt="Einblick in die Praxisräume der Logopädie Şimşek Duisburg"
+            width={800}
+            height={800}
             class="w-full h-full object-cover"
             loading="lazy"
-            decoding="async"
           />
         </div>
       </div>
 
       <div class="group relative">
         <div class="aspect-square rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white bg-white transition-transform duration-500 group-hover:scale-[1.02]">
-          <img
-            src="/praxis-bild-2.jpg"
-            alt="Therapiematerial und Spielbereich"
+          <Image
+            src={praxisBild2}
+            alt="Therapiematerial und Spielbereich der Logopädie-Praxis Duisburg"
+            width={800}
+            height={800}
             class="w-full h-full object-cover"
             loading="lazy"
-            decoding="async"
           />
         </div>
       </div>
 
       <div class="group relative">
         <div class="aspect-square rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white bg-white transition-transform duration-500 group-hover:scale-[1.02]">
-          <img
-            src="/praxis-bild-3.jpg"
-            alt="Heller Therapieraum"
+          <Image
+            src={praxisBild3}
+            alt="Heller Therapieraum in der Praxis für Logopädie Şimşek"
+            width={800}
+            height={800}
             class="w-full h-full object-cover"
             loading="lazy"
-            decoding="async"
           />
         </div>
       </div>

@@ -63,13 +63,16 @@ const jobData = {
   "occupationalCategory": "29-1127.00"
 })} />
 
+<!-- LocalBusiness Schema: verbessert Local SEO / Google Maps Sichtbarkeit -->
 <script type="application/ld+json" is:inline set:html={JSON.stringify({
   "@context": "https://schema.org",
-  "@type": "MedicalOrganization",
+  "@type": ["LocalBusiness", "MedicalOrganization"],
   "name": "Praxis für Logopädie Şimşek",
   "url": "https://xn--logopdiejobs-kcb.de/",
   "logo": "https://xn--logopdiejobs-kcb.de/logo.png",
   "description": "Spezialisierte Logopädie-Praxis in Duisburg mit bilingualen Team (Deutsch-Türkisch). Schwerpunkte: Pädiatrie, Neurologie und Stottern/Poltern.",
+  "openingHours": "Mo-Fr 08:00-18:00",
+  "priceRange": "Kassenleistung",
   "medicalSpecialty": [
     "Sprachtherapie",
     "Pädiatrische Logopädie",

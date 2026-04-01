@@ -4,7 +4,14 @@ import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Datenschutz | Praxis für Logopädie Şimşek" description="Datenschutzerklärung der Praxis für Logopädie Şimşek">
+<Layout
+  title="Datenschutz | Praxis für Logopädie Şimşek"
+  description="Datenschutzerklärung der Praxis für Logopädie Şimşek"
+  breadcrumbs={[
+    { name: "Logopädie Jobs Duisburg", url: "https://xn--logopdiejobs-kcb.de/" },
+    { name: "Datenschutz", url: "https://xn--logopdiejobs-kcb.de/datenschutz" }
+  ]}
+>
   <Navigation />
   <main class="max-w-3xl mx-auto px-6 py-24">
     <h1 class="text-4xl font-bold text-slate-900 mb-12 uppercase tracking-tight">Datenschutzerklärung</h1>
