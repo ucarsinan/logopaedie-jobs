@@ -1,8 +1,8 @@
 ---
 // src/components/JobSchema.astro
 
-// 1. Datum: Festes Erstveröffentlichungsdatum (wichtig für Google for Jobs)
-const datePosted = "2025-12-18";
+// 1. Datum: Wird bei jedem Build automatisch auf das aktuelle Datum gesetzt
+const datePosted = new Date().toISOString().split('T')[0];
 
 // 2. Ablaufdatum fest gesetzt (verhindert Ablauf ohne Rebuild)
 const validThrough = "2026-12-31";
