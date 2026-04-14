@@ -1,0 +1,52 @@
+---
+export const prerender = false;
+import { isAdminAuthenticated, setAdminCookie } from '../../lib/adminAuth';
+
+if (isAdminAuthenticated(Astro.cookies)) {
+  return Astro.redirect('/admin/jobs/');
+}
+
+let error = '';
+
+if (Astro.request.method === 'POST') {
+  const form = await Astro.request.formData();
+  const secret = form.get('secret') as string;
+  const adminSecret = import.meta.env.ADMIN_SECRET;
+
+  if (adminSecret && secret === adminSecret) {
+    setAdminCookie(Astro.cookies, secret);
+    return Astro.redirect('/admin/jobs/');
+  } else {
+    error = 'Falsches Passwort.';
+  }
+}
+---
+
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Login</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="/src/styles/global.css" />
+  <style>
+    body { font-family: system-ui, sans-serif; background: #f8fafc; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
+    .box { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 2rem; width: 100%; max-width: 360px; }
+    h1 { font-size: 1.25rem; font-weight: 600; color: #0f172a; margin: 0 0 1.5rem; }
+    input { width: 100%; border: 1px solid #cbd5e1; border-radius: 8px; padding: 0.625rem 0.875rem; font-size: 0.875rem; box-sizing: border-box; }
+    button { width: 100%; background: #1e3a5f; color: white; border: none; border-radius: 8px; padding: 0.75rem; font-size: 0.875rem; font-weight: 600; cursor: pointer; margin-top: 1rem; }
+    .error { color: #dc2626; font-size: 0.8rem; margin-top: 0.5rem; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>Admin · logopädiejobs.de</h1>
+    <form method="POST">
+      <input type="password" name="secret" placeholder="Admin-Passwort" autofocus required />
+      {error && <p class="error">{error}</p>}
+      <button type="submit">Einloggen</button>
+    </form>
+  </div>
+</body>
+</html>

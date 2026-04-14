@@ -1,0 +1,167 @@
+---
+export const prerender = false;
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+import { getAdminClient } from '../../lib/supabaseAdmin';
+
+const { slug } = Astro.params;
+const supabase = getAdminClient();
+
+const { data: job } = await supabase
+  .from('job_postings')
+  .select(`
+    id, title, slug, description, location_city, location_zip, employment_type,
+    work_hours_min, work_hours_max, salary_min, salary_max,
+    created_at, valid_through, apply_url, apply_email,
+    employers ( name, website )
+  `)
+  .eq('slug', slug)
+  .eq('status', 'published')
+  .maybeSingle();
+
+if (!job) {
+  return Astro.redirect('/jobs/', 302);
+}
+
+const employer = Array.isArray(job.employers) ? job.employers[0] : job.employers;
+
+const fmt = (d: string | null) =>
+  d ? new Date(d).toLocaleDateString('de-DE', { day: '2-digit', month: 'long', year: 'numeric' }) : '';
+
+const typeLabel = (type: string) => (type === 'FULL_TIME' ? 'Vollzeit' : type === 'PART_TIME' ? 'Teilzeit' : type);
+
+// JSON-LD JobPosting nach schema.org
+const jobLd: Record<string, unknown> = {
+  '@context': 'https://schema.org/',
+  '@type': 'JobPosting',
+  title: job.title,
+  description: job.description,
+  datePosted: job.created_at,
+  employmentType: job.employment_type,
+  hiringOrganization: {
+    '@type': 'Organization',
+    name: employer?.name,
+    ...(employer?.website ? { sameAs: employer.website } : {}),
+  },
+  jobLocation: {
+    '@type': 'Place',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: job.location_city,
+      ...(job.location_zip ? { postalCode: job.location_zip } : {}),
+      addressRegion: 'Nordrhein-Westfalen',
+      addressCountry: 'DE',
+    },
+  },
+};
+
+if (job.valid_through) jobLd.validThrough = job.valid_through;
+
+if (job.salary_min) {
+  jobLd.baseSalary = {
+    '@type': 'MonetaryAmount',
+    currency: 'EUR',
+    value: {
+      '@type': 'QuantitativeValue',
+      minValue: job.salary_min,
+      ...(job.salary_max ? { maxValue: job.salary_max } : {}),
+      unitText: 'MONTH',
+    },
+  };
+}
+
+if (job.apply_email) {
+  jobLd.applicantLocationRequirements = {
+    '@type': 'Country',
+    name: 'Germany',
+  };
+}
+
+const canonicalURL = new URL(`/jobs/${job.slug}/`, Astro.site);
+---
+
+<Layout
+  title={`${job.title} – ${employer?.name} | Logopädiejobs NRW`}
+  description={`${job.title} bei ${employer?.name} in ${job.location_city}. Jetzt bewerben.`}
+  breadcrumbs={[
+    { name: 'Startseite', url: Astro.site?.toString() ?? '/' },
+    { name: 'Jobs', url: new URL('/jobs/', Astro.site).toString() },
+    { name: job.title, url: canonicalURL.toString() },
+  ]}
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(jobLd)} slot="head" />
+
+  <Navigation />
+
+  <main class="max-w-3xl mx-auto px-4 py-16">
+    <a href="/jobs/" class="inline-flex items-center gap-1 text-sm text-slate-500 hover:text-simsek-blue mb-6">
+      ← Zurück zu allen Stellen
+    </a>
+
+    <header class="mb-8 pb-8 border-b border-slate-200">
+      <h1 class="text-3xl font-bold text-slate-900 mb-3">{job.title}</h1>
+      <p class="text-lg text-simsek-blue font-medium mb-4">
+        {employer?.website ? (
+          <a href={employer.website} target="_blank" rel="noopener" class="hover:underline">{employer.name}</a>
+        ) : employer?.name}
+      </p>
+
+      <div class="flex gap-2 flex-wrap text-sm">
+        <span class="inline-flex items-center gap-1 bg-slate-100 text-slate-700 px-3 py-1.5 rounded-full">
+          📍 {job.location_city}{job.location_zip ? ` · ${job.location_zip}` : ''}
+        </span>
+        {job.employment_type?.map((t: string) => (
+          <span class="inline-flex items-center gap-1 bg-slate-100 text-slate-700 px-3 py-1.5 rounded-full">
+            {typeLabel(t)}
+          </span>
+        ))}
+        {(job.work_hours_min || job.work_hours_max) && (
+          <span class="inline-flex items-center gap-1 bg-slate-100 text-slate-700 px-3 py-1.5 rounded-full">
+            {job.work_hours_min ?? '?'}–{job.work_hours_max ?? '?'} Std/Woche
+          </span>
+        )}
+        {job.salary_min && (
+          <span class="inline-flex items-center gap-1 bg-green-50 text-green-700 px-3 py-1.5 rounded-full font-semibold">
+            {job.salary_min}–{job.salary_max ?? '?'} €/Monat brutto
+          </span>
+        )}
+      </div>
+
+      <p class="text-xs text-slate-400 mt-4">
+        Veröffentlicht am {fmt(job.created_at)}
+        {job.valid_through && ` · Gültig bis ${fmt(job.valid_through)}`}
+      </p>
+    </header>
+
+    <article class="prose prose-slate max-w-none mb-10 whitespace-pre-wrap text-slate-700 leading-relaxed">
+      {job.description}
+    </article>
+
+    {(job.apply_email || job.apply_url) && (
+      <div class="bg-slate-50 border border-slate-200 rounded-xl p-6">
+        <h2 class="text-lg font-semibold text-slate-900 mb-3">Jetzt bewerben</h2>
+        <div class="flex gap-3 flex-wrap">
+          {job.apply_email && (
+            <a
+              href={`mailto:${job.apply_email}?subject=Bewerbung%20${encodeURIComponent(job.title)}`}
+              class="inline-block bg-simsek-green text-white font-semibold py-2.5 px-5 rounded-xl hover:bg-simsek-green/90 transition-colors text-sm">
+              Per E-Mail bewerben
+            </a>
+          )}
+          {job.apply_url && (
+            <a
+              href={job.apply_url}
+              target="_blank"
+              rel="noopener"
+              class="inline-block bg-simsek-blue text-white font-semibold py-2.5 px-5 rounded-xl hover:bg-simsek-blue/90 transition-colors text-sm">
+              Online bewerben ↗
+            </a>
+          )}
+        </div>
+      </div>
+    )}
+  </main>
+
+  <Footer />
+</Layout>

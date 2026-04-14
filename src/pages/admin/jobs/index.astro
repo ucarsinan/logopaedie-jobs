@@ -1,0 +1,154 @@
+---
+export const prerender = false;
+import { isAdminAuthenticated } from '../../../lib/adminAuth';
+import { getAdminClient } from '../../../lib/supabaseAdmin';
+
+if (!isAdminAuthenticated(Astro.cookies)) {
+  return Astro.redirect('/admin/login/');
+}
+
+const supabase = getAdminClient();
+
+const { data: jobs, error } = await supabase
+  .from('job_postings')
+  .select(`
+    id, title, location_city, location_zip, employment_type,
+    work_hours_min, work_hours_max, salary_min, salary_max,
+    status, created_at, valid_through, apply_email, apply_url,
+    employers ( name, email, website )
+  `)
+  .order('created_at', { ascending: false });
+
+const statusColors: Record<string, string> = {
+  pending:   'bg-amber-100 text-amber-800',
+  published: 'bg-green-100 text-green-800',
+  rejected:  'bg-red-100 text-red-800',
+  expired:   'bg-slate-100 text-slate-600',
+};
+
+const statusLabel: Record<string, string> = {
+  pending:   'Ausstehend',
+  published: 'Veröffentlicht',
+  rejected:  'Abgelehnt',
+  expired:   'Abgelaufen',
+};
+
+const fmt = (d: string | null) =>
+  d ? new Date(d).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' }) : '—';
+---
+
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin · Jobs</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; background: #f8fafc; color: #0f172a; margin: 0; padding: 1.5rem; }
+    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+    h1 { font-size: 1.25rem; font-weight: 700; margin: 0; }
+    .logout { font-size: 0.8rem; color: #64748b; text-decoration: none; }
+    .filters { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .filter-btn { padding: 0.35rem 0.75rem; border-radius: 999px; font-size: 0.8rem; border: 1px solid #e2e8f0; background: white; cursor: pointer; color: #475569; }
+    .filter-btn.active { background: #1e3a5f; color: white; border-color: #1e3a5f; }
+    .card { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+    .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; }
+    .badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 999px; font-size: 0.7rem; font-weight: 600; }
+    .title { font-size: 1rem; font-weight: 600; margin: 0 0 0.25rem; }
+    .meta { font-size: 0.8rem; color: #64748b; margin: 0.25rem 0 0; }
+    .employer { font-size: 0.8rem; color: #1e3a5f; font-weight: 500; }
+    .actions { display: flex; gap: 0.5rem; margin-top: 1rem; }
+    .btn { padding: 0.45rem 1rem; border-radius: 8px; font-size: 0.8rem; font-weight: 600; border: none; cursor: pointer; }
+    .btn-approve { background: #16a34a; color: white; }
+    .btn-reject  { background: #dc2626; color: white; }
+    .btn-approve:hover { background: #15803d; }
+    .btn-reject:hover  { background: #b91c1c; }
+    .description { font-size: 0.8rem; color: #475569; margin-top: 0.75rem; white-space: pre-wrap; border-top: 1px solid #f1f5f9; padding-top: 0.75rem; max-height: 120px; overflow: hidden; position: relative; }
+    .empty { text-align: center; color: #94a3b8; padding: 3rem; }
+    .error-box { background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px; padding: 1rem; color: #dc2626; font-size: 0.85rem; margin-bottom: 1rem; }
+    .count { font-size: 0.8rem; color: #64748b; margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Admin · Stellenanzeigen</h1>
+    <a href="/api/admin/logout" class="logout">Abmelden</a>
+  </div>
+
+  {error && <div class="error-box">Supabase-Fehler: {error.message}</div>}
+
+  <div class="filters">
+    <button class="filter-btn active" data-filter="all">Alle</button>
+    <button class="filter-btn" data-filter="pending">Ausstehend</button>
+    <button class="filter-btn" data-filter="published">Veröffentlicht</button>
+    <button class="filter-btn" data-filter="rejected">Abgelehnt</button>
+  </div>
+
+  <p class="count">{jobs?.length ?? 0} Einträge gesamt</p>
+
+  {!jobs?.length && <div class="empty">Noch keine Stellenanzeigen vorhanden.</div>}
+
+  {jobs?.map(job => {
+    const employer = Array.isArray(job.employers) ? job.employers[0] : job.employers;
+    return (
+      <div class="card" data-status={job.status}>
+        <div class="card-top">
+          <div>
+            <p class="title">{job.title}</p>
+            <p class="employer">{employer?.name} · <a href={`mailto:${employer?.email}`}>{employer?.email}</a></p>
+            <p class="meta">
+              {job.location_city}{job.location_zip ? ` ${job.location_zip}` : ''} ·
+              {job.employment_type?.join(', ')} ·
+              {job.work_hours_min || job.work_hours_max
+                ? ` ${job.work_hours_min ?? '?'}–${job.work_hours_max ?? '?'} Std/Woche ·`
+                : ''}
+              {job.salary_min ? ` ${job.salary_min}–${job.salary_max ?? '?'} € ·` : ''}
+              Eingang: {fmt(job.created_at)}
+              {job.valid_through ? ` · Gültig bis: ${fmt(job.valid_through)}` : ''}
+            </p>
+            {(job.apply_email || job.apply_url) && (
+              <p class="meta">
+                Bewerbung: {job.apply_email ?? ''}{job.apply_email && job.apply_url ? ' · ' : ''}{job.apply_url ?? ''}
+              </p>
+            )}
+          </div>
+          <span class={`badge ${statusColors[job.status] ?? ''}`}>
+            {statusLabel[job.status] ?? job.status}
+          </span>
+        </div>
+
+        <div class="description">{job.description}</div>
+
+        {job.status === 'pending' && (
+          <div class="actions">
+            <form method="POST" action={`/api/admin/approve/${job.id}`}>
+              <button type="submit" class="btn btn-approve">Freigeben</button>
+            </form>
+            <form method="POST" action={`/api/admin/reject/${job.id}`}>
+              <button type="submit" class="btn btn-reject">Ablehnen</button>
+            </form>
+          </div>
+        )}
+      </div>
+    );
+  })}
+
+  <script>
+    const buttons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll<HTMLElement>('.card');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = (btn as HTMLElement).dataset.filter;
+        cards.forEach(card => {
+          card.style.display =
+            filter === 'all' || card.dataset.status === filter ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

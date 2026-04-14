@@ -1,0 +1,140 @@
+---
+export const prerender = false;
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+import { getAdminClient } from '../../lib/supabaseAdmin';
+
+const url = new URL(Astro.request.url);
+const filterCity = url.searchParams.get('city')?.toLowerCase() ?? '';
+const filterType = url.searchParams.get('type') ?? '';
+
+const supabase = getAdminClient();
+
+let query = supabase
+  .from('job_postings')
+  .select(`
+    id, title, slug, location_city, location_zip, employment_type,
+    work_hours_min, work_hours_max, salary_min, salary_max,
+    created_at, valid_through,
+    employers ( name )
+  `)
+  .eq('status', 'published')
+  .order('premium', { ascending: false })
+  .order('created_at', { ascending: false });
+
+if (filterCity) query = query.ilike('location_city', `%${filterCity}%`);
+if (filterType) query = query.contains('employment_type', [filterType]);
+
+const { data: jobs } = await query;
+
+// Alle Städte für Filter-Dropdown (aus allen published Jobs)
+const { data: allCities } = await supabase
+  .from('job_postings')
+  .select('location_city')
+  .eq('status', 'published');
+
+const cities = Array.from(new Set(allCities?.map(c => c.location_city) ?? [])).sort();
+
+const fmt = (d: string | null) =>
+  d ? new Date(d).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' }) : '—';
+
+const typeLabel = (type: string) => (type === 'FULL_TIME' ? 'Vollzeit' : type === 'PART_TIME' ? 'Teilzeit' : type);
+---
+
+<Layout
+  title="Logopädie Jobs in NRW | Aktuelle Stellenangebote"
+  description="Aktuelle Logopädie-Stellen in NRW. Filtern nach Stadt und Arbeitszeit. Direkt bewerben – kostenlos und ohne Registrierung."
+>
+  <Navigation />
+
+  <main class="max-w-5xl mx-auto px-4 py-16">
+    <div class="flex items-start justify-between flex-wrap gap-4 mb-10">
+      <div>
+        <h1 class="text-3xl font-bold text-slate-900 mb-2">Logopädie Jobs in NRW</h1>
+        <p class="text-slate-500">{jobs?.length ?? 0} aktuelle Stellenangebote</p>
+      </div>
+      <a
+        href="/jobs/neu/"
+        class="inline-block bg-simsek-green text-white font-semibold py-2.5 px-5 rounded-xl hover:bg-simsek-green/90 transition-colors text-sm">
+        Stelle einreichen
+      </a>
+    </div>
+
+    {/* Filter */}
+    <form method="GET" class="bg-slate-50 border border-slate-200 rounded-xl p-4 mb-8 flex gap-3 flex-wrap items-end">
+      <div class="flex-1 min-w-[180px]">
+        <label for="city" class="block text-xs font-medium text-slate-600 mb-1">Stadt</label>
+        <select id="city" name="city" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm bg-white">
+          <option value="">Alle Städte</option>
+          {cities.map(city => (
+            <option value={city.toLowerCase()} selected={filterCity === city.toLowerCase()}>{city}</option>
+          ))}
+        </select>
+      </div>
+      <div class="flex-1 min-w-[180px]">
+        <label for="type" class="block text-xs font-medium text-slate-600 mb-1">Arbeitszeit</label>
+        <select id="type" name="type" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm bg-white">
+          <option value="">Alle</option>
+          <option value="FULL_TIME" selected={filterType === 'FULL_TIME'}>Vollzeit</option>
+          <option value="PART_TIME" selected={filterType === 'PART_TIME'}>Teilzeit</option>
+        </select>
+      </div>
+      <button type="submit" class="bg-simsek-blue text-white font-semibold py-2 px-5 rounded-lg hover:bg-simsek-blue/90 text-sm">
+        Filtern
+      </button>
+      {(filterCity || filterType) && (
+        <a href="/jobs/" class="text-sm text-slate-500 hover:text-slate-700 underline">Zurücksetzen</a>
+      )}
+    </form>
+
+    {/* Job-Liste */}
+    {!jobs?.length ? (
+      <div class="text-center py-16 text-slate-400">
+        <p class="text-lg">Keine Stellen gefunden.</p>
+        <p class="text-sm mt-2">Versuche einen anderen Filter oder schau später wieder vorbei.</p>
+      </div>
+    ) : (
+      <ul class="space-y-4">
+        {jobs.map(job => {
+          const employer = Array.isArray(job.employers) ? job.employers[0] : job.employers;
+          return (
+            <li>
+              <a href={`/jobs/${job.slug}/`} class="block bg-white border border-slate-200 rounded-xl p-6 hover:border-simsek-green hover:shadow-sm transition-all">
+                <div class="flex justify-between items-start gap-4 flex-wrap">
+                  <div class="flex-1 min-w-0">
+                    <h2 class="text-lg font-semibold text-slate-900 mb-1">{job.title}</h2>
+                    <p class="text-sm text-simsek-blue font-medium mb-2">{employer?.name}</p>
+                    <div class="flex gap-2 flex-wrap text-xs text-slate-500">
+                      <span class="inline-flex items-center gap-1 bg-slate-100 px-2.5 py-1 rounded-full">
+                        📍 {job.location_city}
+                      </span>
+                      {job.employment_type?.map((t: string) => (
+                        <span class="inline-flex items-center gap-1 bg-slate-100 px-2.5 py-1 rounded-full">
+                          {typeLabel(t)}
+                        </span>
+                      ))}
+                      {(job.work_hours_min || job.work_hours_max) && (
+                        <span class="inline-flex items-center gap-1 bg-slate-100 px-2.5 py-1 rounded-full">
+                          {job.work_hours_min ?? '?'}–{job.work_hours_max ?? '?'} Std/Wo
+                        </span>
+                      )}
+                      {job.salary_min && (
+                        <span class="inline-flex items-center gap-1 bg-green-50 text-green-700 px-2.5 py-1 rounded-full font-medium">
+                          {job.salary_min}–{job.salary_max ?? '?'} €/Monat
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  <span class="text-xs text-slate-400 whitespace-nowrap">{fmt(job.created_at)}</span>
+                </div>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    )}
+  </main>
+
+  <Footer />
+</Layout>
