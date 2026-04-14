@@ -1,0 +1,55 @@
+backend:
+  name: github
+  repo: ucarsinan/logopaedie-jobs
+  branch: main
+  base_url: https://xn--logopdiejobs-kcb.de # Domain, unter der /api/auth und /api/callback erreichbar sind
+  auth_endpoint: api/auth
+
+# Optionales Vorschau-Setting: Decap zeigt eine Live-Preview, die aber statisch ist
+media_folder: "public/uploads"
+public_folder: "/uploads"
+site_url: https://xn--logopdiejobs-kcb.de
+display_url: https://xn--logopdiejobs-kcb.de
+logo_url: https://xn--logopdiejobs-kcb.de/logo.svg
+locale: de
+
+# Sprachdatei: Decap unterstützt de "Built-in"
+# Ab Version 3 wird das automatisch erkannt
+
+publish_mode: editorial_workflow
+
+collections:
+  - name: ratgeber
+    label: Ratgeber-Artikel
+    label_singular: Artikel
+    folder: src/content/ratgeber
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    preview_path: ratgeber/{{slug}}
+    fields:
+      - { label: "Titel", name: "title", widget: "string" }
+      - { label: "Kurzbeschreibung (für SEO & Vorschau)", name: "description", widget: "text" }
+      - { label: "Kategorie", name: "kategorie", widget: "select", options:
+          ["Gehalt", "Arbeitszeit", "Karriere", "Fachwissen", "Duisburg / NRW", "Sonstiges"],
+          default: "Karriere" }
+      - { label: "Veröffentlicht am", name: "pubDate", widget: "datetime", date_format: "DD.MM.YYYY", time_format: false }
+      - { label: "Autor/in", name: "author", widget: "string", default: "Redaktion" }
+      - { label: "Titelbild", name: "heroImage", widget: "image", required: false }
+      - { label: "Titelbild Alt-Text", name: "heroImageAlt", widget: "string", required: false }
+      - { label: "Als Entwurf speichern", name: "draft", widget: "boolean", default: false }
+      - { label: "Inhalt", name: "body", widget: "markdown" }
+
+  - name: seiten
+    label: Einzelseiten (Info-Texte)
+    label_singular: Seite
+    folder: src/content/seiten
+    create: false
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - { label: "Titel", name: "title", widget: "string" }
+      - { label: "Kurzbeschreibung", name: "description", widget: "text" }
+      - { label: "Inhalt", name: "body", widget: "markdown" }
