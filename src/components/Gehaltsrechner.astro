@@ -1,0 +1,166 @@
+---
+// src/components/Gehaltsrechner.astro
+// Interaktiver Gehaltsrechner für Logopädie in NRW.
+// Logik liegt in src/lib/gehalt-daten.ts und wird über ein Script-Modul im Browser geladen.
+import { optionen } from '../lib/gehalt-daten';
+
+const {
+  berufsjahre,
+  setting,
+  qualifikation,
+  spezialisierung,
+  arbeitszeit,
+  region,
+  zusatzleistungen,
+} = optionen;
+---
+
+<div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 md:p-10" id="gehaltsrechner">
+  <form id="rechner-form" class="grid gap-6 md:grid-cols-2">
+    <div class="flex flex-col gap-2">
+      <label for="berufsjahre" class="text-sm font-bold text-slate-700">Berufserfahrung</label>
+      <select id="berufsjahre" name="berufsjahre" class="rounded-xl border border-slate-300 px-4 py-3 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-simsek-blue">
+        {berufsjahre.map((o) => <option value={o.value}>{o.label}</option>)}
+      </select>
+    </div>
+
+    <div class="flex flex-col gap-2">
+      <label for="setting" class="text-sm font-bold text-slate-700">Setting</label>
+      <select id="setting" name="setting" class="rounded-xl border border-slate-300 px-4 py-3 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-simsek-blue">
+        {setting.map((o) => <option value={o.value}>{o.label}</option>)}
+      </select>
+    </div>
+
+    <div class="flex flex-col gap-2">
+      <label for="qualifikation" class="text-sm font-bold text-slate-700">Qualifikation</label>
+      <select id="qualifikation" name="qualifikation" class="rounded-xl border border-slate-300 px-4 py-3 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-simsek-blue">
+        {qualifikation.map((o) => <option value={o.value}>{o.label}</option>)}
+      </select>
+    </div>
+
+    <div class="flex flex-col gap-2">
+      <label for="spezialisierung" class="text-sm font-bold text-slate-700">Schwerpunkt</label>
+      <select id="spezialisierung" name="spezialisierung" class="rounded-xl border border-slate-300 px-4 py-3 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-simsek-blue">
+        {spezialisierung.map((o) => <option value={o.value}>{o.label}</option>)}
+      </select>
+    </div>
+
+    <div class="flex flex-col gap-2">
+      <label for="arbeitszeit" class="text-sm font-bold text-slate-700">Arbeitszeitmodell</label>
+      <select id="arbeitszeit" name="arbeitszeit" class="rounded-xl border border-slate-300 px-4 py-3 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-simsek-blue">
+        {arbeitszeit.map((o) => <option value={o.value}>{o.label}</option>)}
+      </select>
+    </div>
+
+    <div class="flex flex-col gap-2">
+      <label for="region" class="text-sm font-bold text-slate-700">Region in NRW</label>
+      <select id="region" name="region" class="rounded-xl border border-slate-300 px-4 py-3 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-simsek-blue">
+        {region.map((o) => <option value={o.value}>{o.label}</option>)}
+      </select>
+    </div>
+
+    <div class="md:col-span-2 flex flex-col gap-3">
+      <span class="text-sm font-bold text-slate-700">Zusatzleistungen</span>
+      <div class="grid grid-cols-2 gap-2">
+        {zusatzleistungen.map((z) => (
+          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:border-simsek-blue cursor-pointer">
+            <input type="checkbox" name="zusatz" value={z.value} class="mt-1 accent-simsek-green" />
+            <div class="flex flex-col">
+              <span class="text-sm font-medium text-slate-800">{z.label}</span>
+              <span class="text-xs text-slate-500">~{z.wert} €/Jahr</span>
+            </div>
+          </label>
+        ))}
+      </div>
+    </div>
+  </form>
+
+  <div id="rechner-ergebnis" class="mt-10 pt-8 border-t border-slate-200">
+    <div class="grid gap-6 md:grid-cols-3">
+      <div class="p-5 bg-slate-50 rounded-2xl">
+        <p class="text-xs uppercase tracking-widest text-slate-500 font-bold mb-2">Brutto / Monat</p>
+        <p class="text-2xl md:text-3xl font-bold text-slate-900" data-out="monat-mittel">—</p>
+        <p class="text-xs text-slate-500 mt-1">Spanne: <span data-out="monat-spanne">—</span></p>
+      </div>
+      <div class="p-5 bg-slate-50 rounded-2xl">
+        <p class="text-xs uppercase tracking-widest text-slate-500 font-bold mb-2">Brutto / Jahr</p>
+        <p class="text-2xl md:text-3xl font-bold text-slate-900" data-out="jahr">—</p>
+        <p class="text-xs text-slate-500 mt-1">Ohne Zusatzleistungen</p>
+      </div>
+      <div class="p-5 bg-simsek-green/10 rounded-2xl">
+        <p class="text-xs uppercase tracking-widest text-simsek-blue font-bold mb-2">Gesamtpaket / Jahr</p>
+        <p class="text-2xl md:text-3xl font-bold text-simsek-blue" data-out="gesamtpaket">—</p>
+        <p class="text-xs text-slate-600 mt-1">+ <span data-out="zusatz-wert">0 €</span> geldwerte Vorteile</p>
+      </div>
+    </div>
+
+    <div class="mt-6 p-5 bg-white border border-slate-200 rounded-2xl">
+      <p class="text-sm text-slate-700">
+        <span class="font-bold">Vergleich zum NRW-Durchschnitt:</span>
+        <span data-out="vergleich" class="font-bold">—</span>
+      </p>
+      <p class="text-xs text-slate-500 mt-2" data-out="erklaerung">—</p>
+    </div>
+  </div>
+
+  <p class="text-xs text-slate-400 mt-6">
+    Schätzwert auf Basis öffentlicher Daten (jobvector, StepStone, Bundesagentur für Arbeit, dbl-Umfragen).
+    Einzelne Arbeitgeber können darüber oder darunter liegen. Methodik siehe unten.
+  </p>
+</div>
+
+<script>
+  import { berechneGehalt } from '../lib/gehalt-daten';
+  import type { RechnerInput, Zusatzleistung } from '../lib/gehalt-daten';
+
+  const form = document.getElementById('rechner-form') as HTMLFormElement | null;
+  if (!form) throw new Error('Rechner-Form nicht gefunden');
+
+  const formatEuro = (n: number) =>
+    new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n);
+
+  function setOut(key: string, value: string) {
+    const el = document.querySelector(`[data-out="${key}"]`);
+    if (el) el.textContent = value;
+  }
+
+  function readInput(): RechnerInput {
+    const fd = new FormData(form!);
+    const zusatz = fd.getAll('zusatz') as Zusatzleistung[];
+    return {
+      berufsjahre: fd.get('berufsjahre') as RechnerInput['berufsjahre'],
+      setting: fd.get('setting') as RechnerInput['setting'],
+      qualifikation: fd.get('qualifikation') as RechnerInput['qualifikation'],
+      spezialisierung: fd.get('spezialisierung') as RechnerInput['spezialisierung'],
+      arbeitszeit: fd.get('arbeitszeit') as RechnerInput['arbeitszeit'],
+      region: fd.get('region') as RechnerInput['region'],
+      zusatzleistungen: zusatz,
+    };
+  }
+
+  function update() {
+    const input = readInput();
+    const e = berechneGehalt(input);
+
+    setOut('monat-mittel', formatEuro(e.bruttoMonatMittel));
+    setOut('monat-spanne', `${formatEuro(e.bruttoMonatMin)} – ${formatEuro(e.bruttoMonatMax)}`);
+    setOut('jahr', formatEuro(e.bruttoJahr));
+    setOut('gesamtpaket', formatEuro(e.gesamtpaketJahr));
+    setOut('zusatz-wert', formatEuro(e.zusatzJahrWert));
+
+    const vergleich =
+      e.nrwDurchschnittVergleich === 0
+        ? 'entspricht dem NRW-Schnitt'
+        : e.nrwDurchschnittVergleich > 0
+          ? `+${e.nrwDurchschnittVergleich}% über dem NRW-Schnitt`
+          : `${e.nrwDurchschnittVergleich}% unter dem NRW-Schnitt`;
+    setOut('vergleich', vergleich);
+
+    const erklaerung = `Berechnung: ${e.erklaerung.stunden}h/Woche in ${e.erklaerung.setting}, ${e.erklaerung.qualifikation}, Schwerpunkt ${e.erklaerung.spezialisierung}, ${e.erklaerung.region}.`;
+    setOut('erklaerung', erklaerung);
+  }
+
+  form.addEventListener('input', update);
+  form.addEventListener('change', update);
+  update();
+</script>

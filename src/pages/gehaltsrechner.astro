@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import Gehaltsrechner from '../components/Gehaltsrechner.astro';
+
+const pageTitle = "Gehaltsrechner Logopädie NRW 2026 — Was verdienst du wirklich?";
+const pageDescription = "Interaktiver Gehaltsrechner für Logopädinnen und Sprachtherapeuten in NRW. Berufserfahrung, Setting, Qualifikation, Region — individuell kalkuliert. Inkl. Methodik und Quellen.";
+---
+
+<Layout title={pageTitle} description={pageDescription} breadcrumbs={[
+  { name: "Startseite", url: "https://xn--logopdiejobs-kcb.de/" },
+  { name: "Gehaltsrechner", url: "https://xn--logopdiejobs-kcb.de/gehaltsrechner/" }
+]}>
+  <Navigation />
+  <main>
+    <article class="max-w-4xl mx-auto px-6 py-16 md:py-24">
+      <header class="mb-12">
+        <p class="text-sm font-bold uppercase tracking-widest text-simsek-green mb-4">Tools</p>
+        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 leading-tight mb-6">
+          Gehaltsrechner Logopädie NRW
+        </h1>
+        <p class="text-xl text-slate-600 leading-relaxed">
+          Stell deine Eckdaten ein und sieh in Echtzeit, was als Logopädin oder Sprachtherapeut in Nordrhein-Westfalen realistisch drin ist. Basiert auf öffentlich verfügbaren Gehaltsdaten für 2025/2026.
+        </p>
+      </header>
+
+      <Gehaltsrechner />
+
+      <section class="mt-16">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-6">Methodik & Quellen</h2>
+        <div class="prose prose-slate max-w-none">
+          <p>
+            Der Rechner kombiniert den NRW-Medianwert für staatlich anerkannte Logopädinnen in freier Praxis (Vollzeit, 38,5 Stunden) mit multiplikativen Modifikatoren für Setting, Qualifikation, Schwerpunkt, Region und Arbeitszeit. Die ausgegebene Spanne spiegelt eine typische Streuung von ±8 % wider — einzelne Arbeitgeber können darüber oder darunter liegen.
+          </p>
+          <p><strong>Datenquellen:</strong></p>
+          <ul>
+            <li>Bundesagentur für Arbeit, Entgeltatlas für die Berufsgruppe 81724 (Logopädie), Stand 2025</li>
+            <li>jobvector Gehaltsreport Logopädie 2025 (NRW-Median: 45.850 €/Jahr)</li>
+            <li>StepStone Gehaltsreport Gesundheitswesen 2025</li>
+            <li>dbl-Praxisumfrage 2024/2025 zu freien Praxen</li>
+            <li>TVöD-VKA Entgeltgruppe 9a als Referenz für das Klinik-Setting</li>
+          </ul>
+          <p>
+            Der Rechner ist eine Schätzung, kein verbindliches Angebot. Steuerklasse, Bundesland, Kinderfreibetrag und individuelle Verhandlung werden nicht abgebildet. Wer ein konkretes Angebot vergleichen will, sollte den Bruttowert und alle Zusatzleistungen zusammen betrachten — nicht nur das Monatsgehalt.
+          </p>
+        </div>
+      </section>
+
+      <section class="mt-16">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-6">Warum die Zahlen so auseinandergehen</h2>
+        <div class="prose prose-slate max-w-none">
+          <p>
+            Wenn du online nach "Gehalt Logopädie" suchst, bekommst du Zahlen zwischen 2.100 € und 4.500 € brutto — eine Spanne, die fast nichts aussagt. Der Grund: die Daten werden aus unterschiedlichen Quellen (Praxen, Kliniken, Berufsanfänger, erfahrene Therapeutinnen) zusammengewürfelt, und regionale Unterschiede werden oft ignoriert.
+          </p>
+          <p>
+            NRW liegt beim Logopädie-Gehalt über dem Bundesschnitt. Das hat mehrere Gründe: hohe Nachfrage in Ballungsräumen, Fachkräftemangel, und im Ruhrgebiet zusätzlich die Nachfrage nach bilingualen Therapeutinnen. Wer verhandelt, kann oft mehr rausholen als die Einstiegszahlen vermuten lassen.
+          </p>
+          <p>
+            Lies dazu auch: <a href="/gehalt/" class="text-simsek-blue font-semibold hover:underline">Logopädie Gehalt NRW 2026 — der vollständige Überblick</a>.
+          </p>
+        </div>
+      </section>
+
+      <div class="mt-16 p-8 bg-slate-50 rounded-3xl border border-slate-200">
+        <h2 class="text-2xl font-bold text-slate-900 mb-4">Gehalt über dem NRW-Schnitt in Duisburg</h2>
+        <p class="text-slate-600 mb-6">
+          Die <a href="/" class="text-simsek-blue font-semibold hover:underline">Praxis für Logopädie Şimşek</a> in Duisburg zahlt bewusst über dem regionalen Durchschnitt. Dazu: 100 % Fortbildungsübernahme, optionale <a href="/4-tage-woche/" class="text-simsek-blue font-semibold hover:underline">4-Tage-Woche</a> und ein <a href="/bilingual/" class="text-simsek-blue font-semibold hover:underline">bilinguales Team (Deutsch-Türkisch)</a>.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="/#apply" class="px-6 py-3 bg-simsek-green text-white font-bold rounded-xl no-underline hover:scale-[1.02] transition-transform text-sm">
+            Jetzt bewerben →
+          </a>
+          <a href="/" class="px-6 py-3 bg-white text-slate-700 font-bold rounded-xl no-underline border border-slate-200 hover:border-simsek-blue transition-colors text-sm">
+            Stellenanzeige lesen
+          </a>
+        </div>
+      </div>
+
+      <footer class="mt-12 pt-8 border-t border-slate-100">
+        <p class="text-xs text-slate-400">
+          Stand: April 2026. Der Rechner wird bei neuen Gehaltsdaten aktualisiert. Keine Steuerberatung, keine Rechtsberatung.
+        </p>
+      </footer>
+    </article>
+  </main>
+  <Footer />
+</Layout>
