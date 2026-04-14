@@ -1,0 +1,64 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+  const beitraege = await getCollection('ratgeber', ({ data }) => !data.draft);
+  return beitraege.map((beitrag) => ({
+    params: { slug: beitrag.id },
+    props: { beitrag },
+  }));
+}
+
+type Props = { beitrag: CollectionEntry<'ratgeber'> };
+const { beitrag } = Astro.props;
+const { Content } = await render(beitrag);
+const pubDateFormatiert = beitrag.data.pubDate.toLocaleDateString('de-DE', {
+  day: '2-digit', month: 'long', year: 'numeric',
+});
+---
+
+<Layout
+  title={`${beitrag.data.title} | Logopädiejobs.de`}
+  description={beitrag.data.description}
+  breadcrumbs={[
+    { name: "Startseite", url: "https://xn--logopdiejobs-kcb.de/" },
+    { name: "Ratgeber", url: "https://xn--logopdiejobs-kcb.de/ratgeber/" },
+    { name: beitrag.data.title, url: `https://xn--logopdiejobs-kcb.de/ratgeber/${beitrag.id}/` },
+  ]}
+>
+  <Navigation />
+  <main>
+    <article class="max-w-3xl mx-auto px-6 py-16 md:py-24">
+      <header class="mb-12">
+        <p class="text-sm font-bold uppercase tracking-widest text-simsek-green mb-4">{beitrag.data.kategorie}</p>
+        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 leading-tight mb-6">
+          {beitrag.data.title}
+        </h1>
+        <p class="text-xl text-slate-600 leading-relaxed mb-6">{beitrag.data.description}</p>
+        <p class="text-sm text-slate-500">Von {beitrag.data.author} · {pubDateFormatiert}</p>
+      </header>
+
+      {beitrag.data.heroImage && (
+        <img
+          src={beitrag.data.heroImage}
+          alt={beitrag.data.heroImageAlt || beitrag.data.title}
+          class="w-full rounded-2xl mb-12"
+        />
+      )}
+
+      <div class="prose prose-lg prose-slate max-w-none">
+        <Content />
+      </div>
+
+      <footer class="mt-16 pt-8 border-t border-slate-100">
+        <p class="text-xs text-slate-400">
+          Stand: {pubDateFormatiert}. Redaktionell gepflegt vom Team der Praxis für Logopädie Şimşek.
+        </p>
+      </footer>
+    </article>
+  </main>
+  <Footer />
+</Layout>

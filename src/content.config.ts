@@ -1,0 +1,24 @@
+// src/content.config.ts
+// Astro v6 Content Collections — Konfiguration mit Glob-Loadern.
+import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
+
+const ratgeber = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/ratgeber' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    kategorie: z
+      .enum(['Gehalt', 'Arbeitszeit', 'Karriere', 'Fachwissen', 'Duisburg / NRW', 'Sonstiges'])
+      .default('Karriere'),
+    pubDate: z.coerce.date(),
+    author: z.string().default('Redaktion'),
+    heroImage: z.string().optional(),
+    heroImageAlt: z.string().optional(),
+    draft: z.boolean().default(false),
+  }),
+});
+
+// seiten-Collection wird angelegt, sobald der Bereich aktiv bespielt wird.
+
+export const collections = { ratgeber };
