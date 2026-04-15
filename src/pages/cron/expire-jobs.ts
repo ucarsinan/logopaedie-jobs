@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { getAdminClient } from '../../../lib/supabaseAdmin';
+import { getAdminClient } from '../../lib/supabaseAdmin';
 
 export const prerender = false;
 
