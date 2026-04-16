@@ -16,52 +16,71 @@ const {
 ---
 
 <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 md:p-10" id="gehaltsrechner">
-  <form id="rechner-form" class="grid gap-6 md:grid-cols-2">
-    <div class="flex flex-col gap-2">
-      <label for="berufsjahre" class="text-sm font-bold text-slate-700">Berufserfahrung</label>
-      <select id="berufsjahre" name="berufsjahre" class="rounded-xl border border-slate-300 px-4 py-3 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-simsek-blue">
-        {berufsjahre.map((o) => <option value={o.value}>{o.label}</option>)}
-      </select>
+  <form id="rechner-form" class="grid gap-5 md:grid-cols-2">
+
+    <div class="flex flex-col gap-1.5">
+      <label for="berufsjahre" class="text-xs font-bold uppercase tracking-wider text-slate-500">Berufserfahrung</label>
+      <div class="relative">
+        <select id="berufsjahre" name="berufsjahre" class="w-full appearance-none bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 pr-10 text-slate-900 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-simsek-blue focus:bg-white cursor-pointer transition-colors">
+          {berufsjahre.map((o) => <option value={o.value}>{o.label}</option>)}
+        </select>
+        <svg class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+      </div>
     </div>
 
-    <div class="flex flex-col gap-2">
-      <label for="setting" class="text-sm font-bold text-slate-700">Setting</label>
-      <select id="setting" name="setting" class="rounded-xl border border-slate-300 px-4 py-3 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-simsek-blue">
-        {setting.map((o) => <option value={o.value}>{o.label}</option>)}
-      </select>
+    <div class="flex flex-col gap-1.5">
+      <label for="setting" class="text-xs font-bold uppercase tracking-wider text-slate-500">Setting</label>
+      <div class="relative">
+        <select id="setting" name="setting" class="w-full appearance-none bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 pr-10 text-slate-900 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-simsek-blue focus:bg-white cursor-pointer transition-colors">
+          {setting.map((o) => <option value={o.value}>{o.label}</option>)}
+        </select>
+        <svg class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+      </div>
     </div>
 
-    <div class="flex flex-col gap-2">
-      <label for="qualifikation" class="text-sm font-bold text-slate-700">Qualifikation</label>
-      <select id="qualifikation" name="qualifikation" class="rounded-xl border border-slate-300 px-4 py-3 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-simsek-blue">
-        {qualifikation.map((o) => <option value={o.value}>{o.label}</option>)}
-      </select>
+    <div class="flex flex-col gap-1.5">
+      <label for="qualifikation" class="text-xs font-bold uppercase tracking-wider text-slate-500">Qualifikation</label>
+      <div class="relative">
+        <select id="qualifikation" name="qualifikation" class="w-full appearance-none bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 pr-10 text-slate-900 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-simsek-blue focus:bg-white cursor-pointer transition-colors">
+          {qualifikation.map((o) => <option value={o.value}>{o.label}</option>)}
+        </select>
+        <svg class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+      </div>
     </div>
 
-    <div class="flex flex-col gap-2">
-      <label for="spezialisierung" class="text-sm font-bold text-slate-700">Schwerpunkt</label>
-      <select id="spezialisierung" name="spezialisierung" class="rounded-xl border border-slate-300 px-4 py-3 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-simsek-blue">
-        {spezialisierung.map((o) => <option value={o.value}>{o.label}</option>)}
-      </select>
+    <div class="flex flex-col gap-1.5">
+      <label for="spezialisierung" class="text-xs font-bold uppercase tracking-wider text-slate-500">Schwerpunkt</label>
+      <div class="relative">
+        <select id="spezialisierung" name="spezialisierung" class="w-full appearance-none bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 pr-10 text-slate-900 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-simsek-blue focus:bg-white cursor-pointer transition-colors">
+          {spezialisierung.map((o) => <option value={o.value}>{o.label}</option>)}
+        </select>
+        <svg class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+      </div>
     </div>
 
-    <div class="flex flex-col gap-2">
-      <label for="arbeitszeit" class="text-sm font-bold text-slate-700">Arbeitszeitmodell</label>
-      <select id="arbeitszeit" name="arbeitszeit" class="rounded-xl border border-slate-300 px-4 py-3 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-simsek-blue">
-        {arbeitszeit.map((o) => <option value={o.value}>{o.label}</option>)}
-      </select>
+    <div class="flex flex-col gap-1.5">
+      <label for="arbeitszeit" class="text-xs font-bold uppercase tracking-wider text-slate-500">Arbeitszeitmodell</label>
+      <div class="relative">
+        <select id="arbeitszeit" name="arbeitszeit" class="w-full appearance-none bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 pr-10 text-slate-900 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-simsek-blue focus:bg-white cursor-pointer transition-colors">
+          {arbeitszeit.map((o) => <option value={o.value}>{o.label}</option>)}
+        </select>
+        <svg class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+      </div>
     </div>
 
-    <div class="flex flex-col gap-2">
-      <label for="region" class="text-sm font-bold text-slate-700">Region in NRW</label>
-      <select id="region" name="region" class="rounded-xl border border-slate-300 px-4 py-3 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-simsek-blue">
-        {region.map((o) => <option value={o.value}>{o.label}</option>)}
-      </select>
+    <div class="flex flex-col gap-1.5">
+      <label for="region" class="text-xs font-bold uppercase tracking-wider text-slate-500">Region in NRW</label>
+      <div class="relative">
+        <select id="region" name="region" class="w-full appearance-none bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 pr-10 text-slate-900 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-simsek-blue focus:bg-white cursor-pointer transition-colors">
+          {region.map((o) => <option value={o.value}>{o.label}</option>)}
+        </select>
+        <svg class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+      </div>
     </div>
 
     <div class="md:col-span-2 flex flex-col gap-3">
       <span class="text-sm font-bold text-slate-700">Zusatzleistungen</span>
-      <div class="grid grid-cols-2 gap-2">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
         {zusatzleistungen.map((z) => (
           <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:border-simsek-blue cursor-pointer">
             <input type="checkbox" name="zusatz" value={z.value} class="mt-1 accent-simsek-green" />
