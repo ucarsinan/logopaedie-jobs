@@ -1,6 +1,16 @@
 ---
 import Logo from './Logo.astro';
+
+const { pathname } = Astro.url;
+
+const moreLinks = [
+  { href: '/ratgeber/', label: 'Ratgeber' },
+  { href: '/gehaltsrechner/', label: 'Gehaltsrechner' },
+];
+
+const moreActive = moreLinks.some(l => pathname.startsWith(l.href));
 ---
+
 <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100">
   <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
     <a href="/" class="block hover:opacity-90 transition-opacity" aria-label="Zur Startseite">
@@ -12,11 +22,53 @@ import Logo from './Logo.astro';
       <a href="/#aufgaben" class="text-sm font-semibold text-slate-600 hover:text-simsek-blue transition-colors no-underline">Was dich erwartet</a>
       <a href="/#anforderungen" class="text-sm font-semibold text-slate-600 hover:text-simsek-blue transition-colors no-underline">Anforderungen</a>
       <a href="/#benefits" class="text-sm font-semibold text-slate-600 hover:text-simsek-blue transition-colors no-underline">Vorteile</a>
-      <a href="/gehaltsrechner/" class="text-sm font-semibold text-slate-600 hover:text-simsek-blue transition-colors no-underline">Gehaltsrechner</a>
-      <a href="/ratgeber/" class="text-sm font-semibold text-slate-600 hover:text-simsek-blue transition-colors no-underline">Ratgeber</a>
-      <a href="/#apply" class="text-sm font-semibold text-slate-600 hover:text-simsek-blue transition-colors no-underline">Bewerbung</a>
-      <div class="h-4 w-[1px] bg-slate-200"></div>
-      <a href="https://logopaedie-simsek.de" target="_blank" class="text-xs font-bold text-simsek-green hover:text-simsek-blue uppercase tracking-wider no-underline">Zur Praxis</a>
+      <!-- Ratgeber & Tools Dropdown -->
+      <div class="relative" id="mehr-dropdown">
+        <button
+          id="mehr-btn"
+          aria-haspopup="true"
+          aria-expanded="false"
+          class={[
+            'flex items-center gap-1 text-sm font-semibold transition-colors no-underline pb-0.5 cursor-pointer border-b-2',
+            moreActive
+              ? 'text-slate-900 border-simsek-green'
+              : 'text-slate-600 hover:text-simsek-blue border-transparent',
+          ].join(' ')}
+        >
+          Ratgeber & Tools
+          <svg class="w-3.5 h-3.5 transition-transform duration-200" id="mehr-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div
+          id="mehr-menu"
+          role="menu"
+          class="hidden absolute top-full right-0 mt-3 w-52 bg-white rounded-2xl border border-slate-100 shadow-lg shadow-slate-200/60 py-2 z-50"
+        >
+          {moreLinks.map(link => (
+            <a
+              href={link.href}
+              role="menuitem"
+              class={[
+                'block px-4 py-2.5 text-sm font-semibold no-underline transition-colors rounded-xl mx-1',
+                pathname.startsWith(link.href)
+                  ? 'bg-slate-50 text-slate-900'
+                  : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900',
+              ].join(' ')}
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div class="h-4 w-px bg-slate-200"></div>
+      <a href="https://logopaedie-simsek.de" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-simsek-green hover:text-simsek-blue uppercase tracking-wider no-underline transition-colors">
+        Zur Praxis ↗
+      </a>
+      <a href="/#apply" class="px-5 py-2.5 bg-simsek-green text-white text-sm font-bold rounded-xl hover:bg-simsek-green/90 transition-colors no-underline">
+        Bewerben →
+      </a>
     </div>
 
     <!-- Mobile: CTA + Hamburger -->
@@ -41,17 +93,34 @@ import Logo from './Logo.astro';
       <a href="/#aufgaben" class="mobile-nav-link block py-3 px-4 text-sm font-semibold text-slate-700 hover:bg-slate-50 rounded-xl no-underline transition-colors">Was dich erwartet</a>
       <a href="/#anforderungen" class="mobile-nav-link block py-3 px-4 text-sm font-semibold text-slate-700 hover:bg-slate-50 rounded-xl no-underline transition-colors">Anforderungen</a>
       <a href="/#benefits" class="mobile-nav-link block py-3 px-4 text-sm font-semibold text-slate-700 hover:bg-slate-50 rounded-xl no-underline transition-colors">Vorteile</a>
-      <a href="/gehaltsrechner/" class="mobile-nav-link block py-3 px-4 text-sm font-semibold text-slate-700 hover:bg-slate-50 rounded-xl no-underline transition-colors">Gehaltsrechner</a>
-      <a href="/ratgeber/" class="mobile-nav-link block py-3 px-4 text-sm font-semibold text-slate-700 hover:bg-slate-50 rounded-xl no-underline transition-colors">Ratgeber</a>
-      <a href="/#apply" class="mobile-nav-link block py-3 px-4 text-sm font-semibold text-slate-700 hover:bg-slate-50 rounded-xl no-underline transition-colors">Bewerbung</a>
       <div class="pt-2 border-t border-slate-100 mt-2">
-        <a href="https://logopaedie-simsek.de" target="_blank" class="block py-3 px-4 text-sm font-bold text-simsek-green hover:bg-slate-50 rounded-xl no-underline transition-colors">Zur Praxis →</a>
+        <p class="px-4 pt-1 pb-2 text-xs font-bold uppercase tracking-widest text-slate-400">Ratgeber & Tools</p>
+        {moreLinks.map(link => (
+          <a
+            href={link.href}
+            class={[
+              'mobile-nav-link block py-3 px-4 text-sm font-semibold rounded-xl no-underline transition-colors',
+              pathname.startsWith(link.href)
+                ? 'bg-slate-50 text-slate-900 border-l-2 border-simsek-green pl-3'
+                : 'text-slate-700 hover:bg-slate-50',
+            ].join(' ')}
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+
+      <div class="pt-2 border-t border-slate-100 mt-2">
+        <a href="https://logopaedie-simsek.de" target="_blank" rel="noopener noreferrer" class="block py-3 px-4 text-sm font-bold text-simsek-green hover:bg-slate-50 rounded-xl no-underline transition-colors">
+          Zur Praxis →
+        </a>
       </div>
     </div>
   </div>
 </nav>
 
 <script is:inline>
+  // Mobile menu
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
   const iconOpen = document.getElementById('icon-open');
@@ -64,12 +133,43 @@ import Logo from './Logo.astro';
     iconClose.classList.toggle('hidden', isOpen);
   });
 
-  // Close on nav link click
   document.querySelectorAll('.mobile-nav-link').forEach(link => {
     link.addEventListener('click', () => {
       menu.classList.add('hidden');
       iconOpen.classList.remove('hidden');
       iconClose.classList.add('hidden');
     });
+  });
+
+  // Mehr dropdown
+  const mehrBtn = document.getElementById('mehr-btn');
+  const mehrMenu = document.getElementById('mehr-menu');
+  const mehrChevron = document.getElementById('mehr-chevron');
+
+  function openMehr() {
+    mehrMenu.classList.remove('hidden');
+    mehrBtn.setAttribute('aria-expanded', 'true');
+    mehrChevron.style.transform = 'rotate(180deg)';
+  }
+
+  function closeMehr() {
+    mehrMenu.classList.add('hidden');
+    mehrBtn.setAttribute('aria-expanded', 'false');
+    mehrChevron.style.transform = 'rotate(0deg)';
+  }
+
+  mehrBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    mehrMenu.classList.contains('hidden') ? openMehr() : closeMehr();
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!document.getElementById('mehr-dropdown').contains(e.target)) {
+      closeMehr();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMehr();
   });
 </script>
