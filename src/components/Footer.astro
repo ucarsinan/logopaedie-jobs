@@ -2,39 +2,49 @@
 // src/components/Footer.astro
 import Logo from './Logo.astro';
 ---
-<footer class="bg-slate-950 text-white pt-20 pb-10">
+<footer class="bg-slate-950 text-white pt-20 pb-10 relative">
+  <!-- Accent stripe (mirrors nav) -->
+  <div class="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-simsek-green via-simsek-blue to-simsek-green"></div>
+
   <div class="max-w-7xl mx-auto px-6">
     <div class="grid md:grid-cols-3 gap-16 mb-16 text-left">
       <div class="space-y-6">
         <Logo class="h-10 w-auto" />
-        
         <p class="text-slate-400 text-sm">Karriere-Portal der Praxis für Logopädie Şimşek.</p>
       </div>
       <div>
-        <h4 class="text-simsek-green font-bold mb-6 uppercase text-xs">Navigation</h4>
-        <ul class="space-y-4 text-sm text-slate-400 list-none p-0 font-bold">
-          <li><a href="/#benefits" class="hover:text-white no-underline">Vorteile</a></li>
-          <li><a href="/#faq" class="hover:text-white no-underline">FAQ</a></li>
-          <li><a href="/#apply" class="hover:text-white no-underline">Bewerbung</a></li>
-          <li><a href="/gehaltsrechner/" class="hover:text-white no-underline">Gehaltsrechner NRW</a></li>
-          <li><a href="/gehalt/" class="hover:text-white no-underline">Gehalt Logopädie NRW</a></li>
-          <li><a href="/4-tage-woche/" class="hover:text-white no-underline">4-Tage-Woche</a></li>
-          <li><a href="/bilingual/" class="hover:text-white no-underline">Bilinguale Logopädie</a></li>
-          <li><a href="/ratgeber/" class="hover:text-white no-underline">Ratgeber</a></li>
-          <li><a href="/impressum" class="hover:text-white no-underline">Impressum</a></li>
+        <h4 class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-6">Navigation</h4>
+        <ul class="space-y-3 text-sm list-none p-0">
+          <li><a href="/#benefits" class="text-slate-400 hover:text-white font-semibold no-underline transition-colors duration-150">Vorteile</a></li>
+          <li><a href="/#faq" class="text-slate-400 hover:text-white font-semibold no-underline transition-colors duration-150">FAQ</a></li>
+          <li><a href="/#apply" class="text-slate-400 hover:text-white font-semibold no-underline transition-colors duration-150">Bewerbung</a></li>
+          <li><a href="/gehaltsrechner/" class="text-slate-400 hover:text-white font-semibold no-underline transition-colors duration-150">Gehaltsrechner NRW</a></li>
+          <li><a href="/gehalt/" class="text-slate-400 hover:text-white font-semibold no-underline transition-colors duration-150">Gehalt Logopädie NRW</a></li>
+          <li><a href="/4-tage-woche/" class="text-slate-400 hover:text-white font-semibold no-underline transition-colors duration-150">4-Tage-Woche</a></li>
+          <li><a href="/bilingual/" class="text-slate-400 hover:text-white font-semibold no-underline transition-colors duration-150">Bilinguale Logopädie</a></li>
+          <li><a href="/ratgeber/" class="text-slate-400 hover:text-white font-semibold no-underline transition-colors duration-150">Ratgeber</a></li>
+          <li><a href="/impressum" class="text-slate-400 hover:text-white font-semibold no-underline transition-colors duration-150">Impressum</a></li>
         </ul>
       </div>
       <div>
-        <h4 class="text-simsek-blue font-bold mb-6 uppercase text-xs font-bold">Standort</h4>
+        <h4 class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-6">Standort</h4>
         <p class="text-sm text-slate-400 mb-2">Tonhallenstraße 21, 47051 Duisburg</p>
-        <p class="text-xs text-slate-500 mb-4">(3. OG, Aufzug vorhanden)</p>
-        <a href="mailto:info@logopaedie-simsek.de" class="text-sm text-simsek-green font-bold no-underline">info@logopaedie-simsek.de</a>
+        <p class="text-xs text-slate-500 mb-6">(3. OG, Aufzug vorhanden)</p>
+        <a
+          href="mailto:info@logopaedie-simsek.de"
+          class="inline-flex items-center gap-2 px-4 py-2.5 bg-linear-to-r from-simsek-green to-simsek-blue text-white text-sm font-bold rounded-full shadow-md shadow-simsek-green/20 hover:shadow-lg hover:shadow-simsek-green/30 hover:scale-[1.02] transition-all duration-200 no-underline"
+        >
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          info@logopaedie-simsek.de
+        </a>
       </div>
     </div>
     <div class="pt-8 border-t border-slate-900 flex justify-between text-[10px] uppercase font-bold text-slate-600">
       <p>© {new Date().getFullYear()} Praxis für Logopädie Şimşek</p>
       <div class="flex gap-4">
-        <a href="/datenschutz" class="no-underline">Datenschutz</a>
+        <a href="/datenschutz" class="no-underline hover:text-slate-400 transition-colors">Datenschutz</a>
       </div>
     </div>
   </div>
