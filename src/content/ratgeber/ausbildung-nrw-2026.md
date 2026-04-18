@@ -5,6 +5,7 @@ kategorie: "Karriere"
 pubDate: 2026-04-14
 author: "Redaktion"
 draft: false
+relatedArticles: ["arbeiten-duisburg", "teilzeit-modelle"]
 ---
 
 Wer in Nordrhein-Westfalen Logopädin oder Logopäde werden will, hat heute mehr Optionen als noch vor zehn Jahren. Neben der klassischen Berufsausbildung an Berufsfachschulen gibt es inzwischen Bachelor-Studiengänge, primärqualifizierende Hochschulprogramme und erste Wege für Quereinsteiger. Dieser Artikel fasst den Stand 2026 zusammen.

@@ -26,17 +26,51 @@ const kategorieColors: Record<string, string> = {
   'Fachwissen':  'bg-violet-50 text-violet-700 border-violet-200',
 };
 const badgeClass = kategorieColors[beitrag.data.kategorie] ?? 'bg-slate-100 text-slate-600 border-slate-200';
+
+const canonicalURL = `https://xn--logopdiejobs-kcb.de/ratgeber/${beitrag.id}/`;
+
+const alleArtikel = await getCollection('ratgeber', ({ data }) => !data.draft);
+const verwandteArtikel = beitrag.data.relatedArticles
+  ? alleArtikel.filter(a => beitrag.data.relatedArticles!.includes(a.id))
+  : [];
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": beitrag.data.title,
+  "description": beitrag.data.description,
+  "datePublished": beitrag.data.pubDate.toISOString(),
+  "dateModified": beitrag.data.pubDate.toISOString(),
+  "author": {
+    "@type": "Person",
+    "name": beitrag.data.author
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Logopädiejobs.de",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://xn--logopdiejobs-kcb.de/logo.svg"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": canonicalURL
+  },
+  ...(beitrag.data.heroImage ? { "image": `https://xn--logopdiejobs-kcb.de${beitrag.data.heroImage}` } : {})
+};
 ---
 
 <Layout
   title={`${beitrag.data.title} | Logopädiejobs.de`}
   description={beitrag.data.description}
+  ogImage={beitrag.data.heroImage}
   breadcrumbs={[
     { name: "Startseite", url: "https://xn--logopdiejobs-kcb.de/" },
     { name: "Ratgeber", url: "https://xn--logopdiejobs-kcb.de/ratgeber/" },
-    { name: beitrag.data.title, url: `https://xn--logopdiejobs-kcb.de/ratgeber/${beitrag.id}/` },
+    { name: beitrag.data.title, url: canonicalURL },
   ]}
 >
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(articleSchema)} />
   <Navigation />
 
   <!-- Reading progress bar -->
@@ -103,6 +137,33 @@ const badgeClass = kategorieColors[beitrag.data.kategorie] ?? 'bg-slate-100 text
       <div class="article-body">
         <Content />
       </div>
+
+      <!-- Related Articles -->
+      {verwandteArtikel.length > 0 && (
+        <aside class="mt-14 pt-8 border-t border-slate-100">
+          <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-5">Weitere Artikel</h3>
+          <ul class="space-y-3 list-none p-0">
+            {verwandteArtikel.map((a) => (
+              <li>
+                <a
+                  href={`/ratgeber/${a.id}/`}
+                  class="flex items-center justify-between gap-4 p-4 rounded-2xl border border-slate-100 bg-white hover:border-simsek-green/30 hover:shadow-sm hover:shadow-simsek-green/10 transition-all duration-200 no-underline group"
+                >
+                  <div class="min-w-0">
+                    <span class={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-widest border mb-1 ${kategorieColors[a.data.kategorie] ?? 'bg-slate-100 text-slate-600 border-slate-200'}`}>
+                      {a.data.kategorie}
+                    </span>
+                    <p class="text-sm font-semibold text-slate-800 leading-snug">{a.data.title}</p>
+                  </div>
+                  <svg class="w-4 h-4 shrink-0 text-slate-300 group-hover:text-simsek-green transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                  </svg>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </aside>
+      )}
 
       <!-- CTA Box -->
       <div class="mt-16 p-px rounded-3xl bg-linear-to-br from-simsek-green to-simsek-blue">

@@ -5,6 +5,7 @@ kategorie: "Arbeitszeit"
 pubDate: 2026-04-14
 author: "Redaktion"
 draft: false
+relatedArticles: ["ausbildung-nrw-2026", "arbeiten-duisburg"]
 ---
 
 Teilzeit ist in der Logopädie der Normalfall, nicht die Ausnahme. Laut der dbl-Praxisumfrage 2024/2025 arbeiten mehr als die Hälfte aller angestellten Logopädinnen in Deutschland nicht in Vollzeit. Das liegt zum einen an Familienphase und Kinderbetreuung, zum anderen daran, dass viele schlicht nicht 38,5 Stunden pro Woche therapeutisch arbeiten wollen — der Beruf ist fordernd, und Teilzeit ist eine vernünftige Antwort darauf.

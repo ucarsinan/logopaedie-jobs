@@ -5,6 +5,7 @@ kategorie: "Fachwissen"
 pubDate: 2026-04-14
 author: "Redaktion"
 draft: false
+relatedArticles: ["stottertherapie-spezialisierung", "ausbildung-nrw-2026"]
 ---
 
 Bilingualismus ist in der Logopädie lange als Problem behandelt worden — als würden zwei Sprachen einander behindern. Diese Sichtweise ist überholt. Heute ist die Forschungslage eindeutig: Zweisprachigkeit verursacht keine Sprachentwicklungsstörungen. Aber sie verkompliziert die Diagnostik erheblich, wenn die Therapeutin nur eine Sprache des Kindes kennt.

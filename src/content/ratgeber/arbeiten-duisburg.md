@@ -5,6 +5,7 @@ kategorie: "Duisburg / NRW"
 pubDate: 2026-04-14
 author: "Redaktion"
 draft: false
+relatedArticles: ["ausbildung-nrw-2026", "teilzeit-modelle"]
 ---
 
 Duisburg taucht in Gesprächen über Arbeitsstandorte in NRW selten als erste Wahl auf. Köln, Düsseldorf oder Münster klingen attraktiver — aber wer konkret rechnet und schaut, was der Stellenmarkt bietet, kommt zu einem anderen Bild. Für Logopädinnen, die in ihr Berufsleben starten oder die Region wechseln wollen, ist Duisburg ein Standort, der sich lohnt.
