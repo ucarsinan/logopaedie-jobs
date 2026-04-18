@@ -1,66 +1,66 @@
 ---
 // src/components/QuickApply.astro
 ---
-<section id="apply" class="py-12 md:py-24 bg-slate-900 text-white rounded-3xl md:rounded-[3rem] mx-4 md:mx-6 my-8 md:my-12 overflow-hidden relative">
-  <div class="max-w-4xl mx-auto px-6 relative z-10">
-    <div class="text-center mb-12">
-      <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-simsek-green/20 text-simsek-green border border-simsek-green/30 mb-4">
+<section id="apply" class="py-8 md:py-14 bg-slate-900 text-white rounded-3xl md:rounded-[3rem] mx-4 md:mx-6 my-6 md:my-10 overflow-hidden relative">
+  <div class="max-w-3xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-8">
+      <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-simsek-green/20 text-simsek-green border border-simsek-green/30 mb-3">
         Bewerben
       </span>
-      <h2 class="text-3xl md:text-5xl font-bold mb-4 leading-tight">Jetzt als Logopädin in Duisburg bewerben</h2>
-      <div class="h-px bg-linear-to-r from-transparent via-simsek-green/40 to-transparent mb-4"></div>
-      <p class="text-slate-400 text-lg">In 30 Sekunden zum ersten Kennenlernen — kein Lebenslauf nötig.</p>
+      <h2 class="text-2xl md:text-3xl font-bold mb-3 leading-tight">Jetzt als Logopädin in Duisburg bewerben</h2>
+      <div class="h-px bg-linear-to-r from-transparent via-simsek-green/40 to-transparent mb-3"></div>
+      <p class="text-slate-400">In 30 Sekunden zum ersten Kennenlernen — kein Lebenslauf nötig.</p>
     </div>
 
-    <div class="bg-white/5 border border-white/10 p-5 sm:p-8 rounded-2xl sm:rounded-4xl backdrop-blur-xl">
+    <div class="bg-white/5 border border-white/10 p-4 sm:p-6 rounded-2xl backdrop-blur-xl">
 
-      <div id="step-1" class="apply-step space-y-8">
-        <h3 class="text-2xl font-semibold text-center">Bist du bereits fertige Logopädin?</h3>
-        <div class="grid sm:grid-cols-2 gap-4">
+      <div id="step-1" class="apply-step space-y-4">
+        <h3 class="text-lg font-semibold text-center">Bist du bereits fertige Logopädin?</h3>
+        <div class="grid sm:grid-cols-2 gap-3">
           <button
             onclick="nextStep(1, 'Staatlich geprüfte Logopädin')"
-            class="p-6 border border-white/20 rounded-full text-white font-bold cursor-pointer hover:bg-linear-to-r hover:from-simsek-green/25 hover:to-simsek-blue/25 hover:border-simsek-green/60 transition-all duration-200 active:scale-[0.97]"
+            class="py-3 px-6 border border-white/20 rounded-full text-white font-bold cursor-pointer hover:bg-linear-to-r hover:from-simsek-green/25 hover:to-simsek-blue/25 hover:border-simsek-green/60 transition-all duration-200 active:scale-[0.97]"
           >
             Ja, geprüft
           </button>
           <button
             onclick="nextStep(1, 'In Ausbildung')"
-            class="p-6 border border-white/20 rounded-full text-white font-bold cursor-pointer hover:bg-linear-to-r hover:from-simsek-green/25 hover:to-simsek-blue/25 hover:border-simsek-green/60 transition-all duration-200 active:scale-[0.97]"
+            class="py-3 px-6 border border-white/20 rounded-full text-white font-bold cursor-pointer hover:bg-linear-to-r hover:from-simsek-green/25 hover:to-simsek-blue/25 hover:border-simsek-green/60 transition-all duration-200 active:scale-[0.97]"
           >
             In Ausbildung
           </button>
         </div>
       </div>
 
-      <div id="step-2" class="apply-step hidden space-y-8">
-        <h3 class="text-2xl font-semibold text-center">Wann hättest du Zeit?</h3>
-        <div class="grid sm:grid-cols-3 gap-4">
+      <div id="step-2" class="apply-step hidden space-y-4">
+        <h3 class="text-lg font-semibold text-center">Wann hättest du Zeit?</h3>
+        <div class="grid sm:grid-cols-3 gap-3">
           <button
             onclick="nextStep(2, 'Schnellstmöglich')"
-            class="p-4 border border-white/20 rounded-full text-white font-bold cursor-pointer hover:bg-linear-to-r hover:from-simsek-green/25 hover:to-simsek-blue/25 hover:border-simsek-green/60 transition-all duration-200 active:scale-[0.97]"
+            class="py-3 px-4 border border-white/20 rounded-full text-white font-bold cursor-pointer hover:bg-linear-to-r hover:from-simsek-green/25 hover:to-simsek-blue/25 hover:border-simsek-green/60 transition-all duration-200 active:scale-[0.97]"
           >
             Sofort
           </button>
           <button
             onclick="nextStep(2, 'In 2-3 Monaten')"
-            class="p-4 border border-white/20 rounded-full text-white font-bold cursor-pointer hover:bg-linear-to-r hover:from-simsek-green/25 hover:to-simsek-blue/25 hover:border-simsek-green/60 transition-all duration-200 active:scale-[0.97]"
+            class="py-3 px-4 border border-white/20 rounded-full text-white font-bold cursor-pointer hover:bg-linear-to-r hover:from-simsek-green/25 hover:to-simsek-blue/25 hover:border-simsek-green/60 transition-all duration-200 active:scale-[0.97]"
           >
             2-3 Monate
           </button>
           <button
             onclick="nextStep(2, 'Nur mal umschauen')"
-            class="p-4 border border-white/20 rounded-full text-white font-bold cursor-pointer hover:bg-linear-to-r hover:from-simsek-green/25 hover:to-simsek-blue/25 hover:border-simsek-green/60 transition-all duration-200 active:scale-[0.97]"
+            class="py-3 px-4 border border-white/20 rounded-full text-white font-bold cursor-pointer hover:bg-linear-to-r hover:from-simsek-green/25 hover:to-simsek-blue/25 hover:border-simsek-green/60 transition-all duration-200 active:scale-[0.97]"
           >
             Nur umschauen
           </button>
         </div>
       </div>
 
-      <div id="step-3" class="apply-step hidden text-center space-y-8">
-        <h3 class="text-3xl font-bold text-transparent bg-clip-text bg-linear-to-r from-simsek-green to-simsek-blue mb-4">Fast geschafft!</h3>
-        <p class="text-slate-300 mb-6">Wie möchtest du uns kontaktieren?</p>
+      <div id="step-3" class="apply-step hidden text-center space-y-4">
+        <h3 class="text-2xl font-bold text-transparent bg-clip-text bg-linear-to-r from-simsek-green to-simsek-blue">Fast geschafft!</h3>
+        <p class="text-slate-300 text-sm">Wie möchtest du uns kontaktieren?</p>
 
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
 
           <a
             id="wa-link"
@@ -85,7 +85,7 @@
         </div>
       </div>
 
-      <p class="text-center text-slate-400 text-sm mt-6">
+      <p class="text-center text-slate-400 text-sm mt-4">
         Wir melden uns innerhalb von 24 Stunden — versprochen.
       </p>
     </div>
