@@ -94,74 +94,128 @@ const canonicalURL = new URL(`/jobs/${job.slug}/`, Astro.site);
 
   <Navigation />
 
-  <main class="max-w-3xl mx-auto px-4 py-16">
-    <a href="/jobs/" class="inline-flex items-center gap-1 text-sm text-slate-500 hover:text-simsek-blue mb-6">
-      ← Zurück zu allen Stellen
-    </a>
+  <!-- Reading progress bar -->
+  <div
+    id="reading-progress"
+    class="fixed top-0 left-0 h-0.5 bg-linear-to-r from-simsek-green to-simsek-blue z-50 transition-[width] duration-100 ease-out pointer-events-none"
+    style="width: 0%"
+    role="progressbar"
+    aria-label="Lesefortschritt"
+  ></div>
 
-    <header class="mb-8 pb-8 border-b border-slate-200">
-      <h1 class="text-3xl font-bold text-slate-900 mb-3">{job.title}</h1>
-      <p class="text-lg text-simsek-blue font-medium mb-4">
-        {employer?.website ? (
-          <a href={employer.website} target="_blank" rel="noopener" class="hover:underline">{employer.name}</a>
-        ) : employer?.name}
-      </p>
+  <main>
+    <article class="max-w-3xl mx-auto px-4 sm:px-6 py-16 md:py-24">
 
-      <div class="flex gap-2 flex-wrap text-sm">
-        <span class="inline-flex items-center gap-1 bg-slate-100 text-slate-700 px-3 py-1.5 rounded-full">
-          📍 {job.location_city}{job.location_zip ? ` · ${job.location_zip}` : ''}
-        </span>
-        {job.employment_type?.map((t: string) => (
-          <span class="inline-flex items-center gap-1 bg-slate-100 text-slate-700 px-3 py-1.5 rounded-full">
-            {typeLabel(t)}
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-xs text-slate-400 mb-10 font-medium flex-wrap" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-simsek-green transition-colors duration-150 no-underline">Startseite</a>
+        <svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <a href="/jobs/" class="hover:text-simsek-green transition-colors duration-150 no-underline">Jobs</a>
+        <svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span class="text-slate-600 truncate max-w-50">{job.title}</span>
+      </nav>
+
+      <!-- Job header -->
+      <header class="mb-10">
+        <div class="flex gap-2 flex-wrap mb-4">
+          {job.employment_type?.map((t: string) => (
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-simsek-green/10 text-simsek-green border border-simsek-green/20">
+              {typeLabel(t)}
+            </span>
+          ))}
+        </div>
+
+        <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-3 leading-tight">{job.title}</h1>
+
+        <p class="text-lg font-semibold mb-5">
+          {employer?.website ? (
+            <a href={employer.website} target="_blank" rel="noopener" class="text-simsek-blue hover:text-simsek-green transition-colors no-underline">{employer.name}</a>
+          ) : <span class="text-simsek-blue">{employer?.name}</span>}
+        </p>
+
+        <!-- Meta pills -->
+        <div class="flex gap-2 flex-wrap text-sm mb-4">
+          <span class="inline-flex items-center gap-1.5 bg-slate-100 text-slate-700 px-3 py-1.5 rounded-full text-xs font-medium">
+            <svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            {job.location_city}{job.location_zip ? ` · ${job.location_zip}` : ''}
           </span>
-        ))}
-        {(job.work_hours_min || job.work_hours_max) && (
-          <span class="inline-flex items-center gap-1 bg-slate-100 text-slate-700 px-3 py-1.5 rounded-full">
-            {job.work_hours_min ?? '?'}–{job.work_hours_max ?? '?'} Std/Woche
-          </span>
-        )}
-        {job.salary_min && (
-          <span class="inline-flex items-center gap-1 bg-green-50 text-green-700 px-3 py-1.5 rounded-full font-semibold">
-            {job.salary_min}–{job.salary_max ?? '?'} €/Monat brutto
-          </span>
-        )}
-      </div>
-
-      <p class="text-xs text-slate-400 mt-4">
-        Veröffentlicht am {fmt(job.created_at)}
-        {job.valid_through && ` · Gültig bis ${fmt(job.valid_through)}`}
-      </p>
-    </header>
-
-    <article class="prose prose-slate max-w-none mb-10 whitespace-pre-wrap text-slate-700 leading-relaxed">
-      {job.description}
-    </article>
-
-    {(job.apply_email || job.apply_url) && (
-      <div class="bg-slate-50 border border-slate-200 rounded-xl p-6">
-        <h2 class="text-lg font-semibold text-slate-900 mb-3">Jetzt bewerben</h2>
-        <div class="flex gap-3 flex-wrap">
-          {job.apply_email && (
-            <a
-              href={`mailto:${job.apply_email}?subject=Bewerbung%20${encodeURIComponent(job.title)}`}
-              class="inline-block bg-simsek-green text-white font-semibold py-2.5 px-5 rounded-xl hover:bg-simsek-green/90 transition-colors text-sm">
-              Per E-Mail bewerben
-            </a>
+          {(job.work_hours_min || job.work_hours_max) && (
+            <span class="inline-flex items-center gap-1.5 bg-slate-100 text-slate-700 px-3 py-1.5 rounded-full text-xs font-medium">
+              {job.work_hours_min ?? '?'}–{job.work_hours_max ?? '?'} Std/Woche
+            </span>
           )}
-          {job.apply_url && (
-            <a
-              href={job.apply_url}
-              target="_blank"
-              rel="noopener"
-              class="inline-block bg-simsek-blue text-white font-semibold py-2.5 px-5 rounded-xl hover:bg-simsek-blue/90 transition-colors text-sm">
-              Online bewerben ↗
-            </a>
+          {job.salary_min && (
+            <span class="inline-flex items-center gap-1.5 bg-simsek-green/10 text-simsek-green px-3 py-1.5 rounded-full text-xs font-bold border border-simsek-green/20">
+              {job.salary_min}–{job.salary_max ?? '?'} €/Monat
+            </span>
           )}
         </div>
+
+        <p class="text-xs text-slate-400">
+          Veröffentlicht am {fmt(job.created_at)}
+          {job.valid_through && ` · Gültig bis ${fmt(job.valid_through)}`}
+        </p>
+
+        <div class="mt-6 h-px bg-linear-to-r from-simsek-green via-simsek-blue/40 to-transparent"></div>
+      </header>
+
+      <!-- Job description -->
+      <div class="text-slate-700 leading-relaxed text-[1.0625rem] whitespace-pre-wrap mb-10">
+        {job.description}
       </div>
-    )}
+
+      <!-- Apply CTA -->
+      {(job.apply_email || job.apply_url) && (
+        <div class="p-px rounded-3xl bg-linear-to-br from-simsek-green to-simsek-blue">
+          <div class="bg-white rounded-[calc(1.5rem-1px)] p-8">
+            <p class="text-xs font-bold uppercase tracking-widest text-simsek-green mb-3">{employer?.name}</p>
+            <h2 class="text-2xl font-bold text-slate-900 mb-3">Jetzt bewerben</h2>
+            <p class="text-slate-600 mb-6 text-sm leading-relaxed">
+              Sende deine Bewerbung direkt — kein Umweg, keine Registrierung.
+            </p>
+            <div class="flex gap-3 flex-wrap">
+              {job.apply_email && (
+                <a
+                  href={`mailto:${job.apply_email}?subject=Bewerbung%20${encodeURIComponent(job.title)}`}
+                  class="inline-flex items-center gap-2 px-5 py-2.5 bg-linear-to-r from-simsek-green to-simsek-blue text-white text-sm font-bold rounded-full shadow-md shadow-simsek-green/20 hover:shadow-lg hover:shadow-simsek-green/30 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 no-underline"
+                >
+                  Per E-Mail bewerben
+                </a>
+              )}
+              {job.apply_url && (
+                <a
+                  href={job.apply_url}
+                  target="_blank"
+                  rel="noopener"
+                  class="inline-flex items-center gap-2 px-5 py-2.5 bg-linear-to-r from-simsek-blue to-simsek-green text-white text-sm font-bold rounded-full shadow-md shadow-simsek-blue/20 hover:shadow-lg hover:shadow-simsek-blue/30 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 no-underline"
+                >
+                  Online bewerben ↗
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+    </article>
   </main>
 
   <Footer />
 </Layout>
+
+<script is:inline>
+  const bar = document.getElementById('reading-progress');
+  const article = document.querySelector('article');
+
+  function updateProgress() {
+    if (!bar || !article) return;
+    const rect = article.getBoundingClientRect();
+    const total = article.scrollHeight - window.innerHeight;
+    const scrolled = Math.max(0, -rect.top);
+    const pct = total > 0 ? Math.min(100, (scrolled / total) * 100) : 0;
+    bar.style.width = pct + '%';
+  }
+
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+</script>

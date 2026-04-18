@@ -49,16 +49,22 @@ const typeLabel = (type: string) => (type === 'FULL_TIME' ? 'Vollzeit' : type ==
   <Navigation />
 
   <main class="max-w-5xl mx-auto px-4 py-16">
-    <div class="flex items-start justify-between flex-wrap gap-4 mb-10">
-      <div>
-        <h1 class="text-3xl font-bold text-slate-900 mb-2">Logopädie Jobs in NRW</h1>
-        <p class="text-slate-500">{jobs?.length ?? 0} aktuelle Stellenangebote</p>
+    <div class="mb-10">
+      <div class="flex items-start justify-between flex-wrap gap-4 mb-4">
+        <div>
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-simsek-green/10 text-simsek-green border border-simsek-green/20 mb-4">
+            Stellenanzeigen
+          </span>
+          <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-2 leading-tight">Logopädie Jobs in NRW</h1>
+          <p class="text-slate-500">{jobs?.length ?? 0} aktuelle Stellenangebote</p>
+        </div>
+        <a
+          href="/jobs/neu/"
+          class="inline-flex items-center gap-1.5 px-5 py-2.5 bg-linear-to-r from-simsek-green to-simsek-blue text-white text-sm font-bold rounded-full shadow-md shadow-simsek-green/20 hover:shadow-lg hover:shadow-simsek-green/30 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 no-underline">
+          Stelle einreichen
+        </a>
       </div>
-      <a
-        href="/jobs/neu/"
-        class="inline-flex items-center gap-1.5 px-5 py-2.5 bg-linear-to-r from-simsek-green to-simsek-blue text-white text-sm font-bold rounded-full shadow-md shadow-simsek-green/20 hover:shadow-lg hover:shadow-simsek-green/30 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 no-underline">
-        Stelle einreichen
-      </a>
+      <div class="h-px bg-linear-to-r from-simsek-green via-simsek-blue/40 to-transparent"></div>
     </div>
 
     {/* Filter */}

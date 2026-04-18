@@ -28,152 +28,178 @@ if (Astro.request.method === 'POST') {
 >
   <Navigation />
 
-  <main class="max-w-2xl mx-auto px-4 py-16">
-    <h1 class="text-3xl font-bold text-slate-900 mb-2">Stelle einreichen</h1>
-    <p class="text-slate-500 mb-10">Kostenlos und ohne Registrierung. Die Anzeige wird nach kurzer Prüfung veröffentlicht.</p>
+  <main>
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 py-16 md:py-24">
 
-    {success ? (
-      <div class="rounded-xl bg-green-50 border border-green-200 p-8 text-center">
-        <p class="text-2xl font-semibold text-green-800 mb-2">Vielen Dank!</p>
-        <p class="text-green-700">Ihre Stelle wurde eingereicht und wird in Kürze geprüft.</p>
-      </div>
-    ) : (
-      <form method="POST" class="space-y-8">
-        {/* Honeypot — für Bots unsichtbar */}
-        <input type="text" name="_honeypot" class="hidden" tabindex="-1" autocomplete="off" />
-
-        {errorMsg && (
-          <div class="rounded-lg bg-red-50 border border-red-200 p-4 text-red-700 text-sm">{errorMsg}</div>
-        )}
-
-        {/* Arbeitgeber */}
-        <section>
-          <h2 class="text-lg font-semibold text-slate-800 mb-4 pb-2 border-b">Ihre Praxis / Einrichtung</h2>
-          <div class="space-y-4">
-            <div>
-              <label for="employer_name" class="block text-sm font-medium text-slate-700 mb-1">Name der Einrichtung *</label>
-              <input type="text" id="employer_name" name="employer_name" required
-                class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-simsek-green" />
-            </div>
-            <div>
-              <label for="employer_email" class="block text-sm font-medium text-slate-700 mb-1">E-Mail *</label>
-              <input type="email" id="employer_email" name="employer_email" required
-                class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-simsek-green" />
-            </div>
-            <div>
-              <label for="employer_website" class="block text-sm font-medium text-slate-700 mb-1">Website</label>
-              <input type="url" id="employer_website" name="employer_website" placeholder="https://..."
-                class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-simsek-green" />
-            </div>
-          </div>
-        </section>
-
-        {/* Stelle */}
-        <section>
-          <h2 class="text-lg font-semibold text-slate-800 mb-4 pb-2 border-b">Stellenanzeige</h2>
-          <div class="space-y-4">
-            <div>
-              <label for="title" class="block text-sm font-medium text-slate-700 mb-1">Stellentitel *</label>
-              <input type="text" id="title" name="title" required placeholder="z. B. Logopädin / Logopäde (m/w/d)"
-                class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-simsek-green" />
-            </div>
-            <div class="grid grid-cols-2 gap-4">
-              <div>
-                <label for="location_city" class="block text-sm font-medium text-slate-700 mb-1">Stadt *</label>
-                <input type="text" id="location_city" name="location_city" required placeholder="z. B. Duisburg"
-                  class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-simsek-green" />
-              </div>
-              <div>
-                <label for="location_zip" class="block text-sm font-medium text-slate-700 mb-1">PLZ</label>
-                <input type="text" id="location_zip" name="location_zip" placeholder="47051" maxlength="5" pattern="\d{5}"
-                  class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-simsek-green" />
-              </div>
-            </div>
-
-            <div>
-              <span class="block text-sm font-medium text-slate-700 mb-2">Beschäftigungsart *</span>
-              <div class="flex gap-6">
-                <label class="flex items-center gap-2 text-sm text-slate-700">
-                  <input type="checkbox" name="employment_type" value="FULL_TIME" checked class="rounded border-slate-300 text-simsek-green" />
-                  Vollzeit
-                </label>
-                <label class="flex items-center gap-2 text-sm text-slate-700">
-                  <input type="checkbox" name="employment_type" value="PART_TIME" class="rounded border-slate-300 text-simsek-green" />
-                  Teilzeit
-                </label>
-              </div>
-            </div>
-
-            <div class="grid grid-cols-2 gap-4">
-              <div>
-                <label for="work_hours_min" class="block text-sm font-medium text-slate-700 mb-1">Stunden/Woche (min)</label>
-                <input type="number" id="work_hours_min" name="work_hours_min" min="1" max="40" placeholder="20"
-                  class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-simsek-green" />
-              </div>
-              <div>
-                <label for="work_hours_max" class="block text-sm font-medium text-slate-700 mb-1">Stunden/Woche (max)</label>
-                <input type="number" id="work_hours_max" name="work_hours_max" min="1" max="40" placeholder="40"
-                  class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-simsek-green" />
-              </div>
-            </div>
-
-            <div class="grid grid-cols-2 gap-4">
-              <div>
-                <label for="salary_min" class="block text-sm font-medium text-slate-700 mb-1">Gehalt brutto/Monat (min €)</label>
-                <input type="number" id="salary_min" name="salary_min" min="1" placeholder="3000"
-                  class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-simsek-green" />
-              </div>
-              <div>
-                <label for="salary_max" class="block text-sm font-medium text-slate-700 mb-1">Gehalt brutto/Monat (max €)</label>
-                <input type="number" id="salary_max" name="salary_max" min="1" placeholder="4000"
-                  class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-simsek-green" />
-              </div>
-            </div>
-
-            <div>
-              <label for="valid_through" class="block text-sm font-medium text-slate-700 mb-1">Anzeige gültig bis</label>
-              <input type="date" id="valid_through" name="valid_through"
-                class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-simsek-green" />
-            </div>
-
-            <div>
-              <label for="description" class="block text-sm font-medium text-slate-700 mb-1">Stellenbeschreibung *</label>
-              <textarea id="description" name="description" required rows="8"
-                placeholder="Was sind die Aufgaben? Was bieten Sie? Was erwarten Sie?"
-                class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-simsek-green resize-y"></textarea>
-            </div>
-          </div>
-        </section>
-
-        {/* Bewerbungsweg */}
-        <section>
-          <h2 class="text-lg font-semibold text-slate-800 mb-4 pb-2 border-b">Bewerbungsweg</h2>
-          <p class="text-sm text-slate-500 mb-4">Mindestens eine Option angeben.</p>
-          <div class="space-y-4">
-            <div>
-              <label for="apply_email" class="block text-sm font-medium text-slate-700 mb-1">Bewerbungs-E-Mail</label>
-              <input type="email" id="apply_email" name="apply_email" placeholder="bewerbung@praxis.de"
-                class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-simsek-green" />
-            </div>
-            <div>
-              <label for="apply_url" class="block text-sm font-medium text-slate-700 mb-1">Oder externer Bewerbungslink</label>
-              <input type="url" id="apply_url" name="apply_url" placeholder="https://..."
-                class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-simsek-green" />
-            </div>
-          </div>
-        </section>
-
-        <button type="submit"
-          class="w-full bg-simsek-green text-white font-semibold py-3 px-6 rounded-xl hover:bg-simsek-green/90 transition-colors">
+      <!-- Header -->
+      <header class="mb-10">
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-simsek-blue/10 text-simsek-blue border border-simsek-blue/20 mb-6">
+          Für Arbeitgeber
+        </span>
+        <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-3 leading-tight">
           Stelle kostenlos einreichen
-        </button>
-
-        <p class="text-xs text-slate-400 text-center">
-          Mit dem Absenden stimmen Sie unserer <a href="/datenschutz" class="underline">Datenschutzerklärung</a> zu.
-          Die Anzeige wird vor Veröffentlichung geprüft.
+        </h1>
+        <p class="text-slate-500 leading-relaxed">
+          Ohne Registrierung. Die Anzeige wird nach kurzer Prüfung veröffentlicht.
         </p>
-      </form>
-    )}
+        <div class="mt-6 h-px bg-linear-to-r from-simsek-green via-simsek-blue/40 to-transparent"></div>
+      </header>
+
+      {success ? (
+        <div class="p-px rounded-3xl bg-linear-to-br from-simsek-green to-simsek-blue">
+          <div class="bg-white rounded-[calc(1.5rem-1px)] p-8 text-center">
+            <div class="w-12 h-12 rounded-full bg-simsek-green/10 flex items-center justify-center mx-auto mb-4">
+              <svg class="w-6 h-6 text-simsek-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <p class="text-2xl font-bold text-slate-900 mb-2">Vielen Dank!</p>
+            <p class="text-slate-600 text-sm">Ihre Stelle wurde eingereicht und wird in Kürze geprüft.</p>
+          </div>
+        </div>
+      ) : (
+        <form method="POST" class="space-y-8">
+          {/* Honeypot */}
+          <input type="text" name="_honeypot" class="hidden" tabindex="-1" autocomplete="off" />
+
+          {errorMsg && (
+            <div class="rounded-xl bg-red-50 border border-red-200 p-4 text-red-700 text-sm">{errorMsg}</div>
+          )}
+
+          {/* Arbeitgeber */}
+          <section>
+            <h2 class="text-base font-bold text-slate-800 mb-4 pb-2 pl-4 border-l-4 border-simsek-green">
+              Ihre Praxis / Einrichtung
+            </h2>
+            <div class="space-y-4">
+              <div>
+                <label for="employer_name" class="block text-sm font-medium text-slate-700 mb-1">Name der Einrichtung *</label>
+                <input type="text" id="employer_name" name="employer_name" required
+                  class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-simsek-blue focus:bg-white transition-colors" />
+              </div>
+              <div>
+                <label for="employer_email" class="block text-sm font-medium text-slate-700 mb-1">E-Mail *</label>
+                <input type="email" id="employer_email" name="employer_email" required
+                  class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-simsek-blue focus:bg-white transition-colors" />
+              </div>
+              <div>
+                <label for="employer_website" class="block text-sm font-medium text-slate-700 mb-1">Website</label>
+                <input type="url" id="employer_website" name="employer_website" placeholder="https://..."
+                  class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-simsek-blue focus:bg-white transition-colors" />
+              </div>
+            </div>
+          </section>
+
+          {/* Stelle */}
+          <section>
+            <h2 class="text-base font-bold text-slate-800 mb-4 pb-2 pl-4 border-l-4 border-simsek-blue">
+              Stellenanzeige
+            </h2>
+            <div class="space-y-4">
+              <div>
+                <label for="title" class="block text-sm font-medium text-slate-700 mb-1">Stellentitel *</label>
+                <input type="text" id="title" name="title" required placeholder="z. B. Logopädin / Logopäde (m/w/d)"
+                  class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-simsek-blue focus:bg-white transition-colors" />
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label for="location_city" class="block text-sm font-medium text-slate-700 mb-1">Stadt *</label>
+                  <input type="text" id="location_city" name="location_city" required placeholder="z. B. Duisburg"
+                    class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-simsek-blue focus:bg-white transition-colors" />
+                </div>
+                <div>
+                  <label for="location_zip" class="block text-sm font-medium text-slate-700 mb-1">PLZ</label>
+                  <input type="text" id="location_zip" name="location_zip" placeholder="47051" maxlength="5" pattern="\d{5}"
+                    class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-simsek-blue focus:bg-white transition-colors" />
+                </div>
+              </div>
+
+              <div>
+                <span class="block text-sm font-medium text-slate-700 mb-2">Beschäftigungsart *</span>
+                <div class="flex gap-6">
+                  <label class="flex items-center gap-2 text-sm text-slate-700 cursor-pointer">
+                    <input type="checkbox" name="employment_type" value="FULL_TIME" checked class="rounded border-slate-300 accent-simsek-green" />
+                    Vollzeit
+                  </label>
+                  <label class="flex items-center gap-2 text-sm text-slate-700 cursor-pointer">
+                    <input type="checkbox" name="employment_type" value="PART_TIME" class="rounded border-slate-300 accent-simsek-green" />
+                    Teilzeit
+                  </label>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label for="work_hours_min" class="block text-sm font-medium text-slate-700 mb-1">Stunden/Woche (min)</label>
+                  <input type="number" id="work_hours_min" name="work_hours_min" min="1" max="40" placeholder="20"
+                    class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-simsek-blue focus:bg-white transition-colors" />
+                </div>
+                <div>
+                  <label for="work_hours_max" class="block text-sm font-medium text-slate-700 mb-1">Stunden/Woche (max)</label>
+                  <input type="number" id="work_hours_max" name="work_hours_max" min="1" max="40" placeholder="40"
+                    class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-simsek-blue focus:bg-white transition-colors" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label for="salary_min" class="block text-sm font-medium text-slate-700 mb-1">Gehalt brutto/Monat (min €)</label>
+                  <input type="number" id="salary_min" name="salary_min" min="1" placeholder="3000"
+                    class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-simsek-blue focus:bg-white transition-colors" />
+                </div>
+                <div>
+                  <label for="salary_max" class="block text-sm font-medium text-slate-700 mb-1">Gehalt brutto/Monat (max €)</label>
+                  <input type="number" id="salary_max" name="salary_max" min="1" placeholder="4000"
+                    class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-simsek-blue focus:bg-white transition-colors" />
+                </div>
+              </div>
+
+              <div>
+                <label for="valid_through" class="block text-sm font-medium text-slate-700 mb-1">Anzeige gültig bis</label>
+                <input type="date" id="valid_through" name="valid_through"
+                  class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-simsek-blue focus:bg-white transition-colors" />
+              </div>
+
+              <div>
+                <label for="description" class="block text-sm font-medium text-slate-700 mb-1">Stellenbeschreibung *</label>
+                <textarea id="description" name="description" required rows="8"
+                  placeholder="Was sind die Aufgaben? Was bieten Sie? Was erwarten Sie?"
+                  class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-simsek-blue focus:bg-white transition-colors resize-y"></textarea>
+              </div>
+            </div>
+          </section>
+
+          {/* Bewerbungsweg */}
+          <section>
+            <h2 class="text-base font-bold text-slate-800 mb-4 pb-2 pl-4 border-l-4 border-simsek-green">
+              Bewerbungsweg
+            </h2>
+            <p class="text-sm text-slate-500 mb-4">Mindestens eine Option angeben.</p>
+            <div class="space-y-4">
+              <div>
+                <label for="apply_email" class="block text-sm font-medium text-slate-700 mb-1">Bewerbungs-E-Mail</label>
+                <input type="email" id="apply_email" name="apply_email" placeholder="bewerbung@praxis.de"
+                  class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-simsek-blue focus:bg-white transition-colors" />
+              </div>
+              <div>
+                <label for="apply_url" class="block text-sm font-medium text-slate-700 mb-1">Oder externer Bewerbungslink</label>
+                <input type="url" id="apply_url" name="apply_url" placeholder="https://..."
+                  class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-simsek-blue focus:bg-white transition-colors" />
+              </div>
+            </div>
+          </section>
+
+          <button type="submit"
+            class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-linear-to-r from-simsek-green to-simsek-blue text-white font-bold rounded-full shadow-md shadow-simsek-green/20 hover:shadow-lg hover:shadow-simsek-green/30 hover:scale-[1.01] active:scale-[0.99] transition-all duration-200">
+            Stelle kostenlos einreichen
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </button>
+
+          <p class="text-xs text-slate-400 text-center">
+            Mit dem Absenden stimmen Sie unserer <a href="/datenschutz" class="text-simsek-blue underline underline-offset-2 hover:text-simsek-green transition-colors">Datenschutzerklärung</a> zu.
+            Die Anzeige wird vor Veröffentlichung geprüft.
+          </p>
+        </form>
+      )}
+    </div>
   </main>
 
   <Footer />
