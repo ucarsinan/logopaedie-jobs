@@ -12,20 +12,43 @@ const pageDescription = "Funktioniert die 4-Tage-Woche als Logopädin? Praxis Ş
   { name: "4-Tage-Woche Logopädie", url: "https://xn--logopdiejobs-kcb.de/4-tage-woche/" }
 ]}>
   <Navigation />
+
+  <!-- Reading progress bar -->
+  <div
+    id="reading-progress"
+    class="fixed top-0 left-0 h-0.5 bg-linear-to-r from-simsek-green to-simsek-blue z-50 transition-[width] duration-100 ease-out pointer-events-none"
+    style="width: 0%"
+    role="progressbar"
+    aria-label="Lesefortschritt"
+  ></div>
+
   <main>
     <article class="max-w-3xl mx-auto px-6 py-16 md:py-24">
+
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-xs text-slate-400 mb-10 font-medium flex-wrap" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-simsek-green transition-colors duration-150 no-underline">Startseite</a>
+        <svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span class="text-slate-600">4-Tage-Woche Logopädie</span>
+      </nav>
+
+      <!-- Article header -->
       <header class="mb-12">
-        <p class="text-sm font-bold uppercase tracking-widest text-simsek-green mb-4">Arbeitsmodelle</p>
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-amber-50 text-amber-700 border border-amber-200 mb-6">
+          Arbeitsmodelle
+        </span>
         <h1 class="text-4xl md:text-5xl font-bold text-slate-900 leading-tight mb-6">
           4-Tage-Woche als Logopädin — geht das wirklich?
         </h1>
-        <p class="text-xl text-slate-600 leading-relaxed">
+        <p class="text-xl text-slate-600 leading-relaxed mb-8">
           Immer mehr Logopädinnen wünschen sich ein Arbeitszeitmodell, das zum Leben passt. Aber funktioniert eine 4-Tage-Woche in der Praxis? Hier ein ehrlicher Blick auf Vorteile, Grenzen und konkrete Erfahrungen.
         </p>
+        <div class="mt-8 h-px bg-linear-to-r from-simsek-green via-simsek-blue/40 to-transparent"></div>
       </header>
 
-      <div class="prose prose-lg prose-slate max-w-none">
-        <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-4">Warum 4-Tage-Woche in der Logopädie?</h2>
+      <!-- Article body -->
+      <div class="article-body">
+        <h2>Warum 4-Tage-Woche in der Logopädie?</h2>
         <p>
           Logopädie ist ein intensiver Beruf. Du arbeitest den ganzen Tag konzentriert mit Patienten — Kinder mit Sprachentwicklungsstörungen, Erwachsene nach Schlaganfall, Jugendliche mit Stottern. Das erfordert Empathie, Geduld und mentale Präsenz. Nach fünf Tagen sind viele Therapeutinnen erschöpft, und die Qualität der Therapie leidet.
         </p>
@@ -33,7 +56,7 @@ const pageDescription = "Funktioniert die 4-Tage-Woche als Logopädin? Praxis Ş
           Die Idee hinter der 4-Tage-Woche ist einfach: vier Tage fokussiert arbeiten, drei Tage regenerieren. Nicht weniger arbeiten — sondern besser arbeiten. Und das kommt letztlich den Patienten zugute.
         </p>
 
-        <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-4">Wie sieht das Modell konkret aus?</h2>
+        <h2>Wie sieht das Modell konkret aus?</h2>
         <p>
           Es gibt verschiedene Varianten, wie Logopädie-Praxen die 4-Tage-Woche umsetzen:
         </p>
@@ -44,10 +67,10 @@ const pageDescription = "Funktioniert die 4-Tage-Woche als Logopädin? Praxis Ş
           <strong>Variante 2: Reduzierte Stunden.</strong> 32 Stunden auf 4 Tage — also reguläre 8-Stunden-Tage mit einem Tag weniger. Das Gehalt ist proportional etwas geringer, aber die Work-Life-Balance verbessert sich deutlich. In der Logopädie, wo der Fachkräftemangel real ist, sind viele Praxen bereit, dieses Modell anzubieten.
         </p>
         <p>
-          <strong>Variante 3: Flexibles Modell.</strong> Manche Wochen 4 Tage, manche 5 — je nach Patientenbedarf und persönlicher Planung. Das ist das Modell, das die <a href="/" class="text-simsek-blue font-semibold hover:underline">Praxis Şimşek in Duisburg</a> anbietet: individuell besprochen, nicht starr vorgegeben.
+          <strong>Variante 3: Flexibles Modell.</strong> Manche Wochen 4 Tage, manche 5 — je nach Patientenbedarf und persönlicher Planung. Das ist das Modell, das die <a href="/">Praxis Şimşek in Duisburg</a> anbietet: individuell besprochen, nicht starr vorgegeben.
         </p>
 
-        <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-4">Vorteile für Therapeutinnen</h2>
+        <h2>Vorteile für Therapeutinnen</h2>
         <p>
           Der offensichtlichste Vorteil ist mehr Freizeit. Aber es geht tiefer: Therapeutinnen berichten von besserer Konzentration an den Arbeitstagen, weniger Krankheitstagen, und höherer Zufriedenheit im Beruf. Gerade in der Logopädie, wo Burnout ein reales Problem ist, kann ein zusätzlicher freier Tag den Unterschied machen.
         </p>
@@ -55,7 +78,7 @@ const pageDescription = "Funktioniert die 4-Tage-Woche als Logopädin? Praxis Ş
           Für Mütter und Väter bietet das Modell die Möglichkeit, Kinderbetreuung besser zu organisieren. Und für Therapeutinnen, die sich weiterbilden wollen, ist der freie Tag ideal für Fortbildungen, Fachliteratur oder Supervision.
         </p>
 
-        <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-4">Gibt es Nachteile?</h2>
+        <h2>Gibt es Nachteile?</h2>
         <p>
           Ja, und die sollte man kennen. Bei komprimierten 10-Stunden-Tagen kann die Erschöpfung am Ende des Tages hoch sein — besonders wenn du viele Kindertherapien hintereinander hast. Nicht jede Praxis kann es sich leisten, eine Therapeutin einen Tag weniger einzusetzen, besonders bei hoher Patientennachfrage.
         </p>
@@ -63,41 +86,196 @@ const pageDescription = "Funktioniert die 4-Tage-Woche als Logopädin? Praxis Ş
           Und ehrlich: Nicht jeder Mensch funktioniert mit 4 Tagen besser. Manche Therapeutinnen bevorzugen 5 kürzere Tage. Das ist völlig okay. Deshalb ist es wichtig, dass das Modell optional ist — nicht aufgezwungen.
         </p>
 
-        <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-4">4-Tage-Woche in der Praxis Şimşek, Duisburg</h2>
+        <h2>4-Tage-Woche in der Praxis Şimşek, Duisburg</h2>
         <p>
-          In der <a href="/" class="text-simsek-blue font-semibold hover:underline">Praxis für Logopädie Şimşek</a> in der Tonhallenstraße 21 in Duisburg ist die 4-Tage-Woche ein optionales Modell. "Wir glauben: ausgeruhte Therapeuten machen bessere Therapie", sagt Praxisinhaberin Emel Şimşek-Uçar. Viele Therapeutinnen im Team nutzen das Modell bereits.
+          In der <a href="/">Praxis für Logopädie Şimşek</a> in der Tonhallenstraße 21 in Duisburg ist die 4-Tage-Woche ein optionales Modell. "Wir glauben: ausgeruhte Therapeuten machen bessere Therapie", sagt Praxisinhaberin Emel Şimşek-Uçar. Viele Therapeutinnen im Team nutzen das Modell bereits.
         </p>
         <p>
-          Dazu kommt: 100 % Fortbildungsübernahme, ein <a href="/gehalt/" class="text-simsek-blue font-semibold hover:underline">Gehalt über dem NRW-Durchschnitt</a>, und ein <a href="/bilingual/" class="text-simsek-blue font-semibold hover:underline">bilinguales Team (Deutsch-Türkisch)</a> — einzigartig in Duisburg und im Ruhrgebiet.
+          Dazu kommt: 100 % Fortbildungsübernahme, ein <a href="/gehalt/">Gehalt über dem NRW-Durchschnitt</a>, und ein <a href="/bilingual/">bilinguales Team (Deutsch-Türkisch)</a> — einzigartig in Duisburg und im Ruhrgebiet.
         </p>
 
-        <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-4">Ist die 4-Tage-Woche die Zukunft der Logopädie?</h2>
+        <h2>Ist die 4-Tage-Woche die Zukunft der Logopädie?</h2>
         <p>
           Der Fachkräftemangel in der Logopädie ist real. Praxen, die gute Arbeitsbedingungen bieten, haben einen klaren Vorteil bei der Rekrutierung. Die 4-Tage-Woche ist dabei kein Luxus, sondern ein Werkzeug, um Therapeutinnen langfristig im Beruf zu halten. Wer vier Tage pro Woche gute Therapie macht, leistet mehr als jemand, der fünf Tage ausgebrannt durch den Tag kommt.
         </p>
+      </div>
 
-        <div class="mt-16 p-8 bg-slate-50 rounded-3xl border border-slate-200">
-          <h2 class="text-2xl font-bold text-slate-900 mb-4">Logopädie-Job mit 4-Tage-Woche in Duisburg</h2>
-          <p class="text-slate-600 mb-6">
+      <!-- CTA Box -->
+      <div class="mt-16 p-px rounded-3xl bg-linear-to-br from-simsek-green to-simsek-blue">
+        <div class="bg-white rounded-[calc(1.5rem-1px)] p-8">
+          <p class="text-xs font-bold uppercase tracking-widest text-simsek-green mb-3">Praxis Şimşek · Duisburg</p>
+          <h2 class="text-2xl font-bold text-slate-900 mb-3">Logopädie-Job mit 4-Tage-Woche in Duisburg</h2>
+          <p class="text-slate-600 mb-6 text-sm leading-relaxed">
             Die Praxis Şimşek sucht Logopädinnen und Sprachtherapeuten (m/w/d) — Vollzeit, Teilzeit oder 4-Tage-Woche. Berufsanfänger willkommen.
           </p>
-          <div class="flex flex-wrap gap-4">
-            <a href="/#apply" class="px-6 py-3 bg-simsek-green text-white font-bold rounded-xl no-underline hover:scale-[1.02] transition-transform text-sm">
-              Jetzt bewerben →
-            </a>
-            <a href="/" class="px-6 py-3 bg-white text-slate-700 font-bold rounded-xl no-underline border border-slate-200 hover:border-simsek-blue transition-colors text-sm">
-              Stellenanzeige lesen
-            </a>
-          </div>
+          <a
+            href="https://api.whatsapp.com/send?phone=4920334868690&text=Hallo%20Emel!%20Ich%20interessiere%20mich%20f%C3%BCr%20den%20Job."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-5 py-2.5 bg-linear-to-r from-simsek-green to-simsek-blue text-white text-sm font-bold rounded-full shadow-md shadow-simsek-green/20 hover:shadow-lg hover:shadow-simsek-green/30 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 no-underline"
+          >
+            <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.672 1.433 5.662 1.434h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Jetzt per WhatsApp bewerben
+          </a>
         </div>
       </div>
 
-      <footer class="mt-12 pt-8 border-t border-slate-100">
+      <!-- Article footer -->
+      <footer class="mt-8 pt-6 border-t border-slate-100">
         <p class="text-xs text-slate-400">
           Stand: April 2026. Die 4-Tage-Woche ist ein optionales Arbeitszeitmodell in der Praxis für Logopädie Şimşek. Details werden im persönlichen Gespräch besprochen.
         </p>
       </footer>
+
     </article>
   </main>
   <Footer />
 </Layout>
+
+<style>
+  :global(.article-body) {
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    color: #334155;
+  }
+
+  :global(.article-body p) {
+    margin-bottom: 1.5rem;
+  }
+
+  :global(.article-body h2) {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 3rem;
+    margin-bottom: 1.25rem;
+    padding-left: 1rem;
+    border-left: 3px solid rgb(129 183 40);
+    line-height: 1.3;
+  }
+
+  :global(.article-body h3) {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-left: 0.875rem;
+    border-left: 2px solid rgb(36 135 193);
+    line-height: 1.35;
+  }
+
+  :global(.article-body ul) {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  :global(.article-body ul li) {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  :global(.article-body ul li::before) {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.58em;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgb(129 183 40);
+  }
+
+  :global(.article-body ol) {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 1.5rem;
+    counter-reset: ol-counter;
+  }
+
+  :global(.article-body ol li) {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 0.5rem;
+    counter-increment: ol-counter;
+  }
+
+  :global(.article-body ol li::before) {
+    content: counter(ol-counter) '.';
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: rgb(129 183 40);
+    line-height: 1.8;
+  }
+
+  :global(.article-body li strong) {
+    color: rgb(36 135 193);
+    font-weight: 600;
+  }
+
+  :global(.article-body blockquote) {
+    border-left: 4px solid rgb(129 183 40);
+    background: rgb(129 183 40 / 0.06);
+    padding: 1.25rem 1.5rem;
+    border-radius: 0 0.75rem 0.75rem 0;
+    margin: 2rem 0;
+  }
+
+  :global(.article-body blockquote p) {
+    margin-bottom: 0;
+    font-style: italic;
+    color: #475569;
+  }
+
+  :global(.article-body hr) {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, rgb(129 183 40), rgb(36 135 193 / 0.4), transparent);
+    margin: 3rem 0;
+  }
+
+  :global(.article-body a) {
+    color: rgb(36 135 193);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 500;
+    transition: color 0.15s;
+  }
+
+  :global(.article-body a:hover) {
+    color: rgb(129 183 40);
+  }
+
+  :global(.article-body strong) {
+    font-weight: 600;
+    color: #0f172a;
+  }
+
+  :global(.article-body > p:first-of-type) {
+    font-size: 1.125rem;
+    color: #475569;
+    line-height: 1.75;
+  }
+</style>
+
+<script is:inline>
+  const bar = document.getElementById('reading-progress');
+  const article = document.querySelector('article');
+
+  function updateProgress() {
+    if (!bar || !article) return;
+    const rect = article.getBoundingClientRect();
+    const total = article.scrollHeight - window.innerHeight;
+    const scrolled = Math.max(0, -rect.top);
+    const pct = total > 0 ? Math.min(100, (scrolled / total) * 100) : 0;
+    bar.style.width = pct + '%';
+  }
+
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+</script>
