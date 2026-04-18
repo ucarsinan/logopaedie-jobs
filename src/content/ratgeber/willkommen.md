@@ -5,7 +5,7 @@ kategorie: "Karriere"
 pubDate: 2026-04-13
 author: "Redaktion"
 draft: false
-relatedArticles: ["ausbildung-nrw-2026", "arbeiten-duisburg", "teilzeit-modelle"]
+relatedArticles: ["ausbildung-nrw-2026", "arbeiten-duisburg", "teilzeit-modelle", "bewerbung-logopaedie-tipps"]
 ---
 
 Hier findest du Artikel, Guides und Erfahrungsberichte rund um den Berufsalltag in der Logopädie — mit klarem Fokus auf Nordrhein-Westfalen und das Ruhrgebiet.
