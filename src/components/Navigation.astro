@@ -37,13 +37,13 @@ const linkClass = (active: boolean) => [
 
     <!-- Desktop Nav -->
     <div class="hidden md:flex items-center gap-1">
-      <!-- Home — always visible -->
-      <a href="/" class={linkClass(isHome)}>Home</a>
+      {!isHome && <a href="/" class={linkClass(false)}>Home</a>}
 
       {isHome && anchorLinks.map(link => (
         <a href={link.href} class={linkClass(false)}>{link.label}</a>
       ))}
-      {!isHome && pageLinks.map(link => (
+
+      {pageLinks.map(link => (
         <a href={link.href} class={linkClass(link.active)}>{link.label}</a>
       ))}
     </div>
@@ -100,16 +100,12 @@ const linkClass = (active: boolean) => [
   <div id="mobile-menu" class="hidden md:hidden border-t border-slate-100 bg-white/98">
     <div class="max-w-7xl mx-auto px-4 py-3 space-y-0.5">
 
-      <a
-        href="/"
-        class={[
-          'mobile-nav-link flex items-center gap-2 py-3 px-4 text-[13px] font-semibold rounded-xl no-underline transition-all duration-150',
-          isHome ? 'bg-simsek-green/10 text-simsek-green' : 'text-slate-700 hover:bg-slate-50',
-        ].join(' ')}
-      >
-        <span class={['w-1.5 h-1.5 rounded-full shrink-0', isHome ? 'bg-simsek-green' : 'bg-slate-300'].join(' ')}></span>
-        Home
-      </a>
+      {!isHome && (
+        <a href="/" class="mobile-nav-link flex items-center gap-2 py-3 px-4 text-[13px] font-semibold text-slate-700 hover:bg-slate-50 rounded-xl no-underline transition-colors duration-150">
+          <span class="w-1.5 h-1.5 rounded-full bg-slate-300 shrink-0"></span>
+          Home
+        </a>
+      )}
 
       {isHome && anchorLinks.map(link => (
         <a href={link.href} class="mobile-nav-link flex items-center gap-2 py-3 px-4 text-[13px] font-semibold text-slate-700 hover:bg-slate-50 rounded-xl no-underline transition-colors duration-150">
@@ -117,7 +113,8 @@ const linkClass = (active: boolean) => [
           {link.label}
         </a>
       ))}
-      {!isHome && pageLinks.map(link => (
+
+      {pageLinks.map(link => (
         <a
           href={link.href}
           class={[
