@@ -3,10 +3,25 @@ import Logo from './Logo.astro';
 
 const { pathname } = Astro.url;
 
-const navLinks = [
+const isHome = pathname === '/';
+
+const anchorLinks = [
+  { href: '/#aufgaben', label: 'Was dich erwartet' },
+  { href: '/#anforderungen', label: 'Anforderungen' },
+  { href: '/#benefits', label: 'Vorteile' },
+];
+
+const pageLinks = [
   { href: '/ratgeber/', label: 'Ratgeber', active: pathname.startsWith('/ratgeber') },
   { href: '/gehaltsrechner/', label: 'Gehaltsrechner', active: pathname === '/gehaltsrechner/' || pathname.startsWith('/gehaltsrechner') },
 ];
+
+const linkClass = (active: boolean) => [
+  'px-4 py-2 text-[13px] font-semibold rounded-full transition-all duration-200 no-underline border-b-2',
+  active
+    ? 'border-simsek-green text-slate-900 bg-simsek-green/5'
+    : 'border-transparent text-slate-500 hover:text-slate-900 hover:bg-slate-50',
+].join(' ');
 ---
 
 <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100/80">
@@ -22,18 +37,14 @@ const navLinks = [
 
     <!-- Desktop Nav -->
     <div class="hidden md:flex items-center gap-1">
-      {navLinks.map(link => (
-        <a
-          href={link.href}
-          class={[
-            'px-4 py-2 text-[13px] font-semibold rounded-full transition-all duration-200 no-underline border-b-2',
-            link.active
-              ? 'border-simsek-green text-slate-900 bg-simsek-green/5'
-              : 'border-transparent text-slate-500 hover:text-slate-900 hover:bg-slate-50',
-          ].join(' ')}
-        >
-          {link.label}
-        </a>
+      <!-- Home — always visible -->
+      <a href="/" class={linkClass(isHome)}>Home</a>
+
+      {isHome && anchorLinks.map(link => (
+        <a href={link.href} class={linkClass(false)}>{link.label}</a>
+      ))}
+      {!isHome && pageLinks.map(link => (
+        <a href={link.href} class={linkClass(link.active)}>{link.label}</a>
       ))}
     </div>
 
@@ -89,20 +100,32 @@ const navLinks = [
   <div id="mobile-menu" class="hidden md:hidden border-t border-slate-100 bg-white/98">
     <div class="max-w-7xl mx-auto px-4 py-3 space-y-0.5">
 
-      {navLinks.map(link => (
+      <a
+        href="/"
+        class={[
+          'mobile-nav-link flex items-center gap-2 py-3 px-4 text-[13px] font-semibold rounded-xl no-underline transition-all duration-150',
+          isHome ? 'bg-simsek-green/10 text-simsek-green' : 'text-slate-700 hover:bg-slate-50',
+        ].join(' ')}
+      >
+        <span class={['w-1.5 h-1.5 rounded-full shrink-0', isHome ? 'bg-simsek-green' : 'bg-slate-300'].join(' ')}></span>
+        Home
+      </a>
+
+      {isHome && anchorLinks.map(link => (
+        <a href={link.href} class="mobile-nav-link flex items-center gap-2 py-3 px-4 text-[13px] font-semibold text-slate-700 hover:bg-slate-50 rounded-xl no-underline transition-colors duration-150">
+          <span class="w-1.5 h-1.5 rounded-full bg-slate-300 shrink-0"></span>
+          {link.label}
+        </a>
+      ))}
+      {!isHome && pageLinks.map(link => (
         <a
           href={link.href}
           class={[
             'mobile-nav-link flex items-center gap-2 py-3 px-4 text-[13px] font-semibold rounded-xl no-underline transition-all duration-150',
-            link.active
-              ? 'bg-simsek-green/10 text-simsek-green'
-              : 'text-slate-700 hover:bg-slate-50',
+            link.active ? 'bg-simsek-green/10 text-simsek-green' : 'text-slate-700 hover:bg-slate-50',
           ].join(' ')}
         >
-          <span class={[
-            'w-1.5 h-1.5 rounded-full shrink-0',
-            link.active ? 'bg-simsek-green' : 'bg-slate-300',
-          ].join(' ')}></span>
+          <span class={['w-1.5 h-1.5 rounded-full shrink-0', link.active ? 'bg-simsek-green' : 'bg-slate-300'].join(' ')}></span>
           {link.label}
         </a>
       ))}
