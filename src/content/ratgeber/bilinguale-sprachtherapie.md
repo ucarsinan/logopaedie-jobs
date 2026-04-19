@@ -71,4 +71,10 @@ Das macht einen messbaren Unterschied in der therapeutischen Allianz mit der Fam
 
 ---
 
-Wenn dich das Thema interessiert und du in Duisburg oder dem Ruhrgebiet arbeitest: Auf dieser Seite findest du unsere [offene Stelle](/), die explizit bilinguale Kompetenz einlädt. Weitere Informationen zum Arbeiten in Duisburg gibt es im Artikel [Arbeiten in der Duisburger Logopädie](/ratgeber/arbeiten-duisburg/).
+## Als bilinguale Logopädin in Duisburg arbeiten
+
+Wenn du selbst zweisprachig bist — ob Deutsch-Türkisch oder eine andere Kombination — und als Logopädin arbeiten möchtest, ist die [Praxis Şimşek](/) in Duisburg ein seltener Arbeitsplatz, an dem deine Mehrsprachigkeit nicht nur willkommen ist, sondern aktiv eingesetzt wird.
+
+> "Als bilinguale Praxis behandeln wir unsere Patienten auf Deutsch und Türkisch — das macht uns zu einem echten Teil dieser Stadt."
+
+Die Praxis bietet ein [Gehalt über dem NRW-Durchschnitt](/ratgeber/gehalt-logopaedie-nrw/), eine optionale [4-Tage-Woche](/ratgeber/4-tage-woche-logopaedie/) und 100 % Fortbildungsübernahme. Weitere Informationen zum Arbeitsalltag in Duisburg gibt es im Artikel [Arbeiten in der Duisburger Logopädie](/ratgeber/arbeiten-duisburg/).

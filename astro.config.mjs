@@ -5,8 +5,13 @@ import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
 
 export default defineConfig({
-  // Deine Domain für die Sitemap-Generierung
   site: 'https://xn--logopdiejobs-kcb.de',
+
+  redirects: {
+    '/gehalt/': '/ratgeber/gehalt-logopaedie-nrw/',
+    '/4-tage-woche/': '/ratgeber/4-tage-woche-logopaedie/',
+    '/bilingual/': '/ratgeber/bilinguale-sprachtherapie/',
+  },
 
   adapter: vercel(),
 
