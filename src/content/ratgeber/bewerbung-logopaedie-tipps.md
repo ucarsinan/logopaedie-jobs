@@ -6,6 +6,16 @@ pubDate: 2026-04-18
 author: "Redaktion"
 draft: false
 relatedArticles: ["ausbildung-nrw-2026", "arbeiten-duisburg", "teilzeit-modelle"]
+definition: "Eine überzeugende Bewerbung als Logopädin umfasst Anschreiben, Lebenslauf, staatliche Anerkennungsurkunde und relevante Zeugnisse — angepasst an das spezifische Patientenprofil der Stelle."
+faq:
+  - q: "Was gehört in eine Bewerbungsmappe als Logopädin?"
+    a: "Eine vollständige Mappe besteht aus vier Teilen: Anschreiben (max. eine Seite), tabellarischer Lebenslauf, staatliche Anerkennungsurkunde (wichtigstes Dokument, immer zuerst) und relevante Arbeitszeugnisse oder Praktikumsnachweise."
+  - q: "Wie lang sollte das Anschreiben einer Logopädin sein?"
+    a: "Maximal eine DIN-A4-Seite. Viele Praxisinhaber lesen Anschreiben zuerst diagonal — ein langes Anschreiben mit generischen Formulierungen landet schnell ungelesen im Stapel. Konkret, präzise und auf die Stelle zugeschnitten ist überzeugender."
+  - q: "Wann sollte ich das Gehalt im Vorstellungsgespräch ansprechen?"
+    a: "Erst wenn der Arbeitgeber es anspricht oder du explizit danach gefragt wirst. In Kliniken mit Tarifbindung ist die Einstufung meist geregelt; in freien Praxen gibt es Verhandlungsspielraum. Mit dem Gehaltsrechner kannst du vorab ein realistisches Bild bekommen."
+  - q: "Wie bereite ich mich auf das Vorstellungsgespräch als Logopädin vor?"
+    a: "Bereite konkrete Antworten zu deinen Schwerpunkten vor (keine Aufzählung, sondern Kontext), denk dir zwei bis drei eigene Fragen aus (Patientenprofil, Einarbeitungszeit, Supervision) und nimm eine angebotene Hospitation immer an."
 ---
 
 Der Arbeitsmarkt für Logopädinnen in NRW ist seit Jahren ein Arbeitnehmermarkt: Die Nachfrage übersteigt das Angebot deutlich. Das bedeutet, du hast als Bewerberin eine gute Ausgangsposition — aber eine überzeugende Bewerbung ist trotzdem kein Selbstläufer. Praxen und Kliniken suchen nicht irgendjemanden mit Kassenzulassung, sondern jemanden, der zum Team und zum Patientenprofil passt.

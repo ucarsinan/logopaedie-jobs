@@ -3,6 +3,8 @@ import { getCollection, render, type CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Navigation from '../../components/Navigation.astro';
 import Footer from '../../components/Footer.astro';
+import DefinitionBox from '../../components/DefinitionBox.astro';
+import FAQBlock from '../../components/FAQBlock.astro';
 
 export async function getStaticPaths() {
   const beitraege = await getCollection('ratgeber', ({ data }) => !data.draft);
@@ -56,8 +58,22 @@ const articleSchema = {
     "@type": "WebPage",
     "@id": canonicalURL
   },
-  ...(beitrag.data.heroImage ? { "image": `https://xn--logopdiejobs-kcb.de${beitrag.data.heroImage}` } : {})
+  ...(beitrag.data.heroImage ? { "image": `https://xn--logopdiejobs-kcb.de${beitrag.data.heroImage}` } : {}),
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": ["h1", ".article-description"]
+  }
 };
+
+const faqSchema = beitrag.data.faq ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": beitrag.data.faq.map(item => ({
+    "@type": "Question",
+    "name": item.q,
+    "acceptedAnswer": { "@type": "Answer", "text": item.a }
+  }))
+} : null;
 ---
 
 <Layout
@@ -71,6 +87,7 @@ const articleSchema = {
   ]}
 >
   <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(articleSchema)} />
+  {faqSchema && <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />}
   <Navigation />
 
   <!-- Reading progress bar -->
@@ -104,7 +121,7 @@ const articleSchema = {
           {beitrag.data.title}
         </h1>
 
-        <p class="text-xl text-slate-600 leading-relaxed mb-8">
+        <p class="article-description text-xl text-slate-600 leading-relaxed mb-8">
           {beitrag.data.description}
         </p>
 
@@ -133,10 +150,16 @@ const articleSchema = {
         />
       )}
 
+      <!-- Definition box (AI SEO / speakable anchor) -->
+      {beitrag.data.definition && <DefinitionBox definition={beitrag.data.definition} />}
+
       <!-- Article body -->
       <div class="article-body">
         <Content />
       </div>
+
+      <!-- FAQ accordion -->
+      {beitrag.data.faq && <FAQBlock faq={beitrag.data.faq} />}
 
       <!-- Related Articles -->
       {verwandteArtikel.length > 0 && (

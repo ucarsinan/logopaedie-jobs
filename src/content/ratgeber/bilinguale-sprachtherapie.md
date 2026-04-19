@@ -6,6 +6,16 @@ pubDate: 2026-04-14
 author: "Redaktion"
 draft: false
 relatedArticles: ["stottertherapie-spezialisierung", "ausbildung-nrw-2026"]
+definition: "Bilinguale Sprachtherapie bezeichnet logopädische Diagnostik und Behandlung in zwei Sprachen — mit dem Ziel, echte Sprachentwicklungsstörungen von normalem mehrsprachigem Spracherwerb zu unterscheiden."
+faq:
+  - q: "Verursacht Zweisprachigkeit Sprachentwicklungsstörungen?"
+    a: "Nein. Die Forschungslage ist eindeutig: Zweisprachigkeit verursacht keine Sprachentwicklungsstörungen. Auffälligkeiten im Deutschen können ein normaler Entwicklungsverlauf sein, wenn Deutsch die Zweitsprache ist — keine Störung, sondern ein erwartbares Muster."
+  - q: "Was bedeutet bilinguale Diagnostik in der Logopädie?"
+    a: "Bilinguale Diagnostik bedeutet, dass beide Sprachen des Kindes bewertet werden — nicht nur die Zweitsprache. Das kann durch eine zweisprachige Therapeutin, strukturierte Elternbefragungen und normierte Tests in beiden Sprachen geschehen."
+  - q: "Welche Tests gibt es für türkischsprachige Kinder?"
+    a: "Für Deutsch-Türkisch gibt es das CELF-5 Screening Türkisch (für Schulkinder), COST A33-Protokolle für Elternbefragungen und SCREELING als Screening für mehrsprachige Kinder mit türkischer Normierung."
+  - q: "Sollen türkischsprachige Eltern zuhause Deutsch sprechen?"
+    a: "Nein — Eltern sollten in der Sprache sprechen, die sie am besten beherrschen. Brüchiges Eltern-Deutsch schadet der Sprachentwicklung des Kindes eher. Als bilinguale Therapeutin kannst du diesen Punkt direkt auf Türkisch kommunizieren."
 ---
 
 Bilingualismus ist in der Logopädie lange als Problem behandelt worden — als würden zwei Sprachen einander behindern. Diese Sichtweise ist überholt. Heute ist die Forschungslage eindeutig: Zweisprachigkeit verursacht keine Sprachentwicklungsstörungen. Aber sie verkompliziert die Diagnostik erheblich, wenn die Therapeutin nur eine Sprache des Kindes kennt.
@@ -19,6 +29,7 @@ Ein Kind, das zuhause Türkisch spricht und erst mit dem Kindergarteneintritt mi
 Eine kompetente bilinguale Diagnostik bedeutet: Beide Sprachen des Kindes werden eingeschätzt, entweder durch die Therapeutin selbst (wenn sie beide Sprachen spricht) oder durch strukturierte Elternbefragungen und — wo verfügbar — normierte Tests in beiden Sprachen.
 
 Für Türkisch gibt es inzwischen einige evaluierte Instrumente:
+
 - **CELF-5 Screening Türkisch** (für Schulkinder)
 - **Elternfragebögen zur Sprachanamnese** (z. B. COST A33-Protokolle, auf Türkisch adaptiert)
 - **SCREELING** (Screening für mehrsprachige Kinder, mit türkischer Normierung)

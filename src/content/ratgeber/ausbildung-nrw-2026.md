@@ -6,6 +6,16 @@ pubDate: 2026-04-14
 author: "Redaktion"
 draft: false
 relatedArticles: ["arbeiten-duisburg", "teilzeit-modelle"]
+definition: "Logopädin werden in NRW ist über drei Wege möglich: die dreijährige staatliche Ausbildung an Berufsfachschulen, ein primärqualifizierender Bachelor-Studiengang oder — bei bestehendem Hochschulabschluss in verwandten Fächern — ein konsekutiver Masterstudiengang."
+faq:
+  - q: "Wie lange dauert die Logopädie-Ausbildung in NRW?"
+    a: "Die staatliche Ausbildung an Berufsfachschulen dauert drei Jahre und endet mit dem staatlichen Examen sowie der Kassenzulassung. Bachelor-Studiengänge dauern in der Regel acht Semester (inkl. Praxisphase) und schließen die staatliche Anerkennung direkt ein."
+  - q: "Kostet die Logopädie-Ausbildung in NRW Geld?"
+    a: "An vielen Berufsfachschulen ja — Schulgeld zwischen 300 und 600 € pro Monat ist üblich. Einige Träger haben es abgeschafft. Bachelor-Studiengänge an Hochschulen erheben kein Schulgeld; BAföG ist dort möglich."
+  - q: "Was ist der Unterschied zwischen Ausbildung und Bachelor in der Logopädie?"
+    a: "Beide enden mit der staatlichen Anerkennung und Kassenzulassung. Der Unterschied liegt im Abschluss: Mit Bachelor bist du für Leitungspositionen, Lehre und internationale Anerkennung besser aufgestellt. Im Einstiegsgehalt in freien Praxen ist der Unterschied gering."
+  - q: "Gibt es einen Quereinstieg in die Logopädie?"
+    a: "Einen direkten Quereinstieg ohne Ausbildung oder Studium gibt es nicht — die staatliche Anerkennung ist Pflicht. Wer bereits einen Hochschulabschluss in Pädagogik, Germanistik oder Sonderpädagogik hat, kann sich für einen konsekutiven Masterstudiengang bewerben, der mit staatlicher Anerkennung endet."
 ---
 
 Wer in Nordrhein-Westfalen Logopädin oder Logopäde werden will, hat heute mehr Optionen als noch vor zehn Jahren. Neben der klassischen Berufsausbildung an Berufsfachschulen gibt es inzwischen Bachelor-Studiengänge, primärqualifizierende Hochschulprogramme und erste Wege für Quereinsteiger. Dieser Artikel fasst den Stand 2026 zusammen.
@@ -51,6 +61,7 @@ Für Erzieherinnen oder Pädagoginnen, die sich neu orientieren wollen: Der Weg 
 Die Bewerbungsfristen für NRW-Hochschulen laufen meistens bis Mitte Juli für das Wintersemester. Berufsfachschulen haben oft eigene Fristen — einige nehmen auch zum Sommersemester auf. Es lohnt sich, frühzeitig die Zulassungsseiten der jeweiligen Einrichtungen zu prüfen.
 
 Worauf du bei der Schulwahl achten solltest:
+
 - Gibt es Schulgeld, und wenn ja, wie hoch?
 - Wie sind die Praxiskooperationen aufgestellt (eigene Lehrambulanz vs. externe Praktikumsplätze)?
 - Wie ist die Klassengröße? Kleinere Gruppen bedeuten meist mehr Lehrtherapiestunden pro Person.
@@ -59,4 +70,4 @@ Worauf du bei der Schulwahl achten solltest:
 
 Der Einstieg in NRW ist gut — die Nachfrage nach Logopädinnen in Praxen, Kliniken und Frühförderstellen übersteigt seit Jahren das Angebot. Besonders in der Ruhrgebietsregion (Duisburg, Essen, Bochum, Dortmund) sind Stellen oft sofort besetzbar.
 
-Wenn du dir noch unsicher bist, welches Arbeitszeitmodell zu deiner Lebenssituation passt, schau dir den Artikel zur [4-Tage-Woche in der Logopädie](/4-tage-woche/) an. Oder starte direkt mit dem [Gehaltsrechner](/gehaltsrechner/), um zu sehen, was du in deiner Region und deinem Setting verdienen kannst.
+Wenn du dir noch unsicher bist, welches Arbeitszeitmodell zu deiner Lebenssituation passt, schau dir den Artikel zur [4-Tage-Woche in der Logopädie](/ratgeber/4-tage-woche-logopaedie/) an. Oder starte direkt mit dem [Gehaltsrechner](/gehaltsrechner/), um zu sehen, was du in deiner Region und deinem Setting verdienen kannst.

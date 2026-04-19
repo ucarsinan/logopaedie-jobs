@@ -1,0 +1,16 @@
+---
+interface Props {
+  definition: string;
+}
+const { definition } = Astro.props;
+---
+
+<div class="my-8 rounded-2xl border border-simsek-green/25 bg-simsek-green/5 overflow-hidden">
+  <div class="flex">
+    <div class="w-1 shrink-0 bg-simsek-green rounded-l-2xl"></div>
+    <div class="px-5 py-4">
+      <p class="text-[10px] font-bold uppercase tracking-widest text-simsek-green mb-1.5">Definition</p>
+      <p class="text-sm text-slate-700 leading-relaxed">{definition}</p>
+    </div>
+  </div>
+</div>

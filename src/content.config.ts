@@ -17,6 +17,8 @@ const ratgeber = defineCollection({
     heroImageAlt: z.string().optional(),
     draft: z.boolean().default(false),
     relatedArticles: z.array(z.string()).optional(),
+    definition: z.string().optional(),
+    faq: z.array(z.object({ q: z.string(), a: z.string() })).optional(),
   }),
 });
 
