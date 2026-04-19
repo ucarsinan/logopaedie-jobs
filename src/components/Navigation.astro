@@ -3,12 +3,10 @@ import Logo from './Logo.astro';
 
 const { pathname } = Astro.url;
 
-const moreLinks = [
-  { href: '/ratgeber/', label: 'Ratgeber' },
-  { href: '/gehaltsrechner/', label: 'Gehaltsrechner' },
+const navLinks = [
+  { href: '/ratgeber/', label: 'Ratgeber', active: pathname.startsWith('/ratgeber') },
+  { href: '/gehaltsrechner/', label: 'Gehaltsrechner', active: pathname === '/gehaltsrechner/' || pathname.startsWith('/gehaltsrechner') },
 ];
-
-const moreActive = moreLinks.some(l => pathname.startsWith(l.href));
 ---
 
 <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100/80">
@@ -23,65 +21,20 @@ const moreActive = moreLinks.some(l => pathname.startsWith(l.href));
     </a>
 
     <!-- Desktop Nav -->
-    <div class="hidden md:flex items-center gap-1.5">
-      {[
-        { href: '/#aufgaben', label: 'Was dich erwartet' },
-        { href: '/#anforderungen', label: 'Anforderungen' },
-        { href: '/#benefits', label: 'Vorteile' },
-      ].map(link => (
+    <div class="hidden md:flex items-center gap-1">
+      {navLinks.map(link => (
         <a
           href={link.href}
-          class="px-4 py-2 text-[13px] font-semibold text-slate-500 hover:text-slate-900 rounded-full bg-transparent hover:bg-linear-to-r hover:from-simsek-green/10 hover:to-simsek-blue/10 transition-all duration-200 no-underline"
+          class={[
+            'px-4 py-2 text-[13px] font-semibold rounded-full transition-all duration-200 no-underline border-b-2',
+            link.active
+              ? 'border-simsek-green text-slate-900 bg-simsek-green/5'
+              : 'border-transparent text-slate-500 hover:text-slate-900 hover:bg-slate-50',
+          ].join(' ')}
         >
           {link.label}
         </a>
       ))}
-
-      <!-- Ratgeber & Tools Dropdown -->
-      <div class="relative" id="mehr-dropdown">
-        <button
-          id="mehr-btn"
-          aria-haspopup="true"
-          aria-expanded="false"
-          class={[
-            'flex items-center gap-1.5 px-4 py-2 text-[13px] font-semibold rounded-full transition-all duration-200 cursor-pointer',
-            moreActive
-              ? 'bg-linear-to-r from-simsek-green/15 to-simsek-blue/15 text-slate-900'
-              : 'text-slate-500 hover:text-slate-900 hover:bg-linear-to-r hover:from-simsek-green/10 hover:to-simsek-blue/10',
-          ].join(' ')}
-        >
-          Ratgeber & Tools
-          <svg id="mehr-chevron" class="w-3.5 h-3.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
-
-        <div
-          id="mehr-menu"
-          role="menu"
-          class="hidden absolute top-full right-0 mt-2 w-56 bg-white/95 backdrop-blur-lg rounded-2xl border border-slate-100 shadow-xl shadow-slate-200/60 py-2 z-50"
-        >
-          <p class="px-4 pt-1 pb-2 text-[10px] font-bold uppercase tracking-widest text-slate-400">Inhalte</p>
-          {moreLinks.map(link => (
-            <a
-              href={link.href}
-              role="menuitem"
-              class={[
-                'flex items-center gap-2 mx-2 px-3 py-2.5 text-[13px] font-semibold no-underline transition-all duration-150 rounded-xl',
-                pathname.startsWith(link.href)
-                  ? 'bg-simsek-green/10 text-simsek-green'
-                  : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900',
-              ].join(' ')}
-            >
-              <span class={[
-                'w-1.5 h-1.5 rounded-full shrink-0',
-                pathname.startsWith(link.href) ? 'bg-simsek-green' : 'bg-slate-300',
-              ].join(' ')}></span>
-              {link.label}
-            </a>
-          ))}
-        </div>
-      </div>
     </div>
 
     <!-- Desktop Right -->
@@ -136,40 +89,23 @@ const moreActive = moreLinks.some(l => pathname.startsWith(l.href));
   <div id="mobile-menu" class="hidden md:hidden border-t border-slate-100 bg-white/98">
     <div class="max-w-7xl mx-auto px-4 py-3 space-y-0.5">
 
-      <p class="px-4 pt-2 pb-1.5 text-[10px] font-bold uppercase tracking-widest text-slate-400">Stelle</p>
-      <a href="/#aufgaben" class="mobile-nav-link flex items-center gap-2 py-3 px-4 text-[13px] font-semibold text-slate-700 hover:bg-slate-50 rounded-xl no-underline transition-colors duration-150">
-        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 shrink-0"></span>
-        Was dich erwartet
-      </a>
-      <a href="/#anforderungen" class="mobile-nav-link flex items-center gap-2 py-3 px-4 text-[13px] font-semibold text-slate-700 hover:bg-slate-50 rounded-xl no-underline transition-colors duration-150">
-        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 shrink-0"></span>
-        Anforderungen
-      </a>
-      <a href="/#benefits" class="mobile-nav-link flex items-center gap-2 py-3 px-4 text-[13px] font-semibold text-slate-700 hover:bg-slate-50 rounded-xl no-underline transition-colors duration-150">
-        <span class="w-1.5 h-1.5 rounded-full bg-slate-300 shrink-0"></span>
-        Vorteile
-      </a>
-
-      <div class="pt-2 mt-1 border-t border-slate-100">
-        <p class="px-4 pt-2 pb-1.5 text-[10px] font-bold uppercase tracking-widest text-slate-400">Ratgeber & Tools</p>
-        {moreLinks.map(link => (
-          <a
-            href={link.href}
-            class={[
-              'mobile-nav-link flex items-center gap-2 py-3 px-4 text-[13px] font-semibold rounded-xl no-underline transition-all duration-150',
-              pathname.startsWith(link.href)
-                ? 'bg-simsek-green/10 text-simsek-green'
-                : 'text-slate-700 hover:bg-slate-50',
-            ].join(' ')}
-          >
-            <span class={[
-              'w-1.5 h-1.5 rounded-full shrink-0',
-              pathname.startsWith(link.href) ? 'bg-simsek-green' : 'bg-slate-300',
-            ].join(' ')}></span>
-            {link.label}
-          </a>
-        ))}
-      </div>
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class={[
+            'mobile-nav-link flex items-center gap-2 py-3 px-4 text-[13px] font-semibold rounded-xl no-underline transition-all duration-150',
+            link.active
+              ? 'bg-simsek-green/10 text-simsek-green'
+              : 'text-slate-700 hover:bg-slate-50',
+          ].join(' ')}
+        >
+          <span class={[
+            'w-1.5 h-1.5 rounded-full shrink-0',
+            link.active ? 'bg-simsek-green' : 'bg-slate-300',
+          ].join(' ')}></span>
+          {link.label}
+        </a>
+      ))}
 
       <div class="pt-2 mt-1 border-t border-slate-100 pb-2">
         <a
@@ -188,7 +124,6 @@ const moreActive = moreLinks.some(l => pathname.startsWith(l.href));
 </nav>
 
 <script is:inline>
-  // Mobile menu
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
   const iconOpen = document.getElementById('icon-open');
@@ -207,37 +142,5 @@ const moreActive = moreLinks.some(l => pathname.startsWith(l.href));
       iconOpen.classList.remove('hidden');
       iconClose.classList.add('hidden');
     });
-  });
-
-  // Mehr dropdown
-  const mehrBtn = document.getElementById('mehr-btn');
-  const mehrMenu = document.getElementById('mehr-menu');
-  const mehrChevron = document.getElementById('mehr-chevron');
-
-  function openMehr() {
-    mehrMenu.classList.remove('hidden');
-    mehrBtn.setAttribute('aria-expanded', 'true');
-    mehrChevron.style.transform = 'rotate(180deg)';
-  }
-
-  function closeMehr() {
-    mehrMenu.classList.add('hidden');
-    mehrBtn.setAttribute('aria-expanded', 'false');
-    mehrChevron.style.transform = 'rotate(0deg)';
-  }
-
-  mehrBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    mehrMenu.classList.contains('hidden') ? openMehr() : closeMehr();
-  });
-
-  document.addEventListener('click', (e) => {
-    if (!document.getElementById('mehr-dropdown').contains(e.target)) {
-      closeMehr();
-    }
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeMehr();
   });
 </script>
