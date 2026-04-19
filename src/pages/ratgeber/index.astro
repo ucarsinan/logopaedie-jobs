@@ -27,6 +27,27 @@ const fmt = (d: Date) => d.toLocaleDateString('de-DE', { day: '2-digit', month: 
     { name: "Ratgeber", url: "https://xn--logopdiejobs-kcb.de/ratgeber/" },
   ]}
 >
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Ratgeber für Logopädinnen — Karriere, Gehalt, Fachwissen",
+    "description": "Praxisnahe Artikel zu Gehalt, Arbeitszeit, Fachwissen und Karrierewegen in der Logopädie — mit Schwerpunkt auf NRW und dem Ruhrgebiet.",
+    "url": "https://xn--logopdiejobs-kcb.de/ratgeber/",
+    "inLanguage": "de",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Logopädiejobs.de",
+      "url": "https://xn--logopdiejobs-kcb.de/"
+    },
+    "hasPart": beitraege.map(b => ({
+      "@type": "Article",
+      "name": b.data.title,
+      "description": b.data.description,
+      "url": `https://xn--logopdiejobs-kcb.de/ratgeber/${b.id}/`,
+      "datePublished": b.data.pubDate.toISOString().split('T')[0]
+    }))
+  })} />
+
   <Navigation />
 
   <main class="max-w-4xl mx-auto px-6 py-16 md:py-24">

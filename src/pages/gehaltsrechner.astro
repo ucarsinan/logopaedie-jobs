@@ -12,6 +12,28 @@ const pageDescription = "Interaktiver Gehaltsrechner für Logopädinnen und Spra
   { name: "Startseite", url: "https://xn--logopdiejobs-kcb.de/" },
   { name: "Gehaltsrechner", url: "https://xn--logopdiejobs-kcb.de/gehaltsrechner/" }
 ]}>
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Gehaltsrechner Logopädie NRW",
+    "description": "Interaktiver Gehaltsrechner für Logopädinnen und Sprachtherapeuten in NRW. Basiert auf öffentlich verfügbaren Gehaltsdaten für 2025/2026.",
+    "url": "https://xn--logopdiejobs-kcb.de/gehaltsrechner/",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "inLanguage": "de",
+    "isAccessibleForFree": true,
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Logopädiejobs.de",
+      "url": "https://xn--logopdiejobs-kcb.de/"
+    }
+  })} />
+
   <Navigation />
   <main>
     <article class="max-w-4xl mx-auto px-4 sm:px-6 py-10 md:py-24 overflow-x-hidden">
