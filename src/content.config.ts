@@ -12,6 +12,7 @@ const ratgeber = defineCollection({
       .enum(['Gehalt', 'Arbeitszeit', 'Karriere', 'Fachwissen', 'Duisburg / NRW', 'Sonstiges'])
       .default('Karriere'),
     pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
     author: z.string().default('Redaktion'),
     heroImage: z.string().optional(),
     heroImageAlt: z.string().optional(),
