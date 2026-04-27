@@ -87,4 +87,4 @@ Wenn du nach einer Woche keine Rückmeldung hast, ist eine einmalige Nachfrage p
 
 ## Direkt bewerben: Praxis Şimşek Duisburg
 
-Die Praxis für Logopädie Şimşek in Duisburg sucht aktuell Verstärkung. Das Team arbeitet mit einem breiten Patientenprofil und legt Wert auf eigenverantwortliches Arbeiten — Teilzeit und Vollzeit möglich. Details und Bewerbungsformular findest du auf der [Stellenseite](/). Wenn du vorab Fragen hast, erreichst du die Praxis direkt unter [info@logopaedie-simsek.de](mailto:info@logopaedie-simsek.de).
+Die Praxis für Logopädie Şimşek in Duisburg sucht aktuell Verstärkung. Das Team arbeitet mit einem breiten Patientenprofil und legt Wert auf eigenverantwortliches Arbeiten — Teilzeit und Vollzeit möglich. Details und Bewerbungsformular findest du auf der [Karriereseite](https://logopaedie-simsek.de/karriere/). Wenn du vorab Fragen hast, erreichst du die Praxis direkt unter [info@logopaedie-simsek.de](mailto:info@logopaedie-simsek.de).
