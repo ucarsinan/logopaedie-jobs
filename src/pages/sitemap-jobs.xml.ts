@@ -3,6 +3,13 @@ import { getAdminClient } from '../lib/supabaseAdmin';
 
 export const prerender = false;
 
+const staticJobs = [
+  {
+    slug: 'logopaedin-sprachtherapeut-duisburg',
+    lastmod: '2026-04-29T00:00:00+02:00',
+  },
+];
+
 export const GET: APIRoute = async ({ site }) => {
   const supabase = getAdminClient();
   const { data: jobs } = await supabase
@@ -10,11 +17,17 @@ export const GET: APIRoute = async ({ site }) => {
     .select('slug, created_at, valid_through')
     .eq('status', 'published');
 
-  const urls = (jobs ?? [])
+  const dynamicJobs = (jobs ?? []).map((j) => ({
+    slug: j.slug,
+    lastmod: new Date(j.created_at).toISOString(),
+  }));
+
+  const jobsBySlug = new Map([...staticJobs, ...dynamicJobs].map((job) => [job.slug, job]));
+
+  const urls = Array.from(jobsBySlug.values())
     .map((j) => {
       const loc = new URL(`/jobs/${j.slug}/`, site).toString();
-      const lastmod = new Date(j.created_at).toISOString();
-      return `<url><loc>${loc}</loc><lastmod>${lastmod}</lastmod><changefreq>weekly</changefreq></url>`;
+      return `<url><loc>${loc}</loc><lastmod>${j.lastmod}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>`;
     })
     .join('');
 
