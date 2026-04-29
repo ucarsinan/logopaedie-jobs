@@ -22,7 +22,7 @@ Der Einstieg in einer freien Praxis in Duisburg läuft meistens strukturiert ab:
 
 Was in Duisburg anders ist als in größeren Logopädie-Hubs: Die meisten Stellen sind in freien Praxen, nicht in Universitätskliniken oder Spezialambulanzen. Der Patientenmix ist breit, du arbeitest selten auf einer einzigen Spezialisierung. Das ist eine gute Grundlage für die ersten Berufsjahre — die Varianz macht dich vielseitiger.
 
-Zur Sprache: In Duisburg arbeiten viele Menschen mit türkischen, arabischen oder anderen Sprachbiografien. Wenn du selbst mehrsprachig bist — egal ob Türkisch, Arabisch, Russisch oder eine andere Sprache — ist das in Duisburg ein konkreter Vorteil, nicht nur ein nettes Zusatzangebot. Mehr dazu im Artikel über [bilinguale Sprachtherapie](/bilingual/).
+Zur Sprache: In Duisburg arbeiten viele Menschen mit türkischen, arabischen oder anderen Sprachbiografien. Wenn du selbst mehrsprachig bist — egal ob Türkisch, Arabisch, Russisch oder eine andere Sprache — ist das in Duisburg ein konkreter Vorteil, nicht nur ein nettes Zusatzangebot. Mehr dazu im Artikel über [bilinguale Sprachtherapie](/ratgeber/bilinguale-sprachtherapie/).
 
 ## Gehalt in Duisburg im regionalen Vergleich
 
@@ -54,6 +54,6 @@ Die letzten beiden Punkte unterscheiden sich stark zwischen Praxen und haben dir
 
 ## Arbeitszeitmodelle in Duisburger Praxen
 
-Die 4-Tage-Woche ist in Duisburg kein exotisches Konzept mehr — mehrere Praxen bieten sie an oder sind offen dafür. Gleiches gilt für flexible Teilzeitmodelle zwischen 20 und 30 Stunden. Mehr dazu im Artikel zu [Teilzeitmodellen in der Logopädie](/4-tage-woche/).
+Die 4-Tage-Woche ist in Duisburg kein exotisches Konzept mehr — mehrere Praxen bieten sie an oder sind offen dafür. Gleiches gilt für flexible Teilzeitmodelle zwischen 20 und 30 Stunden. Mehr dazu im Artikel zu [Teilzeitmodellen in der Logopädie](/ratgeber/teilzeit-modelle/).
 
 Wenn du konkret auf Stellensuche bist: Schau dir die Stellenanzeige auf dieser Seite an — wir suchen aktuell eine Logopädin oder einen Logopäden für unser Team in der Praxis für Logopädie Şimşek, Tonhallenstraße 21, Duisburg. [Direkt zur Stellenanzeige](/). 

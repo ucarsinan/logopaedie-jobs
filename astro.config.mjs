@@ -4,6 +4,17 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
 
+const excludedSitemapPaths = new Set([
+  '/datenschutz/',
+  '/impressum/',
+  '/jobs/neu/',
+]);
+
+const isPublicIndexablePage = (page) => {
+  const { pathname } = new URL(page);
+  return !pathname.startsWith('/admin/') && !excludedSitemapPaths.has(pathname);
+};
+
 export default defineConfig({
   site: 'https://xn--logopdiejobs-kcb.de',
 
@@ -15,7 +26,11 @@ export default defineConfig({
 
   adapter: vercel(),
 
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      filter: isPublicIndexablePage,
+    }),
+  ],
 
   // Konfiguration für die <Image /> Komponente
   image: {
