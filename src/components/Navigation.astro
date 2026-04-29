@@ -12,6 +12,7 @@ const anchorLinks = [
 ];
 
 const pageLinks = [
+  { href: '/jobs/logopaedin-sprachtherapeut-duisburg/', label: 'Stelle', active: pathname.startsWith('/jobs/logopaedin-sprachtherapeut-duisburg') },
   { href: '/ratgeber/', label: 'Ratgeber', active: pathname.startsWith('/ratgeber') },
   { href: '/gehaltsrechner/', label: 'Gehaltsrechner', active: pathname === '/gehaltsrechner/' || pathname.startsWith('/gehaltsrechner') },
 ];
@@ -86,7 +87,7 @@ const pageLinkClass = (active: boolean) => [
         Zur Praxis ↗
       </a>
       <a
-        href="/#apply"
+        href="/jobs/logopaedin-sprachtherapeut-duisburg/"
         class="inline-flex items-center gap-1.5 px-5 py-2.5 bg-linear-to-r from-simsek-green to-simsek-blue text-white text-[13px] font-bold rounded-full shadow-md shadow-simsek-green/20 hover:shadow-lg hover:shadow-simsek-green/30 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 no-underline"
       >
         Jetzt bewerben
@@ -99,7 +100,7 @@ const pageLinkClass = (active: boolean) => [
     <!-- Mobile: CTA + Hamburger -->
     <div class="flex md:hidden items-center gap-2.5">
       <a
-        href="/#apply"
+        href="/jobs/logopaedin-sprachtherapeut-duisburg/"
         class="inline-flex items-center gap-1 px-4 py-2 bg-linear-to-r from-simsek-green to-simsek-blue text-white text-[13px] font-bold rounded-full shadow-sm no-underline"
       >
         Bewerben

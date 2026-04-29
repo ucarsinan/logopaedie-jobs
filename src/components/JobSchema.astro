@@ -1,90 +1,14 @@
 ---
-// src/components/JobSchema.astro
-
-// 1. Datum: Wird bei jedem Build automatisch auf das aktuelle Datum gesetzt
-const datePosted = new Date().toISOString().split('T')[0];
-
-// 2. Ablaufdatum fest gesetzt (verhindert Ablauf ohne Rebuild)
-const validThrough = "2026-12-31";
-
-// 3. Deine ECHTEN Daten
-const jobData = {
-  title: "Logopäde / Sprachtherapeut (m/w/d)",
-  description: "Werde Teil unseres bilingualen Teams (Deutsch-Türkisch) in Duisburg. Wir bieten Spezialisierungen in Pädiatrie, Neurologie und Stottern/Poltern. Genieße eine flexible 4-Tage-Woche, überdurchschnittliches Gehalt und moderne Praxisräume im 3. OG (mit Aufzug) direkt in der Tonhallenstraße 21, nur 2 Min. vom Hbf.",
-  orgName: "Praxis für Logopädie Şimşek",
-  
-  // HIER SIND DIE PLATZHALTER JETZT ERSETZT:
-  url: "https://xn--logopdiejobs-kcb.de/",
-  logo: "https://xn--logopdiejobs-kcb.de/logo.svg",
-  
-  location: {
-    city: "Duisburg",
-    zip: "47051",
-    street: "Tonhallenstraße 21"
-  },
-};
+// LocalBusiness Schema: verbessert Local SEO / Google Maps Sichtbarkeit.
 ---
 
-<script type="application/ld+json" is:inline set:html={JSON.stringify({
-  "@context": "https://schema.org/",
-  "@type": "JobPosting",
-  "title": jobData.title,
-  "description": jobData.description,
-  "identifier": {
-    "@type": "PropertyValue",
-    "name": jobData.orgName,
-    "value": "LOGO-JOB-DUI-01"
-  },
-  "hiringOrganization": {
-    "@type": "Organization",
-    "name": jobData.orgName,
-    "sameAs": jobData.url,
-    "logo": jobData.logo
-  },
-  "jobLocation": {
-    "@type": "Place",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": jobData.location.street,
-      "addressLocality": jobData.location.city,
-      "postalCode": jobData.location.zip,
-      "addressRegion": "Nordrhein-Westfalen",
-      "addressCountry": "DE"
-    }
-  },
-  "datePosted": datePosted,
-  "validThrough": validThrough,
-  "employmentType": ["FULL_TIME", "PART_TIME"],
-  "directApply": true,
-  "jobBenefits": "4-Tage-Woche möglich, 100% Fortbildungskosten, zentrale Lage am Hbf, modernes Material, bilinguales Team",
-  "responsibilities": "Durchführung logopädischer Diagnostik und Therapie in den Bereichen Pädiatrie (SES, Wortschatz, Grammatik, LRS), Neurologie (Aphasie, Dysarthrie, Dysphagie) und Stottern/Poltern bei Kindern und Erwachsenen. Bilinguales Arbeiten in Deutsch und Türkisch möglich.",
-  "workHours": "20–40 Stunden pro Woche (Vollzeit oder Teilzeit möglich)",
-  "employerOverview": "Praxis für Logopädie Şimşek ist eine spezialisierte Praxis in Duisburg mit einem bilingualen Team (Deutsch-Türkisch). Schwerpunkte: Pädiatrie, Neurologie und Stottern/Poltern. Zentrale Lage direkt am Duisburger Hauptbahnhof.",
-  "occupationalCategory": "29-1127.00",
-  "qualifications": "Staatlich anerkannte/r Logopäde/Logopädin oder Sprachtherapeut/in (m/w/d). Berufsanfänger sind willkommen.",
-  "industry": "Gesundheitswesen",
-  "skills": "Pädiatrie, Neurologie, Stottertherapie, Aphasie, Dysarthrie, Dysphagie, LRS, SES, bilinguale Therapie Deutsch-Türkisch",
-  // TODO: baseSalary eintragen sobald Gehaltsspanne bekannt (min/max brutto/Monat, Vollzeit)
-  // "baseSalary": {
-  //   "@type": "MonetaryAmount",
-  //   "currency": "EUR",
-  //   "value": {
-  //     "@type": "QuantitativeValue",
-  //     "minValue": XXXX,
-  //     "maxValue": XXXX,
-  //     "unitText": "MONTH"
-  //   }
-  // }
-})} />
-
-<!-- LocalBusiness Schema: verbessert Local SEO / Google Maps Sichtbarkeit -->
 <script type="application/ld+json" is:inline set:html={JSON.stringify({
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "MedicalOrganization"],
   "name": "Praxis für Logopädie Şimşek",
   "url": "https://xn--logopdiejobs-kcb.de/",
   "logo": "https://xn--logopdiejobs-kcb.de/logo.svg",
-  "description": "Spezialisierte Logopädie-Praxis in Duisburg mit bilingualen Team (Deutsch-Türkisch). Schwerpunkte: Pädiatrie, Neurologie und Stottern/Poltern.",
+  "description": "Spezialisierte Logopädie-Praxis in Duisburg. Schwerpunkte: Pädiatrie, Neurologie und Stottern/Poltern.",
   "openingHours": "Mo-Fr 08:00-18:00",
   "priceRange": "Kassenleistung",
   "medicalSpecialty": [
@@ -120,7 +44,7 @@ const jobData = {
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pädiatrische Logopädie (SES, LRS, Wortschatz)" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Neurologische Sprachtherapie (Aphasie, Dysarthrie, Dysphagie)" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Stottertherapie und Poltern" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Bilinguale Therapie Deutsch-Türkisch" } }
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Elternberatung und Angehörigenarbeit" } }
     ]
-  },
+  }
 })} />
