@@ -281,27 +281,42 @@ const faqSchema = {
       </div>
     </section>
 
-    <section class="py-14 md:py-24 bg-white">
-      <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-        <div class="relative rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white bg-slate-50">
-          <Image
-            src={praxisImg}
-            alt="Moderner Behandlungsraum der Logopädie Şimşek in Duisburg"
-            width={900}
-            height={506}
-            class="w-full h-full object-cover"
-            loading="lazy"
-          />
+    <section class="py-14 md:py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-[0.92fr_1.08fr] gap-8 lg:gap-12 items-start">
+        <div class="space-y-5">
+          <div class="relative rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white bg-slate-50 aspect-[16/11] lg:aspect-[5/4]">
+            <Image
+              src={praxisImg}
+              alt="Moderner Behandlungsraum der Logopädie Şimşek in Duisburg"
+              width={900}
+              height={506}
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="grid sm:grid-cols-3 gap-3">
+            {[
+              ['Einarbeitung', 'klar begleitet'],
+              ['Austausch', 'kurze Wege'],
+              ['Entwicklung', '100 % Fortbildung'],
+            ].map(([label, value]) => (
+              <div class="rounded-2xl bg-slate-50 border border-slate-100 p-4">
+                <p class="text-[10px] font-bold uppercase tracking-widest text-simsek-green mb-1">{label}</p>
+                <p class="text-sm font-semibold text-slate-800">{value}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div class="space-y-8">
+        <div class="space-y-6 lg:pt-3">
           <div>
             <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-simsek-blue/10 text-simsek-blue border border-simsek-blue/20 mb-4">
               Alltag in der Praxis
             </span>
-            <h2 class="text-3xl md:text-5xl font-bold text-slate-900 leading-tight mb-5">Was dich erwartet</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 leading-tight mb-5">Was dich erwartet</h2>
             <div class="h-px bg-linear-to-r from-simsek-green via-simsek-blue/40 to-transparent mb-6"></div>
-            <div class="space-y-4 text-lg text-slate-600 leading-relaxed">
+            <div class="space-y-4 text-base md:text-lg text-slate-600 leading-relaxed">
               <p>
                 Du arbeitest in einer etablierten logopädischen Praxis in der Duisburger Innenstadt. Unsere Patientinnen und Patienten kommen mit Sprachentwicklungsstörungen, neurologischen Störungsbildern, Stottern, Poltern, Dysphagie und weiteren logopädischen Fragestellungen zu uns.
               </p>
@@ -318,7 +333,7 @@ const faqSchema = {
               ['03', 'Austauschen', 'Regelmäßige Fallbesprechungen und fachliche Rückendeckung.'],
               ['04', 'Wachsen', 'Fortbildungen werden vollständig übernommen.'],
             ].map(([step, title, text]) => (
-              <div class="rounded-3xl bg-slate-50 border border-slate-100 p-5">
+              <div class="rounded-3xl bg-slate-50 border border-slate-100 p-4 md:p-5">
                 <p class="text-xs font-bold uppercase tracking-widest text-simsek-green mb-2">{step}</p>
                 <h3 class="font-bold text-slate-900 mb-2">{title}</h3>
                 <p class="text-sm text-slate-600 leading-relaxed">{text}</p>
