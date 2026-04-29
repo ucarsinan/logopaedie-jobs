@@ -42,7 +42,7 @@ Und ehrlich: Nicht jeder Mensch funktioniert mit 4 Tagen besser. Manche Therapeu
 
 In der [Praxis für Logopädie Şimşek](/) in der Tonhallenstraße 21 in Duisburg ist die 4-Tage-Woche ein optionales Modell. "Wir glauben: ausgeruhte Therapeuten machen bessere Therapie", sagt Praxisinhaberin Emel Şimşek-Uçar. Viele Therapeutinnen im Team nutzen das Modell bereits.
 
-Dazu kommt: 100 % Fortbildungsübernahme, ein [Gehalt über dem NRW-Durchschnitt](/ratgeber/gehalt-logopaedie-nrw/), und ein [bilinguales Team (Deutsch-Türkisch)](/ratgeber/bilinguale-sprachtherapie/) — einzigartig in Duisburg und im Ruhrgebiet.
+Dazu kommt: 100 % Fortbildungsübernahme, ein [Gehalt über dem NRW-Durchschnitt](/ratgeber/gehalt-logopaedie-nrw/) und ein kollegiales Team mit klarer fachlicher Rückendeckung — mitten in Duisburg.
 
 ## Ist die 4-Tage-Woche die Zukunft der Logopädie?
 

@@ -3,7 +3,8 @@ import { Image } from 'astro:assets';
 import Layout from '../../layouts/Layout.astro';
 import Navigation from '../../components/Navigation.astro';
 import Footer from '../../components/Footer.astro';
-import teamImg from '../../assets/team.jpg';
+import sucheImg from '../../assets/suche.jpg';
+import praxisImg from '../../assets/praxis-bild-2.jpg';
 
 const canonicalURL = 'https://xn--logopdiejobs-kcb.de/jobs/logopaedin-sprachtherapeut-duisburg/';
 const pageTitle = 'Logopädin / Sprachtherapeutin gesucht in Duisburg | Praxis Şimşek';
@@ -116,101 +117,191 @@ const faqSchema = {
 
   <Navigation />
 
-  <main>
-    <section class="bg-slate-950 text-white">
-      <div class="max-w-7xl mx-auto px-6 py-12 md:py-20">
-        <div class="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-16 items-center">
-          <div>
-            <nav class="mb-8 flex flex-wrap items-center gap-2 text-xs text-slate-400" aria-label="Breadcrumb">
-              <a href="/" class="hover:text-white no-underline">Startseite</a>
-              <span>/</span>
-              <a href="/jobs/" class="hover:text-white no-underline">Jobs</a>
-              <span>/</span>
-              <span class="text-slate-200">Logopädin Duisburg</span>
-            </nav>
+  <main class="overflow-hidden">
+    <section class="relative bg-white">
+      <div class="absolute inset-0 overflow-hidden pointer-events-none -z-10">
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-simsek-green/10 blur-[120px] rounded-full"></div>
+        <div class="absolute top-1/3 -left-24 w-80 h-80 bg-simsek-blue/10 blur-[110px] rounded-full"></div>
+      </div>
 
-            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-simsek-green/15 text-simsek-green border border-simsek-green/30 mb-5">
-              Stelle in Duisburg · ab sofort oder nach Absprache
-            </span>
-            <h1 class="text-3xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
-              Logopädin / Sprachtherapeutin gesucht in Duisburg
-            </h1>
-            <p class="text-lg md:text-xl text-slate-300 leading-relaxed max-w-2xl mb-8">
-              Vollzeit oder Teilzeit in der Praxis für Logopädie Şimşek: 4-Tage-Woche möglich, 100 % Fortbildungskosten, strukturierte Einarbeitung und moderne Räume direkt am Duisburger Hauptbahnhof.
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-8 md:pt-14 pb-12 md:pb-16">
+        <nav class="mb-8 flex flex-wrap items-center gap-2 text-xs text-slate-500" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-simsek-blue no-underline">Startseite</a>
+          <span>/</span>
+          <a href="/jobs/" class="hover:text-simsek-blue no-underline">Jobs</a>
+          <span>/</span>
+          <span class="text-slate-800 font-semibold">Logopädin Duisburg</span>
+        </nav>
+
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <div class="space-y-8 animate-fade-in">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm">
+              <span class="w-2 h-2 rounded-full bg-simsek-green animate-pulse"></span>
+              <span class="text-sm font-medium text-slate-600">Stelle in Duisburg · ab sofort oder nach Absprache</span>
+            </div>
+
+            <div>
+              <p class="text-xs font-bold uppercase tracking-widest text-simsek-blue mb-4">Praxis für Logopädie Şimşek</p>
+              <h1 class="text-3xl sm:text-5xl md:text-7xl font-bold text-slate-900 leading-[1.05] tracking-tight uppercase">
+                Logopädin /<br class="hidden sm:block" />
+                <span class="text-transparent bg-clip-text bg-linear-to-r from-simsek-blue to-simsek-green">Sprachtherapeutin</span>
+                gesucht.
+              </h1>
+            </div>
+
+            <p class="text-base sm:text-xl text-slate-600 leading-relaxed max-w-2xl">
+              Vollzeit oder Teilzeit in Duisburg-Mitte: 4-Tage-Woche möglich, 100 % Fortbildungskosten, strukturierte Einarbeitung und moderne Räume direkt am Hauptbahnhof.
             </p>
 
-            <div class="flex flex-col sm:flex-row gap-3 mb-8">
+            <div class="flex flex-col sm:flex-row flex-wrap gap-3 pt-2">
               <a href={whatsappHref} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-linear-to-r from-simsek-green to-simsek-blue text-white text-sm font-bold rounded-full shadow-md shadow-simsek-green/20 hover:shadow-lg hover:shadow-simsek-green/30 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 no-underline">
                 Per WhatsApp bewerben
               </a>
-              <a href={mailHref} class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-white/5 text-white text-sm font-bold rounded-full border border-white/20 hover:bg-white/10 hover:border-white/35 transition-all duration-200 no-underline">
+              <a href={mailHref} class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-transparent text-slate-700 text-sm font-bold rounded-full border-2 border-slate-200 hover:border-simsek-blue hover:bg-linear-to-r hover:from-simsek-green/10 hover:to-simsek-blue/10 hover:text-slate-900 transition-all duration-200 no-underline">
                 Per E-Mail bewerben
               </a>
             </div>
-
-            <dl class="grid sm:grid-cols-3 gap-3 text-sm">
-              <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <dt class="text-slate-400 text-xs uppercase font-bold tracking-widest mb-1">Arbeitszeit</dt>
-                <dd class="font-semibold">20-40 Std./Woche</dd>
-              </div>
-              <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <dt class="text-slate-400 text-xs uppercase font-bold tracking-widest mb-1">Ort</dt>
-                <dd class="font-semibold">47051 Duisburg</dd>
-              </div>
-              <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <dt class="text-slate-400 text-xs uppercase font-bold tracking-widest mb-1">Start</dt>
-                <dd class="font-semibold">Flexibel</dd>
-              </div>
-            </dl>
           </div>
 
           <div class="relative">
-            <div class="rounded-[2rem] overflow-hidden border border-white/10 bg-white/5 shadow-2xl">
-              <Image
-                src={teamImg}
-                alt="Team der Praxis für Logopädie Şimşek in Duisburg"
-                width={900}
-                height={506}
-                class="w-full h-full object-cover"
-                loading="eager"
-              />
-            </div>
-            <div class="mt-4 grid grid-cols-2 gap-3">
-              <div class="rounded-2xl bg-white text-slate-900 p-4">
-                <p class="text-2xl font-bold text-simsek-blue">2 Min.</p>
-                <p class="text-xs font-semibold text-slate-500 uppercase tracking-widest">vom Hbf</p>
+            <div class="relative group">
+              <div class="rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white relative bg-slate-50">
+                <Image
+                  src={sucheImg}
+                  alt="Therapieraum der Praxis für Logopädie Şimşek in Duisburg"
+                  width={900}
+                  height={506}
+                  class="w-full h-auto object-cover transform transition duration-700 group-hover:scale-105"
+                  loading="eager"
+                  fetchpriority="high"
+                />
+                <div class="absolute inset-0 bg-linear-to-t from-slate-950/20 via-transparent to-transparent"></div>
               </div>
-              <div class="rounded-2xl bg-white text-slate-900 p-4">
-                <p class="text-2xl font-bold text-simsek-green">100 %</p>
-                <p class="text-xs font-semibold text-slate-500 uppercase tracking-widest">Fortbildung</p>
+
+              <div class="absolute -bottom-6 -left-2 md:-left-10 bg-white p-4 md:p-6 rounded-3xl shadow-xl border border-slate-100 animate-bounce-slow z-20">
+                <div class="flex items-center gap-4">
+                  <div class="w-12 h-12 rounded-full bg-simsek-green/10 flex items-center justify-center text-simsek-green font-bold text-sm">
+                    4T
+                  </div>
+                  <div>
+                    <p class="text-xs text-slate-500 font-medium tracking-widest uppercase">Modell</p>
+                    <p class="font-bold text-slate-900">4-Tage-Woche</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="absolute -top-4 -right-2 md:-right-6 bg-white p-4 rounded-2xl shadow-lg border border-slate-100 hidden sm:block z-20 animate-bounce-slow" style="animation-delay: 1s;">
+                <div class="flex items-center gap-2 px-2">
+                  <span class="text-simsek-blue font-bold text-sm">100 % Fortbildung</span>
+                  <svg class="w-4 h-4 text-simsek-green" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                  </svg>
+                </div>
               </div>
             </div>
+          </div>
+        </div>
+
+        <dl class="mt-14 grid sm:grid-cols-3 gap-4">
+          {[
+            ['Arbeitszeit', '20-40 Std./Woche', 'Vollzeit oder Teilzeit'],
+            ['Standort', '47051 Duisburg', '2 Minuten vom Hbf'],
+            ['Einstieg', 'Flexibel', 'ab sofort oder später'],
+          ].map(([label, value, note]) => (
+            <div class="p-px rounded-3xl bg-linear-to-br from-simsek-green/40 via-slate-100 to-simsek-blue/40">
+              <div class="h-full rounded-[calc(1.5rem-1px)] bg-white p-5 shadow-sm">
+                <dt class="text-xs uppercase font-bold tracking-widest text-slate-400 mb-2">{label}</dt>
+                <dd class="text-2xl font-bold text-slate-900">{value}</dd>
+                <p class="text-sm text-slate-500 mt-1">{note}</p>
+              </div>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <section class="py-14 md:py-24 bg-slate-50 relative">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-10 md:mb-16 gap-5">
+          <div class="max-w-3xl">
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-simsek-green/10 text-simsek-green border border-simsek-green/20 mb-4">
+              Stellendetails
+            </span>
+            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4 leading-tight">Ein Logopädie-Job, der fachlich klar und menschlich planbar ist</h2>
+            <div class="h-px bg-linear-to-r from-simsek-green via-simsek-blue/40 to-transparent mb-4"></div>
+            <p class="text-lg text-slate-600 leading-relaxed">
+              Du bekommst einen verlässlichen Rahmen, fachlichen Austausch und genug Flexibilität, damit Therapiequalität und Arbeitsleben zusammenpassen.
+            </p>
+          </div>
+          <a href={whatsappHref} target="_blank" rel="noopener noreferrer" class="hidden md:inline-flex items-center justify-center px-6 py-3 bg-white text-slate-700 text-sm font-bold rounded-full border-2 border-slate-200 hover:border-simsek-green hover:text-slate-900 transition-all duration-200 no-underline">
+            Kurze Nachricht senden
+          </a>
+        </div>
+
+        <div class="grid lg:grid-cols-[0.82fr_1.18fr] gap-8 lg:gap-12 items-start">
+          <aside class="lg:sticky lg:top-24 bg-white border border-slate-100 shadow-xl shadow-slate-200/50 rounded-[2rem] p-6 md:p-8">
+            <p class="text-xs font-bold uppercase tracking-widest text-simsek-blue mb-3">Kurzprofil</p>
+            <h3 class="text-2xl font-bold text-slate-900 mb-5">Logopädie-Job in Duisburg-Mitte</h3>
+            <ul class="space-y-3 text-sm text-slate-700">
+              <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>Vollzeit oder Teilzeit ab 20 Stunden</span></li>
+              <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>4-Tage-Woche nach Absprache möglich</span></li>
+              <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>Schwerpunkte: Pädiatrie, Neurologie, Stottern/Poltern</span></li>
+              <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>Klare Einarbeitung und kollegiale Fallbesprechungen</span></li>
+              <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>Berufsanfängerinnen willkommen</span></li>
+            </ul>
+            <a href={whatsappHref} target="_blank" rel="noopener noreferrer" class="mt-6 w-full inline-flex items-center justify-center px-5 py-3 bg-linear-to-r from-simsek-green to-simsek-blue text-white text-sm font-bold rounded-full shadow-md shadow-simsek-green/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 no-underline">
+              Kurze Nachricht senden
+            </a>
+          </aside>
+
+          <div class="grid sm:grid-cols-2 gap-5">
+            {[
+              ['4-Tage-Woche möglich', 'Wir planen Arbeitszeit so, dass sie zu deinem Leben passt.'],
+              ['100 % Fortbildungskosten', 'Spezialisierungen und Fachkurse werden vollständig übernommen.'],
+              ['Zentrale Lage', 'Tonhallenstraße 21, zwei Minuten vom Duisburger Hauptbahnhof.'],
+              ['Kollegiale Fallbesprechungen', 'Du bekommst fachlichen Austausch, klare Abläufe und kurze Wege im Team.'],
+              ['Strukturierte Einarbeitung', 'Berufsanfängerinnen bekommen klare Begleitung.'],
+              ['Moderne Praxisräume', 'Helle Räume, Aufzug und gutes Therapiematerial.'],
+            ].map(([title, text], index) => (
+              <div class="p-px rounded-4xl bg-slate-100 hover:bg-linear-to-br hover:from-simsek-green hover:to-simsek-blue transition-all duration-300 group/card">
+                <div class="h-full p-6 rounded-[1.9rem] bg-white group-hover/card:bg-slate-50 transition-colors duration-200">
+                  <div class:list={[
+                    'w-12 h-12 rounded-2xl bg-slate-50 shadow-sm flex items-center justify-center mb-5 font-bold group-hover/card:scale-110 transition-transform duration-200',
+                    index % 2 === 0 ? 'text-simsek-green' : 'text-simsek-blue',
+                  ]}>
+                    {String(index + 1).padStart(2, '0')}
+                  </div>
+                  <h3 class="text-xl font-bold text-slate-900 mb-3">{title}</h3>
+                  <p class="text-sm text-slate-600 leading-relaxed">{text}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
     </section>
 
-    <section class="py-14 md:py-20 bg-white">
-      <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-[0.75fr_1.25fr] gap-12 items-start">
-        <aside class="lg:sticky lg:top-24 rounded-3xl border border-slate-200 bg-slate-50 p-6">
-          <p class="text-xs font-bold uppercase tracking-widest text-simsek-green mb-3">Kurzprofil</p>
-          <h2 class="text-2xl font-bold text-slate-900 mb-5">Logopädie-Job in Duisburg-Mitte</h2>
-          <ul class="space-y-3 text-sm text-slate-700">
-            <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>Vollzeit oder Teilzeit ab 20 Stunden</span></li>
-            <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>4-Tage-Woche nach Absprache möglich</span></li>
-            <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>Schwerpunkte: Pädiatrie, Neurologie, Stottern/Poltern</span></li>
-            <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>Klare Einarbeitung und kollegiale Fallbesprechungen</span></li>
-            <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>Berufsanfängerinnen willkommen</span></li>
-          </ul>
-          <a href={whatsappHref} target="_blank" rel="noopener noreferrer" class="mt-6 w-full inline-flex items-center justify-center px-5 py-3 bg-linear-to-r from-simsek-green to-simsek-blue text-white text-sm font-bold rounded-full no-underline">
-            Kurze Nachricht senden
-          </a>
-        </aside>
+    <section class="py-14 md:py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div class="relative rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white bg-slate-50">
+          <Image
+            src={praxisImg}
+            alt="Moderner Behandlungsraum der Logopädie Şimşek in Duisburg"
+            width={900}
+            height={506}
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
 
-        <div class="space-y-12">
-          <section>
-            <h2 class="text-3xl font-bold text-slate-900 mb-5 pl-4 border-l-4 border-simsek-green">Was dich erwartet</h2>
-            <div class="space-y-4 text-slate-600 leading-relaxed">
+        <div class="space-y-8">
+          <div>
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-simsek-blue/10 text-simsek-blue border border-simsek-blue/20 mb-4">
+              Alltag in der Praxis
+            </span>
+            <h2 class="text-3xl md:text-5xl font-bold text-slate-900 leading-tight mb-5">Was dich erwartet</h2>
+            <div class="h-px bg-linear-to-r from-simsek-green via-simsek-blue/40 to-transparent mb-6"></div>
+            <div class="space-y-4 text-lg text-slate-600 leading-relaxed">
               <p>
                 Du arbeitest in einer etablierten logopädischen Praxis in der Duisburger Innenstadt. Unsere Patientinnen und Patienten kommen mit Sprachentwicklungsstörungen, neurologischen Störungsbildern, Stottern, Poltern, Dysphagie und weiteren logopädischen Fragestellungen zu uns.
               </p>
@@ -218,61 +309,57 @@ const faqSchema = {
                 Wir suchen keine Person, die schon alles kann. Wichtiger ist, dass du fachlich wachsen möchtest, gerne im Team arbeitest und eine Praxis suchst, in der Therapiequalität und Arbeitsleben zusammenpassen.
               </p>
             </div>
-          </section>
+          </div>
 
-          <section>
-            <h2 class="text-3xl font-bold text-slate-900 mb-5 pl-4 border-l-4 border-simsek-blue">Was wir bieten</h2>
-            <div class="grid sm:grid-cols-2 gap-4">
-              {[
-                ['4-Tage-Woche möglich', 'Wir planen Arbeitszeit so, dass sie zu deinem Leben passt.'],
-                ['100 % Fortbildungskosten', 'Spezialisierungen und Fachkurse werden vollständig übernommen.'],
-                ['Zentrale Lage', 'Tonhallenstraße 21, zwei Minuten vom Duisburger Hauptbahnhof.'],
-                ['Kollegiale Fallbesprechungen', 'Du bekommst fachlichen Austausch, klare Abläufe und kurze Wege im Team.'],
-                ['Strukturierte Einarbeitung', 'Berufsanfängerinnen bekommen klare Begleitung.'],
-                ['Moderne Praxisräume', 'Helle Räume, Aufzug und gutes Therapiematerial.'],
-              ].map(([title, text]) => (
-                <div class="rounded-2xl border border-slate-100 bg-slate-50 p-5">
-                  <h3 class="font-bold text-slate-900 mb-2">{title}</h3>
-                  <p class="text-sm text-slate-600 leading-relaxed">{text}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section>
-            <h2 class="text-3xl font-bold text-slate-900 mb-5 pl-4 border-l-4 border-simsek-green">Wen wir suchen</h2>
-            <div class="space-y-4 text-slate-600 leading-relaxed">
-              <p>
-                Du hast eine staatliche Anerkennung als Logopädin, Logopäde oder Sprachtherapeutin bzw. Sprachtherapeut. Berufsanfängerinnen sind ausdrücklich willkommen, genauso Kolleginnen mit Berufserfahrung oder Spezialisierung.
-              </p>
-              <p>
-                Besonders gut passt du zu uns, wenn du Freude an Pädiatrie, Neurologie oder Stottertherapie hast und dich fachlich weiterentwickeln möchtest.
-              </p>
-            </div>
-          </section>
-
-          <section class="rounded-3xl bg-slate-950 text-white p-6 md:p-8">
-            <p class="text-xs font-bold uppercase tracking-widest text-simsek-green mb-3">Bewerbung</p>
-            <h2 class="text-2xl md:text-3xl font-bold mb-4">Erster Kontakt ohne Anschreiben</h2>
-            <p class="text-slate-300 leading-relaxed mb-6">
-              Schreib uns kurz, wer du bist, ob du Vollzeit oder Teilzeit suchst und ab wann du grundsätzlich starten könntest. Wir melden uns persönlich zurück.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-3">
-              <a href={whatsappHref} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-6 py-3 bg-linear-to-r from-simsek-green to-simsek-blue text-white text-sm font-bold rounded-full no-underline">
-                WhatsApp an Emel Şimşek-Uçar
-              </a>
-              <a href={mailHref} class="inline-flex items-center justify-center px-6 py-3 border border-white/20 text-white text-sm font-bold rounded-full no-underline hover:bg-white/10">
-                E-Mail schreiben
-              </a>
-            </div>
-          </section>
+          <div class="grid sm:grid-cols-2 gap-4">
+            {[
+              ['01', 'Ankommen', 'Klare Einarbeitung, feste Ansprechpersonen und kurze Wege.'],
+              ['02', 'Therapieren', 'Schwerpunkte in Pädiatrie, Neurologie sowie Stottern und Poltern.'],
+              ['03', 'Austauschen', 'Regelmäßige Fallbesprechungen und fachliche Rückendeckung.'],
+              ['04', 'Wachsen', 'Fortbildungen werden vollständig übernommen.'],
+            ].map(([step, title, text]) => (
+              <div class="rounded-3xl bg-slate-50 border border-slate-100 p-5">
+                <p class="text-xs font-bold uppercase tracking-widest text-simsek-green mb-2">{step}</p>
+                <h3 class="font-bold text-slate-900 mb-2">{title}</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">{text}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="py-14 md:py-20 bg-slate-50">
+    <section class="py-8 md:py-14 bg-slate-900 text-white rounded-3xl md:rounded-[3rem] mx-4 md:mx-6 my-6 md:my-10 overflow-hidden relative">
+      <div class="absolute -top-24 -right-24 w-80 h-80 bg-simsek-green/20 blur-[100px] rounded-full"></div>
+      <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-simsek-blue/20 blur-[100px] rounded-full"></div>
+      <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-simsek-green/20 text-simsek-green border border-simsek-green/30 mb-4">
+          Bewerbung
+        </span>
+        <h2 class="text-3xl md:text-5xl font-bold mb-4 leading-tight">Erster Kontakt ohne Anschreiben</h2>
+        <div class="h-px bg-linear-to-r from-transparent via-simsek-green/40 to-transparent mb-5"></div>
+        <p class="text-slate-300 leading-relaxed max-w-2xl mx-auto mb-7">
+          Schreib uns kurz, wer du bist, ob du Vollzeit oder Teilzeit suchst und ab wann du grundsätzlich starten könntest. Wir melden uns persönlich zurück.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <a href={whatsappHref} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-8 py-4 bg-linear-to-r from-simsek-green to-simsek-blue text-white text-sm font-bold rounded-full shadow-md shadow-simsek-green/30 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 no-underline">
+            WhatsApp an Emel Şimşek-Uçar
+          </a>
+          <a href={mailHref} class="inline-flex items-center justify-center px-8 py-4 border-2 border-white/30 text-white text-sm font-bold rounded-full no-underline hover:border-simsek-blue/60 hover:bg-white/10 transition-all duration-200">
+            E-Mail schreiben
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-14 md:py-24 bg-slate-50">
       <div class="max-w-3xl mx-auto px-6">
-        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 text-center mb-8">Häufige Fragen zur Stelle</h2>
+        <div class="text-center mb-8">
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-simsek-green/10 text-simsek-green border border-simsek-green/20 mb-4">
+            Fragen
+          </span>
+          <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Häufige Fragen zur Stelle</h2>
+        </div>
         <div class="space-y-4">
           {[
             ['Kann ich in Teilzeit arbeiten?', 'Ja. Wir suchen Vollzeit und Teilzeit, in der Regel ab etwa 20 Stunden pro Woche.'],
@@ -280,7 +367,7 @@ const faqSchema = {
             ['Welche Fachbereiche sind wichtig?', 'Pädiatrie, Neurologie und Stottertherapie sind wichtige Schwerpunkte. Du musst aber nicht in allen Bereichen schon spezialisiert sein.'],
             ['Brauche ich ein Anschreiben?', 'Für den ersten Kontakt nicht. Eine kurze WhatsApp oder E-Mail reicht.'],
           ].map(([q, a]) => (
-            <details class="group rounded-2xl bg-white border border-slate-100 overflow-hidden">
+            <details class="group rounded-2xl bg-white border border-slate-100 overflow-hidden shadow-sm">
               <summary class="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer list-none font-semibold text-slate-900">
                 {q}
                 <span class="text-simsek-green group-open:rotate-45 transition-transform duration-200">+</span>
@@ -295,3 +382,23 @@ const faqSchema = {
 
   <Footer />
 </Layout>
+
+<style>
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out forwards;
+  }
+
+  @keyframes bounce-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  .animate-bounce-slow {
+    animation: bounce-slow 5s infinite ease-in-out;
+  }
+</style>

@@ -29,7 +29,7 @@ const pageLinkClass = (active: boolean) => [
   <!-- Accent stripe -->
   <div class="absolute top-0 left-0 right-0 h-[2px] bg-linear-to-r from-simsek-green via-simsek-blue to-simsek-green"></div>
 
-  <div class="max-w-7xl mx-auto px-6 h-[68px] flex items-center justify-between">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 h-[68px] flex items-center justify-between gap-3">
 
     <!-- Logo -->
     <a href="/" class="block shrink-0 hover:opacity-85 transition-opacity duration-200" aria-label="Zur Startseite">
@@ -37,7 +37,7 @@ const pageLinkClass = (active: boolean) => [
     </a>
 
     <!-- Desktop Nav -->
-    <div class="hidden md:flex items-center gap-1">
+    <div class="hidden xl:flex items-center gap-1">
 
       <!-- Left zone: anchor links always reserve their layout space.
            On sub-pages they become invisible, Home link overlays them absolutely. -->
@@ -77,7 +77,7 @@ const pageLinkClass = (active: boolean) => [
     </div>
 
     <!-- Desktop Right -->
-    <div class="hidden md:flex items-center gap-4">
+    <div class="hidden xl:flex items-center gap-4">
       <a
         href="https://logopaedie-simsek.de/karriere/"
         target="_blank"
@@ -98,7 +98,7 @@ const pageLinkClass = (active: boolean) => [
     </div>
 
     <!-- Mobile: CTA + Hamburger -->
-    <div class="flex md:hidden items-center gap-2.5">
+    <div class="flex xl:hidden items-center gap-2.5">
       <a
         href="/jobs/logopaedin-sprachtherapeut-duisburg/"
         class="inline-flex items-center gap-1 px-4 py-2 bg-linear-to-r from-simsek-green to-simsek-blue text-white text-[13px] font-bold rounded-full shadow-sm no-underline"
@@ -125,7 +125,7 @@ const pageLinkClass = (active: boolean) => [
   </div>
 
   <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden md:hidden border-t border-slate-100 bg-white/98">
+  <div id="mobile-menu" class="hidden xl:hidden border-t border-slate-100 bg-white/98">
     <div class="max-w-7xl mx-auto px-4 py-3 space-y-0.5">
 
       {!isHome && (
@@ -186,7 +186,7 @@ const pageLinkClass = (active: boolean) => [
   const iconOpen = document.getElementById('icon-open');
   const iconClose = document.getElementById('icon-close');
 
-  btn.addEventListener('click', () => {
+  btn?.addEventListener('click', () => {
     const isOpen = !menu.classList.contains('hidden');
     menu.classList.toggle('hidden', isOpen);
     iconOpen.classList.toggle('hidden', !isOpen);
