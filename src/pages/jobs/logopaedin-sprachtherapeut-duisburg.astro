@@ -133,18 +133,18 @@ const faqSchema = {
           <span class="text-slate-800 font-semibold">Logopädin Duisburg</span>
         </nav>
 
-        <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          <div class="space-y-8 animate-fade-in">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm">
+        <div class="grid xl:grid-cols-[minmax(0,1.08fr)_minmax(360px,0.82fr)] gap-10 xl:gap-14 items-center">
+          <div class="min-w-0 space-y-7 animate-fade-in relative z-10">
+            <div class="inline-flex max-w-full items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm">
               <span class="w-2 h-2 rounded-full bg-simsek-green animate-pulse"></span>
-              <span class="text-sm font-medium text-slate-600">Stelle in Duisburg · ab sofort oder nach Absprache</span>
+              <span class="text-sm font-medium text-slate-600 truncate">Stelle in Duisburg · ab sofort oder nach Absprache</span>
             </div>
 
             <div>
               <p class="text-xs font-bold uppercase tracking-widest text-simsek-blue mb-4">Praxis für Logopädie Şimşek</p>
-              <h1 class="text-3xl sm:text-5xl md:text-7xl font-bold text-slate-900 leading-[1.05] tracking-tight uppercase">
+              <h1 class="max-w-4xl text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-[1.03] tracking-tight uppercase">
                 Logopädin /<br class="hidden sm:block" />
-                <span class="text-transparent bg-clip-text bg-linear-to-r from-simsek-blue to-simsek-green">Sprachtherapeutin</span>
+                <span class="text-transparent bg-clip-text bg-linear-to-r from-simsek-blue to-simsek-green">Sprachtherapeutin</span><br />
                 gesucht.
               </h1>
             </div>
@@ -163,9 +163,9 @@ const faqSchema = {
             </div>
           </div>
 
-          <div class="relative">
+          <div class="min-w-0 relative xl:justify-self-end">
             <div class="relative group">
-              <div class="rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white relative bg-slate-50">
+              <div class="rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white relative bg-slate-50 max-w-[620px] xl:max-w-[520px] mx-auto xl:mr-0">
                 <Image
                   src={sucheImg}
                   alt="Therapieraum der Praxis für Logopädie Şimşek in Duisburg"
@@ -178,7 +178,7 @@ const faqSchema = {
                 <div class="absolute inset-0 bg-linear-to-t from-slate-950/20 via-transparent to-transparent"></div>
               </div>
 
-              <div class="absolute -bottom-6 -left-2 md:-left-10 bg-white p-4 md:p-6 rounded-3xl shadow-xl border border-slate-100 animate-bounce-slow z-20">
+              <div class="absolute -bottom-6 left-2 md:-left-4 xl:-left-10 bg-white p-4 md:p-6 rounded-3xl shadow-xl border border-slate-100 animate-bounce-slow z-20">
                 <div class="flex items-center gap-4">
                   <div class="w-12 h-12 rounded-full bg-simsek-green/10 flex items-center justify-center text-simsek-green font-bold text-sm">
                     4T
