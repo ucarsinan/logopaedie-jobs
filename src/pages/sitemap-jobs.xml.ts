@@ -11,13 +11,21 @@ const staticJobs = [
 ];
 
 export const GET: APIRoute = async ({ site }) => {
-  const supabase = getAdminClient();
-  const { data: jobs } = await supabase
-    .from('job_postings')
-    .select('slug, created_at, valid_through')
-    .eq('status', 'published');
+  let jobs: Array<{ slug: string; created_at: string }> = [];
 
-  const dynamicJobs = (jobs ?? []).map((j) => ({
+  try {
+    const supabase = getAdminClient();
+    const { data } = await supabase
+      .from('job_postings')
+      .select('slug, created_at, valid_through')
+      .eq('status', 'published');
+
+    jobs = data ?? [];
+  } catch {
+    jobs = [];
+  }
+
+  const dynamicJobs = jobs.map((j) => ({
     slug: j.slug,
     lastmod: new Date(j.created_at).toISOString(),
   }));
