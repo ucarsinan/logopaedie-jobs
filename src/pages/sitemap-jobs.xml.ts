@@ -6,7 +6,7 @@ export const prerender = false;
 const staticJobs = [
   {
     slug: 'logopaedin-sprachtherapeut-duisburg',
-    lastmod: '2026-04-29T00:00:00+02:00',
+    lastmod: '2026-04-30T09:20:00+02:00',
   },
 ];
 
