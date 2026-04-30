@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+
+const destination = '/ratgeber/gehalt-logopaedie-nrw/';
+---
+
+<Layout
+  title="Gehalt Logopädie NRW 2026 | Weiterleitung"
+  description="Weiterleitung zum Ratgeber über Logopädie-Gehalt in NRW 2026."
+  canonicalUrl={destination}
+  robots="noindex, follow"
+>
+  <meta slot="head" http-equiv="refresh" content={`0; url=${destination}`} />
+  <script slot="head" is:inline define:vars={{ destination }}>
+    window.location.replace(destination);
+  </script>
+
+  <Navigation />
+  <main class="min-h-[60vh] flex items-center justify-center px-6 py-20">
+    <section class="max-w-xl text-center">
+      <p class="text-xs font-bold uppercase tracking-widest text-simsek-green mb-4">Weiterleitung</p>
+      <h1 class="text-3xl md:text-5xl font-bold text-slate-900 mb-5">Gehalt Logopädie NRW</h1>
+      <p class="text-slate-600 leading-relaxed mb-8">
+        Die Gehaltsseite findest du im Ratgeber. Falls du nicht automatisch weitergeleitet wirst, öffne den Artikel direkt.
+      </p>
+      <a
+        href={destination}
+        class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-linear-to-r from-simsek-green to-simsek-blue text-white font-bold no-underline shadow-lg shadow-simsek-green/20"
+      >
+        Zum Gehaltsartikel
+      </a>
+    </section>
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,20 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const destination = '/ratgeber/bilinguale-sprachtherapie/';
+---
+
+<Layout
+  title="Sprachtherapie Ratgeber | Weiterleitung"
+  description="Weiterleitung zum Ratgeber über Sprachtherapie."
+  canonicalUrl={destination}
+  robots="noindex, follow"
+>
+  <meta slot="head" http-equiv="refresh" content={`0; url=${destination}`} />
+  <script slot="head" is:inline define:vars={{ destination }}>
+    window.location.replace(destination);
+  </script>
+  <main class="min-h-screen flex items-center justify-center px-6">
+    <a href={destination} class="text-simsek-blue font-bold underline underline-offset-4">Zum Ratgeber</a>
+  </main>
+</Layout>
