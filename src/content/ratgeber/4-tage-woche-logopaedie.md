@@ -2,6 +2,10 @@
 title: "4-Tage-Woche in der Logopädie — Erfahrungen & Modelle 2026"
 description: "Funktioniert die 4-Tage-Woche als Logopädin? Praxis Şimşek in Duisburg macht es vor: Erfahrungen, Arbeitszeitmodelle und warum ausgeruhte Therapeuten bessere Therapie machen."
 kategorie: "Arbeitszeit"
+topic: "gehalt-arbeitsmodelle"
+intent: "arbeitszeit"
+featured: true
+priority: 20
 pubDate: 2026-04-14
 author: "Redaktion"
 draft: false
@@ -42,7 +46,7 @@ Und ehrlich: Nicht jeder Mensch funktioniert mit 4 Tagen besser. Manche Therapeu
 
 In der [Praxis für Logopädie Şimşek](/) in der Tonhallenstraße 21 in Duisburg ist die 4-Tage-Woche ein optionales Modell. "Wir glauben: ausgeruhte Therapeuten machen bessere Therapie", sagt Praxisinhaberin Emel Şimşek-Uçar. Viele Therapeutinnen im Team nutzen das Modell bereits.
 
-Dazu kommt: 100 % Fortbildungsübernahme, ein [Gehalt über dem NRW-Durchschnitt](/ratgeber/gehalt-logopaedie-nrw/) und ein kollegiales Team mit klarer fachlicher Rückendeckung — mitten in Duisburg.
+Dazu kommt: 100 % Fortbildungsübernahme, ein [Gehalt über dem NRW-Durchschnitt](/berufshandbuch/gehalt-logopaedie-nrw/) und ein kollegiales Team mit klarer fachlicher Rückendeckung — mitten in Duisburg.
 
 ## Ist die 4-Tage-Woche die Zukunft der Logopädie?
 

@@ -1,0 +1,45 @@
+---
+interface Props {
+  kicker: string;
+  title: string;
+  description: string;
+  href: string;
+  label: string;
+  variant?: 'dark' | 'light';
+}
+
+const { kicker, title, description, href, label, variant = 'light' } = Astro.props;
+const isDark = variant === 'dark';
+---
+
+<aside class={[
+  'rounded-lg border p-5 md:p-6',
+  isDark
+    ? 'border-slate-800 bg-slate-950 text-white'
+    : 'border-slate-200 bg-white text-slate-950 shadow-sm shadow-slate-200/60',
+].join(' ')}>
+  <p class={[
+    'text-[10px] font-bold uppercase tracking-widest',
+    isDark ? 'text-simsek-green' : 'text-simsek-blue',
+  ].join(' ')}>
+    {kicker}
+  </p>
+  <h3 class="mt-3 text-xl font-bold leading-tight">{title}</h3>
+  <p class={[
+    'mt-3 text-sm leading-6',
+    isDark ? 'text-slate-300' : 'text-slate-600',
+  ].join(' ')}>
+    {description}
+  </p>
+  <a href={href} class={[
+    'mt-5 inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-bold no-underline transition-all duration-150',
+    isDark
+      ? 'bg-white text-slate-950 hover:bg-slate-100'
+      : 'bg-linear-to-r from-simsek-green to-simsek-blue text-white shadow-md shadow-simsek-green/20 hover:shadow-lg',
+  ].join(' ')}>
+    {label}
+    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+    </svg>
+  </a>
+</aside>

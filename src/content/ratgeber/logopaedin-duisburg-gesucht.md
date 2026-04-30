@@ -2,6 +2,10 @@
 title: "Logopädin in Duisburg gesucht: Worauf Praxen wirklich achten"
 description: "Was zählt bei einer Bewerbung als Logopädin in Duisburg? Ausbildung, Spezialisierung, Teamfit, Arbeitszeit und wie du passende Stellen erkennst."
 kategorie: "Duisburg / NRW"
+topic: "karriere-bewerbung"
+intent: "bewerbung"
+featured: true
+priority: 40
 pubDate: 2026-04-29
 author: "Redaktion"
 draft: false

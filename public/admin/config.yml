@@ -20,20 +20,39 @@ publish_mode: editorial_workflow
 
 collections:
   - name: ratgeber
-    label: Ratgeber-Artikel
+    label: Berufshandbuch-Artikel
     label_singular: Artikel
     folder: src/content/ratgeber
     create: true
     slug: "{{slug}}"
     extension: md
     format: frontmatter
-    preview_path: ratgeber/{{slug}}
+    preview_path: berufshandbuch/{{slug}}
     fields:
       - { label: "Titel", name: "title", widget: "string" }
       - { label: "Kurzbeschreibung (für SEO & Vorschau)", name: "description", widget: "text" }
       - { label: "Kategorie", name: "kategorie", widget: "select", options:
           ["Gehalt", "Arbeitszeit", "Karriere", "Fachwissen", "Duisburg / NRW", "Sonstiges"],
           default: "Karriere" }
+      - { label: "Themenwelt", name: "topic", widget: "select", options:
+          [
+            { label: "Karriere & Bewerbung", value: "karriere-bewerbung" },
+            { label: "Gehalt & Arbeitsmodelle", value: "gehalt-arbeitsmodelle" },
+            { label: "Fachwissen & Spezialisierung", value: "fachwissen-spezialisierung" },
+            { label: "Praxisalltag & Region", value: "praxisalltag-region" }
+          ],
+          default: "karriere-bewerbung" }
+      - { label: "Nutzerabsicht", name: "intent", widget: "select", options:
+          [
+            { label: "Gehalt", value: "gehalt" },
+            { label: "Bewerbung", value: "bewerbung" },
+            { label: "Arbeitszeit", value: "arbeitszeit" },
+            { label: "Fachwissen", value: "fachwissen" },
+            { label: "Praxisalltag", value: "praxisalltag" }
+          ],
+          default: "bewerbung" }
+      - { label: "Auf Hub hervorheben", name: "featured", widget: "boolean", default: false, required: false }
+      - { label: "Sortierung im Hub", name: "priority", widget: "number", default: 100, value_type: "int", min: 0 }
       - { label: "Veröffentlicht am", name: "pubDate", widget: "datetime", date_format: "DD.MM.YYYY", time_format: false }
       - { label: "Autor/in", name: "author", widget: "string", default: "Redaktion" }
       - { label: "Titelbild", name: "heroImage", widget: "image", required: false }

@@ -2,6 +2,10 @@
 title: "Stottertherapie als Spezialisierung — Weiterbildungen, Gehalt, Perspektive"
 description: "Stottern und Poltern sind anspruchsvolle Störungsbilder, die viele Logopädinnen scheuen. Wer sich spezialisiert, ist gefragter — und verdient etwas mehr. Ein Überblick über Weiterbildungen, Methoden und Berufsperspektiven."
 kategorie: "Fachwissen"
+topic: "fachwissen-spezialisierung"
+intent: "fachwissen"
+featured: true
+priority: 10
 pubDate: 2026-04-14
 author: "Redaktion"
 draft: false

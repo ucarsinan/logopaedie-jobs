@@ -2,6 +2,10 @@
 title: "Logopädie Ausbildung Quereinsteiger NRW — Wege 2026"
 description: "Logopädie-Ausbildung als Quereinsteiger in NRW: Welche Wege möglich sind, warum direkte Behandlung ohne staatliche Anerkennung nicht geht und was danach kommt."
 kategorie: "Karriere"
+topic: "karriere-bewerbung"
+intent: "bewerbung"
+featured: true
+priority: 30
 pubDate: 2026-04-14
 updatedDate: 2026-04-30
 author: "Redaktion"
@@ -101,7 +105,7 @@ Für Erzieherinnen oder Pädagoginnen, die sich neu orientieren wollen: Der Weg 
 | Germanistik, Pädagogik oder Sonderpädagogik studiert | Master-/Aufbauweg prüfen | meist 4 bis 6 Semester |
 | Pflege oder neurologische Vorerfahrung | Ausbildung oder Bachelor, später Spezialisierung Dysphagie/Neurologie | meist 3 Jahre bis 8 Semester |
 
-Wenn dein Ziel eine freie Praxis ist, zählt später vor allem, dass du sicher therapeutisch arbeiten kannst. Gehalt und Arbeitsmodell hängen dann stärker von Erfahrung, Spezialisierung und Praxisstruktur ab als vom genauen Einstiegsweg. Für die Einordnung nach der Ausbildung hilft unser Artikel zum [Logopädie-Gehalt in NRW](/ratgeber/gehalt-logopaedie-nrw/).
+Wenn dein Ziel eine freie Praxis ist, zählt später vor allem, dass du sicher therapeutisch arbeiten kannst. Gehalt und Arbeitsmodell hängen dann stärker von Erfahrung, Spezialisierung und Praxisstruktur ab als vom genauen Einstiegsweg. Für die Einordnung nach der Ausbildung hilft unser Artikel zum [Logopädie-Gehalt in NRW](/berufshandbuch/gehalt-logopaedie-nrw/).
 
 ## Bewerbungsfristen und praktische Hinweise
 
@@ -117,6 +121,6 @@ Worauf du bei der Schulwahl achten solltest:
 
 Der Einstieg in NRW ist gut — die Nachfrage nach Logopädinnen in Praxen, Kliniken und Frühförderstellen übersteigt seit Jahren das Angebot. Besonders in der Ruhrgebietsregion (Duisburg, Essen, Bochum, Dortmund) sind Stellen oft sofort besetzbar.
 
-Wenn du dir noch unsicher bist, welches Arbeitszeitmodell zu deiner Lebenssituation passt, schau dir den Artikel zur [4-Tage-Woche in der Logopädie](/ratgeber/4-tage-woche-logopaedie/) an. Oder starte direkt mit dem [Gehaltsrechner](/gehaltsrechner/), um zu sehen, was du in deiner Region und deinem Setting verdienen kannst.
+Wenn du dir noch unsicher bist, welches Arbeitszeitmodell zu deiner Lebenssituation passt, schau dir den Artikel zur [4-Tage-Woche in der Logopädie](/berufshandbuch/4-tage-woche-logopaedie/) an. Oder starte direkt mit dem [Gehaltsrechner](/gehaltsrechner/), um zu sehen, was du in deiner Region und deinem Setting verdienen kannst.
 
 Wenn du die Ausbildung abgeschlossen hast oder bereits staatlich anerkannt bist, findest du hier unsere aktuelle [Stelle für Logopädinnen und Sprachtherapeutinnen in Duisburg](/jobs/logopaedin-sprachtherapeut-duisburg/).

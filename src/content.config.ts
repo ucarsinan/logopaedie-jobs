@@ -11,6 +11,15 @@ const ratgeber = defineCollection({
     kategorie: z
       .enum(['Gehalt', 'Arbeitszeit', 'Karriere', 'Fachwissen', 'Duisburg / NRW', 'Sonstiges'])
       .default('Karriere'),
+    topic: z.enum([
+      'karriere-bewerbung',
+      'gehalt-arbeitsmodelle',
+      'fachwissen-spezialisierung',
+      'praxisalltag-region',
+    ]),
+    intent: z.enum(['gehalt', 'bewerbung', 'arbeitszeit', 'fachwissen', 'praxisalltag']),
+    featured: z.boolean().default(false),
+    priority: z.number().int().min(0).default(100),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     author: z.string().default('Redaktion'),

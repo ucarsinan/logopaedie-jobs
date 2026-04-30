@@ -11,63 +11,78 @@
       "permanent": true
     },
     {
+      "source": "/ratgeber",
+      "destination": "/berufshandbuch/",
+      "permanent": true
+    },
+    {
+      "source": "/ratgeber/",
+      "destination": "/berufshandbuch/",
+      "permanent": true
+    },
+    {
+      "source": "/ratgeber/:slug*",
+      "destination": "/berufshandbuch/:slug*",
+      "permanent": true
+    },
+    {
       "source": "/gehalt",
-      "destination": "/ratgeber/gehalt-logopaedie-nrw/",
+      "destination": "/berufshandbuch/gehalt-logopaedie-nrw/",
       "permanent": true
     },
     {
       "source": "/gehalt/",
-      "destination": "/ratgeber/gehalt-logopaedie-nrw/",
+      "destination": "/berufshandbuch/gehalt-logopaedie-nrw/",
       "permanent": true
     },
     {
-      "source": "/ratgeber/gehalt",
-      "destination": "/ratgeber/gehalt-logopaedie-nrw/",
+      "source": "/berufshandbuch/gehalt",
+      "destination": "/berufshandbuch/gehalt-logopaedie-nrw/",
       "permanent": true
     },
     {
-      "source": "/ratgeber/gehalt/",
-      "destination": "/ratgeber/gehalt-logopaedie-nrw/",
+      "source": "/berufshandbuch/gehalt/",
+      "destination": "/berufshandbuch/gehalt-logopaedie-nrw/",
       "permanent": true
     },
     {
       "source": "/4-tage-woche",
-      "destination": "/ratgeber/4-tage-woche-logopaedie/",
+      "destination": "/berufshandbuch/4-tage-woche-logopaedie/",
       "permanent": true
     },
     {
       "source": "/4-tage-woche/",
-      "destination": "/ratgeber/4-tage-woche-logopaedie/",
+      "destination": "/berufshandbuch/4-tage-woche-logopaedie/",
       "permanent": true
     },
     {
-      "source": "/ratgeber/4-tage-woche",
-      "destination": "/ratgeber/4-tage-woche-logopaedie/",
+      "source": "/berufshandbuch/4-tage-woche",
+      "destination": "/berufshandbuch/4-tage-woche-logopaedie/",
       "permanent": true
     },
     {
-      "source": "/ratgeber/4-tage-woche/",
-      "destination": "/ratgeber/4-tage-woche-logopaedie/",
+      "source": "/berufshandbuch/4-tage-woche/",
+      "destination": "/berufshandbuch/4-tage-woche-logopaedie/",
       "permanent": true
     },
     {
       "source": "/bilingual",
-      "destination": "/ratgeber/bilinguale-sprachtherapie/",
+      "destination": "/berufshandbuch/bilinguale-sprachtherapie/",
       "permanent": true
     },
     {
       "source": "/bilingual/",
-      "destination": "/ratgeber/bilinguale-sprachtherapie/",
+      "destination": "/berufshandbuch/bilinguale-sprachtherapie/",
       "permanent": true
     },
     {
-      "source": "/ratgeber/bilingual",
-      "destination": "/ratgeber/bilinguale-sprachtherapie/",
+      "source": "/berufshandbuch/bilingual",
+      "destination": "/berufshandbuch/bilinguale-sprachtherapie/",
       "permanent": true
     },
     {
-      "source": "/ratgeber/bilingual/",
-      "destination": "/ratgeber/bilinguale-sprachtherapie/",
+      "source": "/berufshandbuch/bilingual/",
+      "destination": "/berufshandbuch/bilinguale-sprachtherapie/",
       "permanent": true
     }
   ],

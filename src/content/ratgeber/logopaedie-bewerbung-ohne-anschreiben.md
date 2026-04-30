@@ -2,6 +2,10 @@
 title: "Logopädie-Bewerbung ohne Anschreiben: Geht das?"
 description: "Viele Praxen machen Bewerbungen einfacher. Was du als Logopädin ohne klassisches Anschreiben schicken solltest und wann Unterlagen trotzdem wichtig sind."
 kategorie: "Karriere"
+topic: "karriere-bewerbung"
+intent: "bewerbung"
+featured: false
+priority: 20
 pubDate: 2026-04-29
 author: "Redaktion"
 draft: false

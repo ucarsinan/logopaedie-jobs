@@ -1,0 +1,91 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+type HandbuchArticle = CollectionEntry<'ratgeber'>;
+
+interface Topic {
+  id: HandbuchArticle['data']['topic'];
+  title: string;
+  kicker: string;
+  description: string;
+  href: string;
+  accent: 'green' | 'blue' | 'amber' | 'violet';
+}
+
+interface Props {
+  topic: Topic;
+  articles: HandbuchArticle[];
+}
+
+const { topic, articles } = Astro.props;
+const featured = articles.filter((article) => article.data.featured).slice(0, 3);
+const fallback = articles.slice(0, 3);
+const links = featured.length > 0 ? featured : fallback;
+
+const accentClasses = {
+  green: {
+    border: 'border-simsek-green/30',
+    text: 'text-simsek-green',
+    bg: 'bg-simsek-green/10',
+    dot: 'bg-simsek-green',
+  },
+  blue: {
+    border: 'border-simsek-blue/30',
+    text: 'text-simsek-blue',
+    bg: 'bg-simsek-blue/10',
+    dot: 'bg-simsek-blue',
+  },
+  amber: {
+    border: 'border-amber-300',
+    text: 'text-amber-700',
+    bg: 'bg-amber-50',
+    dot: 'bg-amber-500',
+  },
+  violet: {
+    border: 'border-violet-300',
+    text: 'text-violet-700',
+    bg: 'bg-violet-50',
+    dot: 'bg-violet-500',
+  },
+}[topic.accent];
+---
+
+<article id={topic.href.replace('#', '')} class={`group border ${accentClasses.border} bg-white rounded-lg p-5 md:p-6 shadow-sm shadow-slate-200/60 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md`}>
+  <div class="flex items-start justify-between gap-4 mb-5">
+    <div>
+      <p class={`inline-flex items-center gap-2 rounded-full ${accentClasses.bg} ${accentClasses.text} px-3 py-1 text-[10px] font-bold uppercase tracking-widest`}>
+        <span class={`h-1.5 w-1.5 rounded-full ${accentClasses.dot}`}></span>
+        {topic.kicker}
+      </p>
+      <h2 class="mt-4 text-2xl font-bold leading-tight text-slate-950">{topic.title}</h2>
+    </div>
+    <span class="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-bold text-slate-500">
+      {articles.length}
+    </span>
+  </div>
+
+  <p class="text-sm leading-6 text-slate-600">{topic.description}</p>
+
+  {links.length > 0 && (
+    <ul class="mt-6 space-y-3 list-none p-0">
+      {links.map((article) => (
+        <li>
+          <a href={`/berufshandbuch/${article.id}/`} class="flex items-start gap-3 rounded-lg border border-slate-100 bg-slate-50/80 p-3 no-underline transition-colors duration-150 hover:border-slate-200 hover:bg-white">
+            <span class={`mt-1.5 h-2 w-2 shrink-0 rounded-full ${accentClasses.dot}`}></span>
+            <span>
+              <span class="block text-sm font-bold leading-snug text-slate-900">{article.data.title}</span>
+              <span class="mt-1 block text-xs leading-5 text-slate-500">{article.data.description}</span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  )}
+
+  <a href={topic.href} class={`mt-6 inline-flex items-center gap-2 text-sm font-bold ${accentClasses.text} no-underline`}>
+    Alle Artikel in dieser Themenwelt
+    <svg class="h-4 w-4 transition-transform duration-150 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+    </svg>
+  </a>
+</article>

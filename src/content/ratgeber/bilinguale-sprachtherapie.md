@@ -2,6 +2,10 @@
 title: "Bilinguale Sprachtherapie: Wie Deutsch-Türkisch in der Praxis funktioniert"
 description: "Bilinguale Kinder brauchen Therapeutinnen, die beide Sprachen einschätzen können. Was das in der Praxis bedeutet, welche Diagnostik nötig ist und warum bilinguale Kompetenz im Ruhrgebiet besonders gefragt ist."
 kategorie: "Fachwissen"
+topic: "fachwissen-spezialisierung"
+intent: "fachwissen"
+featured: true
+priority: 20
 pubDate: 2026-04-14
 author: "Redaktion"
 draft: false
@@ -88,4 +92,4 @@ Wenn du selbst zweisprachig bist — ob Deutsch-Türkisch oder eine andere Kombi
 
 > "Als bilinguale Praxis behandeln wir unsere Patienten auf Deutsch und Türkisch — das macht uns zu einem echten Teil dieser Stadt."
 
-Die Praxis bietet ein [Gehalt über dem NRW-Durchschnitt](/ratgeber/gehalt-logopaedie-nrw/), eine optionale [4-Tage-Woche](/ratgeber/4-tage-woche-logopaedie/) und 100 % Fortbildungsübernahme. Weitere Informationen zum Arbeitsalltag in Duisburg gibt es im Artikel [Arbeiten in der Duisburger Logopädie](/ratgeber/arbeiten-duisburg/).
+Die Praxis bietet ein [Gehalt über dem NRW-Durchschnitt](/berufshandbuch/gehalt-logopaedie-nrw/), eine optionale [4-Tage-Woche](/berufshandbuch/4-tage-woche-logopaedie/) und 100 % Fortbildungsübernahme. Weitere Informationen zum Arbeitsalltag in Duisburg gibt es im Artikel [Arbeiten in der Duisburger Logopädie](/berufshandbuch/arbeiten-duisburg/).

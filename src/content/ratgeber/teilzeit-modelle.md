@@ -2,6 +2,10 @@
 title: "Teilzeit in der Logopädie: Welches Modell passt zu welcher Lebensphase?"
 description: "30-Stunden-Woche, 4-Tage-Woche oder echte Teilzeit mit 20 Stunden: Was bedeuten diese Modelle in der Praxis — finanziell, organisatorisch und für die Patientenkontinuität?"
 kategorie: "Arbeitszeit"
+topic: "gehalt-arbeitsmodelle"
+intent: "arbeitszeit"
+featured: false
+priority: 30
 pubDate: 2026-04-14
 author: "Redaktion"
 draft: false
@@ -20,7 +24,7 @@ Finanziell: Mit 32 Stunden statt 38,5 arbeitest du etwa 83 % einer Vollzeitstell
 
 Für Praxen ist das Modell organisierbar, wenn die Terminplanung konsequent aufgebaut ist. Wichtig ist, dass Patiententermine nicht über alle fünf Werktage verteilt sind — das würde den Sinn des Modells untergraben.
 
-Mehr zum 4-Tage-Modell und was es für die Logopädie konkret bedeutet, findest du im Artikel [4-Tage-Woche in der Logopädie](/ratgeber/4-tage-woche-logopaedie/).
+Mehr zum 4-Tage-Modell und was es für die Logopädie konkret bedeutet, findest du im Artikel [4-Tage-Woche in der Logopädie](/berufshandbuch/4-tage-woche-logopaedie/).
 
 ## 30-Stunden-Woche: die unauffällige Teilzeit
 
@@ -62,4 +66,4 @@ Für den Gehaltsvergleich: Der [Gehaltsrechner](/gehaltsrechner/) rechnet alle A
 
 ## Bilinguales Arbeiten und Teilzeit
 
-Ein Detail, das relevant ist, wenn du zweisprachig therapierst: Bei wenigen Stunden pro Woche ist es schwieriger, ein bilinguales Patientenklientel aufzubauen, weil du für Anfragen weniger Kapazität hast. Wenn bilinguale Sprachtherapie ein Schwerpunkt sein soll, hilft mehr Stundenumfang — zumindest in der Phase, in der die Spezialisierung aufgebaut wird. Mehr dazu im Artikel über [bilinguale Sprachtherapie](/ratgeber/bilinguale-sprachtherapie/).
+Ein Detail, das relevant ist, wenn du zweisprachig therapierst: Bei wenigen Stunden pro Woche ist es schwieriger, ein bilinguales Patientenklientel aufzubauen, weil du für Anfragen weniger Kapazität hast. Wenn bilinguale Sprachtherapie ein Schwerpunkt sein soll, hilft mehr Stundenumfang — zumindest in der Phase, in der die Spezialisierung aufgebaut wird. Mehr dazu im Artikel über [bilinguale Sprachtherapie](/berufshandbuch/bilinguale-sprachtherapie/).

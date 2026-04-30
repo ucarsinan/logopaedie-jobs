@@ -2,6 +2,10 @@
 title: "Freie Praxis oder Klinik: Wo arbeiten Logopädinnen besser?"
 description: "Freie Praxis oder Klinik? Vergleich für Logopädinnen: Gehalt, Spezialisierung, Arbeitsalltag, Teamstruktur und worauf du bei Stellenangeboten achten solltest."
 kategorie: "Karriere"
+topic: "praxisalltag-region"
+intent: "praxisalltag"
+featured: true
+priority: 20
 pubDate: 2026-04-29
 author: "Redaktion"
 draft: false
@@ -43,7 +47,7 @@ Beim Gehalt ist der Vergleich komplizierter als viele denken. Klinikstellen wirk
 - fachliche Schwerpunktbildung
 - direkter Kontakt zur Leitung
 
-Für NRW-Zahlen lohnt sich der Blick in unseren Artikel zum [Logopädie-Gehalt in NRW](/ratgeber/gehalt-logopaedie-nrw/).
+Für NRW-Zahlen lohnt sich der Blick in unseren Artikel zum [Logopädie-Gehalt in NRW](/berufshandbuch/gehalt-logopaedie-nrw/).
 
 ## Worauf du bei Stellen achten solltest
 

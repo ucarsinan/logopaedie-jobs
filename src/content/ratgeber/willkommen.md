@@ -1,7 +1,11 @@
 ---
-title: "Willkommen im Ratgeber"
-description: "Kurze Einführung in den Ratgeber-Bereich für Logopädinnen und Sprachtherapeuten."
+title: "Willkommen im Logopädie-Berufshandbuch"
+description: "Kurze Einführung in das Berufshandbuch für Logopädinnen und Sprachtherapeuten."
 kategorie: "Karriere"
+topic: "karriere-bewerbung"
+intent: "praxisalltag"
+featured: false
+priority: 100
 pubDate: 2026-04-13
 author: "Redaktion"
 draft: false

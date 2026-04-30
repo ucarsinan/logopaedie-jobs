@@ -2,6 +2,10 @@
 title: "Deutsch-türkische Logopädie in Duisburg: Warum bilinguale Kompetenz gefragt ist"
 description: "Mehrsprachigkeit prägt Duisburg. Warum deutsch-türkische Logopädie fachlich wichtig ist und welche Chancen sie für Therapeutinnen bietet."
 kategorie: "Fachwissen"
+topic: "fachwissen-spezialisierung"
+intent: "fachwissen"
+featured: false
+priority: 30
 pubDate: 2026-04-29
 author: "Redaktion"
 draft: false
@@ -54,4 +58,4 @@ Eine bilinguale Therapeutin kann diese Ebenen oft schneller erkennen und präzis
 
 ## Unsere Praxis in Duisburg
 
-Für Logopädinnen, die sich fachlich mit Mehrsprachigkeit beschäftigen möchten, ist Duisburg ein relevanter Standort. Mehr zum fachlichen Hintergrund findest du im Artikel über [bilinguale Sprachtherapie](/ratgeber/bilinguale-sprachtherapie/).
+Für Logopädinnen, die sich fachlich mit Mehrsprachigkeit beschäftigen möchten, ist Duisburg ein relevanter Standort. Mehr zum fachlichen Hintergrund findest du im Artikel über [bilinguale Sprachtherapie](/berufshandbuch/bilinguale-sprachtherapie/).

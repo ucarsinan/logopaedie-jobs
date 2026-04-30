@@ -2,6 +2,10 @@
 title: "Bewerbung als Logopädin: Unterlagen, Anschreiben und Vorstellungsgespräch"
 description: "Was gehört in eine Bewerbungsmappe als Logopädin? Wie überzeuge ich im Vorstellungsgespräch? Praxistipps für Berufseinsteiger und Wechselwillige."
 kategorie: "Karriere"
+topic: "karriere-bewerbung"
+intent: "bewerbung"
+featured: true
+priority: 10
 pubDate: 2026-04-18
 author: "Redaktion"
 draft: false

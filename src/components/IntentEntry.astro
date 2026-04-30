@@ -1,0 +1,32 @@
+---
+interface Props {
+  question: string;
+  answer: string;
+  href: string;
+  label: string;
+  accent: 'green' | 'blue' | 'amber' | 'violet';
+}
+
+const { question, answer, href, label, accent } = Astro.props;
+
+const accentClasses = {
+  green: 'text-simsek-green bg-simsek-green/10 border-simsek-green/20',
+  blue: 'text-simsek-blue bg-simsek-blue/10 border-simsek-blue/20',
+  amber: 'text-amber-700 bg-amber-50 border-amber-200',
+  violet: 'text-violet-700 bg-violet-50 border-violet-200',
+}[accent];
+---
+
+<a href={href} class="group block rounded-lg border border-slate-200 bg-white p-4 no-underline shadow-sm shadow-slate-200/50 transition-all duration-150 hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md">
+  <span class={`inline-flex rounded-full border px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest ${accentClasses}`}>
+    {label}
+  </span>
+  <h3 class="mt-4 text-base font-bold leading-snug text-slate-950">{question}</h3>
+  <p class="mt-2 text-sm leading-6 text-slate-600">{answer}</p>
+  <span class="mt-4 inline-flex items-center gap-2 text-sm font-bold text-slate-900">
+    Einstieg öffnen
+    <svg class="h-4 w-4 text-slate-400 transition-transform duration-150 group-hover:translate-x-0.5 group-hover:text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+    </svg>
+  </span>
+</a>

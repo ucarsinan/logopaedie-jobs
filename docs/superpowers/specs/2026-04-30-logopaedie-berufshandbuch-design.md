@@ -8,7 +8,7 @@
 
 ## Ziel
 
-Der bestehende `/ratgeber/` wird zu einem klar positionierten Berufshandbuch für Logopädinnen, Logopäden und Sprachtherapeutinnen. Die Website soll damit nicht nur eine Jobbörse sein, sondern eine fachlich nützliche Quelle für Karriere, Gehalt, Arbeitsmodelle, Spezialisierung und Praxisalltag.
+Der bestehende Ratgeber-Bereich wird zu einem klar positionierten Berufshandbuch für Logopädinnen, Logopäden und Sprachtherapeutinnen. Die öffentliche kanonische URL lautet `/berufshandbuch/`; bestehende `/ratgeber/`-URLs bleiben als 301-Weiterleitungen erhalten. Die Website soll damit nicht nur eine Jobbörse sein, sondern eine fachlich nützliche Quelle für Karriere, Gehalt, Arbeitsmodelle, Spezialisierung und Praxisalltag.
 
 Der Bereich richtet sich ausschließlich an Fachpersonen und beruflich Interessierte in der Logopädie. Es entsteht kein Patientenportal und keine Laien-Enzyklopädie.
 
@@ -30,7 +30,7 @@ Diese Richtung passt besser zur bestehenden Jobbörse als ein allgemeines Patien
 
 ## Informationsarchitektur
 
-`/ratgeber/` bleibt die stabile URL. Die Seite wird aber nicht mehr als einfache Artikelliste präsentiert, sondern als strukturierter Hub mit vier Themenwelten.
+`/berufshandbuch/` ist die öffentliche, kanonische URL. Die Seite wird nicht mehr als einfache Artikelliste präsentiert, sondern als strukturierter Hub mit vier Themenwelten. Alte `/ratgeber/`-Pfade leiten auf die entsprechenden Berufshandbuch-URLs weiter.
 
 ### Themenwelten
 
@@ -63,13 +63,13 @@ Diese Richtung passt besser zur bestehenden Jobbörse als ein allgemeines Patien
 - Keine Patienten- oder Elternrubrik.
 - Keine medizinische Enzyklopädie für Laien.
 - Fachwissen wird immer beruflich eingeordnet: Was bedeutet das Thema für Arbeit, Spezialisierung, Bewerbung, Gehalt oder Praxisalltag?
-- Keine URL-Migration im ersten Schritt.
+- Keine sichtbare Doppelbenennung: Navigation, Breadcrumbs, Canonicals, interne Links und Sitemap zeigen auf `/berufshandbuch/`.
 
 ---
 
 ## Seitenaufbau
 
-Die neue `/ratgeber/`-Startseite wird als Berufshandbuch-Hub aufgebaut.
+Die neue `/berufshandbuch/`-Startseite wird als Berufshandbuch-Hub aufgebaut.
 
 ### Hub-Elemente
 
@@ -86,7 +86,7 @@ Die neue `/ratgeber/`-Startseite wird als Berufshandbuch-Hub aufgebaut.
 
 ### Artikel-Seiten
 
-Einzelne Artikel bleiben unter `/ratgeber/[slug]/` und behalten bestehende SEO-Bausteine:
+Einzelne Artikel erscheinen öffentlich unter `/berufshandbuch/[slug]/` und behalten bestehende SEO-Bausteine:
 
 - Article-Schema
 - Breadcrumbs
@@ -106,8 +106,8 @@ Die Umsetzung bleibt nahe an der bestehenden Astro-Struktur.
 ### Bestehende Struktur
 
 - Content bleibt in `src/content/ratgeber/*.md`.
-- Artikelseiten bleiben in `src/pages/ratgeber/[slug].astro`.
-- Der Hub bleibt in `src/pages/ratgeber/index.astro`.
+- Der Hub liegt in `src/pages/berufshandbuch/index.astro`.
+- Die Artikelseiten liegen in `src/pages/berufshandbuch/[slug].astro`.
 - SEO-Grundlagen wie Canonical, Open Graph, Breadcrumbs und Article-Schema bleiben erhalten.
 
 ### Neue Strukturfelder
@@ -138,7 +138,7 @@ Die Komponenten sollen keine neue Datenquelle einführen. Sie erhalten vorbereit
 
 1. Markdown-Artikel definieren Frontmatter wie Titel, Beschreibung, Kategorie, Themenwelt, Intent und Related Articles.
 2. Astro Content Collections validieren diese Daten beim Build.
-3. `/ratgeber/index.astro` lädt alle nicht-draft Artikel.
+3. `/berufshandbuch/index.astro` lädt alle nicht-draft Artikel.
 4. Die Hub-Seite gruppiert Artikel nach Themenwelt und priorisiert `featured`/`priority`.
 5. Einzelartikel nutzen weiterhin ihre eigenen Frontmatter-Daten für Article-Schema, FAQ, Definition und Related Articles.
 
@@ -174,9 +174,9 @@ Die bestehende Jobbörse profitiert indirekt, weil mehr fachlich relevante Besuc
 Vor Abschluss der Umsetzung müssen diese Prüfungen erfolgreich sein:
 
 - `npm run build` läuft ohne Content-Schema-Fehler.
-- `/ratgeber/` rendert mit allen vier Themenwelten.
+- `/berufshandbuch/` rendert mit allen vier Themenwelten.
 - Desktop- und Mobile-Ansicht der Hub-Seite sind visuell geprüft.
-- Bestehende Artikel-URLs unter `/ratgeber/[slug]/` bleiben erreichbar.
+- Bestehende Artikel-URLs unter `/ratgeber/[slug]/` leiten per 301 auf `/berufshandbuch/[slug]/` weiter.
 - Interne Links zeigen nicht auf alte URLs wie `/gehalt/`, `/4-tage-woche/` oder `/bilingual/`.
 - Artikel ohne `draft: true` erscheinen im Hub.
 - Schema.org-Ausgabe für Article, FAQ und CollectionPage bleibt gültig.
@@ -189,7 +189,7 @@ Vor Abschluss der Umsetzung müssen diese Prüfungen erfolgreich sein:
 - Volltextsuche.
 - Komplexes Tag-System.
 - Neue CMS-Struktur.
-- URL-Migration von `/ratgeber/`.
+- Neue öffentliche Doppelstruktur neben `/berufshandbuch/`; `/ratgeber/` bleibt ausschließlich Redirect.
 - Backlink-Aufbau.
 - Google Search Console Konfiguration.
 
@@ -202,6 +202,6 @@ Diese Spec ist als ein fokussierter Implementierungsschritt gedacht:
 1. Content-Schema erweitern.
 2. Bestehende Artikel mit Themenwelt, Intent und Priorität ergänzen.
 3. Hub-Komponenten bauen.
-4. `/ratgeber/index.astro` zum Berufshandbuch-Hub umbauen.
-5. Navigation optional von "Ratgeber" zu "Berufshandbuch" umbenennen, die URL aber beibehalten.
+4. `/berufshandbuch/index.astro` zum Berufshandbuch-Hub umbauen.
+5. Navigation von "Ratgeber" zu "Berufshandbuch" umbenennen und `/ratgeber/` per Redirect erhalten.
 6. Build und visuelle Prüfung durchführen.

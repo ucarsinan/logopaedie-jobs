@@ -1,0 +1,60 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+type HandbuchArticle = CollectionEntry<'ratgeber'>;
+
+interface Props {
+  id: string;
+  title: string;
+  description: string;
+  articles: HandbuchArticle[];
+}
+
+const { id, title, description, articles } = Astro.props;
+
+const kategorieColors: Record<string, string> = {
+  'Karriere': 'bg-simsek-green/10 text-simsek-green border-simsek-green/20',
+  'Gehalt': 'bg-simsek-blue/10 text-simsek-blue border-simsek-blue/20',
+  'Arbeitszeit': 'bg-amber-50 text-amber-700 border-amber-200',
+  'Fachwissen': 'bg-violet-50 text-violet-700 border-violet-200',
+  'Duisburg / NRW': 'bg-slate-100 text-slate-700 border-slate-200',
+};
+
+const badgeClass = (category: string) => kategorieColors[category] ?? 'bg-slate-100 text-slate-600 border-slate-200';
+const fmt = (date: Date) => date.toLocaleDateString('de-DE', { day: '2-digit', month: 'long', year: 'numeric' });
+---
+
+<section id={id} class="scroll-mt-28 border-t border-slate-200 pt-10">
+  <div class="mb-6 max-w-2xl">
+    <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400">Themenwelt</p>
+    <h2 class="mt-2 text-2xl md:text-3xl font-bold text-slate-950">{title}</h2>
+    <p class="mt-3 text-sm md:text-base leading-7 text-slate-600">{description}</p>
+  </div>
+
+  <div class="grid gap-4 md:grid-cols-2">
+    {articles.map((article) => (
+      <article class="rounded-lg border border-slate-200 bg-white p-5 shadow-sm shadow-slate-200/60 transition-all duration-150 hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md">
+        <div class="flex items-center justify-between gap-3">
+          <span class={`inline-flex rounded-full border px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest ${badgeClass(article.data.kategorie)}`}>
+            {article.data.kategorie}
+          </span>
+          {article.data.featured && (
+            <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Empfohlen</span>
+          )}
+        </div>
+        <h3 class="mt-4 text-lg font-bold leading-snug text-slate-950">
+          <a href={`/berufshandbuch/${article.id}/`} class="text-slate-950 no-underline hover:text-simsek-blue">
+            {article.data.title}
+          </a>
+        </h3>
+        <p class="mt-2 text-sm leading-6 text-slate-600">{article.data.description}</p>
+        <div class="mt-4 flex items-center justify-between gap-4 text-xs text-slate-400">
+          <span>{fmt(article.data.pubDate)}</span>
+          <a href={`/berufshandbuch/${article.id}/`} class="font-bold text-simsek-green no-underline hover:text-simsek-blue">
+            Lesen
+          </a>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

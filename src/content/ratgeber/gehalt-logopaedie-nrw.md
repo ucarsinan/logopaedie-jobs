@@ -2,6 +2,10 @@
 title: "Logopädie Gehalt NRW 2026 — Was verdient eine Logopädin in Duisburg?"
 description: "Aktuelle Gehaltszahlen für Logopädinnen in NRW und Duisburg 2026. Durchschnittsgehalt, Einstiegsgehalt, Einflussfaktoren und warum Praxis Şimşek über Durchschnitt zahlt."
 kategorie: "Gehalt"
+topic: "gehalt-arbeitsmodelle"
+intent: "gehalt"
+featured: true
+priority: 10
 pubDate: 2026-04-14
 author: "Redaktion"
 draft: false
@@ -38,13 +42,13 @@ Mehrere Faktoren bestimmen, was am Ende auf dem Konto landet:
 
 **Region** zählt ebenfalls. Innerhalb von NRW gibt es Unterschiede: Duisburg gehört laut aktuellen Daten zu den Städten mit den höchsten Logopädie-Gehältern in NRW, mit einem Durchschnitt von bis zu 47.700 € jährlich.
 
-**Zusatzleistungen** werden oft unterschätzt. 100 % Fortbildungsübernahme, bezahlter Sonderurlaub für Kurse oder eine echte [4-Tage-Woche](/ratgeber/4-tage-woche-logopaedie/) können mehr wert sein als 200 € mehr Bruttogehalt — je nach Lebenssituation.
+**Zusatzleistungen** werden oft unterschätzt. 100 % Fortbildungsübernahme, bezahlter Sonderurlaub für Kurse oder eine echte [4-Tage-Woche](/berufshandbuch/4-tage-woche-logopaedie/) können mehr wert sein als 200 € mehr Bruttogehalt — je nach Lebenssituation.
 
 ## Logopädie Gehalt Duisburg — lokaler Vergleich
 
 Duisburg liegt beim Logopädie-Gehalt im oberen Bereich innerhalb von NRW. Die zentrale Lage im Ruhrgebiet, die gute ÖPNV-Anbindung und die hohe Nachfrage nach Therapeutinnen — besonders mit bilingualer Kompetenz — treiben die Gehälter nach oben.
 
-In der [Praxis Şimşek](/) liegt das Gehalt bewusst über dem regionalen Durchschnitt. Dazu kommen Zusatzleistungen wie vollständige Fortbildungsübernahme und die Möglichkeit einer [4-Tage-Woche](/ratgeber/4-tage-woche-logopaedie/) — ein Modell, das im Gesundheitswesen noch selten ist.
+In der [Praxis Şimşek](/) liegt das Gehalt bewusst über dem regionalen Durchschnitt. Dazu kommen Zusatzleistungen wie vollständige Fortbildungsübernahme und die Möglichkeit einer [4-Tage-Woche](/berufshandbuch/4-tage-woche-logopaedie/) — ein Modell, das im Gesundheitswesen noch selten ist.
 
 ## Gehalt verhandeln als Logopädin — Tipps
 
