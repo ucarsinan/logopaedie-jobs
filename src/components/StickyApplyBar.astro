@@ -1,0 +1,32 @@
+---
+interface Props {
+  whatsappHref?: string;
+  mailHref?: string;
+  label?: string;
+}
+
+const {
+  whatsappHref = 'https://api.whatsapp.com/send?phone=4920334868690&text=Hallo%20Emel!%20Ich%20interessiere%20mich%20f%C3%BCr%20den%20Logop%C3%A4die-Job.%20Ich%20w%C3%BCrde%20gern%20kurz%20unverbindlich%20sprechen.',
+  mailHref = 'mailto:info@logopaedie-simsek.de?subject=Unverbindliches%20Kennenlernen%20Logop%C3%A4die-Job&body=Hallo%20Frau%20%C5%9Eim%C5%9Fek-U%C3%A7ar,%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20den%20Logop%C3%A4die-Job%20und%20w%C3%BCrde%20gern%20kurz%20unverbindlich%20sprechen.%0A%0AMein%20Abschluss:%0AMein%20Stundenwunsch:%0AM%C3%B6glicher%20Start:%0A%0AViele%20Gr%C3%BC%C3%9Fe',
+  label = 'Unverbindlich kennenlernen',
+} = Astro.props;
+---
+
+<div class="fixed bottom-0 left-0 right-0 z-40 border-t border-slate-200 bg-white/95 backdrop-blur-md px-4 py-3 shadow-2xl shadow-slate-900/10 md:hidden">
+  <div class="grid grid-cols-[1.2fr_0.8fr] gap-2">
+    <a
+      href={whatsappHref}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex min-h-11 items-center justify-center px-4 py-3 bg-linear-to-r from-simsek-green to-simsek-blue text-white text-sm font-bold rounded-full no-underline"
+    >
+      {label}
+    </a>
+    <a
+      href={mailHref}
+      class="inline-flex min-h-11 items-center justify-center px-4 py-3 bg-white text-slate-800 text-sm font-bold rounded-full border border-slate-200 no-underline"
+    >
+      E-Mail
+    </a>
+  </div>
+</div>

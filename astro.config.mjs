@@ -25,7 +25,6 @@ export default defineConfig({
 
   integrations: [
     sitemap({
-      customSitemaps: ['https://xn--logopdiejobs-kcb.de/sitemap-jobs.xml'],
       filter: isPublicIndexablePage,
     }),
   ],

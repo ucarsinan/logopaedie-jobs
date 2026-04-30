@@ -7,9 +7,9 @@
       <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-simsek-green/20 text-simsek-green border border-simsek-green/30 mb-3">
         Bewerben
       </span>
-      <h2 class="text-2xl md:text-3xl font-bold mb-3 leading-tight">Jetzt als Logopädin in Duisburg bewerben</h2>
+      <h2 class="text-2xl md:text-3xl font-bold mb-3 leading-tight">Erst kennenlernen, dann bewerben</h2>
       <div class="h-px bg-linear-to-r from-transparent via-simsek-green/40 to-transparent mb-3"></div>
-      <p class="text-slate-400">In 30 Sekunden zum ersten Kennenlernen — kein Lebenslauf nötig.</p>
+      <p class="text-slate-400">In 30 Sekunden zum unverbindlichen Erstkontakt — kein Lebenslauf nötig.</p>
     </div>
 
     <div class="bg-white/5 border border-white/10 p-4 sm:p-6 rounded-2xl backdrop-blur-xl">
@@ -33,32 +33,32 @@
       </div>
 
       <div id="step-2" class="apply-step hidden space-y-4">
-        <h3 class="text-lg font-semibold text-center">Wann hättest du Zeit?</h3>
+        <h3 class="text-lg font-semibold text-center">Was suchst du gerade?</h3>
         <div class="grid sm:grid-cols-3 gap-3">
           <button
-            onclick="nextStep(2, 'Schnellstmöglich')"
+            onclick="nextStep(2, 'Schnellstmöglich starten')"
             class="py-3 px-4 border border-white/20 rounded-full text-white font-bold cursor-pointer hover:bg-linear-to-r hover:from-simsek-green/25 hover:to-simsek-blue/25 hover:border-simsek-green/60 transition-all duration-200 active:scale-[0.97]"
           >
-            Sofort
+            Start bald
           </button>
           <button
-            onclick="nextStep(2, 'In 2-3 Monaten')"
+            onclick="nextStep(2, 'Teilzeit / Stundenmodell klären')"
             class="py-3 px-4 border border-white/20 rounded-full text-white font-bold cursor-pointer hover:bg-linear-to-r hover:from-simsek-green/25 hover:to-simsek-blue/25 hover:border-simsek-green/60 transition-all duration-200 active:scale-[0.97]"
           >
-            2-3 Monate
+            Teilzeit klären
           </button>
           <button
-            onclick="nextStep(2, 'Nur mal umschauen')"
+            onclick="nextStep(2, 'Unverbindlich kennenlernen')"
             class="py-3 px-4 border border-white/20 rounded-full text-white font-bold cursor-pointer hover:bg-linear-to-r hover:from-simsek-green/25 hover:to-simsek-blue/25 hover:border-simsek-green/60 transition-all duration-200 active:scale-[0.97]"
           >
-            Nur umschauen
+            Erst sprechen
           </button>
         </div>
       </div>
 
       <div id="step-3" class="apply-step hidden text-center space-y-4">
         <h3 class="text-2xl font-bold text-transparent bg-clip-text bg-linear-to-r from-simsek-green to-simsek-blue">Fast geschafft!</h3>
-        <p class="text-slate-300 text-sm">Wie möchtest du uns kontaktieren?</p>
+        <p class="text-slate-300 text-sm">Wie möchtest du den ersten Kontakt starten?</p>
 
         <div class="flex flex-col sm:flex-row gap-3 justify-center">
 
@@ -86,7 +86,7 @@
       </div>
 
       <p class="text-center text-slate-400 text-sm mt-4">
-        Wir melden uns innerhalb von 24 Stunden — versprochen.
+        Kurze Nachricht reicht: Abschluss, Stundenwunsch, möglicher Start.
       </p>
     </div>
   </div>
@@ -105,11 +105,11 @@ function nextStep(step, val) {
 
 function updateLinks() {
   const phone = "4920334868690";
-  const msg = `Hallo Emel! Ich interessiere mich für den Job.\nStatus: ${data.step1}\nZeit: ${data.step2}`;
+  const msg = `Hallo Emel! Ich interessiere mich für den Logopädie-Job.\nStatus: ${data.step1}\nWunsch: ${data.step2}\n\nMein Abschluss:\nMein Stundenwunsch:\nMöglicher Start:`;
 
   const waLink = document.getElementById('wa-link');
   waLink.href = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(msg)}`;
 
-  document.getElementById('mail-link').href = `mailto:info@logopaedie-simsek.de?subject=Bewerbung&body=${encodeURIComponent(msg)}`;
+  document.getElementById('mail-link').href = `mailto:info@logopaedie-simsek.de?subject=Unverbindliches%20Kennenlernen%20Logop%C3%A4die-Job&body=${encodeURIComponent(msg)}`;
 }
 </script>

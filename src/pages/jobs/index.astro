@@ -1,149 +1,114 @@
 ---
-export const prerender = false;
 import Layout from '../../layouts/Layout.astro';
 import Navigation from '../../components/Navigation.astro';
 import Footer from '../../components/Footer.astro';
-import { getAdminClient } from '../../lib/supabaseAdmin';
+import StickyApplyBar from '../../components/StickyApplyBar.astro';
 
-const url = new URL(Astro.request.url);
-const filterCity = url.searchParams.get('city')?.toLowerCase() ?? '';
-const filterType = url.searchParams.get('type') ?? '';
+const pageTitle = 'Aktuelle Logopädie-Stellen in Duisburg | Praxis Şimşek';
+const pageDescription =
+  'Offene Stellen bei der Praxis für Logopädie Şimşek in Duisburg: Logopädinnen, Logopäden und Sprachtherapeutinnen gesucht. Vollzeit, Teilzeit und 4-Tage-Woche möglich.';
 
-const supabase = getAdminClient();
-
-let query = supabase
-  .from('job_postings')
-  .select(`
-    id, title, slug, location_city, location_zip, employment_type,
-    work_hours_min, work_hours_max, salary_min, salary_max,
-    created_at, valid_through,
-    employers ( name )
-  `)
-  .eq('status', 'published')
-  .order('premium', { ascending: false })
-  .order('created_at', { ascending: false });
-
-if (filterCity) query = query.ilike('location_city', `%${filterCity}%`);
-if (filterType) query = query.contains('employment_type', [filterType]);
-
-const { data: jobs } = await query;
-
-// Alle Städte für Filter-Dropdown (aus allen published Jobs)
-const { data: allCities } = await supabase
-  .from('job_postings')
-  .select('location_city')
-  .eq('status', 'published');
-
-const cities = Array.from(new Set(allCities?.map(c => c.location_city) ?? [])).sort();
-
-const fmt = (d: string | null) =>
-  d ? new Date(d).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' }) : '—';
-
-const typeLabel = (type: string) => (type === 'FULL_TIME' ? 'Vollzeit' : type === 'PART_TIME' ? 'Teilzeit' : type);
+const whatsappHref =
+  'https://api.whatsapp.com/send?phone=4920334868690&text=Hallo%20Emel!%20Ich%20interessiere%20mich%20f%C3%BCr%20die%20Logop%C3%A4die-Stellen%20in%20Duisburg.%20Ich%20w%C3%BCrde%20gern%20kurz%20unverbindlich%20sprechen.';
+const mailHref =
+  'mailto:info@logopaedie-simsek.de?subject=Logop%C3%A4die-Stellen%20Duisburg&body=Hallo%20Frau%20%C5%9Eim%C5%9Fek-U%C3%A7ar,%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20die%20Logop%C3%A4die-Stellen%20in%20Duisburg.%0A%0AMein%20Abschluss:%0AMein%20Stundenwunsch:%0AM%C3%B6glicher%20Start:%0A%0AViele%20Gr%C3%BC%C3%9Fe';
 ---
 
 <Layout
-  title="Logopädie Jobs in NRW | Aktuelle Stellenangebote"
-  description="Aktuelle Logopädie-Stellen in NRW. Filtern nach Stadt und Arbeitszeit. Direkt bewerben – kostenlos und ohne Registrierung."
+  title={pageTitle}
+  description={pageDescription}
+  breadcrumbs={[
+    { name: 'Startseite', url: 'https://xn--logopdiejobs-kcb.de/' },
+    { name: 'Aktuelle Stellen', url: 'https://xn--logopdiejobs-kcb.de/jobs/' },
+  ]}
 >
   <Navigation />
 
-  <main class="max-w-5xl mx-auto px-4 py-16">
-    <div class="mb-10">
-      <div class="flex items-start justify-between flex-wrap gap-4 mb-4">
-        <div>
-          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-simsek-green/10 text-simsek-green border border-simsek-green/20 mb-4">
-            Stellenanzeigen
+  <main class="pb-20 md:pb-0">
+    <section class="relative overflow-hidden bg-white">
+      <div class="absolute inset-0 pointer-events-none -z-10">
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-simsek-green/10 blur-[120px] rounded-full"></div>
+        <div class="absolute top-1/3 -left-24 w-80 h-80 bg-simsek-blue/10 blur-[110px] rounded-full"></div>
+      </div>
+
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
+        <nav class="mb-8 flex flex-wrap items-center gap-2 text-xs text-slate-500" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-simsek-blue no-underline">Startseite</a>
+          <span>/</span>
+          <span class="text-slate-800 font-semibold">Aktuelle Stellen</span>
+        </nav>
+
+        <div class="max-w-3xl">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm mb-6">
+            <span class="w-2 h-2 rounded-full bg-simsek-green animate-pulse"></span>
+            <span class="text-sm font-medium text-slate-600">Offene Stellen bei uns in Duisburg</span>
           </span>
-          <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-2 leading-tight">Logopädie Jobs in NRW</h1>
-          <p class="text-slate-500">{jobs?.length ?? 0} aktuelle Stellenangebote</p>
+
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-900 leading-[1.04] tracking-tight uppercase">
+            Logopädin /<br />
+            <span class="text-transparent bg-clip-text bg-linear-to-r from-simsek-blue to-simsek-green">Sprachtherapeutin</span><br />
+            gesucht.
+          </h1>
+
+          <p class="mt-6 text-lg sm:text-xl text-slate-600 leading-relaxed">
+            Wir suchen direkt für unser eigenes Team: Praxis für Logopädie Şimşek, Tonhallenstraße 21 in Duisburg-Mitte.
+          </p>
         </div>
-        <a
-          href="/jobs/neu/"
-          class="inline-flex items-center gap-1.5 px-5 py-2.5 bg-linear-to-r from-simsek-green to-simsek-blue text-white text-sm font-bold rounded-full shadow-md shadow-simsek-green/20 hover:shadow-lg hover:shadow-simsek-green/30 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 no-underline">
-          Stelle einreichen
-        </a>
-      </div>
-      <div class="h-px bg-linear-to-r from-simsek-green via-simsek-blue/40 to-transparent"></div>
-    </div>
 
-    {/* Filter */}
-    <form method="GET" class="bg-slate-50 border border-slate-200 rounded-xl p-4 mb-8 flex gap-3 flex-wrap items-end">
-      <div class="flex-1 min-w-[180px]">
-        <label for="city" class="block text-xs font-medium text-slate-600 mb-1">Stadt</label>
-        <select id="city" name="city" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm bg-white">
-          <option value="">Alle Städte</option>
-          {cities.map(city => (
-            <option value={city.toLowerCase()} selected={filterCity === city.toLowerCase()}>{city}</option>
+        <div class="mt-10 p-px rounded-[2rem] bg-linear-to-br from-simsek-green/60 via-slate-100 to-simsek-blue/60">
+          <div class="rounded-[calc(2rem-1px)] bg-white p-6 md:p-8 shadow-xl shadow-slate-200/50">
+            <div class="grid lg:grid-cols-[1fr_auto] gap-6 items-start">
+              <div>
+                <p class="text-xs font-bold uppercase tracking-widest text-simsek-green mb-3">Aktuelle Stellen</p>
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+                  Logopädinnen, Logopäden und Sprachtherapeutinnen in Duisburg
+                </h2>
+                <p class="text-slate-600 leading-relaxed mb-5">
+                  Vollzeit oder Teilzeit, 4-Tage-Woche nach Absprache, 100 % Fortbildungskosten, strukturierte Einarbeitung und moderne Praxisräume direkt am Duisburger Hauptbahnhof.
+                </p>
+                <div class="flex flex-wrap gap-2 text-sm">
+                  <span class="inline-flex items-center bg-slate-100 text-slate-700 px-3 py-1.5 rounded-full font-medium">Duisburg-Mitte</span>
+                  <span class="inline-flex items-center bg-slate-100 text-slate-700 px-3 py-1.5 rounded-full font-medium">20-40 Std./Woche</span>
+                  <span class="inline-flex items-center bg-simsek-green/10 text-simsek-green px-3 py-1.5 rounded-full font-bold border border-simsek-green/20">4-Tage-Woche möglich</span>
+                </div>
+              </div>
+
+              <div class="flex flex-col gap-3 w-full lg:w-64">
+                <a
+                  href="/jobs/logopaedin-sprachtherapeut-duisburg/"
+                  class="inline-flex items-center justify-center px-5 py-3 bg-linear-to-r from-simsek-green to-simsek-blue text-white text-sm font-bold rounded-full shadow-md shadow-simsek-green/20 hover:shadow-lg hover:shadow-simsek-green/30 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 no-underline"
+                >
+                  Details ansehen
+                </a>
+                <a
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center justify-center px-5 py-3 bg-white text-slate-800 text-sm font-bold rounded-full border-2 border-slate-200 hover:border-simsek-blue transition-all duration-200 no-underline"
+                >
+                  Unverbindlich fragen
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <section class="mt-12 grid md:grid-cols-3 gap-4">
+          {[
+            ['Kein Anschreiben nötig', 'Für den ersten Kontakt reichen Abschluss, Stundenwunsch und möglicher Start.'],
+            ['Direkt bei der Praxis', 'Du sprichst mit uns, nicht mit einer Plattform oder einem externen Recruiter.'],
+            ['Duisburg bleibt der Fokus', 'Die Stellen sind bei uns vor Ort in Duisburg-Mitte.'],
+          ].map(([title, text]) => (
+            <div class="rounded-3xl bg-slate-50 border border-slate-100 p-5">
+              <h2 class="font-bold text-slate-900 mb-2">{title}</h2>
+              <p class="text-sm text-slate-600 leading-relaxed">{text}</p>
+            </div>
           ))}
-        </select>
+        </section>
       </div>
-      <div class="flex-1 min-w-[180px]">
-        <label for="type" class="block text-xs font-medium text-slate-600 mb-1">Arbeitszeit</label>
-        <select id="type" name="type" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm bg-white">
-          <option value="">Alle</option>
-          <option value="FULL_TIME" selected={filterType === 'FULL_TIME'}>Vollzeit</option>
-          <option value="PART_TIME" selected={filterType === 'PART_TIME'}>Teilzeit</option>
-        </select>
-      </div>
-      <button type="submit" class="inline-flex items-center px-5 py-2 bg-linear-to-r from-simsek-green to-simsek-blue text-white text-sm font-bold rounded-full shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.97] transition-all duration-200">
-        Filtern
-      </button>
-      {(filterCity || filterType) && (
-        <a href="/jobs/" class="text-sm font-semibold text-slate-400 hover:text-slate-700 transition-colors duration-150 no-underline">Zurücksetzen</a>
-      )}
-    </form>
-
-    {/* Job-Liste */}
-    {!jobs?.length ? (
-      <div class="text-center py-16 text-slate-400">
-        <p class="text-lg">Keine Stellen gefunden.</p>
-        <p class="text-sm mt-2">Versuche einen anderen Filter oder schau später wieder vorbei.</p>
-      </div>
-    ) : (
-      <ul class="space-y-4">
-        {jobs.map(job => {
-          const employer = Array.isArray(job.employers) ? job.employers[0] : job.employers;
-          return (
-            <li>
-              <a href={`/jobs/${job.slug}/`} class="block p-px rounded-xl bg-slate-200 hover:bg-linear-to-r hover:from-simsek-green hover:to-simsek-blue transition-all duration-300 no-underline group/job">
-                <div class="bg-white rounded-[calc(0.75rem-1px)] p-6 group-hover/job:bg-white transition-colors duration-200">
-                <div class="flex justify-between items-start gap-4 flex-wrap">
-                  <div class="flex-1 min-w-0">
-                    <h2 class="text-lg font-semibold text-slate-900 mb-1">{job.title}</h2>
-                    <p class="text-sm text-simsek-blue font-medium mb-2">{employer?.name}</p>
-                    <div class="flex gap-2 flex-wrap text-xs text-slate-500">
-                      <span class="inline-flex items-center gap-1 bg-slate-100 px-2.5 py-1 rounded-full">
-                        <svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                        {job.location_city}
-                      </span>
-                      {job.employment_type?.map((t: string) => (
-                        <span class="inline-flex items-center gap-1 bg-slate-100 px-2.5 py-1 rounded-full">
-                          {typeLabel(t)}
-                        </span>
-                      ))}
-                      {(job.work_hours_min || job.work_hours_max) && (
-                        <span class="inline-flex items-center gap-1 bg-slate-100 px-2.5 py-1 rounded-full">
-                          {job.work_hours_min ?? '?'}–{job.work_hours_max ?? '?'} Std/Wo
-                        </span>
-                      )}
-                      {job.salary_min && (
-                        <span class="inline-flex items-center gap-1 bg-green-50 text-green-700 px-2.5 py-1 rounded-full font-medium">
-                          {job.salary_min}–{job.salary_max ?? '?'} €/Monat
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                  <span class="text-xs text-slate-400 whitespace-nowrap">{fmt(job.created_at)}</span>
-                </div>
-                </div>
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-    )}
+    </section>
   </main>
 
+  <StickyApplyBar whatsappHref={whatsappHref} mailHref={mailHref} />
   <Footer />
 </Layout>

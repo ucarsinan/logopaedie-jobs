@@ -1,6 +1,15 @@
 ---
 // src/components/Footer.astro
 import Logo from './Logo.astro';
+
+const footerLinks = [
+  { href: '/#benefits', label: 'Vorteile' },
+  { href: '/#faq', label: 'FAQ' },
+  { href: '/jobs/logopaedin-sprachtherapeut-duisburg/', label: 'Aktuelle Stellen', highlight: true },
+  { href: '/berufshandbuch/', label: 'Berufshandbuch' },
+  { href: '/gehaltsrechner/', label: 'Gehaltsrechner' },
+  { href: 'https://logopaedie-simsek.de/karriere/', label: 'Zur Praxis ↗', highlight: true, external: true },
+];
 ---
 <footer class="bg-slate-950 text-white pt-20 pb-10 relative">
   <!-- Accent stripe (mirrors nav) -->
@@ -14,18 +23,24 @@ import Logo from './Logo.astro';
       </div>
       <div>
         <span class="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest bg-white/5 text-slate-400 border border-white/10 mb-5">Navigation</span>
-        <ul class="space-y-3 text-sm list-none p-0">
-          <li><a href="/#benefits" class="text-slate-400 hover:text-white font-semibold no-underline transition-colors duration-150">Vorteile</a></li>
-          <li><a href="/#faq" class="text-slate-400 hover:text-white font-semibold no-underline transition-colors duration-150">FAQ</a></li>
-          <li><a href="/jobs/logopaedin-sprachtherapeut-duisburg/" class="text-simsek-green hover:text-white font-semibold no-underline transition-colors duration-150">Stellenanzeige Duisburg</a></li>
-          <li><a href="/#apply" class="text-slate-400 hover:text-white font-semibold no-underline transition-colors duration-150">Schnellbewerbung</a></li>
-          <li><a href="/gehaltsrechner/" class="text-slate-400 hover:text-white font-semibold no-underline transition-colors duration-150">Gehaltsrechner NRW</a></li>
-          <li><a href="/berufshandbuch/gehalt-logopaedie-nrw/" class="text-slate-400 hover:text-white font-semibold no-underline transition-colors duration-150">Gehalt Logopädie NRW</a></li>
-          <li><a href="/berufshandbuch/4-tage-woche-logopaedie/" class="text-slate-400 hover:text-white font-semibold no-underline transition-colors duration-150">4-Tage-Woche</a></li>
-          <li><a href="/berufshandbuch/bewerbung-logopaedie-tipps/" class="text-slate-400 hover:text-white font-semibold no-underline transition-colors duration-150">Bewerbungstipps</a></li>
-          <li><a href="/berufshandbuch/" class="text-slate-400 hover:text-white font-semibold no-underline transition-colors duration-150">Berufshandbuch</a></li>
-          <li><a href="/impressum" class="text-slate-400 hover:text-white font-semibold no-underline transition-colors duration-150">Impressum</a></li>
-          <li><a href="https://logopaedie-simsek.de/karriere/" target="_blank" rel="noopener noreferrer" class="text-simsek-green hover:text-white font-semibold no-underline transition-colors duration-150">Zur Praxis ↗</a></li>
+        <ul class="grid grid-cols-2 gap-x-8 gap-y-3 text-sm list-none p-0 max-w-sm">
+          {footerLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                target={link.external ? '_blank' : undefined}
+                rel={link.external ? 'noopener noreferrer' : undefined}
+                class={[
+                  'inline-flex items-center font-semibold no-underline transition-colors duration-150',
+                  link.highlight
+                    ? 'text-simsek-green hover:text-white'
+                    : 'text-slate-400 hover:text-white',
+                ].join(' ')}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
       <div>
@@ -43,9 +58,10 @@ import Logo from './Logo.astro';
         </a>
       </div>
     </div>
-    <div class="pt-8 border-t border-slate-900 flex justify-between text-[10px] uppercase font-bold text-slate-600">
+    <div class="pt-8 border-t border-slate-900 flex flex-col sm:flex-row gap-4 justify-between text-[10px] uppercase font-bold text-slate-600">
       <p>© {new Date().getFullYear()} Praxis für Logopädie Şimşek</p>
       <div class="flex gap-4">
+        <a href="/impressum" class="no-underline hover:text-slate-400 transition-colors">Impressum</a>
         <a href="/datenschutz" class="no-underline hover:text-slate-400 transition-colors">Datenschutz</a>
       </div>
     </div>
