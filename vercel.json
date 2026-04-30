@@ -21,6 +21,16 @@
       "permanent": true
     },
     {
+      "source": "/ratgeber/gehalt",
+      "destination": "/ratgeber/gehalt-logopaedie-nrw/",
+      "permanent": true
+    },
+    {
+      "source": "/ratgeber/gehalt/",
+      "destination": "/ratgeber/gehalt-logopaedie-nrw/",
+      "permanent": true
+    },
+    {
       "source": "/4-tage-woche",
       "destination": "/ratgeber/4-tage-woche-logopaedie/",
       "permanent": true
@@ -31,12 +41,32 @@
       "permanent": true
     },
     {
+      "source": "/ratgeber/4-tage-woche",
+      "destination": "/ratgeber/4-tage-woche-logopaedie/",
+      "permanent": true
+    },
+    {
+      "source": "/ratgeber/4-tage-woche/",
+      "destination": "/ratgeber/4-tage-woche-logopaedie/",
+      "permanent": true
+    },
+    {
       "source": "/bilingual",
       "destination": "/ratgeber/bilinguale-sprachtherapie/",
       "permanent": true
     },
     {
       "source": "/bilingual/",
+      "destination": "/ratgeber/bilinguale-sprachtherapie/",
+      "permanent": true
+    },
+    {
+      "source": "/ratgeber/bilingual",
+      "destination": "/ratgeber/bilinguale-sprachtherapie/",
+      "permanent": true
+    },
+    {
+      "source": "/ratgeber/bilingual/",
       "destination": "/ratgeber/bilinguale-sprachtherapie/",
       "permanent": true
     }
