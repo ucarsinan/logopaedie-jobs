@@ -54,10 +54,12 @@ const jobPostingSchema = {
     'Staatliche Anerkennung als Logopädin, Logopäde oder Sprachtherapeutin / Sprachtherapeut (m/w/d). Berufsanfängerinnen und Berufsanfänger sind willkommen.',
   skills:
     'Pädiatrie, Neurologie, Sprachentwicklungsstörungen, Aphasie, Dysarthrie, Dysphagie, Stottertherapie',
-  educationRequirements:
-    'Staatliche Anerkennung als Logopädin, Logopäde, Sprachtherapeutin oder Sprachtherapeut.',
-  experienceRequirements:
-    'Berufsanfängerinnen, Berufsanfänger und erfahrene Therapeutinnen und Therapeuten sind willkommen.',
+  educationRequirements: {
+    '@type': 'EducationalOccupationalCredential',
+    credentialCategory: 'professional certificate',
+    name: 'Staatliche Anerkennung als Logopädin, Logopäde, Sprachtherapeutin oder Sprachtherapeut',
+  },
+  experienceRequirements: 'no requirements',
   workHours: '20-40 Stunden pro Woche, Vollzeit oder Teilzeit, 4-Tage-Woche nach Absprache möglich',
   industry: 'Gesundheitswesen',
   occupationalCategory: '29-1127.00',
