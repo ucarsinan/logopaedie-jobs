@@ -33,3 +33,14 @@ frontend/AGENTS.md
 # Internal planning docs (not for GitHub)
 docs/superpowers/alle-dateien.txt
 .vercel
+
+# Git Policy — auto-managed (git-policy.mjs)
+# Edit rules in: personal-assistant/docs/git-policy/registry.yml
+orchestration/current-state.md
+scratch.md
+scratchpad.md
+test-results/
+playwright-report/
+.env.local
+.env.*.local
+# End Git Policy
