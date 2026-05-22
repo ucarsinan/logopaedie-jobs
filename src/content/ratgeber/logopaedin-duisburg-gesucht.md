@@ -65,4 +65,4 @@ Eine gute Praxis kann diese Punkte klar beantworten.
 
 Die [Praxis für Logopädie Şimşek sucht aktuell eine Logopädin oder Sprachtherapeutin in Duisburg](/jobs/logopaedin-sprachtherapeut-duisburg/). Die Stelle ist in Vollzeit oder Teilzeit möglich, eine 4-Tage-Woche kann besprochen werden, Fortbildungen werden vollständig übernommen und die Praxis liegt zwei Minuten vom Duisburger Hauptbahnhof entfernt.
 
-Der erste Kontakt ist bewusst unkompliziert: Eine kurze Nachricht per WhatsApp oder E-Mail reicht, um ins Gespräch zu kommen.
+Der erste Kontakt ist bewusst unkompliziert: Eine kurze E-Mail reicht, um ins Gespräch zu kommen.

@@ -12,7 +12,7 @@ draft: false
 relatedArticles: ["bewerbung-logopaedie-tipps", "logopaedin-duisburg-gesucht", "arbeiten-duisburg"]
 definition: "Eine Logopädie-Bewerbung ohne klassisches Anschreiben ist möglich, wenn der erste Kontakt niedrigschwellig gedacht ist. Für ein verbindliches Angebot braucht die Praxis später trotzdem Anerkennungsurkunde, Lebenslauf und relevante Nachweise."
 faq:
-  - q: "Kann ich mich als Logopädin per WhatsApp bewerben?"
+  - q: "Kann ich mich als Logopädin per E-Mail bewerben?"
     a: "Ja, wenn die Praxis diesen Weg anbietet. Für den ersten Kontakt reicht oft eine kurze Nachricht mit Abschluss, Arbeitszeitwunsch und möglichem Starttermin."
   - q: "Welche Unterlagen brauche ich später trotzdem?"
     a: "Wichtig sind die staatliche Anerkennungsurkunde, ein kurzer Lebenslauf und relevante Zeugnisse oder Fortbildungsnachweise. Diese Unterlagen müssen nicht zwingend im ersten Kontakt vollständig vorliegen."
@@ -72,4 +72,4 @@ Schreibe lieber konkret:
 
 ## Unsere Praxis: kurzer Kontakt reicht
 
-Bei der [Stelle der Praxis für Logopädie Şimşek in Duisburg](/jobs/logopaedin-sprachtherapeut-duisburg/) reicht für den ersten Schritt eine WhatsApp oder E-Mail. Ein Anschreiben ist nicht nötig. Wenn es für beide Seiten passt, klären wir die Unterlagen danach in Ruhe.
+Bei der [Stelle der Praxis für Logopädie Şimşek in Duisburg](/jobs/logopaedin-sprachtherapeut-duisburg/) reicht für den ersten Schritt eine E-Mail. Ein Anschreiben ist nicht nötig. Wenn es für beide Seiten passt, klären wir die Unterlagen danach in Ruhe.

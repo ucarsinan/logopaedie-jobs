@@ -8,8 +8,6 @@ const pageTitle = 'Aktuelle Logopädie-Stellen in Duisburg | Praxis Şimşek';
 const pageDescription =
   'Offene Stellen bei der Praxis für Logopädie Şimşek in Duisburg: Logopädinnen, Logopäden und Sprachtherapeutinnen gesucht. Vollzeit, Teilzeit und 4-Tage-Woche möglich.';
 
-const whatsappHref =
-  'https://api.whatsapp.com/send?phone=4920334868690&text=Hallo%20Emel!%20Ich%20interessiere%20mich%20f%C3%BCr%20die%20Logop%C3%A4die-Stellen%20in%20Duisburg.%20Ich%20w%C3%BCrde%20gern%20kurz%20unverbindlich%20sprechen.';
 const mailHref =
   'mailto:info@logopaedie-simsek.de?subject=Logop%C3%A4die-Stellen%20Duisburg&body=Hallo%20Frau%20%C5%9Eim%C5%9Fek-U%C3%A7ar,%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20die%20Logop%C3%A4die-Stellen%20in%20Duisburg.%0A%0AMein%20Abschluss:%0AMein%20Stundenwunsch:%0AM%C3%B6glicher%20Start:%0A%0AViele%20Gr%C3%BC%C3%9Fe';
 ---
@@ -81,9 +79,7 @@ const mailHref =
                   Details ansehen
                 </a>
                 <a
-                  href={whatsappHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={mailHref}
                   class="inline-flex items-center justify-center px-5 py-3 bg-white text-slate-800 text-sm font-bold rounded-full border-2 border-slate-200 hover:border-simsek-blue transition-all duration-200 no-underline"
                 >
                   Unverbindlich fragen
@@ -109,6 +105,6 @@ const mailHref =
     </section>
   </main>
 
-  <StickyApplyBar whatsappHref={whatsappHref} mailHref={mailHref} />
+  <StickyApplyBar mailHref={mailHref} />
   <Footer />
 </Layout>
