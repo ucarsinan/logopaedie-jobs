@@ -21,8 +21,13 @@
       "permanent": true
     },
     {
-      "source": "/ratgeber/:slug*",
-      "destination": "/berufshandbuch/:slug*",
+      "source": "/ratgeber/:slug+",
+      "destination": "/berufshandbuch/:slug+/",
+      "permanent": true
+    },
+    {
+      "source": "/ratgeber/:slug+/",
+      "destination": "/berufshandbuch/:slug+/",
       "permanent": true
     },
     {

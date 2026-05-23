@@ -44,3 +44,5 @@ playwright-report/
 .env.local
 .env.*.local
 # End Git Policy
+*.bak
+.playwright-cli/
