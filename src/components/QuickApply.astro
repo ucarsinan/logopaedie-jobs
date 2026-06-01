@@ -14,17 +14,19 @@
 
     <div class="bg-white/5 border border-white/10 p-4 sm:p-6 rounded-2xl backdrop-blur-xl">
 
-      <div id="step-1" class="apply-step space-y-4">
+      <div id="step-1" class="apply-step space-y-4" role="region" aria-label="Schritt 1: Qualifikation">
         <h3 class="text-lg font-semibold text-center">Bist du bereits fertige Logopädin?</h3>
         <div class="grid sm:grid-cols-2 gap-3">
           <button
             onclick="nextStep(1, 'Staatlich geprüfte Logopädin')"
+            aria-label="Ja, ich bin bereits geprüfte Logopädin"
             class="py-3 px-6 border border-white/20 rounded-full text-white font-bold cursor-pointer hover:bg-linear-to-r hover:from-simsek-green/25 hover:to-simsek-blue/25 hover:border-simsek-green/60 transition-all duration-200 active:scale-[0.97]"
           >
             Ja, geprüft
           </button>
           <button
             onclick="nextStep(1, 'In Ausbildung')"
+            aria-label="Ich bin noch in Ausbildung"
             class="py-3 px-6 border border-white/20 rounded-full text-white font-bold cursor-pointer hover:bg-linear-to-r hover:from-simsek-green/25 hover:to-simsek-blue/25 hover:border-simsek-green/60 transition-all duration-200 active:scale-[0.97]"
           >
             In Ausbildung
@@ -32,23 +34,26 @@
         </div>
       </div>
 
-      <div id="step-2" class="apply-step hidden space-y-4">
+      <div id="step-2" class="apply-step hidden space-y-4" role="region" aria-label="Schritt 2: Was suchst du?">
         <h3 class="text-lg font-semibold text-center">Was suchst du gerade?</h3>
         <div class="grid sm:grid-cols-3 gap-3">
           <button
             onclick="nextStep(2, 'Schnellstmöglich starten')"
+            aria-label="Ich m\u00f6chte schnellstm\u00f6glich starten"
             class="py-3 px-4 border border-white/20 rounded-full text-white font-bold cursor-pointer hover:bg-linear-to-r hover:from-simsek-green/25 hover:to-simsek-blue/25 hover:border-simsek-green/60 transition-all duration-200 active:scale-[0.97]"
           >
             Start bald
           </button>
           <button
             onclick="nextStep(2, 'Teilzeit / Stundenmodell klären')"
+            aria-label="Ich m\u00f6chte das Teilzeit- oder Stundenmodell kl\u00e4ren"
             class="py-3 px-4 border border-white/20 rounded-full text-white font-bold cursor-pointer hover:bg-linear-to-r hover:from-simsek-green/25 hover:to-simsek-blue/25 hover:border-simsek-green/60 transition-all duration-200 active:scale-[0.97]"
           >
             Teilzeit klären
           </button>
           <button
             onclick="nextStep(2, 'Unverbindlich kennenlernen')"
+            aria-label="Ich m\u00f6chte mich erst unverbindlich kennenlernen"
             class="py-3 px-4 border border-white/20 rounded-full text-white font-bold cursor-pointer hover:bg-linear-to-r hover:from-simsek-green/25 hover:to-simsek-blue/25 hover:border-simsek-green/60 transition-all duration-200 active:scale-[0.97]"
           >
             Erst sprechen
@@ -56,7 +61,7 @@
         </div>
       </div>
 
-      <div id="step-3" class="apply-step hidden text-center space-y-4">
+      <div id="step-3" class="apply-step hidden text-center space-y-4" role="region" aria-label="Schritt 3: Abschluss - Kontakt starten">
         <h3 class="text-2xl font-bold text-transparent bg-clip-text bg-linear-to-r from-simsek-green to-simsek-blue">Fast geschafft!</h3>
         <p class="text-slate-300 text-sm">Starte den ersten Kontakt per E-Mail.</p>
 
@@ -64,6 +69,7 @@
           <a
             id="mail-link"
             href="#"
+            aria-label="E-Mail schreiben um den Kontakt zu starten"
             class="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-linear-to-r from-simsek-green to-simsek-blue text-white font-bold rounded-full shadow-md shadow-simsek-green/30 hover:shadow-lg hover:shadow-simsek-green/40 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 no-underline"
           >
             <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
@@ -89,11 +95,30 @@ function nextStep(step, val) {
 
   document.getElementById(`step-${step}`).classList.add('hidden');
   document.getElementById(`step-${step+1}`).classList.remove('hidden');
+
+  // GA4 event tracking
+  if(typeof gtag !== 'undefined') {
+    gtag('event', `quick_apply_step_${step}`, {
+      step_value: val,
+      timestamp: new Date().toISOString()
+    });
+  }
 }
 
 function updateLinks() {
   const msg = `Hallo Emel! Ich interessiere mich für den Logopädie-Job.\nStatus: ${data.step1}\nWunsch: ${data.step2}\n\nMein Abschluss:\nMein Stundenwunsch:\nMöglicher Start:`;
 
-  document.getElementById('mail-link').href = `mailto:info@logopaedie-simsek.de?subject=Unverbindliches%20Kennenlernen%20Logop%C3%A4die-Job&body=${encodeURIComponent(msg)}`;
+  const mailLink = document.getElementById('mail-link');
+  mailLink.href = `mailto:info@logopaedie-simsek.de?subject=Unverbindliches%20Kennenlernen%20Logop%C3%A4die-Job&body=${encodeURIComponent(msg)}`;
+
+  // GA4 conversion event
+  mailLink.onclick = () => {
+    if(typeof gtag !== 'undefined') {
+      gtag('event', 'quick_apply_final', {
+        status: data.step1,
+        wish: data.step2
+      });
+    }
+  };
 }
 </script>
