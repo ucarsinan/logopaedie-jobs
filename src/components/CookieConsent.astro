@@ -1,0 +1,120 @@
+---
+// CookieConsent.astro — DSGVO-konformer Opt-in-Banner (vanilla-cookieconsent v3)
+// Basic Consent Mode: Google Analytics wird ERST nach aktiver Zustimmung geladen.
+// Die GA-Measurement-ID kommt aus PUBLIC_GA_MEASUREMENT_ID (Env, kein Hardcoding).
+// Die ID wird zur Laufzeit über ein data-Attribut gelesen, damit der GA-Loader
+// nicht vom Bundler entfernt wird, wenn die Env beim Build (noch) leer ist.
+const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID ?? '';
+---
+
+<span id="ga-consent-config" data-ga-id={gaId} hidden></span>
+
+<script>
+  import * as CookieConsent from 'vanilla-cookieconsent';
+  import 'vanilla-cookieconsent/dist/cookieconsent.css';
+
+  declare global {
+    interface Window {
+      dataLayer: unknown[];
+      gtag: (...args: unknown[]) => void;
+      __gaLoaded?: boolean;
+    }
+  }
+
+  const GA_ID = document.getElementById('ga-consent-config')?.dataset.gaId || '';
+
+  // Consent-Mode-Default: vor allem anderen alles auf "denied".
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+  window.gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+  });
+
+  // GA erst bei Zustimmung laden (Basic Mode) — nur einmal.
+  function enableAnalytics() {
+    if (!GA_ID || window.__gaLoaded) return;
+    window.__gaLoaded = true;
+    window.gtag('consent', 'update', { analytics_storage: 'granted' });
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA_ID);
+    document.head.appendChild(s);
+    window.gtag('js', new Date());
+    window.gtag('config', GA_ID, { anonymize_ip: true });
+  }
+
+  function syncConsent() {
+    if (CookieConsent.acceptedCategory('analytics')) {
+      enableAnalytics();
+    } else {
+      window.gtag('consent', 'update', { analytics_storage: 'denied' });
+    }
+  }
+
+  CookieConsent.run({
+    guiOptions: {
+      consentModal: { layout: 'box', position: 'bottom center', equalWeightButtons: true },
+      preferencesModal: { layout: 'box', equalWeightButtons: true },
+    },
+    categories: {
+      necessary: { enabled: true, readOnly: true },
+      analytics: {
+        autoClear: {
+          cookies: [{ name: /^_ga/ }, { name: '_gid' }],
+        },
+      },
+    },
+    onFirstConsent: syncConsent,
+    onConsent: syncConsent,
+    onChange: syncConsent,
+    language: {
+      default: 'de',
+      translations: {
+        de: {
+          consentModal: {
+            title: 'Datenschutz-Einstellungen',
+            description:
+              'Wir nutzen optionale Cookies (Google Analytics), um die Nutzung dieser Seite anonymisiert auszuwerten und sie zu verbessern. Diese werden nur mit Ihrer Einwilligung gesetzt. Notwendige Funktionen kommen ohne Cookies aus. Details in der <a href="/datenschutz">Datenschutzerklärung</a>.',
+            acceptAllBtn: 'Akzeptieren',
+            acceptNecessaryBtn: 'Ablehnen',
+            showPreferencesBtn: 'Einstellungen',
+          },
+          preferencesModal: {
+            title: 'Cookie-Einstellungen',
+            acceptAllBtn: 'Alle akzeptieren',
+            acceptNecessaryBtn: 'Alle ablehnen',
+            savePreferencesBtn: 'Auswahl speichern',
+            closeIconLabel: 'Schließen',
+            sections: [
+              {
+                title: 'Verwendung von Cookies',
+                description:
+                  'Sie können selbst entscheiden, welche optionalen Cookies Sie zulassen. Ihre Einwilligung können Sie jederzeit über diesen Dialog widerrufen.',
+              },
+              {
+                title: 'Notwendig',
+                description:
+                  'Technisch erforderlich für den Betrieb der Seite. Diese Kategorie speichert lediglich Ihre Cookie-Auswahl und kann nicht deaktiviert werden.',
+                linkedCategory: 'necessary',
+              },
+              {
+                title: 'Statistik (Google Analytics)',
+                description:
+                  'Anonymisierte Reichweiten- und Nutzungsmessung mit Google Analytics 4. Wird nur bei Ihrer Einwilligung geladen.',
+                linkedCategory: 'analytics',
+              },
+              {
+                title: 'Weitere Informationen',
+                description:
+                  'Bei Fragen zum Datenschutz erreichen Sie uns unter <a href="mailto:info@logopaedie-simsek.de">info@logopaedie-simsek.de</a>.',
+              },
+            ],
+          },
+        },
+      },
+    },
+  });
+</script>

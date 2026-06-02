@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css'; // Lädt Tailwind v4 inklusive deiner simsek-Farben
+import CookieConsent from '../components/CookieConsent.astro';
 
 interface BreadcrumbItem {
     name: string;
@@ -18,7 +19,6 @@ interface Props {
 const { title, description, canonicalUrl, ogImage, breadcrumbs, robots } = Astro.props;
 const canonicalURL = canonicalUrl ? new URL(canonicalUrl, Astro.site) : new URL(Astro.url.pathname, Astro.site);
 const isLegalPage = ['/impressum', '/datenschutz'].some(p => Astro.url.pathname.startsWith(p));
-const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 ---
 
 <!doctype html>
@@ -62,39 +62,9 @@ const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
             }))
           })} />
         )}
-        {gaMeasurementId && (
-          <script is:inline define:vars={{ gaMeasurementId }}>
-            (function () {
-              window.dataLayer = window.dataLayer || [];
-              window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
-
-              function loadAnalytics() {
-                if (window.__jobsGaLoaded || !gaMeasurementId) return;
-                var script = document.createElement('script');
-                script.async = true;
-                script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(gaMeasurementId);
-                document.head.appendChild(script);
-                window.__jobsGaLoaded = true;
-                window.gtag('js', new Date());
-              }
-
-              function trackPageview() {
-                window.gtag('config', gaMeasurementId, {
-                  page_path: location.pathname + location.search,
-                  page_title: document.title,
-                  anonymize_ip: true,
-                  storage: 'none',
-                  client_storage: 'none'
-                });
-              }
-
-              loadAnalytics();
-              document.addEventListener('DOMContentLoaded', trackPageview);
-            })();
-          </script>
-        )}
     </head>
     <body class="bg-white text-slate-900 selection:bg-simsek-green/20 selection:text-simsek-blue antialiased">
         <slot />
+        <CookieConsent />
     </body>
 </html>

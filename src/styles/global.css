@@ -25,3 +25,18 @@
     /* Kein overflow-hidden hier! */
   }
 }
+
+/* vanilla-cookieconsent: an die simsek-Brand anpassen */
+#cc-main {
+  --cc-btn-primary-bg: var(--color-simsek-green);
+  --cc-btn-primary-border-color: var(--color-simsek-green);
+  --cc-btn-primary-hover-bg: var(--color-simsek-blue);
+  --cc-btn-primary-hover-border-color: var(--color-simsek-blue);
+  --cc-btn-primary-color: #ffffff;
+  --cc-btn-primary-hover-color: #ffffff;
+  --cc-toggle-on-bg: var(--color-simsek-green);
+  --cc-link-color: var(--color-simsek-blue);
+  --cc-primary-color: #0f172a;
+  --cc-secondary-color: #475569;
+  --cc-cookie-category-block-bg-hover: rgb(129 183 40 / 0.08);
+}
