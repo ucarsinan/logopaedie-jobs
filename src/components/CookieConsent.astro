@@ -11,7 +11,9 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID ?? '';
 
 <script>
   import * as CookieConsent from 'vanilla-cookieconsent';
-  import 'vanilla-cookieconsent/dist/cookieconsent.css';
+  // CSS als URL importieren und zur Laufzeit injizieren — so wird sie nur
+  // ausgeliefert, wenn der Banner aktiv ist (kein globales Stylesheet).
+  import ccStylesUrl from 'vanilla-cookieconsent/dist/cookieconsent.css?url';
 
   declare global {
     interface Window {
@@ -22,6 +24,18 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID ?? '';
   }
 
   const GA_ID = document.getElementById('ga-consent-config')?.dataset.gaId || '';
+
+  // Ohne konfigurierte GA-Measurement-ID: kein Banner, kein Tracking.
+  // Sobald PUBLIC_GA_MEASUREMENT_ID gesetzt ist, aktiviert sich alles automatisch.
+  if (GA_ID) {
+  // Banner-Styles laden (nur jetzt, da der Banner tatsächlich aktiv ist).
+  if (!document.getElementById('cc-styles')) {
+    const link = document.createElement('link');
+    link.id = 'cc-styles';
+    link.rel = 'stylesheet';
+    link.href = ccStylesUrl;
+    document.head.appendChild(link);
+  }
 
   // Consent-Mode-Default: vor allem anderen alles auf "denied".
   window.dataLayer = window.dataLayer || [];
@@ -117,4 +131,5 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID ?? '';
       },
     },
   });
+  }
 </script>

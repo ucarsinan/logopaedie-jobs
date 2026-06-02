@@ -2,6 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
+
+// Google-Analytics-Abschnitt nur, wenn Analytics tatsächlich konfiguriert ist.
+const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 ---
 
 <Layout
@@ -35,7 +38,7 @@ import Footer from '../components/Footer.astro';
 
       <div class="article-body">
         <h2>1. Datenschutz auf einen Blick</h2>
-        <p>Diese Website wird als statische HTML-Seite über Vercel ausgeliefert. Beim Aufruf der Seite werden technisch notwendige Server-Logs von Vercel (IP-Adresse, Zeitstempel, aufgerufene URL) für max. 30 Tage gespeichert. Optionale Statistik-Cookies (Google Analytics) werden ausschließlich nach Ihrer aktiven Einwilligung über den Cookie-Banner gesetzt — siehe Abschnitt 6.</p>
+        <p>Diese Website wird als statische HTML-Seite über Vercel ausgeliefert. Beim Aufruf der Seite werden technisch notwendige Server-Logs von Vercel (IP-Adresse, Zeitstempel, aufgerufene URL) für max. 30 Tage gespeichert.{gaConfigured && ' Optionale Statistik-Cookies (Google Analytics) werden ausschließlich nach Ihrer aktiven Einwilligung über den Cookie-Banner gesetzt — siehe Abschnitt 6.'}</p>
 
         <h2>2. Verantwortlicher</h2>
         <p>
@@ -54,12 +57,16 @@ import Footer from '../components/Footer.astro';
         <h2>5. Ihre Rechte</h2>
         <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer personenbezogenen Daten. Wenden Sie sich dafür an: <a href="mailto:info@logopaedie-simsek.de">info@logopaedie-simsek.de</a></p>
 
-        <h2>6. Webanalyse mit Google Analytics 4</h2>
-        <p>Diese Website nutzt Google Analytics 4, einen Webanalysedienst der Google Ireland Limited (Gordon House, Barrow Street, Dublin 4, Irland). Google Analytics verwendet Cookies, die eine anonymisierte Analyse Ihrer Nutzung der Website ermöglichen (z. B. besuchte Seiten, Verweildauer, Schritte im Bewerbungs-Formular).</p>
-        <p><strong>Einsatz nur mit Einwilligung:</strong> Google Analytics wird erst geladen, nachdem Sie im Cookie-Banner aktiv eingewilligt haben. Vor Ihrer Einwilligung werden keine Analyse-Cookies gesetzt und keine Daten an Google übertragen. Die IP-Adresse wird anonymisiert verarbeitet.</p>
-        <p><strong>Rechtsgrundlage:</strong> Ihre Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO sowie § 25 Abs. 1 TDDDG. Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen, indem Sie im Footer auf „Cookie-Einstellungen" klicken und die Statistik-Cookies deaktivieren.</p>
-        <p><strong>Datenübertragung in die USA:</strong> Bei der Nutzung von Google Analytics kann es zu einer Übertragung personenbezogener Daten an Google in die USA kommen. Google verarbeitet die Daten als Auftragsverarbeiter auf Grundlage der EU-Standardvertragsklauseln.</p>
-        <p><!-- TODO: Vom Verantwortlichen/Anwalt bestätigen: konkrete GA4-Datenspeicherdauer (Property-Einstellung „Aufbewahrung von Nutzer- und Ereignisdaten", Standard 2 oder 14 Monate) sowie ob ein Auftragsverarbeitungsvertrag (Art. 28 DSGVO) mit Google abgeschlossen wurde. Diese Angaben hier ergänzen, bevor die Seite live geht. --></p>
+        {gaConfigured && (
+          <Fragment>
+            <h2>6. Webanalyse mit Google Analytics 4</h2>
+            <p>Diese Website nutzt Google Analytics 4, einen Webanalysedienst der Google Ireland Limited (Gordon House, Barrow Street, Dublin 4, Irland). Google Analytics verwendet Cookies, die eine anonymisierte Analyse Ihrer Nutzung der Website ermöglichen (z. B. besuchte Seiten, Verweildauer, Schritte im Bewerbungs-Formular).</p>
+            <p><strong>Einsatz nur mit Einwilligung:</strong> Google Analytics wird erst geladen, nachdem Sie im Cookie-Banner aktiv eingewilligt haben. Vor Ihrer Einwilligung werden keine Analyse-Cookies gesetzt und keine Daten an Google übertragen. Die IP-Adresse wird anonymisiert verarbeitet.</p>
+            <p><strong>Rechtsgrundlage:</strong> Ihre Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO sowie § 25 Abs. 1 TDDDG. Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen, indem Sie im Footer auf „Cookie-Einstellungen" klicken und die Statistik-Cookies deaktivieren.</p>
+            <p><strong>Datenübertragung in die USA:</strong> Bei der Nutzung von Google Analytics kann es zu einer Übertragung personenbezogener Daten an Google in die USA kommen. Google verarbeitet die Daten als Auftragsverarbeiter auf Grundlage der Google Ads Data Processing Terms, die bei der Nutzung von Google Analytics automatisch Anwendung finden.</p>
+            <p><strong>Speicherdauer:</strong> Die Aufbewahrungsdauer der nutzer- und ereignisbezogenen Daten richtet sich nach der in den Google-Analytics-Einstellungen gewählten Konfiguration (Google-Standard: 2 Monate, maximal 14 Monate).</p>
+          </Fragment>
+        )}
       </div>
 
     </article>
