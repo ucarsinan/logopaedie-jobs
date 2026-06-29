@@ -33,20 +33,19 @@ Typische Dateien:
 
 - `src/pages/jobs/`
 - `src/pages/api/`
-- Zod-Schemas
+- Formularvalidierung, falls ein Praxis-Flow explizit freigegeben ist
 
-## Worker C — Supabase, Admin und Datenmodell
+## Worker C — Admin und Datenmodell
 
 Zustaendig fuer:
 
-- Supabase-Schema
-- Admin-Bereich
+- Admin-Bereich, falls explizit freigegeben
 - Zugriffsschutz
-- Datenbankregeln und Datenlebenszyklus
+- Datenmodelle, falls explizit freigegeben
+- Datenbankregeln und Datenlebenszyklus, falls eine Datenbank ausdruecklich freigegeben ist
 
 Typische Dateien:
 
-- `supabase/`
 - `src/pages/admin/`
 - serverseitige API-/Datenzugriffe
 

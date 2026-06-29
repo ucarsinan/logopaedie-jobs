@@ -8,7 +8,7 @@ Dieses Projekt kann Bewerbungs- und Kontaktdaten verarbeiten. Agenten behandeln 
 
 - Keine echten Bewerbungsdaten in Logs, Tests, Screenshots, Reports oder Prompts kopieren.
 - Testdaten synthetisch halten.
-- Supabase-Service-Keys, Tokens und Env Vars nie ausgeben.
+- Service-Keys, Tokens und Env Vars nie ausgeben.
 - Public- und Admin-Kontext sauber trennen.
 - Admin-Routen duerfen nicht in Sitemap oder oeffentlicher Navigation landen, wenn sie nicht oeffentlich gedacht sind.
 - Formularvalidierung serverseitig absichern.
@@ -20,6 +20,6 @@ Vor Abschluss fragen:
 
 1. Sind personenbezogene Daten betroffen?
 2. Wurde ein Secret beruehrt oder ausgegeben?
-3. Veraendert die Aenderung Admin-Zugriff, Formularannahme oder Supabase-Zugriff?
+3. Veraendert die Aenderung Admin-Zugriff, Formularannahme oder Datenbankzugriff?
 4. Veraendert die Aenderung SEO-Indexierung oder Sitemap?
 5. Sind Tests/Checks passend dokumentiert?

@@ -2,7 +2,7 @@
 
 ## Ziel
 
-Dieses Repository soll auch bei kurzen Aufgaben kontrolliert bearbeitet werden. Agenten muessen Kontext, Datenschutz, SEO, Formularlogik, Supabase-Grenzen, Checks und Git-Status klaeren.
+Dieses Repository soll auch bei kurzen Aufgaben kontrolliert bearbeitet werden. Agenten muessen Kontext, Datenschutz, SEO, Formularlogik, Produktgrenzen, Checks und Git-Status klaeren.
 
 ## Standardablauf
 
@@ -29,7 +29,7 @@ Berichte muessen entscheidungsfaehig sein:
 
 ## Freigabepflichtige Aktionen
 
-- produktive Supabase-Daten lesen oder aendern
+- produktive Daten oder Datenbanken lesen oder aendern
 - Vercel Deployments, Domains, DNS oder Env Vars aendern
 - echte Bewerbungsdaten verwenden
 - Admin-/Auth-Regeln lockern

@@ -20,7 +20,7 @@
 
 Nur mit ausdruecklicher Freigabe:
 
-- Tests gegen produktive Supabase-Projekte
+- Tests gegen produktive Datenbanken oder externe Datenservices
 - echte Bewerbungs- oder Kontaktdaten
 - Vercel Deploy/Promote
 - Live-Domain-/DNS-Pruefungen, die externe Dienste veraendern
@@ -32,6 +32,6 @@ Nur mit ausdruecklicher Freigabe:
 | Jobseiten | Build, Links, leere/volle Joblisten |
 | Bewerbungsformular | Validierung, Fehlertexte, Datenschutz |
 | Admin | Zugriffsschutz, keine Indexierung |
-| Supabase | Env-Grenzen, sichere Queries, keine Service-Key-Leaks |
+| Daten/Backend | Kein ungefragt eingefuehrter Datenbankzwang, sichere Env-Grenzen, keine Secret-Leaks |
 | SEO | Sitemap, Canonicals, Robots, Redirects |
 | UI | Mobile Navigation, Formularzustände, Barrierefreiheit |

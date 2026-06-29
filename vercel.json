@@ -90,11 +90,5 @@
       "destination": "/berufshandbuch/bilinguale-sprachtherapie/",
       "permanent": true
     }
-  ],
-  "crons": [
-    {
-      "path": "/cron/expire-jobs",
-      "schedule": "0 3 * * *"
-    }
   ]
 }

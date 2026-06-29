@@ -37,5 +37,5 @@ else
 fi
 
 echo "-- Freigabepflichtige Checks nicht ausgefuehrt"
-echo "Nicht ausgefuehrt ohne Freigabe: produktive Supabase-Zugriffe, Vercel Deploy, Live-Domain-/DNS-Aenderungen."
+echo "Nicht ausgefuehrt ohne Freigabe: produktive Datenbank-/Datenservice-Zugriffe, Vercel Deploy, Live-Domain-/DNS-Aenderungen."
 echo "== verify complete =="

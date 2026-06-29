@@ -4,7 +4,16 @@ Dieses Projekt muss jederzeit zwischen Codex, Claude Code und anderen KI-Agenten
 
 ## Projekt
 
-`logopaedie-jobs` ist eine Astro/Vercel-Website fuer Logopaedie-Stellenangebote mit Bewerbungs-/Job-Flows, Admin-Bereich, Supabase-Integration, SEO-Seiten und Datenschutzanforderungen.
+`logopaedie-jobs` ist aktuell keine klassische Jobboerse und keine Plattform fuer externe Arbeitgeber.
+Die Website dient zum jetzigen Zeitpunkt ausschliesslich der Praxis fuer Logopaedie Simsek: Stellen,
+Bewerbungswege, SEO-Seiten und Inhalte muessen auf diese Praxis ausgerichtet bleiben.
+
+Produktentscheidung vom 2026-06-29:
+
+- Keine fremden Arbeitgeber-Anzeigen.
+- Kein oeffentliches Stellen-Einreichformular fuer Dritte.
+- Keine Supabase-/Datenbank-Jobboerse als aktuelles Zielbild.
+- Vorhandene oder uncommitted Supabase-/Jobboard-Artefakte gelten als nicht freigegebener Entwurf, nicht als Produktvorgabe.
 
 ## Sprache
 
@@ -30,7 +39,7 @@ Auch wenn der Nutzer eine Aufgabe kurz oder ungenau formuliert, arbeitest du imm
 1. Kontext lesen.
 2. Ziel und Nicht-Ziele ableiten.
 3. Datenschutz-, Formular-, SEO-, Routing- und Deploy-Risiken pruefen.
-4. Betroffene Seiten, Komponenten, APIs, Supabase-Tabellen und Tests identifizieren.
+4. Betroffene Seiten, Komponenten, APIs, Datenmodelle und Tests identifizieren.
 5. Einen kleinen nachvollziehbaren Plan erstellen.
 6. Nur notwendige Aenderungen umsetzen.
 7. Pflicht-Checks ausfuehren.
@@ -39,7 +48,7 @@ Auch wenn der Nutzer eine Aufgabe kurz oder ungenau formuliert, arbeitest du imm
 ## Projektgrenzen
 
 - Keine echten Bewerbungsdaten, Kontaktanfragen oder personenbezogenen Daten ungefragt lesen, loggen oder in Tests uebernehmen.
-- Keine produktiven Supabase-Daten veraendern ohne ausdrueckliche Freigabe.
+- Keine produktiven Daten oder Datenbanken veraendern ohne ausdrueckliche Freigabe.
 - Keine Vercel-/DNS-/Domain-Aktion ohne ausdrueckliche Freigabe.
 - SEO-Aenderungen muessen Canonicals, Sitemap-Ausschluesse, Indexierbarkeit und Redirects beruecksichtigen.
 - Formular- und Admin-Aenderungen brauchen Datenschutz-, Spam- und Validierungspruefung.
