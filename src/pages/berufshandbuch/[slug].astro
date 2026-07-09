@@ -33,9 +33,9 @@ const badgeClass = kategorieColors[beitrag.data.kategorie] ?? 'bg-slate-100 text
 const canonicalURL = `https://xn--logopdiejobs-kcb.de/berufshandbuch/${beitrag.id}/`;
 
 const alleArtikel = await getCollection('ratgeber', ({ data }) => !data.draft);
-const verwandteArtikel = beitrag.data.relatedArticles
-  ? alleArtikel.filter(a => beitrag.data.relatedArticles!.includes(a.id))
-  : [];
+const verwandteArtikel = (beitrag.data.relatedArticles ?? [])
+  .map((id) => alleArtikel.find((a) => a.id === id))
+  .filter(Boolean) as CollectionEntry<'ratgeber'>[];
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -197,13 +197,22 @@ const faqSchema = beitrag.data.faq ? {
           <p class="text-slate-600 leading-relaxed mb-6 text-sm">
             Werde Teil eines kollegialen Teams in zentraler Lage — direkt am Duisburger Hauptbahnhof. 4-Tage-Woche möglich.
           </p>
-          <a
-            href="mailto:info@logopaedie-simsek.de?subject=Bewerbung%20Logop%C3%A4die-Job%20Duisburg"
-            class="inline-flex items-center gap-2 px-5 py-2.5 bg-linear-to-r from-simsek-green to-simsek-blue text-white text-sm font-bold rounded-full shadow-md shadow-simsek-green/20 hover:shadow-lg hover:shadow-simsek-green/30 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 no-underline"
-          >
-            <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-            Per E-Mail bewerben
-          </a>
+          <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
+            <a
+              href="/jobs/logopaedin-sprachtherapeut-duisburg/"
+              class="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-linear-to-r from-simsek-green to-simsek-blue text-white text-sm font-bold rounded-full shadow-md shadow-simsek-green/20 hover:shadow-lg hover:shadow-simsek-green/30 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 no-underline"
+            >
+              Stelle ansehen
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+            </a>
+            <a
+              href="mailto:info@logopaedie-simsek.de?subject=Bewerbung%20Logop%C3%A4die-Job%20Duisburg"
+              class="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-white text-slate-800 text-sm font-bold rounded-full border-2 border-slate-200 hover:border-simsek-blue transition-all duration-200 no-underline"
+            >
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+              Per E-Mail fragen
+            </a>
+          </div>
         </div>
       </div>
 

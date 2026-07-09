@@ -20,6 +20,7 @@ const isPublicIndexablePage = (page) => {
 
 export default defineConfig({
   site: 'https://xn--logopdiejobs-kcb.de',
+  trailingSlash: 'always',
 
   adapter: vercel(),
 

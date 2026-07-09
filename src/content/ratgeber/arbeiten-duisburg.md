@@ -9,7 +9,7 @@ priority: 10
 pubDate: 2026-04-14
 author: "Redaktion"
 draft: false
-relatedArticles: ["ausbildung-nrw-2026", "teilzeit-modelle"]
+relatedArticles: ["logopaedin-duisburg-gesucht", "ausbildung-nrw-2026", "gehalt-logopaedie-nrw", "teilzeit-modelle"]
 ---
 
 Duisburg taucht in Gesprächen über Arbeitsstandorte in NRW selten als erste Wahl auf. Köln, Düsseldorf oder Münster klingen attraktiver — aber wer konkret rechnet und schaut, was der Stellenmarkt bietet, kommt zu einem anderen Bild. Für Logopädinnen, die in ihr Berufsleben starten oder die Region wechseln wollen, ist Duisburg ein Standort, der sich lohnt.
@@ -60,4 +60,4 @@ Die letzten beiden Punkte unterscheiden sich stark zwischen Praxen und haben dir
 
 Die 4-Tage-Woche ist in Duisburg kein exotisches Konzept mehr — mehrere Praxen bieten sie an oder sind offen dafür. Gleiches gilt für flexible Teilzeitmodelle zwischen 20 und 30 Stunden. Mehr dazu im Artikel zu [Teilzeitmodellen in der Logopädie](/berufshandbuch/teilzeit-modelle/).
 
-Wenn du konkret auf Stellensuche bist: Schau dir die Stellenanzeige auf dieser Seite an — wir suchen aktuell eine Logopädin oder einen Logopäden für unser Team in der Praxis für Logopädie Şimşek, Tonhallenstraße 21, Duisburg. [Direkt zur Stellenanzeige](/). 
+Wenn du konkret auf Stellensuche bist: Schau dir die Stellenanzeige auf dieser Seite an — wir suchen aktuell eine Logopädin oder einen Logopäden für unser Team in der Praxis für Logopädie Şimşek, Tonhallenstraße 21, Duisburg. [Direkt zur Stellenanzeige](/jobs/logopaedin-sprachtherapeut-duisburg/).

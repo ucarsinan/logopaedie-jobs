@@ -9,7 +9,7 @@ priority: 20
 pubDate: 2026-04-14
 author: "Redaktion"
 draft: false
-relatedArticles: ["teilzeit-modelle", "arbeiten-duisburg", "bewerbung-logopaedie-tipps"]
+relatedArticles: ["logopaedin-duisburg-gesucht", "teilzeit-modelle", "arbeiten-duisburg", "gehalt-logopaedie-nrw"]
 ---
 
 Immer mehr Logopädinnen wünschen sich ein Arbeitszeitmodell, das zum Leben passt. Aber funktioniert eine 4-Tage-Woche in der Praxis? Hier ein ehrlicher Blick auf Vorteile, Grenzen und konkrete Erfahrungen.
@@ -28,7 +28,7 @@ Es gibt verschiedene Varianten, wie Logopädie-Praxen die 4-Tage-Woche umsetzen:
 
 **Variante 2: Reduzierte Stunden.** 32 Stunden auf 4 Tage — also reguläre 8-Stunden-Tage mit einem Tag weniger. Das Gehalt ist proportional etwas geringer, aber die Work-Life-Balance verbessert sich deutlich. In der Logopädie, wo der Fachkräftemangel real ist, sind viele Praxen bereit, dieses Modell anzubieten.
 
-**Variante 3: Flexibles Modell.** Manche Wochen 4 Tage, manche 5 — je nach Patientenbedarf und persönlicher Planung. Das ist das Modell, das die [Praxis Şimşek in Duisburg](/) anbietet: individuell besprochen, nicht starr vorgegeben.
+**Variante 3: Flexibles Modell.** Manche Wochen 4 Tage, manche 5 — je nach Patientenbedarf und persönlicher Planung. Das ist das Modell, das die [Praxis Şimşek in Duisburg](/jobs/logopaedin-sprachtherapeut-duisburg/) anbietet: individuell besprochen, nicht starr vorgegeben.
 
 ## Vorteile für Therapeutinnen
 
@@ -44,7 +44,7 @@ Und ehrlich: Nicht jeder Mensch funktioniert mit 4 Tagen besser. Manche Therapeu
 
 ## 4-Tage-Woche in der Praxis Şimşek, Duisburg
 
-In der [Praxis für Logopädie Şimşek](/) in der Tonhallenstraße 21 in Duisburg ist die 4-Tage-Woche ein optionales Modell. "Wir glauben: ausgeruhte Therapeuten machen bessere Therapie", sagt Praxisinhaberin Emel Şimşek-Uçar. Viele Therapeutinnen im Team nutzen das Modell bereits.
+In der [Praxis für Logopädie Şimşek](/jobs/logopaedin-sprachtherapeut-duisburg/) in der Tonhallenstraße 21 in Duisburg ist die 4-Tage-Woche ein optionales Modell. "Wir glauben: ausgeruhte Therapeuten machen bessere Therapie", sagt Praxisinhaberin Emel Şimşek-Uçar. Viele Therapeutinnen im Team nutzen das Modell bereits.
 
 Dazu kommt: 100 % Fortbildungsübernahme, ein [Gehalt über dem NRW-Durchschnitt](/berufshandbuch/gehalt-logopaedie-nrw/) und ein kollegiales Team mit klarer fachlicher Rückendeckung — mitten in Duisburg.
 

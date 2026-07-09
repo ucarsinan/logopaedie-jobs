@@ -9,7 +9,7 @@ priority: 10
 pubDate: 2026-04-18
 author: "Redaktion"
 draft: false
-relatedArticles: ["ausbildung-nrw-2026", "arbeiten-duisburg", "teilzeit-modelle"]
+relatedArticles: ["logopaedie-bewerbung-ohne-anschreiben", "logopaedin-duisburg-gesucht", "arbeiten-duisburg", "gehalt-logopaedie-nrw"]
 definition: "Eine überzeugende Bewerbung als Logopädin umfasst Anschreiben, Lebenslauf, staatliche Anerkennungsurkunde und relevante Zeugnisse — angepasst an das spezifische Patientenprofil der Stelle."
 faq:
   - q: "Was gehört in eine Bewerbungsmappe als Logopädin?"
@@ -91,4 +91,4 @@ Wenn du nach einer Woche keine Rückmeldung hast, ist eine einmalige Nachfrage p
 
 ## Direkt bewerben: Praxis Şimşek Duisburg
 
-Die Praxis für Logopädie Şimşek in Duisburg sucht aktuell Verstärkung. Das Team arbeitet mit einem breiten Patientenprofil und legt Wert auf eigenverantwortliches Arbeiten — Teilzeit und Vollzeit möglich. Details und Bewerbungsformular findest du auf der [Karriereseite](https://logopaedie-simsek.de/karriere/). Wenn du vorab Fragen hast, erreichst du die Praxis direkt unter [info@logopaedie-simsek.de](mailto:info@logopaedie-simsek.de).
+Die Praxis für Logopädie Şimşek in Duisburg sucht aktuell Verstärkung. Das Team arbeitet mit einem breiten Patientenprofil und legt Wert auf eigenverantwortliches Arbeiten — Teilzeit und Vollzeit möglich. Details findest du in der [aktuellen Stellenanzeige für Logopädinnen und Sprachtherapeutinnen in Duisburg](/jobs/logopaedin-sprachtherapeut-duisburg/). Für den ersten Kontakt reicht eine kurze E-Mail an [info@logopaedie-simsek.de](mailto:info@logopaedie-simsek.de).

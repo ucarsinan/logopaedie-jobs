@@ -9,7 +9,7 @@ priority: 20
 pubDate: 2026-04-14
 author: "Redaktion"
 draft: false
-relatedArticles: ["stottertherapie-spezialisierung", "ausbildung-nrw-2026"]
+relatedArticles: ["deutsch-tuerkische-logopaedie-duisburg", "arbeiten-duisburg", "stottertherapie-spezialisierung", "ausbildung-nrw-2026"]
 definition: "Bilinguale Sprachtherapie bezeichnet logopädische Diagnostik und Behandlung in zwei Sprachen — mit dem Ziel, echte Sprachentwicklungsstörungen von normalem mehrsprachigem Spracherwerb zu unterscheiden."
 faq:
   - q: "Verursacht Zweisprachigkeit Sprachentwicklungsstörungen?"
@@ -88,7 +88,7 @@ Das macht einen messbaren Unterschied in der therapeutischen Allianz mit der Fam
 
 ## Als bilinguale Logopädin in Duisburg arbeiten
 
-Wenn du selbst zweisprachig bist — ob Deutsch-Türkisch oder eine andere Kombination — und als Logopädin arbeiten möchtest, ist die [Praxis Şimşek](/) in Duisburg ein seltener Arbeitsplatz, an dem deine Mehrsprachigkeit nicht nur willkommen ist, sondern aktiv eingesetzt wird.
+Wenn du selbst zweisprachig bist — ob Deutsch-Türkisch oder eine andere Kombination — und als Logopädin arbeiten möchtest, ist die [Praxis Şimşek](/jobs/logopaedin-sprachtherapeut-duisburg/) in Duisburg ein seltener Arbeitsplatz, an dem deine Mehrsprachigkeit nicht nur willkommen ist, sondern aktiv eingesetzt wird.
 
 > "Als bilinguale Praxis behandeln wir unsere Patienten auf Deutsch und Türkisch — das macht uns zu einem echten Teil dieser Stadt."
 

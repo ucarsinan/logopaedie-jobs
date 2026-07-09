@@ -9,7 +9,7 @@ priority: 10
 pubDate: 2026-04-14
 author: "Redaktion"
 draft: false
-relatedArticles: ["ausbildung-nrw-2026", "bewerbung-logopaedie-tipps", "4-tage-woche-logopaedie"]
+relatedArticles: ["logopaedin-duisburg-gesucht", "4-tage-woche-logopaedie", "bewerbung-logopaedie-tipps", "ausbildung-nrw-2026"]
 definition: "Das Logopädie-Gehalt in NRW liegt 2026 bei durchschnittlich 3.820 € brutto pro Monat — rund 24 % über dem bundesweiten Schnitt von 37.100 € jährlich."
 faq:
   - q: "Was verdient eine Logopädin in NRW?"
@@ -30,7 +30,7 @@ Zum Vergleich: Der bundesweite Durchschnitt für Logopädie liegt bei etwa 37.10
 
 Als Berufsanfängerin startest du in NRW typischerweise bei **2.800 – 3.200 € brutto/Monat**. Mit 3–5 Jahren Erfahrung steigt das auf 3.400 – 3.800 €, und erfahrene Therapeutinnen mit Spezialisierung können 4.000 € und mehr erreichen.
 
-Wichtig: In der freien Praxis hängt das Gehalt stark vom Arbeitgeber ab. Manche Praxen zahlen knapp über Mindestlohn, andere — wie die [Praxis für Logopädie Şimşek in Duisburg](/) — bewusst über dem NRW-Durchschnitt.
+Wichtig: In der freien Praxis hängt das Gehalt stark vom Arbeitgeber ab. Manche Praxen zahlen knapp über Mindestlohn, andere — wie die [Praxis für Logopädie Şimşek in Duisburg](/jobs/logopaedin-sprachtherapeut-duisburg/) — bewusst über dem NRW-Durchschnitt.
 
 ## Was beeinflusst das Logopädie-Gehalt?
 
@@ -48,7 +48,7 @@ Mehrere Faktoren bestimmen, was am Ende auf dem Konto landet:
 
 Duisburg liegt beim Logopädie-Gehalt im oberen Bereich innerhalb von NRW. Die zentrale Lage im Ruhrgebiet, die gute ÖPNV-Anbindung und die hohe Nachfrage nach Therapeutinnen — besonders mit bilingualer Kompetenz — treiben die Gehälter nach oben.
 
-In der [Praxis Şimşek](/) liegt das Gehalt bewusst über dem regionalen Durchschnitt. Dazu kommen Zusatzleistungen wie vollständige Fortbildungsübernahme und die Möglichkeit einer [4-Tage-Woche](/berufshandbuch/4-tage-woche-logopaedie/) — ein Modell, das im Gesundheitswesen noch selten ist.
+In der [Praxis Şimşek-Stelle in Duisburg](/jobs/logopaedin-sprachtherapeut-duisburg/) liegt das Gehalt bewusst über dem regionalen Durchschnitt. Dazu kommen Zusatzleistungen wie vollständige Fortbildungsübernahme und die Möglichkeit einer [4-Tage-Woche](/berufshandbuch/4-tage-woche-logopaedie/) — ein Modell, das im Gesundheitswesen noch selten ist.
 
 ## Gehalt verhandeln als Logopädin — Tipps
 

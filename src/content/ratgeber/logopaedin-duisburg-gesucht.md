@@ -5,11 +5,11 @@ kategorie: "Duisburg / NRW"
 topic: "karriere-bewerbung"
 intent: "bewerbung"
 featured: true
-priority: 40
+priority: 5
 pubDate: 2026-04-29
 author: "Redaktion"
 draft: false
-relatedArticles: ["arbeiten-duisburg", "bewerbung-logopaedie-tipps", "gehalt-logopaedie-nrw"]
+relatedArticles: ["arbeiten-duisburg", "bewerbung-logopaedie-tipps", "logopaedie-bewerbung-ohne-anschreiben", "gehalt-logopaedie-nrw"]
 definition: "Wenn eine Praxis eine Logopädin in Duisburg sucht, geht es selten nur um den Lebenslauf. Entscheidend sind staatliche Anerkennung, Verlässlichkeit, fachliche Lernbereitschaft und ob Arbeitszeit, Patientenschwerpunkte und Teamkultur zusammenpassen."
 faq:
   - q: "Was muss ich für eine Stelle als Logopädin in Duisburg mitbringen?"

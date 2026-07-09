@@ -11,6 +11,111 @@
       "permanent": true
     },
     {
+      "source": "/jobs",
+      "destination": "/jobs/",
+      "permanent": true
+    },
+    {
+      "source": "/jobs/neu",
+      "destination": "/jobs/logopaedin-sprachtherapeut-duisburg/",
+      "permanent": true
+    },
+    {
+      "source": "/jobs/neu/",
+      "destination": "/jobs/logopaedin-sprachtherapeut-duisburg/",
+      "permanent": true
+    },
+    {
+      "source": "/jobs/logopaedin-sprachtherapeut-duisburg",
+      "destination": "/jobs/logopaedin-sprachtherapeut-duisburg/",
+      "permanent": true
+    },
+    {
+      "source": "/berufshandbuch",
+      "destination": "/berufshandbuch/",
+      "permanent": true
+    },
+    {
+      "source": "/gehaltsrechner",
+      "destination": "/gehaltsrechner/",
+      "permanent": true
+    },
+    {
+      "source": "/impressum",
+      "destination": "/impressum/",
+      "permanent": true
+    },
+    {
+      "source": "/datenschutz",
+      "destination": "/datenschutz/",
+      "permanent": true
+    },
+    {
+      "source": "/berufshandbuch/arbeiten-duisburg",
+      "destination": "/berufshandbuch/arbeiten-duisburg/",
+      "permanent": true
+    },
+    {
+      "source": "/berufshandbuch/ausbildung-nrw-2026",
+      "destination": "/berufshandbuch/ausbildung-nrw-2026/",
+      "permanent": true
+    },
+    {
+      "source": "/berufshandbuch/bewerbung-logopaedie-tipps",
+      "destination": "/berufshandbuch/bewerbung-logopaedie-tipps/",
+      "permanent": true
+    },
+    {
+      "source": "/berufshandbuch/deutsch-tuerkische-logopaedie-duisburg",
+      "destination": "/berufshandbuch/deutsch-tuerkische-logopaedie-duisburg/",
+      "permanent": true
+    },
+    {
+      "source": "/berufshandbuch/freie-praxis-oder-klinik-logopaedie",
+      "destination": "/berufshandbuch/freie-praxis-oder-klinik-logopaedie/",
+      "permanent": true
+    },
+    {
+      "source": "/berufshandbuch/logopaedie-bewerbung-ohne-anschreiben",
+      "destination": "/berufshandbuch/logopaedie-bewerbung-ohne-anschreiben/",
+      "permanent": true
+    },
+    {
+      "source": "/berufshandbuch/logopaedin-duisburg-gesucht",
+      "destination": "/berufshandbuch/logopaedin-duisburg-gesucht/",
+      "permanent": true
+    },
+    {
+      "source": "/berufshandbuch/willkommen",
+      "destination": "/berufshandbuch/willkommen/",
+      "permanent": true
+    },
+    {
+      "source": "/berufshandbuch/gehalt-logopaedie-nrw",
+      "destination": "/berufshandbuch/gehalt-logopaedie-nrw/",
+      "permanent": true
+    },
+    {
+      "source": "/berufshandbuch/4-tage-woche-logopaedie",
+      "destination": "/berufshandbuch/4-tage-woche-logopaedie/",
+      "permanent": true
+    },
+    {
+      "source": "/berufshandbuch/bilinguale-sprachtherapie",
+      "destination": "/berufshandbuch/bilinguale-sprachtherapie/",
+      "permanent": true
+    },
+    {
+      "source": "/berufshandbuch/stottertherapie-spezialisierung",
+      "destination": "/berufshandbuch/stottertherapie-spezialisierung/",
+      "permanent": true
+    },
+    {
+      "source": "/berufshandbuch/teilzeit-modelle",
+      "destination": "/berufshandbuch/teilzeit-modelle/",
+      "permanent": true
+    },
+    {
       "source": "/ratgeber",
       "destination": "/berufshandbuch/",
       "permanent": true

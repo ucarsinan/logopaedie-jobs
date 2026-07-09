@@ -9,7 +9,7 @@ priority: 20
 pubDate: 2026-04-29
 author: "Redaktion"
 draft: false
-relatedArticles: ["gehalt-logopaedie-nrw", "teilzeit-modelle", "stottertherapie-spezialisierung"]
+relatedArticles: ["logopaedin-duisburg-gesucht", "arbeiten-duisburg", "gehalt-logopaedie-nrw", "teilzeit-modelle"]
 definition: "Ob freie Praxis oder Klinik besser passt, hängt von deinem Arbeitsstil ab. Kliniken bieten oft klare Strukturen und spezialisierte Teams; freie Praxen bieten meist mehr Flexibilität, breitere Patientenkontakte und direktere Gestaltungsmöglichkeiten."
 faq:
   - q: "Verdient man als Logopädin in der Klinik mehr als in der Praxis?"
