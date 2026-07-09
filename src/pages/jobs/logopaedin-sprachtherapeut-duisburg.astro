@@ -268,7 +268,8 @@ const faqSchema = {
             <ul class="space-y-3 text-sm text-slate-700">
               <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>Vollzeit oder Teilzeit ab 20 Stunden</span></li>
               <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>4-Tage-Woche nach Absprache möglich</span></li>
-              <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>Schwerpunkte: Pädiatrie, Neurologie, Stottern/Poltern</span></li>
+              <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>Schwerpunkte: Pädiatrie, Neurologie (Aphasie, Dysarthrie, Dysphagie), Stottern/Poltern</span></li>
+              <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>Aufgaben: Diagnostik, Therapie, Dokumentation, Elternberatung und fachlicher Austausch</span></li>
               <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>Klare Einarbeitung und kollegiale Fallbesprechungen</span></li>
               <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>Berufsanfängerinnen willkommen</span></li>
               <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>Stellenanzeige aktuell geprüft am {reviewedOn}</span></li>
@@ -343,7 +344,7 @@ const faqSchema = {
             <div class="h-px bg-linear-to-r from-simsek-green via-simsek-blue/40 to-transparent mb-6"></div>
             <div class="space-y-4 text-base md:text-lg text-slate-600 leading-relaxed">
               <p>
-                Du arbeitest in einer etablierten logopädischen Praxis in der Duisburger Innenstadt. Unsere Patientinnen und Patienten kommen mit Sprachentwicklungsstörungen, neurologischen Störungsbildern, Stottern, Poltern, Dysphagie und weiteren logopädischen Fragestellungen zu uns.
+                Du arbeitest in einer etablierten logopädischen Praxis in der Duisburger Innenstadt. Unsere Patientinnen und Patienten kommen unter anderem mit Sprachentwicklungsstörungen, Aphasie, Dysarthrie, Dysphagie, Stottern, Poltern und weiteren logopädischen Fragestellungen zu uns.
               </p>
               <p>
                 Wir suchen nicht nach Perfektion. Wichtiger ist, dass du fachlich wachsen möchtest, gerne im Team arbeitest und Praxisalltag suchst, in dem Therapiequalität und Arbeitsleben zusammenpassen.
@@ -354,8 +355,8 @@ const faqSchema = {
           <div class="grid sm:grid-cols-2 gap-4">
             {[
               ['01', 'Ankommen', 'Klare Einarbeitung, feste Ansprechpersonen und kurze Wege.'],
-              ['02', 'Therapieren', 'Schwerpunkte in Pädiatrie, Neurologie sowie Stottern und Poltern.'],
-              ['03', 'Austauschen', 'Regelmäßige Fallbesprechungen und fachliche Rückendeckung.'],
+              ['02', 'Therapieren', 'Diagnostik und Therapie bei Kindern, Jugendlichen und Erwachsenen.'],
+              ['03', 'Dokumentieren und beraten', 'Dokumentation, Elternberatung, Fallbesprechungen und fachliche Rückendeckung.'],
               ['04', 'Wachsen', 'Fortbildungen werden vollständig übernommen.'],
             ].map(([step, title, text]) => (
               <div class="rounded-3xl bg-slate-50 border border-slate-100 p-4 md:p-5">
@@ -380,6 +381,9 @@ const faqSchema = {
         <div class="h-px bg-linear-to-r from-transparent via-simsek-green/40 to-transparent mb-5"></div>
         <p class="text-slate-300 leading-relaxed max-w-2xl mx-auto mb-7">
           Schreib uns kurz, wer du bist, ob du Vollzeit oder Teilzeit suchst und ab wann du grundsätzlich starten könntest. Wir melden uns persönlich zurück.
+        </p>
+        <p class="text-slate-300 leading-relaxed max-w-2xl mx-auto mb-7">
+          Direkter Kontakt: <a href={mailHref} class="text-white font-semibold underline decoration-simsek-green underline-offset-4 hover:text-simsek-green transition-colors">info@logopaedie-simsek.de</a>
         </p>
         <div class="flex flex-col sm:flex-row gap-3 justify-center">
           <a href={mailHref} class="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-linear-to-r from-simsek-green to-simsek-blue text-white text-sm font-bold rounded-full shadow-md shadow-simsek-green/30 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 no-underline">
@@ -428,8 +432,8 @@ const faqSchema = {
           {[
             ['Kann ich in Teilzeit arbeiten?', 'Ja. Wir suchen Vollzeit und Teilzeit, in der Regel ab etwa 20 Stunden pro Woche.'],
             ['Ist 4-Tage-Woche realistisch?', 'Ja. Das Modell ist möglich und wird individuell mit dir besprochen.'],
-            ['Welche Fachbereiche sind wichtig?', 'Pädiatrie, Neurologie und Stottertherapie sind wichtige Schwerpunkte. Du musst aber nicht in allen Bereichen schon spezialisiert sein.'],
-            ['Brauche ich ein Anschreiben?', 'Für den ersten Kontakt nicht. Eine kurze E-Mail reicht.'],
+            ['Welche Fachbereiche sind wichtig?', 'Pädiatrie, Neurologie mit Aphasie, Dysarthrie und Dysphagie sowie Stottertherapie sind wichtige Schwerpunkte. Du musst aber nicht in allen Bereichen schon spezialisiert sein.'],
+            ['Brauche ich ein Anschreiben?', 'Für den ersten Kontakt nicht. Eine kurze E-Mail an info@logopaedie-simsek.de reicht.'],
           ].map(([q, a]) => (
             <details class="group rounded-2xl bg-white border border-slate-100 overflow-hidden shadow-sm">
               <summary class="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer list-none font-semibold text-slate-900">
