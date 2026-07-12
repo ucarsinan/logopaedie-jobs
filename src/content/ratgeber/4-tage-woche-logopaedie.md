@@ -10,6 +10,16 @@ pubDate: 2026-04-14
 author: "Redaktion"
 draft: false
 relatedArticles: ["logopaedin-duisburg-gesucht", "teilzeit-modelle", "arbeiten-duisburg", "gehalt-logopaedie-nrw"]
+definition: "Die 4-Tage-Woche in der Logopädie bedeutet meist 32 bis 40 Stunden auf vier statt fünf Tage verteilt — mit dem Ziel, durch mehr Erholung eine bessere Therapiequalität zu erreichen."
+faq:
+  - q: "Wie funktioniert eine 4-Tage-Woche in der Logopädie?"
+    a: "Es gibt drei gängige Varianten: komprimierte Vollzeit mit 40 Stunden auf 4 Tage (10-Stunden-Tage, volles Gehalt), reduzierte Stunden mit 32 Stunden auf 4 Tage (etwas geringeres Gehalt) oder ein flexibles Modell, bei dem manche Wochen 4 und manche 5 Tage gearbeitet wird."
+  - q: "Bekommt man bei der 4-Tage-Woche weniger Gehalt?"
+    a: "Das hängt vom Modell ab. Bei komprimierter Vollzeit (40 Stunden auf 4 Tage) bleibt das Gehalt gleich, bei reduzierten Stunden (32 Stunden) sinkt es proportional — dafür verbessert sich die Work-Life-Balance deutlich."
+  - q: "Welche Vorteile hat die 4-Tage-Woche für Logopädinnen?"
+    a: "Therapeutinnen berichten von besserer Konzentration an den Arbeitstagen, weniger Krankheitstagen und höherer Zufriedenheit im Beruf. Der zusätzliche freie Tag hilft außerdem bei Kinderbetreuung, Fortbildungen oder Erholung."
+  - q: "Bietet die Praxis Şimşek in Duisburg eine 4-Tage-Woche an?"
+    a: "Ja, in der Praxis für Logopädie Şimşek in Duisburg ist die 4-Tage-Woche ein optionales Modell, das bereits viele Therapeutinnen im Team nutzen. Dazu kommen 100 % Fortbildungsübernahme und ein Gehalt über dem NRW-Durchschnitt."
 ---
 
 Immer mehr Logopädinnen wünschen sich ein Arbeitszeitmodell, das zum Leben passt. Aber funktioniert eine 4-Tage-Woche in der Praxis? Hier ein ehrlicher Blick auf Vorteile, Grenzen und konkrete Erfahrungen.

@@ -10,6 +10,16 @@ pubDate: 2026-04-13
 author: "Redaktion"
 draft: false
 relatedArticles: ["logopaedin-duisburg-gesucht", "arbeiten-duisburg", "gehalt-logopaedie-nrw", "bewerbung-logopaedie-tipps"]
+definition: "Das Logopädie-Berufshandbuch bietet Artikel, Guides und Erfahrungsberichte rund um den Berufsalltag in der Logopädie mit Fokus auf Nordrhein-Westfalen und das Ruhrgebiet."
+faq:
+  - q: "Worum geht es im Logopädie-Berufshandbuch?"
+    a: "Das Berufshandbuch bietet Artikel, Guides und Erfahrungsberichte rund um den Berufsalltag in der Logopädie, mit Fokus auf Nordrhein-Westfalen und das Ruhrgebiet. Themen sind unter anderem Gehalt, Arbeitszeitmodelle, Fachwissen zu Störungsbildern, Fortbildungen und Karrierewege."
+  - q: "Für wen ist das Berufshandbuch gedacht?"
+    a: "Es richtet sich an Logopädinnen und Sprachtherapeuten, die sich praxisnah über Gehalt, Arbeitszeitmodelle und Karrierewege im Beruf informieren wollen. Der Ton ist bewusst ehrlich und praxisnah gehalten, ohne Werbesprache."
+  - q: "Welche Artikel sind im Berufshandbuch bereits verfügbar?"
+    a: "Bereits verfügbar sind unter anderem Artikel zum Arbeiten in Duisburg, zum Gehalt in NRW sowie zur aktuellen Stellenanzeige für Logopädinnen und Sprachtherapeutinnen in Duisburg."
+  - q: "Wie kann ich Themenvorschläge für das Berufshandbuch einreichen?"
+    a: "Vorschläge für Themen können per E-Mail an info@logopaedie-simsek.de eingereicht werden."
 ---
 
 Hier findest du Artikel, Guides und Erfahrungsberichte rund um den Berufsalltag in der Logopädie — mit klarem Fokus auf Nordrhein-Westfalen und das Ruhrgebiet.

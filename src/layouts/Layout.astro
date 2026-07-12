@@ -52,6 +52,20 @@ const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 
         <meta name="robots" content={robots ?? (isLegalPage ? 'noindex, nofollow' : 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1')} />
         <slot name="head" />
+        <script type="application/ld+json" is:inline set:html={JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "Logopädiejobs.de",
+          "url": new URL('/', Astro.site).href,
+          "inLanguage": "de",
+          "description": "Karriere-Portal der Praxis für Logopädie Şimşek in Duisburg — Stellenangebote, Berufshandbuch und Gehaltsinformationen für Logopädinnen und Sprachtherapeuten.",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Praxis für Logopädie Şimşek",
+            "url": "https://logopaedie-simsek.de/",
+            "sameAs": "https://logopaedie-simsek.de/"
+          }
+        })} />
         {breadcrumbs && breadcrumbs.length > 0 && (
           <script type="application/ld+json" is:inline set:html={JSON.stringify({
             "@context": "https://schema.org",

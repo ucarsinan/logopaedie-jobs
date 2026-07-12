@@ -10,6 +10,16 @@ pubDate: 2026-04-14
 author: "Redaktion"
 draft: false
 relatedArticles: ["ausbildung-nrw-2026", "arbeiten-duisburg", "bewerbung-logopaedie-tipps", "4-tage-woche-logopaedie"]
+definition: "Mehr als die Hälfte aller angestellten Logopädinnen in Deutschland arbeitet laut dbl-Praxisumfrage 2024/2025 nicht in Vollzeit — die gängigsten Teilzeitmodelle sind die 4-Tage-Woche (ca. 32 Stunden), die 30-Stunden-Woche und die 20-Stunden-Woche."
+faq:
+  - q: "Wie verbreitet ist Teilzeit in der Logopädie?"
+    a: "Laut der dbl-Praxisumfrage 2024/2025 arbeiten mehr als die Hälfte aller angestellten Logopädinnen in Deutschland nicht in Vollzeit. Gründe sind unter anderem Familienphase und Kinderbetreuung, aber auch der fordernde Charakter des Berufs."
+  - q: "Wie viel verdient man bei einer 4-Tage-Woche in der Logopädie?"
+    a: "Bei rund 32 Stunden (ca. 83 % einer Vollzeitstelle) sinkt das Gehalt proportional: Wer in Vollzeit 3.400 Euro brutto verdient, landet bei der 4-Tage-Woche bei rund 2.800 Euro."
+  - q: "Welches Teilzeitmodell passt zu welcher Lebensphase?"
+    a: "Im Berufsstart (0–2 Jahre) empfiehlt sich Vollzeit oder 30 Stunden wegen der steilen Lernkurve. In der Familienphase mit Kleinkind sind 20–30 Stunden üblich, in der mittleren Berufsphase (5–10 Jahre) oft die 4-Tage-Woche oder 30 Stunden."
+  - q: "Ist eine 20-Stunden-Teilzeit für die Patientenkontinuität geeignet?"
+    a: "Bei 20 Stunden pro Woche ist Patientenkontinuität schwerer aufrechtzuerhalten, da Kinder mit Sprachentwicklungsstörungen idealerweise zwei Einheiten pro Woche brauchen. Gut funktioniert dieses Modell eher bei wöchentlichen Einzelterminen, etwa bei leichteren phonologischen Störungen."
 ---
 
 Teilzeit ist in der Logopädie der Normalfall, nicht die Ausnahme. Laut der dbl-Praxisumfrage 2024/2025 arbeiten mehr als die Hälfte aller angestellten Logopädinnen in Deutschland nicht in Vollzeit. Das liegt zum einen an Familienphase und Kinderbetreuung, zum anderen daran, dass viele schlicht nicht 38,5 Stunden pro Woche therapeutisch arbeiten wollen — der Beruf ist fordernd, und Teilzeit ist eine vernünftige Antwort darauf.
