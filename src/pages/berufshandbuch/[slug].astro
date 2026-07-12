@@ -142,13 +142,18 @@ const faqSchema = beitrag.data.faq ? {
         <div class="mt-8 h-px bg-linear-to-r from-simsek-green via-simsek-blue/40 to-transparent"></div>
       </header>
 
-      <!-- Hero image -->
+      <!-- Hero image: fester Seitenverhältnis-Container verhindert Layout-Sprung (CLS),
+           unabhängig von der tatsächlichen Bildgröße aus dem CMS-Upload. -->
       {beitrag.data.heroImage && (
-        <img
-          src={beitrag.data.heroImage}
-          alt={beitrag.data.heroImageAlt || beitrag.data.title}
-          class="w-full rounded-2xl mb-12 shadow-sm"
-        />
+        <div class="relative w-full aspect-[16/9] rounded-2xl mb-12 overflow-hidden shadow-sm bg-slate-100">
+          <img
+            src={beitrag.data.heroImage}
+            alt={beitrag.data.heroImageAlt || beitrag.data.title}
+            class="absolute inset-0 w-full h-full object-cover"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
       )}
 
       <!-- Definition box (AI SEO / speakable anchor) -->
