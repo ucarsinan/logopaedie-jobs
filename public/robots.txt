@@ -1,5 +1,37 @@
 User-agent: *
 Allow: /
 
+# KI-Retrieval-/Zitier-Bots: erlaubt (Ziel: Zitierung in ChatGPT/Claude/Perplexity-Antworten)
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# KI-Trainings-Bots: blockiert (Inhalte sollen nicht dauerhaft in Trainingsdaten einfliessen)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
 # Hier den Pfad zur generierten Sitemap angeben
 Sitemap: https://xn--logopdiejobs-kcb.de/sitemap-index.xml
