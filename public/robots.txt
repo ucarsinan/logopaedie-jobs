@@ -1,6 +1,12 @@
 User-agent: *
 Allow: /
 
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
 # KI-Retrieval-/Zitier-Bots: erlaubt (Ziel: Zitierung in ChatGPT/Claude/Perplexity-Antworten)
 User-agent: ChatGPT-User
 Allow: /
@@ -17,11 +23,14 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-# KI-Trainings-Bots: blockiert (Inhalte sollen nicht dauerhaft in Trainingsdaten einfliessen)
+# KI-Trainings-Bots: blockiert (gleiche Policy wie logopaedie-simsek.de)
 User-agent: GPTBot
 Disallow: /
 
 User-agent: ClaudeBot
+Disallow: /
+
+User-agent: anthropic-ai
 Disallow: /
 
 User-agent: Google-Extended
@@ -33,5 +42,5 @@ Disallow: /
 User-agent: Amazonbot
 Disallow: /
 
-# Hier den Pfad zur generierten Sitemap angeben
+# Kompaktes Profil für LLMs: /llms.txt
 Sitemap: https://xn--logopdiejobs-kcb.de/sitemap-index.xml
