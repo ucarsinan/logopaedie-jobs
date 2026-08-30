@@ -40,13 +40,13 @@ const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
         <meta property="og:url" content={canonicalURL} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
-        <meta property="og:image" content={ogImage ? new URL(ogImage, Astro.site) : new URL('/og-image.png', Astro.site)} />
+        <meta property="og:image" content={ogImage ? new URL(ogImage, Astro.site) : new URL('/og-image.jpg', Astro.site)} />
 
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content={canonicalURL} />
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={description} />
-        <meta property="twitter:image" content={ogImage ? new URL(ogImage, Astro.site) : new URL('/og-image.png', Astro.site)} />
+        <meta property="twitter:image" content={ogImage ? new URL(ogImage, Astro.site) : new URL('/og-image.jpg', Astro.site)} />
 
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
