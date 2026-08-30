@@ -2,7 +2,6 @@
 import Layout from '../../layouts/Layout.astro';
 import Navigation from '../../components/Navigation.astro';
 import Footer from '../../components/Footer.astro';
-import StickyApplyBar from '../../components/StickyApplyBar.astro';
 
 const pageTitle = 'Aktuelle Logopädie-Stellen in Duisburg | Praxis Şimşek';
 const pageDescription =
@@ -22,7 +21,7 @@ const mailHref =
 >
   <Navigation />
 
-  <main class="pb-20 md:pb-0">
+  <main>
     <section class="relative overflow-hidden bg-white">
       <div class="absolute inset-0 pointer-events-none -z-10">
         <div class="absolute -top-24 -right-24 w-96 h-96 bg-simsek-green/10 blur-[120px] rounded-full"></div>
@@ -42,7 +41,7 @@ const mailHref =
             <span class="text-sm font-medium text-slate-600">Offene Stellen bei uns in Duisburg</span>
           </span>
 
-          <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-900 leading-[1.04] tracking-tight uppercase">
+          <h1 class="text-[clamp(1.75rem,8vw,2.25rem)] sm:text-5xl md:text-6xl font-bold text-slate-900 leading-[1.04] tracking-tight uppercase">
             Logopädin /<br />
             <span class="text-transparent bg-clip-text bg-linear-to-r from-simsek-blue to-simsek-green">Sprachtherapeutin</span><br />
             gesucht.
@@ -62,11 +61,11 @@ const mailHref =
                   Logopädinnen, Logopäden und Sprachtherapeutinnen in Duisburg
                 </h2>
                 <p class="text-slate-600 leading-relaxed mb-5">
-                  Vollzeit oder Teilzeit, 4-Tage-Woche nach Absprache, 100 % Fortbildungskosten, strukturierte Einarbeitung und moderne Praxisräume direkt am Duisburger Hauptbahnhof.
+                  Mehrere unbefristete Stellen in Vollzeit oder Teilzeit: 38,5 Stunden Vollzeit, variable Teilzeit, Vier-Tage-Woche, 22–26 € brutto pro Stunde und intensive Einarbeitung direkt am Duisburger Hauptbahnhof.
                 </p>
                 <div class="flex flex-wrap gap-2 text-sm">
                   <span class="inline-flex items-center bg-slate-100 text-slate-700 px-3 py-1.5 rounded-full font-medium">Duisburg-Mitte</span>
-                  <span class="inline-flex items-center bg-slate-100 text-slate-700 px-3 py-1.5 rounded-full font-medium">20-40 Std./Woche</span>
+                  <span class="inline-flex items-center bg-slate-100 text-slate-700 px-3 py-1.5 rounded-full font-medium">Vollzeit (38,5 Std.) oder Teilzeit mit variablem Stundenumfang</span>
                   <span class="inline-flex items-center bg-simsek-green/10 text-simsek-green px-3 py-1.5 rounded-full font-bold border border-simsek-green/20">4-Tage-Woche möglich</span>
                 </div>
               </div>
@@ -134,6 +133,5 @@ const mailHref =
     </section>
   </main>
 
-  <StickyApplyBar mailHref={mailHref} />
   <Footer />
 </Layout>

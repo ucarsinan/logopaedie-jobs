@@ -1,6 +1,6 @@
 ---
 title: "Logopädie Gehalt NRW 2026 — Was verdient eine Logopädin in Duisburg?"
-description: "Aktuelle Gehaltszahlen für Logopädinnen in NRW und Duisburg 2026. Durchschnittsgehalt, Einstiegsgehalt, Einflussfaktoren und warum Praxis Şimşek über Durchschnitt zahlt."
+description: "Aktuelle Gehaltszahlen für Logopäd:innen in NRW und Duisburg 2026 sowie die konkrete Gehaltsspanne der Praxis Şimşek."
 kategorie: "Gehalt"
 topic: "gehalt-arbeitsmodelle"
 intent: "gehalt"
@@ -30,7 +30,7 @@ Zum Vergleich: Der bundesweite Durchschnitt für Logopädie liegt bei etwa 37.10
 
 Als Berufsanfängerin startest du in NRW typischerweise bei **2.800 – 3.200 € brutto/Monat**. Mit 3–5 Jahren Erfahrung steigt das auf 3.400 – 3.800 €, und erfahrene Therapeutinnen mit Spezialisierung können 4.000 € und mehr erreichen.
 
-Wichtig: In der freien Praxis hängt das Gehalt stark vom Arbeitgeber ab. Manche Praxen zahlen knapp über Mindestlohn, andere — wie die [Praxis für Logopädie Şimşek in Duisburg](/jobs/logopaedin-sprachtherapeut-duisburg/) — bewusst über dem NRW-Durchschnitt.
+Die [Praxis für Logopädie Şimşek in Duisburg](/jobs/logopaedin-sprachtherapeut-duisburg/) nennt eine konkrete Spanne von 22–26 € brutto pro Stunde. Bei 38,5 Stunden Vollzeit entspricht das ungefähr 3.600–4.300 € brutto im Monat; zusätzlich wird jedes Jahr Weihnachtsgeld gezahlt. Fortbildungen werden finanziell und durch zusätzliche freie Tage unterstützt.
 
 ## Was beeinflusst das Logopädie-Gehalt?
 
@@ -48,7 +48,7 @@ Mehrere Faktoren bestimmen, was am Ende auf dem Konto landet:
 
 Duisburg liegt beim Logopädie-Gehalt im oberen Bereich innerhalb von NRW. Die zentrale Lage im Ruhrgebiet, die gute ÖPNV-Anbindung und die hohe Nachfrage nach Therapeutinnen — besonders mit bilingualer Kompetenz — treiben die Gehälter nach oben.
 
-In der [Praxis Şimşek-Stelle in Duisburg](/jobs/logopaedin-sprachtherapeut-duisburg/) liegt das Gehalt bewusst über dem regionalen Durchschnitt. Dazu kommen Zusatzleistungen wie vollständige Fortbildungsübernahme und die Möglichkeit einer [4-Tage-Woche](/berufshandbuch/4-tage-woche-logopaedie/) — ein Modell, das im Gesundheitswesen noch selten ist.
+Die [Praxis für Logopädie Şimşek in Duisburg](/jobs/logopaedin-sprachtherapeut-duisburg/) nennt eine konkrete Spanne von 22–26 € brutto pro Stunde. Bei 38,5 Stunden Vollzeit entspricht das ungefähr 3.600–4.300 € brutto im Monat; zusätzlich wird jedes Jahr Weihnachtsgeld gezahlt. Fortbildungen werden finanziell und durch zusätzliche freie Tage unterstützt.
 
 ## Gehalt verhandeln als Logopädin — Tipps
 

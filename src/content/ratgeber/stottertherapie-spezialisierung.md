@@ -50,7 +50,7 @@ Die Bundesvereinigung Stottern & Selbsthilfe (BVSS) und die Demosthenes-Gesellsc
 
 **BVSS-Workshops und Fachtagungen**: Kürzere Formate, gut für den Einstieg und für spezifische Themen (z. B. Umgang mit Kindern unter 5 Jahren, digitale Nachsorge).
 
-Wichtig: Viele Arbeitgeber übernehmen Fortbildungskosten vollständig, wenn du Eigeninitiative zeigst. Es lohnt sich, das vor der Einstellung zu klären. In unserer Praxis in Duisburg ist die vollständige Kostenübernahme von Fortbildungen Standard — auch für Spezialisierungen im Bereich Stottern.
+Wichtig: Viele Arbeitgeber übernehmen Fortbildungskosten vollständig, wenn du Eigeninitiative zeigst. Es lohnt sich, das vor der Einstellung zu klären. In unserer Praxis in Duisburg werden Fortbildungen finanziell und mit zusätzlichen freien Tagen unterstützt. Die Auswahl richtet sich nach deinem gewünschten Schwerpunkt, zum Beispiel Stottertherapie.
 
 ## Gehalt und Marktposition
 

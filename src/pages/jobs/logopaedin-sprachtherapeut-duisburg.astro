@@ -8,9 +8,9 @@ import praxisImg from '../../assets/praxis-bild-2.jpg';
 
 const canonicalURL = 'https://xn--logopdiejobs-kcb.de/jobs/logopaedin-sprachtherapeut-duisburg/';
 const offizielleAnzeige = 'https://logopaedie-simsek.de/karriere/';
-const pageTitle = 'Logopädin / Sprachtherapeutin gesucht in Duisburg | Praxis Şimşek';
-const pageDescription = 'Logopädinnen, Logopäden und Sprachtherapeutinnen gesucht in Duisburg: 22–26 € brutto/Std. (Vollzeit 3.600–4.300 €), 4-Tage-Woche möglich, 100 % Fortbildung, Praxis am Hbf.';
-const reviewedOn = '09.08.2026';
+const pageTitle = 'Logopädin / Logopäde / Sprachtherapeutin / Sprachtherapeut (m/w/d) in Duisburg | Praxis Şimşek';
+const pageDescription = 'Mehrere unbefristete Logopädie- und Sprachtherapie-Stellen in Duisburg: 22–26 € brutto/Std., 38,5 Std. Vollzeit, variable Teilzeit und 4-Tage-Woche.';
+const reviewedOn = '29.08.2026';
 
 const mailHref = 'mailto:info@logopaedie-simsek.de?subject=Bewerbung%20Logop%C3%A4din%20Duisburg&body=Hallo%20Frau%20%C5%9Eim%C5%9Fek-U%C3%A7ar,%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20die%20Stelle%20als%20Logop%C3%A4din%20/%20Sprachtherapeutin%20in%20Duisburg.%0A%0AViele%20Gr%C3%BC%C3%9Fe';
 
@@ -42,51 +42,25 @@ const relatedLinks = [
   },
 ];
 
+const faqs = [
+  ['Was verdiene ich in der Praxis Şimşek?', 'Je nach Erfahrung 22–26 € brutto pro Stunde. Bei Vollzeit mit 38,5 Stunden entspricht das ungefähr 3.600–4.300 € brutto im Monat. Zusätzlich wird jedes Jahr Weihnachtsgeld gezahlt.'],
+  ['Kann ich in Teilzeit arbeiten?', 'Ja. Teilzeit ist mit variablem Stundenumfang möglich; eine Mindeststundenzahl wird nicht vorgegeben.'],
+  ['Ist eine Vier-Tage-Woche möglich?', 'Ja. Eine Vier-Tage-Woche ist möglich.'],
+  ['Welche Qualifikation brauche ich?', 'Du brauchst eine staatlich anerkannte und zugelassene Ausbildung oder ein Studium in Logopädie beziehungsweise Sprachtherapie sowie sehr gute Deutschkenntnisse. Berufserfahrung, Türkischkenntnisse und Führerschein sind nicht erforderlich.'],
+  ['Wie kann ich Kontakt aufnehmen?', 'Über das kurze Formular der Praxiswebsite, telefonisch unter 0203 34 86 86 90, per E-Mail an info@logopaedie-simsek.de oder per Post an die Tonhallenstraße 21, 47051 Duisburg. Ein Lebenslauf ist freiwillig.'],
+] as const;
+
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'Welche Logopädie-Stellen sind in Duisburg ausgeschrieben?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Die Praxis für Logopädie Şimşek sucht Logopädinnen, Logopäden und Sprachtherapeutinnen (m/w/d) in Vollzeit oder Teilzeit am Standort Tonhallenstraße 21 in Duisburg.',
-      },
+  mainEntity: faqs.map(([name, text]) => ({
+    '@type': 'Question',
+    name,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text,
     },
-    {
-      '@type': 'Question',
-      name: 'Was verdient eine Logopädin bei der Praxis Şimşek in Duisburg?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Je nach Erfahrung 22–26 € brutto pro Stunde. Bei Vollzeit (38,5 Stunden) entspricht das 3.600–4.300 € brutto im Monat, zuzüglich Urlaubs- und Weihnachtsgratifikation.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Sind die Stellen auch in Teilzeit möglich?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Ja. Die Stellen sind in Vollzeit oder Teilzeit ab etwa 20 Stunden pro Woche möglich. 4-Tage-Woche kann im persönlichen Gespräch abgestimmt werden.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Sind Berufsanfängerinnen willkommen?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Ja. Berufsanfängerinnen und Berufsanfänger sind willkommen. Die Praxis bietet strukturierte Einarbeitung, Fallbesprechungen und übernimmt Fortbildungskosten vollständig.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Wie bewerbe ich mich auf den Logopädie-Job in Duisburg?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Der erste Kontakt ist direkt per E-Mail möglich. Ein formales Anschreiben ist für das erste Kennenlernen nicht nötig.',
-      },
-    },
-  ],
+  })),
 };
 ---
 
@@ -103,7 +77,7 @@ const faqSchema = {
 
   <Navigation />
 
-  <main class="overflow-hidden pb-20 md:pb-0">
+  <main class="overflow-hidden">
     <section class="relative bg-white">
       <div class="absolute inset-0 overflow-hidden pointer-events-none -z-10">
         <div class="absolute -top-24 -right-24 w-96 h-96 bg-simsek-green/10 blur-[120px] rounded-full"></div>
@@ -128,7 +102,7 @@ const faqSchema = {
 
             <div>
               <p class="text-xs font-bold uppercase tracking-widest text-simsek-blue mb-4">Praxis für Logopädie Şimşek</p>
-              <h1 class="max-w-4xl text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-[1.03] tracking-tight uppercase">
+              <h1 class="max-w-4xl text-[clamp(1.75rem,8vw,2.25rem)] sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-[1.03] tracking-tight uppercase">
                 Logopädin /<br class="hidden sm:block" />
                 <span class="text-transparent bg-clip-text bg-linear-to-r from-simsek-blue to-simsek-green">Sprachtherapeutin</span><br />
                 gesucht.
@@ -136,7 +110,7 @@ const faqSchema = {
             </div>
 
             <p class="text-base sm:text-xl text-slate-600 leading-relaxed max-w-2xl">
-              Vollzeit oder Teilzeit in Duisburg-Mitte: 4-Tage-Woche möglich, 100 % Fortbildungskosten, strukturierte Einarbeitung und moderne Räume direkt am Hauptbahnhof.
+              Mehrere unbefristete Stellen in Duisburg-Mitte: 22–26 € brutto pro Stunde, 38,5 Stunden Vollzeit, variable Teilzeit und Vier-Tage-Woche.
             </p>
 
             <div class="flex flex-col sm:flex-row flex-wrap gap-3 pt-2">
@@ -173,7 +147,7 @@ const faqSchema = {
 
               <div class="absolute -top-4 -right-2 md:-right-6 bg-white p-4 rounded-2xl shadow-lg border border-slate-100 hidden sm:block z-20">
                 <div class="flex items-center gap-2 px-2">
-                  <span class="text-simsek-blue font-bold text-sm">100 % Fortbildung</span>
+                  <span class="text-simsek-blue font-bold text-sm">Fortbildung + freie Tage</span>
                 </div>
               </div>
             </div>
@@ -182,9 +156,9 @@ const faqSchema = {
 
         <dl class="mt-14 grid sm:grid-cols-3 gap-4">
           {[
-            ['Arbeitszeit', '20-40 Std./Woche', 'Vollzeit oder Teilzeit'],
-            ['Standort', '47051 Duisburg', '2 Minuten vom Hbf'],
-            ['Gehalt', '22–26 €/Std.', 'Vollzeit 3.600–4.300 € brutto'],
+            ['Arbeitszeit', '38,5 Std. Vollzeit', 'Teilzeit und 4-Tage-Woche möglich'],
+            ['Standort', '47051 Duisburg', 'Vor Ort, 2 Min. vom Hbf; keine Dienstreisen'],
+            ['Gehalt', '22–26 €/Std.', 'Plus jährliches Weihnachtsgeld'],
           ].map(([label, value, note]) => (
             <div class="p-px rounded-3xl bg-linear-to-br from-simsek-green/40 via-slate-100 to-simsek-blue/40">
               <div class="h-full rounded-[calc(1.5rem-1px)] bg-white p-5 shadow-sm">
@@ -221,14 +195,13 @@ const faqSchema = {
             <p class="text-xs font-bold uppercase tracking-widest text-simsek-blue mb-3">Kurzprofil</p>
             <h3 class="text-2xl font-bold text-slate-900 mb-5">Logopädie-Job in Duisburg-Mitte</h3>
             <ul class="space-y-3 text-sm text-slate-700">
-              <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>22–26 € brutto pro Stunde – bei Vollzeit 3.600–4.300 € brutto im Monat</span></li>
-              <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>Vollzeit oder Teilzeit ab 20 Stunden</span></li>
-              <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>4-Tage-Woche nach Absprache möglich</span></li>
-              <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>Schwerpunkte: Pädiatrie, Neurologie (Aphasie, Dysarthrie, Dysphagie), Stottern/Poltern</span></li>
-              <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>Aufgaben: Diagnostik, Therapie, Dokumentation, Elternberatung und fachlicher Austausch</span></li>
-              <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>Klare Einarbeitung und kollegiale Fallbesprechungen</span></li>
-              <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>Berufsanfängerinnen willkommen</span></li>
-              <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>Stellenanzeige aktuell geprüft am {reviewedOn}</span></li>
+              <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>22–26 € brutto pro Stunde; bei Vollzeit ungefähr 3.600–4.300 € brutto im Monat plus jährliches Weihnachtsgeld</span></li>
+              <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>38,5 Stunden Vollzeit, Teilzeit mit variablem Umfang und Vier-Tage-Woche</span></li>
+              <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>Unbefristeter Vertrag, 30 Urlaubstage bei fünf Arbeitstagen, anteilig bei weniger Arbeitstagen, sowie Heiligabend und Silvester frei</span></li>
+              <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>Eigene Terminplanung mit iPrax; keine regelmäßigen Überstunden, Wochenend- oder Feiertagsarbeit; Ausnahmen werden ausgeglichen</span></li>
+              <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>Finanziell und zeitlich unterstützte Fortbildungen mit freier Auswahl</span></li>
+              <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>Intensive Einarbeitung, schrittweiser Terminaufbau und jederzeit eine Ansprechperson</span></li>
+              <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>Eigene fachliche Schwerpunkte; Berufsanfänger:innen willkommen</span></li>
             </ul>
             <a href={mailHref} class="mt-6 w-full inline-flex items-center justify-center gap-2.5 px-5 py-3 bg-linear-to-r from-simsek-green to-simsek-blue text-white text-sm font-bold rounded-full shadow-md shadow-simsek-green/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 no-underline">
               <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
@@ -238,12 +211,12 @@ const faqSchema = {
 
           <div class="grid sm:grid-cols-2 gap-5">
             {[
-              ['4-Tage-Woche möglich', 'Wir planen Arbeitszeit so, dass sie zu deinem Leben passt.'],
-              ['100 % Fortbildungskosten', 'Spezialisierungen und Fachkurse werden vollständig übernommen.'],
-              ['Zentrale Lage', 'Tonhallenstraße 21, zwei Minuten vom Duisburger Hauptbahnhof.'],
-              ['Kollegiale Fallbesprechungen', 'Du bekommst fachlichen Austausch, klare Abläufe und kurze Wege im Team.'],
-              ['Strukturierte Einarbeitung', 'Berufsanfängerinnen bekommen klare Begleitung.'],
-              ['Moderne Praxisräume', 'Helle Räume, Aufzug und gutes Therapiematerial.'],
+              ['Vier-Tage-Woche', 'Das Modell ist ebenso möglich wie Vollzeit mit 38,5 Stunden oder Teilzeit mit variablem Umfang.'],
+              ['Fortbildung', 'Du erhältst finanzielle Unterstützung, zusätzliche freie Tage und wählst passende Fortbildungen selbst.'],
+              ['Eigene Planung', 'Termine, Pausen und Puffer planst du auf Vertrauensbasis mit iPrax selbst.'],
+              ['Intensive Einarbeitung', 'Dein Terminplan wächst schrittweise und eine Ansprechperson ist jederzeit für dich da.'],
+              ['iPad und Material', 'iPad mit iPrax und benötigter Software, auch privat nutzbar, plus benötigtes Therapiematerial.'],
+              ['Parken und Verpflegung', 'Nach Möglichkeit Parkplatz, sonst Parkkostenunterstützung; dazu kostenlose Snacks, Getränke und Küche.'],
             ].map(([title, text], index) => (
               <div class="p-px rounded-4xl bg-slate-100 hover:bg-linear-to-br hover:from-simsek-green hover:to-simsek-blue transition-all duration-300 group/card">
                 <div class="h-full p-6 rounded-[1.9rem] bg-white group-hover/card:bg-slate-50 transition-colors duration-200">
@@ -281,7 +254,7 @@ const faqSchema = {
             {[
               ['Einarbeitung', 'klar begleitet'],
               ['Austausch', 'kurze Wege'],
-              ['Entwicklung', '100 % Fortbildung'],
+              ['Entwicklung', 'Fortbildung + freie Tage'],
             ].map(([label, value]) => (
               <div class="rounded-2xl bg-slate-50 border border-slate-100 p-4">
                 <p class="text-[10px] font-bold uppercase tracking-widest text-simsek-green mb-1">{label}</p>
@@ -302,6 +275,9 @@ const faqSchema = {
               <p>
                 Du arbeitest in einer etablierten logopädischen Praxis in der Duisburger Innenstadt. Unsere Patientinnen und Patienten kommen unter anderem mit Sprachentwicklungsstörungen, Aphasie, Dysarthrie, Dysphagie, Stottern, Poltern und weiteren logopädischen Fragestellungen zu uns.
               </p>
+              <p>Therapieeinheiten dauern je nach ärztlicher Verordnung 30, 45 oder 60 Minuten. Du planst Termine, Pausen, Puffer und tägliche Behandlungszahl selbst. Dokumentation, Berichte und Organisation sind eingeplante Arbeitszeit. Patientenseitige Ausfälle musst du nicht durch doppelte Arbeit nachholen.</p>
+              <p>Die Stellen sind unbefristet. Die Probezeit beträgt normalerweise sechs Monate und kann abhängig von deiner Erfahrung auf drei Monate verkürzt werden; den Eintrittstermin stimmen wir individuell ab. Hausbesuche sind keine Voraussetzung und nur auf deinen Wunsch möglich.</p>
+              <p>Du arbeitest vor Ort in einem vierköpfigen Team mit flachen Hierarchien und fachlicher Entscheidungsfreiheit. Wöchentliche Teamsitzungen, interne Schulungen und Supervision gehören dazu. Eine jährliche Weihnachtsfeier und weitere Aktivitäten plant ihr gemeinsam. Wünsche bei der Arbeitszeitplanung werden berücksichtigt; kurzfristige private Termine während des Arbeitstags können ermöglicht werden.</p>
               <p>
                 Wir suchen nicht nach Perfektion. Wichtiger ist, dass du fachlich wachsen möchtest, gerne im Team arbeitest und Praxisalltag suchst, in dem Therapiequalität und Arbeitsleben zusammenpassen.
               </p>
@@ -313,7 +289,7 @@ const faqSchema = {
               ['01', 'Ankommen', 'Klare Einarbeitung, feste Ansprechpersonen und kurze Wege.'],
               ['02', 'Therapieren', 'Diagnostik und Therapie bei Kindern, Jugendlichen und Erwachsenen.'],
               ['03', 'Dokumentieren und beraten', 'Dokumentation, Elternberatung, Fallbesprechungen und fachliche Rückendeckung.'],
-              ['04', 'Wachsen', 'Fortbildungen werden vollständig übernommen.'],
+              ['04', 'Wachsen', 'Fortbildungen werden finanziell und mit zusätzlichen freien Tagen unterstützt.'],
             ].map(([step, title, text]) => (
               <div class="rounded-3xl bg-slate-50 border border-slate-100 p-4 md:p-5">
                 <p class="text-xs font-bold uppercase tracking-widest text-simsek-green mb-2">{step}</p>
@@ -333,15 +309,16 @@ const faqSchema = {
         <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-simsek-green/20 text-simsek-green border border-simsek-green/30 mb-4">
           Bewerbung
         </span>
-        <h2 class="text-3xl md:text-5xl font-bold mb-4 leading-tight">Erster Kontakt ohne Anschreiben</h2>
+        <h2 class="text-3xl md:text-5xl font-bold mb-4 leading-tight">Erst unverbindlich kennenlernen</h2>
         <div class="h-px bg-linear-to-r from-transparent via-simsek-green/40 to-transparent mb-5"></div>
         <p class="text-slate-300 leading-relaxed max-w-2xl mx-auto mb-7">
-          Schreib uns kurz, wer du bist, ob du Vollzeit oder Teilzeit suchst und ab wann du grundsätzlich starten könntest. Wir melden uns persönlich zurück.
+          Eine klassische Bewerbung ist nicht nötig. Nutze das kurze Formular auf der Praxiswebsite, ruf an, schreib eine E-Mail oder sende Post. Ein Lebenslauf ist freiwillig; Hospitation oder Probearbeit sind möglich.
         </p>
         <p class="text-slate-300 leading-relaxed max-w-2xl mx-auto mb-7">
-          Direkter Kontakt: <a href={mailHref} class="text-white font-semibold underline decoration-simsek-green underline-offset-4 hover:text-simsek-green transition-colors">info@logopaedie-simsek.de</a>
+          Emel Şimşek-Uçar · 0203 – 34 86 86 90 · info@logopaedie-simsek.de · Tonhallenstraße 21, 47051 Duisburg
         </p>
         <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <a href={offizielleAnzeige} class="inline-flex items-center justify-center px-8 py-4 bg-white text-slate-900 text-sm font-bold rounded-full no-underline">Zum Kurzformular</a>
           <a href={mailHref} class="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-linear-to-r from-simsek-green to-simsek-blue text-white text-sm font-bold rounded-full shadow-md shadow-simsek-green/30 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 no-underline">
             <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
             E-Mail schreiben
@@ -385,13 +362,7 @@ const faqSchema = {
           <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Häufige Fragen zur Stelle</h2>
         </div>
         <div class="space-y-4">
-          {[
-            ['Was verdiene ich in der Praxis Şimşek?', 'Je nach Erfahrung 22–26 € brutto pro Stunde. Bei Vollzeit (38,5 Stunden) entspricht das 3.600–4.300 € brutto im Monat, zuzüglich Urlaubs- und Weihnachtsgratifikation.'],
-            ['Kann ich in Teilzeit arbeiten?', 'Ja. Wir suchen Vollzeit und Teilzeit, in der Regel ab etwa 20 Stunden pro Woche.'],
-            ['Ist 4-Tage-Woche realistisch?', 'Ja. Das Modell ist möglich und wird individuell mit dir besprochen.'],
-            ['Welche Fachbereiche sind wichtig?', 'Pädiatrie, Neurologie mit Aphasie, Dysarthrie und Dysphagie sowie Stottertherapie sind wichtige Schwerpunkte. Du musst aber nicht in allen Bereichen schon spezialisiert sein.'],
-            ['Brauche ich ein Anschreiben?', 'Für den ersten Kontakt nicht. Eine kurze E-Mail an info@logopaedie-simsek.de reicht.'],
-          ].map(([q, a]) => (
+          {faqs.map(([q, a]) => (
             <details class="group rounded-2xl bg-white border border-slate-100 overflow-hidden shadow-sm">
               <summary class="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer list-none font-semibold text-slate-900">
                 {q}
@@ -404,14 +375,6 @@ const faqSchema = {
       </div>
     </section>
   </main>
-
-  <div class="md:hidden fixed bottom-0 left-0 right-0 z-40 border-t border-slate-200 bg-white/95 backdrop-blur-md px-4 py-3 shadow-2xl shadow-slate-900/10">
-    <div>
-      <a href={mailHref} class="inline-flex w-full items-center justify-center px-4 py-3 bg-linear-to-r from-simsek-green to-simsek-blue text-white text-sm font-bold rounded-full no-underline">
-        Per E-Mail bewerben
-      </a>
-    </div>
-  </div>
 
   <Footer />
 </Layout>
