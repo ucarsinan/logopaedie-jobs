@@ -20,21 +20,21 @@ Confidence: high
 - Not approved: Mehr-Arbeitgeber-Jobboerse, Supabase, Arbeitgeber-Self-Service, Admin-Moderation, neue Tracking-Events, Ads und weitere Kampagnenarbeit ohne zentralen Gate-Entscheid.
 
 ## Reality Findings
-- Local evidence: `main` war vor diesem Cleanup mit `origin/main` synchron; der letzte vollstaendige Build erzeugte 21 Seiten und der Employer-Truth-Diff wurde auf Desktop und Mobil geprueft.
+- Local evidence: `main` ist auf `5b0d7f2` sauber mit `origin/main` synchron; der letzte vollstaendige Build erzeugte 21 Seiten und der Employer-Truth-Diff wurde auf Desktop und Mobil geprueft.
 - Live evidence: Start-, Stellenuebersichts- und Detailseite zeigen die freigegebenen Arbeitsbedingungen; die fruehere feste mobile Bewerbungsleiste ist nicht mehr eingebunden.
-- Branch evidence: Drei lokale Alt-Branches sind gemergt. `fix/ai-crawler-access` widerspricht der aktuellen Bot-Policy; `fix/vercel-bot-protection` enthaelt veraltete UI-Texte und nicht freigegebenes GA4-Eventtracking. Beide sind nicht zu mergen.
+- Branch evidence: Drei gemergte lokale Alt-Branches und der temporaere detached Worktree wurden am 30.08.2026 entfernt. Der Zwischenstand liegt in `stash@{0}` mit der Kennzeichnung `archive: superseded pre-release worktree 2026-08-30`. `fix/ai-crawler-access` und `fix/vercel-bot-protection` enthalten einzigartige, nicht freigegebene Arbeit und bleiben bewusst erhalten; beide sind nicht zu mergen.
 - Key uncertainty: Hiring-Ziel, Funnel-Baseline, Antwortzeit, Tracking-Owner, Aufbewahrung und Loeschfristen sind noch nicht festgelegt.
 
 ## Gaps And Risks
 - Missing essentials: Messrahmen, Datenschutz-Owner, Funnel-/Retention-Baseline und Quellenreview fuer allgemeine Ratgeberstatistiken.
 - Drift warnings: Mehr-Arbeitgeber-Jobboerse, zusaetzliche Content-Cluster, Ads, autonome Content-Produktion und Tracking-Ausbau vor Mess- und Datenschutzfreigabe.
 - Risks: Allgemeine Ratgebertexte enthalten weiterhin Marktbeispiele zu 20-Stunden-Modellen, 100-Prozent-Fortbildung und Gehaltsaufschlaegen; diese sind keine Praxisversprechen, benoetigen aber belastbare Quellen.
-- Technical debt: Mehrere alte Branches und ein temporaerer, ueberholter Worktree sind noch registriert und duerfen nur nach separater Freigabe entfernt werden.
+- Technical debt: Zwei einzigartige Alt-Branches und ein Archiv-Stash bleiben als klar bezeichnete, nicht aktive Wiederherstellungsreferenzen bestehen und duerfen nur nach eigenem Review geloescht oder uebernommen werden.
 
 ## Next Logical Step
-1. Step: Den dokumentierten Branch-/Worktree-Cleanup separat freigeben und danach den Mess-/Datenschutzrahmen mit der zentralen Strategie klaeren.
-   Why: Produkt- und Inhaltsstand sind live; die verbleibenden Risiken liegen jetzt in Governance, Messung und veralteten Git-Referenzen.
-   Validation: Keine ueberholten Worktrees/Branches, Vercel-/GA4-Status dokumentiert, KPI/Owner/Aufbewahrung entschieden.
+1. Step: Logo-Master, Fotos, Einwilligungen, Nutzungsrechte und Asset-Owner in der zentralen Strategie fuer `GATE-003` klaeren; danach den Mess-/Datenschutzrahmen bearbeiten.
+   Why: Produkt- und Inhaltsstand sind live; die verbleibenden Risiken liegen jetzt in Asset-Governance, Messung und Datenschutz.
+   Validation: Assetrechte und Owner sind dokumentiert; anschliessend sind Vercel-/GA4-Status, KPI, Owner und Aufbewahrung entschieden.
    Stop/continue rule: Keine neuen Tracking-Events, Ads oder Content-Cluster vor Freigabe von `GATE-005`.
 
 ## Do Not Build Yet
