@@ -15,7 +15,7 @@ Confidence: high
 - Implemented: Astro/Vercel-Site fuer ausschliesslich eigene Praxisstellen, Stellenuebersicht, Detailseite, Berufshandbuch, Gehaltsrechner, FAQ, kurzer E-Mail-Erstkontakt und Consent-Gating.
 - Released: Die Employer-Truth-Harmonisierung wurde mit Commit `2d45fb6` auf `main` gepusht und am 30.08.2026 auf `https://xn--logopdiejobs-kcb.de/` live verifiziert.
 - Released: Vollzeit 38,5 Stunden, variable Teilzeit, Vier-Tage-Woche, Verguetung, Weihnachtsgeld, Fortbildungsunterstuetzung, Einarbeitung, Qualifikation und Kontaktwege entsprechen der freigegebenen Arbeitgeberwahrheit.
-- Cleanup: Das nicht referenzierte Alt-Creative `public/team.jpg` mit dem gesperrten Claim "TOP GEHALT" und die nicht mehr verwendete mobile `StickyApplyBar` sind aus dem aktiven Repository entfernt; das Social-Share-Bild liegt passend zu seinen JPEG-Daten als `og-image.jpg` vor.
+- Cleanup: Das nicht referenzierte Alt-Creative `src/assets/team.jpg` mit dem gesperrten Claim "TOP GEHALT" ist auf ausdrücklichen Nutzerauftrag endgültig aus dem aktiven Repository entfernt. Die nicht mehr verwendete mobile `StickyApplyBar` ist ebenfalls entfernt; das Social-Share-Bild liegt passend zu seinen JPEG-Daten als `og-image.jpg` vor. Historische Textverweise auf `team.jpg` bleiben als historische Evidenz bestehen.
 - Measurement: Vercel Web Analytics wird live geladen. GA4-Code existiert hinter `PUBLIC_GA_MEASUREMENT_ID` und Consent-Gating; im Live-Audit vom 30.08.2026 war kein Google-Tag und keine GA-ID ausgeliefert.
 - Not approved: Mehr-Arbeitgeber-Jobboerse, Supabase, Arbeitgeber-Self-Service, Admin-Moderation, neue Tracking-Events, Ads und weitere Kampagnenarbeit ohne zentralen Gate-Entscheid.
 
