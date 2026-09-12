@@ -64,20 +64,60 @@ import praxisImg from '../assets/praxis-bild-1.jpg';
         </div>
       </div>
 
-      <div class="mt-12 rounded-[2rem] overflow-hidden shadow-xl border border-slate-100">
+      <div data-map-consent class="mt-12 rounded-[2rem] overflow-hidden shadow-xl border border-slate-100">
+        <div data-map-placeholder class="min-h-[340px] flex flex-col items-center justify-center gap-4 p-6 bg-slate-50 text-center">
+          <h3 class="text-xl font-semibold text-slate-900">So findest du uns</h3>
+          <p>Tonhallenstraße 21, 47051 Duisburg</p>
+          <p id="map-notice" class="max-w-xl text-sm text-slate-600">Mit „Karte laden“ willigst du ein, dass Google Maps geladen wird.
+            Dabei werden Daten wie deine IP-Adresse an Google übertragen; eine Verarbeitung in den USA ist möglich.
+            Mehr dazu in der <a href="/datenschutz/" class="underline">Datenschutzerklärung</a>.</p>
+          <button type="button" data-map-load aria-describedby="map-notice" class="rounded-lg bg-slate-900 px-5 py-3 font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-4">Karte laden</button>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Tonhallenstrasse+21+47051+Duisburg" target="_blank" rel="noopener noreferrer" class="text-sm underline">Route bei Google Maps öffnen (neuer Tab)</a>
+        </div>
         <iframe
-          src="https://maps.google.com/maps?q=Tonhallenstrase+21+47051+Duisburg+Deutschland&output=embed&hl=de&z=17"
+          hidden
+          data-src="https://maps.google.com/maps?q=Tonhallenstrase+21+47051+Duisburg+Deutschland&output=embed&hl=de&z=17"
           width="100%"
           height="340"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           title="Praxis für Logopädie Şimşek – Tonhallenstraße 21, 47051 Duisburg"
           aria-label="Google Maps: Standort der Praxis"
-          class="block w-full border-0"
+          class="w-full border-0"
         ></iframe>
+        <button type="button" data-map-close hidden class="m-3 rounded-lg border border-slate-300 px-4 py-2 text-sm">Karte schließen</button>
         <p class="text-xs text-slate-400 text-center py-2 bg-white">
           Kartendaten © Google · <a href="/datenschutz/" class="underline hover:text-slate-600">Datenschutz</a>
         </p>
       </div>
     </div>
   </section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-map-consent]').forEach((wrapper) => {
+    const frame = wrapper.querySelector<HTMLIFrameElement>('iframe[data-src]');
+    const placeholder = wrapper.querySelector<HTMLElement>('[data-map-placeholder]');
+    const load = wrapper.querySelector<HTMLButtonElement>('[data-map-load]');
+    const close = wrapper.querySelector<HTMLButtonElement>('[data-map-close]');
+    if (!frame || !placeholder || !load || !close) return;
+    load.addEventListener('click', () => {
+      if (!frame.dataset.src) return;
+      frame.src = frame.dataset.src;
+      frame.hidden = false;
+      placeholder.hidden = true;
+      close.hidden = false;
+      close.focus();
+    });
+    close.addEventListener('click', () => {
+      frame.removeAttribute('src');
+      frame.hidden = true;
+      placeholder.hidden = false;
+      close.hidden = true;
+      load.focus();
+    });
+  });
+</script>
+
+<style>
+  [data-map-consent] [hidden] { display: none !important; }
+</style>

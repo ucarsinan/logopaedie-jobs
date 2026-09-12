@@ -38,7 +38,7 @@ const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 
       <div class="article-body">
         <h2>1. Datenschutz auf einen Blick</h2>
-        <p>Diese Website wird als statische HTML-Seite über Vercel ausgeliefert. Beim Aufruf der Seite werden technisch notwendige Server-Logs von Vercel (IP-Adresse, Zeitstempel, aufgerufene URL) für max. 30 Tage gespeichert.{gaConfigured && ' Optionale Statistik-Cookies (Google Analytics) werden ausschließlich nach Ihrer aktiven Einwilligung über den Cookie-Banner gesetzt — siehe Abschnitt 6.'}</p>
+        <p>Diese Website wird als statische HTML-Seite über Vercel ausgeliefert. Beim Aufruf der Seite werden technisch notwendige Server-Logs von Vercel (IP-Adresse, Zeitstempel, aufgerufene URL) zur Bereitstellung und Absicherung der Website verarbeitet.{gaConfigured && ' Optionale Statistik-Cookies (Google Analytics) werden ausschließlich nach Ihrer aktiven Einwilligung über den Cookie-Banner gesetzt — siehe Abschnitt 8.'}</p>
 
         <h2>2. Verantwortlicher</h2>
         <p>
@@ -48,8 +48,18 @@ const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
           E-Mail: info@logopaedie-simsek.de
         </p>
 
-        <h2>3. Kontaktaufnahme per E-Mail</h2>
-        <p>Wenn Sie uns per E-Mail kontaktieren, werden Ihre Angaben zur Bearbeitung der Bewerbung gespeichert und genutzt. Eine Weitergabe an Dritte findet nicht statt. Die Daten werden gelöscht, sobald die Anfrage abgeschlossen ist.</p>
+        <h2>3. Bewerbung und Kontaktaufnahme</h2>
+        <p>Wenn Sie uns wegen einer Stelle kontaktieren, verarbeiten wir Ihre Angaben zur Bearbeitung Ihrer Bewerbung
+          und zur Entscheidung über die Begründung eines Beschäftigungsverhältnisses (§ 26 Abs. 1 BDSG).
+          Dies betrifft insbesondere Name, Kontaktdaten, Nachricht und freiwillig übermittelte Unterlagen.
+          Ein Lebenslauf ist für den Erstkontakt freiwillig.</p>
+        <p>Die E-Mail-Schaltflächen bereiten eine Nachricht in Ihrem E-Mail-Programm vor. Erst durch Ihr Absenden
+          dort wird diese übermittelt. Unser Praxispostfach info@logopaedie-simsek.de wird bei STRATO betrieben.
+          Der Link zum Kurzformular führt auf die Praxiswebsite; dort finden Sie die Hinweise zum jeweiligen Formularweg.</p>
+        <p>Die Bearbeitung erfolgt durch die dafür zuständigen Personen in der Praxis. Unnötige Arbeitskopien werden
+          nach Gebrauch gelöscht. Daten erfolgloser oder zurückgezogener Bewerbungen werden spätestens sechs Monate
+          nach Abschluss des Verfahrens gelöscht. Es wird kein Talentpool angelegt. Bei einer Einstellung werden
+          erforderliche Angaben für das Beschäftigungsverhältnis weiterverarbeitet.</p>
 
         <h2>4. Externe Links</h2>
         <p>Diese Website kann Links zu externen Websites enthalten. Für deren Inhalte und Datenschutzpraktiken sind wir nicht verantwortlich.</p>
@@ -57,9 +67,29 @@ const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
         <h2>5. Ihre Rechte</h2>
         <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer personenbezogenen Daten. Wenden Sie sich dafür an: <a href="mailto:info@logopaedie-simsek.de">info@logopaedie-simsek.de</a></p>
 
+        <h2>6. Vercel Web Analytics</h2>
+        <p>Wir verwenden Vercel Web Analytics zur statistischen Auswertung und Verbesserung unseres Webauftritts.
+            Ausgewertet werden unter anderem Seitenaufrufe, Herkunftsseiten, Zeitpunkt, ungefähre Region sowie
+            Geräte-, Betriebssystem- und Browserinformationen. Vercel verwendet hierfür keine Drittanbieter-Cookies.
+            Die Besucherzuordnung erfolgt nach Angaben des Anbieters über einen aus der Anfrage gebildeten Hash;
+            die zugehörige Sitzung wird nach 24 Stunden verworfen. Dies ist nicht die Speicherdauer sämtlicher Statistikdaten.
+            Wir verwenden keine eigenen Analyse-Events zur Erfassung von Bewerbungsinhalten.</p>
+        <p>Anbieter ist Vercel Inc., USA. Weitere Informationen:
+          <a href="https://vercel.com/docs/analytics/privacy-policy">Datenschutz bei Vercel Web Analytics</a>.</p>
+        <!-- Vor Veröffentlichung: Rechtsgrundlage, Aufbewahrung und Anbieterrollen abschließend prüfen. -->
+
+        <h2>7. Google Maps</h2>
+        <p>Auf der Startseite können Sie eine Karte von Google Maps laden. Erst nach Ihrem Klick auf „Karte laden“
+          wird eine Verbindung zu Google hergestellt. Dabei können insbesondere Ihre IP-Adresse und Browserinformationen
+          an Google übertragen werden. Anbieter ist Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland.
+          Eine Verarbeitung in den USA ist möglich. Informationen: <a href="https://policies.google.com/privacy?hl=de">Google-Datenschutzerklärung</a>.</p>
+        <p>Das Laden erfolgt mit Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Sie können die Karte über
+          „Karte schließen“ entfernen. Bereits erfolgte Übermittlungen werden dadurch nicht rückgängig gemacht.
+          Ohne Freigabe können Sie die Adresse und den Link zur Routenplanung verwenden.</p>
+
         {gaConfigured && (
           <Fragment>
-            <h2>6. Webanalyse mit Google Analytics 4</h2>
+            <h2>8. Webanalyse mit Google Analytics 4</h2>
             <p>Diese Website nutzt Google Analytics 4, einen Webanalysedienst der Google Ireland Limited (Gordon House, Barrow Street, Dublin 4, Irland). Google Analytics verwendet Cookies, die eine anonymisierte Analyse Ihrer Nutzung der Website ermöglichen (z. B. besuchte Seiten, Verweildauer, Schritte im Bewerbungs-Formular).</p>
             <p><strong>Einsatz nur mit Einwilligung:</strong> Google Analytics wird erst geladen, nachdem Sie im Cookie-Banner aktiv eingewilligt haben. Vor Ihrer Einwilligung werden keine Analyse-Cookies gesetzt und keine Daten an Google übertragen. Die IP-Adresse wird anonymisiert verarbeitet.</p>
             <p><strong>Rechtsgrundlage:</strong> Ihre Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO sowie § 25 Abs. 1 TDDDG. Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen, indem Sie im Footer auf „Cookie-Einstellungen" klicken und die Statistik-Cookies deaktivieren.</p>
@@ -67,6 +97,10 @@ const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
             <p><strong>Speicherdauer:</strong> Die Aufbewahrungsdauer der nutzer- und ereignisbezogenen Daten richtet sich nach der in den Google-Analytics-Einstellungen gewählten Konfiguration (Google-Standard: 2 Monate, maximal 14 Monate).</p>
           </Fragment>
         )}
+        <p>Sie können unter den gesetzlichen Voraussetzungen außerdem Datenübertragbarkeit verlangen,
+          einer Verarbeitung widersprechen und erteilte Einwilligungen für die Zukunft widerrufen.
+          Sie haben das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren, insbesondere bei der LDI Nordrhein-Westfalen.</p>
+        <p>Stand: September 2026.</p>
       </div>
 
     </article>
