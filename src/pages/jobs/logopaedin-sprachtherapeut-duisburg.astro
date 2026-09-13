@@ -102,9 +102,9 @@ const faqSchema = {
 
             <div>
               <p class="text-xs font-bold uppercase tracking-widest text-simsek-blue mb-4">Praxis für Logopädie Şimşek</p>
-              <h1 class="max-w-4xl text-[clamp(1.75rem,8vw,2.25rem)] sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-[1.03] tracking-tight uppercase">
+              <h1 class="max-w-4xl text-[clamp(1.75rem,8vw,2.25rem)] sm:text-5xl lg:text-6xl font-semibold text-slate-900 leading-[1.03] tracking-tight normal-case">
                 Logopädin /<br class="hidden sm:block" />
-                <span class="text-transparent bg-clip-text bg-linear-to-r from-simsek-blue to-simsek-green">Sprachtherapeutin</span><br />
+                <span class="text-simsek-green">Sprachtherapeutin</span><br />
                 gesucht.
               </h1>
             </div>
@@ -114,7 +114,7 @@ const faqSchema = {
             </p>
 
             <div class="flex flex-col sm:flex-row flex-wrap gap-3 pt-2">
-              <a href={mailHref} class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-linear-to-r from-simsek-green to-simsek-blue text-white text-sm font-bold rounded-full shadow-md shadow-simsek-green/20 hover:shadow-lg hover:shadow-simsek-green/30 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 no-underline">
+              <a href={mailHref} class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-simsek-green text-white text-sm font-bold rounded-lg shadow-md  hover:shadow-lg  hover:-translate-y-0.5  transition-all duration-200 no-underline">
                 <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                 Per E-Mail bewerben
               </a>
@@ -123,7 +123,7 @@ const faqSchema = {
 
           <div class="min-w-0 relative xl:justify-self-end">
             <div class="relative group">
-              <div class="rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white relative bg-slate-50 max-w-[620px] xl:max-w-[520px] mx-auto xl:mr-0">
+              <div class="rounded-3xl md:rounded-3xl overflow-hidden shadow-2xl border-8 border-white relative bg-slate-50 max-w-[620px] xl:max-w-[520px] mx-auto xl:mr-0">
                 <Image
                   src={sucheImg}
                   alt="Therapieraum der Praxis für Logopädie Şimşek in Duisburg"
@@ -160,7 +160,7 @@ const faqSchema = {
             ['Standort', '47051 Duisburg', 'Vor Ort, 2 Min. vom Hbf; keine Dienstreisen'],
             ['Gehalt', '22–26 €/Std.', 'Plus jährliches Weihnachtsgeld'],
           ].map(([label, value, note]) => (
-            <div class="p-px rounded-3xl bg-linear-to-br from-simsek-green/40 via-slate-100 to-simsek-blue/40">
+            <div class="p-px rounded-3xl bg-simsek-green ">
               <div class="h-full rounded-[calc(1.5rem-1px)] bg-white p-5 shadow-sm">
                 <dt class="text-xs uppercase font-bold tracking-widest text-slate-400 mb-2">{label}</dt>
                 <dd class="text-2xl font-bold text-slate-900">{value}</dd>
@@ -179,21 +179,21 @@ const faqSchema = {
             <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-simsek-green/10 text-simsek-green border border-simsek-green/20 mb-4">
               Stellendetails
             </span>
-            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4 leading-tight">Ein Logopädie-Job, der fachlich klar und menschlich planbar ist</h2>
-            <div class="h-px bg-linear-to-r from-simsek-green via-simsek-blue/40 to-transparent mb-4"></div>
+            <h2 class="text-4xl md:text-5xl font-semibold text-slate-900 mb-4 leading-tight">Ein Logopädie-Job, der fachlich klar und menschlich planbar ist</h2>
+            <div class="h-px bg-simsek-green mb-4"></div>
             <p class="text-lg text-slate-600 leading-relaxed">
               Du bekommst verlässlichen Rahmen, fachlichen Austausch und genug Flexibilität, damit Therapiequalität und Arbeitsleben zusammenpassen.
             </p>
           </div>
-          <a href={mailHref} class="hidden md:inline-flex items-center justify-center px-6 py-3 bg-white text-slate-700 text-sm font-bold rounded-full border-2 border-slate-200 hover:border-simsek-green hover:text-slate-900 transition-all duration-200 no-underline">
+          <a href={mailHref} class="hidden md:inline-flex items-center justify-center px-6 py-3 bg-white text-slate-700 text-sm font-bold rounded-lg border-2 border-slate-200 hover:border-simsek-green hover:text-slate-900 transition-all duration-200 no-underline">
             Kurze Nachricht senden
           </a>
         </div>
 
         <div class="grid lg:grid-cols-[0.82fr_1.18fr] gap-8 lg:gap-12 items-start">
-          <aside class="lg:sticky lg:top-24 bg-white border border-slate-100 shadow-xl shadow-slate-200/50 rounded-[2rem] p-6 md:p-8">
+          <aside class="lg:sticky lg:top-24 bg-white border border-slate-100 shadow-xl shadow-slate-200/50 rounded-3xl p-6 md:p-8">
             <p class="text-xs font-bold uppercase tracking-widest text-simsek-blue mb-3">Kurzprofil</p>
-            <h3 class="text-2xl font-bold text-slate-900 mb-5">Logopädie-Job in Duisburg-Mitte</h3>
+            <h3 class="text-2xl font-semibold text-slate-900 mb-5">Logopädie-Job in Duisburg-Mitte</h3>
             <ul class="space-y-3 text-sm text-slate-700">
               <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>22–26 € brutto pro Stunde; bei Vollzeit ungefähr 3.600–4.300 € brutto im Monat plus jährliches Weihnachtsgeld</span></li>
               <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>38,5 Stunden Vollzeit, Teilzeit mit variablem Umfang und Vier-Tage-Woche</span></li>
@@ -203,7 +203,7 @@ const faqSchema = {
               <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>Intensive Einarbeitung, schrittweiser Terminaufbau und jederzeit eine Ansprechperson</span></li>
               <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>Eigene fachliche Schwerpunkte; Berufsanfänger:innen willkommen</span></li>
             </ul>
-            <a href={mailHref} class="mt-6 w-full inline-flex items-center justify-center gap-2.5 px-5 py-3 bg-linear-to-r from-simsek-green to-simsek-blue text-white text-sm font-bold rounded-full shadow-md shadow-simsek-green/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 no-underline">
+            <a href={mailHref} class="mt-6 w-full inline-flex items-center justify-center gap-2.5 px-5 py-3 bg-simsek-green text-white text-sm font-bold rounded-lg shadow-md  hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 no-underline">
               <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
               Kurze Nachricht senden
             </a>
@@ -218,7 +218,7 @@ const faqSchema = {
               ['iPad und Material', 'iPad mit iPrax und benötigter Software, auch privat nutzbar, plus benötigtes Therapiematerial.'],
               ['Parken und Verpflegung', 'Nach Möglichkeit Parkplatz, sonst Parkkostenunterstützung; dazu kostenlose Snacks, Getränke und Küche.'],
             ].map(([title, text], index) => (
-              <div class="p-px rounded-4xl bg-slate-100 hover:bg-linear-to-br hover:from-simsek-green hover:to-simsek-blue transition-all duration-300 group/card">
+              <div class="p-px rounded-4xl bg-slate-100 hover:bg-simsek-green/10 transition-all duration-300 group/card">
                 <div class="h-full p-6 rounded-[1.9rem] bg-white group-hover/card:bg-slate-50 transition-colors duration-200">
                   <div class:list={[
                     'w-12 h-12 rounded-2xl bg-slate-50 shadow-sm flex items-center justify-center mb-5 font-bold group-hover/card:scale-110 transition-transform duration-200',
@@ -226,7 +226,7 @@ const faqSchema = {
                   ]}>
                     {String(index + 1).padStart(2, '0')}
                   </div>
-                  <h3 class="text-xl font-bold text-slate-900 mb-3">{title}</h3>
+                  <h3 class="text-xl font-semibold text-slate-900 mb-3">{title}</h3>
                   <p class="text-sm text-slate-600 leading-relaxed">{text}</p>
                 </div>
               </div>
@@ -239,7 +239,7 @@ const faqSchema = {
     <section class="py-14 md:py-20 bg-white">
       <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-[0.92fr_1.08fr] gap-8 lg:gap-12 items-start">
         <div class="space-y-5">
-          <div class="relative rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white bg-slate-50 aspect-[16/11] lg:aspect-[5/4]">
+          <div class="relative rounded-3xl md:rounded-3xl overflow-hidden shadow-2xl border-8 border-white bg-slate-50 aspect-[16/11] lg:aspect-[5/4]">
             <Image
               src={praxisImg}
               alt="Moderner Behandlungsraum der Logopädie Şimşek in Duisburg"
@@ -269,8 +269,8 @@ const faqSchema = {
             <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-simsek-blue/10 text-simsek-blue border border-simsek-blue/20 mb-4">
               Alltag in der Praxis
             </span>
-            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 leading-tight mb-5">Was dich erwartet</h2>
-            <div class="h-px bg-linear-to-r from-simsek-green via-simsek-blue/40 to-transparent mb-6"></div>
+            <h2 class="text-3xl md:text-4xl font-semibold text-slate-900 leading-tight mb-5">Was dich erwartet</h2>
+            <div class="h-px bg-simsek-green mb-6"></div>
             <div class="space-y-4 text-base md:text-lg text-slate-600 leading-relaxed">
               <p>
                 Du arbeitest in einer etablierten logopädischen Praxis in der Duisburger Innenstadt. Unsere Patientinnen und Patienten kommen unter anderem mit Sprachentwicklungsstörungen, Aphasie, Dysarthrie, Dysphagie, Stottern, Poltern und weiteren logopädischen Fragestellungen zu uns.
@@ -293,7 +293,7 @@ const faqSchema = {
             ].map(([step, title, text]) => (
               <div class="rounded-3xl bg-slate-50 border border-slate-100 p-4 md:p-5">
                 <p class="text-xs font-bold uppercase tracking-widest text-simsek-green mb-2">{step}</p>
-                <h3 class="font-bold text-slate-900 mb-2">{title}</h3>
+                <h3 class="font-semibold text-slate-900 mb-2">{title}</h3>
                 <p class="text-sm text-slate-600 leading-relaxed">{text}</p>
               </div>
             ))}
@@ -302,15 +302,15 @@ const faqSchema = {
       </div>
     </section>
 
-    <section id="bewerbung" class="scroll-mt-24 py-8 md:py-14 bg-slate-900 text-white rounded-3xl md:rounded-[3rem] mx-4 md:mx-6 my-6 md:my-10 overflow-hidden relative">
+    <section id="bewerbung" class="scroll-mt-24 py-8 md:py-14 bg-slate-900 text-white rounded-3xl md:rounded-3xl mx-4 md:mx-6 my-6 md:my-10 overflow-hidden relative">
       <div class="absolute -top-24 -right-24 w-80 h-80 bg-simsek-green/20 blur-[100px] rounded-full"></div>
       <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-simsek-blue/20 blur-[100px] rounded-full"></div>
       <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
         <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-simsek-green/20 text-simsek-green border border-simsek-green/30 mb-4">
           Bewerbung
         </span>
-        <h2 class="text-3xl md:text-5xl font-bold mb-4 leading-tight">Erst unverbindlich kennenlernen</h2>
-        <div class="h-px bg-linear-to-r from-transparent via-simsek-green/40 to-transparent mb-5"></div>
+        <h2 class="text-3xl md:text-5xl font-semibold mb-4 leading-tight">Erst unverbindlich kennenlernen</h2>
+        <div class="h-px bg-simsek-green mb-5"></div>
         <p class="text-slate-300 leading-relaxed max-w-2xl mx-auto mb-7">
           Eine klassische Bewerbung ist nicht nötig. Nutze das kurze Formular auf der Praxiswebsite, ruf an, schreib eine E-Mail oder sende Post. Ein Lebenslauf ist freiwillig; Hospitation oder Probearbeit sind möglich.
         </p>
@@ -318,8 +318,8 @@ const faqSchema = {
           Emel Şimşek-Uçar · 0203 – 34 86 86 90 · info@logopaedie-simsek.de · Tonhallenstraße 21, 47051 Duisburg
         </p>
         <div class="flex flex-col sm:flex-row gap-3 justify-center">
-          <a href={offizielleAnzeige} class="inline-flex items-center justify-center px-8 py-4 bg-white text-slate-900 text-sm font-bold rounded-full no-underline">Zum Kurzformular</a>
-          <a href={mailHref} class="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-linear-to-r from-simsek-green to-simsek-blue text-white text-sm font-bold rounded-full shadow-md shadow-simsek-green/30 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 no-underline">
+          <a href={offizielleAnzeige} class="inline-flex items-center justify-center px-8 py-4 bg-white text-slate-900 text-sm font-bold rounded-lg no-underline">Zum Kurzformular</a>
+          <a href={mailHref} class="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-simsek-green text-white text-sm font-bold rounded-lg shadow-md shadow-simsek-green/30 hover:-translate-y-0.5  transition-all duration-200 no-underline">
             <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
             E-Mail schreiben
           </a>
@@ -333,7 +333,7 @@ const faqSchema = {
           <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-simsek-blue/10 text-simsek-blue border border-simsek-blue/20 mb-4">
             Mehr Orientierung
           </span>
-          <h2 class="text-3xl md:text-4xl font-bold text-slate-900 leading-tight mb-4">Weitere Themen rund um den Logopädie-Job in Duisburg</h2>
+          <h2 class="text-3xl md:text-4xl font-semibold text-slate-900 leading-tight mb-4">Weitere Themen rund um den Logopädie-Job in Duisburg</h2>
           <p class="text-slate-600 leading-relaxed">
             Diese Artikel aus dem Berufshandbuch helfen dir, Arbeitsmodell, Praxisalltag und Bewerbung besser einzuordnen.
           </p>
@@ -341,9 +341,9 @@ const faqSchema = {
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {relatedLinks.map((link) => (
-            <a href={link.href} class="group p-px rounded-3xl bg-slate-100 hover:bg-linear-to-br hover:from-simsek-green hover:to-simsek-blue transition-all duration-300 no-underline">
+            <a href={link.href} class="group p-px rounded-3xl bg-slate-100 hover:bg-simsek-green/10 transition-all duration-300 no-underline">
               <div class="h-full rounded-[calc(1.5rem-1px)] bg-slate-50 group-hover:bg-white p-5 transition-colors duration-200">
-                <h3 class="font-bold text-slate-900 mb-2 leading-snug">{link.label}</h3>
+                <h3 class="font-semibold text-slate-900 mb-2 leading-snug">{link.label}</h3>
                 <p class="text-sm text-slate-600 leading-relaxed">{link.text}</p>
                 <span class="mt-4 inline-flex text-xs font-bold uppercase tracking-widest text-simsek-green">Lesen →</span>
               </div>
@@ -359,7 +359,7 @@ const faqSchema = {
           <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-simsek-green/10 text-simsek-green border border-simsek-green/20 mb-4">
             Fragen
           </span>
-          <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Häufige Fragen zur Stelle</h2>
+          <h2 class="text-3xl md:text-4xl font-semibold text-slate-900">Häufige Fragen zur Stelle</h2>
         </div>
         <div class="space-y-4">
           {faqs.map(([q, a]) => (

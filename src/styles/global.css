@@ -1,42 +1,62 @@
+@import "./fonts.css";
 @import "tailwindcss";
 
 @theme {
-  /* Die exakten Simsek-Farben */
-  --color-simsek-green: rgb(129 183 40);
-  --color-simsek-blue: rgb(36 135 193);
-
-  /* Funktionale Zuweisung für dein Design */
-  --color-brand-primary: var(--color-simsek-green);   /* Für Buttons & Highlights */
-  --color-brand-secondary: var(--color-simsek-blue); /* Für Headlines & Akzente */
-  
-  --color-brand-dark: #1e293b;
-  --color-brand-light: #f8fafc;
-
-  --radius-xl: 1.5rem;
-  --radius-2xl: 2.5rem;
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-display: "Fraunces", Georgia, serif;
+  /* Existing utility names retain their roles; the logo keeps its original SVG colours. */
+  --color-simsek-green: #2A7F6F;
+  --color-simsek-blue: #9B5234;
+  --color-brand-primary: #2A7F6F;
+  --color-brand-secondary: #9B5234;
+  --color-brand-dark: #1C1916;
+  --color-brand-light: #FAF8F5;
+  --color-slate-50: #FAF8F5;
+  --color-slate-100: #F3EDE5;
+  --color-slate-200: #E2D8CF;
+  --color-slate-300: #C8BCB1;
+  --color-slate-400: #9A928D;
+  --color-slate-500: #6B6560;
+  --color-slate-600: #6B6560;
+  --color-slate-700: #514B46;
+  --color-slate-800: #36312C;
+  --color-slate-900: #1C1916;
+  --color-slate-950: #141210;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --shadow-sm: 0 2px 8px rgb(28 25 22 / .06);
+  --shadow-md: 0 4px 16px rgb(28 25 22 / .08);
+  --shadow-lg: 0 8px 24px rgb(28 25 22 / .10);
+  --shadow-xl: 0 12px 32px rgb(28 25 22 / .10);
+  --shadow-2xl: 0 16px 40px rgb(28 25 22 / .12);
 }
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
-  }
-  body {
-    @apply bg-white text-slate-900 antialiased;
-    /* Kein overflow-hidden hier! */
-  }
+  body { @apply bg-brand-light text-slate-900 antialiased; }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 600; letter-spacing: -.02em; }
+  [id] { scroll-margin-top: 88px; }
+  :focus-visible { outline: 2px solid #1F6056; outline-offset: 4px; }
 }
 
-/* vanilla-cookieconsent: an die simsek-Brand anpassen */
+/* Shared actions: badges and circular icons retain their own shapes. */
+a.inline-flex.rounded-lg, button.rounded-lg { min-height: 44px; }
+@media (prefers-reduced-motion: reduce) {
+  html.scroll-smooth { scroll-behavior: auto; }
+  .animate-pulse, .animate-fade-in { animation: none; }
+}
+/* Brand-coloured text needs a lighter colour on the existing dark sections. */
+:is(.bg-slate-900, .bg-slate-950) :is(.text-simsek-green, .text-simsek-blue) { color: #B9DDD3; }
+
 #cc-main {
-  --cc-btn-primary-bg: var(--color-simsek-green);
-  --cc-btn-primary-border-color: var(--color-simsek-green);
-  --cc-btn-primary-hover-bg: var(--color-simsek-blue);
-  --cc-btn-primary-hover-border-color: var(--color-simsek-blue);
+  --cc-btn-primary-bg: #2A7F6F;
+  --cc-btn-primary-border-color: #2A7F6F;
+  --cc-btn-primary-hover-bg: #1F6056;
+  --cc-btn-primary-hover-border-color: #1F6056;
   --cc-btn-primary-color: #ffffff;
   --cc-btn-primary-hover-color: #ffffff;
-  --cc-toggle-on-bg: var(--color-simsek-green);
-  --cc-link-color: var(--color-simsek-blue);
-  --cc-primary-color: #0f172a;
-  --cc-secondary-color: #475569;
-  --cc-cookie-category-block-bg-hover: rgb(129 183 40 / 0.08);
+  --cc-toggle-on-bg: #2A7F6F;
+  --cc-link-color: #1F6056;
+  --cc-primary-color: #1C1916;
+  --cc-secondary-color: #6B6560;
+  --cc-cookie-category-block-bg-hover: #E6F4F1;
 }

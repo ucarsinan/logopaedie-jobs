@@ -41,9 +41,9 @@ const mailHref =
             <span class="text-sm font-medium text-slate-600">Offene Stellen bei uns in Duisburg</span>
           </span>
 
-          <h1 class="text-[clamp(1.75rem,8vw,2.25rem)] sm:text-5xl md:text-6xl font-bold text-slate-900 leading-[1.04] tracking-tight uppercase">
+          <h1 class="text-[clamp(1.75rem,8vw,2.25rem)] sm:text-5xl md:text-6xl font-semibold text-slate-900 leading-[1.04] tracking-tight normal-case">
             Logopädin /<br />
-            <span class="text-transparent bg-clip-text bg-linear-to-r from-simsek-blue to-simsek-green">Sprachtherapeutin</span><br />
+            <span class="text-simsek-green">Sprachtherapeutin</span><br />
             gesucht.
           </h1>
 
@@ -52,12 +52,12 @@ const mailHref =
           </p>
         </div>
 
-        <div class="mt-10 p-px rounded-[2rem] bg-linear-to-br from-simsek-green/60 via-slate-100 to-simsek-blue/60">
+        <div class="mt-10 p-px rounded-3xl bg-simsek-green ">
           <div class="rounded-[calc(2rem-1px)] bg-white p-6 md:p-8 shadow-xl shadow-slate-200/50">
             <div class="grid lg:grid-cols-[1fr_auto] gap-6 items-start">
               <div>
                 <p class="text-xs font-bold uppercase tracking-widest text-simsek-green mb-3">Aktuelle Stellen</p>
-                <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+                <h2 class="text-2xl md:text-3xl font-semibold text-slate-900 mb-4">
                   Logopädinnen, Logopäden und Sprachtherapeutinnen in Duisburg
                 </h2>
                 <p class="text-slate-600 leading-relaxed mb-5">
@@ -73,13 +73,13 @@ const mailHref =
               <div class="flex flex-col gap-3 w-full lg:w-64">
                 <a
                   href="/jobs/logopaedin-sprachtherapeut-duisburg/"
-                  class="inline-flex items-center justify-center px-5 py-3 bg-linear-to-r from-simsek-green to-simsek-blue text-white text-sm font-bold rounded-full shadow-md shadow-simsek-green/20 hover:shadow-lg hover:shadow-simsek-green/30 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 no-underline"
+                  class="inline-flex items-center justify-center px-5 py-3 bg-simsek-green text-white text-sm font-bold rounded-lg shadow-md  hover:shadow-lg  hover:-translate-y-0.5  transition-all duration-200 no-underline"
                 >
                   Details ansehen
                 </a>
                 <a
                   href={mailHref}
-                  class="inline-flex items-center justify-center px-5 py-3 bg-white text-slate-800 text-sm font-bold rounded-full border-2 border-slate-200 hover:border-simsek-blue transition-all duration-200 no-underline"
+                  class="inline-flex items-center justify-center px-5 py-3 bg-white text-slate-800 text-sm font-bold rounded-lg border-2 border-slate-200 hover:border-simsek-blue transition-all duration-200 no-underline"
                 >
                   Unverbindlich fragen
                 </a>
@@ -95,7 +95,7 @@ const mailHref =
             ['Duisburg bleibt der Fokus', 'Die Stellen sind bei uns vor Ort in Duisburg-Mitte.'],
           ].map(([title, text]) => (
             <div class="rounded-3xl bg-slate-50 border border-slate-100 p-5">
-              <h2 class="font-bold text-slate-900 mb-2">{title}</h2>
+              <h2 class="font-semibold text-slate-900 mb-2">{title}</h2>
               <p class="text-sm text-slate-600 leading-relaxed">{text}</p>
             </div>
           ))}
@@ -104,7 +104,7 @@ const mailHref =
         <section class="mt-12 rounded-3xl border border-slate-100 bg-slate-50 p-6 md:p-8">
           <div class="max-w-3xl">
             <p class="text-xs font-bold uppercase tracking-widest text-simsek-blue mb-3">Orientierung</p>
-            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+            <h2 class="text-2xl md:text-3xl font-semibold text-slate-900 mb-4">
               Passt die Stelle zu deinem Arbeitsmodell?
             </h2>
             <p class="text-slate-600 leading-relaxed">

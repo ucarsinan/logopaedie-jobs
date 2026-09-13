@@ -82,7 +82,7 @@ const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
           })} />
         )}
     </head>
-    <body class="bg-white text-slate-900 selection:bg-simsek-green/20 selection:text-simsek-blue antialiased">
+    <body class="bg-brand-light text-slate-900 selection:bg-simsek-green/20 selection:text-simsek-blue antialiased">
         <slot />
         {gaConfigured && <CookieConsent />}
     </body>

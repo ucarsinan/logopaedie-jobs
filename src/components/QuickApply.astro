@@ -1,14 +1,14 @@
 ---
 // src/components/QuickApply.astro
 ---
-<section id="apply" class="py-8 md:py-14 bg-slate-900 text-white rounded-3xl md:rounded-[3rem] mx-4 md:mx-6 my-6 md:my-10 overflow-hidden relative">
+<section id="apply" class="py-8 md:py-14 bg-slate-900 text-white rounded-3xl md:rounded-3xl mx-4 md:mx-6 my-6 md:my-10 overflow-hidden relative">
   <div class="max-w-3xl mx-auto px-6 relative z-10">
     <div class="text-center mb-8">
       <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-simsek-green/20 text-simsek-green border border-simsek-green/30 mb-3">
         Bewerben
       </span>
-      <h2 class="text-2xl md:text-3xl font-bold mb-3 leading-tight">Erst kennenlernen, dann bewerben</h2>
-      <div class="h-px bg-linear-to-r from-transparent via-simsek-green/40 to-transparent mb-3"></div>
+      <h2 class="text-2xl md:text-3xl font-semibold mb-3 leading-tight">Erst kennenlernen, dann bewerben</h2>
+      <div class="h-px bg-simsek-green mb-3"></div>
       <p class="text-slate-400">In 30 Sekunden zum unverbindlichen Erstkontakt — kein Lebenslauf nötig.</p>
     </div>
 
@@ -19,13 +19,13 @@
         <div class="grid sm:grid-cols-2 gap-3">
           <button
             onclick="nextStep(1, 'Staatlich anerkannte Logopädin')"
-            class="py-3 px-6 border border-white/20 rounded-full text-white font-bold cursor-pointer hover:bg-linear-to-r hover:from-simsek-green/25 hover:to-simsek-blue/25 hover:border-simsek-green/60 transition-all duration-200 active:scale-[0.97]"
+            class="py-3 px-6 border border-white/20 rounded-lg text-white font-bold cursor-pointer hover:bg-simsek-green/10 hover:border-simsek-green/60 transition-all duration-200 "
           >
             Ja, anerkannt
           </button>
           <button
             onclick="nextStep(1, 'In Ausbildung / bald fertig')"
-            class="py-3 px-6 border border-white/20 rounded-full text-white font-bold cursor-pointer hover:bg-linear-to-r hover:from-simsek-green/25 hover:to-simsek-blue/25 hover:border-simsek-green/60 transition-all duration-200 active:scale-[0.97]"
+            class="py-3 px-6 border border-white/20 rounded-lg text-white font-bold cursor-pointer hover:bg-simsek-green/10 hover:border-simsek-green/60 transition-all duration-200 "
           >
             Bald fertig
           </button>
@@ -37,19 +37,19 @@
         <div class="grid sm:grid-cols-3 gap-3">
           <button
             onclick="nextStep(2, 'Schnellstmöglich starten')"
-            class="py-3 px-4 border border-white/20 rounded-full text-white font-bold cursor-pointer hover:bg-linear-to-r hover:from-simsek-green/25 hover:to-simsek-blue/25 hover:border-simsek-green/60 transition-all duration-200 active:scale-[0.97]"
+            class="py-3 px-4 border border-white/20 rounded-lg text-white font-bold cursor-pointer hover:bg-simsek-green/10 hover:border-simsek-green/60 transition-all duration-200 "
           >
             Start bald
           </button>
           <button
             onclick="nextStep(2, 'Teilzeit / Stundenmodell klären')"
-            class="py-3 px-4 border border-white/20 rounded-full text-white font-bold cursor-pointer hover:bg-linear-to-r hover:from-simsek-green/25 hover:to-simsek-blue/25 hover:border-simsek-green/60 transition-all duration-200 active:scale-[0.97]"
+            class="py-3 px-4 border border-white/20 rounded-lg text-white font-bold cursor-pointer hover:bg-simsek-green/10 hover:border-simsek-green/60 transition-all duration-200 "
           >
             Teilzeit klären
           </button>
           <button
             onclick="nextStep(2, 'Unverbindlich kennenlernen')"
-            class="py-3 px-4 border border-white/20 rounded-full text-white font-bold cursor-pointer hover:bg-linear-to-r hover:from-simsek-green/25 hover:to-simsek-blue/25 hover:border-simsek-green/60 transition-all duration-200 active:scale-[0.97]"
+            class="py-3 px-4 border border-white/20 rounded-lg text-white font-bold cursor-pointer hover:bg-simsek-green/10 hover:border-simsek-green/60 transition-all duration-200 "
           >
             Erst sprechen
           </button>
@@ -57,14 +57,14 @@
       </div>
 
       <div id="step-3" class="apply-step hidden text-center space-y-4">
-        <h3 class="text-2xl font-bold text-transparent bg-clip-text bg-linear-to-r from-simsek-green to-simsek-blue">Fast geschafft!</h3>
+        <h3 class="text-2xl font-semibold   bg-simsek-green ">Fast geschafft!</h3>
         <p class="text-slate-300 text-sm">Starte den ersten Kontakt per E-Mail.</p>
 
         <div class="flex flex-col sm:flex-row gap-3 justify-center">
           <a
             id="mail-link"
             href="#"
-            class="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-linear-to-r from-simsek-green to-simsek-blue text-white font-bold rounded-full shadow-md shadow-simsek-green/30 hover:shadow-lg hover:shadow-simsek-green/40 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 no-underline"
+            class="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-simsek-green text-white font-bold rounded-lg shadow-md shadow-simsek-green/30 hover:shadow-lg hover:shadow-simsek-green/40 hover:-translate-y-0.5  transition-all duration-200 no-underline"
           >
             <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
             Per E-Mail
