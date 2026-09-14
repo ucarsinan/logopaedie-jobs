@@ -92,4 +92,4 @@ Wenn du selbst zweisprachig bist — ob Deutsch-Türkisch oder eine andere Kombi
 
 > "Als bilinguale Praxis behandeln wir unsere Patienten auf Deutsch und Türkisch — das macht uns zu einem echten Teil dieser Stadt."
 
-Die Praxis behandelt auf Deutsch und Türkisch. Für die ausgeschriebenen Stellen sind Türkischkenntnisse willkommen, aber keine Voraussetzung. Angeboten werden 22–26 € brutto pro Stunde, eine mögliche Vier-Tage-Woche und finanziell sowie zeitlich unterstützte Fortbildungen.
+Die Praxis behandelt auf Deutsch und Türkisch. Für die ausgeschriebenen Stellen sind Türkischkenntnisse willkommen, aber keine Voraussetzung. Angeboten werden 23–26 € brutto pro Stunde, eine mögliche Vier-Tage-Woche und finanziell sowie zeitlich unterstützte Fortbildungen.

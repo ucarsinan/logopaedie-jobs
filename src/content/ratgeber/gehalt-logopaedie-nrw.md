@@ -30,7 +30,7 @@ Zum Vergleich: Der bundesweite Durchschnitt für Logopädie liegt bei etwa 37.10
 
 Als Berufsanfängerin startest du in NRW typischerweise bei **2.800 – 3.200 € brutto/Monat**. Mit 3–5 Jahren Erfahrung steigt das auf 3.400 – 3.800 €, und erfahrene Therapeutinnen mit Spezialisierung können 4.000 € und mehr erreichen.
 
-Die [Praxis für Logopädie Şimşek in Duisburg](/jobs/logopaedin-sprachtherapeut-duisburg/) nennt eine konkrete Spanne von 22–26 € brutto pro Stunde. Bei 38,5 Stunden Vollzeit entspricht das ungefähr 3.600–4.300 € brutto im Monat; zusätzlich wird jedes Jahr Weihnachtsgeld gezahlt. Fortbildungen werden finanziell und durch zusätzliche freie Tage unterstützt.
+Die [Praxis für Logopädie Şimşek in Duisburg](/jobs/logopaedin-sprachtherapeut-duisburg/) nennt eine konkrete Spanne von 23–26 € brutto pro Stunde. Bei 38,5 Stunden Vollzeit entspricht das ungefähr 3.840–4.338 € brutto im Monat; zusätzlich wird jedes Jahr Weihnachtsgeld gezahlt. Fortbildungen werden finanziell und durch zusätzliche freie Tage unterstützt.
 
 ## Was beeinflusst das Logopädie-Gehalt?
 
@@ -48,7 +48,7 @@ Mehrere Faktoren bestimmen, was am Ende auf dem Konto landet:
 
 Duisburg liegt beim Logopädie-Gehalt im oberen Bereich innerhalb von NRW. Die zentrale Lage im Ruhrgebiet, die gute ÖPNV-Anbindung und die hohe Nachfrage nach Therapeutinnen — besonders mit bilingualer Kompetenz — treiben die Gehälter nach oben.
 
-Die [Praxis für Logopädie Şimşek in Duisburg](/jobs/logopaedin-sprachtherapeut-duisburg/) nennt eine konkrete Spanne von 22–26 € brutto pro Stunde. Bei 38,5 Stunden Vollzeit entspricht das ungefähr 3.600–4.300 € brutto im Monat; zusätzlich wird jedes Jahr Weihnachtsgeld gezahlt. Fortbildungen werden finanziell und durch zusätzliche freie Tage unterstützt.
+Die [Praxis für Logopädie Şimşek in Duisburg](/jobs/logopaedin-sprachtherapeut-duisburg/) nennt eine konkrete Spanne von 23–26 € brutto pro Stunde. Bei 38,5 Stunden Vollzeit entspricht das ungefähr 3.840–4.338 € brutto im Monat; zusätzlich wird jedes Jahr Weihnachtsgeld gezahlt. Fortbildungen werden finanziell und durch zusätzliche freie Tage unterstützt.
 
 ## Gehalt verhandeln als Logopädin — Tipps
 
