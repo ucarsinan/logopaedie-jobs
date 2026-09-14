@@ -1,22 +1,28 @@
 ---
 interface Props {
   class?: string;
+  dark?: boolean;
 }
-const { class: className } = Astro.props;
+const { class: className, dark = false } = Astro.props;
 ---
 
-<div class:list={['flex items-center gap-4 py-3', className]}>
+<div class:list={['flex items-center gap-3.5 max-[640px]:gap-2.5 py-3', className]}>
   <img
     src="/praxis-simsek-logo.svg"
     alt=""
     aria-hidden="true"
-    width="304"
-    height="362"
-    class="ml-3 h-12 w-auto shrink-0"
+    width="48"
+    height="48"
+    class="ml-3 w-12 h-12 max-[640px]:w-10 max-[640px]:h-10 object-contain shrink-0"
   />
   <div class="min-w-0">
-    <slot>
-      <p class="text-xs font-bold uppercase tracking-widest text-simsek-blue">Praxis für Logopädie Şimşek</p>
-    </slot>
+    <p class:list={[
+      'text-[.875rem] max-[640px]:text-[0.78rem] font-bold leading-[1.25] uppercase tracking-[.02em] break-words',
+      dark ? 'text-white' : 'text-slate-900',
+    ]}>Praxis für Logopädie <span lang="tr">Şimşek</span></p>
+    <span class:list={[
+      'block text-[.6875rem] max-[640px]:text-[0.62rem] font-normal tracking-[.03em] mt-px',
+      dark ? 'text-slate-300' : 'text-slate-500',
+    ]}>Logopädie Duisburg</span>
   </div>
 </div>
