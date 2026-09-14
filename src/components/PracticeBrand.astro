@@ -1,0 +1,22 @@
+---
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<div class:list={['flex items-center gap-4 py-3', className]}>
+  <img
+    src="/praxis-simsek-logo.svg"
+    alt=""
+    aria-hidden="true"
+    width="304"
+    height="362"
+    class="ml-3 h-12 w-auto shrink-0"
+  />
+  <div class="min-w-0">
+    <slot>
+      <p class="text-xs font-bold uppercase tracking-widest text-simsek-blue">Praxis für Logopädie Şimşek</p>
+    </slot>
+  </div>
+</div>

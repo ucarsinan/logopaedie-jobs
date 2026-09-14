@@ -1,6 +1,7 @@
 ---
 // src/components/Footer.astro
 import Logo from './Logo.astro';
+import PracticeBrand from './PracticeBrand.astro';
 
 // "Cookie-Einstellungen" nur zeigen, wenn Analytics konfiguriert ist (sonst kein Banner).
 const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
@@ -22,7 +23,10 @@ const footerLinks = [
     <div class="grid md:grid-cols-3 gap-16 mb-16 text-left">
       <div class="space-y-6">
         <Logo class="h-10 w-auto" />
-        <p class="text-slate-400 text-sm">Karriere-Portal der Praxis für Logopädie Şimşek.</p>
+        <PracticeBrand>
+          <p class="text-slate-400 text-xs mb-1">Karriere-Portal der</p>
+          <p class="text-slate-200 text-sm font-semibold">Praxis für Logopädie Şimşek</p>
+        </PracticeBrand>
       </div>
       <div>
         <span class="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest bg-white/5 text-slate-400 border border-white/10 mb-5">Navigation</span>
