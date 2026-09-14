@@ -11,14 +11,9 @@ import sucheImg from '../assets/suche.jpg';
     <div class="absolute top-1/2 -left-24 w-72 h-72 bg-simsek-blue/10 blur-[100px] rounded-full"></div>
   </div>
 
-  <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+  <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
 
     <div class="space-y-8">
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm animate-fade-in">
-         <span class="w-2 h-2 rounded-full bg-simsek-green animate-pulse"></span>
-         <span class="text-sm font-medium text-slate-600">Wir suchen Logopäd:innen und Sprachtherapeut:innen (m/w/d)</span>
-      </div>
-
       <PracticeBrand />
 
       <h1 class="text-3xl sm:text-5xl md:text-7xl font-semibold text-slate-900 leading-[1.05] tracking-tight normal-case">
@@ -50,7 +45,13 @@ import sucheImg from '../assets/suche.jpg';
       </div>
     </div>
 
-    <div class="relative">
+    <div class="relative min-w-0">
+      <div class="mb-10 flex justify-center lg:h-[72px] lg:items-center lg:mb-8">
+        <div class="inline-flex max-w-full items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm animate-fade-in">
+          <span class="w-2 h-2 shrink-0 rounded-full bg-simsek-green animate-pulse"></span>
+          <span class="text-sm font-medium text-slate-600">Wir suchen Logopäd:innen und Sprachtherapeut:innen (m/w/d)</span>
+        </div>
+      </div>
       <div class="relative">
 
           <div class="rounded-3xl overflow-hidden shadow-2xl border-8 border-white relative bg-slate-50">
