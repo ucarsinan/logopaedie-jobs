@@ -11,7 +11,6 @@ const canonicalURL = 'https://xn--logopdiejobs-kcb.de/jobs/logopaedin-sprachther
 const offizielleAnzeige = 'https://logopaedie-simsek.de/karriere/#bf-name';
 const pageTitle = 'Logopädin / Logopäde / Sprachtherapeutin / Sprachtherapeut (m/w/d) in Duisburg | Praxis Şimşek';
 const pageDescription = 'Mehrere unbefristete Logopädie- und Sprachtherapie-Stellen in Duisburg: 23–26 € brutto/Std., 38,5 Std. Vollzeit, variable Teilzeit und 4-Tage-Woche.';
-const reviewedOn = '29.08.2026';
 
 const mailHref = 'mailto:info@logopaedie-simsek.de?subject=Bewerbung%20Logop%C3%A4din%20Duisburg&body=Hallo%20Frau%20%C5%9Eim%C5%9Fek-U%C3%A7ar,%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20die%20Stelle%20als%20Logop%C3%A4din%20/%20Sprachtherapeutin%20in%20Duisburg.%0A%0AViele%20Gr%C3%BC%C3%9Fe';
 
@@ -94,13 +93,8 @@ const faqSchema = {
           <span class="text-slate-800 font-semibold">Logopädin Duisburg</span>
         </nav>
 
-        <div class="grid xl:grid-cols-[minmax(0,1.08fr)_minmax(360px,0.82fr)] gap-10 xl:gap-14 items-center">
+        <div class="grid xl:grid-cols-[minmax(0,1.08fr)_minmax(360px,0.82fr)] gap-10 xl:gap-14 items-start">
           <div class="min-w-0 space-y-7 animate-fade-in relative z-10">
-            <div class="inline-flex max-w-full items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm">
-              <span class="w-2 h-2 rounded-full bg-simsek-green animate-pulse"></span>
-              <span class="text-sm font-medium text-slate-600 truncate">Stelle aktiv · geprüft am {reviewedOn}</span>
-            </div>
-
             <div>
               <PracticeBrand class="mb-5" />
               <h1 class="max-w-4xl text-[clamp(1.75rem,8vw,2.25rem)] sm:text-5xl lg:text-6xl font-semibold text-slate-900 leading-[1.03] tracking-tight normal-case">
@@ -122,8 +116,14 @@ const faqSchema = {
             </div>
           </div>
 
-          <div class="min-w-0 relative xl:justify-self-end">
-            <div class="relative group">
+          <div class="min-w-0 w-full relative xl:justify-self-end">
+            <div class="mb-8 xl:mb-5 flex items-center justify-center xl:h-[72px]">
+                <div class="inline-flex shrink-0 items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 shadow-sm">
+                  <span class="w-2 h-2 shrink-0 rounded-full bg-simsek-green animate-pulse" aria-hidden="true"></span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-600 whitespace-nowrap">Stelle Aktiv</span>
+                </div>
+            </div>
+            <div class="relative group max-w-[620px] xl:max-w-[520px] mx-auto xl:mr-0">
               <div class="rounded-3xl md:rounded-3xl overflow-hidden shadow-2xl border-8 border-white relative bg-slate-50 max-w-[620px] xl:max-w-[520px] mx-auto xl:mr-0">
                 <Image
                   src={sucheImg}
