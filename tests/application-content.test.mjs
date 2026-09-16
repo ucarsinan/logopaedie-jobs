@@ -3,6 +3,7 @@ import { access, readFile } from 'node:fs/promises';
 import test from 'node:test';
 
 const CONTACT_PATH = new URL('../src/components/ApplicationContact.astro', import.meta.url);
+const HERO_PATH = new URL('../src/components/Hero.astro', import.meta.url);
 const QUICK_APPLY_PATH = new URL('../src/components/QuickApply.astro', import.meta.url);
 const FAQ_PATH = new URL('../src/components/FaqSection.astro', import.meta.url);
 const FAQ_SCHEMA_PATH = new URL('../src/components/FaqSchema.astro', import.meta.url);
@@ -27,6 +28,22 @@ test('all recruiting contact surfaces use the shared WhatsApp CTA without color 
     assert.ok(callSite);
     assert.doesNotMatch(callSite[0], /(?:^|\s)(?:!?bg-|!?text-|!?border-(?:white|slate|simsek|emerald))/);
   }
+});
+
+test('home hero adds WhatsApp beside email without adding a third action row', async () => {
+  const hero = await readFile(HERO_PATH, 'utf8');
+
+  assert.match(hero, /grid grid-cols-2 gap-3 pt-4/);
+  assert.match(hero, /<RecruitingWhatsAppLink[\s\S]*?label="WhatsApp"[\s\S]*?class="w-full"/);
+  assert.match(hero, /href="mailto:social@logopaedie-simsek\.de\?subject=Bewerbung"[^>]*class="[^"]*w-full/);
+  assert.match(hero, /href="\/jobs\/logopaedin-sprachtherapeut-duisburg\/"[^>]*class="[^"]*col-span-2[^"]*w-full/);
+});
+
+test('form errors do not draw a ring around the direct contact alternatives', async () => {
+  const contact = await readFile(CONTACT_PATH, 'utf8');
+
+  assert.doesNotMatch(contact, /alternatives\.classList\.add/);
+  assert.doesNotMatch(contact, /showStatus\([^\n]*, true\)/);
 });
 
 test('direct contact alternatives precede the form on mobile and remain below the intro on desktop', async () => {

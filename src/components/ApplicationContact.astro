@@ -89,19 +89,14 @@ import RecruitingWhatsAppLink from './RecruitingWhatsAppLink.astro';
 <script is:inline type="module">
   const form = document.querySelector('#bewerbung-form');
   const statusMessage = document.querySelector('#bewerbung-status');
-  const alternatives = document.querySelector('#bewerbung-alternativen');
   const knownFields = new Set(['name', 'kontakt', 'nachricht']);
   const queryStatus = new URLSearchParams(window.location.search).get('status');
 
-  function showStatus(message, showAlternatives = false) {
+  function showStatus(message) {
     if (!(statusMessage instanceof HTMLElement)) return;
 
     statusMessage.textContent = message;
     statusMessage.className = 'mb-5 rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm leading-relaxed text-slate-800 outline-none';
-
-    if (showAlternatives && alternatives instanceof HTMLElement) {
-      alternatives.classList.add('rounded-xl', 'ring-2', 'ring-simsek-green', 'ring-offset-2');
-    }
 
     statusMessage.focus();
   }
@@ -119,7 +114,7 @@ import RecruitingWhatsAppLink from './RecruitingWhatsAppLink.astro';
   if (queryStatus === 'invalid_form') {
     showStatus('Bitte prüfe deine Angaben und versuche es erneut.');
   } else if (queryStatus === 'service_unavailable') {
-    showStatus('Der Versand ist momentan nicht möglich. Bitte nutze WhatsApp für Bewerbungen, ruf uns an oder schreib eine E-Mail.', true);
+    showStatus('Der Versand ist momentan nicht möglich. Bitte nutze WhatsApp für Bewerbungen, ruf uns an oder schreib eine E-Mail.');
   }
 
   if (form instanceof HTMLFormElement) {
@@ -181,13 +176,13 @@ import RecruitingWhatsAppLink from './RecruitingWhatsAppLink.astro';
         }
 
         if (response.status === 503 && payload && payload.ok === false && payload.code === 'service_unavailable') {
-          showStatus('Der Versand ist momentan nicht möglich. Bitte nutze WhatsApp für Bewerbungen, ruf uns an oder schreib eine E-Mail.', true);
+          showStatus('Der Versand ist momentan nicht möglich. Bitte nutze WhatsApp für Bewerbungen, ruf uns an oder schreib eine E-Mail.');
           return;
         }
 
-        showStatus('Die Kontaktanfrage konnte gerade nicht gesendet werden. Bitte nutze WhatsApp für Bewerbungen, ruf uns an oder schreib eine E-Mail.', true);
+        showStatus('Die Kontaktanfrage konnte gerade nicht gesendet werden. Bitte nutze WhatsApp für Bewerbungen, ruf uns an oder schreib eine E-Mail.');
       } catch {
-        showStatus('Die Kontaktanfrage konnte gerade nicht gesendet werden. Bitte nutze WhatsApp für Bewerbungen, ruf uns an oder schreib eine E-Mail.', true);
+        showStatus('Die Kontaktanfrage konnte gerade nicht gesendet werden. Bitte nutze WhatsApp für Bewerbungen, ruf uns an oder schreib eine E-Mail.');
       } finally {
         submitButton.disabled = false;
       }
