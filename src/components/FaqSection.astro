@@ -1,4 +1,6 @@
 ---
+import RecruitingWhatsAppLink from './RecruitingWhatsAppLink.astro';
+
 const faqs = [
   {
     q: 'Welche Stellen bietet die Praxis Şimşek an?',
@@ -34,7 +36,7 @@ const faqs = [
   },
   {
     q: 'Wie kann ich Kontakt aufnehmen?',
-    a: 'Über das kurze Formular auf logopaedie-simsek.de/karriere/, telefonisch unter 0203 34 86 86 90, per E-Mail an info@logopaedie-simsek.de oder per Post an die Tonhallenstraße 21, 47051 Duisburg. Ein Lebenslauf ist freiwillig.'
+    a: 'Über das kurze Formular direkt auf der konkreten Stellenanzeige auf LogopädieJobs.de, über WhatsApp für Bewerbungen, telefonisch unter +49 155 10062296, per E-Mail an social@logopaedie-simsek.de oder per Post an die Tonhallenstraße 21, 47051 Duisburg. Ein Lebenslauf ist freiwillig.'
   }
 ];
 ---
@@ -61,6 +63,12 @@ const faqs = [
           </summary>
           <div class="px-6 pb-5">
             <p class="text-slate-600 leading-relaxed">{faq.a}</p>
+            {faq.q === 'Wie kann ich Kontakt aufnehmen?' && (
+              <RecruitingWhatsAppLink
+                label="WhatsApp für Bewerbungen"
+                class="mt-4"
+              />
+            )}
           </div>
         </details>
       ))}
@@ -68,9 +76,9 @@ const faqs = [
 
     <div class="mt-12 text-center">
       <p class="text-xl font-bold text-slate-900 mb-4">Noch Fragen?</p>
-      <a href="mailto:info@logopaedie-simsek.de?subject=Frage%20zum%20Logop%C3%A4die-Job" class="inline-flex items-center gap-2 px-6 py-3 bg-simsek-green text-white font-bold rounded-lg shadow-md  hover:shadow-lg  hover:-translate-y-0.5  transition-all duration-200 no-underline text-sm">
+      <a href="/jobs/logopaedin-sprachtherapeut-duisburg/#bewerbung" class="inline-flex items-center gap-2 px-6 py-3 bg-simsek-green text-white font-bold rounded-lg shadow-md  hover:shadow-lg  hover:-translate-y-0.5  transition-all duration-200 no-underline text-sm">
         <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-        Direkt per E-Mail fragen
+        Unverbindlich Kontakt aufnehmen
       </a>
     </div>
   </div>

@@ -1,0 +1,182 @@
+import assert from 'node:assert/strict';
+import test from 'node:test';
+
+import { CONTACT_PATTERN_SOURCE, KNOWN_JOBS, MAX_BODY_BYTES, parseApplicationForm } from '../src/lib/application-form.mjs';
+
+const JOB_SLUG = 'logopaedin-sprachtherapeut-duisburg';
+const EMAIL = 'erika@example.test';
+const PHONE = '0203 000000';
+const NAME = 'Erika Muster';
+const NEUTRAL_MESSAGE = 'Neutrale Nachricht';
+
+function form(values = {}) {
+  return new URLSearchParams({
+    name: NAME,
+    kontakt: EMAIL,
+    nachricht: NEUTRAL_MESSAGE,
+    stelle: JOB_SLUG,
+    website: '',
+    ...values,
+  });
+}
+
+function invalidFields(values) {
+  const result = parseApplicationForm(form(values));
+  assert.equal(result.ok, false);
+  assert.equal(result.code, 'invalid_form');
+  return result.fields;
+}
+
+test('exports the 8 KiB body cap and maps the known job server-side', () => {
+  assert.equal(MAX_BODY_BYTES, 8 * 1024);
+  assert.deepEqual(Object.keys(KNOWN_JOBS), [JOB_SLUG]);
+  assert.equal(typeof KNOWN_JOBS[JOB_SLUG], 'string');
+});
+
+test('parses a valid email contact and exposes it only as replyTo', () => {
+  const result = parseApplicationForm(form());
+
+  assert.deepEqual(result, {
+    ok: true,
+    bot: false,
+    data: {
+      name: NAME,
+      contact: EMAIL,
+      message: NEUTRAL_MESSAGE,
+      jobSlug: JOB_SLUG,
+      replyTo: EMAIL,
+    },
+  });
+});
+
+test('accepts a phone contact with at least six digits without replyTo', () => {
+  const result = parseApplicationForm(form({ kontakt: PHONE }));
+
+  assert.equal(result.ok, true);
+  assert.equal(result.bot, false);
+  assert.equal(result.data.contact, PHONE);
+  assert.equal('replyTo' in result.data, false);
+});
+
+test('accepts common Unicode hyphens and dashes in phone contacts', () => {
+  for (const separator of ['‐', '‑', '‒', '–', '—', '−']) {
+    const contact = `0203 ${separator} 000000`;
+    const result = parseApplicationForm(form({ kontakt: contact }));
+
+    assert.equal(result.ok, true, `expected separator ${separator} to be accepted`);
+    assert.equal(result.data.contact, contact);
+    assert.equal('replyTo' in result.data, false);
+  }
+});
+
+test('browser contact pattern mirrors accepted email and phone shapes', () => {
+  const browserPattern = new RegExp(`^(?:${CONTACT_PATTERN_SOURCE})$`, 'v');
+
+  assert.equal(browserPattern.test(EMAIL), true);
+  assert.equal(browserPattern.test(PHONE), true);
+  assert.equal(browserPattern.test('0203 – 000000'), true);
+  assert.equal(browserPattern.test('neutral text'), false);
+  assert.equal(browserPattern.test('0203 – 0'), false);
+});
+
+test('requires at least six digits for phone contacts', () => {
+  const digits = PHONE.replace(/\D/g, '');
+  assert.deepEqual(invalidFields({ kontakt: digits.slice(0, 5) }), ['kontakt']);
+
+  const result = parseApplicationForm(form({ kontakt: digits.slice(0, 6) }));
+  assert.equal(result.ok, true);
+  assert.equal(result.data.contact, digits.slice(0, 6));
+  assert.equal('replyTo' in result.data, false);
+});
+
+test('normalizes whitespace and line breaks before returning data', () => {
+  const result = parseApplicationForm(form({
+    name: '  Erika\r\n  Muster  ',
+    kontakt: '  erika@example.test  ',
+    nachricht: '  Neutrale\r\n Nachricht  ',
+  }));
+
+  assert.equal(result.ok, true);
+  assert.deepEqual(result.data, {
+    name: NAME,
+    contact: EMAIL,
+    message: NEUTRAL_MESSAGE,
+    jobSlug: JOB_SLUG,
+    replyTo: EMAIL,
+  });
+});
+
+test('rejects unknown fields', () => {
+  assert.deepEqual(invalidFields({ neutral: 'Textbaustein' }), ['neutral']);
+});
+
+test('enforces every name boundary', () => {
+  assert.deepEqual(invalidFields({ name: 'x' }), ['name']);
+  assert.deepEqual(invalidFields({ name: `${NAME}${'x'.repeat(89)}` }), ['name']);
+
+  const shortestValid = parseApplicationForm(form({ name: NAME.slice(0, 2) }));
+  assert.equal(shortestValid.ok, true);
+  assert.equal(shortestValid.data.name.length, 2);
+
+  const result = parseApplicationForm(form({ name: `${NAME}${'x'.repeat(88)}` }));
+  assert.equal(result.ok, true);
+  assert.equal(result.data.name.length, 100);
+});
+
+test('enforces every contact boundary', () => {
+  assert.deepEqual(invalidFields({ kontakt: 'a@b' }), ['kontakt']);
+  assert.deepEqual(invalidFields({ kontakt: `erika@${'x'.repeat(150)}.test` }), ['kontakt']);
+
+  const shortestValid = parseApplicationForm(form({ kontakt: 'a@b.c' }));
+  assert.equal(shortestValid.ok, true);
+  assert.equal(shortestValid.data.contact.length, 5);
+
+  const result = parseApplicationForm(form({ kontakt: `erika@${'x'.repeat(149)}.test` }));
+  assert.equal(result.ok, true);
+  assert.equal(result.data.contact.length, 160);
+});
+
+test('enforces the optional message maximum', () => {
+  assert.deepEqual(invalidFields({ nachricht: 'x'.repeat(1501) }), ['nachricht']);
+
+  const emptyResult = parseApplicationForm(form({ nachricht: '' }));
+  assert.equal(emptyResult.ok, true);
+  assert.equal(emptyResult.data.message, '');
+
+  const result = parseApplicationForm(form({ nachricht: 'x'.repeat(1500) }));
+  assert.equal(result.ok, true);
+  assert.equal(result.data.message.length, 1500);
+});
+
+test('rejects contacts that are neither a simple email nor a separated phone number', () => {
+  assert.deepEqual(invalidFields({ kontakt: 'neutral text' }), ['kontakt']);
+});
+
+test('rejects unknown job slugs', () => {
+  assert.deepEqual(invalidFields({ stelle: 'unbekannte-stelle' }), ['stelle']);
+});
+
+test('treats a filled honeypot as a bot and removes applicant data', () => {
+  const result = parseApplicationForm(form({ website: 'neutral' }));
+
+  assert.deepEqual(result, {
+    ok: true,
+    bot: true,
+    data: {
+      name: '',
+      contact: '',
+      message: '',
+      jobSlug: '',
+    },
+  });
+});
+
+test('rejects unknown fields before classifying a filled honeypot as a bot', () => {
+  const result = parseApplicationForm(form({ website: 'neutral', neutral: 'Textbaustein' }));
+
+  assert.deepEqual(result, {
+    ok: false,
+    code: 'invalid_form',
+    fields: ['neutral'],
+  });
+});

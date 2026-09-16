@@ -1,0 +1,32 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout
+  title="Danke | Praxis für Logopädie Şimşek"
+  description="Ihre Kontaktanfrage für die Praxis für Logopädie Şimşek wurde gesendet."
+  robots="noindex, nofollow"
+>
+  <Navigation />
+  <main>
+    <section class="mx-auto max-w-3xl px-6 py-16 md:py-24">
+      <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm md:p-12">
+        <span class="inline-flex items-center rounded-full border border-simsek-green/30 bg-simsek-green/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-simsek-green">
+          Kontaktanfrage
+        </span>
+        <h1 class="mt-6 text-3xl font-semibold leading-tight text-slate-900 md:text-5xl">
+          Danke – deine Nachricht wurde gesendet.
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-700">
+          Deine Kontaktanfrage ist bei der Praxis eingegangen.
+        </p>
+        <a href="/jobs/logopaedin-sprachtherapeut-duisburg/" class="mt-8 inline-flex min-h-11 items-center justify-center rounded-lg bg-simsek-green px-5 py-3 text-sm font-bold text-white no-underline shadow-md transition hover:bg-simsek-green/90 focus:outline-none focus:ring-2 focus:ring-simsek-green focus:ring-offset-2">
+          Zurück zur Stelle
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

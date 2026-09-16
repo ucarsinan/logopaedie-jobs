@@ -6,6 +6,7 @@ import vercel from '@astrojs/vercel';
 
 const excludedSitemapPaths = new Set([
   '/4-tage-woche/',
+  '/bewerbung/danke/',
   '/bilingual/',
   '/datenschutz/',
   '/gehalt/',

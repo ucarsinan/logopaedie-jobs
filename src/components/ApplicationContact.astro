@@ -1,0 +1,196 @@
+---
+import { CONTACT_PATTERN_SOURCE } from '../lib/application-form.mjs';
+import RecruitingWhatsAppLink from './RecruitingWhatsAppLink.astro';
+---
+
+<section id="bewerbung" class="scroll-mt-24 bg-slate-900 text-white py-14 md:py-20">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="grid items-start gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(300px,0.9fr)] lg:gap-x-12 lg:gap-y-8">
+      <div class="lg:col-start-1 lg:row-start-1">
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-simsek-green/20 text-simsek-green border border-simsek-green/30 mb-4">
+          Unverbindlicher Erstkontakt
+        </span>
+        <h2 class="text-3xl md:text-5xl font-semibold leading-tight mb-4">Lass uns kennenlernen.</h2>
+        <p class="text-slate-300 leading-relaxed max-w-xl">
+          Eine kurze Nachricht reicht. Anschreiben und Lebenslauf sind für den ersten Kontakt nicht nötig.
+        </p>
+      </div>
+
+      <div id="bewerbung-alternativen" class="order-2 border-t border-white/20 pt-6 lg:col-start-1 lg:row-start-2">
+        <p class="mb-3 text-sm font-semibold text-white">Lieber direkt?</p>
+        <div class="grid gap-3">
+          <RecruitingWhatsAppLink
+            label="WhatsApp für Bewerbungen"
+            class="w-full"
+          />
+          <a href="tel:+4915510062296" data-contact-icon="phone" class="min-h-11 inline-flex w-full items-center justify-center gap-2 rounded-lg border border-white/30 bg-white/5 px-4 py-3 text-sm font-bold text-white no-underline transition hover:border-simsek-green hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-simsek-green focus:ring-offset-2 focus:ring-offset-slate-900">
+            <svg class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 0 1 2-2h3.28a1 1 0 0 1 .95.68l1.5 4.5a1 1 0 0 1-.5 1.21l-2.26 1.13a11.04 11.04 0 0 0 5.53 5.53l1.13-2.26a1 1 0 0 1 1.21-.5l4.5 1.5a1 1 0 0 1 .68.95V19a2 2 0 0 1-2 2h-1C10.82 21 3 13.18 3 4V5Z" /></svg>
+            Jetzt anrufen
+          </a>
+          <a href="mailto:social@logopaedie-simsek.de" data-contact-icon="mail" class="min-h-11 inline-flex w-full items-center justify-center gap-2 rounded-lg border border-white/30 bg-white/5 px-4 py-3 text-sm font-bold text-white no-underline transition hover:border-simsek-green hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-simsek-green focus:ring-offset-2 focus:ring-offset-slate-900">
+            <svg class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2Z" /></svg>
+            E-Mail schreiben
+          </a>
+        </div>
+        <p class="mt-4 text-xs leading-relaxed text-slate-300">Oder per Post: Praxis für Logopädie Şimşek, Tonhallenstraße 21, 47051 Duisburg.</p>
+      </div>
+
+      <div class="order-3 rounded-3xl bg-white p-5 text-slate-900 shadow-xl sm:p-7 lg:col-start-2 lg:row-start-1 lg:row-span-2">
+        <div
+          id="bewerbung-status"
+          role="alert"
+          aria-live="assertive"
+          aria-atomic="true"
+          tabindex="-1"
+          class="hidden mb-5 rounded-xl border px-4 py-3 text-sm leading-relaxed outline-none"
+        ></div>
+
+        <form id="bewerbung-form" method="post" action="/api/bewerbung/" class="space-y-5">
+          <input type="hidden" name="stelle" value="logopaedin-sprachtherapeut-duisburg" />
+          <div class="absolute -left-[10000px] h-px w-px overflow-hidden" aria-hidden="true">
+            <label for="website">Website</label>
+            <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <div>
+            <label for="name" class="mb-2 block text-sm font-bold text-slate-800">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" minlength="2" maxlength="100" required aria-describedby="name-hint" class="min-h-11 w-full rounded-lg border border-slate-300 px-3 py-2.5 text-base text-slate-900 outline-none transition focus:border-simsek-green focus:ring-2 focus:ring-simsek-green/30" />
+            <p id="name-hint" class="mt-2 text-xs text-slate-500">Bitte gib deinen Namen an.</p>
+          </div>
+
+          <div>
+            <label for="kontakt" class="mb-2 block text-sm font-bold text-slate-800">Telefon oder E-Mail</label>
+            <input id="kontakt" name="kontakt" type="text" autocomplete="on" minlength="5" maxlength="160" pattern={CONTACT_PATTERN_SOURCE} required aria-describedby="kontakt-hint" class="min-h-11 w-full rounded-lg border border-slate-300 px-3 py-2.5 text-base text-slate-900 outline-none transition focus:border-simsek-green focus:ring-2 focus:ring-simsek-green/30" />
+            <p id="kontakt-hint" class="mt-2 text-xs text-slate-500">Gib eine E-Mail-Adresse oder Telefonnummer mit mindestens sechs Ziffern an.</p>
+          </div>
+
+          <div>
+            <label for="nachricht" class="mb-2 block text-sm font-bold text-slate-800">Kurze Nachricht <span class="font-normal text-slate-500">(optional)</span></label>
+            <textarea id="nachricht" name="nachricht" rows="4" maxlength="1500" aria-describedby="nachricht-hint" class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-base text-slate-900 outline-none transition focus:border-simsek-green focus:ring-2 focus:ring-simsek-green/30"></textarea>
+            <p id="nachricht-hint" class="mt-2 text-xs text-slate-500">Zum Beispiel dein gewünschter Stundenumfang oder Starttermin.</p>
+          </div>
+
+          <p class="text-xs leading-relaxed text-slate-500">
+            Mit dem Absenden verarbeiten wir deine Angaben zur Kontaktaufnahme. Details findest du in unserer
+            <a href="/datenschutz/" class="inline-flex min-h-11 items-center font-semibold text-brand-primary underline underline-offset-2">Datenschutzerklärung</a>.
+          </p>
+
+          <button type="submit" class="min-h-11 w-full rounded-lg bg-simsek-green px-5 py-3 text-sm font-bold text-white shadow-md transition hover:bg-simsek-green/90 focus:outline-none focus:ring-2 focus:ring-simsek-green focus:ring-offset-2 disabled:cursor-wait disabled:opacity-70">
+            Kontaktanfrage senden
+          </button>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script is:inline type="module">
+  const form = document.querySelector('#bewerbung-form');
+  const statusMessage = document.querySelector('#bewerbung-status');
+  const alternatives = document.querySelector('#bewerbung-alternativen');
+  const knownFields = new Set(['name', 'kontakt', 'nachricht']);
+  const queryStatus = new URLSearchParams(window.location.search).get('status');
+
+  function showStatus(message, showAlternatives = false) {
+    if (!(statusMessage instanceof HTMLElement)) return;
+
+    statusMessage.textContent = message;
+    statusMessage.className = 'mb-5 rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm leading-relaxed text-slate-800 outline-none';
+
+    if (showAlternatives && alternatives instanceof HTMLElement) {
+      alternatives.classList.add('rounded-xl', 'ring-2', 'ring-simsek-green', 'ring-offset-2');
+    }
+
+    statusMessage.focus();
+  }
+
+  function clearFieldErrors() {
+    for (const field of knownFields) {
+      const input = document.getElementById(field);
+      if (input instanceof HTMLInputElement || input instanceof HTMLTextAreaElement) {
+        input.removeAttribute('aria-invalid');
+        input.classList.remove('border-red-500', 'ring-2', 'ring-red-200');
+      }
+    }
+  }
+
+  if (queryStatus === 'invalid_form') {
+    showStatus('Bitte prüfe deine Angaben und versuche es erneut.');
+  } else if (queryStatus === 'service_unavailable') {
+    showStatus('Der Versand ist momentan nicht möglich. Bitte nutze WhatsApp für Bewerbungen, ruf uns an oder schreib eine E-Mail.', true);
+  }
+
+  if (form instanceof HTMLFormElement) {
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      clearFieldErrors();
+
+      const submitButton = form.querySelector('button[type="submit"]');
+      if (!(submitButton instanceof HTMLButtonElement)) return;
+
+      submitButton.disabled = true;
+      const formData = new FormData(form);
+      const body = new URLSearchParams();
+
+      for (const [name, value] of formData.entries()) {
+        if (typeof value === 'string') body.append(name, value);
+      }
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+          },
+          body,
+          credentials: 'same-origin',
+        });
+
+        let payload;
+        try {
+          payload = await response.json();
+        } catch {
+          payload = null;
+        }
+
+        if (response.ok && payload && payload.ok === true) {
+          window.location.assign('/bewerbung/danke/');
+          return;
+        }
+
+        if (
+          response.status === 422
+          && payload
+          && payload.ok === false
+          && payload.code === 'invalid_form'
+          && Array.isArray(payload.fields)
+        ) {
+          for (const field of payload.fields) {
+            if (!knownFields.has(field)) continue;
+            const input = document.getElementById(field);
+            if (input instanceof HTMLInputElement || input instanceof HTMLTextAreaElement) {
+              input.setAttribute('aria-invalid', 'true');
+              input.classList.add('border-red-500', 'ring-2', 'ring-red-200');
+            }
+          }
+          showStatus('Bitte prüfe deine Angaben und versuche es erneut.');
+          return;
+        }
+
+        if (response.status === 503 && payload && payload.ok === false && payload.code === 'service_unavailable') {
+          showStatus('Der Versand ist momentan nicht möglich. Bitte nutze WhatsApp für Bewerbungen, ruf uns an oder schreib eine E-Mail.', true);
+          return;
+        }
+
+        showStatus('Die Kontaktanfrage konnte gerade nicht gesendet werden. Bitte nutze WhatsApp für Bewerbungen, ruf uns an oder schreib eine E-Mail.', true);
+      } catch {
+        showStatus('Die Kontaktanfrage konnte gerade nicht gesendet werden. Bitte nutze WhatsApp für Bewerbungen, ruf uns an oder schreib eine E-Mail.', true);
+      } finally {
+        submitButton.disabled = false;
+      }
+    });
+  }
+</script>

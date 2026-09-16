@@ -1,0 +1,28 @@
+---
+import { WHATSAPP_HREF } from '../lib/recruiting-whatsapp.mjs';
+
+interface Props {
+  label?: string;
+  class?: string;
+}
+
+const {
+  label = 'WhatsApp für Bewerbungen',
+  class: className = '',
+} = Astro.props;
+
+const buttonClasses = 'inline-flex min-h-11 items-center justify-center gap-2 rounded-lg !border-[#25d366] !bg-[#25d366] px-4 py-3 text-sm font-bold !text-slate-950 no-underline shadow-md shadow-emerald-950/20 transition duration-200 hover:!bg-[#20bd5c] hover:!text-slate-950 hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-950 focus-visible:ring-4 focus-visible:ring-[#25d366]/60';
+---
+
+<a
+  href={WHATSAPP_HREF}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={label}
+  class={`${buttonClasses} ${className}`}
+>
+  <svg class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+    <path d="M20.52 3.48A11.8 11.8 0 0 0 12.16 0C5.71 0 .46 5.25.46 11.7c0 2.06.54 4.08 1.57 5.85L.36 23.64l6.24-1.64a11.68 11.68 0 0 0 5.56 1.41h.01c6.45 0 11.7-5.25 11.7-11.7a11.64 11.64 0 0 0-3.35-8.23ZM12.17 21.44a9.72 9.72 0 0 1-4.96-1.36l-.36-.21-3.7.97.99-3.61-.24-.37a9.67 9.67 0 0 1-1.49-5.17c0-5.35 4.36-9.71 9.72-9.71a9.63 9.63 0 0 1 6.87 2.85 9.63 9.63 0 0 1 2.85 6.87c0 5.36-4.34 9.72-9.68 9.74Zm5.32-7.27c-.29-.15-1.72-.85-1.99-.95-.27-.1-.47-.15-.67.15-.2.29-.77.95-.95 1.14-.17.2-.35.22-.64.07-1.72-.86-2.85-1.53-3.98-3.47-.3-.51.3-.48.86-1.6.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.29-1.05 1.02-1.05 2.49 0 1.46 1.08 2.88 1.22 3.08.15.2 2.12 3.24 5.14 4.55.72.31 1.28.5 1.72.64.72.23 1.37.2 1.89.12.58-.09 1.72-.7 1.97-1.37.24-.68.24-1.25.17-1.37-.07-.12-.27-.2-.57-.35Z" />
+  </svg>
+  <slot>{label}</slot>
+</a>

@@ -4,15 +4,13 @@ import Layout from '../../layouts/Layout.astro';
 import Navigation from '../../components/Navigation.astro';
 import Footer from '../../components/Footer.astro';
 import PracticeBrand from '../../components/PracticeBrand.astro';
+import ApplicationContact from '../../components/ApplicationContact.astro';
 import sucheImg from '../../assets/suche.jpg';
 import praxisImg from '../../assets/praxis-bild-2.jpg';
 
 const canonicalURL = 'https://xn--logopdiejobs-kcb.de/jobs/logopaedin-sprachtherapeut-duisburg/';
-const offizielleAnzeige = 'https://logopaedie-simsek.de/karriere/#bf-name';
 const pageTitle = 'Logopädin / Logopäde / Sprachtherapeutin / Sprachtherapeut (m/w/d) in Duisburg | Praxis Şimşek';
 const pageDescription = 'Mehrere unbefristete Logopädie- und Sprachtherapie-Stellen in Duisburg: 23–26 € brutto/Std., 38,5 Std. Vollzeit, variable Teilzeit und 4-Tage-Woche.';
-
-const mailHref = 'mailto:info@logopaedie-simsek.de?subject=Bewerbung%20Logop%C3%A4din%20Duisburg&body=Hallo%20Frau%20%C5%9Eim%C5%9Fek-U%C3%A7ar,%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20die%20Stelle%20als%20Logop%C3%A4din%20/%20Sprachtherapeutin%20in%20Duisburg.%0A%0AViele%20Gr%C3%BC%C3%9Fe';
 
 const relatedLinks = [
   {
@@ -47,7 +45,7 @@ const faqs = [
   ['Kann ich in Teilzeit arbeiten?', 'Ja. Teilzeit ist mit variablem Stundenumfang möglich; eine Mindeststundenzahl wird nicht vorgegeben.'],
   ['Ist eine Vier-Tage-Woche möglich?', 'Ja. Eine Vier-Tage-Woche ist möglich.'],
   ['Welche Qualifikation brauche ich?', 'Du brauchst eine staatlich anerkannte und zugelassene Ausbildung oder ein Studium in Logopädie beziehungsweise Sprachtherapie sowie sehr gute Deutschkenntnisse. Berufserfahrung, Türkischkenntnisse und Führerschein sind nicht erforderlich.'],
-  ['Wie kann ich Kontakt aufnehmen?', 'Über das kurze Formular der Praxiswebsite, telefonisch unter 0203 34 86 86 90, per E-Mail an info@logopaedie-simsek.de oder per Post an die Tonhallenstraße 21, 47051 Duisburg. Ein Lebenslauf ist freiwillig.'],
+  ['Wie kann ich Kontakt aufnehmen?', 'Über das kurze Formular direkt auf der konkreten Stellenanzeige auf LogopädieJobs.de, über WhatsApp für Bewerbungen, telefonisch unter +49 155 10062296, per E-Mail an social@logopaedie-simsek.de oder per Post an die Tonhallenstraße 21, 47051 Duisburg. Ein Lebenslauf ist freiwillig.'],
 ] as const;
 
 const faqSchema = {
@@ -109,18 +107,17 @@ const faqSchema = {
             </p>
 
             <div class="flex flex-col sm:flex-row flex-wrap gap-3 pt-2">
-              <a href={mailHref} class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-simsek-green text-white text-sm font-bold rounded-lg shadow-md  hover:shadow-lg  hover:-translate-y-0.5  transition-all duration-200 no-underline">
-                <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                Per E-Mail bewerben
+              <a href="#bewerbung" class="inline-flex min-h-11 items-center justify-center gap-2.5 px-6 py-3.5 bg-simsek-green text-white text-sm font-bold rounded-lg shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 no-underline">
+                Unverbindlich Kontakt aufnehmen
               </a>
             </div>
           </div>
 
           <div class="min-w-0 w-full relative xl:justify-self-end">
-            <div class="mb-8 xl:mb-5 flex items-center justify-center xl:h-[72px]">
+            <div class="mb-8 xl:mb-5 hidden sm:flex items-center justify-center xl:h-[72px]">
                 <div class="inline-flex shrink-0 items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 shadow-sm">
                   <span class="w-2 h-2 shrink-0 rounded-full bg-simsek-green animate-pulse" aria-hidden="true"></span>
-                  <span class="text-xs sm:text-sm font-medium text-slate-600 whitespace-nowrap">Stelle Aktiv</span>
+                  <span class="text-xs sm:text-sm font-medium text-slate-600 whitespace-nowrap">Stellen verfügbar</span>
                 </div>
             </div>
             <div class="relative group max-w-[620px] xl:max-w-[520px] mx-auto xl:mr-0">
@@ -137,11 +134,11 @@ const faqSchema = {
                 <div class="absolute inset-0 bg-linear-to-t from-slate-950/20 via-transparent to-transparent"></div>
               </div>
 
-              <div class="absolute -bottom-6 left-2 md:-left-4 xl:-left-10 bg-white p-4 md:p-6 rounded-3xl shadow-xl border border-slate-100 z-20">
+              <div class="absolute -bottom-6 left-2 md:-left-4 xl:-left-10 bg-white p-3 md:p-6 rounded-2xl md:rounded-3xl shadow-xl border border-slate-100 z-20">
                 <div class="flex items-center gap-4">
                   <div>
-                    <p class="text-xs text-slate-500 font-medium tracking-widest uppercase">Modell</p>
-                    <p class="font-bold text-slate-900">4-Tage-Woche</p>
+                    <p class="text-[10px] md:text-xs text-slate-500 font-medium tracking-widest uppercase">Modell</p>
+                    <p class="text-sm md:text-base font-bold text-slate-900">4-Tage-Woche</p>
                   </div>
                 </div>
               </div>
@@ -155,23 +152,25 @@ const faqSchema = {
           </div>
         </div>
 
-        <dl class="mt-14 grid sm:grid-cols-3 gap-4">
+        <dl class="mt-8 sm:mt-14 grid sm:grid-cols-3 gap-3 sm:gap-4">
           {[
             ['Arbeitszeit', '38,5 Std. Vollzeit', 'Teilzeit und 4-Tage-Woche möglich'],
             ['Standort', '47051 Duisburg', 'Vor Ort, 2 Min. vom Hbf; keine Dienstreisen'],
             ['Gehalt', '23–26 €/Std.', 'Plus jährliches Weihnachtsgeld'],
           ].map(([label, value, note]) => (
-            <div class="p-px rounded-3xl bg-simsek-green ">
-              <div class="h-full rounded-[calc(1.5rem-1px)] bg-white p-5 shadow-sm">
-                <dt class="text-xs uppercase font-bold tracking-widest text-slate-400 mb-2">{label}</dt>
-                <dd class="text-2xl font-bold text-slate-900">{value}</dd>
-                <p class="text-sm text-slate-500 mt-1">{note}</p>
+            <div class="p-px rounded-[1rem] sm:rounded-3xl bg-simsek-green ">
+              <div class="h-full rounded-[calc(1rem-1px)] sm:rounded-[calc(1.5rem-1px)] bg-white p-3 sm:p-5 shadow-sm">
+                <dt class="text-[10px] sm:text-xs uppercase font-bold tracking-widest text-slate-400 mb-2">{label}</dt>
+                <dd class="text-xl sm:text-2xl font-bold text-slate-900">{value}</dd>
+                <p class="text-xs sm:text-sm text-slate-500 mt-1">{note}</p>
               </div>
             </div>
           ))}
         </dl>
       </div>
     </section>
+
+    <ApplicationContact />
 
     <section class="py-14 md:py-24 bg-slate-50 relative">
       <div class="max-w-7xl mx-auto px-6">
@@ -186,8 +185,8 @@ const faqSchema = {
               Du bekommst verlässlichen Rahmen, fachlichen Austausch und genug Flexibilität, damit Therapiequalität und Arbeitsleben zusammenpassen.
             </p>
           </div>
-          <a href={mailHref} class="hidden md:inline-flex items-center justify-center px-6 py-3 bg-white text-slate-700 text-sm font-bold rounded-lg border-2 border-slate-200 hover:border-simsek-green hover:text-slate-900 transition-all duration-200 no-underline">
-            Kurze Nachricht senden
+          <a href="#bewerbung" class="hidden md:inline-flex min-h-11 items-center justify-center px-6 py-3 bg-white text-slate-700 text-sm font-bold rounded-lg border-2 border-slate-200 hover:border-simsek-green hover:text-slate-900 transition-all duration-200 no-underline">
+            Unverbindlich Kontakt aufnehmen
           </a>
         </div>
 
@@ -204,9 +203,8 @@ const faqSchema = {
               <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>Intensive Einarbeitung, schrittweiser Terminaufbau und jederzeit eine Ansprechperson</span></li>
               <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>Eigene fachliche Schwerpunkte; Berufsanfänger:innen willkommen</span></li>
             </ul>
-            <a href={mailHref} class="mt-6 w-full inline-flex items-center justify-center gap-2.5 px-5 py-3 bg-simsek-green text-white text-sm font-bold rounded-lg shadow-md  hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 no-underline">
-              <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-              Kurze Nachricht senden
+            <a href="#bewerbung" class="mt-6 min-h-11 w-full inline-flex items-center justify-center gap-2.5 px-5 py-3 bg-simsek-green text-white text-sm font-bold rounded-lg shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 no-underline">
+              Unverbindlich Kontakt aufnehmen
             </a>
           </aside>
 
@@ -299,31 +297,6 @@ const faqSchema = {
               </div>
             ))}
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="bewerbung" class="scroll-mt-24 py-8 md:py-14 bg-slate-900 text-white rounded-3xl md:rounded-3xl mx-4 md:mx-6 my-6 md:my-10 overflow-hidden relative">
-      <div class="absolute -top-24 -right-24 w-80 h-80 bg-simsek-green/20 blur-[100px] rounded-full"></div>
-      <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-simsek-blue/20 blur-[100px] rounded-full"></div>
-      <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
-        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-simsek-green/20 text-simsek-green border border-simsek-green/30 mb-4">
-          Bewerbung
-        </span>
-        <h2 class="text-3xl md:text-5xl font-semibold mb-4 leading-tight">Erst unverbindlich kennenlernen</h2>
-        <div class="h-px bg-simsek-green mb-5"></div>
-        <p class="text-slate-300 leading-relaxed max-w-2xl mx-auto mb-7">
-          Eine klassische Bewerbung ist nicht nötig. Nutze das kurze Formular auf der Praxiswebsite, ruf an, schreib eine E-Mail oder sende Post. Ein Lebenslauf ist freiwillig; Hospitation oder Probearbeit sind möglich.
-        </p>
-        <p class="text-slate-300 leading-relaxed max-w-2xl mx-auto mb-7">
-          Emel Şimşek-Uçar · 0203 – 34 86 86 90 · info@logopaedie-simsek.de · Tonhallenstraße 21, 47051 Duisburg
-        </p>
-        <div class="flex flex-col sm:flex-row gap-3 justify-center">
-          <a href={offizielleAnzeige} class="inline-flex items-center justify-center px-8 py-4 bg-white text-slate-900 text-sm font-bold rounded-lg no-underline">Zum Kurzformular</a>
-          <a href={mailHref} class="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-simsek-green text-white text-sm font-bold rounded-lg shadow-md shadow-simsek-green/30 hover:-translate-y-0.5  transition-all duration-200 no-underline">
-            <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-            E-Mail schreiben
-          </a>
         </div>
       </div>
     </section>

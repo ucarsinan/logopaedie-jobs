@@ -30,7 +30,7 @@ const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
         <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-slate-100 text-slate-600 border border-slate-200 mb-6">
           Rechtliches
         </span>
-        <h1 class="text-4xl md:text-5xl font-semibold text-slate-900 leading-tight mb-6">
+        <h1 class="text-[1.5rem] min-[360px]:text-[2rem] md:text-5xl font-semibold text-slate-900 leading-tight mb-6 break-words hyphens-auto">
           Datenschutzerklärung
         </h1>
         <div class="h-px bg-simsek-green "></div>
@@ -49,25 +49,42 @@ const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
         </p>
 
         <h2>3. Bewerbung und Kontaktaufnahme</h2>
-        <p>Wenn Sie uns wegen einer Stelle kontaktieren, verarbeiten wir Ihre Angaben zur Bearbeitung Ihrer Bewerbung
-          und zur Entscheidung über die Begründung eines Beschäftigungsverhältnisses (§ 26 Abs. 1 BDSG).
-          Dies betrifft insbesondere Name, Kontaktdaten, Nachricht und freiwillig übermittelte Unterlagen.
-          Ein Lebenslauf ist für den Erstkontakt freiwillig.</p>
-        <p>Die E-Mail-Schaltflächen bereiten eine Nachricht in Ihrem E-Mail-Programm vor. Erst durch Ihr Absenden
-          dort wird diese übermittelt. Unser Praxispostfach info@logopaedie-simsek.de wird bei STRATO betrieben.
-          Der Link zum Kurzformular führt auf die Praxiswebsite; dort finden Sie die Hinweise zum jeweiligen Formularweg.</p>
-        <p>Die Bearbeitung erfolgt durch die dafür zuständigen Personen in der Praxis. Unnötige Arbeitskopien werden
-          nach Gebrauch gelöscht. Daten erfolgloser oder zurückgezogener Bewerbungen werden spätestens sechs Monate
-          nach Abschluss des Verfahrens gelöscht. Es wird kein Talentpool angelegt. Bei einer Einstellung werden
-          erforderliche Angaben für das Beschäftigungsverhältnis weiterverarbeitet.</p>
+        <p>Wenn Sie die Kontaktanfrage absenden, verarbeiten wir Ihren Namen, Ihre Rückkontaktmöglichkeit und Ihre
+          freiwillige Nachricht zur Bearbeitung Ihrer Bewerbung und zur Entscheidung über die Begründung eines
+          Beschäftigungsverhältnisses (§ 26 Abs. 1 BDSG).</p>
+        <p>Die technische Übermittlung erfolgt über Vercel an das bei STRATO gehostete Bewerbungspostfach. Alternativ können
+          Sie uns direkt per E-Mail unter <a href="mailto:social@logopaedie-simsek.de">social@logopaedie-simsek.de</a>
+          kontaktieren.</p>
+        <p>Daten erfolgloser oder zurückgezogener Bewerbungen werden spätestens sechs Monate nach Abschluss des
+          Verfahrens gelöscht. Es wird kein Talentpool angelegt.</p>
 
-        <h2>4. Externe Links</h2>
+        <h2>4. WhatsApp für Bewerbungen</h2>
+        <p>WhatsApp ist ein freiwilliger und ausschließlich für Bewerbungen vorgesehener Kontaktweg. Das Formular auf
+          der konkreten Stellenanzeige bleibt der primäre Weg; außerdem können Sie uns telefonisch, per E-Mail oder
+          per Post kontaktieren. WhatsApp wird nicht für Patient:innenkommunikation, Terminvereinbarungen oder
+          Gesundheitsberatung verwendet; es werden keine Gesundheitsdaten über diesen Weg verarbeitet.</p>
+        <p>Wenn Sie WhatsApp nutzen, verarbeiten wir die von Ihnen mitgeteilten Kontaktdaten, Profilangaben, Nachrichten
+          und freiwillig gesendeten Dateien nur zur Bearbeitung Ihrer Bewerbung und zur Entscheidung über die Begründung
+          eines Beschäftigungsverhältnisses (§ 26 Abs. 1 BDSG). Unterlagen werden über WhatsApp nicht aktiv angefordert.
+          Emel Şimşek-Uçar ist die alleinige reguläre Inhaltsberechtigte für diesen Bewerbungsweg.</p>
+        <p>WhatsApp und Meta können bei der Nutzung insbesondere Konto-, Nutzungs-, Interaktions-, Geräte- und
+          Verbindungsdaten verarbeiten; auch eine internationale Verarbeitung ist möglich. Die konkrete Rolle von
+          WhatsApp/Meta und die Datenflüsse richten sich nach dem tatsächlich eingerichteten Businesskonto und sind nicht
+          pauschal als Auftragsverarbeitung einzuordnen.</p>
+        <p>Bewerbungs-Chats und freiwillige Anhänge werden während des laufenden Bewerbungsverfahrens aufbewahrt und bei
+          Absage oder Rückzug spätestens nach sechs Monaten gelöscht. Die Löschung erfolgt auf kontrollierten Geräten,
+          aus Downloads und aus technisch beeinflussbaren Backups, soweit dies jeweils möglich ist.</p>
+        <p>Aktuelle Informationen von WhatsApp: <a href="https://www.whatsapp.com/legal/privacy-policy-eea">EEA Privacy Policy</a>,
+          <a href="https://www.whatsapp.com/legal/business-terms">Business Terms</a> und
+          <a href="https://www.whatsapp.com/legal/business-data-processing-terms">Business Data Processing Terms</a>.</p>
+
+        <h2>5. Externe Links</h2>
         <p>Diese Website kann Links zu externen Websites enthalten. Für deren Inhalte und Datenschutzpraktiken sind wir nicht verantwortlich.</p>
 
-        <h2>5. Ihre Rechte</h2>
+        <h2>6. Ihre Rechte</h2>
         <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer personenbezogenen Daten. Wenden Sie sich dafür an: <a href="mailto:info@logopaedie-simsek.de">info@logopaedie-simsek.de</a></p>
 
-        <h2>6. Vercel Web Analytics</h2>
+        <h2>7. Vercel Web Analytics</h2>
         <p>Wir verwenden Vercel Web Analytics zur statistischen Auswertung und Verbesserung unseres Webauftritts.
             Ausgewertet werden unter anderem Seitenaufrufe, Herkunftsseiten, Zeitpunkt, ungefähre Region sowie
             Geräte-, Betriebssystem- und Browserinformationen. Vercel verwendet hierfür keine Drittanbieter-Cookies.
@@ -78,7 +95,7 @@ const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
           <a href="https://vercel.com/docs/analytics/privacy-policy">Datenschutz bei Vercel Web Analytics</a>.</p>
         <!-- Vor Veröffentlichung: Rechtsgrundlage, Aufbewahrung und Anbieterrollen abschließend prüfen. -->
 
-        <h2>7. Google Maps</h2>
+        <h2>8. Google Maps</h2>
         <p>Auf der Startseite können Sie eine Karte von Google Maps laden. Erst nach Ihrem Klick auf „Karte laden“
           wird eine Verbindung zu Google hergestellt. Dabei können insbesondere Ihre IP-Adresse und Browserinformationen
           an Google übertragen werden. Anbieter ist Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland.
@@ -89,7 +106,7 @@ const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 
         {gaConfigured && (
           <Fragment>
-            <h2>8. Webanalyse mit Google Analytics 4</h2>
+            <h2>9. Webanalyse mit Google Analytics 4</h2>
             <p>Diese Website nutzt Google Analytics 4, einen Webanalysedienst der Google Ireland Limited (Gordon House, Barrow Street, Dublin 4, Irland). Google Analytics verwendet Cookies, die eine anonymisierte Analyse Ihrer Nutzung der Website ermöglichen (z. B. besuchte Seiten, Verweildauer, Schritte im Bewerbungs-Formular).</p>
             <p><strong>Einsatz nur mit Einwilligung:</strong> Google Analytics wird erst geladen, nachdem Sie im Cookie-Banner aktiv eingewilligt haben. Vor Ihrer Einwilligung werden keine Analyse-Cookies gesetzt und keine Daten an Google übertragen. Die IP-Adresse wird anonymisiert verarbeitet.</p>
             <p><strong>Rechtsgrundlage:</strong> Ihre Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO sowie § 25 Abs. 1 TDDDG. Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen, indem Sie im Footer auf „Cookie-Einstellungen" klicken und die Statistik-Cookies deaktivieren.</p>

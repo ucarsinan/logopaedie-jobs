@@ -91,4 +91,4 @@ Wenn du nach einer Woche keine Rückmeldung hast, ist eine einmalige Nachfrage p
 
 ## Direkt bewerben: Praxis Şimşek Duisburg
 
-Die [Praxis für Logopädie Şimşek sucht mehrere Logopäd:innen und Sprachtherapeut:innen in Duisburg](/jobs/logopaedin-sprachtherapeut-duisburg/) für unbefristete Stellen in Vollzeit oder Teilzeit. Für den ersten Kontakt kannst du das Kurzformular auf der Praxiswebsite nutzen, unter 0203 34 86 86 90 anrufen, an [info@logopaedie-simsek.de](mailto:info@logopaedie-simsek.de) schreiben oder Post an die Tonhallenstraße 21, 47051 Duisburg senden. Ein Lebenslauf ist freiwillig.
+Die [Praxis für Logopädie Şimşek sucht mehrere Logopäd:innen und Sprachtherapeut:innen in Duisburg](/jobs/logopaedin-sprachtherapeut-duisburg/) für unbefristete Stellen in Vollzeit oder Teilzeit. Für den ersten Kontakt kannst du das Kurzformular auf der Stellenanzeige nutzen, über WhatsApp schreiben, unter +49 155 10062296 anrufen, an [social@logopaedie-simsek.de](mailto:social@logopaedie-simsek.de) schreiben oder Post an die Tonhallenstraße 21, 47051 Duisburg senden. Ein Lebenslauf ist freiwillig.
