@@ -3,7 +3,7 @@ import test from 'node:test';
 
 import { createApplicationEndpoint } from '../src/lib/application-endpoint.mjs';
 
-const ENDPOINT_URL = 'https://xn--logopdiejobs-kcb.de/api/bewerbung';
+const ENDPOINT_URL = 'https://xn--logopdiejobs-kcb.de/bewerbung/senden/';
 const JOB_SLUG = 'logopaedin-sprachtherapeut-duisburg';
 const MAX_BODY_BYTES = 8 * 1024;
 const SMTP_ENVIRONMENT_KEYS = [
@@ -151,7 +151,7 @@ test('rejects localhost origins outside development', async () => {
     request: request(
       VALID_FORM.toString(),
       { origin: 'http://localhost:4321' },
-      'http://localhost:4321/api/bewerbung',
+      'http://localhost:4321/bewerbung/senden/',
     ),
     redirect,
   });
@@ -171,7 +171,7 @@ test('allows a missing origin', async () => {
 
 test('allows only the current localhost or loopback origin during development', async () => {
   const handler = endpoint({ isDevelopment: true });
-  const localUrl = 'http://localhost:4321/api/bewerbung';
+  const localUrl = 'http://localhost:4321/bewerbung/senden/';
   const allowed = await handler({
     request: request(VALID_FORM.toString(), { origin: 'http://localhost:4321' }, localUrl),
     redirect,
@@ -184,7 +184,7 @@ test('allows only the current localhost or loopback origin during development', 
     request: request(
       VALID_FORM.toString(),
       { origin: 'http://127.0.0.1:4321' },
-      'http://127.0.0.1:4321/api/bewerbung',
+      'http://127.0.0.1:4321/bewerbung/senden/',
     ),
     redirect,
   });
