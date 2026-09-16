@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 
-import { createApplicationEndpoint } from '../../lib/application-endpoint.mjs';
+import { createApplicationEndpoint } from '../../../lib/application-endpoint.mjs';
 
 export const prerender = false;
 

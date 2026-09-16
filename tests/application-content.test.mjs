@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { access, readFile } from 'node:fs/promises';
 import test from 'node:test';
 
 const CONTACT_PATH = new URL('../src/components/ApplicationContact.astro', import.meta.url);
@@ -10,6 +10,8 @@ const JOBS_INDEX_PATH = new URL('../src/pages/jobs/index.astro', import.meta.url
 const JOB_DETAIL_PATH = new URL('../src/pages/jobs/logopaedin-sprachtherapeut-duisburg.astro', import.meta.url);
 const PRIVACY_PATH = new URL('../src/pages/datenschutz.astro', import.meta.url);
 const THANK_YOU_PATH = new URL('../src/pages/bewerbung/danke.astro', import.meta.url);
+const APPLICATION_API_INDEX_PATH = new URL('../src/pages/api/bewerbung/index.ts', import.meta.url);
+const APPLICATION_API_FILE_PATH = new URL('../src/pages/api/bewerbung.ts', import.meta.url);
 
 const CONTACT_ANSWER = 'Über das kurze Formular direkt auf der konkreten Stellenanzeige auf LogopädieJobs.de, über WhatsApp für Bewerbungen, telefonisch unter +49 155 10062296, per E-Mail an social@logopaedie-simsek.de oder per Post an die Tonhallenstraße 21, 47051 Duisburg. Ein Lebenslauf ist freiwillig.';
 
@@ -121,4 +123,11 @@ test('thank-you page makes no public two-working-day promise', async () => {
 
   assert.doesNotMatch(thankYou, /zwei (?:Arbeits|Werk)tagen/i);
   assert.match(thankYou, /Kontaktanfrage ist bei der Praxis eingegangen/);
+});
+
+test('application endpoint is an index route compatible with the global trailing slash policy', async () => {
+  const endpoint = await readFile(APPLICATION_API_INDEX_PATH, 'utf8');
+
+  assert.match(endpoint, /export const POST/);
+  await assert.rejects(access(APPLICATION_API_FILE_PATH));
 });
