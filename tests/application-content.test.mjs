@@ -3,6 +3,8 @@ import { access, readFile } from 'node:fs/promises';
 import test from 'node:test';
 
 const CONTACT_PATH = new URL('../src/components/ApplicationContact.astro', import.meta.url);
+const ABOUT_PATH = new URL('../src/components/About.astro', import.meta.url);
+const TASKS_PATH = new URL('../src/components/Aufgaben.astro', import.meta.url);
 const HERO_PATH = new URL('../src/components/Hero.astro', import.meta.url);
 const QUICK_APPLY_PATH = new URL('../src/components/QuickApply.astro', import.meta.url);
 const FAQ_PATH = new URL('../src/components/FaqSection.astro', import.meta.url);
@@ -15,6 +17,22 @@ const APPLICATION_ENDPOINT_PATH = new URL('../src/pages/bewerbung/senden/index.t
 const RESERVED_API_ENDPOINT_PATH = new URL('../src/pages/api/bewerbung/index.ts', import.meta.url);
 
 const CONTACT_ANSWER = 'Über das kurze Formular direkt auf der konkreten Stellenanzeige auf LogopädieJobs.de, über WhatsApp für Bewerbungen, telefonisch unter +49 155 10062296, per E-Mail an social@logopaedie-simsek.de oder per Post an die Tonhallenstraße 21, 47051 Duisburg. Ein Lebenslauf ist freiwillig.';
+
+test('the complete green application card links to the central form', async () => {
+  const about = await readFile(ABOUT_PATH, 'utf8');
+
+  assert.match(about, /<a[\s\S]*?href="\/jobs\/logopaedin-sprachtherapeut-duisburg\/#bewerbung"[\s\S]*?aria-label="Jetzt unverbindlich Kontakt aufnehmen"[\s\S]*?>[\s\S]*?Dabei\?[\s\S]*?Jetzt bewerben[\s\S]*?<\/a>/);
+  assert.doesNotMatch(about, /<a href="\/#apply"/);
+});
+
+test('specialty cards use compact mobile headers and retain their desktop spacing', async () => {
+  const tasks = await readFile(TASKS_PATH, 'utf8');
+
+  assert.equal((tasks.match(/p-5 sm:p-8/g) ?? []).length, 4);
+  assert.equal((tasks.match(/flex items-center gap-4 mb-4 sm:block sm:mb-0/g) ?? []).length, 4);
+  assert.equal((tasks.match(/w-10 h-10 sm:w-12 sm:h-12/g) ?? []).length, 4);
+  assert.equal((tasks.match(/w-5 h-5 sm:w-6 sm:h-6/g) ?? []).length, 4);
+});
 
 test('all recruiting contact surfaces use the shared WhatsApp CTA without color overrides', async () => {
   const sources = await Promise.all(
