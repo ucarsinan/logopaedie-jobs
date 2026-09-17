@@ -12,6 +12,7 @@ test('the public job detail exposes one truthful JobPosting schema', async () =>
   assert.match(detail, /datePosted: '2026-04-29'/);
   assert.match(detail, /employmentType: \['FULL_TIME', 'PART_TIME'\]/);
   assert.match(detail, /directApply: true/);
+  assert.match(detail, /experienceRequirements: 'no requirements'/);
   assert.match(detail, /streetAddress: 'Tonhallenstraße 21'/);
   assert.match(detail, /addressCountry: 'DE'/);
   assert.match(detail, /currency: 'EUR'/);
