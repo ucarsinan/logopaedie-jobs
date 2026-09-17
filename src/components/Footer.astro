@@ -38,7 +38,7 @@ const footerLinks = [
                 target={link.external ? '_blank' : undefined}
                 rel={link.external ? 'noopener noreferrer' : undefined}
                 class={[
-                  'inline-flex items-center font-semibold no-underline transition-colors duration-150',
+                  'inline-flex min-h-11 items-center py-2 font-semibold no-underline transition-colors duration-150',
                   link.highlight
                     ? 'text-simsek-green hover:text-white'
                     : 'text-slate-400 hover:text-white',
@@ -68,10 +68,10 @@ const footerLinks = [
     <div class="pt-8 border-t border-slate-900 flex flex-col sm:flex-row gap-4 justify-between text-[10px] uppercase font-bold text-slate-600">
       <p>© {new Date().getFullYear()} Praxis für Logopädie Şimşek</p>
       <div class="flex gap-4">
-        <a href="/impressum/" class="no-underline hover:text-slate-400 transition-colors">Impressum</a>
-        <a href="/datenschutz/" class="no-underline hover:text-slate-400 transition-colors">Datenschutz</a>
+        <a href="/impressum/" class="inline-flex min-h-11 items-center no-underline hover:text-slate-400 transition-colors">Impressum</a>
+        <a href="/datenschutz/" class="inline-flex min-h-11 items-center no-underline hover:text-slate-400 transition-colors">Datenschutz</a>
         {gaConfigured && (
-          <button type="button" data-cc="show-preferencesModal" class="uppercase font-bold text-slate-600 hover:text-slate-400 transition-colors cursor-pointer bg-transparent border-0 p-0">Cookie-Einstellungen</button>
+          <button type="button" data-cc="show-preferencesModal" class="min-h-11 uppercase font-bold text-slate-600 hover:text-slate-400 transition-colors cursor-pointer bg-transparent border-0 p-0">Cookie-Einstellungen</button>
         )}
       </div>
     </div>

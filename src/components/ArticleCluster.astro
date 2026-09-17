@@ -26,7 +26,7 @@ const fmt = (date: Date) => date.toLocaleDateString('de-DE', { day: '2-digit', m
 
 <section id={id} class="scroll-mt-28 border-t border-slate-200 pt-10">
   <div class="mb-6 max-w-2xl">
-    <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400">Themenwelt</p>
+    <p class="text-[11px] font-bold uppercase tracking-widest text-slate-600">Themenwelt</p>
     <h2 class="mt-2 text-2xl md:text-3xl font-semibold text-slate-950">{title}</h2>
     <p class="mt-3 text-sm md:text-base leading-7 text-slate-600">{description}</p>
   </div>
@@ -39,7 +39,7 @@ const fmt = (date: Date) => date.toLocaleDateString('de-DE', { day: '2-digit', m
             {article.data.kategorie}
           </span>
           {article.data.featured && (
-            <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Empfohlen</span>
+            <span class="text-[10px] font-bold uppercase tracking-widest text-slate-600">Empfohlen</span>
           )}
         </div>
         <h3 class="mt-4 text-lg font-semibold leading-snug text-slate-950">
@@ -48,7 +48,7 @@ const fmt = (date: Date) => date.toLocaleDateString('de-DE', { day: '2-digit', m
           </a>
         </h3>
         <p class="mt-2 text-sm leading-6 text-slate-600">{article.data.description}</p>
-        <div class="mt-4 flex items-center justify-between gap-4 text-xs text-slate-400">
+        <div class="mt-4 flex items-center justify-between gap-4 text-xs text-slate-600">
           <span>{fmt(article.data.pubDate)}</span>
           <a href={`/berufshandbuch/${article.id}/`} class="font-bold text-simsek-green no-underline hover:text-simsek-blue">
             Lesen

@@ -1,59 +1,173 @@
 ---
-// src/components/Gallery.astro
 import { Image } from 'astro:assets';
 import praxisBild1 from '../assets/praxis-bild-1.jpg';
 import praxisBild2 from '../assets/praxis-bild-2.jpg';
 import praxisBild3 from '../assets/praxis-bild-3.jpg';
 ---
-<section id="galerie" class="py-24 bg-slate-50">
+<section id="galerie" class="py-12 md:py-24 bg-slate-50">
   <div class="max-w-7xl mx-auto px-6 text-center">
     <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-slate-100 text-slate-600 border border-slate-200 mb-4">
       Praxiseinblick
     </span>
     <h2 class="text-3xl font-semibold text-slate-900 mb-3 leading-tight">Einblicke in unsere Praxis</h2>
-    <div class="h-px bg-simsek-green mb-10"></div>
+    <div class="h-px bg-simsek-green mb-8 md:mb-10"></div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+    <div data-mobile-gallery>
+      <div
+        id="praxisbilder"
+        data-gallery-track
+        role="region"
+        aria-roledescription="Karussell"
+        aria-label="Einblicke in die Praxisräume"
+        tabindex="0"
+        class="gallery-track flex overflow-x-auto snap-x snap-mandatory scroll-smooth motion-reduce:scroll-auto gap-4 md:grid md:grid-cols-3 md:gap-12 md:overflow-visible md:snap-none"
+      >
+        <div class="group relative min-w-full snap-center md:min-w-0" role="group" aria-label="Bild 1 von 3">
+          <div class="aspect-square rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-xl md:shadow-2xl border-8 border-white bg-white transition-transform duration-500 group-hover:scale-[1.02] motion-reduce:transition-none">
+            <Image
+              src={praxisBild1}
+              alt="Einblick in die Praxisräume der Logopädie Şimşek Duisburg"
+              width={800}
+              height={800}
+              widths={[320, 480, 640, 800]}
+              sizes="(max-width: 767px) calc(100vw - 64px), 33vw"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+        </div>
 
-      <div class="group relative">
-        <div class="aspect-square rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white bg-white transition-transform duration-500 group-hover:scale-[1.02]">
-          <Image
-            src={praxisBild1}
-            alt="Einblick in die Praxisräume der Logopädie Şimşek Duisburg"
-            width={800}
-            height={800}
-            class="w-full h-full object-cover"
-            loading="lazy"
-          />
+        <div class="group relative min-w-full snap-center md:min-w-0" role="group" aria-label="Bild 2 von 3">
+          <div class="aspect-square rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-xl md:shadow-2xl border-8 border-white bg-white transition-transform duration-500 group-hover:scale-[1.02] motion-reduce:transition-none">
+            <Image
+              src={praxisBild2}
+              alt="Therapiematerial und Spielbereich der Logopädie-Praxis Duisburg"
+              width={800}
+              height={800}
+              widths={[320, 480, 640, 800]}
+              sizes="(max-width: 767px) calc(100vw - 64px), 33vw"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <div class="group relative min-w-full snap-center md:min-w-0" role="group" aria-label="Bild 3 von 3">
+          <div class="aspect-square rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-xl md:shadow-2xl border-8 border-white bg-white transition-transform duration-500 group-hover:scale-[1.02] motion-reduce:transition-none">
+            <Image
+              src={praxisBild3}
+              alt="Heller Therapieraum in der Praxis für Logopädie Şimşek"
+              width={800}
+              height={800}
+              widths={[320, 480, 640, 800]}
+              sizes="(max-width: 767px) calc(100vw - 64px), 33vw"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
         </div>
       </div>
 
-      <div class="group relative">
-        <div class="aspect-square rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white bg-white transition-transform duration-500 group-hover:scale-[1.02]">
-          <Image
-            src={praxisBild2}
-            alt="Therapiematerial und Spielbereich der Logopädie-Praxis Duisburg"
-            width={800}
-            height={800}
-            class="w-full h-full object-cover"
-            loading="lazy"
-          />
-        </div>
-      </div>
+      <div class="mt-5 flex items-center justify-center gap-2 md:hidden" aria-label="Galeriesteuerung">
+        <button
+          type="button"
+          data-gallery-prev
+          aria-controls="praxisbilder"
+          aria-label="Vorheriges Praxisbild"
+          class="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-800 shadow-sm transition-colors hover:border-simsek-green hover:text-simsek-green disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-simsek-green"
+        >
+          <svg class="h-5 w-5" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        </button>
 
-      <div class="group relative">
-        <div class="aspect-square rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white bg-white transition-transform duration-500 group-hover:scale-[1.02]">
-          <Image
-            src={praxisBild3}
-            alt="Heller Therapieraum in der Praxis für Logopädie Şimşek"
-            width={800}
-            height={800}
-            class="w-full h-full object-cover"
-            loading="lazy"
-          />
+        <div class="flex items-center" aria-label="Bild auswählen">
+          <button type="button" data-gallery-dot aria-controls="praxisbilder" aria-label="Praxisbild 1 anzeigen" aria-current="true" class="group/dot inline-flex min-h-11 min-w-11 items-center justify-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-simsek-green">
+            <span class="h-2.5 w-2.5 rounded-full bg-simsek-green transition-transform group-aria-[current=true]/dot:scale-125"></span>
+          </button>
+          <button type="button" data-gallery-dot aria-controls="praxisbilder" aria-label="Praxisbild 2 anzeigen" aria-current="false" class="group/dot inline-flex min-h-11 min-w-11 items-center justify-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-simsek-green">
+            <span class="h-2.5 w-2.5 rounded-full bg-slate-300 transition-transform group-aria-[current=true]/dot:scale-125"></span>
+          </button>
+          <button type="button" data-gallery-dot aria-controls="praxisbilder" aria-label="Praxisbild 3 anzeigen" aria-current="false" class="group/dot inline-flex min-h-11 min-w-11 items-center justify-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-simsek-green">
+            <span class="h-2.5 w-2.5 rounded-full bg-slate-300 transition-transform group-aria-[current=true]/dot:scale-125"></span>
+          </button>
         </div>
-      </div>
 
+        <button
+          type="button"
+          data-gallery-next
+          aria-controls="praxisbilder"
+          aria-label="Nächstes Praxisbild"
+          class="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-800 shadow-sm transition-colors hover:border-simsek-green hover:text-simsek-green disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-simsek-green"
+        >
+          <svg class="h-5 w-5" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </button>
+        <span data-gallery-status class="sr-only" aria-live="polite">Bild 1 von 3</span>
+      </div>
     </div>
   </div>
 </section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-mobile-gallery]').forEach((gallery) => {
+    const track = gallery.querySelector<HTMLElement>('[data-gallery-track]');
+    const slides = Array.from(track?.children ?? []) as HTMLElement[];
+    const previous = gallery.querySelector<HTMLButtonElement>('[data-gallery-prev]');
+    const next = gallery.querySelector<HTMLButtonElement>('[data-gallery-next]');
+    const dots = Array.from(gallery.querySelectorAll<HTMLButtonElement>('[data-gallery-dot]'));
+    const status = gallery.querySelector<HTMLElement>('[data-gallery-status]');
+    if (!track || !previous || !next || !status || slides.length === 0) return;
+
+    let activeIndex = 0;
+    let scrollFrame = 0;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    const updateControls = (index: number) => {
+      activeIndex = index;
+      previous.disabled = index === 0;
+      next.disabled = index === slides.length - 1;
+      status.textContent = `Bild ${index + 1} von ${slides.length}`;
+      dots.forEach((dot, dotIndex) => {
+        const isActive = dotIndex === index;
+        dot.setAttribute('aria-current', String(isActive));
+        const marker = dot.firstElementChild;
+        marker?.classList.toggle('bg-simsek-green', isActive);
+        marker?.classList.toggle('bg-slate-300', !isActive);
+      });
+    };
+
+    const goTo = (index: number) => {
+      const target = slides[Math.max(0, Math.min(index, slides.length - 1))];
+      const left = target.getBoundingClientRect().left - track.getBoundingClientRect().left + track.scrollLeft;
+      track.scrollTo({ left, behavior: reducedMotion.matches ? 'auto' : 'smooth' });
+      updateControls(slides.indexOf(target));
+    };
+
+    previous.addEventListener('click', () => goTo(activeIndex - 1));
+    next.addEventListener('click', () => goTo(activeIndex + 1));
+    dots.forEach((dot, index) => dot.addEventListener('click', () => goTo(index)));
+
+    track.addEventListener('scroll', () => {
+      window.cancelAnimationFrame(scrollFrame);
+      scrollFrame = window.requestAnimationFrame(() => {
+        const trackLeft = track.getBoundingClientRect().left;
+        const nearestIndex = slides.reduce((nearest, slide, index) => {
+          const distance = Math.abs(slide.getBoundingClientRect().left - trackLeft);
+          const nearestDistance = Math.abs(slides[nearest].getBoundingClientRect().left - trackLeft);
+          return distance < nearestDistance ? index : nearest;
+        }, 0);
+        updateControls(nearestIndex);
+      });
+    }, { passive: true });
+
+    updateControls(0);
+  });
+</script>
+
+<style>
+  .gallery-track {
+    scrollbar-width: none;
+  }
+
+  .gallery-track::-webkit-scrollbar {
+    display: none;
+  }
+</style>

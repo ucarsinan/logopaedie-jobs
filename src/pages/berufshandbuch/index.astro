@@ -136,10 +136,10 @@ const intentEntries = [
 
   <Navigation />
 
-  <main>
+  <main id="main-content" tabindex="-1">
     <section class="bg-slate-950 text-white">
-      <div class="mx-auto grid max-w-7xl gap-10 px-6 py-16 md:grid-cols-[1.1fr_0.9fr] md:py-24">
-        <header class="max-w-3xl">
+      <div class="mx-auto grid max-w-7xl gap-10 px-6 py-16 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:py-24">
+        <header class="min-w-0 max-w-3xl">
           <p class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-simsek-green">
             Fachquelle für Logopädie
           </p>
@@ -162,13 +162,13 @@ const intentEntries = [
           </div>
         </header>
 
-        <aside class="rounded-lg border border-white/10 bg-white/[0.04] p-5 md:p-6">
+        <aside class="min-w-0 rounded-lg border border-white/10 bg-white/[0.04] p-5 md:p-6">
           <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400">Schnellzugriff</p>
           <div class="mt-5 grid gap-3">
             {featuredArticles.slice(0, 4).map((article) => (
               <a href={`/berufshandbuch/${article.id}/`} class="rounded-lg border border-white/10 bg-white/[0.04] p-4 no-underline transition-colors duration-150 hover:bg-white/[0.08]">
                 <span class="text-[10px] font-bold uppercase tracking-widest text-simsek-green">{article.data.kategorie}</span>
-                <span class="mt-2 block text-sm font-bold leading-snug text-white">{article.data.title}</span>
+                <span class="mt-2 block break-words text-sm font-bold leading-snug text-white">{article.data.title}</span>
               </a>
             ))}
           </div>
@@ -179,7 +179,7 @@ const intentEntries = [
     <section id="einstiege" class="bg-slate-50">
       <div class="mx-auto max-w-7xl px-6 py-14 md:py-18">
         <div class="mb-8 max-w-2xl">
-          <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400">Geführte Einstiege</p>
+          <p class="text-[11px] font-bold uppercase tracking-widest text-slate-600">Geführte Einstiege</p>
           <h2 class="mt-2 text-3xl font-semibold text-slate-950">Was möchtest du beruflich klären?</h2>
         </div>
         <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
@@ -191,7 +191,7 @@ const intentEntries = [
     <section class="mx-auto max-w-7xl px-6 py-14 md:py-18">
       <div class="mb-8 flex flex-col justify-between gap-5 md:flex-row md:items-end">
         <div class="max-w-2xl">
-          <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400">Themenwelten</p>
+          <p class="text-[11px] font-bold uppercase tracking-widest text-slate-600">Themenwelten</p>
           <h2 class="mt-2 text-3xl font-semibold text-slate-950">Das Berufshandbuch nach beruflichen Fragen</h2>
           <p class="mt-3 text-base leading-7 text-slate-600">
             Jeder Bereich bündelt Artikel, die zusammengehören. So wird aus einzelnen Beiträgen eine fachliche Quelle.
@@ -226,15 +226,15 @@ const intentEntries = [
           kicker="Kontakt"
           title="Ohne Anschreiben starten"
           description="Für den ersten Kontakt reichen Abschluss, Stundenwunsch und Starttermin."
-          href="mailto:social@logopaedie-simsek.de?subject=Bewerbung%20Logop%C3%A4die-Job%20Duisburg"
-          label="Per E-Mail bewerben"
+          href="/jobs/logopaedin-sprachtherapeut-duisburg/#bewerbung"
+          label="Unverbindlich Kontakt aufnehmen"
         />
       </div>
     </section>
 
     <section class="mx-auto max-w-7xl px-6 py-14 md:py-18">
       <div class="mb-10 max-w-2xl">
-        <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400">Alle Artikel</p>
+        <p class="text-[11px] font-bold uppercase tracking-widest text-slate-600">Alle Artikel</p>
         <h2 class="mt-2 text-3xl font-semibold text-slate-950">Nach Themenwelt sortiert</h2>
       </div>
 
@@ -254,7 +254,7 @@ const intentEntries = [
       <div class="mx-auto max-w-7xl px-6 py-12">
         <div class="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
           <div>
-            <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400">Neu im Berufshandbuch</p>
+            <p class="text-[11px] font-bold uppercase tracking-widest text-slate-600">Neu im Berufshandbuch</p>
             <h2 class="mt-2 text-2xl font-semibold text-slate-950">Aktuelle Beiträge</h2>
           </div>
           <div class="flex flex-wrap gap-2">

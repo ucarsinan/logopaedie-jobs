@@ -75,7 +75,7 @@ const faqSchema = {
 
   <Navigation />
 
-  <main class="overflow-hidden">
+  <main id="main-content" tabindex="-1" class="overflow-hidden">
     <section class="relative bg-white">
       <div class="absolute inset-0 overflow-hidden pointer-events-none -z-10">
         <div class="absolute -top-24 -right-24 w-96 h-96 bg-simsek-green/10 blur-[120px] rounded-full"></div>
@@ -127,6 +127,8 @@ const faqSchema = {
                   alt="Therapieraum der Praxis für Logopädie Şimşek in Duisburg"
                   width={900}
                   height={506}
+                  widths={[320, 480, 640, 900]}
+                  sizes="(max-width: 1279px) calc(100vw - 64px), 520px"
                   class="w-full h-auto object-cover transform transition duration-700 group-hover:scale-105"
                   loading="eager"
                   fetchpriority="high"
@@ -160,7 +162,7 @@ const faqSchema = {
           ].map(([label, value, note]) => (
             <div class="p-px rounded-[1rem] sm:rounded-3xl bg-simsek-green ">
               <div class="h-full rounded-[calc(1rem-1px)] sm:rounded-[calc(1.5rem-1px)] bg-white p-3 sm:p-5 shadow-sm">
-                <dt class="text-[10px] sm:text-xs uppercase font-bold tracking-widest text-slate-400 mb-2">{label}</dt>
+                <dt class="text-[10px] sm:text-xs uppercase font-bold tracking-widest text-slate-600 mb-2">{label}</dt>
                 <dd class="text-xl sm:text-2xl font-bold text-slate-900">{value}</dd>
                 <p class="text-xs sm:text-sm text-slate-500 mt-1">{note}</p>
               </div>
@@ -244,6 +246,8 @@ const faqSchema = {
               alt="Moderner Behandlungsraum der Logopädie Şimşek in Duisburg"
               width={900}
               height={506}
+              widths={[320, 480, 640, 900]}
+              sizes="(max-width: 1023px) calc(100vw - 64px), 45vw"
               class="w-full h-full object-cover"
               loading="lazy"
             />

@@ -17,6 +17,8 @@ import praxisImg from '../assets/praxis-bild-1.jpg';
                 alt="Wartebereich der Praxis für Logopädie Şimşek in Duisburg"
                 width={900}
                 height={506}
+                widths={[240, 360, 540, 900]}
+                sizes="(max-width: 767px) calc(100vw - 112px), (max-width: 1023px) calc(100vw - 176px), 520px"
                 class="w-full h-full object-cover"
                 loading="lazy"
               />
@@ -41,27 +43,27 @@ import praxisImg from '../assets/praxis-bild-1.jpg';
             </blockquote>
           </div>
   
-          <div class="grid grid-cols-2 gap-4">
-            <div class="p-6 rounded-3xl bg-slate-50 text-center border border-slate-100 hover:shadow-lg transition-all">
+          <div class="grid grid-cols-2 auto-rows-fr gap-4">
+            <div class="h-full p-6 rounded-3xl bg-slate-50 text-center border border-slate-100 hover:shadow-lg transition-all flex flex-col justify-center">
               <span class="text-3xl font-bold block text-simsek-blue">30</span>
-              <span class="text-[10px] uppercase font-bold text-slate-400">Urlaubstage</span>
+              <span class="text-[10px] uppercase font-bold text-slate-600">Urlaubstage</span>
             </div>
-            <div class="p-6 rounded-3xl bg-slate-50 text-center border border-slate-100 hover:shadow-lg transition-all">
+            <div class="h-full p-6 rounded-3xl bg-slate-50 text-center border border-slate-100 hover:shadow-lg transition-all flex flex-col justify-center">
               <span class="text-3xl font-bold block text-simsek-green">Hbf</span>
-              <span class="text-[10px] uppercase font-bold text-slate-400">In 2 Min</span>
+              <span class="text-[10px] uppercase font-bold text-slate-600">In 2 Min</span>
             </div>
-            <div class="p-6 rounded-3xl bg-slate-50 text-center border border-slate-100 hover:shadow-lg transition-all">
+            <div class="h-full p-6 rounded-3xl bg-slate-50 text-center border border-slate-100 hover:shadow-lg transition-all flex flex-col justify-center">
               <span class="text-3xl font-bold block text-simsek-blue">4 Tage</span>
-              <span class="text-[10px] uppercase font-bold text-slate-400">Woche möglich</span>
+              <span class="text-[10px] uppercase font-bold text-slate-600">Woche möglich</span>
             </div>
             <a
               href="/jobs/logopaedin-sprachtherapeut-duisburg/#bewerbung"
               aria-label="Jetzt unverbindlich Kontakt aufnehmen"
-              class="group p-px rounded-3xl bg-simsek-green hover:shadow-lg transition-all no-underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-simsek-green"
+              class="group h-full p-px rounded-3xl bg-simsek-green hover:shadow-lg transition-all no-underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-simsek-green"
             >
               <div class="h-full p-5 rounded-[calc(1.5rem-1px)] bg-simsek-green text-white text-center flex flex-col justify-center gap-1">
                 <span class="font-bold">Dabei?</span>
-                <span class="text-[10px] uppercase font-bold text-white/80 group-hover:text-white">Jetzt bewerben</span>
+                <span class="text-[10px] uppercase font-bold text-white">Jetzt bewerben</span>
               </div>
             </a>
           </div>
@@ -76,7 +78,7 @@ import praxisImg from '../assets/praxis-bild-1.jpg';
             Dabei werden Daten wie deine IP-Adresse an Google übertragen; eine Verarbeitung in den USA ist möglich.
             Mehr dazu in der <a href="/datenschutz/" class="underline">Datenschutzerklärung</a>.</p>
           <button type="button" data-map-load aria-describedby="map-notice" class="rounded-lg bg-slate-900 px-5 py-3 font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-4">Karte laden</button>
-          <a href="https://www.google.com/maps/search/?api=1&amp;query=Tonhallenstrasse+21+47051+Duisburg" target="_blank" rel="noopener noreferrer" class="text-sm underline">Route bei Google Maps öffnen (neuer Tab)</a>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Tonhallenstrasse+21+47051+Duisburg" target="_blank" rel="noopener noreferrer" class="inline-flex min-h-11 items-center text-sm underline">Route bei Google Maps öffnen (neuer Tab)</a>
         </div>
         <iframe
           hidden
@@ -90,7 +92,7 @@ import praxisImg from '../assets/praxis-bild-1.jpg';
           class="w-full border-0"
         ></iframe>
         <button type="button" data-map-close hidden class="m-3 rounded-lg border border-slate-300 px-4 py-2 text-sm">Karte schließen</button>
-        <p class="text-xs text-slate-400 text-center py-2 bg-white">
+        <p class="text-xs text-slate-500 text-center py-2 bg-white">
           Kartendaten © Google · <a href="/datenschutz/" class="underline hover:text-slate-600">Datenschutz</a>
         </p>
       </div>
