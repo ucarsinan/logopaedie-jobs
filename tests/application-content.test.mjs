@@ -53,7 +53,7 @@ test('home hero adds WhatsApp beside email without adding a third action row', a
 
   assert.match(hero, /grid grid-cols-2 gap-3 pt-4/);
   assert.match(hero, /<RecruitingWhatsAppLink[\s\S]*?label="WhatsApp"[\s\S]*?class="w-full"/);
-  assert.match(hero, /href="mailto:social@logopaedie-simsek\.de\?subject=Bewerbung"[^>]*class="[^"]*w-full/);
+  assert.match(hero, /href=\{RECRUITING_EMAIL_HREF\}[^>]*class="[^"]*w-full/);
   assert.match(hero, /href="\/jobs\/logopaedin-sprachtherapeut-duisburg\/"[^>]*class="[^"]*col-span-2[^"]*w-full/);
 });
 
@@ -81,15 +81,14 @@ test('direct contact alternatives precede the form on mobile and remain below th
 test('direct phone and email links are full-width and retain their decorative icons', async () => {
   const contact = await readFile(CONTACT_PATH, 'utf8');
 
-  for (const [href, icon] of [
-    ['tel:\\+4915510062296', 'phone'],
-    ['mailto:social@logopaedie-simsek\\.de', 'mail'],
-  ]) {
-    assert.match(
-      contact,
-      new RegExp(`<a href="${href}" data-contact-icon="${icon}" class="[^\"]*min-h-11[^\"]*w-full[^\"]*focus[^\"]*">\\s*<svg[^>]*aria-hidden="true"`),
-    );
-  }
+  assert.match(
+    contact,
+    /<a href="tel:\+4915510062296" data-contact-icon="phone" class="[^"]*min-h-11[^"]*w-full[^"]*focus[^"]*">\s*<svg[^>]*aria-hidden="true"/,
+  );
+  assert.match(
+    contact,
+    /<a href=\{RECRUITING_EMAIL_HREF\} data-contact-icon="mail" class="[^"]*min-h-11[^"]*w-full[^"]*focus[^"]*">\s*<svg[^>]*aria-hidden="true"/,
+  );
 });
 
 test('FAQ, schema and privacy describe WhatsApp as recruiting-only', async () => {

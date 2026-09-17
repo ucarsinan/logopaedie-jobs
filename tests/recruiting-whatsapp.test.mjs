@@ -4,7 +4,9 @@ import test from 'node:test';
 
 import {
   RECRUITING_EMAIL,
+  RECRUITING_EMAIL_BODY,
   RECRUITING_EMAIL_HREF,
+  RECRUITING_EMAIL_SUBJECT,
   RECRUITING_PHONE_DISPLAY,
   RECRUITING_PHONE_HREF,
   WHATSAPP_HREF,
@@ -28,7 +30,15 @@ test('builds the canonical tracking-free recruiting WhatsApp link', () => {
   assert.equal(RECRUITING_PHONE_DISPLAY, '+49 155 10062296');
   assert.equal(RECRUITING_PHONE_HREF, 'tel:+4915510062296');
   assert.equal(RECRUITING_EMAIL, 'social@logopaedie-simsek.de');
-  assert.equal(RECRUITING_EMAIL_HREF, 'mailto:social@logopaedie-simsek.de');
+  assert.equal(RECRUITING_EMAIL_SUBJECT, 'Interesse an der Stelle in Duisburg');
+  assert.equal(
+    RECRUITING_EMAIL_BODY,
+    'Hallo,\n\nich interessiere mich für die Stelle als Logopäd:in / Sprachtherapeut:in in Duisburg und freue mich über eine Rückmeldung.\n\nViele Grüße',
+  );
+  assert.equal(
+    RECRUITING_EMAIL_HREF,
+    `mailto:social@logopaedie-simsek.de?subject=${encodeURIComponent(RECRUITING_EMAIL_SUBJECT)}&body=${encodeURIComponent(RECRUITING_EMAIL_BODY)}`,
+  );
 });
 
 test('renders a reusable accessible external WhatsApp link', async () => {

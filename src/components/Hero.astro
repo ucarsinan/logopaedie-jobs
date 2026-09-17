@@ -3,6 +3,7 @@
 import { Image } from 'astro:assets';
 import PracticeBrand from './PracticeBrand.astro';
 import RecruitingWhatsAppLink from './RecruitingWhatsAppLink.astro';
+import { RECRUITING_EMAIL_HREF } from '../lib/recruiting-whatsapp.mjs';
 import sucheImg from '../assets/suche.jpg';
 ---
 
@@ -32,7 +33,7 @@ import sucheImg from '../assets/suche.jpg';
           class="w-full"
         />
         <a
-          href="mailto:social@logopaedie-simsek.de?subject=Bewerbung"
+          href={RECRUITING_EMAIL_HREF}
           class="inline-flex min-h-11 w-full items-center justify-center gap-2 px-3 py-3 text-sm font-bold text-slate-700 no-underline rounded-lg border-2 border-slate-200 bg-white transition-all duration-200 hover:border-simsek-green hover:text-slate-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-simsek-green"
         >
           <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
