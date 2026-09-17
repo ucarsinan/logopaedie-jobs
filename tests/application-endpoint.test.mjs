@@ -294,3 +294,120 @@ test('uses only fixed native redirects without applicant data', async () => {
     assert.doesNotMatch(response.headers.get('location') ?? '', /Erika|erika|Nachricht|kontakt/i);
   }
 });
+
+// Synthetic streams only: no network or real SMTP.
+function streamedRequest(chunks, headers = {}, { errorAt, cancelError = false } = {}) {
+  const stats = { reads: 0, cancels: 0 };
+  const body = new ReadableStream({
+    pull(controller) {
+      const index = stats.reads++;
+      if (index === errorAt) controller.error(new Error('synthetic stream failure'));
+      else if (index < chunks.length) controller.enqueue(chunks[index]);
+      else controller.close();
+    },
+    cancel() {
+      stats.cancels++;
+      if (cancelError) throw new Error('synthetic cancel failure');
+    },
+  }, { highWaterMark: 0 });
+  const req = new Request(ENDPOINT_URL, {
+    method: 'POST', duplex: 'half', body,
+    headers: { 'content-type': 'application/x-www-form-urlencoded', accept: 'application/json', ...headers },
+  });
+  return { req, stats };
+}
+
+function paddedBytes(size) {
+  const prefix = `${VALID_FORM.toString()}&nachricht=`;
+  return new TextEncoder().encode(prefix + 'x'.repeat(size - utf8Bytes(prefix)));
+}
+
+for (const size of [8191, 8192, 8193]) {
+  test(`stream boundary ${size} bytes without Content-Length`, async () => {
+    let calls = 0;
+    const { req, stats } = streamedRequest([paddedBytes(size)]);
+    const response = await endpoint({ sendApplication: async () => { calls++; return 'sent'; } })({ request: req, redirect });
+    assert.equal(response.status, size <= MAX_BODY_BYTES ? 200 : 413);
+    assert.equal(calls, size <= MAX_BODY_BYTES ? 1 : 0);
+    assert.equal(stats.cancels, size > MAX_BODY_BYTES ? 1 : 0);
+    assert.equal(req.body.locked, false);
+  });
+}
+
+test('retains UTF-8 characters split across byte chunks', async () => {
+  const text = VALID_FORM.toString().replace('Neutrale+Nachricht', 'Grüße🙂');
+  const bytes = new TextEncoder().encode(text);
+  let received;
+  const { req } = streamedRequest(Array.from(bytes, (byte) => new Uint8Array([byte])));
+  const response = await endpoint({ sendApplication: async (data) => { received = data; return 'sent'; } })({ request: req, redirect });
+  assert.equal(response.status, 200);
+  assert.equal(received.message, 'Grüße🙂');
+});
+
+test('stops on the crossing chunk despite a falsely small Content-Length', async () => {
+  let calls = 0;
+  const bytes = paddedBytes(8193);
+  const { req, stats } = streamedRequest([bytes.subarray(0, 8192), bytes.subarray(8192), new Uint8Array(1)], { 'content-length': '1' });
+  const response = await endpoint({ sendApplication: async () => { calls++; return 'sent'; } })({ request: req, redirect });
+  assert.equal(response.status, 413);
+  assert.equal(stats.reads, 2);
+  assert.equal(stats.cancels, 1);
+  assert.equal(calls, 0);
+  assert.equal(req.body.locked, false);
+});
+
+test('rejects falsely large Content-Length without consuming the stream', async () => {
+  let calls = 0;
+  const { req, stats } = streamedRequest([paddedBytes(8191)], { 'content-length': '99999' });
+  const response = await endpoint({ sendApplication: async () => { calls++; return 'sent'; } })({ request: req, redirect });
+  assert.equal(response.status, 413);
+  assert.equal(stats.reads, 0);
+  assert.equal(calls, 0);
+});
+
+test('accepts valid bounded body despite falsely small Content-Length', async () => {
+  const { req } = streamedRequest([paddedBytes(8192)], { 'content-length': '1' });
+  const response = await endpoint()({ request: req, redirect });
+  assert.equal(response.status, 200);
+});
+
+test('rejects huge first chunk without reading subsequent chunks even if cancellation fails', async () => {
+  let calls = 0;
+  const { req, stats } = streamedRequest([new Uint8Array(1024 * 1024), new Uint8Array(1)], {}, { cancelError: true });
+  const response = await endpoint({ sendApplication: async () => { calls++; return 'sent'; } })({ request: req, redirect });
+  assert.equal(response.status, 413);
+  assert.equal(stats.reads, 1);
+  assert.equal(stats.cancels, 1);
+  assert.equal(calls, 0);
+  assert.equal(req.body.locked, false);
+  assert.equal(await response.text(), '');
+});
+
+test('stream error after a partial body is neutral and never sends', async () => {
+  let calls = 0;
+  const { req } = streamedRequest([paddedBytes(1000)], {}, { errorAt: 1 });
+  const response = await endpoint({ sendApplication: async () => { calls++; return 'sent'; } })({ request: req, redirect });
+  assert.equal(response.status, 413);
+  assert.equal(calls, 0);
+  assert.equal(await response.text(), '');
+  assert.equal(req.body.locked, false);
+});
+
+test('UTF-8 byte limit applies to raw multibyte input across chunks, also for no-JS', async () => {
+  let calls = 0;
+  const bytes = new TextEncoder().encode(`${VALID_FORM.toString()}&nachricht=${'€'.repeat(2800)}`);
+  const { req, stats } = streamedRequest([bytes.subarray(0, 8190), bytes.subarray(8190)], { accept: 'text/html' });
+  const response = await endpoint({ sendApplication: async () => { calls++; return 'sent'; } })({ request: req, redirect });
+  assert.equal(response.status, 413);
+  assert.equal(calls, 0);
+  assert.equal(stats.cancels, 1);
+  assert.equal(response.headers.get('location'), null);
+});
+
+test('empty stream remains a validation failure, not a transport attempt', async () => {
+  let calls = 0;
+  const { req } = streamedRequest([]);
+  const response = await endpoint({ sendApplication: async () => { calls++; return 'sent'; } })({ request: req, redirect });
+  assert.equal(response.status, 422);
+  assert.equal(calls, 0);
+});

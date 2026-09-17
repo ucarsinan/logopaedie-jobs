@@ -87,12 +87,37 @@ function exceedsAnnouncedBodyLimit(request) {
  * @returns {Promise<URLSearchParams | null>}
  */
 async function readFormBody(request) {
+  if (!request.body) return new URLSearchParams();
+
+  /** @type {ReadableStreamDefaultReader<Uint8Array> | undefined} */
+  let reader;
+  let finished = false;
   try {
-    const body = await request.text();
-    if (new TextEncoder().encode(body).byteLength > MAX_BODY_BYTES) return null;
-    return new URLSearchParams(body);
+    reader = request.body.getReader();
+    // Bound retained application bytes even if an upstream chunk is oversized.
+    // The adapter may already have buffered data before handing us the stream.
+    const bytes = new Uint8Array(MAX_BODY_BYTES);
+    let length = 0;
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) {
+        finished = true;
+        break;
+      }
+      if (value.byteLength > MAX_BODY_BYTES - length) return null;
+      bytes.set(value, length);
+      length += value.byteLength;
+    }
+    return new URLSearchParams(new TextDecoder().decode(bytes.subarray(0, length)));
   } catch {
     return null;
+  } finally {
+    if (reader) {
+      if (!finished) {
+        try { await reader.cancel(); } catch { /* Keep transport errors private. */ }
+      }
+      reader.releaseLock();
+    }
   }
 }
 
