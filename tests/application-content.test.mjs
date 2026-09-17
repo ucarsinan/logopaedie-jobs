@@ -152,6 +152,25 @@ test('hero facts and model pill use compact mobile spacing with desktop defaults
   assert.match(detail, /<p class="text-sm md:text-base font-bold/);
 });
 
+test('job benefit cards place number and heading side by side on mobile', async () => {
+  const detail = await readFile(JOB_DETAIL_PATH, 'utf8');
+
+  assert.match(detail, /<div class="grid sm:grid-cols-2 gap-3 sm:gap-5">/);
+  assert.equal((detail.match(/h-full p-4 sm:p-6 rounded-\[1\.9rem\]/g) ?? []).length, 1);
+  assert.equal((detail.match(/flex items-center gap-3 mb-3 sm:block sm:mb-0/g) ?? []).length, 1);
+  assert.match(detail, /w-10 h-10 sm:w-12 sm:h-12[^']*mb-0 sm:mb-5/);
+  assert.match(detail, /<h3 class="text-lg sm:text-xl font-semibold text-slate-900 mb-0 sm:mb-3">\{title\}<\/h3>/);
+});
+
+test('job journey cards use compact numbered mobile headers', async () => {
+  const detail = await readFile(JOB_DETAIL_PATH, 'utf8');
+
+  assert.match(detail, /<div class="grid sm:grid-cols-2 gap-3 sm:gap-4">/);
+  assert.equal((detail.match(/flex items-center gap-3 mb-2 sm:block sm:mb-0/g) ?? []).length, 1);
+  assert.match(detail, /w-9 h-9 sm:w-auto sm:h-auto[^\n]*sm:mb-2/);
+  assert.match(detail, /<h3 class="font-semibold text-slate-900 mb-0 sm:mb-2">\{title\}<\/h3>/);
+});
+
 test('thank-you page makes no public two-working-day promise', async () => {
   const thankYou = await readFile(THANK_YOU_PATH, 'utf8');
 

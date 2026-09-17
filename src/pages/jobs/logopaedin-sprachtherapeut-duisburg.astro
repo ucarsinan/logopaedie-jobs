@@ -210,7 +210,7 @@ const faqSchema = {
             </a>
           </aside>
 
-          <div class="grid sm:grid-cols-2 gap-5">
+          <div class="grid sm:grid-cols-2 gap-3 sm:gap-5">
             {[
               ['Vier-Tage-Woche', 'Das Modell ist ebenso möglich wie Vollzeit mit 38,5 Stunden oder Teilzeit mit variablem Umfang.'],
               ['Fortbildung', 'Du erhältst finanzielle Unterstützung, zusätzliche freie Tage und wählst passende Fortbildungen selbst.'],
@@ -220,14 +220,16 @@ const faqSchema = {
               ['Parken und Verpflegung', 'Nach Möglichkeit Parkplatz, sonst Parkkostenunterstützung; dazu kostenlose Snacks, Getränke und Küche.'],
             ].map(([title, text], index) => (
               <div class="p-px rounded-4xl bg-slate-100 hover:bg-simsek-green/10 transition-all duration-300 group/card">
-                <div class="h-full p-6 rounded-[1.9rem] bg-white group-hover/card:bg-slate-50 transition-colors duration-200">
-                  <div class:list={[
-                    'w-12 h-12 rounded-2xl bg-slate-50 shadow-sm flex items-center justify-center mb-5 font-bold group-hover/card:scale-110 transition-transform duration-200',
-                    index % 2 === 0 ? 'text-simsek-green' : 'text-simsek-blue',
-                  ]}>
-                    {String(index + 1).padStart(2, '0')}
+                <div class="h-full p-4 sm:p-6 rounded-[1.9rem] bg-white group-hover/card:bg-slate-50 transition-colors duration-200">
+                  <div class="flex items-center gap-3 mb-3 sm:block sm:mb-0">
+                    <div class:list={[
+                      'w-10 h-10 sm:w-12 sm:h-12 shrink-0 rounded-xl sm:rounded-2xl bg-slate-50 shadow-sm flex items-center justify-center mb-0 sm:mb-5 font-bold group-hover/card:scale-110 transition-transform duration-200',
+                      index % 2 === 0 ? 'text-simsek-green' : 'text-simsek-blue',
+                    ]}>
+                      {String(index + 1).padStart(2, '0')}
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-semibold text-slate-900 mb-0 sm:mb-3">{title}</h3>
                   </div>
-                  <h3 class="text-xl font-semibold text-slate-900 mb-3">{title}</h3>
                   <p class="text-sm text-slate-600 leading-relaxed">{text}</p>
                 </div>
               </div>
@@ -287,16 +289,18 @@ const faqSchema = {
             </div>
           </div>
 
-          <div class="grid sm:grid-cols-2 gap-4">
+          <div class="grid sm:grid-cols-2 gap-3 sm:gap-4">
             {[
               ['01', 'Ankommen', 'Klare Einarbeitung, feste Ansprechpersonen und kurze Wege.'],
               ['02', 'Therapieren', 'Diagnostik und Therapie bei Kindern, Jugendlichen und Erwachsenen.'],
               ['03', 'Dokumentieren und beraten', 'Dokumentation, Elternberatung, Fallbesprechungen und fachliche Rückendeckung.'],
               ['04', 'Wachsen', 'Fortbildungen werden finanziell und mit zusätzlichen freien Tagen unterstützt.'],
             ].map(([step, title, text]) => (
-              <div class="rounded-3xl bg-slate-50 border border-slate-100 p-4 md:p-5">
-                <p class="text-xs font-bold uppercase tracking-widest text-simsek-green mb-2">{step}</p>
-                <h3 class="font-semibold text-slate-900 mb-2">{title}</h3>
+              <div class="rounded-2xl sm:rounded-3xl bg-slate-50 border border-slate-100 p-4 md:p-5">
+                <div class="flex items-center gap-3 mb-2 sm:block sm:mb-0">
+                  <p class="w-9 h-9 sm:w-auto sm:h-auto shrink-0 rounded-xl sm:rounded-none bg-white sm:bg-transparent shadow-sm sm:shadow-none flex items-center justify-center sm:block text-xs font-bold uppercase tracking-widest text-simsek-green mb-0 sm:mb-2">{step}</p>
+                  <h3 class="font-semibold text-slate-900 mb-0 sm:mb-2">{title}</h3>
+                </div>
                 <p class="text-sm text-slate-600 leading-relaxed">{text}</p>
               </div>
             ))}
