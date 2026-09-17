@@ -48,6 +48,60 @@ const faqs = [
   ['Wie kann ich Kontakt aufnehmen?', 'Über das kurze Formular direkt auf der konkreten Stellenanzeige auf LogopädieJobs.de, über WhatsApp für Bewerbungen, telefonisch unter +49 155 10062296, per E-Mail an social@logopaedie-simsek.de oder per Post an die Tonhallenstraße 21, 47051 Duisburg. Ein Lebenslauf ist freiwillig.'],
 ] as const;
 
+const jobPostingSchema = {
+  '@context': 'https://schema.org/',
+  '@type': 'JobPosting',
+  title: 'Logopädin / Logopäde / Sprachtherapeutin / Sprachtherapeut (m/w/d)',
+  description:
+    '<p>Die Praxis für Logopädie Şimşek sucht mehrere Logopädinnen, Logopäden, Sprachtherapeutinnen oder Sprachtherapeuten (m/w/d) für unbefristete Stellen in Duisburg-Mitte.</p><p>Du arbeitest in der Diagnostik und Therapie mit Kindern, Jugendlichen und Erwachsenen. Dokumentation, Elternberatung, Fallbesprechungen und fachlicher Austausch gehören ebenfalls zur Stelle. Therapieeinheiten dauern je nach ärztlicher Verordnung 30, 45 oder 60 Minuten. Dokumentation, Berichte und Organisation sind eingeplante Arbeitszeit.</p><p>Vorausgesetzt werden eine staatlich anerkannte und zugelassene Ausbildung oder ein Studium in Logopädie beziehungsweise Sprachtherapie sowie sehr gute Deutschkenntnisse. Berufserfahrung ist nicht erforderlich; Berufsanfängerinnen und Berufsanfänger sind willkommen.</p><p>Möglich sind Vollzeit mit 38,5 Stunden, Teilzeit mit variablem Umfang und eine Vier-Tage-Woche. Die Vergütung beträgt je nach Erfahrung 23 bis 26 Euro brutto pro Stunde. Hinzu kommen jährliches Weihnachtsgeld, 30 Urlaubstage bei fünf Arbeitstagen, finanziell und zeitlich unterstützte Fortbildungen, eine intensive Einarbeitung und eigene Terminplanung mit iPrax. Ein Lebenslauf ist für den ersten Kontakt freiwillig.</p>',
+  identifier: {
+    '@type': 'PropertyValue',
+    name: 'Praxis für Logopädie Şimşek',
+    value: 'LOGO-JOB-DUI-2026-01',
+  },
+  datePosted: '2026-04-29',
+  employmentType: ['FULL_TIME', 'PART_TIME'],
+  directApply: true,
+  hiringOrganization: {
+    '@type': 'Organization',
+    name: 'Praxis für Logopädie Şimşek',
+    sameAs: 'https://logopaedie-simsek.de/',
+    logo: 'https://xn--logopdiejobs-kcb.de/praxis-simsek-logo.svg',
+  },
+  jobLocation: {
+    '@type': 'Place',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Tonhallenstraße 21',
+      addressLocality: 'Duisburg',
+      addressRegion: 'Nordrhein-Westfalen',
+      postalCode: '47051',
+      addressCountry: 'DE',
+    },
+  },
+  baseSalary: {
+    '@type': 'MonetaryAmount',
+    currency: 'EUR',
+    value: {
+      '@type': 'QuantitativeValue',
+      minValue: 23,
+      maxValue: 26,
+      unitText: 'HOUR',
+    },
+  },
+  jobBenefits:
+    'Vier-Tage-Woche möglich, 30 Urlaubstage bei fünf Arbeitstagen, jährliches Weihnachtsgeld, finanziell und zeitlich unterstützte Fortbildungen, intensive Einarbeitung, eigene Terminplanung mit iPrax',
+  responsibilities:
+    'Diagnostik und Therapie bei Kindern, Jugendlichen und Erwachsenen sowie Dokumentation, Elternberatung, Fallbesprechungen und fachlicher Austausch.',
+  qualifications:
+    'Staatlich anerkannte und zugelassene Ausbildung oder Studium in Logopädie beziehungsweise Sprachtherapie sowie sehr gute Deutschkenntnisse.',
+  experienceRequirements: 'Berufserfahrung ist nicht erforderlich; Berufsanfängerinnen und Berufsanfänger sind willkommen.',
+  workHours: '38,5 Stunden Vollzeit, Teilzeit mit variablem Umfang oder Vier-Tage-Woche',
+  industry: 'Gesundheitswesen',
+  occupationalCategory: '84414',
+  url: canonicalURL,
+};
+
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -71,6 +125,7 @@ const faqSchema = {
     { name: 'Logopädin Duisburg', url: canonicalURL },
   ]}
 >
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(jobPostingSchema)} />
   <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
 
   <Navigation />
