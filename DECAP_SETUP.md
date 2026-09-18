@@ -1,3 +1,9 @@
+# Decap CMS – im Release Candidate stillgelegt (18.09.2026)
+
+Der Release Candidate entfernt Adminoberfläche, Konfiguration und beide OAuth-Funktionen. Die Stilllegung ist für Preview vorgesehen und benötigt vor Produktion eine separate Releasefreigabe. Ratgeber-Markdown, öffentliche Artikel und Uploads bleiben erhalten. Redaktion erfolgt über den vorhandenen Git-Prozess. Eine Wiederaufnahme braucht einen eigenen sicheren Authentifizierungsauftrag. OAuth-App/Grants und alte Deployments wurden nicht verändert.
+
+## Historische Setup-Anleitung – OBSOLETE, nicht ausführen
+
 # Decap CMS — Setup-Anleitung
 
 Das CMS ist eingerichtet, aber es braucht einmalig zwei manuelle Schritte, damit Redakteure sich anmelden können.
