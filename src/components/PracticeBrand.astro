@@ -2,26 +2,36 @@
 interface Props {
   class?: string;
   dark?: boolean;
+  compact?: boolean;
 }
-const { class: className, dark = false } = Astro.props;
+const { class: className, dark = false, compact = false } = Astro.props;
 ---
 
-<div class:list={['flex items-center gap-3.5 max-[640px]:gap-2.5 py-3', className]}>
+<div class:list={[
+  'flex items-center min-w-0',
+  compact ? 'gap-2 py-0' : 'gap-3.5 max-[640px]:gap-2.5 py-3',
+  className,
+]}>
   <img
     src="/praxis-simsek-logo.svg"
     alt=""
     aria-hidden="true"
     width="48"
     height="48"
-    class="ml-3 w-12 h-12 max-[640px]:w-10 max-[640px]:h-10 object-contain shrink-0"
+    class:list={[
+      'object-contain shrink-0',
+      compact ? 'ml-0 w-8 h-8 sm:w-9 sm:h-9' : 'ml-3 w-12 h-12 max-[640px]:w-10 max-[640px]:h-10',
+    ]}
   />
   <div class="min-w-0">
     <p class:list={[
-      'text-[.875rem] max-[640px]:text-[0.78rem] font-bold leading-[1.25] uppercase tracking-[.02em] break-words',
+      'font-bold leading-[1.25] uppercase tracking-[.02em] break-words',
+      compact ? 'text-[0.66rem] sm:text-[0.75rem]' : 'text-[.875rem] max-[640px]:text-[0.78rem]',
       dark ? 'text-white' : 'text-slate-900',
     ]}>Praxis für Logopädie <span lang="tr">Şimşek</span></p>
     <span class:list={[
-      'block text-[.6875rem] max-[640px]:text-[0.62rem] font-normal tracking-[.03em] mt-px',
+      'block font-normal tracking-[.03em] mt-px',
+      compact ? 'text-[0.58rem] sm:text-[0.64rem]' : 'text-[.6875rem] max-[640px]:text-[0.62rem]',
       dark ? 'text-slate-300' : 'text-slate-500',
     ]}>Logopädie Duisburg</span>
   </div>
