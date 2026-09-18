@@ -49,6 +49,8 @@ function endpoint(deps = {}) {
   return createApplicationEndpoint({
     sendApplication: async () => 'sent',
     isDevelopment: false,
+    vercelEnvironment: 'production',
+    vercelUrl: '',
     ...deps,
   });
 }
@@ -286,8 +288,8 @@ test('uses only fixed native redirects without applicant data', async () => {
 
   for (const [response, location] of [
     [success, '/bewerbung/danke/'],
-    [invalid, 'https://xn--logopdiejobs-kcb.de/jobs/logopaedin-sprachtherapeut-duisburg/?status=invalid_form#bewerbung'],
-    [unavailable, 'https://xn--logopdiejobs-kcb.de/jobs/logopaedin-sprachtherapeut-duisburg/?status=service_unavailable#bewerbung'],
+    [invalid, '/jobs/logopaedin-sprachtherapeut-duisburg/?status=invalid_form#bewerbung'],
+    [unavailable, '/jobs/logopaedin-sprachtherapeut-duisburg/?status=service_unavailable#bewerbung'],
   ]) {
     assert.equal(response.status, 303);
     assert.equal(response.headers.get('location'), location);
@@ -410,4 +412,101 @@ test('empty stream remains a validation failure, not a transport attempt', async
   const response = await endpoint({ sendApplication: async () => { calls++; return 'sent'; } })({ request: req, redirect });
   assert.equal(response.status, 422);
   assert.equal(calls, 0);
+});
+
+// All accepted-origin probes stay invalid; transports are mocks only.
+const PREVIEW_HOST = 'logopaedie-jobs-preview-a.vercel.app';
+const PREVIEW_ORIGIN = `https://${PREVIEW_HOST}`;
+const CANONICAL_ORIGIN = new URL(ENDPOINT_URL).origin;
+
+for (const [label, origin, expected] of [
+  ['exact deployment', PREVIEW_ORIGIN, 422],
+  ['canonical', CANONICAL_ORIGIN, 422],
+  ['other project', 'https://other.vercel.app', 403],
+  ['other deployment', 'https://logopaedie-jobs-preview-b.vercel.app', 403],
+  ['foreign', 'https://foreign.example.test', 403],
+  ['wrong scheme', `http://${PREVIEW_HOST}`, 403],
+  ['wrong port', `${PREVIEW_ORIGIN}:444`, 403],
+  ['missing origin retains existing policy', undefined, 422],
+]) {
+  test(`preview origin: ${label}`, async () => {
+    let calls = 0;
+    const response = await endpoint({
+      vercelEnvironment: 'preview', vercelUrl: PREVIEW_HOST,
+      sendApplication: async () => { calls++; return 'sent'; },
+    })({ request: request('qa=preview', { origin }, `${PREVIEW_ORIGIN}/bewerbung/senden/`), redirect });
+    assert.equal(response.status, expected);
+    assert.equal(calls, 0);
+  });
+}
+
+for (const [label, origin, expected] of [
+  ['canonical', CANONICAL_ORIGIN, 422],
+  ['preview deployment', PREVIEW_ORIGIN, 403],
+  ['other Vercel host', 'https://other.vercel.app', 403],
+  ['missing origin retains existing policy', undefined, 422],
+]) {
+  test(`production origin: ${label}`, async () => {
+    const response = await endpoint({ vercelEnvironment: 'production', vercelUrl: PREVIEW_HOST })({
+      request: request('qa=preview', { origin }), redirect,
+    });
+    assert.equal(response.status, expected);
+  });
+}
+
+test('request Host and X-Forwarded-Host cannot authorize an origin', async () => {
+  for (const origin of [PREVIEW_ORIGIN, 'https://attacker.example.test']) {
+    const response = await endpoint({ vercelEnvironment: 'preview', vercelUrl: PREVIEW_HOST })({
+      request: request('qa=preview', {
+        origin, host: 'attacker.example.test', 'x-forwarded-host': 'attacker.example.test',
+      }, 'https://attacker.example.test/bewerbung/senden/'), redirect,
+    });
+    assert.equal(response.status, origin === PREVIEW_ORIGIN ? 422 : 403);
+  }
+});
+
+test('missing or malformed deployment metadata fails closed', async () => {
+  for (const vercelUrl of ['', undefined, '*.vercel.app', 'https://host.vercel.app',
+    'host.vercel.app/path', 'host.vercel.app?x=1', 'host.vercel.app#fragment',
+    'user@host.vercel.app', 'host.vercel.app:443', ' host.vercel.app',
+    'host.vercel.app.', 'host..vercel.app', '-host.vercel.app', 'host_.vercel.app',
+    'localhost', 'a'.repeat(64) + '.vercel.app', 'a.'.repeat(127) + 'app']) {
+    const response = await endpoint({ vercelEnvironment: 'preview', vercelUrl })({
+      request: request('qa=preview', { origin: PREVIEW_ORIGIN }), redirect,
+    });
+    assert.equal(response.status, 403);
+  }
+  for (const vercelEnvironment of ['', undefined, 'development', 'Preview', 'production']) {
+    const response = await endpoint({ vercelEnvironment, vercelUrl: PREVIEW_HOST })({
+      request: request('qa=preview', { origin: PREVIEW_ORIGIN }), redirect,
+    });
+    assert.equal(response.status, 403);
+  }
+});
+
+test('development loopback policy remains same-origin only', async () => {
+  for (const [origin, expected] of [['http://127.0.0.1:4321', 422], ['http://127.0.0.1:4322', 403], [PREVIEW_ORIGIN, 403]]) {
+    const response = await endpoint({ isDevelopment: true, vercelEnvironment: 'development', vercelUrl: PREVIEW_HOST })({
+      request: request('qa=preview', { origin }, 'http://127.0.0.1:4321/bewerbung/senden/'), redirect,
+    });
+    assert.equal(response.status, expected);
+  }
+});
+
+test('native error redirects stay on the requesting preview or production origin', async () => {
+  for (const origin of [PREVIEW_ORIGIN, CANONICAL_ORIGIN]) {
+    const handler = endpoint({ vercelEnvironment: 'preview', vercelUrl: PREVIEW_HOST,
+      sendApplication: async () => 'unavailable' });
+    for (const [body, code] of [['qa=preview', 'invalid_form'], [VALID_FORM.toString(), 'service_unavailable']]) {
+      const response = await handler({request: request(body, {origin, accept: 'text/html'}, `${origin}/bewerbung/senden/`), redirect});
+      assert.equal(response.status, 303);
+      const location = response.headers.get('location');
+      assert.equal(location, `/jobs/${JOB_SLUG}/?status=${code}#bewerbung`);
+      assert.equal(new URL(location, origin).origin, origin);
+    }
+    const response = await handler({request: request('qa=preview', {origin}, `${origin}/bewerbung/senden/`), redirect});
+    assert.equal(response.status, 422);
+    assert.equal(response.headers.get('location'), null);
+    assert.equal((await response.json()).code, 'invalid_form');
+  }
 });
