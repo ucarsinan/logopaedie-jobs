@@ -92,7 +92,6 @@ async function readFormBody(request) {
 
   /** @type {ReadableStreamDefaultReader<Uint8Array> | undefined} */
   let reader;
-  let finished = false;
   try {
     reader = request.body.getReader();
     // Bound retained application bytes even if an upstream chunk is oversized.
@@ -102,7 +101,6 @@ async function readFormBody(request) {
     while (true) {
       const { done, value } = await reader.read();
       if (done) {
-        finished = true;
         break;
       }
       if (value.byteLength > MAX_BODY_BYTES - length) return null;
@@ -114,9 +112,9 @@ async function readFormBody(request) {
     return null;
   } finally {
     if (reader) {
-      if (!finished) {
-        try { await reader.cancel(); } catch { /* Keep transport errors private. */ }
-      }
+      // Every read has settled. Release ownership without cancelling the
+      // provider stream: Vercel may still deliver its underlying end event.
+      // Unread transport/runtime buffers remain outside our application limit.
       reader.releaseLock();
     }
   }

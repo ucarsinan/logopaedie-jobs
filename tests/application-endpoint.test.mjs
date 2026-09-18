@@ -331,7 +331,7 @@ for (const size of [8191, 8192, 8193]) {
     const response = await endpoint({ sendApplication: async () => { calls++; return 'sent'; } })({ request: req, redirect });
     assert.equal(response.status, size <= MAX_BODY_BYTES ? 200 : 413);
     assert.equal(calls, size <= MAX_BODY_BYTES ? 1 : 0);
-    assert.equal(stats.cancels, size > MAX_BODY_BYTES ? 1 : 0);
+    assert.equal(stats.cancels, 0);
     assert.equal(req.body.locked, false);
   });
 }
@@ -353,7 +353,7 @@ test('stops on the crossing chunk despite a falsely small Content-Length', async
   const response = await endpoint({ sendApplication: async () => { calls++; return 'sent'; } })({ request: req, redirect });
   assert.equal(response.status, 413);
   assert.equal(stats.reads, 2);
-  assert.equal(stats.cancels, 1);
+  assert.equal(stats.cancels, 0);
   assert.equal(calls, 0);
   assert.equal(req.body.locked, false);
 });
@@ -373,13 +373,13 @@ test('accepts valid bounded body despite falsely small Content-Length', async ()
   assert.equal(response.status, 200);
 });
 
-test('rejects huge first chunk without reading subsequent chunks even if cancellation fails', async () => {
+test('rejects huge first chunk without reading subsequent chunks or invoking a throwing cancel hook', async () => {
   let calls = 0;
   const { req, stats } = streamedRequest([new Uint8Array(1024 * 1024), new Uint8Array(1)], {}, { cancelError: true });
   const response = await endpoint({ sendApplication: async () => { calls++; return 'sent'; } })({ request: req, redirect });
   assert.equal(response.status, 413);
   assert.equal(stats.reads, 1);
-  assert.equal(stats.cancels, 1);
+  assert.equal(stats.cancels, 0);
   assert.equal(calls, 0);
   assert.equal(req.body.locked, false);
   assert.equal(await response.text(), '');
@@ -402,7 +402,7 @@ test('UTF-8 byte limit applies to raw multibyte input across chunks, also for no
   const response = await endpoint({ sendApplication: async () => { calls++; return 'sent'; } })({ request: req, redirect });
   assert.equal(response.status, 413);
   assert.equal(calls, 0);
-  assert.equal(stats.cancels, 1);
+  assert.equal(stats.cancels, 0);
   assert.equal(response.headers.get('location'), null);
 });
 
@@ -509,4 +509,90 @@ test('native error redirects stay on the requesting preview or production origin
     assert.equal(response.headers.get('location'), null);
     assert.equal((await response.json()).code, 'invalid_form');
   }
+});
+
+// Instrument the actual reader, not a copy of the body-reading algorithm.
+for (const mode of ['oversize', 'read-error', 'normal', 'late-error', 'late-close']) {
+  test(`reader ownership: ${mode} settles reads and releases exactly once`, async () => {
+    let controller;
+    let reads = 0, releases = 0, pending = 0, cancels = 0, calls = 0;
+    let released = false;
+    const body = new ReadableStream({
+      start(c) { controller = c; },
+      pull(c) {
+        if (mode === 'read-error') c.error(new Error('synthetic read failure'));
+        else if (reads === 1) c.enqueue(new Uint8Array(mode === 'normal' ? 10 : 8193));
+        else c.close();
+      },
+      cancel() { cancels++; },
+    }, { highWaterMark: 0 });
+    const req = new Request(ENDPOINT_URL, { method: 'POST', duplex: 'half', body,
+      headers: { 'content-type': 'application/x-www-form-urlencoded', accept: 'application/json' } });
+    const getReader = req.body.getReader.bind(req.body);
+    req.body.getReader = () => {
+      const reader = getReader();
+      return {
+        async read() {
+          assert.equal(released, false);
+          reads++; pending++;
+          try { return await reader.read(); } finally { pending--; }
+        },
+        cancel() { cancels++; return reader.cancel(); },
+        releaseLock() {
+          assert.equal(pending, 0);
+          assert.equal(released, false);
+          released = true; releases++; reader.releaseLock();
+        },
+      };
+    };
+    const response = await endpoint({ sendApplication: async () => { calls++; return 'sent'; } })({ request: req, redirect });
+    assert.equal(response.status, mode === 'normal' ? 422 : 413);
+    if (mode === 'late-close') assert.doesNotThrow(() => controller.close());
+    if (mode === 'late-error') {
+      controller.error(new Error('synthetic late transport failure'));
+      await new Promise(resolve => setImmediate(resolve));
+    }
+    assert.equal(reads, mode === 'normal' ? 2 : 1);
+    assert.equal(releases, 1);
+    assert.equal(cancels, 0);
+    assert.equal(calls, 0);
+    assert.equal(req.body.locked, false);
+  });
+}
+
+for (const chunkSize of [1024, 100 * 1024]) {
+  test(`100 KiB stream: bounded application allocation with ${chunkSize}-byte chunks`, async () => {
+    const NativeBytes = globalThis.Uint8Array;
+    const chunks = Array.from({ length: (100 * 1024) / chunkSize }, () => new NativeBytes(chunkSize));
+    const { req, stats } = streamedRequest(chunks);
+    let maxCapacity = 0, copied = 0, allocations = 0, decodes = 0, calls = 0;
+    const decode = TextDecoder.prototype.decode;
+    globalThis.Uint8Array = class extends NativeBytes {
+      constructor(...args) { super(...args); allocations++; maxCapacity = Math.max(maxCapacity, this.byteLength); }
+      set(value, offset) { copied += value.byteLength; return super.set(value, offset); }
+    };
+    TextDecoder.prototype.decode = function (...args) { decodes++; return decode.apply(this, args); };
+    try {
+      const response = await endpoint({ sendApplication: async () => { calls++; return 'sent'; } })({ request: req, redirect });
+      assert.equal(response.status, 413);
+      assert.equal(allocations, 1);
+      assert.equal(maxCapacity, MAX_BODY_BYTES);
+      assert.equal(copied, chunkSize === 1024 ? MAX_BODY_BYTES : 0);
+      assert.equal(decodes, 0); // no decoding/URLSearchParams or form parsing on oversize
+      assert.equal(stats.reads, chunkSize === 1024 ? 9 : 1);
+      assert.equal(stats.cancels, 0);
+      assert.equal(calls, 0);
+    } finally {
+      globalThis.Uint8Array = NativeBytes;
+      TextDecoder.prototype.decode = decode;
+    }
+  });
+}
+
+test('announced oversize never acquires a reader or cancels', async () => {
+  const { req } = streamedRequest([], { 'content-length': '8193' });
+  req.body.getReader = () => { assert.fail('must not acquire reader'); };
+  req.body.cancel = () => { assert.fail('must not cancel'); };
+  const response = await endpoint({ sendApplication: async () => { assert.fail('must not send'); } })({ request: req, redirect });
+  assert.equal(response.status, 413);
 });
