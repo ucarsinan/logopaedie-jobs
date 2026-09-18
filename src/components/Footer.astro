@@ -20,9 +20,9 @@ const footerLinks = [
   <div class="absolute top-0 left-0 right-0 h-0.5 bg-simsek-green "></div>
 
   <div class="max-w-7xl mx-auto px-6">
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-16 mb-10 lg:mb-16 text-left">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 mb-4 sm:mb-5 lg:mb-6 text-left">
       <div class="sm:col-span-2 lg:col-span-1">
-        <div class="rounded-2xl border border-white/10 bg-white/[0.025] p-3.5 sm:p-4">
+        <div class="h-full rounded-2xl border border-white/10 bg-white/[0.025] p-3.5 sm:p-4">
           <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-3">Karriereportal der</p>
           <div class="flex items-center gap-3 sm:gap-4 min-w-0">
             <Logo class="h-8 sm:h-9 w-auto shrink-0" />
@@ -31,9 +31,9 @@ const footerLinks = [
           </div>
         </div>
       </div>
-      <div>
-        <span class="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest bg-white/5 text-slate-400 border border-white/10 mb-2.5 md:mb-5">Navigation</span>
-        <ul class="grid grid-cols-2 gap-x-5 sm:gap-x-8 gap-y-0.5 md:gap-y-3 text-sm list-none p-0 max-w-sm">
+      <div class="h-full rounded-2xl border border-white/10 bg-white/[0.025] p-3.5 sm:p-4">
+        <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-2">Navigation</p>
+        <ul class="flex flex-wrap gap-x-4 gap-y-0 text-[0.75rem] sm:grid sm:grid-cols-2 sm:gap-x-8 sm:gap-y-0.5 md:gap-y-3 sm:text-sm list-none p-0 max-w-sm">
           {footerLinks.map((link) => (
             <li>
               <a
@@ -41,7 +41,7 @@ const footerLinks = [
                 target={link.external ? '_blank' : undefined}
                 rel={link.external ? 'noopener noreferrer' : undefined}
                 class={[
-                  'inline-flex min-h-11 items-center py-2 font-semibold no-underline transition-colors duration-150',
+                  'inline-flex min-h-11 items-center py-1 sm:py-2 font-semibold whitespace-nowrap no-underline transition-colors duration-150',
                   link.highlight
                     ? 'text-simsek-green hover:text-white'
                     : 'text-slate-400 hover:text-white',
@@ -53,10 +53,10 @@ const footerLinks = [
           ))}
         </ul>
       </div>
-      <div>
-        <span class="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest bg-white/5 text-slate-400 border border-white/10 mb-2.5 md:mb-5">Standort</span>
+      <div class="h-full rounded-2xl border border-white/10 bg-white/[0.025] p-3.5 sm:p-4">
+        <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-2">Standort</p>
         <p class="text-sm text-slate-400 mb-1.5">Tonhallenstraße 21, 47051 Duisburg</p>
-        <p class="text-xs text-slate-500 mb-3 md:mb-6">(3. OG, Aufzug vorhanden)</p>
+        <p class="text-xs text-slate-500 mb-3">(3. OG, Aufzug vorhanden)</p>
         <a
           href="mailto:info@logopaedie-simsek.de"
           class="inline-flex min-h-11 items-center gap-2 px-3.5 py-2.5 bg-simsek-green text-white text-[0.8rem] sm:text-sm font-bold rounded-lg shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-200 no-underline"
@@ -68,9 +68,9 @@ const footerLinks = [
         </a>
       </div>
     </div>
-    <div class="pt-5 md:pt-8 border-t border-slate-900 flex flex-col sm:flex-row gap-2 md:gap-4 justify-between text-[10px] uppercase font-bold text-slate-600">
-      <p>© {new Date().getFullYear()} Praxis für Logopädie Şimşek</p>
-      <div class="flex gap-4">
+    <div class="rounded-2xl border border-white/10 bg-white/[0.025] px-3.5 py-1.5 sm:px-4 flex flex-col sm:flex-row sm:items-center gap-0 sm:gap-4 justify-between text-[10px] uppercase font-bold text-slate-600">
+      <p class="min-h-8 flex items-center">© {new Date().getFullYear()} Praxis für Logopädie Şimşek</p>
+      <div class="flex flex-wrap gap-x-4 gap-y-0">
         <a href="/impressum/" class="inline-flex min-h-11 items-center no-underline hover:text-slate-400 transition-colors">Impressum</a>
         <a href="/datenschutz/" class="inline-flex min-h-11 items-center no-underline hover:text-slate-400 transition-colors">Datenschutz</a>
         {gaConfigured && (
