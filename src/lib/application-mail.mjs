@@ -4,6 +4,81 @@ import { KNOWN_JOBS } from './application-form.mjs';
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+// Interne Antwortfrist nach DEC-135: 12 Stunden an allen Tagen, Anruf vor
+// E-Mail. Geht eine Anfrage zwischen 20:00 und 08:00 Uhr ein, beginnt die
+// Frist erst um 08:00 Uhr.
+const DEADLINE_HOURS = 12;
+const NIGHT_START_HOUR = 20;
+const DAY_START_HOUR = 8;
+const WEEKDAYS = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
+
+/**
+ * Wanduhrzeit in Europe/Berlin, unabhaengig von der Serverzeitzone.
+ *
+ * @param {Date} instant
+ * @returns {{year: number, month: number, day: number, hour: number, minute: number}}
+ */
+function berlinWallClock(instant) {
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Europe/Berlin',
+    year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', hourCycle: 'h23',
+  }).formatToParts(instant).reduce((acc, part) => {
+    if (part.type !== 'literal') acc[part.type] = Number(part.value);
+    return acc;
+  }, /** @type {Record<string, number>} */ ({}));
+  return {
+    year: parts.year, month: parts.month, day: parts.day,
+    hour: parts.hour, minute: parts.minute,
+  };
+}
+
+/**
+ * Rechnet die interne Frist aus. Die Arithmetik laeuft in Berliner
+ * Wanduhrzeit; an den beiden Zeitumstellungen im Jahr kann sie deshalb um
+ * eine Stunde abweichen. Das ist fuer eine Erinnerungszeile hinnehmbar.
+ *
+ * @param {Date} receivedAt
+ * @returns {string} z. B. "Sa, 19.09.2026, 09:30 Uhr"
+ */
+export function formatResponseDeadline(receivedAt) {
+  let { year, month, day, hour, minute } = berlinWallClock(receivedAt);
+
+  if (hour >= NIGHT_START_HOUR) {
+    ({ year, month, day } = shiftDay(year, month, day, 1));
+    hour = DAY_START_HOUR;
+    minute = 0;
+  } else if (hour < DAY_START_HOUR) {
+    hour = DAY_START_HOUR;
+    minute = 0;
+  }
+
+  hour += DEADLINE_HOURS;
+  while (hour >= 24) {
+    hour -= 24;
+    ({ year, month, day } = shiftDay(year, month, day, 1));
+  }
+
+  const weekday = WEEKDAYS[new Date(Date.UTC(year, month - 1, day)).getUTCDay()];
+  const pad = (/** @type {number} */ value) => String(value).padStart(2, '0');
+  return `${weekday}, ${pad(day)}.${pad(month)}.${year}, ${pad(hour)}:${pad(minute)} Uhr`;
+}
+
+/**
+ * @param {number} year
+ * @param {number} month
+ * @param {number} day
+ * @param {number} offset
+ */
+function shiftDay(year, month, day, offset) {
+  const shifted = new Date(Date.UTC(year, month - 1, day + offset));
+  return {
+    year: shifted.getUTCFullYear(),
+    month: shifted.getUTCMonth() + 1,
+    day: shifted.getUTCDate(),
+  };
+}
+
 /** @typedef {import('./application-form.mjs').ApplicationData} ApplicationData */
 
 /**
@@ -85,6 +160,9 @@ export function buildApplicationMail(data, config) {
       `Name: ${data.name}`,
       `Kontakt: ${data.contact}`,
       ...(data.message ? ['', 'Nachricht:', data.message] : []),
+      '',
+      `Antwort fällig bis: ${formatResponseDeadline(data.receivedAt ?? new Date())}`,
+      'Bitte zuerst anrufen. Eine kurze Rückmeldung genügt für die Frist.',
     ].join('\n'),
   };
 

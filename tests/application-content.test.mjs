@@ -188,3 +188,22 @@ test('application endpoint avoids Vercels reserved root API directory and suppor
   assert.match(contact, /action="\/bewerbung\/senden\/"/);
   await assert.rejects(access(RESERVED_API_ENDPOINT_PATH));
 });
+
+test('the public response promise matches the internal deadline rule', async () => {
+  const contact = await readFile(
+    new URL('../src/components/ApplicationContact.astro', import.meta.url),
+    'utf8',
+  );
+  const thanks = await readFile(
+    new URL('../src/pages/bewerbung/danke.astro', import.meta.url),
+    'utf8',
+  );
+
+  for (const source of [contact, thanks]) {
+    assert.match(source, /Wir melden uns innerhalb von 12 Stunden/);
+    // Die Nachtregel muss mitgenannt werden, sonst verspricht die Seite mehr
+    // als die interne Frist aus DEC-135 hergibt.
+    assert.match(source, /Anfragen zwischen 20 und 8 Uhr beantworten wir am Morgen\./);
+    assert.match(source, /auch am Wochenende/);
+  }
+});

@@ -3,6 +3,7 @@ import test from 'node:test';
 
 import {
   buildApplicationMail,
+  formatResponseDeadline,
   buildSmtpTransportOptions,
   sendApplication,
 } from '../src/lib/application-mail.mjs';
@@ -179,4 +180,37 @@ test('does not allow newlines in the applicant name to affect mail headers', () 
   assert.equal(mail.subject.includes('Ada Beispiel'), false);
   assert.equal(mail.subject.includes('\n'), false);
   assert.match(mail.text, /Bcc: injected@example\.test/);
+});
+
+test('response deadline adds twelve hours during the day', () => {
+  // 18.09.2026 ist Sommerzeit: 07:30 UTC entspricht 09:30 in Berlin.
+  const deadline = formatResponseDeadline(new Date('2026-09-18T07:30:00Z'));
+  assert.equal(deadline, 'Fr, 18.09.2026, 21:30 Uhr');
+});
+
+test('response deadline started in the evening begins at eight the next morning', () => {
+  // 20:15 Berlin liegt im Nachtfenster, die Frist startet erst um 08:00.
+  const deadline = formatResponseDeadline(new Date('2026-09-18T18:15:00Z'));
+  assert.equal(deadline, 'Sa, 19.09.2026, 20:00 Uhr');
+});
+
+test('response deadline started after midnight begins at eight the same morning', () => {
+  // 02:00 Berlin am Samstag.
+  const deadline = formatResponseDeadline(new Date('2026-09-19T00:00:00Z'));
+  assert.equal(deadline, 'Sa, 19.09.2026, 20:00 Uhr');
+});
+
+test('response deadline crosses the month boundary', () => {
+  // 30.09.2026 um 18:00 Berlin.
+  const deadline = formatResponseDeadline(new Date('2026-09-30T16:00:00Z'));
+  assert.equal(deadline, 'Do, 01.10.2026, 06:00 Uhr');
+});
+
+test('application mail carries the internal deadline and the call-first note', () => {
+  const mail = buildApplicationMail(
+    { ...DATA, receivedAt: new Date('2026-09-18T07:30:00Z') },
+    CONFIG,
+  );
+  assert.match(mail.text, /Antwort fällig bis: Fr, 18\.09\.2026, 21:30 Uhr/);
+  assert.match(mail.text, /Bitte zuerst anrufen/);
 });
