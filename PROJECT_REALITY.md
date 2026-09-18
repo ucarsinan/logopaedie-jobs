@@ -5,7 +5,7 @@ Recommendation: continue
 Confidence: high
 
 ## Core Problem
-- Problem: Die Praxis fuer Logopaedie Simsek braucht qualifizierte Erstkontakte fuer mehrere eigene, unbefristete Logopaedie- und Sprachtherapie-Stellen.
+- Problem: Die Praxis für Logopädie Şimşek braucht qualifizierte Erstkontakte fuer mehrere eigene, unbefristete Logopaedie- und Sprachtherapie-Stellen.
 - Affected user: Staatlich anerkannte und zugelassene Logopaed:innen und Sprachtherapeut:innen im Raum Duisburg, einschliesslich Berufsanfänger:innen.
 - Painful current workflow: Interessierte muessen Arbeitsbedingungen, Passung und Kontaktwege schnell und ohne klassische Bewerbungsunterlagen einschaetzen koennen.
 - Desired real-world outcome: Glaubwuerdige Erwartungen, unverbindlicher Erstkontakt, Kennenlernen, Einstellung und langfristige Zusammenarbeit.

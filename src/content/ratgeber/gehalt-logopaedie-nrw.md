@@ -1,6 +1,6 @@
 ---
 title: "Logopädie Gehalt NRW 2026 — Was verdient eine Logopädin in Duisburg?"
-description: "Aktuelle Gehaltszahlen für Logopäd:innen in NRW und Duisburg 2026 sowie die konkrete Gehaltsspanne der Praxis Şimşek."
+description: "Aktuelle Gehaltszahlen für Logopäd:innen in NRW und Duisburg 2026 sowie die konkrete Gehaltsspanne der Praxis für Logopädie Şimşek."
 kategorie: "Gehalt"
 topic: "gehalt-arbeitsmodelle"
 intent: "gehalt"
