@@ -1,6 +1,6 @@
 ---
 title: "4-Tage-Woche in der Logopädie — Erfahrungen & Modelle 2026"
-description: "Funktioniert die 4-Tage-Woche als Logopädin? Praxis Şimşek in Duisburg macht es vor: Erfahrungen, Arbeitszeitmodelle und warum ausgeruhte Therapeuten bessere Therapie machen."
+description: "Funktioniert die 4-Tage-Woche als Logopädin? Die Praxis für Logopädie Şimşek in Duisburg macht es vor: Erfahrungen, Arbeitszeitmodelle und warum ausgeruhte Therapeuten bessere Therapie machen."
 kategorie: "Arbeitszeit"
 topic: "gehalt-arbeitsmodelle"
 intent: "arbeitszeit"
@@ -18,7 +18,7 @@ faq:
     a: "Das hängt vom Modell ab. Bei komprimierter Vollzeit (40 Stunden auf 4 Tage) bleibt das Gehalt gleich, bei reduzierten Stunden (32 Stunden) sinkt es proportional — dafür verbessert sich die Work-Life-Balance deutlich."
   - q: "Welche Vorteile hat die 4-Tage-Woche für Logopädinnen?"
     a: "Therapeutinnen berichten von besserer Konzentration an den Arbeitstagen, weniger Krankheitstagen und höherer Zufriedenheit im Beruf. Der zusätzliche freie Tag hilft außerdem bei Kinderbetreuung, Fortbildungen oder Erholung."
-  - q: "Bietet die Praxis Şimşek in Duisburg eine 4-Tage-Woche an?"
+  - q: "Bietet die Praxis für Logopädie Şimşek in Duisburg eine 4-Tage-Woche an?"
     a: "Ja. In der Praxis für Logopädie Şimşek ist eine Vier-Tage-Woche möglich. Vollzeit umfasst 38,5 Stunden; Teilzeit kann mit variablem Stundenumfang vereinbart werden."
 ---
 
@@ -38,7 +38,7 @@ Es gibt verschiedene Varianten, wie Logopädie-Praxen die 4-Tage-Woche umsetzen:
 
 **Variante 2: Reduzierte Stunden.** 32 Stunden auf 4 Tage — also reguläre 8-Stunden-Tage mit einem Tag weniger. Das Gehalt ist proportional etwas geringer, aber die Work-Life-Balance verbessert sich deutlich. In der Logopädie, wo der Fachkräftemangel real ist, sind viele Praxen bereit, dieses Modell anzubieten.
 
-**Variante 3: Flexibles Modell.** Manche Wochen 4 Tage, manche 5 — je nach Patientenbedarf und persönlicher Planung. Die [Praxis Şimşek in Duisburg](/jobs/logopaedin-sprachtherapeut-duisburg/) bietet daneben eine Vier-Tage-Woche an.
+**Variante 3: Flexibles Modell.** Manche Wochen 4 Tage, manche 5 — je nach Patientenbedarf und persönlicher Planung. Die [Praxis für Logopädie Şimşek in Duisburg](/jobs/logopaedin-sprachtherapeut-duisburg/) bietet daneben eine Vier-Tage-Woche an.
 
 ## Vorteile für Therapeutinnen
 
@@ -52,7 +52,7 @@ Ja, und die sollte man kennen. Bei komprimierten 10-Stunden-Tagen kann die Ersch
 
 Und ehrlich: Nicht jeder Mensch funktioniert mit 4 Tagen besser. Manche Therapeutinnen bevorzugen 5 kürzere Tage. Das ist völlig okay. Deshalb ist es wichtig, dass das Modell optional ist — nicht aufgezwungen.
 
-## 4-Tage-Woche in der Praxis Şimşek, Duisburg
+## 4-Tage-Woche in der Praxis für Logopädie Şimşek, Duisburg
 
 In der [Praxis für Logopädie Şimşek](/jobs/logopaedin-sprachtherapeut-duisburg/) in der Tonhallenstraße 21 in Duisburg ist eine Vier-Tage-Woche möglich. Mitarbeitende planen Termine, Pausen und Puffer eigenständig auf Vertrauensbasis. Daneben sind Vollzeit mit 38,5 Stunden und Teilzeit mit variablem Stundenumfang möglich.
 

@@ -88,7 +88,7 @@ Das macht einen messbaren Unterschied in der therapeutischen Allianz mit der Fam
 
 ## Als bilinguale Logopädin in Duisburg arbeiten
 
-Wenn du selbst zweisprachig bist — ob Deutsch-Türkisch oder eine andere Kombination — und als Logopädin arbeiten möchtest, ist die [Praxis Şimşek](/jobs/logopaedin-sprachtherapeut-duisburg/) in Duisburg ein seltener Arbeitsplatz, an dem deine Mehrsprachigkeit nicht nur willkommen ist, sondern aktiv eingesetzt wird.
+Wenn du selbst zweisprachig bist — ob Deutsch-Türkisch oder eine andere Kombination — und als Logopädin arbeiten möchtest, ist die [Praxis für Logopädie Şimşek](/jobs/logopaedin-sprachtherapeut-duisburg/) in Duisburg ein seltener Arbeitsplatz, an dem deine Mehrsprachigkeit nicht nur willkommen ist, sondern aktiv eingesetzt wird.
 
 > "Als bilinguale Praxis behandeln wir unsere Patienten auf Deutsch und Türkisch — das macht uns zu einem echten Teil dieser Stadt."
 

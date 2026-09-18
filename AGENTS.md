@@ -5,8 +5,11 @@ Dieses Projekt muss jederzeit zwischen Codex, Claude Code und anderen KI-Agenten
 ## Projekt
 
 `logopaedie-jobs` ist aktuell keine klassische Jobboerse und keine Plattform fuer externe Arbeitgeber.
-Die Website dient zum jetzigen Zeitpunkt ausschliesslich der Praxis fuer Logopaedie Simsek: Stellen,
+Die Website dient zum jetzigen Zeitpunkt ausschliesslich der Praxis für Logopädie Şimşek: Stellen,
 Bewerbungswege, SEO-Seiten und Inhalte muessen auf diese Praxis ausgerichtet bleiben.
+
+Der Markenname lautet immer vollstaendig `Praxis für Logopädie Şimşek`.
+Verkuerzungen oder ASCII-Varianten duerfen nicht verwendet werden.
 
 Produktentscheidung vom 2026-06-29:
 
