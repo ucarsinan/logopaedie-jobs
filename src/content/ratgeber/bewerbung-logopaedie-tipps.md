@@ -89,6 +89,6 @@ Eine kurze Rückmeldung per E-Mail am nächsten Tag ist professionell und wird p
 
 Wenn du nach einer Woche keine Rückmeldung hast, ist eine einmalige Nachfrage per E-Mail angemessen. Telefonisch nachfassen wirkt in vielen Praxen aufdringlich — es sei denn, das wurde im Gespräch so vereinbart.
 
-## Direkt bewerben: Praxis Şimşek Duisburg
+## Direkt bewerben: Praxis für Logopädie Şimşek Duisburg
 
 Die [Praxis für Logopädie Şimşek sucht mehrere Logopäd:innen und Sprachtherapeut:innen in Duisburg](/jobs/logopaedin-sprachtherapeut-duisburg/) für unbefristete Stellen in Vollzeit oder Teilzeit. Für den ersten Kontakt kannst du das Kurzformular auf der Stellenanzeige nutzen, über WhatsApp schreiben, unter +49 155 10062296 anrufen, an [social@logopaedie-simsek.de](mailto:social@logopaedie-simsek.de) schreiben oder Post an die Tonhallenstraße 21, 47051 Duisburg senden. Ein Lebenslauf ist freiwillig.

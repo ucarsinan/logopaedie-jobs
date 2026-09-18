@@ -17,7 +17,7 @@
 
 ## INTRO (0:00–0:15)
 
-**[Folie: Logo Praxis Şimşek auf #1E293B Hintergrund, Untertitel blendet ein]**
+**[Folie: Logo Praxis für Logopädie Şimşek auf #1E293B Hintergrund, Untertitel blendet ein]**
 
 **F:** Logopädie — das hat irgendwas mit Sprechen zu tun, oder?
 

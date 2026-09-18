@@ -6,13 +6,13 @@ Name: logopaedie-jobs
 
 ## Zweck
 
-`logopaedie-jobs` ist aktuell eine Astro/Vercel-Website fuer Stellen und Karriereinhalte der Praxis fuer
-Logopaedie Simsek. Sie ist zum jetzigen Zeitpunkt keine offene Jobboerse und keine Plattform fuer externe
+`logopaedie-jobs` ist aktuell eine Astro/Vercel-Website fuer Stellen und Karriereinhalte der Praxis für Logopädie Şimşek.
+Sie ist zum jetzigen Zeitpunkt keine offene Jobboerse und keine Plattform fuer externe
 Arbeitgeberanzeigen.
 
 ## Aktuelle Produktgrenze
 
-- Stellenangebote beziehen sich auf die Praxis fuer Logopaedie Simsek.
+- Stellenangebote beziehen sich auf die Praxis für Logopädie Şimşek.
 - Externe Arbeitgeber duerfen derzeit keine Anzeigen einreichen.
 - Ein oeffentlicher Mehr-Arbeitgeber-Flow ist nicht freigegeben.
 - Supabase, Datenbanktabellen, Admin-Moderation und Arbeitgeber-Self-Service sind aktuell kein Zielbild.
