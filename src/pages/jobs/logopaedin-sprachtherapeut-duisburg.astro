@@ -5,7 +5,8 @@ import Navigation from '../../components/Navigation.astro';
 import Footer from '../../components/Footer.astro';
 import PracticeBrand from '../../components/PracticeBrand.astro';
 import ApplicationContact from '../../components/ApplicationContact.astro';
-import sucheImg from '../../assets/suche.jpg';
+import TeamProof from '../../components/TeamProof.astro';
+import teamGroupImg from '../../assets/team/team-group-editorial-draft.png';
 import praxisImg from '../../assets/praxis-bild-2.jpg';
 
 const canonicalURL = 'https://xn--logopdiejobs-kcb.de/jobs/logopaedin-sprachtherapeut-duisburg/';
@@ -178,13 +179,11 @@ const faqSchema = {
             <div class="relative group max-w-[620px] xl:max-w-[520px] mx-auto xl:mr-0">
               <div class="rounded-3xl md:rounded-3xl overflow-hidden shadow-2xl border-8 border-white relative bg-slate-50 max-w-[620px] xl:max-w-[520px] mx-auto xl:mr-0">
                 <Image
-                  src={sucheImg}
-                  alt="Therapieraum der Praxis für Logopädie Şimşek in Duisburg"
-                  width={900}
-                  height={506}
-                  widths={[320, 480, 640, 900]}
+                  src={teamGroupImg}
+                  alt="Redaktionell zusammengesetzte Teamdarstellung von Mara Nießalla, Şeyma Bozoğlan, Kristina Imping und Emel Şimşek-Uçar"
+                  widths={[480, 640, 900, 1200, 1536]}
                   sizes="(max-width: 1279px) calc(100vw - 64px), 520px"
-                  class="w-full h-auto object-cover transform transition duration-700 group-hover:scale-105"
+                  class="w-full aspect-[3/2] object-cover object-center transform transition duration-700 group-hover:scale-[1.025]"
                   loading="eager"
                   fetchpriority="high"
                 />
@@ -228,6 +227,8 @@ const faqSchema = {
     </section>
 
     <ApplicationContact />
+
+    <TeamProof />
 
     <section class="py-14 md:py-24 bg-slate-50 relative">
       <div class="max-w-7xl mx-auto px-6">

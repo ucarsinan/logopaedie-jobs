@@ -1,0 +1,90 @@
+---
+import { Image } from 'astro:assets';
+import onboardingImg from '../assets/team/team-onboarding-editorial-draft.png';
+import specialtiesImg from '../assets/team/team-specialties-editorial-draft.png';
+
+const team = [
+  {
+    name: 'Mara Nießalla',
+    focus: 'Erwachsenentherapie',
+  },
+  {
+    name: 'Şeyma Bozoğlan',
+    focus: 'Bilinguale Therapie DE/TR · Kindersprache · Aphasie',
+  },
+  {
+    name: 'Kristina Imping',
+    focus: 'Tiergestützte Therapie · Fütterstörungen',
+  },
+  {
+    name: 'Emel Şimşek-Uçar',
+    focus: 'Praxisleitung · bilinguale Diagnostik und Therapie',
+  },
+];
+---
+
+<section aria-labelledby="team-heading" class="py-14 md:py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-[1.08fr_0.92fr] gap-8 lg:gap-14 items-center">
+      <figure class="min-w-0">
+        <div class="overflow-hidden rounded-3xl border border-slate-100 bg-[#faf8f5] shadow-xl shadow-slate-200/50">
+          <Image
+            src={specialtiesImg}
+            alt="Gestaltete Portraitcollage von Mara Nießalla, Şeyma Bozoğlan, Kristina Imping und Emel Şimşek-Uçar mit Motiven ihrer fachlichen Schwerpunkte"
+            widths={[480, 768, 1024, 1536]}
+            sizes="(max-width: 1023px) calc(100vw - 48px), 54vw"
+            class="w-full h-auto"
+            loading="lazy"
+          />
+        </div>
+        <figcaption class="mt-3 text-xs text-slate-500">Gestaltete Teamdarstellung aus freigegebenen Einzelporträts.</figcaption>
+      </figure>
+
+      <div>
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-simsek-green/10 text-simsek-green border border-simsek-green/20 mb-4">
+          Dein zukünftiges Team
+        </span>
+        <h2 id="team-heading" class="text-3xl md:text-5xl font-semibold text-slate-900 leading-tight mb-5">Vier Menschen. Unterschiedliche Schwerpunkte.</h2>
+        <p class="text-base md:text-lg text-slate-600 leading-relaxed mb-7">
+          Du arbeitest nicht neben anonymen Profilen, sondern mit einem vierköpfigen Team. Eigene fachliche Schwerpunkte sind willkommen und können weiterentwickelt werden.
+        </p>
+
+        <ul class="border-t border-slate-200">
+          {team.map((person) => (
+            <li class="grid sm:grid-cols-[minmax(150px,0.72fr)_minmax(0,1.28fr)] gap-1 sm:gap-5 py-4 border-b border-slate-200">
+              <strong class="text-slate-900">{person.name}</strong>
+              <span class="text-sm text-slate-600 leading-relaxed">{person.focus}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-14 md:mt-20 grid lg:grid-cols-[0.88fr_1.12fr] gap-8 lg:gap-14 items-center rounded-3xl bg-[#e6f4f1] p-5 md:p-8 lg:p-10">
+      <div class="order-2 lg:order-1">
+        <p class="text-xs font-bold uppercase tracking-widest text-simsek-green mb-3">Sicher ankommen</p>
+        <h3 class="text-3xl md:text-4xl font-semibold text-slate-900 leading-tight mb-4">Du startest nicht allein.</h3>
+        <p class="text-base md:text-lg text-slate-600 leading-relaxed mb-6">
+          Deine Einarbeitung ist strukturiert, dein Terminplan wächst schrittweise und bei Fragen ist immer eine Ansprechperson da. Das gilt für Berufsanfänger:innen genauso wie für erfahrene Kolleg:innen.
+        </p>
+        <a href="#bewerbung" class="inline-flex min-h-11 items-center justify-center px-6 py-3 bg-simsek-green text-white text-sm font-bold rounded-lg shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 no-underline">
+          Unverbindlich kennenlernen
+        </a>
+      </div>
+
+      <figure class="order-1 lg:order-2 min-w-0">
+        <div class="overflow-hidden rounded-2xl bg-white shadow-lg">
+          <Image
+            src={onboardingImg}
+            alt="Gestaltete Teamcollage als Sinnbild für strukturierte Einarbeitung, Austausch und schrittweisen Terminaufbau"
+            widths={[480, 768, 1024, 1536]}
+            sizes="(max-width: 1023px) calc(100vw - 88px), 52vw"
+            class="w-full h-auto"
+            loading="lazy"
+          />
+        </div>
+        <figcaption class="mt-3 text-xs text-slate-500">Editoriale Collage – keine dokumentarische Praxisszene.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
