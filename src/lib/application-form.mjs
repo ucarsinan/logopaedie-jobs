@@ -6,9 +6,13 @@ export const KNOWN_JOBS = Object.freeze({
 
 export const CONTACT_PATTERN_SOURCE = String.raw`(?:[^\s@]+@[^\s@]+\.[^\s@]+|\+?(?=(?:(?:\s|\(|\)|\.|/|-|‐|‑|‒|–|—|−)*\d){6})(?:\d|\s|\(|\)|\.|/|-|‐|‑|‒|–|—|−)+)`;
 
-const ALLOWED_FIELDS = new Set(['name', 'kontakt', 'nachricht', 'stelle', 'website']);
+const ALLOWED_FIELDS = new Set(['name', 'kontakt', 'nachricht', 'stelle', 'website', 'quelle']);
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_PATTERN = /^\+?\d{6,}$/;
+const MAX_SOURCE_LENGTH = 200;
+// Kampagnenkennungen bestehen aus Buchstaben, Ziffern und Trennzeichen.
+// Alles andere faellt weg, bevor der Wert in eine E-Mail geschrieben wird.
+const UNSAFE_SOURCE_CHARS = /[^A-Za-z0-9 ._:|/=&+-]+/g;
 
 /**
  * @typedef {object} ApplicationData
@@ -16,6 +20,7 @@ const PHONE_PATTERN = /^\+?\d{6,}$/;
  * @property {string} contact
  * @property {string} message
  * @property {string} jobSlug
+ * @property {string} [source]
  * @property {string} [replyTo]
  */
 
@@ -45,6 +50,19 @@ function isEmail(value) {
  */
 function isPhone(value) {
   return PHONE_PATTERN.test(value.replace(/[\s()./\-\u2010\u2011\u2012\u2013\u2014\u2212]/g, ''));
+}
+
+/**
+ * Reduziert die vom Client gelieferte Herkunft auf ein kurzes, druckbares
+ * Kuerzel. Verwirft niemals die Bewerbung: ein unbrauchbarer Wert wird
+ * stillschweigend zu einem leeren String, damit eine echte Bewerbung
+ * trotzdem ankommt.
+ *
+ * @param {string | null} value
+ * @returns {string}
+ */
+function sanitizeSource(value) {
+  return normalize(value).replace(UNSAFE_SOURCE_CHARS, '').slice(0, MAX_SOURCE_LENGTH).trim();
 }
 
 /**
@@ -94,6 +112,9 @@ export function parseApplicationForm(body) {
 
   /** @type {ApplicationData} */
   const data = { name, contact, message, jobSlug };
+
+  const source = sanitizeSource(body.get('quelle'));
+  if (source) data.source = source;
 
   if (isEmail(contact)) data.replyTo = contact;
 

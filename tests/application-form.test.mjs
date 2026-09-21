@@ -180,3 +180,46 @@ test('rejects unknown fields before classifying a filled honeypot as a bot', () 
     fields: ['neutral'],
   });
 });
+
+const CRLF = String.fromCharCode(13, 10);
+
+test('nimmt die Herkunft entgegen und reicht sie als source durch', () => {
+  const quelle = 'meta | paid_social | recruiting_duisburg | 52564079917169 | Instagram_Feed';
+  const result = parseApplicationForm(form({ quelle }));
+
+  assert.equal(result.ok, true);
+  assert.equal(result.data.source, quelle);
+});
+
+test('laesst source weg, wenn keine Herkunft mitgeschickt wird', () => {
+  const result = parseApplicationForm(form());
+
+  assert.equal(result.ok, true);
+  assert.equal(Object.hasOwn(result.data, 'source'), false);
+});
+
+test('entfernt Zeilenumbrueche und Sonderzeichen aus der Herkunft', () => {
+  const result = parseApplicationForm(form({
+    quelle: 'meta' + CRLF + 'Bcc: angreifer@example.test' + CRLF + '<script>',
+  }));
+
+  assert.equal(result.ok, true);
+  assert.equal(result.data.source.includes(String.fromCharCode(10)), false);
+  assert.equal(result.data.source.includes(String.fromCharCode(13)), false);
+  assert.equal(result.data.source.includes('<'), false);
+  assert.equal(result.data.source.startsWith('meta '), true);
+});
+
+test('kuerzt eine uebergrosse Herkunft auf 200 Zeichen', () => {
+  const result = parseApplicationForm(form({ quelle: 'a'.repeat(500) }));
+
+  assert.equal(result.ok, true);
+  assert.equal(result.data.source.length, 200);
+});
+
+test('eine unbrauchbare Herkunft weist die Bewerbung nicht ab', () => {
+  const result = parseApplicationForm(form({ quelle: String.fromCharCode(0, 7) + '\u{1F600}' }));
+
+  assert.equal(result.ok, true);
+  assert.equal(Object.hasOwn(result.data, 'source'), false);
+});

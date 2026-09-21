@@ -214,3 +214,21 @@ test('application mail carries the internal deadline and the call-first note', (
   assert.match(mail.text, /Antwort fällig bis: Fr, 18\.09\.2026, 21:30 Uhr/);
   assert.match(mail.text, /Bitte zuerst anrufen/);
 });
+
+test('schreibt die Herkunft als eigene Zeile in die Mail', () => {
+  const mail = buildApplicationMail(
+    { ...DATA, source: 'meta | paid_social | recruiting_duisburg' },
+    CONFIG,
+  );
+
+  assert.equal(
+    mail.text.split(String.fromCharCode(10)).includes('Quelle: meta | paid_social | recruiting_duisburg'),
+    true,
+  );
+});
+
+test('laesst die Quelle-Zeile weg, wenn keine Herkunft bekannt ist', () => {
+  const mail = buildApplicationMail(DATA, CONFIG);
+
+  assert.equal(mail.text.includes('Quelle:'), false);
+});

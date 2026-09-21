@@ -160,6 +160,7 @@ export function buildApplicationMail(data, config) {
       `Name: ${data.name}`,
       `Kontakt: ${data.contact}`,
       ...(data.message ? ['', 'Nachricht:', data.message] : []),
+      ...(data.source ? ['', `Quelle: ${data.source}`] : []),
       '',
       `Antwort fällig bis: ${formatResponseDeadline(data.receivedAt ?? new Date())}`,
       'Bitte zuerst anrufen. Eine kurze Rückmeldung genügt für die Frist.',
