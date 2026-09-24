@@ -2,186 +2,44 @@
 import Logo from './Logo.astro';
 
 const { pathname } = Astro.url;
-
-const isHome = pathname === '/';
-const applicationHref = pathname.replace(/\/$/, '') === '/jobs/logopaedin-sprachtherapeut-duisburg'
-  ? '#bewerbung'
-  : '/jobs/logopaedin-sprachtherapeut-duisburg/#bewerbung';
-
-const anchorLinks = [
-  { href: '/#aufgaben', label: 'Was dich erwartet' },
-  { href: '/#anforderungen', label: 'Anforderungen' },
-  { href: '/#benefits', label: 'Vorteile' },
-];
-
+const isContact = pathname.replace(/\/$/, '') === '/kontakt';
 const pageLinks = [
-  { href: '/jobs/logopaedin-sprachtherapeut-duisburg/', label: 'Aktuelle Stellen', active: pathname.startsWith('/jobs') },
+  { href: '/jobs/logopaedin-sprachtherapeut-duisburg/', label: 'Team & Stelle', active: pathname.startsWith('/jobs') },
   { href: '/berufshandbuch/', label: 'Berufshandbuch', active: pathname.startsWith('/berufshandbuch') },
-  { href: '/gehaltsrechner/', label: 'Gehaltsrechner', active: pathname === '/gehaltsrechner/' || pathname.startsWith('/gehaltsrechner') },
+  { href: '/gehaltsrechner/', label: 'Gehaltsrechner', active: pathname.startsWith('/gehaltsrechner') },
 ];
-
-const pageLinkClass = (active: boolean) => [
-  'px-4 py-2 text-[13px] font-semibold rounded-full transition-all duration-200 no-underline',
-  active
-    ? 'bg-simsek-green/10 text-simsek-green ring-1 ring-inset ring-simsek-green/30'
-    : 'text-slate-500 hover:text-slate-900 hover:bg-slate-100',
-].join(' ');
 ---
 
-<nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100/80">
-  <!-- Accent stripe -->
-  <div class="absolute top-0 left-0 right-0 h-[2px] bg-simsek-green "></div>
-
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 h-[68px] flex items-center justify-between gap-3">
-
-    <!-- Logo -->
-    <a href="/" class="block shrink-0 hover:opacity-85 transition-opacity duration-200" aria-label="Zur Startseite">
-      <Logo class="h-10 md:h-11 w-auto" />
+<nav aria-label="Hauptnavigation" class="sticky top-0 z-50 border-b border-slate-100/80 bg-white/95 backdrop-blur-md">
+  <div class="absolute top-0 left-0 right-0 h-0.5 bg-simsek-green" aria-hidden="true"></div>
+  <div class="mx-auto flex h-[68px] max-w-7xl items-center justify-between gap-4 px-4 sm:px-6">
+    <a href="/" aria-label="Zur Startseite" class="shrink-0 rounded-lg transition-opacity hover:opacity-85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-simsek-green focus-visible:ring-offset-4">
+      <Logo class="h-10 w-auto md:h-11" />
     </a>
-
-    <!-- Desktop Nav -->
-    <div class="hidden xl:flex items-center gap-1">
-
-      <!-- Left zone: anchor links always reserve their layout space.
-           On sub-pages they become invisible, Home link overlays them absolutely. -->
-      <div class="relative flex items-center">
-        <div class={['flex items-center', isHome ? '' : 'invisible pointer-events-none select-none'].join(' ')}>
-          {anchorLinks.map(link => (
-            <a
-              href={link.href}
-              class="flex items-center gap-1 px-3 py-2 text-[12px] font-medium text-slate-500 hover:text-slate-700 hover:bg-slate-50 rounded-lg transition-colors duration-150 no-underline"
-            >
-              <svg class="w-3 h-3 shrink-0 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-              {link.label}
-            </a>
-          ))}
-        </div>
-        {!isHome && (
-          <div class="absolute inset-0 flex items-center">
-            <a
-              href="/"
-              class="flex items-center gap-1 px-3 py-2 text-[12px] font-medium text-slate-500 hover:text-slate-700 hover:bg-slate-50 rounded-lg transition-colors duration-150 no-underline"
-            >
-              <svg class="w-3 h-3 shrink-0 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-              </svg>
-              Home
-            </a>
-          </div>
-        )}
-        <div class="w-px h-4 bg-slate-200 mx-2 flex-none"></div>
+    <div class="ml-auto flex items-center gap-2 sm:gap-4 lg:gap-8">
+      <div class="hidden items-center gap-7 lg:flex">
+        {pageLinks.map(link => (
+          <a href={link.href} aria-current={link.active ? 'page' : undefined} class={[
+            'inline-flex min-h-11 items-center border-b-2 px-0.5 py-2 text-[15px] font-medium no-underline transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-simsek-green',
+            link.active ? 'border-simsek-green text-slate-900' : 'border-transparent text-slate-600 hover:border-slate-300 hover:text-slate-900',
+          ].join(' ')}>{link.label}</a>
+        ))}
       </div>
-
-      {pageLinks.map(link => (
-        <a href={link.href} class={pageLinkClass(link.active)} aria-current={link.active ? 'page' : undefined}>{link.label}</a>
-      ))}
-    </div>
-
-    <!-- Desktop Right -->
-    <div class="hidden xl:flex items-center gap-4">
-      <a
-        href="https://logopaedie-simsek.de/karriere/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="text-[12px] font-semibold text-slate-500 hover:text-slate-700 transition-colors duration-150 no-underline"
-      >
-        Zur Praxis ↗
-      </a>
-      <a
-        href={applicationHref}
-        class="inline-flex min-h-11 items-center gap-1.5 px-5 py-2.5 bg-simsek-green text-white text-[13px] font-bold rounded-lg shadow-md  hover:shadow-lg  hover:-translate-y-0.5  transition-all duration-200 no-underline"
-      >
-        Kennenlernen
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-        </svg>
-      </a>
-    </div>
-
-    <!-- Mobile: CTA + Hamburger -->
-    <div class="flex xl:hidden items-center gap-2.5">
-      <a
-        href={applicationHref}
-        class="inline-flex min-h-11 items-center gap-1 px-4 py-2 bg-simsek-green text-white text-[13px] font-bold rounded-lg shadow-sm no-underline"
-      >
-        Kennenlernen
-        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-        </svg>
-      </a>
-      <button
-        id="mobile-menu-btn"
-        aria-label="Menü öffnen"
-        aria-controls="mobile-menu"
-        aria-expanded="false"
-        class="inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl text-slate-600 transition-colors duration-150 hover:bg-slate-100"
-      >
-        <svg id="icon-open" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-        <svg id="icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
+      <a href="/kontakt/" aria-current={isContact ? 'page' : undefined} class="inline-flex min-h-11 items-center justify-center rounded-lg bg-simsek-green px-5 py-2.5 text-sm font-bold text-white no-underline transition-colors hover:bg-simsek-green/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-simsek-green focus-visible:ring-offset-4 sm:text-[15px]">Kontakt</a>
+      <button id="mobile-menu-btn" type="button" aria-label="Menü öffnen" aria-controls="mobile-menu" aria-expanded="false" class="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg text-slate-600 transition-colors hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-simsek-green lg:hidden">
+        <svg id="icon-open" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+        <svg id="icon-close" class="hidden h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path stroke-linecap="round" d="m6 6 12 12M6 18 18 6" /></svg>
       </button>
     </div>
-
   </div>
-
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden xl:hidden border-t border-slate-100 bg-white/98">
-    <div class="max-w-7xl mx-auto px-4 py-3 space-y-0.5">
-
-      {!isHome && (
-        <a href="/" class="mobile-nav-link flex min-h-11 items-center gap-2 px-4 py-3 text-[13px] font-semibold text-slate-700 hover:bg-slate-50 rounded-xl no-underline transition-colors duration-150">
-          <span class="w-1.5 h-1.5 rounded-full bg-slate-300 shrink-0"></span>
-          Home
-        </a>
-      )}
-
-      {isHome && (
-        <div>
-          <p class="px-4 pt-2 pb-1 text-[10px] font-bold uppercase tracking-widest text-slate-500">Auf dieser Seite</p>
-          {anchorLinks.map(link => (
-            <a href={link.href} class="mobile-nav-link flex min-h-11 items-center gap-2 px-4 py-3 text-[13px] font-medium text-slate-500 hover:text-slate-700 hover:bg-slate-50 rounded-xl no-underline transition-colors duration-150">
-              <svg class="w-3.5 h-3.5 shrink-0 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-              {link.label}
-            </a>
-          ))}
-          <div class="my-2 mx-4 border-t border-slate-100"></div>
-          <p class="px-4 pb-1 text-[10px] font-bold uppercase tracking-widest text-slate-500">Seiten</p>
-        </div>
-      )}
-
+  <div id="mobile-menu" class="hidden border-t border-slate-100 bg-white lg:hidden">
+    <div class="mx-auto max-w-7xl divide-y divide-slate-100 px-6 py-2">
       {pageLinks.map(link => (
-        <a
-          href={link.href}
-          aria-current={link.active ? 'page' : undefined}
-          class={[
-            'mobile-nav-link flex min-h-11 items-center gap-2 px-4 py-3 text-[13px] font-semibold rounded-xl no-underline transition-colors duration-150',
-            link.active ? 'bg-simsek-green/10 text-simsek-green' : 'text-slate-700 hover:bg-slate-50',
-          ].join(' ')}
-        >
-          <span class={['w-1.5 h-1.5 rounded-full shrink-0', link.active ? 'bg-simsek-green' : 'bg-slate-300'].join(' ')}></span>
-          {link.label}
-        </a>
+        <a href={link.href} aria-current={link.active ? 'page' : undefined} class={[
+          'mobile-nav-link flex min-h-11 items-center px-1 py-4 text-base font-medium no-underline transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-simsek-green',
+          link.active ? 'text-simsek-green' : 'text-slate-700 hover:text-simsek-green',
+        ].join(' ')}>{link.label}</a>
       ))}
-
-      <div class="pt-2 mt-1 border-t border-slate-100 pb-2">
-        <a
-          href="https://logopaedie-simsek.de/karriere/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex min-h-11 items-center gap-2 px-4 py-3 text-[13px] font-semibold text-simsek-green hover:bg-slate-50 rounded-xl no-underline transition-colors duration-150"
-        >
-          <span class="w-1.5 h-1.5 rounded-full bg-simsek-green shrink-0"></span>
-          Zur Praxis →
-        </a>
-      </div>
-
     </div>
   </div>
 </nav>

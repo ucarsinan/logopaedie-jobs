@@ -3,8 +3,8 @@ import { sendApplication } from './application-mail.mjs';
 
 const CANONICAL_ORIGIN = 'https://xn--logopdiejobs-kcb.de';
 const SUCCESS_LOCATION = '/bewerbung/danke/';
-const INVALID_FORM_LOCATION = '/jobs/logopaedin-sprachtherapeut-duisburg/?status=invalid_form#bewerbung';
-const UNAVAILABLE_LOCATION = '/jobs/logopaedin-sprachtherapeut-duisburg/?status=service_unavailable#bewerbung';
+const INVALID_FORM_LOCATION = '/kontakt/?status=invalid_form#bewerbung';
+const UNAVAILABLE_LOCATION = '/kontakt/?status=service_unavailable#bewerbung';
 const PUBLIC_INVALID_FIELDS = new Set(['name', 'kontakt', 'nachricht']);
 
 /**

@@ -53,7 +53,7 @@ test('informational recruiting CTAs lead to the central contact flow', async () 
   ]);
 
   for (const source of [salary, handbook, article]) {
-    assert.match(source, /\/jobs\/logopaedin-sprachtherapeut-duisburg\/#bewerbung/);
+    assert.match(source, /\/kontakt\//);
     assert.doesNotMatch(source, /RECRUITING_EMAIL_HREF/);
   }
   assert.match(article, /RecruitingWhatsAppLink/);

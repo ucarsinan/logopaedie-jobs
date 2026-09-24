@@ -48,7 +48,7 @@ const faqs = [
   ['Kann ich in Teilzeit arbeiten?', 'Ja. Teilzeit ist mit variablem Stundenumfang möglich; eine Mindeststundenzahl wird nicht vorgegeben.'],
   ['Ist eine Vier-Tage-Woche möglich?', 'Ja. Eine Vier-Tage-Woche ist möglich.'],
   ['Welche Qualifikation brauche ich?', 'Du brauchst eine staatlich anerkannte und zugelassene Ausbildung oder ein Studium in Logopädie beziehungsweise Sprachtherapie sowie sehr gute Deutschkenntnisse. Berufserfahrung, Türkischkenntnisse und Führerschein sind nicht erforderlich.'],
-  ['Wie kann ich Kontakt aufnehmen?', 'Über das kurze Formular direkt auf der konkreten Stellenanzeige auf LogopädieJobs.de, über WhatsApp für Bewerbungen, telefonisch unter +49 155 10062296, per E-Mail an social@logopaedie-simsek.de oder per Post an die Tonhallenstraße 21, 47051 Duisburg. Ein Lebenslauf ist freiwillig.'],
+  ['Wie kann ich Kontakt aufnehmen?', 'Über das kurze Formular auf unserer Kontaktseite auf LogopädieJobs.de, über WhatsApp, telefonisch unter +49 155 10062296, per E-Mail an social@logopaedie-simsek.de oder per Post an die Tonhallenstraße 21, 47051 Duisburg. Ein Lebenslauf ist freiwillig.'],
 ] as const;
 
 const jobPostingSchema = {
@@ -139,18 +139,18 @@ const faqSchema = {
         <div class="absolute top-1/3 -left-24 w-80 h-80 bg-simsek-blue/10 blur-[110px] rounded-full"></div>
       </div>
 
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-8 md:pt-14 pb-12 md:pb-16">
-        <nav class="mb-8 flex flex-wrap items-center gap-2 text-xs text-slate-500" aria-label="Breadcrumb">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-4 sm:pt-8 lg:pt-10 pb-10 md:pb-16">
+        <nav class="mb-4 sm:mb-6 flex flex-wrap items-center gap-2 text-xs text-slate-500" aria-label="Breadcrumb">
           <a href="/" class="hover:text-simsek-blue no-underline">Startseite</a>
           <span>/</span>
           <span class="text-slate-800 font-semibold">Logopädin Duisburg</span>
         </nav>
 
-        <div class="grid xl:grid-cols-[minmax(0,1.08fr)_minmax(360px,0.82fr)] gap-10 xl:gap-14 items-start">
-          <div class="min-w-0 space-y-7 animate-fade-in relative z-10">
+        <div class="grid lg:grid-cols-[minmax(0,1.08fr)_minmax(320px,0.82fr)] gap-6 sm:gap-8 xl:gap-14 items-start">
+          <div class="min-w-0 space-y-4 sm:space-y-5 animate-fade-in relative z-10">
             <div>
-              <PracticeBrand class="mb-5" />
-              <h1 class="max-w-4xl text-[clamp(1.75rem,8vw,2.25rem)] sm:text-5xl lg:text-6xl font-semibold text-slate-900 leading-[1.03] tracking-tight normal-case">
+              <PracticeBrand class="mb-4" />
+              <h1 class="max-w-4xl text-[clamp(1.75rem,8vw,2.25rem)] sm:text-4xl xl:text-6xl font-semibold text-slate-900 leading-[1.03] tracking-tight normal-case">
                 Du bist<br />
                 <span class="text-simsek-green">Logopäd:in?</span>
                 <span class="block mt-3 text-base sm:text-xl leading-snug tracking-normal">Oder Sprachtherapeut:in (m/w/d)</span>
@@ -158,7 +158,7 @@ const faqSchema = {
             </div>
 
             <p class="text-base sm:text-xl text-slate-600 leading-relaxed max-w-2xl">
-              <strong class="block text-xl sm:text-2xl text-slate-900 mb-3">Sehr gutes Gehalt + Wertschätzung.</strong>
+              <strong class="block text-xl sm:text-2xl text-slate-900 mb-3">Gut verdienen. Auf Augenhöhe zusammenarbeiten.</strong>
               Wir suchen Verstärkung für unser Team. Du kannst mitentscheiden, wie wir unseren Praxisalltag gestalten – und dabei sehr gut verdienen.
             </p>
 
@@ -167,17 +167,16 @@ const faqSchema = {
               <p class="text-sm sm:text-base text-slate-600">brutto/Monat bei Vollzeit · je nach Erfahrung</p>
               <p class="text-lg font-bold text-simsek-green">+ Weihnachtsgeld</p>
             </div>
-            <p class="text-base text-slate-600 leading-relaxed max-w-2xl">Deine Doku sowie Vor- und Nachbereitung gehören zur Arbeitszeit. Emel therapiert selbst mit und ist als Kollegin und Inhaberin an deiner Seite.</p>
 
             <div class="flex flex-col sm:flex-row flex-wrap gap-3 pt-2">
-              <a href="#bewerbung" class="inline-flex min-h-11 items-center justify-center gap-2.5 px-6 py-3.5 bg-simsek-green text-white text-sm font-bold rounded-lg shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 no-underline">
+              <a href="/kontakt/" class="inline-flex min-h-11 items-center justify-center gap-2.5 px-6 py-3.5 bg-simsek-green text-white text-sm font-bold rounded-lg shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 no-underline">
                 Unverbindlich kennenlernen
               </a>
             </div>
           </div>
 
-          <div class="min-w-0 w-full relative xl:justify-self-end">
-            <div class="mb-8 xl:mb-5 hidden sm:flex items-center justify-center xl:h-[72px]">
+          <div class="min-w-0 w-full relative pb-6 lg:pb-0 lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:justify-self-end">
+            <div class="mb-5 hidden sm:flex items-center justify-center xl:h-[72px]">
                 <div class="inline-flex shrink-0 items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 shadow-sm">
                   <span class="w-2 h-2 shrink-0 rounded-full bg-simsek-green animate-pulse" aria-hidden="true"></span>
                   <span class="text-xs sm:text-sm font-medium text-slate-600 whitespace-nowrap">Stellen verfügbar</span>
@@ -189,7 +188,7 @@ const faqSchema = {
                   src={teamGroupImg}
                   alt="Redaktionell zusammengesetzte Teamdarstellung von Mara Nießalla, Şeyma Bozoğlan, Kristina Imping und Emel Şimşek-Uçar"
                   widths={[480, 640, 900, 1200, 1536]}
-                  sizes="(max-width: 1279px) calc(100vw - 64px), 520px"
+                  sizes="(max-width: 767px) calc(100vw - 64px), (max-width: 1023px) 604px, (max-width: 1279px) 40vw, 520px"
                   class="w-full aspect-[3/2] object-cover object-center transform transition duration-700 group-hover:scale-[1.025]"
                   loading="eager"
                   fetchpriority="high"
@@ -213,6 +212,7 @@ const faqSchema = {
               </div>
             </div>
           </div>
+          <p class="text-base text-slate-600 leading-relaxed max-w-2xl lg:col-start-1 lg:row-start-2">Deine Doku sowie Vor- und Nachbereitung gehören zur Arbeitszeit. Emel therapiert selbst mit und ist als Kollegin und Inhaberin an deiner Seite.</p>
         </div>
 
         <dl class="mt-8 sm:mt-14 grid sm:grid-cols-3 gap-3 sm:gap-4">
@@ -250,7 +250,7 @@ const faqSchema = {
               Du bringst dich fachlich ein und entscheidest im Praxisalltag mit. Für Doku, Vor- und Nachbereitung ist Arbeitszeit eingeplant.
             </p>
           </div>
-          <a href="#bewerbung" class="hidden md:inline-flex min-h-11 items-center justify-center px-6 py-3 bg-white text-slate-700 text-sm font-bold rounded-lg border-2 border-slate-200 hover:border-simsek-green hover:text-slate-900 transition-all duration-200 no-underline">
+          <a href="/kontakt/" class="hidden md:inline-flex min-h-11 items-center justify-center px-6 py-3 bg-white text-slate-700 text-sm font-bold rounded-lg border-2 border-slate-200 hover:border-simsek-green hover:text-slate-900 transition-all duration-200 no-underline">
             Unverbindlich kennenlernen
           </a>
         </div>
@@ -268,7 +268,7 @@ const faqSchema = {
               <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>Intensive Einarbeitung, schrittweiser Terminaufbau und jederzeit eine Ansprechperson</span></li>
               <li class="flex gap-3"><span class="text-simsek-green font-bold">✓</span><span>Eigene fachliche Schwerpunkte; Berufsanfänger:innen willkommen</span></li>
             </ul>
-            <a href="#bewerbung" class="mt-6 min-h-11 w-full inline-flex items-center justify-center gap-2.5 px-5 py-3 bg-simsek-green text-white text-sm font-bold rounded-lg shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 no-underline">
+            <a href="/kontakt/" class="mt-6 min-h-11 w-full inline-flex items-center justify-center gap-2.5 px-5 py-3 bg-simsek-green text-white text-sm font-bold rounded-lg shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 no-underline">
               Unverbindlich kennenlernen
             </a>
           </aside>

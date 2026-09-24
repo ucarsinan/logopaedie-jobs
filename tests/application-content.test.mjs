@@ -3,6 +3,7 @@ import { access, readFile } from 'node:fs/promises';
 import test from 'node:test';
 
 const CONTACT_PATH = new URL('../src/components/ApplicationContact.astro', import.meta.url);
+const ALTERNATIVES_PATH = new URL('../src/components/ContactAlternatives.astro', import.meta.url);
 const ABOUT_PATH = new URL('../src/components/About.astro', import.meta.url);
 const TASKS_PATH = new URL('../src/components/Aufgaben.astro', import.meta.url);
 const HERO_PATH = new URL('../src/components/Hero.astro', import.meta.url);
@@ -15,12 +16,12 @@ const THANK_YOU_PATH = new URL('../src/pages/bewerbung/danke.astro', import.meta
 const APPLICATION_ENDPOINT_PATH = new URL('../src/pages/bewerbung/senden/index.ts', import.meta.url);
 const RESERVED_API_ENDPOINT_PATH = new URL('../src/pages/api/bewerbung/index.ts', import.meta.url);
 
-const CONTACT_ANSWER = 'Über das kurze Formular direkt auf der konkreten Stellenanzeige auf LogopädieJobs.de, über WhatsApp für Bewerbungen, telefonisch unter +49 155 10062296, per E-Mail an social@logopaedie-simsek.de oder per Post an die Tonhallenstraße 21, 47051 Duisburg. Ein Lebenslauf ist freiwillig.';
+const CONTACT_ANSWER = 'Über das kurze Formular auf unserer Kontaktseite auf LogopädieJobs.de, über WhatsApp, telefonisch unter +49 155 10062296, per E-Mail an social@logopaedie-simsek.de oder per Post an die Tonhallenstraße 21, 47051 Duisburg. Ein Lebenslauf ist freiwillig.';
 
 test('the complete green application card links to the central form', async () => {
   const about = await readFile(ABOUT_PATH, 'utf8');
 
-  assert.match(about, /<a[\s\S]*?href="\/jobs\/logopaedin-sprachtherapeut-duisburg\/#bewerbung"[\s\S]*?aria-label="Jetzt unverbindlich Kontakt aufnehmen"[\s\S]*?>[\s\S]*?Dabei\?[\s\S]*?Kennenlernen[\s\S]*?<\/a>/);
+  assert.match(about, /<a[\s\S]*?href="\/kontakt\/"[\s\S]*?aria-label="Jetzt unverbindlich Kontakt aufnehmen"[\s\S]*?>[\s\S]*?Dabei\?[\s\S]*?Kennenlernen[\s\S]*?<\/a>/);
   assert.doesNotMatch(about, /<a href="\/#apply"/);
 });
 
@@ -35,25 +36,25 @@ test('specialty cards use compact mobile headers and retain their desktop spacin
 
 test('all recruiting contact surfaces use the shared WhatsApp CTA without color overrides', async () => {
   const sources = await Promise.all(
-    [CONTACT_PATH, QUICK_APPLY_PATH, FAQ_PATH].map((path) => readFile(path, 'utf8')),
+    [ALTERNATIVES_PATH, QUICK_APPLY_PATH, FAQ_PATH].map((path) => readFile(path, 'utf8')),
   );
 
   for (const source of sources) {
     assert.match(source, /RecruitingWhatsAppLink/);
-    assert.match(source, /WhatsApp für Bewerbungen/);
+    assert.match(source, /Schreib uns auf WhatsApp/);
     const callSite = source.match(/<RecruitingWhatsAppLink[\s\S]*?\/>/);
     assert.ok(callSite);
     assert.doesNotMatch(callSite[0], /(?:^|\s)(?:!?bg-|!?text-|!?border-(?:white|slate|simsek|emerald))/);
   }
 });
 
-test('home hero adds WhatsApp beside email without adding a third action row', async () => {
+test('home hero gives WhatsApp a full row above two secondary actions', async () => {
   const hero = await readFile(HERO_PATH, 'utf8');
 
   assert.match(hero, /grid grid-cols-2 gap-3 pt-4/);
-  assert.match(hero, /<RecruitingWhatsAppLink[\s\S]*?label="WhatsApp"[\s\S]*?class="w-full"/);
+  assert.match(hero, /<RecruitingWhatsAppLink[\s\S]*?label="Schreib uns auf WhatsApp"[\s\S]*?class="col-span-2 h-12 w-full"/);
   assert.match(hero, /href=\{RECRUITING_EMAIL_HREF\}[^>]*class="[^"]*w-full/);
-  assert.match(hero, /href="\/jobs\/logopaedin-sprachtherapeut-duisburg\/"[^>]*class="[^"]*col-span-2[^"]*w-full/);
+  assert.match(hero, /href="\/jobs\/logopaedin-sprachtherapeut-duisburg\/"[^>]*class="[^"]*min-h-12[^"]*w-full/);
 });
 
 test('form errors do not draw a ring around the direct contact alternatives', async () => {
@@ -63,22 +64,15 @@ test('form errors do not draw a ring around the direct contact alternatives', as
   assert.doesNotMatch(contact, /showStatus\([^\n]*, true\)/);
 });
 
-test('direct contact alternatives precede the form on mobile and remain below the intro on desktop', async () => {
+test('shared alternatives stay before the embedded form and after the standalone form', async () => {
   const contact = await readFile(CONTACT_PATH, 'utf8');
-  const alternativesStart = contact.indexOf('<div id="bewerbung-alternativen"');
-  const alternatives = contact.slice(alternativesStart, contact.indexOf('<script'));
-  const formCardStart = contact.indexOf('rounded-3xl bg-white');
-
-  assert.match(contact, /class="[^\"]*lg:grid-cols-\[minmax\(0,1\.1fr\)_minmax\(300px,0\.9fr\)\][^\"]*"/);
-  assert.match(contact, /class="[^\"]*lg:col-start-1[^\"]*lg:row-start-1[^\"]*"/);
-  assert.match(contact, /<div id="bewerbung-alternativen" class="[^\"]*order-2[^\"]*lg:col-start-1[^\"]*lg:row-start-2/);
-  assert.match(contact, /class="[^\"]*order-3[^\"]*lg:col-start-2[^\"]*lg:row-start-1[^\"]*lg:row-span-2[^\"]*"/);
-  assert.ok(alternativesStart < formCardStart);
-  assert.doesNotMatch(alternatives, /sm:grid-cols-3/);
+  const form = contact.indexOf('<form id="bewerbung-form"');
+  assert.ok(contact.indexOf('{!standalone && <ContactAlternatives />}') < form);
+  assert.ok(contact.indexOf('{standalone && <ContactAlternatives />}') > form);
 });
 
 test('direct phone and email links are full-width and retain their decorative icons', async () => {
-  const contact = await readFile(CONTACT_PATH, 'utf8');
+  const contact = await readFile(ALTERNATIVES_PATH, 'utf8');
 
   assert.match(
     contact,
@@ -95,7 +89,7 @@ test('FAQ, schema and privacy describe WhatsApp as recruiting-only', async () =>
     [FAQ_PATH, FAQ_SCHEMA_PATH, PRIVACY_PATH].map((path) => readFile(path, 'utf8')),
   );
 
-  for (const source of [faq, schema]) assert.match(source, /WhatsApp für Bewerbungen/);
+  for (const source of [faq, schema]) assert.match(source, /über WhatsApp,/);
   assert.match(privacy, /ausschließlich für Bewerbungen/i);
   assert.match(privacy, /keine Gesundheitsdaten/i);
   assert.match(privacy, /sechs Monate/i);
@@ -110,17 +104,17 @@ test('all FAQ contact-way enumerations use the same WhatsApp-inclusive answer', 
   for (const source of [faq, schema, detail]) assert.ok(source.includes(CONTACT_ANSWER));
 });
 
-test('FAQ content points to the central form on the concrete job page', async () => {
+test('FAQ content points to the central contact page', async () => {
   const [faq, schema] = await Promise.all([
     readFile(FAQ_PATH, 'utf8'),
     readFile(FAQ_SCHEMA_PATH, 'utf8'),
   ]);
 
   for (const source of [faq, schema]) {
-    assert.match(source, /konkreten Stellenanzeige auf LogopädieJobs\.de/);
+    assert.match(source, /Kontaktseite auf LogopädieJobs\.de/);
     assert.doesNotMatch(source, /Formular auf logopaedie-simsek\.de\/karriere/);
   }
-  assert.match(faq, /href="\/jobs\/logopaedin-sprachtherapeut-duisburg\/#bewerbung"/);
+  assert.match(faq, /href="\/kontakt\/"/);
 });
 
 test('native browser validation mirrors the required server-side contact shape', async () => {

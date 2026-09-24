@@ -1,0 +1,23 @@
+---
+import { RECRUITING_EMAIL_HREF } from '../lib/recruiting-whatsapp.mjs';
+import RecruitingWhatsAppLink from './RecruitingWhatsAppLink.astro';
+---
+
+<div id="bewerbung-alternativen" class="order-2 border-t border-white/20 pt-6 lg:col-start-1 lg:row-start-2">
+        <p class="mb-3 text-sm font-semibold text-white">Lieber direkt?</p>
+        <div class="grid gap-3">
+          <RecruitingWhatsAppLink
+            label="Schreib uns auf WhatsApp"
+            class="w-full"
+          />
+          <a href="tel:+4915510062296" data-contact-icon="phone" class="min-h-11 inline-flex w-full items-center justify-center gap-2 rounded-lg border border-white/30 bg-white/5 px-4 py-3 text-sm font-bold text-white no-underline transition hover:border-simsek-green hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-simsek-green focus:ring-offset-2 focus:ring-offset-slate-900">
+            <svg class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 0 1 2-2h3.28a1 1 0 0 1 .95.68l1.5 4.5a1 1 0 0 1-.5 1.21l-2.26 1.13a11.04 11.04 0 0 0 5.53 5.53l1.13-2.26a1 1 0 0 1 1.21-.5l4.5 1.5a1 1 0 0 1 .68.95V19a2 2 0 0 1-2 2h-1C10.82 21 3 13.18 3 4V5Z" /></svg>
+            Jetzt anrufen
+          </a>
+          <a href={RECRUITING_EMAIL_HREF} data-contact-icon="mail" class="min-h-11 inline-flex w-full items-center justify-center gap-2 rounded-lg border border-white/30 bg-white/5 px-4 py-3 text-sm font-bold text-white no-underline transition hover:border-simsek-green hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-simsek-green focus:ring-offset-2 focus:ring-offset-slate-900">
+            <svg class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2Z" /></svg>
+            E-Mail schreiben
+          </a>
+        </div>
+        <p class="mt-4 text-xs leading-relaxed text-slate-300">Oder per Post: Praxis für Logopädie Şimşek, Tonhallenstraße 21, 47051 Duisburg.</p>
+      </div>

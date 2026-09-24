@@ -8,7 +8,7 @@ const destination = '/jobs/logopaedin-sprachtherapeut-duisburg/';
 test('current jobs links skip the retired overview in navigation and footer', async () => {
   for (const path of ['src/components/Navigation.astro', 'src/components/Footer.astro']) {
     const source = await read(path);
-    assert.ok(source.includes(`href: '${destination}', label: 'Aktuelle Stellen'`));
+    assert.ok(source.includes(`href: '${destination}', label: 'Team & Stelle'`));
     assert.doesNotMatch(source, /href: '\/jobs\/'/);
   }
 });

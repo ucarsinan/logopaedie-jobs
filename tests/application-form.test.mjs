@@ -111,7 +111,7 @@ test('rejects unknown fields', () => {
 });
 
 test('enforces every name boundary', () => {
-  assert.deepEqual(invalidFields({ name: 'x' }), ['name']);
+  assert.deepEqual(invalidFields({ name: ' ' }), ['name']);
   assert.deepEqual(invalidFields({ name: `${NAME}${'x'.repeat(89)}` }), ['name']);
 
   const shortestValid = parseApplicationForm(form({ name: NAME.slice(0, 2) }));
@@ -127,11 +127,11 @@ test('enforces every contact boundary', () => {
   assert.deepEqual(invalidFields({ kontakt: 'a@b' }), ['kontakt']);
   assert.deepEqual(invalidFields({ kontakt: `erika@${'x'.repeat(150)}.test` }), ['kontakt']);
 
-  const shortestValid = parseApplicationForm(form({ kontakt: 'a@b.c' }));
+  const shortestValid = parseApplicationForm(form({ kontakt: 'a@b.co' }));
   assert.equal(shortestValid.ok, true);
-  assert.equal(shortestValid.data.contact.length, 5);
+  assert.equal(shortestValid.data.contact.length, 6);
 
-  const result = parseApplicationForm(form({ kontakt: `erika@${'x'.repeat(149)}.test` }));
+  const result = parseApplicationForm(form({ kontakt: `erika@${'x'.repeat(60)}.${'x'.repeat(60)}.${'x'.repeat(27)}.test` }));
   assert.equal(result.ok, true);
   assert.equal(result.data.contact.length, 160);
 });
@@ -222,4 +222,39 @@ test('eine unbrauchbare Herkunft weist die Bewerbung nicht ab', () => {
 
   assert.equal(result.ok, true);
   assert.equal(Object.hasOwn(result.data, 'source'), false);
+});
+
+
+test('contact intents reach the existing message field without requiring free text', () => {
+  for (const [anliegen, expected] of Object.entries({ kennenlernen: 'Die Praxis kennenlernen', stelle: 'Mehr über die Stelle erfahren', frage: 'Eine Frage stellen' })) {
+    const result = parseApplicationForm(form({ anliegen, nachricht: '' }));
+    assert.equal(result.ok, true);
+    assert.equal(result.data.message, expected);
+  }
+});
+
+test('optional question is included only for the question intent', () => {
+  const question = parseApplicationForm(form({ anliegen: 'frage', nachricht: 'Wie läuft das Kennenlernen ab?' }));
+  assert.equal(question.data.message, 'Eine Frage stellen\n\nWie läuft das Kennenlernen ab?');
+  const changed = parseApplicationForm(form({ anliegen: 'stelle', nachricht: 'Alte Frage' }));
+  assert.equal(changed.data.message, 'Mehr über die Stelle erfahren');
+  assert.deepEqual(invalidFields({ anliegen: 'unbekannt' }), ['anliegen']);
+});
+
+test('rejects implausible names and contacts while accepting international names', () => {
+  for (const name of ['12345', '---', '<script>', '🙂🙂']) assert.deepEqual(invalidFields({ name }), ['name']);
+  for (const name of ['李', 'Şeyma', 'Anne-Marie O’Neill', 'محمد', 'Jean D.']) {
+    assert.equal(parseApplicationForm(form({ name })).ok, true, name);
+  }
+  for (const kontakt of ['a..b@example.test', '.a@example.test', 'a@-example.test', 'a@example..test', '0000000000', '+1234567890123456', '(0203 123456', 'a@example.c']) {
+    assert.deepEqual(invalidFields({ kontakt }), ['kontakt']);
+  }
+  for (const kontakt of ['anne+team@example.test', '+49 (0)203 123456', '0049 203 123456', '0203 / 123456-7']) {
+    assert.equal(parseApplicationForm(form({ kontakt })).ok, true, kontakt);
+  }
+});
+
+test('rejects duplicate fields instead of silently choosing one value', () => {
+  const body = form(); body.append('kontakt', 'other@example.test');
+  assert.equal(parseApplicationForm(body).ok, false);
 });

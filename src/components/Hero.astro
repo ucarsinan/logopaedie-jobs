@@ -4,46 +4,46 @@ import { Image } from 'astro:assets';
 import PracticeBrand from './PracticeBrand.astro';
 import RecruitingWhatsAppLink from './RecruitingWhatsAppLink.astro';
 import { RECRUITING_EMAIL_HREF } from '../lib/recruiting-whatsapp.mjs';
-import sucheImg from '../assets/suche.jpg';
+import teamGroupImg from '../assets/team/team-group-editorial-draft.png';
 ---
 
-<section class="max-w-7xl mx-auto px-4 sm:px-6 pt-10 md:pt-24 pb-12 md:pb-24 relative">
+<section class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 sm:pt-10 lg:pt-14 pb-12 md:pb-24 relative">
   <div class="absolute inset-0 overflow-hidden pointer-events-none -z-10">
     <div class="absolute -top-24 -right-24 w-96 h-96 bg-simsek-green/10 blur-[120px] rounded-full"></div>
     <div class="absolute top-1/2 -left-24 w-72 h-72 bg-simsek-blue/10 blur-[100px] rounded-full"></div>
   </div>
 
-  <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+  <div class="grid lg:grid-cols-2 gap-8 xl:gap-16 items-start">
 
-    <div class="space-y-8">
+    <div class="space-y-5 sm:space-y-6">
       <PracticeBrand />
 
-      <h1 class="text-3xl sm:text-5xl md:text-7xl font-semibold text-slate-900 leading-[1.05] tracking-tight normal-case">
+      <h1 class="text-3xl sm:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-semibold text-slate-900 leading-[1.05] tracking-tight normal-case">
         Dein Logopädie-Job<br/>
         <span class="text-simsek-green">in Duisburg.</span>
       </h1>
 
       <p class="text-base sm:text-xl text-slate-600 leading-relaxed max-w-lg">
-        <strong class="block text-slate-900 mb-2">Sehr gutes Gehalt + Wertschätzung.</strong> Du kannst mitentscheiden, wie wir unseren Praxisalltag gestalten. Lerne Emel und unser Team kennen – wir suchen Logopäd:innen und Sprachtherapeut:innen (m/w/d).
+        <strong class="block text-slate-900 mb-2">Gut verdienen. Auf Augenhöhe zusammenarbeiten.</strong> Du kannst mitentscheiden, wie wir unseren Praxisalltag gestalten. Lerne Emel und unser Team kennen – wir suchen Logopäd:innen und Sprachtherapeut:innen (m/w/d).
       </p>
 
       <p class="text-base text-slate-600 leading-relaxed"><strong class="text-xl text-slate-900">3.840–4.338 € brutto/Monat</strong> bei Vollzeit, je nach Erfahrung <strong class="block text-simsek-green">+ Weihnachtsgeld</strong></p>
       <p class="text-base text-slate-600 leading-relaxed">Deine Doku sowie Vor- und Nachbereitung gehören zur Arbeitszeit. Vollzeit oder Teilzeit, Vier-Tage-Woche möglich.</p>
-      <div class="grid grid-cols-2 gap-3 pt-4 sm:grid-cols-3">
+      <div class="grid grid-cols-2 gap-3 pt-4">
         <RecruitingWhatsAppLink
-          label="WhatsApp"
-          class="w-full"
+          label="Schreib uns auf WhatsApp"
+          class="col-span-2 h-12 w-full"
         />
         <a
           href={RECRUITING_EMAIL_HREF}
-          class="inline-flex min-h-11 w-full items-center justify-center gap-2 px-3 py-3 text-sm font-bold text-slate-700 no-underline rounded-lg border-2 border-slate-200 bg-white transition-all duration-200 hover:border-simsek-green hover:text-slate-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-simsek-green"
+          class="inline-flex min-h-12 w-full items-center justify-center gap-2 px-3 py-3 text-sm font-bold text-slate-700 no-underline rounded-lg border-2 border-slate-200 bg-white transition-all duration-200 hover:border-simsek-green hover:text-slate-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-simsek-green"
         >
           <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
           E-Mail
         </a>
         <a
           href="/jobs/logopaedin-sprachtherapeut-duisburg/"
-          class="col-span-2 inline-flex min-h-11 w-full items-center justify-center gap-2.5 px-4 py-3 bg-white text-slate-700 text-sm font-bold rounded-lg border-2 border-slate-200 hover:border-simsek-green hover:text-slate-900 transition-all duration-200 no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-simsek-green sm:col-span-1"
+          class="inline-flex min-h-12 w-full items-center justify-center gap-2 px-3 py-3 whitespace-nowrap bg-white text-slate-700 text-sm font-bold rounded-lg border-2 border-slate-200 hover:border-simsek-green hover:text-slate-900 transition-all duration-200 no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-simsek-green"
         >
           <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5h6m-6 4h6m-6 4h3m-5 8h10a2 2 0 002-2V5.8a2 2 0 00-.586-1.414l-1.8-1.8A2 2 0 0015.2 2H7a2 2 0 00-2 2v15a2 2 0 002 2z" />
@@ -53,7 +53,7 @@ import sucheImg from '../assets/suche.jpg';
       </div>
     </div>
 
-    <div class="relative min-w-0">
+    <figure class="relative min-w-0">
       <div class="mb-10 flex justify-center lg:h-[72px] lg:items-center lg:mb-8">
         <div class="inline-flex max-w-full items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm animate-fade-in">
           <span class="w-2 h-2 shrink-0 rounded-full bg-simsek-green animate-pulse"></span>
@@ -64,13 +64,11 @@ import sucheImg from '../assets/suche.jpg';
 
           <div class="rounded-3xl overflow-hidden shadow-2xl border-8 border-white relative bg-slate-50">
           <Image
-            src={sucheImg}
-            alt="Praxis für Logopädie Şimşek Duisburg – Modernes Therapiezimmer"
-            width={900}
-            height={700}
-            widths={[320, 480, 640, 900]}
+            src={teamGroupImg}
+            alt="Redaktionell zusammengesetzte Teamdarstellung von Mara Nießalla, Şeyma Bozoğlan, Kristina Imping und Emel Şimşek-Uçar"
+            widths={[320, 480, 640, 900, 1200]}
             sizes="(max-width: 1023px) calc(100vw - 48px), 520px"
-            class="w-full h-auto object-contain"
+            class="w-full aspect-[3/2] object-cover object-center"
             loading="eager"
             fetchpriority="high"
           />
@@ -92,7 +90,11 @@ import sucheImg from '../assets/suche.jpg';
         </div>
 
       </div>
-    </div>
+      <figcaption class="mt-12 text-base leading-relaxed text-slate-600">
+        <strong class="block text-slate-900">Mara, Şeyma, Kristina und Emel.</strong>
+        Wir freuen uns darauf, dich kennenzulernen.
+      </figcaption>
+    </figure>
 
   </div>
 </section>

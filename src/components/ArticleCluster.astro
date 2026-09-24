@@ -50,7 +50,7 @@ const fmt = (date: Date) => date.toLocaleDateString('de-DE', { day: '2-digit', m
         <p class="mt-2 text-sm leading-6 text-slate-600">{article.data.description}</p>
         <div class="mt-4 flex items-center justify-between gap-4 text-xs text-slate-600">
           <span>{fmt(article.data.pubDate)}</span>
-          <a href={`/berufshandbuch/${article.id}/`} class="font-bold text-simsek-green no-underline hover:text-simsek-blue">
+          <a href={`/berufshandbuch/${article.id}/`} class="inline-flex min-h-11 min-w-11 items-center justify-center px-3 text-sm font-bold text-simsek-green no-underline hover:text-simsek-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-simsek-green">
             Lesen
           </a>
         </div>

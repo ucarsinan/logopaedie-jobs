@@ -115,7 +115,7 @@ test('rejects a body larger than 8 KiB by its actual UTF-8 length', async () => 
 });
 
 test('accepts an actual body of exactly 8 KiB', async () => {
-  const prefix = `${VALID_FORM.toString()}&nachricht=`;
+  const prefix = `${VALID_FORM.toString()}&quelle=`;
   const body = prefix + 'x'.repeat(MAX_BODY_BYTES - utf8Bytes(prefix));
   assert.equal(utf8Bytes(body), MAX_BODY_BYTES);
 
@@ -126,7 +126,7 @@ test('accepts an actual body of exactly 8 KiB', async () => {
 });
 
 test('rejects an over-limit body based on multi-byte UTF-8 length', async () => {
-  const prefix = `${VALID_FORM.toString()}&nachricht=`;
+  const prefix = `${VALID_FORM.toString()}&quelle=`;
   const body = prefix + '€'.repeat(Math.ceil((MAX_BODY_BYTES + 1 - utf8Bytes(prefix)) / 3));
   assert.ok(utf8Bytes(body) > MAX_BODY_BYTES);
 
@@ -208,7 +208,7 @@ test('uses JSON responses for fetch requests that do not explicitly accept JSON'
 
 test('returns invalid_form and fields for invalid JSON requests', async () => {
   const response = await endpoint()({
-    request: request(new URLSearchParams({ ...Object.fromEntries(VALID_FORM), name: 'X' }).toString()),
+    request: request(new URLSearchParams({ ...Object.fromEntries(VALID_FORM), name: '123' }).toString()),
     redirect,
   });
 
@@ -278,7 +278,7 @@ test('uses only fixed native redirects without applicant data', async () => {
   const native = { accept: 'text/html' };
   const success = await endpoint()({ request: request(VALID_FORM.toString(), native), redirect });
   const invalid = await endpoint()({
-    request: request(new URLSearchParams({ ...Object.fromEntries(VALID_FORM), name: 'X' }).toString(), native),
+    request: request(new URLSearchParams({ ...Object.fromEntries(VALID_FORM), name: '123' }).toString(), native),
     redirect,
   });
   const unavailable = await endpoint({ sendApplication: async () => 'unavailable' })({
@@ -288,12 +288,12 @@ test('uses only fixed native redirects without applicant data', async () => {
 
   for (const [response, location] of [
     [success, '/bewerbung/danke/'],
-    [invalid, '/jobs/logopaedin-sprachtherapeut-duisburg/?status=invalid_form#bewerbung'],
-    [unavailable, '/jobs/logopaedin-sprachtherapeut-duisburg/?status=service_unavailable#bewerbung'],
+    [invalid, '/kontakt/?status=invalid_form#bewerbung'],
+    [unavailable, '/kontakt/?status=service_unavailable#bewerbung'],
   ]) {
     assert.equal(response.status, 303);
     assert.equal(response.headers.get('location'), location);
-    assert.doesNotMatch(response.headers.get('location') ?? '', /Erika|erika|Nachricht|kontakt/i);
+    assert.doesNotMatch(response.headers.get('location') ?? '', /Erika|erika|Nachricht|kontakt=/i);
   }
 });
 
@@ -320,7 +320,7 @@ function streamedRequest(chunks, headers = {}, { errorAt, cancelError = false } 
 }
 
 function paddedBytes(size) {
-  const prefix = `${VALID_FORM.toString()}&nachricht=`;
+  const prefix = `${VALID_FORM.toString()}&quelle=`;
   return new TextEncoder().encode(prefix + 'x'.repeat(size - utf8Bytes(prefix)));
 }
 
@@ -397,7 +397,7 @@ test('stream error after a partial body is neutral and never sends', async () =>
 
 test('UTF-8 byte limit applies to raw multibyte input across chunks, also for no-JS', async () => {
   let calls = 0;
-  const bytes = new TextEncoder().encode(`${VALID_FORM.toString()}&nachricht=${'€'.repeat(2800)}`);
+  const bytes = new TextEncoder().encode(`${VALID_FORM.toString()}&quelle=${'€'.repeat(2800)}`);
   const { req, stats } = streamedRequest([bytes.subarray(0, 8190), bytes.subarray(8190)], { accept: 'text/html' });
   const response = await endpoint({ sendApplication: async () => { calls++; return 'sent'; } })({ request: req, redirect });
   assert.equal(response.status, 413);
@@ -501,7 +501,7 @@ test('native error redirects stay on the requesting preview or production origin
       const response = await handler({request: request(body, {origin, accept: 'text/html'}, `${origin}/bewerbung/senden/`), redirect});
       assert.equal(response.status, 303);
       const location = response.headers.get('location');
-      assert.equal(location, `/jobs/${JOB_SLUG}/?status=${code}#bewerbung`);
+      assert.equal(location, `/kontakt/?status=${code}#bewerbung`);
       assert.equal(new URL(location, origin).origin, origin);
     }
     const response = await handler({request: request('qa=preview', {origin}, `${origin}/bewerbung/senden/`), redirect});
