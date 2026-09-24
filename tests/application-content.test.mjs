@@ -9,7 +9,6 @@ const HERO_PATH = new URL('../src/components/Hero.astro', import.meta.url);
 const QUICK_APPLY_PATH = new URL('../src/components/QuickApply.astro', import.meta.url);
 const FAQ_PATH = new URL('../src/components/FaqSection.astro', import.meta.url);
 const FAQ_SCHEMA_PATH = new URL('../src/components/FaqSchema.astro', import.meta.url);
-const JOBS_INDEX_PATH = new URL('../src/pages/jobs/index.astro', import.meta.url);
 const JOB_DETAIL_PATH = new URL('../src/pages/jobs/logopaedin-sprachtherapeut-duisburg.astro', import.meta.url);
 const PRIVACY_PATH = new URL('../src/pages/datenschutz.astro', import.meta.url);
 const THANK_YOU_PATH = new URL('../src/pages/bewerbung/danke.astro', import.meta.url);
@@ -21,7 +20,7 @@ const CONTACT_ANSWER = 'Über das kurze Formular direkt auf der konkreten Stelle
 test('the complete green application card links to the central form', async () => {
   const about = await readFile(ABOUT_PATH, 'utf8');
 
-  assert.match(about, /<a[\s\S]*?href="\/jobs\/logopaedin-sprachtherapeut-duisburg\/#bewerbung"[\s\S]*?aria-label="Jetzt unverbindlich Kontakt aufnehmen"[\s\S]*?>[\s\S]*?Dabei\?[\s\S]*?Jetzt bewerben[\s\S]*?<\/a>/);
+  assert.match(about, /<a[\s\S]*?href="\/jobs\/logopaedin-sprachtherapeut-duisburg\/#bewerbung"[\s\S]*?aria-label="Jetzt unverbindlich Kontakt aufnehmen"[\s\S]*?>[\s\S]*?Dabei\?[\s\S]*?Kennenlernen[\s\S]*?<\/a>/);
   assert.doesNotMatch(about, /<a href="\/#apply"/);
 });
 
@@ -36,7 +35,7 @@ test('specialty cards use compact mobile headers and retain their desktop spacin
 
 test('all recruiting contact surfaces use the shared WhatsApp CTA without color overrides', async () => {
   const sources = await Promise.all(
-    [CONTACT_PATH, QUICK_APPLY_PATH, FAQ_PATH, JOBS_INDEX_PATH].map((path) => readFile(path, 'utf8')),
+    [CONTACT_PATH, QUICK_APPLY_PATH, FAQ_PATH].map((path) => readFile(path, 'utf8')),
   );
 
   for (const source of sources) {

@@ -25,7 +25,6 @@ test('every public page offers a skip link and a focusable main target', async (
     'src/pages/datenschutz.astro',
     'src/pages/impressum.astro',
     'src/pages/gehaltsrechner.astro',
-    'src/pages/jobs/index.astro',
     'src/pages/jobs/logopaedin-sprachtherapeut-duisburg.astro',
     'src/pages/berufshandbuch/index.astro',
     'src/pages/berufshandbuch/[slug].astro',

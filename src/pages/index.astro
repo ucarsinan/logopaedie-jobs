@@ -16,7 +16,7 @@ import FaqSchema from '../components/FaqSchema.astro';
 
 const currentYear = new Date().getFullYear();
 const pageTitle = `Logopädie Jobs Duisburg | Logopädin gesucht ${currentYear}`;
-const pageDescription = "Mehrere unbefristete Logopädie- und Sprachtherapie-Stellen in Duisburg: 23–26 € brutto/Std., 38,5 Std. Vollzeit, variable Teilzeit und 4-Tage-Woche.";
+const pageDescription = "Logopädie-Job in Duisburg: 3.840–4.338 € brutto/Monat bei Vollzeit + Weihnachtsgeld. Entscheide im Team mit. Lerne Emel und uns unverbindlich kennen.";
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
@@ -27,10 +27,10 @@ const pageDescription = "Mehrere unbefristete Logopädie- und Sprachtherapie-Ste
   <Navigation />
   <main id="main-content" tabindex="-1">
     <Hero />
+    <Benefits />
     <Aufgaben />
     <Anforderungen />
     <QuickApply />
-    <Benefits />
     <About />
     <Gallery />
     <FaqSection />

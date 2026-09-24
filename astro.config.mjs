@@ -11,6 +11,7 @@ const excludedSitemapPaths = new Set([
   '/datenschutz/',
   '/gehalt/',
   '/impressum/',
+  '/jobs/',
   '/jobs/neu/',
 ]);
 
