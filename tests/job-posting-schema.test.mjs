@@ -9,7 +9,7 @@ test('the public job detail exposes one truthful JobPosting schema', async () =>
 
   assert.equal((detail.match(/'@type': 'JobPosting'/g) ?? []).length, 1);
   assert.match(detail, /JSON\.stringify\(jobPostingSchema\)/);
-  assert.match(detail, /datePosted: '2026-04-29'/);
+  assert.match(detail, /datePosted: '2026-09-27'/);
   assert.match(detail, /employmentType: \['FULL_TIME', 'PART_TIME'\]/);
   assert.match(detail, /directApply: true/);
   assert.match(detail, /experienceRequirements: 'no requirements'/);
