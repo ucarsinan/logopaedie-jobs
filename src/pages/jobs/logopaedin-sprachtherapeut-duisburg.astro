@@ -6,6 +6,8 @@ import Footer from '../../components/Footer.astro';
 import PracticeBrand from '../../components/PracticeBrand.astro';
 import ApplicationContact from '../../components/ApplicationContact.astro';
 import TeamProof from '../../components/TeamProof.astro';
+import StickyContactBar from '../../components/StickyContactBar.astro';
+import RecruitingWhatsAppLink from '../../components/RecruitingWhatsAppLink.astro';
 import teamGroupImg from '../../assets/team/team-group-editorial-draft.png';
 import praxisImg from '../../assets/praxis-bild-2.jpg';
 
@@ -172,6 +174,7 @@ const faqSchema = {
               <a href="/kontakt/" class="inline-flex min-h-11 items-center justify-center gap-2.5 px-6 py-3.5 bg-simsek-green text-white text-sm font-bold rounded-lg shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 no-underline">
                 Unverbindlich kennenlernen
               </a>
+              <RecruitingWhatsAppLink class="px-6 py-3.5" />
             </div>
           </div>
 
@@ -421,7 +424,10 @@ const faqSchema = {
     </section>
   </main>
 
-  <Footer />
+  <StickyContactBar />
+  <div class="pb-20 md:pb-0">
+    <Footer />
+  </div>
 </Layout>
 
 <style>
