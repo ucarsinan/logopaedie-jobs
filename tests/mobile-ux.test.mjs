@@ -129,7 +129,7 @@ test('the job page keeps a no-script mobile contact bar within thumb reach', asy
 
   assert.match(bar, /<nav[^>]*aria-label="Schnellkontakt"[^>]*class="[^"]*fixed[^"]*bottom-0[^"]*md:hidden/);
   assert.match(bar, /<RecruitingWhatsAppLink/);
-  assert.match(bar, /href="\/kontakt\/"[^>]*class="[^"]*min-h-11/);
+  assert.match(bar, /href="#kontaktformular"[^>]*class="[^"]*min-h-11/);
   assert.doesNotMatch(bar, /<script/i);
   assert.match(page, /import StickyContactBar from/);
   assert.match(page, /<StickyContactBar \/>\s*<div class="pb-20 md:pb-0">\s*<Footer \/>/);
@@ -139,7 +139,19 @@ test('the job page hero offers the WhatsApp shortcut next to the contact flow', 
   const page = await read('src/pages/jobs/logopaedin-sprachtherapeut-duisburg.astro');
   const cta = page.match(/<div class="flex flex-col sm:flex-row[^"]*pt-2">([\s\S]*?)<\/div>\s*<\/div>/)?.[1] ?? '';
 
-  assert.match(cta, /href="\/kontakt\/"/);
+  assert.match(cta, /href="#kontaktformular"/);
   assert.match(cta, /<RecruitingWhatsAppLink/);
   assert.match(page, /import RecruitingWhatsAppLink from/);
+});
+
+test('in-page contact CTAs on the job page jump straight to the embedded form', async () => {
+  const [page, contact] = await Promise.all([
+    read('src/pages/jobs/logopaedin-sprachtherapeut-duisburg.astro'),
+    read('src/components/ApplicationContact.astro'),
+  ]);
+
+  assert.match(contact, /id="kontaktformular"[^>]*class="[^"]*scroll-mt-20/);
+  assert.equal((contact.match(/id="kontaktformular"/g) ?? []).length, 1);
+  assert.equal((page.match(/<a href="#kontaktformular"[^>]*>\s*Unverbindlich kennenlernen/g) ?? []).length, 3);
+  assert.doesNotMatch(page, /<a href="\/kontakt\/"[^>]*>\s*Unverbindlich kennenlernen/);
 });
