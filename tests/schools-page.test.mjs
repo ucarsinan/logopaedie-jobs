@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 
 const PAGE = 'src/pages/schulen.astro';
-const read = (path) => readFile(new URL(`../${path}`, import.meta.url), 'utf8');
+const read = async (path) => (await readFile(new URL(`../${path}`, import.meta.url), 'utf8')).replaceAll('&nbsp;', ' ');
 
 const INTERNSHIP = 'Praktikum nach persönlicher Absprache, für Schüler:innen und Studierende in Deutschland.';
 
@@ -72,4 +72,65 @@ test('schools page canonical keeps the trailing slash configured site-wide', asy
   assert.match(config, /trailingSlash:\s*'always'/);
   assert.match(layout, /new URL\(Astro\.url\.pathname, Astro\.site\)/);
   assert.match(page, /url: 'https:\/\/xn--logopdiejobs-kcb\.de\/schulen\/'/);
+});
+
+test('schools page leads with the career-entry benefit and a searchable title', async () => {
+  const page = await read(PAGE);
+
+  assert.ok(page.includes('Berufseinstieg als Logopäd:in in Duisburg'));
+  assert.match(page, /const pageTitle = 'Berufseinstieg Logopädie Duisburg \| Praxis für Logopädie Şimşek';/);
+  assert.ok(page.includes('Berufsanfänger:innen sind willkommen.'));
+});
+
+test('schools page answers graduates questions with approved wording', async () => {
+  const page = await read(PAGE);
+  const approved = [
+    'Staatlich anerkannte und zugelassene Logopädie oder Sprachtherapie nach Ausbildung oder Studium.',
+    'Sehr gute Deutschkenntnisse sind erforderlich',
+    'Vollzeit umfasst 38,5 Wochenstunden. Teilzeit ist mit flexiblem Stundenumfang möglich.',
+    'Eine Vier-Tage-Woche ist möglich.',
+    'Vierköpfiges Team, flache Hierarchien, wöchentlicher Austausch, Supervision und gemeinsam geplante Aktivitäten.',
+    'Eigene Schwerpunkte sind willkommen und können nach Einstieg aufgebaut werden.',
+    'Fortbildungen werden finanziell und mit zusätzlichen freien Tagen unterstützt',
+    'Eintritt nach Vereinbarung.',
+    'Unverbindlicher Erstkontakt ohne klassische Unterlagen; Lebenslauf freiwillig.',
+  ];
+
+  for (const sentence of approved) assert.ok(page.includes(sentence), `missing: ${sentence}`);
+  assert.match(page, /<dl[\s\S]*<dt[\s\S]*<dd/);
+});
+
+test('schools page has a block for schools using the recruiting contact data', async () => {
+  const page = await read(PAGE);
+
+  assert.ok(page.includes('Für Schulen und Hochschulen'));
+  assert.ok(page.includes('social@logopaedie-simsek.de'));
+  assert.ok(page.includes('+49 155 10062296'));
+});
+
+test('schools page links to the job page and the salary calculator', async () => {
+  const page = await read(PAGE);
+
+  assert.match(page, /href="\/jobs\/logopaedin-sprachtherapeut-duisburg\/"/);
+  assert.match(page, /href="\/gehaltsrechner\/"/);
+});
+
+test('schools page links are keyboard and hover friendly and headings balance', async () => {
+  const page = await read(PAGE);
+  const links = page.match(/<a [^>]*href="[^"]*"[^>]*>/g) ?? [];
+
+  assert.ok(links.length >= 3);
+  for (const link of links) {
+    assert.match(link, /focus-visible:/, `no focus style: ${link}`);
+    assert.match(link, /hover:/, `no hover style: ${link}`);
+  }
+  assert.match(page, /<h1 class="[^"]*text-balance/);
+  assert.match(page, /translate="no"[^>]*>Praxis für Logopädie Şimşek</);
+});
+
+test('footer links to the schools page without touching the main navigation', async () => {
+  const [footer, navigation] = await Promise.all([read('src/components/Footer.astro'), read('src/components/Navigation.astro')]);
+
+  assert.ok(footer.includes("{ href: '/schulen/', label: 'Für Schüler:innen und Studierende' }"));
+  assert.doesNotMatch(navigation, /\/schulen\//);
 });

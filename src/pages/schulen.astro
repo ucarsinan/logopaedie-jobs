@@ -8,8 +8,8 @@ import ContactAlternatives from '../components/ContactAlternatives.astro';
 // Erst auf true setzen, wenn Emel die Zeile „Praktikum“ in EMPLOYER_TRUTH.md bestätigt hat (GATE-002).
 const INTERNSHIP_CONFIRMED = false;
 
-const pageTitle = 'Für Schüler:innen und Studierende | Praxis für Logopädie Şimşek';
-const pageDescription = 'Direkter Einstieg nach dem Abschluss in der Praxis für Logopädie Şimşek in Duisburg: Einarbeitung, eingeplante Dokumentationszeit und Hospitation oder Probearbeit.';
+const pageTitle = 'Berufseinstieg Logopädie Duisburg | Praxis für Logopädie Şimşek';
+const pageDescription = 'Berufsanfänger:innen sind willkommen: Einarbeitung, eingeplante Dokumentationszeit, Hospitation oder Probearbeit in Duisburg.';
 ---
 
 <Layout
@@ -25,45 +25,102 @@ const pageDescription = 'Direkter Einstieg nach dem Abschluss in der Praxis für
     <article class="mx-auto max-w-4xl px-4 py-10 sm:px-6 md:py-24">
       <header class="mb-12">
         <PracticeBrand class="mb-6" />
-        <h1 class="mb-6 text-2xl font-semibold leading-tight text-slate-900 sm:text-4xl md:text-5xl">
+        <span class="mb-6 inline-flex items-center rounded-full border border-simsek-green/20 bg-simsek-green/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-simsek-green">
           Für Schüler:innen und Studierende
+        </span>
+        <h1 class="mb-6 text-balance text-2xl font-semibold leading-tight text-slate-900 sm:text-4xl md:text-5xl">
+          Berufseinstieg als Logopäd:in in Duisburg
         </h1>
         <p class="text-xl leading-relaxed text-slate-600">
-          Du bist in der Ausbildung oder im Studium der Logopädie und denkst an den Einstieg? Hier steht, was dich in der Praxis für Logopädie Şimşek in Duisburg erwartet.
+          Du schließt bald Ausbildung oder Studium der Logopädie ab? Berufsanfänger:innen sind willkommen. Bei der <span translate="no" class="whitespace-nowrap">Praxis für Logopädie Şimşek</span> findest du hier die Antworten auf die wichtigsten Fragen zum Start.
         </p>
         <div class="mt-8 h-px bg-simsek-green"></div>
       </header>
 
       <section class="mb-12">
-        <h2 class="mb-6 border-l-4 border-simsek-green pl-4 text-2xl font-semibold text-slate-900 md:text-3xl">Direkter Einstieg nach dem Abschluss</h2>
-        <ul class="space-y-3 text-lg leading-relaxed text-slate-700">
-          <li>Berufsanfänger:innen sind willkommen.</li>
-          <li>Intensive strukturierte Einarbeitung, schrittweiser Terminaufbau und jederzeit eine Ansprechperson.</li>
-          <li>Dokumentation, Berichte und Organisation sind eingeplante Arbeitszeit.</li>
-          <li>Je nach Erfahrungslevel 23–26 EUR brutto pro Stunde; bei 38,5 Stunden ungefähr 3.840–4.338 EUR brutto im Monat. Zusätzlich wird Weihnachtsgeld gezahlt.</li>
-          <li>Vor Ort in der Tonhallenstraße 21, 47051 Duisburg.</li>
-        </ul>
+        <h2 class="mb-6 text-balance border-l-4 border-simsek-green pl-4 text-2xl font-semibold text-slate-900 md:text-3xl">Fragen zum Einstieg</h2>
+        <dl class="space-y-6 text-lg leading-relaxed text-slate-700">
+          <div>
+            <dt class="font-semibold text-slate-900">Brauche ich Berufserfahrung?</dt>
+            <dd>Berufsanfänger:innen sind willkommen.</dd>
+          </div>
+          <div>
+            <dt class="font-semibold text-slate-900">Was brauche ich formal?</dt>
+            <dd>Staatlich anerkannte und zugelassene Logopädie oder Sprachtherapie nach Ausbildung oder Studium. Sehr gute Deutschkenntnisse sind erforderlich; weitere Sprachen sind willkommen, aber keine Voraussetzung.</dd>
+          </div>
+          <div>
+            <dt class="font-semibold text-slate-900">Wer begleitet mich am Anfang?</dt>
+            <dd>Intensive strukturierte Einarbeitung, schrittweiser Terminaufbau und jederzeit eine Ansprechperson.</dd>
+          </div>
+          <div>
+            <dt class="font-semibold text-slate-900">Was verdiene ich?</dt>
+            <dd>
+              Je nach Erfahrungslevel 23–26&nbsp;EUR brutto pro&nbsp;Stunde; bei 38,5&nbsp;Stunden ungefähr 3.840–4.338&nbsp;EUR brutto im&nbsp;Monat. Zusätzlich wird Weihnachtsgeld gezahlt.
+              <a href="/gehaltsrechner/" class="font-semibold text-simsek-blue underline underline-offset-4 hover:text-simsek-green focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-950">Zum Gehaltsrechner</a>
+            </dd>
+          </div>
+          <div>
+            <dt class="font-semibold text-slate-900">Wie viel Zeit bleibt für Dokumentation?</dt>
+            <dd>Dokumentation, Berichte und Organisation sind eingeplante Arbeitszeit.</dd>
+          </div>
+          <div>
+            <dt class="font-semibold text-slate-900">Voll- oder Teilzeit?</dt>
+            <dd>Vollzeit umfasst 38,5&nbsp;Wochenstunden. Teilzeit ist mit flexiblem Stundenumfang möglich. Eine Vier-Tage-Woche ist möglich.</dd>
+          </div>
+          <div>
+            <dt class="font-semibold text-slate-900">Wie ist das Team?</dt>
+            <dd>Vierköpfiges Team, flache Hierarchien, wöchentlicher Austausch, Supervision und gemeinsam geplante Aktivitäten.</dd>
+          </div>
+          <div>
+            <dt class="font-semibold text-slate-900">Kann ich eigene Schwerpunkte setzen?</dt>
+            <dd>Eigene Schwerpunkte sind willkommen und können nach Einstieg aufgebaut werden. Fortbildungen werden finanziell und mit zusätzlichen freien Tagen unterstützt; die Auswahl trifft die beschäftigte Person.</dd>
+          </div>
+          <div>
+            <dt class="font-semibold text-slate-900">Wo arbeite ich?</dt>
+            <dd>Vor Ort in der Tonhallenstraße&nbsp;21, 47051&nbsp;Duisburg.</dd>
+          </div>
+          <div>
+            <dt class="font-semibold text-slate-900">Wann kann ich anfangen?</dt>
+            <dd>Eintritt nach Vereinbarung.</dd>
+          </div>
+          <div>
+            <dt class="font-semibold text-slate-900">Muss ich Unterlagen schicken?</dt>
+            <dd>Unverbindlicher Erstkontakt ohne klassische Unterlagen; Lebenslauf freiwillig.</dd>
+          </div>
+          <div>
+            <dt class="font-semibold text-slate-900">{INTERNSHIP_CONFIRMED ? 'Gibt es Hospitation oder Praktikum?' : 'Gibt es eine Hospitation?'}</dt>
+            <dd class="space-y-2">
+              {INTERNSHIP_CONFIRMED && (
+                <p>Praktikum nach persönlicher Absprache, für Schüler:innen und Studierende in Deutschland.</p>
+              )}
+              <p>Hospitation oder Probearbeit ist möglich.</p>
+            </dd>
+          </div>
+        </dl>
+        <a href="/jobs/logopaedin-sprachtherapeut-duisburg/" class="mt-8 inline-flex min-h-11 items-center justify-center rounded-lg border-2 border-slate-200 px-6 py-3 text-sm font-bold text-slate-800 no-underline transition-colors duration-200 hover:border-simsek-green focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-950">
+          Alle Details zur Stelle in Duisburg
+        </a>
       </section>
 
-      <section class="mb-12">
-        <h2 class="mb-6 border-l-4 border-simsek-green pl-4 text-2xl font-semibold text-slate-900 md:text-3xl">{INTERNSHIP_CONFIRMED ? 'Praktikum und Hospitation' : 'Hospitation'}</h2>
-        <div class="space-y-3 text-lg leading-relaxed text-slate-700">
-          {INTERNSHIP_CONFIRMED && (
-            <p>Praktikum nach persönlicher Absprache, für Schüler:innen und Studierende in Deutschland.</p>
-          )}
-          <p>Hospitation oder Probearbeit ist möglich.</p>
-        </div>
-      </section>
-
-      <section class="rounded-3xl bg-slate-900 px-5 py-8 text-white sm:px-8">
-        <h2 class="mb-3 text-2xl font-semibold md:text-3xl">Sprich uns an</h2>
+      <section class="mb-12 rounded-3xl bg-slate-900 px-5 py-8 text-white sm:px-8">
+        <h2 class="mb-3 text-balance text-2xl font-semibold md:text-3xl">Sprich uns an</h2>
         <p class="mb-6 max-w-xl text-slate-300">
-          Ansprechpartnerin: Emel Şimşek-Uçar. Unverbindlich und ohne klassische Unterlagen; ein Lebenslauf ist freiwillig.
+          Ansprechpartnerin: Emel Şimşek-Uçar. Unverbindlicher Erstkontakt ohne klassische Unterlagen; Lebenslauf freiwillig.
         </p>
-        <a href="/kontakt/" class="mb-8 inline-flex min-h-11 items-center justify-center rounded-lg bg-simsek-green px-6 py-3 text-sm font-bold text-white no-underline">
+        <a href="/kontakt/" class="mb-8 inline-flex min-h-11 items-center justify-center rounded-lg bg-simsek-green px-6 py-3 text-sm font-bold text-white no-underline transition-colors duration-200 hover:bg-simsek-green/85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
           Zum Kontaktformular
         </a>
         <ContactAlternatives />
+      </section>
+
+      <section class="rounded-3xl border border-slate-200 bg-white px-5 py-8 sm:px-8">
+        <h2 class="mb-3 text-balance text-2xl font-semibold text-slate-900 md:text-3xl">Für Schulen und Hochschulen</h2>
+        <p class="text-lg leading-relaxed text-slate-700">
+          Sie möchten Ihre Absolvent:innen auf uns aufmerksam machen? Schreiben Sie an
+          <a href="mailto:social@logopaedie-simsek.de" class="font-semibold text-simsek-blue underline underline-offset-4 hover:text-simsek-green focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-950">social@logopaedie-simsek.de</a>
+          oder rufen Sie an:
+          <a href="tel:+4915510062296" class="font-semibold text-simsek-blue underline underline-offset-4 hover:text-simsek-green focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-950">+49&nbsp;155&nbsp;10062296</a>.
+        </p>
       </section>
     </article>
   </main>
