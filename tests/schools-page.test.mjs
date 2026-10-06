@@ -5,7 +5,7 @@ import test from 'node:test';
 const PAGE = 'src/pages/schulen.astro';
 const read = async (path) => (await readFile(new URL(`../${path}`, import.meta.url), 'utf8')).replaceAll('&nbsp;', ' ');
 
-const INTERNSHIP = 'Praktikum nach persönlicher Absprache, für Schüler:innen und Studierende in Deutschland.';
+const INTERNSHIP = 'Praktikum nach persönlicher Absprache, für Auszubildende und Studierende der Logopädie und Sprachtherapie in Deutschland.';
 
 test('schools page states approved wording verbatim', async () => {
   const page = await read(PAGE);
@@ -54,7 +54,7 @@ test('schools page shows the internship statement only behind INTERNSHIP_CONFIRM
   const page = await read(PAGE);
 
   assert.match(page, /const INTERNSHIP_CONFIRMED = (true|false);/);
-  assert.match(page, /\{INTERNSHIP_CONFIRMED && \([\s\S]*?Praktikum nach persönlicher Absprache, für Schüler:innen und Studierende in Deutschland\.[\s\S]*?\)\}/);
+  assert.match(page, /\{INTERNSHIP_CONFIRMED && \([\s\S]*?Praktikum nach persönlicher Absprache, für Auszubildende und Studierende der Logopädie und Sprachtherapie in Deutschland\.[\s\S]*?\)\}/);
   const description = page.match(/const pageDescription = '([^']*)'/)?.[1] ?? '';
   assert.ok(description.length > 0);
   assert.doesNotMatch(description, /Praktikum/i);
@@ -131,6 +131,6 @@ test('schools page links are keyboard and hover friendly and headings balance', 
 test('footer links to the schools page without touching the main navigation', async () => {
   const [footer, navigation] = await Promise.all([read('src/components/Footer.astro'), read('src/components/Navigation.astro')]);
 
-  assert.ok(footer.includes("{ href: '/schulen/', label: 'Für Schüler:innen und Studierende' }"));
+  assert.ok(footer.includes("{ href: '/schulen/', label: 'Für Auszubildende und Studierende' }"));
   assert.doesNotMatch(navigation, /\/schulen\//);
 });
