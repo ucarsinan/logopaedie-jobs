@@ -60,6 +60,13 @@ test('schools page shows the internship statement only behind INTERNSHIP_CONFIRM
   assert.doesNotMatch(description, /Praktikum/i);
 });
 
+test('schools page shows the internship statement confirmed by Emel on 2026-10-06', async () => {
+  const page = await read(PAGE);
+
+  assert.match(page, /const INTERNSHIP_CONFIRMED = true;/);
+  assert.doesNotMatch(page, /Schüler:innen und Studierende in Deutschland/);
+});
+
 test('schools page does not hide clipped content with overflow-x-hidden', async () => {
   const page = await read(PAGE);
 
