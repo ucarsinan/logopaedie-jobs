@@ -59,3 +59,17 @@ test('schools page shows the internship statement only behind INTERNSHIP_CONFIRM
   assert.ok(description.length > 0);
   assert.doesNotMatch(description, /Praktikum/i);
 });
+
+test('schools page does not hide clipped content with overflow-x-hidden', async () => {
+  const page = await read(PAGE);
+
+  assert.doesNotMatch(page, /overflow-x-hidden/);
+});
+
+test('schools page canonical keeps the trailing slash configured site-wide', async () => {
+  const [page, config, layout] = await Promise.all([read(PAGE), read('astro.config.mjs'), read('src/layouts/Layout.astro')]);
+
+  assert.match(config, /trailingSlash:\s*'always'/);
+  assert.match(layout, /new URL\(Astro\.url\.pathname, Astro\.site\)/);
+  assert.match(page, /url: 'https:\/\/xn--logopdiejobs-kcb\.de\/schulen\/'/);
+});
