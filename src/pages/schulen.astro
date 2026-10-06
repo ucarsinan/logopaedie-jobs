@@ -1,0 +1,71 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import PracticeBrand from '../components/PracticeBrand.astro';
+import ContactAlternatives from '../components/ContactAlternatives.astro';
+
+// Erst auf true setzen, wenn Emel die Zeile „Praktikum“ in EMPLOYER_TRUTH.md bestätigt hat (GATE-002).
+const INTERNSHIP_CONFIRMED = false;
+
+const pageTitle = 'Für Schüler:innen und Studierende | Praxis für Logopädie Şimşek';
+const pageDescription = 'Direkter Einstieg nach dem Abschluss in der Praxis für Logopädie Şimşek in Duisburg: Einarbeitung, eingeplante Dokumentationszeit und Hospitation oder Probearbeit.';
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  breadcrumbs={[
+    { name: 'Startseite', url: 'https://xn--logopdiejobs-kcb.de/' },
+    { name: 'Für Schüler:innen und Studierende', url: 'https://xn--logopdiejobs-kcb.de/schulen/' },
+  ]}
+>
+  <Navigation />
+  <main id="main-content" tabindex="-1">
+    <article class="mx-auto max-w-4xl overflow-x-hidden px-4 py-10 sm:px-6 md:py-24">
+      <header class="mb-12">
+        <PracticeBrand class="mb-6" />
+        <h1 class="mb-6 text-2xl font-semibold leading-tight text-slate-900 sm:text-4xl md:text-5xl">
+          Für Schüler:innen und Studierende
+        </h1>
+        <p class="text-xl leading-relaxed text-slate-600">
+          Du bist in der Ausbildung oder im Studium der Logopädie und denkst an den Einstieg? Hier steht, was dich in der Praxis für Logopädie Şimşek in Duisburg erwartet.
+        </p>
+        <div class="mt-8 h-px bg-simsek-green"></div>
+      </header>
+
+      <section class="mb-12">
+        <h2 class="mb-6 border-l-4 border-simsek-green pl-4 text-2xl font-semibold text-slate-900 md:text-3xl">Direkter Einstieg nach dem Abschluss</h2>
+        <ul class="space-y-3 text-lg leading-relaxed text-slate-700">
+          <li>Berufsanfänger:innen sind willkommen.</li>
+          <li>Intensive strukturierte Einarbeitung, schrittweiser Terminaufbau und jederzeit eine Ansprechperson.</li>
+          <li>Dokumentation, Berichte und Organisation sind eingeplante Arbeitszeit.</li>
+          <li>Je nach Erfahrungslevel 23–26 EUR brutto pro Stunde; bei 38,5 Stunden ungefähr 3.840–4.338 EUR brutto im Monat. Zusätzlich wird Weihnachtsgeld gezahlt.</li>
+          <li>Vor Ort in der Tonhallenstraße 21, 47051 Duisburg.</li>
+        </ul>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="mb-6 border-l-4 border-simsek-green pl-4 text-2xl font-semibold text-slate-900 md:text-3xl">{INTERNSHIP_CONFIRMED ? 'Praktikum und Hospitation' : 'Hospitation'}</h2>
+        <div class="space-y-3 text-lg leading-relaxed text-slate-700">
+          {INTERNSHIP_CONFIRMED && (
+            <p>Praktikum nach persönlicher Absprache, für Schüler:innen und Studierende in Deutschland.</p>
+          )}
+          <p>Hospitation oder Probearbeit ist möglich.</p>
+        </div>
+      </section>
+
+      <section class="rounded-3xl bg-slate-900 px-5 py-8 text-white sm:px-8">
+        <h2 class="mb-3 text-2xl font-semibold md:text-3xl">Sprich uns an</h2>
+        <p class="mb-6 max-w-xl text-slate-300">
+          Ansprechpartnerin: Emel Şimşek-Uçar. Unverbindlich und ohne klassische Unterlagen; ein Lebenslauf ist freiwillig.
+        </p>
+        <a href="/kontakt/" class="mb-8 inline-flex min-h-11 items-center justify-center rounded-lg bg-simsek-green px-6 py-3 text-sm font-bold text-white no-underline">
+          Zum Kontaktformular
+        </a>
+        <ContactAlternatives />
+      </section>
+    </article>
+  </main>
+  <Footer />
+</Layout>

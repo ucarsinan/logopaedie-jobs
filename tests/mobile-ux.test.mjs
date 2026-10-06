@@ -29,6 +29,7 @@ test('every public page offers a skip link and a focusable main target', async (
     'src/pages/berufshandbuch/index.astro',
     'src/pages/berufshandbuch/[slug].astro',
     'src/pages/bewerbung/danke.astro',
+    'src/pages/schulen.astro',
   ];
 
   for (const page of pages) {
