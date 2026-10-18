@@ -1,0 +1,112 @@
+---
+// Local integration of approved preview R2. No playback or media request before user action.
+---
+
+<button type="button" class="film-trigger" data-film-open aria-haspopup="dialog" aria-controls="workplace-film"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="m10 8 6 4-6 4V8Z" fill="currentColor"/></svg><span>Arbeitsplatz im Film kennenlernen <span class="film-duration">· 50 Sekunden</span></span></button>
+
+<dialog id="workplace-film" class="film-dialog" aria-labelledby="film-title" aria-describedby="film-description">
+<div class="film-header"><div><h2 id="film-title">Dein Arbeitsplatz in 50 Sekunden</h2><p id="film-description">Praxis für Logopädie Şimşek · mit Ton und Untertiteln</p></div><button type="button" class="film-close" data-film-close autofocus aria-label="Film schließen"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div>
+<div class="film-stage" data-format="landscape"><video id="film-video" controls playsinline preload="none" aria-label="Arbeitsplatz in der Praxis für Logopädie Şimşek"></video></div>
+<p id="film-status" class="film-status" role="status" aria-live="polite"></p>
+<div class="film-bottom"><details><summary>Transkript lesen</summary><p>Du bist Logopädin oder Logopäde und fragst dich, wie sich ein guter Arbeitsplatz eigentlich anfühlt? In der Praxis für Logopädie Şimşek in Duisburg planst du deine Termine selbst, auf Vertrauensbasis und mit einem iPad, das du auch privat nutzen darfst. Dokumentation und Berichte sind eingeplante Arbeitszeit, und deine Wochenstunden verteilst du so, wie es zu deinem Leben passt. Je nach Erfahrung verdienst du 23 bis 26 Euro brutto pro Stunde, dazu kommen Weihnachtsgeld und 30 Urlaubstage bei einer 5-Tage-Woche. Und wenn du gerade erst anfängst, begleiten wir dich mit einer strukturierten Einarbeitung und jederzeit einer Ansprechperson. Schreib uns ganz unverbindlich per WhatsApp, ohne klassische Bewerbungsunterlagen. Wir freuen uns auf dich.</p></details><a class="film-contact" href="#kontaktformular" data-film-contact>Unverbindlich kennenlernen</a></div>
+</dialog>
+
+<style>
+
+/* Only the additive video action and dialog. Existing website styles are preserved. */
+.film-trigger{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:10px 0;background:none;border:0;color:#1f6056;font:600 14px/1.5 "Plus Jakarta Sans",sans-serif;text-align:left;cursor:pointer;text-decoration:underline;text-underline-offset:4px}
+.film-trigger svg{flex-shrink:0}.film-trigger:hover{color:#854228}.film-duration{color:#6b6560;font-size:12px;white-space:nowrap}
+.film-trigger:focus-visible,.film-dialog button:focus-visible,.film-dialog a:focus-visible,.film-dialog summary:focus-visible{outline:3px solid #2a7f6f;outline-offset:4px}
+.film-dialog{padding:24px;border:1px solid #e2d8cf;border-radius:20px;width:min(1120px,calc(100vw - 48px));max-width:none;max-height:calc(100dvh - 32px);margin:auto;overflow:auto;background:#faf8f5;color:#1c1916;box-shadow:0 20px 100px #0005;font-family:"Plus Jakarta Sans",sans-serif;overscroll-behavior:contain}
+.film-dialog::backdrop{background:rgba(24,31,29,.78)}
+.film-header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:18px}
+.film-header h2{font-family:Fraunces,Georgia,serif;font-size:28px;line-height:1.2;margin:0;font-weight:600}
+.film-header p{margin:7px 0 0;font-size:13px;color:#6b6560;line-height:1.4}
+.film-close{display:grid;place-items:center;flex:0 0 44px;width:44px;height:44px;min-height:44px;border:1px solid #e2d8cf;border-radius:50%;background:white;color:#1c1916;cursor:pointer}.film-close:hover{background:#e6f4f1}
+.film-stage{margin:0 auto;background:#faf8f5;border-radius:12px;overflow:hidden;width:min(100%,calc((100dvh - 230px) * 1.777778));aspect-ratio:16/9}
+.film-stage[data-format="portrait"]{width:min(100%,calc((100dvh - 230px) * .5625));aspect-ratio:9/16}
+.film-stage video{display:block;width:100%;height:100%;object-fit:contain;background:#faf8f5}
+.film-status{font-size:13px;line-height:1.4;color:#854228;margin:8px 0;min-height:0}.film-status:empty{display:none}
+.film-bottom{margin-top:16px;display:flex;gap:16px;justify-content:space-between;align-items:flex-start;font-size:13px;line-height:1.6}
+.film-bottom details{flex:1}.film-bottom summary{cursor:pointer;min-height:44px;display:list-item;padding:10px 0;font-weight:600;color:#1f6056}.film-bottom details p{max-width:70ch;margin-top:8px}.film-contact{font-weight:600;color:#1f6056;min-height:44px;padding:10px 0;white-space:nowrap;text-decoration:underline;text-underline-offset:4px}
+:global(html:has(dialog#workplace-film[open])){overflow:hidden}
+@media(max-width:639px){.film-dialog{width:calc(100vw - 20px);padding:14px;border-radius:16px;max-height:calc(100dvh - 20px)}.film-header{gap:8px;margin-bottom:12px}.film-header h2{font-size:20px}.film-header p{font-size:11px}.film-bottom{gap:8px;font-size:12px;margin-top:10px}.film-contact{white-space:normal;text-align:right;max-width:145px}.film-trigger{font-size:13px}.film-duration{display:block;font-size:11px}.film-stage[data-format="portrait"]{width:min(100%,calc((100dvh - 216px) * .5625))}}
+@media(prefers-reduced-motion:reduce){:global(html){scroll-behavior:auto!important}}
+
+</style>
+
+<script>
+(() => {
+  const opener = document.querySelector<HTMLButtonElement>('[data-film-open]');
+  const dialog = document.querySelector<HTMLDialogElement>('#workplace-film');
+  const video = document.querySelector<HTMLVideoElement>('#film-video');
+  if (!opener || !dialog || !video) return;
+  const stage = dialog.querySelector<HTMLElement>('.film-stage')!;
+  const status = document.querySelector<HTMLElement>('#film-status')!;
+  const closer = dialog.querySelector<HTMLButtonElement>('[data-film-close]')!;
+  let returnFocus: HTMLElement | null = null;
+
+  function releaseMedia() {
+    video.pause();
+    video.removeAttribute('src');
+    video.replaceChildren();
+    video.load();
+    status.textContent = '';
+    returnFocus?.focus({preventScroll: true});
+  }
+  function closeFilm() { dialog.close(); }
+
+  opener.addEventListener('click', () => {
+    if (dialog.open) return;
+    returnFocus = document.activeElement instanceof HTMLElement ? document.activeElement : opener;
+    const format = matchMedia('(max-width: 639px)').matches ? 'portrait' : 'landscape';
+    stage.dataset.format = format;
+    video.poster = `/videos/workplace-v01/${format}.jpg`;
+    for (const [extension, type] of [['webm', 'video/webm'], ['mp4', 'video/mp4']]) {
+      const source = document.createElement('source');
+      source.src = `/videos/workplace-v01/${format}.${extension}`;
+      source.type = type;
+      video.append(source);
+    }
+    const track = document.createElement('track');
+    track.kind = 'captions';
+    track.src = `/videos/workplace-v01/${format}.de.vtt`;
+    track.srclang = 'de';
+    track.label = 'Deutsch (zusätzlich zu den Bilduntertiteln)';
+    video.append(track);
+    video.muted = false;
+    dialog.showModal();
+    closer.focus();
+    video.load();
+    video.play().catch((error) => {
+      if (dialog.open && error.name !== 'AbortError') {
+        status.textContent = 'Starte den Film über die Wiedergabetaste im Player.';
+      }
+    });
+  });
+  closer.addEventListener('click', closeFilm);
+  dialog.addEventListener('keydown', (event) => {
+    if (event.key !== 'Tab') return;
+    const last = dialog.querySelector<HTMLAnchorElement>('[data-film-contact]')!;
+    if (event.shiftKey && document.activeElement === closer) {
+      event.preventDefault(); last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault(); closer.focus();
+    }
+  });
+  dialog.addEventListener('cancel', (event) => { event.preventDefault(); closeFilm(); });
+  dialog.addEventListener('close', releaseMedia);
+  dialog.addEventListener('click', (event) => {
+    if (event.target !== dialog) return;
+    const r = dialog.getBoundingClientRect();
+    if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) closeFilm();
+  });
+  dialog.querySelector<HTMLAnchorElement>('[data-film-contact]')!.addEventListener('click', closeFilm);
+  video.addEventListener('error', () => {
+    if (dialog.open && video.querySelector('source')) {
+      status.textContent = 'Der Film konnte nicht geladen werden. Du kannst das Transkript lesen oder uns direkt kennenlernen.';
+    }
+  });
+
+})();
+</script>
