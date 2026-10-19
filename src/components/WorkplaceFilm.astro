@@ -61,16 +61,16 @@
     returnFocus = document.activeElement instanceof HTMLElement ? document.activeElement : opener;
     const format = matchMedia('(max-width: 639px)').matches ? 'portrait' : 'landscape';
     stage.dataset.format = format;
-    video.poster = `/videos/workplace-v01/${format}.jpg`;
+    video.poster = `/videos/workplace-v02/${format}.jpg`;
     for (const [extension, type] of [['webm', 'video/webm'], ['mp4', 'video/mp4']]) {
       const source = document.createElement('source');
-      source.src = `/videos/workplace-v01/${format}.${extension}`;
+      source.src = `/videos/workplace-v02/${format}.${extension}`;
       source.type = type;
       video.append(source);
     }
     const track = document.createElement('track');
     track.kind = 'captions';
-    track.src = `/videos/workplace-v01/${format}.de.vtt`;
+    track.src = `/videos/workplace-v02/${format}.de.vtt`;
     track.srclang = 'de';
     track.label = 'Deutsch (zusätzlich zu den Bilduntertiteln)';
     video.append(track);
