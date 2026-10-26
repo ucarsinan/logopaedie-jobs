@@ -47,7 +47,12 @@ const { standalone = false } = Astro.props;
           class="hidden mb-5 rounded-xl border px-4 py-3 text-sm leading-relaxed outline-none"
         ></div>
 
-        <form id="bewerbung-form" method="post" action="/bewerbung/senden/" class="space-y-5">
+        <div id="kontakt-einstieg" class="mb-6 rounded-xl border-l-4 border-brand-primary bg-brand-primary/10 p-4 text-slate-900">
+          <p class="text-lg font-bold leading-snug">Unverbindlicher Erstkontakt</p>
+          <p class="mt-2 text-base leading-relaxed">Kein Anschreiben nötig. Dein Lebenslauf ist freiwillig.</p>
+        </div>
+
+        <form id="bewerbung-form" aria-describedby="kontakt-einstieg" method="post" action="/bewerbung/senden/" class="space-y-5">
           <input type="hidden" name="stelle" value="logopaedin-sprachtherapeut-duisburg" />
           <input type="hidden" name="quelle" id="quelle" value="" />
           <div class="absolute -left-[10000px] h-px w-px overflow-hidden" aria-hidden="true">
@@ -57,8 +62,8 @@ const { standalone = false } = Astro.props;
 
           <p id="kontakt-progress" hidden class="text-xs font-bold uppercase tracking-widest text-slate-500" aria-live="polite">Schritt 1 von 2</p>
           <fieldset id="kontakt-anliegen" class="space-y-4">
-            <legend id="anliegen-heading" tabindex="-1" class="mb-4 text-2xl font-semibold leading-tight">Was möchtest du als Erstes?</legend>
-            <p id="kontakt-direkt-hint" hidden class="text-sm text-slate-500">Die ersten beiden Antworten führen direkt zu Schritt 2.</p>
+            <legend id="anliegen-heading" tabindex="-1" class="mb-4 text-2xl font-semibold leading-tight">Worum geht es dir?</legend>
+            <p id="kontakt-direkt-hint" hidden class="text-sm text-slate-500">Wähle aus, worüber du mit uns sprechen möchtest.</p>
             <div class="space-y-3">
               {Object.entries(CONTACT_INTENTS).map(([value, label]) => (
                 <label class="flex min-h-14 cursor-pointer items-center gap-3 rounded-xl border border-slate-300 px-4 py-3 text-sm font-semibold transition hover:border-simsek-green has-[:checked]:border-simsek-green has-[:checked]:bg-simsek-green/10 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-simsek-green">
