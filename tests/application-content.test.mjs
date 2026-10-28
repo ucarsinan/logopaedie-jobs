@@ -124,44 +124,58 @@ test('native browser validation mirrors the required server-side contact shape',
   assert.match(contact, /name="kontakt"[^>]+minlength="5"[^>]+maxlength="160"[^>]+pattern=\{CONTACT_PATTERN_SOURCE\}[^>]+required/);
 });
 
-test('job status pill is hidden below sm and uses the plural availability label', async () => {
+test('the job landing makes qualification and salary conditions explicit', async () => {
   const detail = await readFile(JOB_DETAIL_PATH, 'utf8');
+  const hero = detail.match(/<section\b[^>]*id="preview-hero"[\s\S]*?<\/section>/)?.[0] ?? '';
+  const qualification = detail.match(/<section\b[^>]*id="qualifikation"[\s\S]*?<\/section>/)?.[0] ?? '';
 
-  assert.match(detail, /<div class="[^"]*\bhidden sm:flex\b[^"]*">[\s\S]*?<span[^>]*>Stellen verfügbar<\/span>/);
-  assert.doesNotMatch(detail, />Stelle Aktiv<\/span>/);
+  assert.match(hero, /<h1\b[^>]*>[\s\S]*?Logopäd:in\?[\s\S]*?Sprachtherapeut:in \(m\/w\/d\)[\s\S]*?Arbeitsort: Duisburg[\s\S]*?<\/h1>/);
+  assert.match(hero, /3\.840–4\.338 €/);
+  assert.match(hero, /brutto\/Monat bei 38,5 Std\.\/Woche · je nach Erfahrung/);
+  assert.match(hero, /Grundlage: 23–26 € brutto pro Stunde/);
+  assert.match(qualification, /staatlich anerkannt und zugelassen/);
+  assert.match(qualification, /sehr gute Deutschkenntnisse/);
+  assert.match(qualification, /Berufserfahrung ist keine Voraussetzung/);
+  assert.match(qualification, /href="\/schulen\/"/);
 });
 
-test('hero facts and model pill use compact mobile spacing with desktop defaults restored', async () => {
+test('the production landing retains native metadata without preview blockers or build hashes', async () => {
   const detail = await readFile(JOB_DETAIL_PATH, 'utf8');
 
-  assert.match(detail, /<dl class="mt-8 sm:mt-14 grid sm:grid-cols-3 gap-3 sm:gap-4">/);
-  assert.match(detail, /<div class="p-px rounded-\[1rem\] sm:rounded-3xl bg-simsek-green ">[\s\S]*?<div class="h-full rounded-\[calc\(1rem-1px\)\] sm:rounded-\[calc\(1\.5rem-1px\)\] bg-white p-3 sm:p-5 shadow-sm">/);
-  assert.doesNotMatch(detail, /<div class="p-px rounded-2xl sm:rounded-3xl bg-simsek-green ">/);
-  assert.match(detail, /<dt class="text-\[10px\] sm:text-xs[^\"]*">/);
-  assert.match(detail, /<dd class="text-xl sm:text-2xl[^\"]*">/);
-  assert.match(detail, /<p class="text-xs sm:text-sm[^\"]*">\{note\}<\/p>/);
-  assert.match(detail, /<div class="absolute -bottom-6 left-2 md:-left-4 xl:-left-10 bg-white p-3 md:p-6 rounded-2xl md:rounded-3xl/);
-  assert.match(detail, /<p class="text-\[10px\] md:text-xs[^\"]*uppercase/);
-  assert.match(detail, /<p class="text-sm md:text-base font-bold/);
+  assert.match(detail, /<Layout\b/);
+  assert.match(detail, /set:html=\{JSON\.stringify\(jobPostingSchema\)\}/);
+  assert.match(detail, /set:html=\{JSON\.stringify\(faqSchema\)\}/);
+  assert.match(detail, /import .*recruiting-landing\.css/);
+  assert.doesNotMatch(detail, /<meta\b[^>]*name="robots"[^>]*content="noindex/);
+  assert.doesNotMatch(detail, /(?:id|class)="(?:preview-bar|preview-note)"/);
+  assert.doesNotMatch(detail, /href="\/(?:bisher|vorher-v\d+|entwurf)\.html"/);
+  assert.doesNotMatch(detail, /stopImmediatePropagation|Lokale Vorschau:|Dieser Link bleibt/);
+  assert.doesNotMatch(detail, /(?:src|href|srcset)="\/_astro\//);
 });
 
-test('job benefit cards place number and heading side by side on mobile', async () => {
+test('the everyday section presents six labeled employment facts with expandable details', async () => {
   const detail = await readFile(JOB_DETAIL_PATH, 'utf8');
+  const everyday = detail.match(/<section\b[^>]*id="praxisalltag"[\s\S]*?<\/section>/)?.[0] ?? '';
+  const facts = everyday.match(/<dl class="short-facts">([\s\S]*?)<\/dl>/)?.[1] ?? '';
+  const labels = [...facts.matchAll(/<dt\b[^>]*>[\s\S]*?<span>([^<]+)<\/span><\/dt>/g)].map(match => match[1]);
 
-  assert.match(detail, /<div class="grid sm:grid-cols-2 gap-3 sm:gap-5">/);
-  assert.equal((detail.match(/h-full p-4 sm:p-6 rounded-\[1\.9rem\]/g) ?? []).length, 1);
-  assert.equal((detail.match(/flex items-center gap-3 mb-3 sm:block sm:mb-0/g) ?? []).length, 1);
-  assert.match(detail, /w-10 h-10 sm:w-12 sm:h-12[^']*mb-0 sm:mb-5/);
-  assert.match(detail, /<h3 class="text-lg sm:text-xl font-semibold text-slate-900 mb-0 sm:mb-3">\{title\}<\/h3>/);
+  assert.deepEqual(labels, ['Arbeitsmodell', 'Vertrag', 'Urlaub', 'Fortbildung', 'Eigenständig planen', 'Zeit für deine Arbeit']);
+  assert.equal((facts.match(/<dd>/g) ?? []).length, 6);
+  assert.match(facts, /30 Tage bei fünf Arbeitstagen, bei weniger Arbeitstagen anteilig/);
+  assert.match(facts, /Dokumentation, Berichte und Organisation sind eingeplante Arbeitszeit/);
+  assert.match(everyday, /<details class="short-full-details"><summary>Alle Details zu Arbeitsalltag und Ausstattung<\/summary>/);
 });
 
-test('job journey cards use compact numbered mobile headers', async () => {
+test('the team section explains onboarding and keeps individual specialties accessible', async () => {
   const detail = await readFile(JOB_DETAIL_PATH, 'utf8');
+  const team = detail.match(/<section\b[^>]*id="team"[\s\S]*?<\/section>/)?.[0] ?? '';
 
-  assert.match(detail, /<div class="grid sm:grid-cols-2 gap-3 sm:gap-4">/);
-  assert.equal((detail.match(/flex items-center gap-3 mb-2 sm:block sm:mb-0/g) ?? []).length, 1);
-  assert.match(detail, /w-9 h-9 sm:w-auto sm:h-auto[^\n]*sm:mb-2/);
-  assert.match(detail, /<h3 class="font-semibold text-slate-900 mb-0 sm:mb-2">\{title\}<\/h3>/);
+  assert.match(team, /<h2\b[^>]*id="team-heading"[^>]*>Lerne Emel und unser Team kennen\.<\/h2>/);
+  assert.match(team, /Strukturierte Einarbeitung<\/strong> und schrittweiser Terminaufbau/);
+  assert.match(team, /jederzeit eine Ansprechperson/);
+  assert.match(team, /Berufsanfänger:innen willkommen/);
+  assert.match(team, /<details class="short-team-details"><summary>Team und fachliche Schwerpunkte<\/summary>/);
+  for (const name of ['Mara Nießalla', 'Şeyma Bozoğlan', 'Kristina Imping', 'Emel Şimşek-Uçar']) assert.ok(team.includes(name));
 });
 
 test('thank-you page makes no public two-working-day promise', async () => {
@@ -199,4 +213,11 @@ test('the public response promise matches the internal deadline rule', async () 
     assert.match(source, /Anfragen zwischen 20 und 8 Uhr beantworten wir am Morgen\./);
     assert.match(source, /auch am Wochenende/);
   }
+});
+
+test('the landing binds the native contact pattern without Astro string-escape loss', async () => {
+  const detail = await readFile(JOB_DETAIL_PATH, 'utf8');
+  assert.match(detail, /import \{ CONTACT_PATTERN_SOURCE \} from '\.\.\/\.\.\/lib\/application-form\.mjs'/);
+  assert.match(detail, /name="kontakt"[^>]*pattern=\{CONTACT_PATTERN_SOURCE\}[^>]*required/);
+  assert.doesNotMatch(detail, /pattern="/);
 });

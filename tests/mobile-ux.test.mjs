@@ -122,37 +122,44 @@ test('the mobile gallery is a calm manual carousel with accessible controls', as
   assert.doesNotMatch(gallery, /setInterval|autoplay/i);
 });
 
-test('the job page keeps a no-script mobile contact bar within thumb reach', async () => {
-  const [bar, page] = await Promise.all([
-    read('src/components/StickyContactBar.astro'),
-    read('src/pages/jobs/logopaedin-sprachtherapeut-duisburg.astro'),
-  ]);
-
-  assert.match(bar, /<nav[^>]*aria-label="Schnellkontakt"[^>]*class="[^"]*fixed[^"]*bottom-0[^"]*md:hidden/);
-  assert.match(bar, /<RecruitingWhatsAppLink/);
-  assert.match(bar, /href="#kontaktformular"[^>]*class="[^"]*min-h-11/);
-  assert.doesNotMatch(bar, /<script/i);
-  assert.match(page, /import StickyContactBar from/);
-  assert.match(page, /<StickyContactBar \/>\s*<div class="pb-20 md:pb-0">\s*<Footer \/>/);
-});
-
-test('the job page hero offers the WhatsApp shortcut next to the contact flow', async () => {
+test('the job landing keeps native contact paths available without JavaScript', async () => {
   const page = await read('src/pages/jobs/logopaedin-sprachtherapeut-duisburg.astro');
-  const cta = page.match(/<div class="flex flex-col sm:flex-row[^"]*pt-2">([\s\S]*?)<\/div>\s*<\/div>/)?.[1] ?? '';
+  const form = page.match(/<form\b[^>]*id="bewerbung-form"[\s\S]*?<\/form>/)?.[0] ?? '';
+  const alternatives = page.match(/<div id="bewerbung-alternativen"[\s\S]*?<\/details>/)?.[0] ?? '';
 
-  assert.match(cta, /href="#kontaktformular"/);
-  assert.match(cta, /<RecruitingWhatsAppLink/);
-  assert.match(page, /import RecruitingWhatsAppLink from/);
+  assert.match(form, /method="post" action="\/bewerbung\/senden\/"/);
+  assert.doesNotMatch(form, /<form[^>]*(?:novalidate|hidden)/);
+  assert.doesNotMatch(form, /<fieldset[^>]*(?:hidden|disabled)/);
+  assert.match(form, /<button type="submit"/);
+  assert.match(alternatives, /href="https:\/\/wa\.me\/4915510062296\?/);
+  assert.match(alternatives, /href="tel:\+4915510062296"/);
+  assert.match(alternatives, /href="mailto:social@logopaedie-simsek\.de\?/);
 });
 
-test('in-page contact CTAs on the job page jump straight to the embedded form', async () => {
-  const [page, contact] = await Promise.all([
+test('the job hero leads to its embedded form and retains the native workplace film', async () => {
+  const page = await read('src/pages/jobs/logopaedin-sprachtherapeut-duisburg.astro');
+  const hero = page.match(/<section\b[^>]*id="preview-hero"[\s\S]*?<\/section>/)?.[0] ?? '';
+
+  assert.match(hero, /<a href="#kontaktformular"[^>]*>\s*Unverbindlich kennenlernen\s*<\/a>/);
+  assert.match(hero, /id="hero-film"><WorkplaceFilm\s*\/>/);
+  assert.match(page, /import WorkplaceFilm from/);
+  assert.doesNotMatch(hero, /href="\/kontakt\/"/);
+});
+
+test('landing contact targets are unique and its page stylesheet preserves touch and focus support', async () => {
+  const [page, css] = await Promise.all([
     read('src/pages/jobs/logopaedin-sprachtherapeut-duisburg.astro'),
-    read('src/components/ApplicationContact.astro'),
+    read('src/styles/recruiting-landing.css'),
   ]);
 
-  assert.match(contact, /id="kontaktformular"[^>]*class="[^"]*scroll-mt-20/);
-  assert.equal((contact.match(/id="kontaktformular"/g) ?? []).length, 1);
-  assert.equal((page.match(/<a href="#kontaktformular"[^>]*>\s*Unverbindlich kennenlernen/g) ?? []).length, 3);
-  assert.doesNotMatch(page, /<a href="\/kontakt\/"[^>]*>\s*Unverbindlich kennenlernen/);
+  for (const id of ['kontaktformular', 'bewerbung-form', 'bewerbung-status', 'kontakt-anliegen', 'kontakt-daten']) {
+    assert.equal((page.match(new RegExp(`id="${id}"`, 'g')) ?? []).length, 1, `${id} must be unique`);
+  }
+  const contactLinks = [...page.matchAll(/<a\b[^>]*href="#kontaktformular"[^>]*>[\s\S]*?<\/a>/g)];
+  assert.ok(contactLinks.length >= 1);
+  assert.ok(contactLinks.some(([link]) => link.includes('Unverbindlich kennenlernen')));
+  assert.match(css, /#kontaktformular input:not\(\[type=radio\]\),#kontaktformular button\{min-height:44px\}/);
+  assert.match(css, /#main-content summary:focus-visible\{[^}]*outline:/);
+  assert.match(css, /@media\(prefers-reduced-motion:reduce\)/);
+  assert.match(page, /import .*recruiting-landing\.css/);
 });
