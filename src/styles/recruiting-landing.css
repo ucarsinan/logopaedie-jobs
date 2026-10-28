@@ -406,3 +406,20 @@ main#main-content>#berufshandbuch-links>.short-inner{box-sizing:border-box;paddi
 /* v35: restrained contact emphasis; keep the shared panel and outer edges. */
 #bewerbung.contact-unity .contact-unity-shell{border-color:#2a7f6f;box-shadow:0 8px 24px rgba(42,127,111,.08)}
 #bewerbung .contact-unity-intro>span{display:inline-flex;align-items:center;margin:0 0 12px;padding:0;border:0;border-radius:0;background:transparent;color:#1f6056;font-size:14px;line-height:20px;font-weight:600;text-transform:none;letter-spacing:0}
+
+/* Original three-line practice lockup; inline SVG inherits the confirmed page font. */
+#preview-hero .landing-practice-logo{margin:0;padding:4px 0}
+#preview-hero .landing-practice-logo-full{width:256px;max-width:100%;transform:translateX(-4.827586%)}
+#preview-hero .landing-practice-logo-full>svg{display:block;width:100%;height:auto;aspect-ratio:580/180}
+#preview-hero .landing-practice-logo-icon{display:none}
+@media(max-width:287px){
+  #preview-hero .landing-practice-logo-full{display:none}
+  #preview-hero .landing-practice-logo-icon{display:block;width:48px;height:auto}
+}
+
+/* Mobile landing contact: one persistent action area, equal-height buttons even when text wraps. */
+@media(max-width:767px){
+  nav[aria-label="Hauptnavigation"] a[href="/kontakt/"]{display:none}
+  nav[aria-label="Schnellkontakt"]{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:stretch}
+  nav[aria-label="Schnellkontakt"]>a{box-sizing:border-box;height:auto;min-height:44px;align-self:stretch;margin:0;padding-top:12px;padding-bottom:12px;border-width:2px;border-style:solid;line-height:1.4}
+}
