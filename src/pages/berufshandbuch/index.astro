@@ -64,13 +64,13 @@ const featuredArticles = beitraege
   .slice(0, 6);
 
 const latestArticles = [...beitraege]
-  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .sort((a, b) => (b.data.updatedDate ?? b.data.pubDate).getTime() - (a.data.updatedDate ?? a.data.pubDate).getTime())
   .slice(0, 4);
 
 const intentEntries = [
   {
     question: 'Was ist mein Gehalt als Logopädin in NRW realistisch wert?',
-    answer: 'Starte mit Gehaltszahlen, Einflussfaktoren und dem Rechner für deine konkrete Situation.',
+    answer: 'Ordne amtliche Gehaltsdaten ein und rechne ein konkretes Angebot anhand von Stundenlohn und Wochenstunden um.',
     href: '/berufshandbuch/gehalt-logopaedie-nrw/',
     label: 'Gehalt',
     accent: 'blue',
@@ -112,7 +112,7 @@ const intentEntries = [
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
     name: 'Logopädie-Berufshandbuch',
-    description: 'Praxisnahe Fachquelle für Logopädinnen und Sprachtherapeuten zu Karriere, Gehalt, Bewerbung, Arbeitszeit, Fachwissen und Praxisalltag.',
+    description: 'Berufliche Orientierung der Praxis für Logopädie Şimşek mit Originalquellen zu Ausbildung, Gehalt, Arbeitszeit und Fachthemen.',
     url: 'https://xn--logopdiejobs-kcb.de/berufshandbuch/',
     inLanguage: 'de',
     isPartOf: {
@@ -141,13 +141,13 @@ const intentEntries = [
       <div class="mx-auto grid max-w-7xl gap-10 px-6 py-16 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:py-24">
         <header class="min-w-0 max-w-3xl">
           <p class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-simsek-green">
-            Fachquelle für Logopädie
+            Berufliche Orientierung
           </p>
           <h1 class="mt-6 text-4xl font-semibold leading-tight tracking-normal text-white md:text-6xl">
             Logopädie-Berufshandbuch
           </h1>
           <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-            Karriere, Gehalt, Bewerbung, Arbeitszeit, Fachwissen und Praxisalltag für Logopädinnen, Logopäden und Sprachtherapeutinnen. Keine Patientenrubrik, sondern berufliche Orientierung mit fachlicher Tiefe.
+            Karriere, Gehalt, Bewerbung, Arbeitszeit und Fachthemen für Logopädinnen, Logopäden und Sprachtherapeutinnen. Herausgegeben von der Praxis für Logopädie Şimşek. Sachangaben werden mit verlinkten Originalquellen eingeordnet; Praxisangebote sind als solche erkennbar.
           </p>
           <div class="mt-8 flex flex-wrap gap-3">
             <a href="#einstiege" class="inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 text-sm font-bold text-slate-950 no-underline transition-colors duration-150 hover:bg-slate-100">
@@ -194,7 +194,7 @@ const intentEntries = [
           <p class="text-[11px] font-bold uppercase tracking-widest text-slate-600">Themenwelten</p>
           <h2 class="mt-2 text-3xl font-semibold text-slate-950">Das Berufshandbuch nach beruflichen Fragen</h2>
           <p class="mt-3 text-base leading-7 text-slate-600">
-            Jeder Bereich bündelt Artikel, die zusammengehören. So wird aus einzelnen Beiträgen eine fachliche Quelle.
+            Die Themenbereiche bündeln zusammengehörige Artikel. Quellen und Aktualisierungsstand findest du in den Beiträgen.
           </p>
         </div>
         <p class="text-sm font-semibold text-slate-500">{beitraege.length} veröffentlichte Artikel</p>
@@ -210,7 +210,7 @@ const intentEntries = [
         <ToolCallout
           kicker="Tool"
           title="Gehalt konkret einschätzen"
-          description="Berechne dein mögliches Bruttogehalt nach Erfahrung, Setting und Stundenmodell."
+          description="Rechne einen vereinbarten Bruttostundenlohn mit deinen Wochenstunden in Monats- und Jahreswerte um."
           href="/gehaltsrechner/"
           label="Zum Gehaltsrechner"
         />
@@ -225,7 +225,7 @@ const intentEntries = [
         <ToolCallout
           kicker="Kontakt"
           title="Ohne Anschreiben starten"
-          description="Für den ersten Kontakt reichen Abschluss, Stundenwunsch und Starttermin."
+          description="Für den ersten Kontakt genügen dein Name und eine Rückkontaktmöglichkeit. Ein Lebenslauf ist freiwillig."
           href="/kontakt/"
           label="Unverbindlich Kontakt aufnehmen"
         />

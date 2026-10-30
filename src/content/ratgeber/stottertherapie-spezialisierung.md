@@ -1,73 +1,87 @@
 ---
-title: "Stottertherapie als Spezialisierung — Weiterbildungen, Gehalt, Perspektive"
-description: "Stottern und Poltern sind anspruchsvolle Störungsbilder, die viele Logopädinnen scheuen. Wer sich spezialisiert, ist gefragter — und verdient etwas mehr. Ein Überblick über Weiterbildungen, Methoden und Berufsperspektiven."
+title: "Stottertherapie als Spezialisierung: Weiterbildung und Berufsperspektive"
+description: "Stottertherapie vertiefen: KIDS als Stottermodifikation einordnen, Weiterbildungsangebote prüfen und Finanzierung sowie Vergütung konkret besprechen."
 kategorie: "Fachwissen"
 topic: "fachwissen-spezialisierung"
 intent: "fachwissen"
 featured: true
 priority: 10
+updatedDate: 2026-10-30
 pubDate: 2026-04-14
 author: "Redaktion"
 draft: false
 relatedArticles: ["bilinguale-sprachtherapie", "deutsch-tuerkische-logopaedie-duisburg", "teilzeit-modelle"]
-definition: "Eine Spezialisierung auf Stottertherapie bringt in NRW einen Gehaltsaufschlag von rund 5 % gegenüber dem allgemeinen Durchschnitt (ca. 150–200 € brutto/Monat) und verbessert die Marktposition deutlich, da qualifizierte Bewerberinnen aktiv gesucht werden."
+definition: "Eine Spezialisierung auf Stottertherapie vertieft Kenntnisse zur Diagnostik und Behandlung von Redeflussstörungen. Methoden, Zielgruppen und Weiterbildungsnachweise müssen konkret geprüft werden; ein fester Gehaltsaufschlag ist nicht belegt."
 faq:
-  - q: "Was verdient eine Logopädin mit Spezialisierung auf Stottertherapie?"
-    a: "Der Gehaltsaufschlag für Stottertherapeuten liegt laut BA-Entgeltatlas und jobvector-Auswertungen bei etwa 5 % gegenüber dem allgemeinen Durchschnitt, was rund 150–200 € brutto/Monat bei einer Vollzeitstelle entspricht. Wichtiger als das Gehalt ist oft die verbesserte Marktposition."
-  - q: "Welche Weiterbildungen gibt es für Stottertherapie?"
-    a: "Anerkannte Formate sind die modulare Demosthenes-Weiterbildung zur Fachlogopädin für Stottern und Poltern (ca. ein bis zwei Jahre, 800–2.000 Euro, vom dbl anerkannt), die KST-Ausbildung (Kassel Stottertherapie) sowie kürzere BVSS-Workshops und Fachtagungen."
-  - q: "Welche Therapiemethoden werden bei Stottern eingesetzt?"
-    a: "Zu den gängigen Methoden zählen die Stottermodifikation nach Van Riper, Fluency Shaping (z. B. Kassel Stottertherapie), das elterngeführte Lidcombe-Programm für Kinder unter sechs Jahren sowie KIDS/RESTART-DCM für Kinder im Vorschulalter."
-  - q: "Wie ist die Nachfrage nach Stottertherapeuten in NRW?"
-    a: "Die Nachfrage nach qualifizierten Stottertherapeuten ist in NRW konstant hoch. Praxen mit Spezialanfragen suchen aktiv nach qualifizierten Bewerberinnen und sind bereit, für diese Qualifikation mehr als den Marktdurchschnitt zu zahlen."
+  - q: "Bringt die Spezialisierung ein höheres Gehalt?"
+    a: "Ein allgemeiner Gehaltsaufschlag ist hier nicht nachgewiesen. Vergütung und fachliche Aufgaben sind mit dem konkreten Arbeitgeber zu vereinbaren."
+  - q: "Was ist KIDS?"
+    a: "Kinder Dürfen Stottern ist ein Ansatz der Stottermodifikation. Das G-BA-Projekt PMS KIDS untersuchte die ambulante Therapie bei Schulkindern. KIDS ist kein pauschales Programm zur Begleitung einer Spontanremission."
+  - q: "Woran erkenne ich eine passende Weiterbildung?"
+    a: "Prüfe Zielgruppe, Inhalte, Lehrende, Zugang, Praxisanteile, Nachweisart und aktuelle Gesamtkosten am konkreten Angebot. Eine Teilnahmebescheinigung ist nicht automatisch eine staatliche Qualifikation."
+  - q: "Übernimmt die Praxis Fortbildungskosten?"
+    a: "Die Praxis für Logopädie Şimşek unterstützt Fortbildungen finanziell und mit zusätzlichen freien Tagen. Eine pauschale vollständige Kostenübernahme wird damit nicht zugesagt."
 ---
 
-Stottern ist ein Störungsbild, das viele Logopädinnen mit gemischten Gefühlen belegen. Die Therapie ist anspruchsvoll, die Fortschritte sind nicht linear, und die emotionale Komponente — Angst, Vermeidung, sozialer Rückzug — macht die Arbeit komplexer als rein symptombezogene Ansätze. Gleichzeitig ist die Nachfrage nach qualifizierten Stottertherapeuten in NRW konstant hoch. Wer sich spezialisiert, findet eine überschaubare Community, verlässliche Weiterbildungsstrukturen und eine Arbeit, die viele als besonders sinnvoll erleben.
+Eine Spezialisierung auf Stottern und Poltern kann dein fachliches Profil vertiefen. Dafür brauchst du Interesse an Redeflussstörungen, reflektierte Therapieplanung und passende Weiterbildung. Ein festgelegter Gehaltszuschlag oder eine garantierte Nachfrage folgt daraus nicht.
 
-## Was die Spezialisierung inhaltlich bedeutet
+## Was du fachlich vertiefst
 
-Stottern (Balbuties) und Poltern (Cluttering) sind Redeflussstörungen, die sich in Symptomatik, Genese und Therapieansatz unterscheiden. In der Ausbildung wird beides behandelt, aber oft nur an der Oberfläche. Für eine kompetente therapeutische Arbeit reicht das in der Regel nicht.
+Die Arbeit umfasst mehr als die Häufigkeit hörbarer Unflüssigkeiten. Auch Begleitverhalten, Vermeidung, Gefühle und die Auswirkungen auf die Kommunikation können wichtig sein. Ziele und Methoden müssen zur Person, zum Alter und zum Befund passen. Stottern und Poltern sind dabei nicht einfach austauschbare Bezeichnungen.
 
-Die gängigen Therapiemethoden:
+Für die eigene Weiterbildung lohnt sich die Frage, welche Patientengruppen du künftig behandeln möchtest und welche Anleitung du für den Transfer in den Alltag benötigst. Ein kurzer Überblick über Methoden ersetzt weder ein Manual noch eine betreute Einarbeitung.
 
-**Stottermodifikation** (nach Van Riper): Ziel ist nicht die Symptomfreiheit, sondern der Umgang mit dem Stottern — Desensibilisierung, Modifikation des Stotterverhaltens, Abbau von Vermeidung. Besonders geeignet für Jugendliche und Erwachsene.
+## KIDS richtig einordnen
 
-**Fluency Shaping** (z. B. Kassel Stottertherapie, KST): Aufbau flüssigen Sprechens über kontrollierte Sprechtechniken. Intensivformat, oft als mehrwöchiges Programm durchgeführt. Gut messbare kurzfristige Ergebnisse, aber Rückfallquoten ohne Nachsorge sind relevant.
+KIDS steht für „Kinder Dürfen Stottern“ und ist ein Ansatz der Stottermodifikation. Das [G-BA-Projekt PMS KIDS](https://innovationsfonds.g-ba.de/projekte/pms-kids.162) untersuchte die ambulante Anwendung bei Schulkindern. Der Ansatz berücksichtigt neben dem Sprechen auch Begleitsymptome und emotionale Belastungen.
 
-**Lidcombe-Programm**: Elterngeführte Therapie bei Kindern unter sechs Jahren. Hohe Evidenzbasis für die frühe Therapie, erfordert intensive Elternarbeit.
+KIDS ist deshalb nicht pauschal als Vorschulprogramm zur Begleitung einer Spontanremission zu beschreiben. Aus der Projektdarstellung folgt zugleich keine Wirksamkeitsgarantie für jedes Kind. Der Ergebnisbericht und das Manual erlauben eine genauere Prüfung von untersuchter Zielgruppe, Vorgehen und Ergebnissen.
 
-**KIDS / RESTART-DCM**: Methoden speziell für Kinder im Vorschulalter, die auf Spontanremission abzielen oder begleiten.
+## Methoden getrennt betrachten
 
-In der Praxis arbeitest du selten monotherapeutisch — eine fundierte Spezialisierung bedeutet, mehrere Ansätze zu kennen und situationsgerecht einzusetzen.
+Stottermodifikation, sprechrestrukturierende Ansätze und elternbezogene Programme unterscheiden sich in Zielen und Durchführung. Eine Weiterbildung sollte diese Unterschiede erklären und die Evidenz für die jeweils behandelte Altersgruppe benennen.
 
-## Weiterbildungen: was anerkannt ist
+Bei Vorschulkindern wurden beispielsweise das direkte Lidcombe-Programm und die indirekte Behandlung nach RESTART-DCM in einer [randomisierten Studie von 2015](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0133758) verglichen. RESTART-DCM setzt am Verhältnis von Anforderungen und Fähigkeiten an; beim Lidcombe-Programm werden Eltern in die direkte Arbeit am Sprechen einbezogen. Diese Ansätze sind von KIDS als Stottermodifikation zu unterscheiden. Die Studie ersetzt keine individuelle Auswahlentscheidung und belegt keine pauschale Überlegenheit für jedes Kind.
 
-Die Bundesvereinigung Stottern & Selbsthilfe (BVSS) und die Demosthenes-Gesellschaft sind die zentralen Anlaufstellen für Weiterbildung in Deutschland. Anerkannte Formate:
+Für die Bewertung eines Angebots kannst du fragen:
 
-**Demosthenes-Weiterbildung**: Modulare Weiterbildung zur "Fachlogopädin für Stottern und Poltern". Mehrere Intensivmodule über ca. ein bis zwei Jahre. Kosten: je nach Träger und Förderung zwischen 800 und 2.000 Euro gesamt. Anerkannt vom dbl.
+- Für welches Alter und welche Fragestellungen ist das Verfahren vorgesehen?
+- Welche Therapieziele werden bearbeitet und wie werden sie überprüft?
+- Welche wissenschaftlichen Untersuchungen stützen das Vorgehen?
+- Welche praktische Anleitung, Supervision und Nachsorge sind vorgesehen?
+- Welche Vorkenntnisse brauchst du zur Anwendung?
 
-**KST (Kassel Stottertherapie) — Ausbildung**: Ausbildungsprogramm zur Durchführung der Kassel Stottertherapie. Wird an wenigen zertifizierten Stellen angeboten, u. a. in Norddeutschland. Voraussetzung ist Berufserfahrung.
+Die Auswahl eines Verfahrens erfolgt individuell. Eine Methodenliste liefert keine vollständige fachliche Empfehlung.
 
-**BVSS-Workshops und Fachtagungen**: Kürzere Formate, gut für den Einstieg und für spezifische Themen (z. B. Umgang mit Kindern unter 5 Jahren, digitale Nachsorge).
+## Weiterbildung: konkrete Angebote prüfen
 
-Wichtig: Viele Arbeitgeber übernehmen Fortbildungskosten vollständig, wenn du Eigeninitiative zeigst. Es lohnt sich, das vor der Einstellung zu klären. In unserer Praxis in Duisburg werden Fortbildungen finanziell und mit zusätzlichen freien Tagen unterstützt. Die Auswahl richtet sich nach deinem gewünschten Schwerpunkt, zum Beispiel Stottertherapie.
+Informationen und Veranstaltungsangebote findest du beispielsweise bei der [Bundesvereinigung Stottern & Selbsthilfe](https://www.bvss.de/). Prüfe die jeweils konkrete Veranstaltungsseite auf Inhalte, Lehrende, Zugang, Umfang und Gebühren.
 
-## Gehalt und Marktposition
+Vergleiche bei mehrteiligen Weiterbildungen die vollständigen Anbieterunterlagen. Titel, Anerkennungsart, Zulassungsvoraussetzungen, Laufzeit und Kosten müssen dort konkret benannt sein. Plane weder eine bestimmte Qualifikationsbezeichnung noch einen Preisrahmen ohne diesen Nachweis ein.
 
-Eine Spezialisierung auf Stottern/Poltern schlägt sich im Gehalt nieder, wenn auch nicht dramatisch. In den Daten des BA-Entgeltatlas und der jobvector-Auswertungen liegt der Aufschlag für Stottertherapeuten gegenüber dem allgemeinen Durchschnitt bei etwa 5 % — das entspricht ca. 150–200 Euro brutto/Monat bei einer Vollzeitstelle in einer freien Praxis.
+Ein Teilnahmezertifikat, eine fachverbandliche Anerkennung und eine staatliche Qualifikation sind unterschiedliche Nachweise. Kläre, welchen davon ein Kurs tatsächlich bietet. Frage vor der Buchung auch nach Übungsfällen, Rückmeldungen und möglichen Folgekosten.
 
-Wichtiger als der direkte Gehaltseffekt ist die Marktposition: Wer nachweislich Stottertherapie bei Kindern und Erwachsenen durchführen kann, ist auf dem Stellenmarkt in NRW klar bevorzugt. Praxen mit Spezialanfragen suchen aktiv nach qualifizierten Bewerberinnen — und sind bereit, für diese Qualifikation mehr zu zahlen als der Marktdurchschnitt.
+## Finanzierung und Gehalt
 
-Für eine individuelle Einschätzung hilft der [Gehaltsrechner](/gehaltsrechner/), der die Spezialisierung Stottern/Poltern als eigene Variable berücksichtigt.
+Besprich mit einem Arbeitgeber, ob und wie er Weiterbildung unterstützt. Dazu gehören Kostenanteile, freie Tage, Auswahlmöglichkeiten und mögliche vertragliche Bindungen. Eine allgemeine vollständige Kostenübernahme lässt sich nicht voraussetzen.
 
-## Selbsthilfegruppen als Kooperationspartner
+Die Praxis für Logopädie Şimşek unterstützt Fortbildungen finanziell und mit zusätzlichen freien Tagen. Die Auswahl trifft die beschäftigte Person. Wenn du dich für Stottertherapie interessierst, kannst du deinen gewünschten Schwerpunkt im Bewerbungsgespräch ansprechen.
 
-Ein oft unterschätzter Aspekt: Die Selbsthilfelandschaft im Bereich Stottern ist in Deutschland gut organisiert. Die BVSS betreibt lokale Gruppen in vielen NRW-Städten. Als spezialisierte Therapeutin wirst du von diesen Gruppen häufig direkt angesprochen — sowohl für Therapieanfragen als auch für Vorträge, Elternabende und Gruppentherapieangebote.
+Für einen allgemeinen Gehaltsaufschlag durch die Spezialisierung liegt hier kein belastbarer Nachweis vor. Auch eine sichere Bevorzugung auf dem NRW-Stellenmarkt ist daraus nicht abzuleiten. Vergleiche konkrete Vergütung, Wochenstunden und Aufgaben. Unser [Gehaltsartikel](/berufshandbuch/gehalt-logopaedie-nrw/) erklärt die Grenzen statistischer Orientierungswerte.
 
-Diese Zusammenarbeit ist praktisch: Du bekommst Zugang zu einer Patientengruppe, die motiviert und gut informiert ist. Gleichzeitig ist sie fachlich anspruchsvoll, weil die Selbsthilfegemeinschaft gut vernetzt ist und hohe Erwartungen an die therapeutische Kompetenz hat.
+## Selbsthilfe und therapeutische Arbeit
 
-## Für wen lohnt sich die Spezialisierung?
+Selbsthilfe kann Perspektiven auf das Leben mit Stottern eröffnen. Ein fachlicher Austausch sollte die Eigenständigkeit der Gruppen respektieren. Aus einer Zusammenarbeit folgt weder eine verlässliche Zuweisung von Patient:innen noch ein bestimmter Therapieerfolg.
 
-Stottertherapie ist kein Bereich, in den man aus taktischen Überlegungen einsteigt — die Arbeit erfordert echtes Interesse am Störungsbild und Geduld mit nicht-linearen Verläufen. Wenn du das mitbringst, ist es ein Feld, das beruflich langfristig trägt: Die Patientengruppe ist treuer als in anderen Bereichen, die Beziehungsarbeit tiefer, und die Weiterbildungsgemeinschaft in Deutschland ist klein genug, dass man sich schnell kennt.
+Wenn du das Feld kennenlernen möchtest, vergleiche aktuelle Fachveranstaltungen und sprich im Team über geeignete Begleitung für erste Fälle. Für individuelle Beratung, Diagnostik und Behandlung in unserer Praxis gilt: zunächst ärztliche Abklärung, bei erforderlicher Logopädie eine Heilmittelverordnung und anschließend die logopädische Versorgung mit vorliegender Verordnung.
 
-Als nächsten Schritt empfehle ich, eine der BVSS-Fachtagungen zu besuchen — das ist der schnellste Weg, um einen realistischen Eindruck vom Feld zu bekommen, bevor du eine mehrteilige Weiterbildung beginnst.
+Die [Praxis für Logopädie Şimşek in Duisburg](/jobs/logopaedin-sprachtherapeut-duisburg/) heißt eigene fachliche Schwerpunkte willkommen. Diese können nach dem Einstieg aufgebaut werden; du musst nicht bereits alle Störungsbilder beherrschen.
+
+## Redaktion und Einordnung
+
+Stand der redaktionellen Überarbeitung: **30.10.2026**. Herausgeberin ist die Praxis für Logopädie Şimşek. Die verlinkten Quellen ermöglichen die Prüfung der allgemeinen Aussagen; dieser Beitrag weist keine gesonderte fachliche Abnahme aus. Informationen zu unserer Stelle sind Praxisangebote und keine allgemeinen Branchenbedingungen.
+
+## Quellen
+
+- [G-BA Innovationsfonds: PMS KIDS mit Ergebnisbericht und Manual](https://innovationsfonds.g-ba.de/projekte/pms-kids.162)
+- [Bundesvereinigung Stottern & Selbsthilfe](https://www.bvss.de/)

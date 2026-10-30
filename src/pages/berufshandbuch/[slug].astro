@@ -22,6 +22,12 @@ const pubDateFormatiert = beitrag.data.pubDate.toLocaleDateString('de-DE', {
   day: '2-digit', month: 'long', year: 'numeric',
 });
 
+const standDatum = beitrag.data.updatedDate ?? beitrag.data.pubDate;
+const standDatumFormatiert = standDatum.toLocaleDateString('de-DE', {
+  day: '2-digit', month: 'long', year: 'numeric', timeZone: 'UTC',
+});
+const redaktionName = 'Redaktion der Praxis für Logopädie Şimşek';
+
 const kategorieColors: Record<string, string> = {
   'Karriere':    'bg-simsek-green/10 text-simsek-green border-simsek-green/20',
   'Gehalt':      'bg-simsek-blue/10 text-simsek-blue border-simsek-blue/20',
@@ -45,8 +51,9 @@ const articleSchema = {
   "datePublished": beitrag.data.pubDate.toISOString(),
   "dateModified": (beitrag.data.updatedDate ?? beitrag.data.pubDate).toISOString(),
   "author": {
-    "@type": "Person",
-    "name": beitrag.data.author
+    "@type": "Organization",
+    "name": redaktionName,
+    "url": "https://xn--logopdiejobs-kcb.de/berufshandbuch/"
   },
   "publisher": {
     "@type": "Organization",
@@ -133,9 +140,10 @@ const faqSchema = beitrag.data.faq ? {
             {beitrag.data.author.charAt(0).toUpperCase()}
           </div>
           <div class="text-sm">
-            <span class="font-semibold text-slate-700">{beitrag.data.author}</span>
+            <span class="font-semibold text-slate-700">{redaktionName}</span>
             <span class="mx-1.5 text-slate-300">·</span>
-            <span class="text-slate-500">{pubDateFormatiert}</span>
+            <span class="text-slate-500">Veröffentlicht: {pubDateFormatiert}</span>
+            {beitrag.data.updatedDate && <span class="block text-slate-500 mt-1">Überarbeitet: {standDatumFormatiert}</span>}
           </div>
         </div>
 
@@ -201,7 +209,7 @@ const faqSchema = beitrag.data.faq ? {
           <p class="text-xs font-bold uppercase tracking-widest text-simsek-green mb-3">Praxis für Logopädie Şimşek · Duisburg</p>
           <h3 class="text-2xl font-semibold text-slate-900 mb-3">Klingt interessant? Wir suchen Verstärkung.</h3>
           <p class="text-slate-600 leading-relaxed mb-6 text-sm">
-            Werde Teil eines kollegialen Teams in zentraler Lage — direkt am Duisburger Hauptbahnhof. 4-Tage-Woche möglich.
+            Lerne unser Team in Duisburg-Mitte nahe dem Hauptbahnhof kennen. Stundenumfang und Arbeitstage sind flexibel gestaltbar; eine Vier-Tage-Woche ist möglich.
           </p>
           <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
             <a
@@ -219,7 +227,7 @@ const faqSchema = beitrag.data.faq ? {
       <!-- Article footer -->
       <footer class="mt-8 pt-6 border-t border-slate-100">
         <p class="text-xs text-slate-600">
-          Stand: {pubDateFormatiert}. Redaktionell gepflegt vom Team der Praxis für Logopädie Şimşek.
+          Stand: {standDatumFormatiert}. Herausgegeben von der Praxis für Logopädie Şimşek. Quellen stehen beim jeweiligen Beitrag; individuelle fachliche oder rechtliche Entscheidungen ersetzt der Artikel nicht.
         </p>
       </footer>
 
@@ -240,6 +248,30 @@ const faqSchema = beitrag.data.faq ? {
 
   :global(.article-body p) {
     margin-bottom: 1.5rem;
+  }
+
+  :global(.article-body .article-table-scroll) {
+    max-width: 100%;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+  }
+
+  :global(.article-body .article-table-scroll:focus-visible) {
+    outline: 2px solid rgb(42 127 111);
+    outline-offset: 3px;
+  }
+
+  :global(.article-body table) {
+    width: 100%;
+    min-width: 34rem;
+    border-collapse: collapse;
+    text-align: left;
+  }
+
+  :global(.article-body th), :global(.article-body td) {
+    padding: 0.75rem;
+    border-bottom: 1px solid rgb(42 127 111 / 0.2);
+    vertical-align: top;
   }
 
   /* H2: simsek-green left accent bar */

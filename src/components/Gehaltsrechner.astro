@@ -1,189 +1,78 @@
 ---
-// src/components/Gehaltsrechner.astro
-// Interaktiver Gehaltsrechner für Logopädie in NRW.
-// Logik liegt in src/lib/gehalt-daten.ts und wird über ein Script-Modul im Browser geladen.
-import { optionen } from '../lib/gehalt-daten';
-
-const {
-  berufsjahre,
-  setting,
-  qualifikation,
-  spezialisierung,
-  arbeitszeit,
-  region,
-  zusatzleistungen,
-} = optionen;
+const fields = [
+  { name: 'stundenlohn', label: 'Bruttostundenlohn (€)', value: 23, min: 0.01 },
+  { name: 'wochenstunden', label: 'Vertragliche Wochenstunden', value: 38.5, min: 0.01 },
+  { name: 'sonderzahlungJahr', label: 'Vereinbarte Brutto-Sonderzahlungen pro Jahr (€)', value: 0, min: 0 },
+  { name: 'arbeitgeberbeitragJahr', label: 'Zusätzlicher Arbeitgeberbeitrag für Leistungen pro Jahr (€)', value: 0, min: 0 },
+];
 ---
 
 <div class="p-px rounded-3xl bg-simsek-green shadow-sm">
-<div class="bg-white rounded-[calc(1.5rem-1px)] p-6 md:p-10" id="gehaltsrechner">
-  <form id="rechner-form" class="grid gap-5 md:grid-cols-2">
-
-    <div class="flex flex-col gap-1.5">
-      <label for="berufsjahre" class="text-xs font-bold uppercase tracking-wider text-slate-500">Berufserfahrung</label>
-      <div class="relative">
-        <select id="berufsjahre" name="berufsjahre" class="w-full appearance-none bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 pr-10 text-slate-900 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-simsek-blue focus:bg-white cursor-pointer transition-colors">
-          {berufsjahre.map((o) => <option value={o.value}>{o.label}</option>)}
-        </select>
-        <svg class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
-      </div>
-    </div>
-
-    <div class="flex flex-col gap-1.5">
-      <label for="setting" class="text-xs font-bold uppercase tracking-wider text-slate-500">Setting</label>
-      <div class="relative">
-        <select id="setting" name="setting" class="w-full appearance-none bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 pr-10 text-slate-900 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-simsek-blue focus:bg-white cursor-pointer transition-colors">
-          {setting.map((o) => <option value={o.value}>{o.label}</option>)}
-        </select>
-        <svg class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
-      </div>
-    </div>
-
-    <div class="flex flex-col gap-1.5">
-      <label for="qualifikation" class="text-xs font-bold uppercase tracking-wider text-slate-500">Qualifikation</label>
-      <div class="relative">
-        <select id="qualifikation" name="qualifikation" class="w-full appearance-none bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 pr-10 text-slate-900 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-simsek-blue focus:bg-white cursor-pointer transition-colors">
-          {qualifikation.map((o) => <option value={o.value}>{o.label}</option>)}
-        </select>
-        <svg class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
-      </div>
-    </div>
-
-    <div class="flex flex-col gap-1.5">
-      <label for="spezialisierung" class="text-xs font-bold uppercase tracking-wider text-slate-500">Schwerpunkt</label>
-      <div class="relative">
-        <select id="spezialisierung" name="spezialisierung" class="w-full appearance-none bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 pr-10 text-slate-900 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-simsek-blue focus:bg-white cursor-pointer transition-colors">
-          {spezialisierung.map((o) => <option value={o.value}>{o.label}</option>)}
-        </select>
-        <svg class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
-      </div>
-    </div>
-
-    <div class="flex flex-col gap-1.5">
-      <label for="arbeitszeit" class="text-xs font-bold uppercase tracking-wider text-slate-500">Arbeitszeitmodell</label>
-      <div class="relative">
-        <select id="arbeitszeit" name="arbeitszeit" class="w-full appearance-none bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 pr-10 text-slate-900 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-simsek-blue focus:bg-white cursor-pointer transition-colors">
-          {arbeitszeit.map((o) => <option value={o.value}>{o.label}</option>)}
-        </select>
-        <svg class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
-      </div>
-    </div>
-
-    <div class="flex flex-col gap-1.5">
-      <label for="region" class="text-xs font-bold uppercase tracking-wider text-slate-500">Region in NRW</label>
-      <div class="relative">
-        <select id="region" name="region" class="w-full appearance-none bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 pr-10 text-slate-900 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-simsek-blue focus:bg-white cursor-pointer transition-colors">
-          {region.map((o) => <option value={o.value}>{o.label}</option>)}
-        </select>
-        <svg class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
-      </div>
-    </div>
-
-    <div class="md:col-span-2 flex flex-col gap-3">
-      <span class="text-sm font-bold text-slate-700">Zusatzleistungen</span>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-        {zusatzleistungen.map((z) => (
-          <label class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 hover:border-simsek-blue cursor-pointer">
-            <input type="checkbox" name="zusatz" value={z.value} class="mt-1 accent-simsek-green" />
-            <div class="flex flex-col">
-              <span class="text-sm font-medium text-slate-800">{z.label}</span>
-              <span class="text-xs text-slate-500">~{z.wert} €/Jahr</span>
-            </div>
-          </label>
-        ))}
-      </div>
-    </div>
-  </form>
-
-  <div id="rechner-ergebnis" aria-live="polite" class="mt-10 pt-8 border-t border-slate-200">
-    <div class="grid gap-6 md:grid-cols-3">
-      <div class="p-5 bg-slate-50 rounded-2xl">
-        <p class="text-xs uppercase tracking-widest text-slate-500 font-bold mb-2">Brutto / Monat</p>
-        <p class="text-2xl md:text-3xl font-bold text-slate-900" data-out="monat-mittel">—</p>
-        <p class="text-xs text-slate-500 mt-1">Spanne: <span data-out="monat-spanne">—</span></p>
-      </div>
-      <div class="p-5 bg-slate-50 rounded-2xl">
-        <p class="text-xs uppercase tracking-widest text-slate-500 font-bold mb-2">Brutto / Jahr</p>
-        <p class="text-2xl md:text-3xl font-bold text-slate-900" data-out="jahr">—</p>
-        <p class="text-xs text-slate-500 mt-1">Ohne Zusatzleistungen</p>
-      </div>
-      <div class="p-px rounded-2xl bg-simsek-green ">
-        <div class="p-5 bg-white rounded-[calc(1rem-1px)]">
-          <p class="text-xs uppercase tracking-widest text-simsek-blue font-bold mb-2">Gesamtpaket / Jahr</p>
-          <p class="text-2xl md:text-3xl font-bold text-simsek-blue" data-out="gesamtpaket">—</p>
-          <p class="text-xs text-slate-600 mt-1">+ <span data-out="zusatz-wert">0 €</span> geldwerte Vorteile</p>
+  <div class="bg-white rounded-[calc(1.5rem-1px)] p-6 md:p-10" id="gehaltsrechner">
+    <p class="text-sm text-slate-600 mb-6">Trage deinen angebotenen oder vereinbarten Stundenlohn und deine Wochenstunden ein. Die vorausgefüllten Werte sind ein Rechenbeispiel. Wenn keine zusätzlichen Zahlungen vereinbart sind, lass die Jahresbeträge bei 0.</p>
+    <form id="rechner-form" class="grid gap-5 md:grid-cols-2" aria-describedby="rechner-hinweis">
+      {fields.map((field) => (
+        <div class="flex flex-col gap-1.5">
+          <label for={field.name} class="text-xs font-bold uppercase tracking-wider text-slate-500">{field.label}</label>
+          <input id={field.name} name={field.name} type="number" inputmode="decimal" min={field.min} step="0.01" value={field.value} required aria-describedby={field.name === 'arbeitgeberbeitragJahr' ? 'beitrag-hinweis' : undefined} class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-simsek-blue focus:bg-white" />
+          {field.name === 'arbeitgeberbeitragJahr' && <p id="beitrag-hinweis" class="text-xs text-slate-500">Nur den bestätigten, zusätzlich finanzierten Arbeitgeberanteil eintragen. Eigenanteile und Entgeltumwandlung nicht einrechnen. Dieser Betrag wird separat gezeigt und nicht zum Bruttogehalt addiert.</p>}
         </div>
-      </div>
+      ))}
+    </form>
+    <div id="rechner-ergebnis" aria-live="polite" aria-atomic="true" class="mt-10 pt-8 border-t border-slate-200">
+      <p data-out="fehler" class="text-sm text-slate-700 mb-4"></p>
+      <dl class="grid gap-6 md:grid-cols-2">
+        <div class="p-5 bg-slate-50 rounded-2xl">
+          <dt class="text-xs uppercase tracking-widest text-slate-500 font-bold mb-2">Monatsbrutto im Jahresmittel</dt>
+          <dd><span class="text-2xl font-bold text-slate-900" data-out="monat">—</span><p class="text-xs text-slate-500 mt-1">Ohne Sonderzahlungen, mit 52 Wochen / 12 Monaten</p></dd>
+        </div>
+        <div class="p-5 bg-slate-50 rounded-2xl">
+          <dt class="text-xs uppercase tracking-widest text-slate-500 font-bold mb-2">Jahresbrutto ohne Sonderzahlungen</dt>
+          <dd class="text-2xl font-bold text-slate-900" data-out="jahr">—</dd>
+        </div>
+        <div class="p-5 border border-simsek-green rounded-2xl">
+          <dt class="text-xs uppercase tracking-widest text-simsek-blue font-bold mb-2">Jahresbrutto mit Sonderzahlungen</dt>
+          <dd class="text-2xl font-bold text-simsek-blue" data-out="jahr-gesamt">—</dd>
+        </div>
+        <div class="p-5 border border-slate-200 rounded-2xl">
+          <dt class="text-xs uppercase tracking-widest text-slate-500 font-bold mb-2">Zusätzlicher Arbeitgeberbeitrag / Jahr</dt>
+          <dd><span class="text-2xl font-bold text-slate-900" data-out="beitrag">—</span><p class="text-xs text-slate-500 mt-1">Separat; kein Brutto- oder Nettolohnäquivalent</p></dd>
+        </div>
+      </dl>
     </div>
-
-    <div class="mt-6 p-5 bg-white border border-slate-200 rounded-2xl">
-      <p class="text-sm text-slate-700">
-        <span class="font-bold">Vergleich zum NRW-Durchschnitt:</span>
-        <span data-out="vergleich" class="font-bold">—</span>
-      </p>
-      <p class="text-xs text-slate-500 mt-2" data-out="erklaerung">—</p>
-    </div>
+    <p id="rechner-hinweis" class="text-xs text-slate-500 mt-6">Formel: Stundenlohn × Wochenstunden × 52 / 12. Das tatsächliche Monatsentgelt richtet sich nach der vertraglichen Abrechnung. Vier Arbeitstage bestimmen nicht automatisch die Wochenstunden. Keine Netto-, Marktgehalts- oder Tarifberechnung.</p>
+    <noscript><p class="text-sm text-slate-600 mt-4">Für die interaktive Berechnung bitte JavaScript aktivieren. Du kannst die oben angegebene Formel auch selbst verwenden.</p></noscript>
   </div>
-
-  <p class="text-xs text-slate-500 mt-6">
-    Schätzwert auf Basis öffentlicher Daten (jobvector, StepStone, Bundesagentur für Arbeit, dbl-Umfragen).
-    Einzelne Arbeitgeber können darüber oder darunter liegen. Methodik siehe unten.
-  </p>
-</div>
 </div>
 
 <script>
   import { berechneGehalt } from '../lib/gehalt-daten';
-  import type { RechnerInput, Zusatzleistung } from '../lib/gehalt-daten';
-
   const form = document.getElementById('rechner-form') as HTMLFormElement | null;
-  if (!form) throw new Error('Rechner-Form nicht gefunden');
-
-  const formatEuro = (n: number) =>
-    new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n);
-
+  const euro = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' });
   function setOut(key: string, value: string) {
-    const el = document.querySelector(`[data-out="${key}"]`);
-    if (el) el.textContent = value;
+    const element = document.querySelector(`[data-out="${key}"]`);
+    if (element) element.textContent = value;
   }
-
-  function readInput(): RechnerInput {
-    const fd = new FormData(form!);
-    const zusatz = fd.getAll('zusatz') as Zusatzleistung[];
-    return {
-      berufsjahre: fd.get('berufsjahre') as RechnerInput['berufsjahre'],
-      setting: fd.get('setting') as RechnerInput['setting'],
-      qualifikation: fd.get('qualifikation') as RechnerInput['qualifikation'],
-      spezialisierung: fd.get('spezialisierung') as RechnerInput['spezialisierung'],
-      arbeitszeit: fd.get('arbeitszeit') as RechnerInput['arbeitszeit'],
-      region: fd.get('region') as RechnerInput['region'],
-      zusatzleistungen: zusatz,
-    };
-  }
-
   function update() {
-    const input = readInput();
-    const e = berechneGehalt(input);
-
-    setOut('monat-mittel', formatEuro(e.bruttoMonatMittel));
-    setOut('monat-spanne', `${formatEuro(e.bruttoMonatMin)} – ${formatEuro(e.bruttoMonatMax)}`);
-    setOut('jahr', formatEuro(e.bruttoJahr));
-    setOut('gesamtpaket', formatEuro(e.gesamtpaketJahr));
-    setOut('zusatz-wert', formatEuro(e.zusatzJahrWert));
-
-    const vergleich =
-      e.nrwDurchschnittVergleich === 0
-        ? 'entspricht dem NRW-Schnitt'
-        : e.nrwDurchschnittVergleich > 0
-          ? `+${e.nrwDurchschnittVergleich}% über dem NRW-Schnitt`
-          : `${e.nrwDurchschnittVergleich}% unter dem NRW-Schnitt`;
-    setOut('vergleich', vergleich);
-
-    const erklaerung = `Berechnung: ${e.erklaerung.stunden}h/Woche in ${e.erklaerung.setting}, ${e.erklaerung.qualifikation}, Schwerpunkt ${e.erklaerung.spezialisierung}, ${e.erklaerung.region}.`;
-    setOut('erklaerung', erklaerung);
+    if (!form) return;
+    try {
+      if (!form.checkValidity()) throw new RangeError('Bitte alle Felder mit gültigen Zahlen ausfüllen: Lohn und Stunden größer als 0, Jahresbeträge mindestens 0.');
+      const value = (name: string) => (form.elements.namedItem(name) as HTMLInputElement).valueAsNumber;
+      const result = berechneGehalt({
+        stundenlohn: value('stundenlohn'), wochenstunden: value('wochenstunden'),
+        sonderzahlungJahr: value('sonderzahlungJahr'), arbeitgeberbeitragJahr: value('arbeitgeberbeitragJahr'),
+      });
+      setOut('monat', euro.format(result.bruttoMonat));
+      setOut('jahr', euro.format(result.bruttoJahr));
+      setOut('jahr-gesamt', euro.format(result.bruttoJahrMitSonderzahlung));
+      setOut('beitrag', euro.format(result.arbeitgeberbeitragJahr));
+      setOut('fehler', '');
+    } catch (error) {
+      for (const key of ['monat', 'jahr', 'jahr-gesamt', 'beitrag']) setOut(key, '—');
+      setOut('fehler', error instanceof Error ? error.message : 'Bitte Eingaben prüfen.');
+    }
   }
-
-  form.addEventListener('input', update);
-  form.addEventListener('change', update);
+  form?.addEventListener('submit', (event) => event.preventDefault());
+  form?.addEventListener('input', update);
   update();
 </script>

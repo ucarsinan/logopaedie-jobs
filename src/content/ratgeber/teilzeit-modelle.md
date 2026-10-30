@@ -1,79 +1,76 @@
 ---
 title: "Teilzeit in der Logopädie: Welches Modell passt zu welcher Lebensphase?"
-description: "30-Stunden-Woche, 4-Tage-Woche oder echte Teilzeit mit 20 Stunden: Was bedeuten diese Modelle in der Praxis — finanziell, organisatorisch und für die Patientenkontinuität?"
+description: "Teilzeit in der Logopädie: Rechenbeispiele für 20, 30 und 32 Wochenstunden, Arbeitszeitgrenzen und individuelle Therapieplanung. Mit bestätigtem Praxisangebot."
 kategorie: "Arbeitszeit"
 topic: "gehalt-arbeitsmodelle"
 intent: "arbeitszeit"
 featured: false
 priority: 30
 pubDate: 2026-04-14
+updatedDate: 2026-10-30
 author: "Redaktion"
 draft: false
 relatedArticles: ["ausbildung-nrw-2026", "arbeiten-duisburg", "bewerbung-logopaedie-tipps", "4-tage-woche-logopaedie"]
-definition: "Mehr als die Hälfte aller angestellten Logopädinnen in Deutschland arbeitet laut dbl-Praxisumfrage 2024/2025 nicht in Vollzeit — die gängigsten Teilzeitmodelle sind die 4-Tage-Woche (ca. 32 Stunden), die 30-Stunden-Woche und die 20-Stunden-Woche."
+definition: "Teilzeit bedeutet eine kürzere regelmäßige Wochenarbeitszeit als bei vergleichbaren Vollzeitbeschäftigten. Wochenstunden und Verteilung auf Arbeitstage werden getrennt vereinbart; vier Arbeitstage können auch Vollzeit sein."
 faq:
-  - q: "Wie verbreitet ist Teilzeit in der Logopädie?"
-    a: "Laut der dbl-Praxisumfrage 2024/2025 arbeiten mehr als die Hälfte aller angestellten Logopädinnen in Deutschland nicht in Vollzeit. Gründe sind unter anderem Familienphase und Kinderbetreuung, aber auch der fordernde Charakter des Berufs."
+  - q: "Welche Teilzeitmodelle gibt es in der Logopädie?"
+    a: "Mögliche Beispiele sind 20, 30 oder 32 Wochenstunden mit unterschiedlicher Verteilung auf Arbeitstage. Das sind Rechenbeispiele, keine belegte Rangfolge der häufigsten Modelle. Welche Verteilung möglich ist, wird mit dem Arbeitgeber vereinbart."
   - q: "Wie viel verdient man bei einer 4-Tage-Woche in der Logopädie?"
-    a: "Bei rund 32 Stunden (ca. 83 % einer Vollzeitstelle) sinkt das Gehalt proportional: Wer in Vollzeit 3.400 Euro brutto verdient, landet bei der 4-Tage-Woche bei rund 2.800 Euro."
+    a: "Das hängt von Wochenstunden und Vergütung ab. Bei 32 statt 38,5 Stunden und gleichem Stundenlohn beträgt das Monatsbrutto rund 83,1 Prozent des Vollzeitbetrags. Vier Arbeitstage allein legen weder Stundenumfang noch Gehalt fest."
   - q: "Welches Teilzeitmodell passt zu welcher Lebensphase?"
-    a: "Im Berufsstart (0–2 Jahre) empfiehlt sich Vollzeit oder 30 Stunden wegen der steilen Lernkurve. In der Familienphase mit Kleinkind sind 20–30 Stunden üblich, in der mittleren Berufsphase (5–10 Jahre) oft die 4-Tage-Woche oder 30 Stunden."
+    a: "Entscheidend sind deine zeitlichen Möglichkeiten, dein Einkommen und die vereinbarte Arbeitsorganisation. Berufseinstieg oder Elternzeit begründen keine allgemeine Mindeststundenzahl und keinen pauschalen Aufstockungsplan."
   - q: "Ist eine 20-Stunden-Teilzeit für die Patientenkontinuität geeignet?"
-    a: "Bei 20 Stunden pro Woche ist Patientenkontinuität schwerer aufrechtzuerhalten, da Kinder mit Sprachentwicklungsstörungen idealerweise zwei Einheiten pro Woche brauchen. Gut funktioniert dieses Modell eher bei wöchentlichen Einzelterminen, etwa bei leichteren phonologischen Störungen."
+    a: "Auch mit 20 Wochenstunden können kontinuierliche und mehrmals wöchentliche Termine geplant werden. Entscheidend sind Verordnung, individueller Bedarf, Arbeitstage, Fallzahl und Vertretung. Aus der Wochenstundenzahl allein lässt sich die Eignung nicht ableiten."
 ---
 
-Teilzeit ist in der Logopädie der Normalfall, nicht die Ausnahme. Laut der dbl-Praxisumfrage 2024/2025 arbeiten mehr als die Hälfte aller angestellten Logopädinnen in Deutschland nicht in Vollzeit. Das liegt zum einen an Familienphase und Kinderbetreuung, zum anderen daran, dass viele schlicht nicht 38,5 Stunden pro Woche therapeutisch arbeiten wollen — der Beruf ist fordernd, und Teilzeit ist eine vernünftige Antwort darauf.
+Teilzeit lässt sich auf unterschiedliche Weise gestalten. Für deine Entscheidung solltest du Wochenstunden, Arbeitstage, Einkommen und die Planung der Behandlungen gemeinsam betrachten. Die folgenden Modelle sind Beispiele; sie behaupten keine statistische Verbreitung in der Logopädie.
 
-Dieser Artikel sortiert die gängigen Modelle und hilft dir einzuschätzen, welches zu welcher Lebensphase passt.
+## Wochenstunden und Arbeitstage unterscheiden
 
-## Die 4-Tage-Woche (ca. 32 Stunden)
+Eine Vier-Tage-Woche kann mit 32 Stunden vereinbart werden, aber auch mit einem anderen Umfang bis hin zur Vollzeit. 30 Stunden lassen sich beispielsweise auf fünf Tage mit jeweils sechs Stunden oder vier Tage mit jeweils 7,5 Stunden Nettoarbeitszeit verteilen. 20 Stunden können etwa vier Tage mit jeweils fünf Stunden bedeuten.
 
-Das Modell, das gerade am meisten diskutiert wird. Vier Arbeitstage à acht Stunden, ein freier Tag in der Woche. In der Praxis bedeutet das meistens: drei therapeutisch dichte Tage, ein Dokumentations- und Berichtstag, ein Tag frei.
+Ein reiner Dokumentationstag ist keine allgemeine Eigenschaft einer 32-Stunden-Stelle. Für jede Verteilung müssen Therapie, Vorbereitung, Berichte und Organisation in die vereinbarte Arbeitszeit passen.
 
-Finanziell: Mit 32 Stunden statt 38,5 arbeitest du etwa 83 % einer Vollzeitstelle. Das Gehalt sinkt entsprechend — wer in Vollzeit 3.400 Euro brutto verdient, landet bei der 4-Tage-Woche bei rund 2.800 Euro. Das klingt nach viel Abzug, ist aber für viele Menschen der richtige Trade-off, wenn der freie Tag für Kinderbetreuung, Fortbildung oder Erholung genutzt wird.
+## Was bedeutet Teilzeit für das Bruttogehalt?
 
-Für Praxen ist das Modell organisierbar, wenn die Terminplanung konsequent aufgebaut ist. Wichtig ist, dass Patiententermine nicht über alle fünf Werktage verteilt sind — das würde den Sinn des Modells untergraben.
+Bei gleichem Stundenlohn und unveränderten sonstigen Bedingungen verhält sich das Monatsbrutto proportional zu den Wochenstunden. Die Tabelle nutzt ein **frei gewähltes Vollzeit-Rechenbeispiel von 3.400 Euro brutto bei 38,5 Stunden**. Es ist weder ein Branchenwert noch die Vergütung der Praxis für Logopädie Şimşek.
 
-Mehr zum 4-Tage-Modell und was es für die Logopädie konkret bedeutet, findest du im Artikel [4-Tage-Woche in der Logopädie](/berufshandbuch/4-tage-woche-logopaedie/).
+<div class="article-table-scroll" role="region" aria-label="Teilzeitmodelle im Vergleich" tabindex="0">
 
-## 30-Stunden-Woche: die unauffällige Teilzeit
+| Wochenstunden | Anteil an 38,5 Stunden | Monatliches Beispielbrutto |
+|---|---|---|
+| 32 | 83,1 % | rund 2.826 Euro |
+| 30 | 77,9 % | rund 2.649 Euro |
+| 20 | 51,9 % | rund 1.766 Euro |
 
-30 Stunden ist das Modell, das am wenigsten auffällt, aber am meisten gebracht wird. Es lässt sich auf viele Weisen verteilen: fünf Tage à sechs Stunden, vier Tage à 7,5 Stunden oder drei Tage Vollzeit plus zwei kurze Tage.
+</div>
 
-Finanziell entspricht das etwa 78 % einer Vollzeitstelle. In der Praxis: wer bei Vollzeit 3.400 Euro verdient, landet bei rund 2.650 Euro brutto.
+Rechenweg: 3.400 Euro × vereinbarte Wochenstunden ÷ 38,5. Sonderzahlungen, individuelle Entgeltvereinbarungen, Steuern und Sozialabgaben sind darin nicht berechnet. Der [Gehaltsrechner](/gehaltsrechner/) bietet ergänzende Orientierung; er ersetzt keine konkrete Vergütungsvereinbarung.
 
-Dieses Modell eignet sich gut für die mittlere Berufsphase: Du bist erfahren genug für komplexe Behandlungen, hast aber außerberufliche Verpflichtungen (Kinder, pflegebedürftige Angehörige, Nebenberuf), die einen vollen Arbeitstag Puffer pro Woche erfordern.
+## Lange Arbeitstage brauchen eine eigene Prüfung
 
-## 20-Stunden-Woche: echte Teilzeit
+20 Stunden auf zwei Tage ergeben zehn Stunden Nettoarbeitszeit täglich. Das ist keine voraussetzungslos zulässige Standardverteilung. Nach [§ 3 ArbZG](https://www.gesetze-im-internet.de/arbzg/__3.html) sind grundsätzlich acht Stunden werktäglich vorgesehen; bis zu zehn Stunden sind nur mit dem vorgeschriebenen Durchschnittsausgleich innerhalb von sechs Kalendermonaten oder 24 Wochen möglich. Der Durchschnitt bezieht sich auf Werktage, nicht nur auf tatsächlich gearbeitete Tage.
 
-Zwei volle Tage oder vier halbe Tage — 20 Stunden pro Woche sind die klassische Elternteilzeit nach der Elternzeit. Das entspricht etwa 52 % einer Vollzeitstelle und bringt entsprechend ca. 1.760 Euro brutto (bei einem Vollzeit-Referenzgehalt von 3.400 Euro).
+Bei mehr als sechs bis zu neun Stunden Arbeit sind mindestens 30 Minuten Pause, bei mehr als neun Stunden mindestens 45 Minuten nötig. Grundsätzlich darf höchstens sechs Stunden ohne Pause gearbeitet werden ([§ 4 ArbZG](https://www.gesetze-im-internet.de/arbzg/__4.html)). Nach Arbeitsende folgen grundsätzlich mindestens elf Stunden Ruhezeit ([§ 5 ArbZG](https://www.gesetze-im-internet.de/arbzg/__5.html)). Zehn Nettoarbeitsstunden mit Mindestpause bedeuten mindestens zehn Stunden und 45 Minuten Anwesenheit. Etwaige gesetzliche Ausnahmen müssen gesondert geprüft werden.
 
-Was viele unterschätzen: Bei 20 Stunden ist Patientenkontinuität schwerer aufrechtzuerhalten. Kinder mit SES brauchen idealerweise zwei Einheiten pro Woche — das ist mit 20 Stunden kaum für viele Patienten gleichzeitig umsetzbar. Gut funktioniert 20 Stunden in Settings, wo Einzeltermine wöchentlich stattfinden und weniger auf dichte Therapieserien angewiesen sind (z. B. leichtere phonologische Störungen, begleitende Beratung von Eltern).
+## Therapiekontinuität individuell organisieren
 
-Wer nach der Elternzeit in 20 Stunden einsteigt, plant häufig von vornherein eine Aufstockung auf 30 Stunden nach ein bis zwei Jahren. Das ist ein realistischer Fahrplan.
+Die benötigte Therapiefrequenz folgt nicht aus der Wochenarbeitszeit einer Therapeutin oder eines Therapeuten. Der [G-BA-Heilmittelkatalog](https://www.g-ba.de/downloads/17-98-3064/HeilM-RL_2024-05-16_Heilmittelkatalog.pdf) nennt für SP1 und SP3 eine Frequenzempfehlung von jeweils 1–3-mal wöchentlich. Maßgeblich sind unter anderem Schwere und Ausprägung der Störung, Beeinträchtigungen und Therapieziele (Vorbemerkung sowie gedruckte Seiten 83 und 85).
 
-## Welches Modell wann?
+Daraus ergibt sich weder eine starre Zweimal-pro-Woche-Regel bei Sprachentwicklungsstörungen noch eine generelle Ungeeignetheit einer 20-Stunden-Stelle. Wiederkehrende Termine, passende Arbeitstage, eine realistische Fallzahl und geregelte Vertretung unterstützen die Kontinuität. Das gilt auch beim Aufbau mehrsprachiger Behandlungsschwerpunkte; eine pauschale Mindeststundenzahl lässt sich daraus nicht ableiten.
 
-Hier eine grobe Orientierung — keine Formel, nur ein Ausgangspunkt:
+In unserer Praxis gilt: Beschwerden zunächst ärztlich abklären lassen. Wenn Logopädie erforderlich ist, wird eine Heilmittelverordnung ausgestellt. Mit vorliegender Verordnung können individuelle logopädische Beratung, Diagnostik und Behandlung in der Praxis erfolgen.
 
-**Berufsstart (0–2 Jahre):** Vollzeit oder 30 Stunden empfehlenswert. Die Lernkurve ist in den ersten zwei Jahren am steilsten. Wer zu früh zu wenig arbeitet, verpasst Behandlungserfahrung, die später schwer nachzuholen ist.
+## Dein Modell passend vereinbaren
 
-**Familienphase mit Kleinkind:** 20–30 Stunden. Die genaue Stundenanzahl hängt stark von der Kitasituation ab. Wichtig: Nicht mit zu wenig einsteigen, wenn die Stelle erhalten bleiben soll.
+Berufseinstieg, Betreuungspflichten oder Wiedereinstieg sagen allein noch nicht, welcher Stundenumfang für dich passt. Kläre die benötigte Einarbeitung und feste Ansprechpersonen ebenso wie Einkommen, Pendelzeit und verlässlich verfügbare Zeitfenster. Eine spätere Aufstockung kannst du besprechen, ohne sie pauschal vorauszusetzen.
 
-**Mittlere Berufsphase (5–10 Jahre):** 4-Tage-Woche oder 30 Stunden sind häufig der sweet spot. Genug therapeutische Intensität, um anspruchsvolle Fälle zu übernehmen, genug Puffer für Fortbildungen.
+[§ 11 TzBfG](https://www.gesetze-im-internet.de/tzbfg/__11.html) schützt vor einer Kündigung wegen der Weigerung, zwischen Vollzeit und Teilzeit zu wechseln; andere Kündigungsgründe bleiben möglich. Individuelle Ansprüche und Vertragsfragen müssen im Einzelfall geprüft werden.
 
-**Nach einer Pause (z. B. längere Elternzeit):** Langsamer Wiedereinstieg mit 20–25 Stunden ist sinnvoll, um den Rhythmus zurückzufinden — aber mit klarem Steigerungsplan.
+## Teilzeit in der Praxis für Logopädie Şimşek
 
-## Was du beim Gespräch mit dem Arbeitgeber beachten solltest
+In der [Praxis für Logopädie Şimşek in Duisburg](/jobs/logopaedin-sprachtherapeut-duisburg/) sind individuelle Arbeitszeitmodelle mit flexibel gestaltbarem Stundenumfang und Arbeitstagen möglich. Vollzeit umfasst 38,5 Wochenstunden; eine Vier-Tage-Woche ist ein Beispiel. Dokumentation, Berichte und Organisation sind eingeplante Arbeitszeit.
 
-Viele Praxen bieten Teilzeit an, haben aber keine durchdachte Struktur dafür. Konkrete Fragen, die sich lohnen:
+Besprich im Kennenlernen die konkrete Verteilung, Vergütung, Einarbeitung und Vertretung. Weitere Hinweise findest du im Artikel zur [Vier-Tage-Woche](/berufshandbuch/4-tage-woche-logopaedie/).
 
-- Werden die Therapiestunden gleichmäßig auf die Wochentage verteilt, oder musst du an deinen Tagen unverhältnismäßig viel "schleppen"?
-- Wird Dokumentationszeit anteilig eingerechnet, oder wird erwartet, dass du sie "nebenbei" machst?
-- Wie wird mit Ausfall umgegangen — bei dir und bei Kollegen?
-
-Für den Gehaltsvergleich: Der [Gehaltsrechner](/gehaltsrechner/) rechnet alle Arbeitszeitmodelle korrekt durch und zeigt dir, was bei deiner Stundenzahl, deiner Region und deinem Setting rauskommt.
-
-## Bilinguales Arbeiten und Teilzeit
-
-Ein Detail, das relevant ist, wenn du zweisprachig therapierst: Bei wenigen Stunden pro Woche ist es schwieriger, ein bilinguales Patientenklientel aufzubauen, weil du für Anfragen weniger Kapazität hast. Wenn bilinguale Sprachtherapie ein Schwerpunkt sein soll, hilft mehr Stundenumfang — zumindest in der Phase, in der die Spezialisierung aufgebaut wird. Mehr dazu im Artikel über [bilinguale Sprachtherapie](/berufshandbuch/bilinguale-sprachtherapie/).
+*Stand: 30. Oktober 2026. Rechenbeispiele sind keine individuellen Gehalts- oder Vertragszusagen.*

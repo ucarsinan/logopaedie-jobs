@@ -1,61 +1,55 @@
 ---
-title: "Logopädie Gehalt NRW 2026 — Was verdient eine Logopädin in Duisburg?"
-description: "Aktuelle Gehaltszahlen für Logopäd:innen in NRW und Duisburg 2026 sowie die konkrete Gehaltsspanne der Praxis für Logopädie Şimşek."
+title: "Logopädie Gehalt NRW 2026 — Amtliche Daten richtig einordnen"
+description: "Logopädie-Gehalt in NRW: BA-Median für das Datenjahr 2025, Grenzen des Vergleichs und transparente Umrechnung von Stundenlohn und Wochenstunden."
 kategorie: "Gehalt"
 topic: "gehalt-arbeitsmodelle"
 intent: "gehalt"
 featured: true
 priority: 10
 pubDate: 2026-04-14
+updatedDate: 2026-10-30
 author: "Redaktion"
 draft: false
 relatedArticles: ["logopaedin-duisburg-gesucht", "4-tage-woche-logopaedie", "bewerbung-logopaedie-tipps", "ausbildung-nrw-2026"]
-definition: "Das Logopädie-Gehalt in NRW liegt 2026 bei durchschnittlich 3.820 € brutto pro Monat — rund 24 % über dem bundesweiten Schnitt von 37.100 € jährlich."
+definition: "Der BA-Entgeltatlas nennt für das Datenjahr 2025 einen Bruttomonatsmedian von 3.571 € in NRW und 3.576 € bundesweit für das Sprachtherapie-Aggregat einschließlich Logopädie (81733), bezogen auf die statistische Kerngruppe sozialversicherungspflichtiger Vollzeitbeschäftigter."
 faq:
   - q: "Was verdient eine Logopädin in NRW?"
-    a: "Das Durchschnittsgehalt für Logopädinnen in NRW liegt 2026 bei rund 3.820 € brutto pro Monat (45.850 €/Jahr). Berufsanfängerinnen starten bei 2.800–3.200 €, erfahrene Therapeutinnen mit Spezialisierung können 4.000 € und mehr erreichen."
+    a: "Für das Sprachtherapie-Aggregat einschließlich Logopädie (81733) nennt der BA-Entgeltatlas 2025 einen monatlichen Bruttomedian von 3.571 € in NRW. Das ist keine individuelle Gehaltsprognose und kein reiner Praxiswert."
+  - q: "Verdienen Logopäd:innen in NRW mehr als im Bund?"
+    a: "Die vergleichbaren BA-Mediane 2025 liegen bei 3.571 € in NRW und 3.576 € bundesweit. Diese Zahlen belegen keinen allgemeinen NRW-Vorsprung."
   - q: "Was verdient eine Logopädin in Duisburg?"
-    a: "Duisburg liegt beim Logopädie-Gehalt im oberen Bereich innerhalb von NRW — mit Durchschnittswerten von bis zu 47.700 € jährlich. Die hohe Nachfrage nach bilingualen Therapeutinnen (Deutsch-Türkisch) ist ein wesentlicher Faktor."
-  - q: "Welche Faktoren beeinflussen das Logopädie-Gehalt?"
-    a: "Entscheidend sind: Berufserfahrung, Spezialisierung (Neurologie, Stottertherapie, bilinguale Kompetenz), Arbeitgeber (Klinik vs. freie Praxis), Region und Zusatzleistungen wie Fortbildungsübernahme oder flexible Arbeitszeiten."
+    a: "Hier wird kein belastbarer eigener Duisburger Median ausgewiesen. Die Praxis für Logopädie Şimşek nennt in ihrer Stellenanzeige je nach Erfahrung 23–26 € brutto pro Stunde. Das ist eine konkrete Arbeitgeberangabe, keine regionale Statistik."
+  - q: "Wie berechne ich das Monatsbrutto aus einem Stundenlohn?"
+    a: "Als Jahresmittel: Bruttostundenlohn × vertragliche Wochenstunden × 52 / 12. Bei 23 € und 38,5 Wochenstunden sind das 3.837,17 € ohne Sonderzahlungen. Die tatsächliche Abrechnung richtet sich nach dem Vertrag."
   - q: "Zahlt eine freie Praxis weniger als eine Klinik?"
-    a: "Nicht automatisch. Kliniken zahlen nach Tarifvertrag (TVöD), freie Praxen verhandeln individuell. Im Ruhrgebiet zahlen viele Praxen vergleichbar oder besser — besonders wenn sie Zusatzleistungen wie Fortbildungsübernahme oder eine 4-Tage-Woche anbieten."
+    a: "Das lässt sich nicht pauschal beantworten. Vergleiche konkrete Angebote einschließlich Wochenstunden, geltendem Tarifvertrag, Entgeltgruppe, Stufe und Sonderzahlungen. Nicht jede Klinik nutzt denselben Tarif."
 ---
 
-Laut aktuellen Erhebungen liegt das Durchschnittsgehalt für Logopädinnen und Logopäden in Nordrhein-Westfalen bei rund **45.850 € brutto im Jahr** — das entspricht etwa **3.820 € brutto pro Monat**. Die Spanne reicht von ca. 41.500 € bis 47.700 € jährlich, abhängig von Erfahrung, Arbeitgeber und Spezialisierung.
+## Was die amtlichen Gehaltsdaten zeigen
 
-Zum Vergleich: Der bundesweite Durchschnitt für Logopädie liegt bei etwa 37.100 € — NRW zahlt also deutlich besser als viele andere Bundesländer.
+Für das **Datenjahr 2025** nennt der [BA-Entgeltatlas für Sprachtherapie einschließlich Logopädie](https://web.arbeitsagentur.de/entgeltatlas/beruf/8763) einen monatlichen Bruttomedian von **3.571 € in NRW** und **3.576 € bundesweit**. Beide Werte betreffen dasselbe Berufsaggregat **81733**, alle Altersgruppen und Geschlechter. Sie belegen keinen allgemeinen NRW-Gehaltsvorsprung. Die Jahreszahl 2026 im Titel bezeichnet den redaktionellen Stand, nicht das Erhebungsjahr.
 
-## Gehalt nach Berufserfahrung
+Der Median teilt die erfassten Entgelte in zwei Hälften. Er ist kein arithmetischer Durchschnitt. Grundlage ist die statistische Kerngruppe sozialversicherungspflichtiger Vollzeitbeschäftigter; freie Praxen sind nicht separat abgegrenzt. Die BA kennt den individuellen Wochenstundenumfang nicht, und laufende sowie einmalige Entgelte gehen ein. Der Wert lässt sich deshalb nicht als festes Monatsgehalt bei 38,5 Stunden lesen. [BA: Hilfe und Methodik des Entgeltatlas](https://www.arbeitsagentur.de/hilfe-entgeltatlas).
 
-Als Berufsanfängerin startest du in NRW typischerweise bei **2.800 – 3.200 € brutto/Monat**. Mit 3–5 Jahren Erfahrung steigt das auf 3.400 – 3.800 €, und erfahrene Therapeutinnen mit Spezialisierung können 4.000 € und mehr erreichen.
+## Gehalt in Duisburg und konkrete Arbeitgeberangebote
 
-Die [Praxis für Logopädie Şimşek in Duisburg](/jobs/logopaedin-sprachtherapeut-duisburg/) nennt eine konkrete Spanne von 23–26 € brutto pro Stunde. Bei 38,5 Stunden Vollzeit entspricht das ungefähr 3.840–4.338 € brutto im Monat; zusätzlich wird jedes Jahr Weihnachtsgeld gezahlt. Fortbildungen werden finanziell und durch zusätzliche freie Tage unterstützt.
+Für Duisburg weisen wir hier keinen belastbaren eigenen Median oder Rang innerhalb von NRW aus. Aus den Landesdaten lassen sich auch keine gesicherten Einstiegsgehälter oder festen Aufschläge für Berufserfahrung, Bilingualität, Stottertherapie, Abschluss oder Region ableiten.
 
-## Was beeinflusst das Logopädie-Gehalt?
+Die [Stellenanzeige der Praxis für Logopädie Şimşek in Duisburg](/jobs/logopaedin-sprachtherapeut-duisburg/) nennt je nach Erfahrung **23–26 € brutto pro Stunde**. Das ist eine Arbeitgeberangabe, keine Marktstatistik. Bei 38,5 Wochenstunden ergeben sich nach der Näherung `Stundenlohn × Wochenstunden × 52 / 12` **3.837,17–4.337,67 € Monatsbrutto im Jahresmittel**, ohne Sonderzahlungen. Die Anzeige nennt außerdem jährliches Weihnachtsgeld und finanzielle sowie zeitliche Unterstützung bei Fortbildungen. Die konkreten Bedingungen gehören ins individuelle Angebot.
 
-Mehrere Faktoren bestimmen, was am Ende auf dem Konto landet:
+## Stundenlohn, Teilzeit und Sonderzahlungen vergleichen
 
-**Spezialisierung** spielt eine große Rolle. Therapeutinnen mit Schwerpunkt Neurologie (Aphasie, Dysarthrie, Dysphagie) oder Stottertherapie verdienen tendenziell mehr als Generalistinnen. Auch bilinguale Kompetenz — etwa Deutsch-Türkisch — wird zunehmend nachgefragt und besser vergütet.
+Unser [Gehaltsrechner](/gehaltsrechner/) rechnet deinen eingegebenen Stundenlohn mit den vereinbarten Wochenstunden um. Er prognostiziert kein marktübliches Gehalt und berechnet keine Tarifgruppe. Bei gleichem Stundenlohn verändert sich der Grundlohn genau proportional zum Stundenumfang. Vier Arbeitstage legen diesen Umfang nicht fest.
 
-**Arbeitgeber und Setting** machen einen Unterschied. Kliniken zahlen nach Tarifvertrag (TVöD), Praxen verhandeln individuell. Große Praxen mit mehreren Therapeutinnen können oft bessere Gehälter bieten als Ein-Personen-Praxen.
+Prüfe bei einem Angebot insbesondere:
 
-**Region** zählt ebenfalls. Innerhalb von NRW gibt es Unterschiede: Duisburg gehört laut aktuellen Daten zu den Städten mit den höchsten Logopädie-Gehältern in NRW, mit einem Durchschnitt von bis zu 47.700 € jährlich.
+- **Grundlohn und Arbeitszeit:** Stundenlohn oder Monatsgehalt, Wochenstunden sowie Zeit für Dokumentation, Vorbereitung und Organisation.
+- **Sonderzahlungen:** Höhe, Anspruchsvoraussetzungen, Fälligkeit und mögliche Rückzahlungsklauseln. Nur bestätigte Bruttozahlungen zum Jahresbrutto addieren.
+- **Tarifbindung:** Welcher Tarif gilt tatsächlich, mit welcher Entgeltgruppe, Stufe, Arbeitszeit und welchem Geltungsdatum? Eine Klinik bedeutet nicht automatisch TVöD; eine Eingruppierung folgt nicht allein aus dem Berufsabschluss.
+- **Zusätzliche Leistungen:** Fortbildungsbudget, Freistellung, Mobilität und Altersvorsorge getrennt betrachten. Eigenanteile, Entgeltumwandlung und tatsächliche zusätzliche Arbeitgeberfinanzierung unterscheiden. Ein Budget ist kein frei verfügbares Bruttogehalt; persönliche Nutzbarkeit und Bedingungen zählen.
 
-**Zusatzleistungen** werden oft unterschätzt. 100 % Fortbildungsübernahme, bezahlter Sonderurlaub für Kurse oder eine echte [4-Tage-Woche](/berufshandbuch/4-tage-woche-logopaedie/) können mehr wert sein als 200 € mehr Bruttogehalt — je nach Lebenssituation.
-
-## Logopädie Gehalt Duisburg — lokaler Vergleich
-
-Duisburg liegt beim Logopädie-Gehalt im oberen Bereich innerhalb von NRW. Die zentrale Lage im Ruhrgebiet, die gute ÖPNV-Anbindung und die hohe Nachfrage nach Therapeutinnen — besonders mit bilingualer Kompetenz — treiben die Gehälter nach oben.
-
-Die [Praxis für Logopädie Şimşek in Duisburg](/jobs/logopaedin-sprachtherapeut-duisburg/) nennt eine konkrete Spanne von 23–26 € brutto pro Stunde. Bei 38,5 Stunden Vollzeit entspricht das ungefähr 3.840–4.338 € brutto im Monat; zusätzlich wird jedes Jahr Weihnachtsgeld gezahlt. Fortbildungen werden finanziell und durch zusätzliche freie Tage unterstützt.
-
-## Gehalt verhandeln als Logopädin — Tipps
-
-Trau dich, nach Zahlen zu fragen. Seriöse Arbeitgeber nennen eine Spanne oder sind offen im Gespräch. Achte neben dem Bruttogehalt auf Fortbildungsbudget, Arbeitszeitmodell, Fahrtkosten und Urlaubstage. Eine Praxis, die 100 % Fortbildung übernimmt und eine 4-Tage-Woche anbietet, kann effektiv attraktiver sein als eine mit höherem Bruttogehalt aber weniger Flexibilität.
-
-Für eine individuelle Einschätzung steht der [Gehaltsrechner](/gehaltsrechner/) zur Verfügung.
+Sprich gewünschte fachliche Schwerpunkte und Entwicklungsmöglichkeiten im Gespräch an. Aus ihnen folgt ohne konkrete Vereinbarung kein fester Gehaltszuschlag. Für einen Vergleich sind belegte Vertragsbedingungen hilfreicher als pauschale Gehaltstabellen nach Erfahrungsjahren.
 
 ---
 
-*Stand: April 2026. Gehaltsangaben basieren auf öffentlich verfügbaren Daten von jobvector, StepStone und der Bundesagentur für Arbeit (Entgeltatlas). Individuelle Gehälter können abweichen.*
+*Redaktioneller Stand und Quellenabruf: 30. Oktober 2026. Amtliche Vergleichswerte: Datenjahr 2025, BA-Entgeltatlas, Berufsaggregat 81733. Die verlinkte Methodik erklärt Bezugsgruppe und Grenzen. Individuelle Gehälter und Abrechnungen können abweichen.*

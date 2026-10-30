@@ -53,3 +53,19 @@ Confidence: high
 - Zentrale Arbeitgeberwahrheit: `../Logopädie/docs/strategy/EMPLOYER_TRUTH.md`
 - Google Search Central JobPosting: https://developers.google.com/search/docs/appearance/structured-data/job-posting
 - Produktionsseite: https://xn--logopdiejobs-kcb.de/
+
+
+## Lokale Aussagenkorrektur — 30.10.2026 (nicht veröffentlicht)
+
+- Ziel:33 Befunde des Website-Audits fachlich nachvollziehbar bearbeiten; keine Veröffentlichung, kein Commit/Push.
+- Stand:29 Befunde lokal textlich korrigiert, B27–B30 teilweise korrigiert und wegen fehlender Betreiber-/Rechtsnachweise offen. Historische Aussagen oben beschreiben frühere Stände und sind kein Beleg aktueller Betriebsumsetzung.
+- Umsetzung:13 Ratgeberartikel, transparenter Vertrags-Gehaltsrechner statt unbelegter Marktprognose, Quellen/FAQ/Metadaten/llms abgestimmt, Rechtstexte teilweise korrigiert. Arbeitgeberzusagen gesondert dokumentiert; keine neuen Zusagen erfunden.
+- Nachweise, Zuständigkeiten und nächste Schritte: `docs/agent-reports/2026-10-30-aussagenkorrektur-v01.md` enthält die33-Zeilen-Matrix, Originalquellen,150 bestandene Tests, Build und lokale Browserprüfung.
+- Blocker/nächster notwendiger Schritt: bestätigte Hosting-/Analytics-/Lösch-/WhatsApp- und Berufs-/Aufsichtsangaben für B27–B30, danach Textabschluss und rechtliche Einordnung. Rechtstexte sind nicht veröffentlichungsreif. Ziel bleibt offen.
+- Git: ausschließlich lokale ungestagte Änderungen. Es wurde nichts gepusht.
+
+- Ergänzende Machbarkeit30.10.2026, nach authentifizierter Prüfung des richtigen Praxispakets: Hosting Basic mit1,97/100GB belegt, PHP8.4, Jobdomain im Paket, bestehendes SSL-Basic-Zertifikat bis10.02.2027 und Recruitingpostfach bestätigt. Statische Website plus zu portierender PHP-Formularendpunkt voraussichtlich ohne neue laufende Tarife möglich; kein unveränderter Vercel-Upload. Noch keine Portierung, Runtime-/SMTP-/www-Abnahme oder Datenschutzfreigabe. Details und Quellen im selben Aussagenkorrekturbericht. Kein Runtimecode und keine Hostingkonfiguration geändert.
+
+## Freigegebener Teilrelease — 30.10.2026
+
+Sinan autorisiert Commit/Push/Veröffentlichung ausschließlich B01–B26/B31–B33. Datenschutz und Impressum ausgeschlossen; deren Entwürfe bleiben lokal, B27–B30 separat offen. Exakter Teilstand mit bisherigen Rechtstexten: Build und150Tests bestanden, unabhängiger Review ohne materielle Befunde; Desktop1280/Mobil375 geprüft. Kein Typecheck eingerichtet; keine Rechts-/Fach-/Betriebsabnahme. Nachweise: docs/agent-reports/2026-10-30-aussagen-teilrelease-v01.md und JSON-Manifest. Nächster Schritt autorisierter Commit/Push, danach öffentliche Deployprüfung im zentralen Projekt dokumentieren. Historische Kein-Push-Angaben oben gelten für die vorigen Phasen.

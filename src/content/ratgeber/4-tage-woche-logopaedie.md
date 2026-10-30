@@ -1,67 +1,66 @@
 ---
-title: "4-Tage-Woche in der Logopädie — Erfahrungen & Modelle 2026"
-description: "Funktioniert die 4-Tage-Woche als Logopädin? Die Praxis für Logopädie Şimşek in Duisburg macht es vor: Erfahrungen, Arbeitszeitmodelle und warum ausgeruhte Therapeuten bessere Therapie machen."
+title: "4-Tage-Woche in der Logopädie: Modelle und Arbeitszeit 2026"
+description: "Vier Arbeitstage in der Logopädie: Stundenumfang, Gehalt, Pausen und Ruhezeit unterscheiden. Mit dem bestätigten Angebot der Praxis für Logopädie Şimşek."
 kategorie: "Arbeitszeit"
 topic: "gehalt-arbeitsmodelle"
 intent: "arbeitszeit"
 featured: true
 priority: 20
 pubDate: 2026-04-14
+updatedDate: 2026-10-30
 author: "Redaktion"
 draft: false
 relatedArticles: ["logopaedin-duisburg-gesucht", "teilzeit-modelle", "arbeiten-duisburg", "gehalt-logopaedie-nrw"]
-definition: "Die 4-Tage-Woche in der Logopädie bedeutet meist 32 bis 40 Stunden auf vier statt fünf Tage verteilt — mit dem Ziel, durch mehr Erholung eine bessere Therapiequalität zu erreichen."
+definition: "Eine Vier-Tage-Woche verteilt die vereinbarte Wochenarbeitszeit auf vier Arbeitstage. Sie kann Vollzeit oder Teilzeit sein; Stundenumfang, Tageslänge und Entgelt müssen gesondert vereinbart werden."
 faq:
   - q: "Wie funktioniert eine 4-Tage-Woche in der Logopädie?"
-    a: "Es gibt drei gängige Varianten: komprimierte Vollzeit mit 40 Stunden auf 4 Tage (10-Stunden-Tage, volles Gehalt), reduzierte Stunden mit 32 Stunden auf 4 Tage (etwas geringeres Gehalt) oder ein flexibles Modell, bei dem manche Wochen 4 und manche 5 Tage gearbeitet wird."
+    a: "Vier Arbeitstage können mit gleichbleibender oder reduzierter Wochenarbeitszeit vereinbart werden. Die Tageslänge, Pausen, Ruhezeit und der gesetzliche Arbeitszeitausgleich müssen zur Verteilung passen."
   - q: "Bekommt man bei der 4-Tage-Woche weniger Gehalt?"
-    a: "Das hängt vom Modell ab. Bei komprimierter Vollzeit (40 Stunden auf 4 Tage) bleibt das Gehalt gleich, bei reduzierten Stunden (32 Stunden) sinkt es proportional — dafür verbessert sich die Work-Life-Balance deutlich."
-  - q: "Welche Vorteile hat die 4-Tage-Woche für Logopädinnen?"
-    a: "Therapeutinnen berichten von besserer Konzentration an den Arbeitstagen, weniger Krankheitstagen und höherer Zufriedenheit im Beruf. Der zusätzliche freie Tag hilft außerdem bei Kinderbetreuung, Fortbildungen oder Erholung."
+    a: "Vier Arbeitstage allein sagen nichts über das Gehalt aus. Bleiben Wochenstunden und Vergütung unverändert, bleibt auch das Gehalt gleich. Weniger Stunden können bei gleichem Stundenlohn ein niedrigeres Monatsbrutto bedeuten; ein Lohnausgleich muss vereinbart sein."
+  - q: "Welche Vorteile kann eine 4-Tage-Woche bieten?"
+    a: "Ein zusätzlicher arbeitsfreier Tag kann die persönliche Planung erleichtern. Bei gleicher Wochenarbeitszeit werden dafür die übrigen Tage länger. Eine bessere Gesundheit oder Therapiequalität ist damit nicht garantiert."
   - q: "Bietet die Praxis für Logopädie Şimşek in Duisburg eine 4-Tage-Woche an?"
-    a: "Ja. In der Praxis für Logopädie Şimşek ist eine Vier-Tage-Woche möglich. Vollzeit umfasst 38,5 Stunden; Teilzeit kann mit variablem Stundenumfang vereinbart werden."
+    a: "Ja, als Beispiel individuell gestaltbarer Arbeitszeitmodelle. Stundenumfang und Verteilung auf Arbeitstage sind flexibel gestaltbar. Vollzeit umfasst 38,5 Wochenstunden; die konkrete Verteilung und Vergütung werden vereinbart."
 ---
 
-Immer mehr Logopädinnen wünschen sich ein Arbeitszeitmodell, das zum Leben passt. Aber funktioniert eine 4-Tage-Woche in der Praxis? Hier ein ehrlicher Blick auf Vorteile, Grenzen und konkrete Erfahrungen.
+Eine Vier-Tage-Woche kann zu deinem Alltag passen. Für die Entscheidung zählt neben dem freien Tag, wie viele Stunden du an den übrigen Tagen arbeitest. Dieser Artikel erklärt Modelle und Planungsfragen; er beschreibt keine ausgewerteten Erfahrungsdaten der Praxis.
 
-## Warum 4-Tage-Woche in der Logopädie?
+## Vier Tage mit gleicher oder geringerer Wochenarbeitszeit
 
-Logopädie ist ein intensiver Beruf. Du arbeitest den ganzen Tag konzentriert mit Patienten — Kinder mit Sprachentwicklungsstörungen, Erwachsene nach Schlaganfall, Jugendliche mit Stottern. Das erfordert Empathie, Geduld und mentale Präsenz. Nach fünf Tagen sind viele Therapeutinnen erschöpft, und die Qualität der Therapie leidet.
+**Gleichbleibende Wochenstunden:** Die vereinbarte Arbeitszeit wird auf vier Tage verteilt. Ein allgemeines Rechenbeispiel sind 40 Stunden auf vier Tage mit jeweils zehn Stunden Nettoarbeitszeit. Pausen kommen hinzu. Ob eine solche Verteilung zulässig und praktikabel ist, muss vorab geprüft werden.
 
-Die Idee hinter der 4-Tage-Woche ist einfach: vier Tage fokussiert arbeiten, drei Tage regenerieren. Nicht weniger arbeiten — sondern besser arbeiten. Und das kommt letztlich den Patienten zugute.
+**Reduzierte Wochenstunden:** 32 Stunden auf vier Tage ergeben acht Stunden Nettoarbeitszeit täglich. Bei unverändertem Stundenlohn sinkt mit den Wochenstunden auch das Monatsbrutto. Ein Lohnausgleich ist eine eigene Vereinbarung und folgt nicht aus dem Begriff Vier-Tage-Woche.
 
-## Wie sieht das Modell konkret aus?
+**Wechselnde Verteilung:** Auch unterschiedliche Arbeitstage in verschiedenen Wochen lassen sich vereinbaren. Wichtig sind verlässliche Absprachen über Termine, Vertretung und die gesetzlich zulässige Arbeitszeit. Diese allgemeinen Beispiele sind keine abschließende Auswahl der Praxisangebote.
 
-Es gibt verschiedene Varianten, wie Logopädie-Praxen die 4-Tage-Woche umsetzen:
+## Arbeitszeit, Pausen und Ruhezeit zusammen planen
 
-**Variante 1: Komprimierte Vollzeit.** 40 Stunden auf 4 Tage verteilt — also 10-Stunden-Tage. Funktioniert, wenn die Praxis lange Öffnungszeiten hat und die Therapeutin mit längeren Tagen zurechtkommt. Vorteil: volles Gehalt, ein kompletter Tag frei.
+Nach [§ 3 ArbZG](https://www.gesetze-im-internet.de/arbzg/__3.html) gilt grundsätzlich eine Grenze von acht Stunden werktäglich. Bis zu zehn Stunden sind möglich, wenn der Durchschnitt innerhalb von sechs Kalendermonaten oder 24 Wochen höchstens acht Stunden je Werktag beträgt. Maßgeblich sind die gesetzlichen Werktage; das ist keine Begrenzung auf acht Stunden je tatsächlich gearbeitetem Tag. Lange Öffnungszeiten oder persönliche Belastbarkeit ersetzen diese Prüfung nicht.
 
-**Variante 2: Reduzierte Stunden.** 32 Stunden auf 4 Tage — also reguläre 8-Stunden-Tage mit einem Tag weniger. Das Gehalt ist proportional etwas geringer, aber die Work-Life-Balance verbessert sich deutlich. In der Logopädie, wo der Fachkräftemangel real ist, sind viele Praxen bereit, dieses Modell anzubieten.
+[§ 4 ArbZG](https://www.gesetze-im-internet.de/arbzg/__4.html) verlangt bei mehr als sechs bis zu neun Stunden Arbeit mindestens 30 Minuten Pause, bei mehr als neun Stunden mindestens 45 Minuten. Ohne Pause darf grundsätzlich höchstens sechs Stunden am Stück gearbeitet werden. Zehn Stunden Nettoarbeitszeit bedeuten mit der Mindestpause also mindestens zehn Stunden und 45 Minuten Anwesenheit.
 
-**Variante 3: Flexibles Modell.** Manche Wochen 4 Tage, manche 5 — je nach Patientenbedarf und persönlicher Planung. Die [Praxis für Logopädie Şimşek in Duisburg](/jobs/logopaedin-sprachtherapeut-duisburg/) bietet daneben eine Vier-Tage-Woche an.
+Nach Arbeitsende sind grundsätzlich mindestens elf Stunden ununterbrochene Ruhezeit einzuhalten ([§ 5 ArbZG](https://www.gesetze-im-internet.de/arbzg/__5.html)). Gesetzliche Ausnahmen erfordern ihre jeweiligen Voraussetzungen; sie werden hier nicht als Praxisregel vorausgesetzt. Dokumentation, Vorbereitung und Organisation gehören in die Arbeitszeitplanung und ersetzen keine Ruhepause.
 
-## Vorteile für Therapeutinnen
+## Was kann das Modell im Alltag verändern?
 
-Der offensichtlichste Vorteil ist mehr Freizeit. Aber es geht tiefer: Therapeutinnen berichten von besserer Konzentration an den Arbeitstagen, weniger Krankheitstagen, und höherer Zufriedenheit im Beruf. Gerade in der Logopädie, wo Burnout ein reales Problem ist, kann ein zusätzlicher freier Tag den Unterschied machen.
+Ein zusätzlicher arbeitsfreier Tag kann für Betreuung, private Termine oder Erholung hilfreich sein. Bei gleichbleibender Wochenarbeitszeit verlängern sich zugleich die Arbeitstage. Ob dir diese Verteilung hilft, hängt von deinem Alltag und deiner Belastung ab.
 
-Für Mütter und Väter bietet das Modell die Möglichkeit, Kinderbetreuung besser zu organisieren. Und für Therapeutinnen, die sich weiterbilden wollen, ist der freie Tag ideal für Fortbildungen, Fachliteratur oder Supervision.
+Aus vier Arbeitstagen lassen sich weder weniger Krankheitstage noch eine bessere Therapiequalität ableiten. Arbeitszeitverkürzung und die Verdichtung gleicher Stunden sind unterschiedliche Modelle. Kläre deshalb vorab Tageslänge, Pausen, Pendelweg und die Betreuungssituation.
 
-## Gibt es Nachteile?
+## Arbeitszeit in der Praxis für Logopädie Şimşek
 
-Ja, und die sollte man kennen. Bei komprimierten 10-Stunden-Tagen kann die Erschöpfung am Ende des Tages hoch sein — besonders wenn du viele Kindertherapien hintereinander hast. Nicht jede Praxis kann es sich leisten, eine Therapeutin einen Tag weniger einzusetzen, besonders bei hoher Patientennachfrage.
+In der [Praxis für Logopädie Şimşek in Duisburg](/jobs/logopaedin-sprachtherapeut-duisburg/) sind individuelle Arbeitszeitmodelle möglich. Stundenumfang und Verteilung auf Arbeitstage sind flexibel gestaltbar; eine Vier-Tage-Woche ist ein Beispiel. Vollzeit umfasst 38,5 Wochenstunden. Daraus folgt keine pauschale Zusage von 32 Stunden bei vollem Vollzeitgehalt.
 
-Und ehrlich: Nicht jeder Mensch funktioniert mit 4 Tagen besser. Manche Therapeutinnen bevorzugen 5 kürzere Tage. Das ist völlig okay. Deshalb ist es wichtig, dass das Modell optional ist — nicht aufgezwungen.
+Mitarbeitende planen Termine, Pausen und Puffer eigenständig auf Vertrauensbasis. Dokumentation, Berichte und Organisation sind eingeplante Arbeitszeit. Die konkrete Verteilung muss die gesetzlichen Arbeitszeitgrenzen berücksichtigen.
 
-## 4-Tage-Woche in der Praxis für Logopädie Şimşek, Duisburg
+Fortbildungen werden finanziell und mit zusätzlichen freien Tagen unterstützt. Die Auswahl trifft die beschäftigte Person. Einzelheiten zur Unterstützung und zum Arbeitszeitmodell besprichst du im Kennenlernen.
 
-In der [Praxis für Logopädie Şimşek](/jobs/logopaedin-sprachtherapeut-duisburg/) in der Tonhallenstraße 21 in Duisburg ist eine Vier-Tage-Woche möglich. Mitarbeitende planen Termine, Pausen und Puffer eigenständig auf Vertrauensbasis. Daneben sind Vollzeit mit 38,5 Stunden und Teilzeit mit variablem Stundenumfang möglich.
+## Fragen für dein Gespräch
 
-Fortbildungen werden finanziell unterstützt und durch zusätzliche freie Tage ermöglicht. Welche Fortbildungen zum eigenen Schwerpunkt passen, entscheidet die beschäftigte Person selbst.
+- Welche Wochenstunden und welche festen Arbeitstage vereinbaren wir?
+- Wie lang sind die einzelnen Tage einschließlich Pausen, Dokumentation und Vorbereitung?
+- Wie verändern sich Monatsbrutto, Urlaubstage und Vertretungsplanung?
 
-## Ist die 4-Tage-Woche die Zukunft der Logopädie?
+Weitere Rechenbeispiele findest du bei den [Teilzeitmodellen](/berufshandbuch/teilzeit-modelle/).
 
-Der Fachkräftemangel in der Logopädie ist real. Praxen, die gute Arbeitsbedingungen bieten, haben einen klaren Vorteil bei der Rekrutierung. Die 4-Tage-Woche ist dabei kein Luxus, sondern ein Werkzeug, um Therapeutinnen langfristig im Beruf zu halten. Wer vier Tage pro Woche gute Therapie macht, leistet mehr als jemand, der fünf Tage ausgebrannt durch den Tag kommt.
-
----
-
-*Stand: August 2026. In der Praxis für Logopädie Şimşek ist eine Vier-Tage-Woche möglich. Vollzeit umfasst 38,5 Stunden; Teilzeit ist mit variablem Stundenumfang möglich.*
+*Stand: 30. Oktober 2026. Allgemeine Modelle und bestätigte Praxisangebote sind getrennt dargestellt. Die konkrete Vertragsgestaltung bleibt individuell.*
