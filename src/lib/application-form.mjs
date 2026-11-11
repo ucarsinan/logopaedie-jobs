@@ -15,18 +15,12 @@ export const CONTACT_INTENTS = Object.freeze({
 });
 
 const ALLOWED_FIELDS = new Set(['name', 'kontakt', 'nachricht', 'stelle', 'website', 'quelle', 'anliegen']);
-const MAX_SOURCE_LENGTH = 200;
-// Kampagnenkennungen bestehen aus Buchstaben, Ziffern und Trennzeichen.
-// Alles andere faellt weg, bevor der Wert in eine E-Mail geschrieben wird.
-const UNSAFE_SOURCE_CHARS = /[^A-Za-z0-9 ._:|/=&+-]+/g;
-
 /**
  * @typedef {object} ApplicationData
  * @property {string} name
  * @property {string} contact
  * @property {string} message
  * @property {string} jobSlug
- * @property {string} [source]
  * @property {string} [replyTo]
  */
 
@@ -40,19 +34,6 @@ const UNSAFE_SOURCE_CHARS = /[^A-Za-z0-9 ._:|/=&+-]+/g;
  */
 function normalize(value) {
   return (value ?? '').normalize('NFC').replace(/\r\n?/g, '\n').replace(/\s+/g, ' ').trim();
-}
-
-/**
- * Reduziert die vom Client gelieferte Herkunft auf ein kurzes, druckbares
- * Kuerzel. Verwirft niemals die Bewerbung: ein unbrauchbarer Wert wird
- * stillschweigend zu einem leeren String, damit eine echte Bewerbung
- * trotzdem ankommt.
- *
- * @param {string | null} value
- * @returns {string}
- */
-function sanitizeSource(value) {
-  return normalize(value).replace(UNSAFE_SOURCE_CHARS, '').slice(0, MAX_SOURCE_LENGTH).trim();
 }
 
 /**
@@ -73,8 +54,13 @@ export function parseApplicationForm(body) {
     [...body.keys()].filter((field) => !ALLOWED_FIELDS.has(field)),
   )];
 
-  for (const field of new Set(body.keys())) {
-    if (body.getAll(field).length > 1) invalidFields.push(field);
+  // Count names only: legacy clients may still post quelle, but its value is ignored.
+  const fieldCounts = new Map();
+  for (const field of body.keys()) {
+    fieldCounts.set(field, (fieldCounts.get(field) ?? 0) + 1);
+  }
+  for (const [field, count] of fieldCounts) {
+    if (count > 1) invalidFields.push(field);
   }
 
   if (invalidFields.length > 0) {
@@ -111,9 +97,6 @@ export function parseApplicationForm(body) {
     : message;
   /** @type {ApplicationData} */
   const data = { name, contact, message: fullMessage, jobSlug };
-
-  const source = sanitizeSource(body.get('quelle'));
-  if (source) data.source = source;
 
   if (isEmail(contact)) data.replyTo = contact;
 

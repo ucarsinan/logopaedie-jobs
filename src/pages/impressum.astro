@@ -1,4 +1,6 @@
 ---
+// Lokaler Korrekturstand: fehlende Berufs-/Aufsichtsangaben verhindern die Veröffentlichung.
+// Siehe docs/agent-reports/2026-10-30-recht-offene-betriebsnachweise-v01.md.
 import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
@@ -34,9 +36,10 @@ import Footer from '../components/Footer.astro';
       </header>
 
       <div class="article-body">
-        <h2>Angaben gemäß § 5 TMG</h2>
+        <h2>Angaben gemäß <a href="https://www.gesetze-im-internet.de/ddg/__5.html">§ 5 DDG</a></h2>
         <p>
           Praxis für Logopädie Şimşek<br/>
+          Emel Şimşek-Uçar<br/>
           Tonhallenstraße 21<br/>
           47051 Duisburg
         </p>
@@ -47,13 +50,16 @@ import Footer from '../components/Footer.astro';
           E-Mail: <a href="mailto:info@logopaedie-simsek.de">info@logopaedie-simsek.de</a>
         </p>
 
-        <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+        <h2>Verantwortlich für redaktionelle Inhalte nach <a href="https://www.die-medienanstalten.de/fileadmin/user_upload/Rechtsgrundlagen/Gesetze_Staatsvertraege/Medienstaatsvertrag_MStV.pdf">§ 18 Abs. 2 MStV</a></h2>
         <p>
           Emel Şimşek-Uçar<br/>
           Tonhallenstraße 21<br/>
           47051 Duisburg
         </p>
 
+        <!-- Veröffentlichung gesperrt: konkrete Aufsicht, gesetzliche Berufsbezeichnung,
+             Verleihungsstaat und tatsächlich einschlägige Berufsregeln nach Betreiberbestätigung
+             ergänzen. Keine Behörde, Qualifikation oder Verleihung aus dem Praxisnamen ableiten. -->
         <h2>Haftungsausschluss</h2>
         <p>Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.</p>
       </div>

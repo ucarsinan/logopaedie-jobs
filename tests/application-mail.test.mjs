@@ -215,16 +215,10 @@ test('application mail carries the internal deadline and the call-first note', (
   assert.match(mail.text, /Bitte zuerst anrufen/);
 });
 
-test('schreibt die Herkunft als eigene Zeile in die Mail', () => {
-  const mail = buildApplicationMail(
-    { ...DATA, source: 'meta | paid_social | recruiting_duisburg' },
-    CONFIG,
-  );
-
-  assert.equal(
-    mail.text.split(String.fromCharCode(10)).includes('Quelle: meta | paid_social | recruiting_duisburg'),
-    true,
-  );
+test('never includes legacy attribution in an outgoing message', () => {
+  const mail = buildApplicationMail({ ...DATA, source: 'synthetic-attribution-marker' }, CONFIG);
+  assert.equal(mail.text.includes('Quelle:'), false);
+  assert.equal(JSON.stringify(mail).includes('synthetic-attribution-marker'), false);
 });
 
 test('laesst die Quelle-Zeile weg, wenn keine Herkunft bekannt ist', () => {

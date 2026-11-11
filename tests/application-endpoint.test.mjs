@@ -596,3 +596,23 @@ test('announced oversize never acquires a reader or cancels', async () => {
   const response = await endpoint({ sendApplication: async () => { assert.fail('must not send'); } })({ request: req, redirect });
   assert.equal(response.status, 413);
 });
+
+
+test('JSON and no-JS submissions ignore legacy attribution before the mail boundary', async () => {
+  for (const accept of ['application/json', 'text/html']) {
+    let delivered;
+    const handler = endpoint({ sendApplication: async (data) => { delivered = data; return 'sent'; } });
+    const body = new URLSearchParams(VALID_FORM);
+    body.set('quelle', 'synthetic-attribution-marker');
+    const response = await handler({ request: request(body.toString(), {
+      accept, referer: 'https://external.example.test/?utm_source=synthetic-referrer',
+    }, ENDPOINT_URL + '?utm_source=synthetic-query&fbclid=synthetic-click'), redirect });
+    assert.equal(response.status, accept === 'application/json' ? 200 : 303);
+    assert.deepEqual(delivered, {
+      name: 'Erika Muster', contact: 'erika@example.test', message: 'Neutrale Nachricht',
+      jobSlug: JOB_SLUG, replyTo: 'erika@example.test',
+    });
+    if (accept === 'application/json') assert.equal((await json(response)).ok, true);
+    else assert.equal(response.headers.get('location'), '/bewerbung/danke/');
+  }
+});
