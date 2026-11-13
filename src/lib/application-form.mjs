@@ -14,7 +14,22 @@ export const CONTACT_INTENTS = Object.freeze({
   frage: 'Eine Frage stellen',
 });
 
-const ALLOWED_FIELDS = new Set(['name', 'kontakt', 'nachricht', 'stelle', 'website', 'quelle', 'anliegen']);
+export const QUALIFICATIONS = Object.freeze({
+  anerkannt: Object.freeze({
+    label: 'Ich habe einen Abschluss in Logopädie oder Sprachtherapie',
+    subject: 'Abschluss passt',
+  }),
+  ausbildung: Object.freeze({
+    label: 'Ich bin noch in Ausbildung oder im Studium',
+    subject: 'in Ausbildung',
+  }),
+  anderer: Object.freeze({
+    label: 'Ich habe einen anderen Berufsabschluss',
+    subject: 'anderer Abschluss',
+  }),
+});
+
+const ALLOWED_FIELDS = new Set(['name', 'kontakt', 'nachricht', 'stelle', 'website', 'quelle', 'anliegen', 'abschluss']);
 /**
  * @typedef {object} ApplicationData
  * @property {string} name
@@ -22,6 +37,8 @@ const ALLOWED_FIELDS = new Set(['name', 'kontakt', 'nachricht', 'stelle', 'websi
  * @property {string} message
  * @property {string} jobSlug
  * @property {string} [replyTo]
+ * @property {string} [intent] Known `anliegen` key; absent for legacy posts.
+ * @property {'anerkannt' | 'ausbildung' | 'anderer'} [qualification]
  */
 
 /**
@@ -78,6 +95,7 @@ export function parseApplicationForm(body) {
   const intent = normalize(body.get('anliegen'));
   const message = intent && intent !== 'frage' ? '' : normalize(body.get('nachricht'));
   const jobSlug = normalize(body.get('stelle'));
+  const qualification = normalize(body.get('abschluss'));
   const fields = [];
   if (intent && !Object.hasOwn(CONTACT_INTENTS, intent)) fields.push('anliegen');
 
@@ -87,6 +105,7 @@ export function parseApplicationForm(body) {
   }
   if (contactFieldError('nachricht', intent && intent !== 'frage' ? '' : body.get('nachricht'))) fields.push('nachricht');
   if (!Object.hasOwn(KNOWN_JOBS, jobSlug)) fields.push('stelle');
+  if (qualification && !Object.hasOwn(QUALIFICATIONS, qualification)) fields.push('abschluss');
 
   if (fields.length > 0) {
     return { ok: false, code: 'invalid_form', fields };
@@ -97,6 +116,11 @@ export function parseApplicationForm(body) {
     : message;
   /** @type {ApplicationData} */
   const data = { name, contact, message: fullMessage, jobSlug };
+
+  if (Object.hasOwn(CONTACT_INTENTS, intent)) data.intent = intent;
+  if (qualification && intent !== 'frage') {
+    data.qualification = /** @type {'anerkannt' | 'ausbildung' | 'anderer'} */ (qualification);
+  }
 
   if (isEmail(contact)) data.replyTo = contact;
 

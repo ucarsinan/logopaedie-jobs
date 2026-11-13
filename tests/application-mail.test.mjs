@@ -226,3 +226,28 @@ test('laesst die Quelle-Zeile weg, wenn keine Herkunft bekannt ist', () => {
 
   assert.equal(mail.text.includes('Quelle:'), false);
 });
+
+test('mail subject and text carry the qualification', () => {
+  const mail = buildApplicationMail({ ...DATA, intent: 'stelle', qualification: 'ausbildung' }, CONFIG);
+  assert.match(mail.subject, / – in Ausbildung$/);
+  assert.match(mail.text, /^Abschluss: Ich bin noch in Ausbildung oder im Studium$/m);
+  assert.match(mail.text, /^Kontakt: .*\nAbschluss: /m);
+});
+
+test('application intents without qualification are marked as not given', () => {
+  const mail = buildApplicationMail({ ...DATA, intent: 'kennenlernen' }, CONFIG);
+  assert.match(mail.subject, / – Abschluss nicht angegeben$/);
+  assert.match(mail.text, /^Abschluss: nicht angegeben$/m);
+});
+
+test('question intent keeps the plain subject without qualification line', () => {
+  const mail = buildApplicationMail({ ...DATA, intent: 'frage' }, CONFIG);
+  assert.doesNotMatch(mail.subject, /–/);
+  assert.doesNotMatch(mail.text, /^Abschluss:/m);
+});
+
+test('legacy data without intent keeps subject and text unchanged', () => {
+  const mail = buildApplicationMail(DATA, CONFIG);
+  assert.doesNotMatch(mail.subject, /–/);
+  assert.doesNotMatch(mail.text, /^Abschluss:/m);
+});

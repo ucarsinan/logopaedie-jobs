@@ -216,6 +216,16 @@ test('returns invalid_form and fields for invalid JSON requests', async () => {
   assert.deepEqual(await json(response), { ok: false, code: 'invalid_form', fields: ['name'] });
 });
 
+test('reports an invalid qualification as a public invalid field', async () => {
+  const response = await endpoint()({
+    request: request(new URLSearchParams({ ...Object.fromEntries(VALID_FORM), anliegen: 'stelle', abschluss: 'arzt' }).toString()),
+    redirect,
+  });
+
+  assert.equal(response.status, 422);
+  assert.deepEqual(await json(response), { ok: false, code: 'invalid_form', fields: ['abschluss'] });
+});
+
 test('does not reflect unknown fields or the hidden job slug in JSON errors', async () => {
   const unknownField = await endpoint()({
     request: request(new URLSearchParams({ ...Object.fromEntries(VALID_FORM), neutral: 'Textbaustein' }).toString()),

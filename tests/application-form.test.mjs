@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
-import { CONTACT_PATTERN_SOURCE, KNOWN_JOBS, MAX_BODY_BYTES, parseApplicationForm } from '../src/lib/application-form.mjs';
+import { CONTACT_PATTERN_SOURCE, KNOWN_JOBS, MAX_BODY_BYTES, QUALIFICATIONS, parseApplicationForm } from '../src/lib/application-form.mjs';
 
 const JOB_SLUG = 'logopaedin-sprachtherapeut-duisburg';
 const EMAIL = 'erika@example.test';
@@ -240,4 +240,44 @@ test('rejects implausible names and contacts while accepting international names
 test('rejects duplicate fields instead of silently choosing one value', () => {
   const body = form(); body.append('kontakt', 'other@example.test');
   assert.equal(parseApplicationForm(body).ok, false);
+});
+
+test('passes a known qualification for application intents', () => {
+  const r = parseApplicationForm(form({ anliegen: 'stelle', abschluss: 'anerkannt' }));
+  assert.equal(r.ok, true);
+  assert.equal(r.data.qualification, 'anerkannt');
+  assert.equal(r.data.intent, 'stelle');
+});
+
+test('accepts a missing qualification from cached pages', () => {
+  const r = parseApplicationForm(form({ anliegen: 'kennenlernen' }));
+  assert.equal(r.ok, true);
+  assert.equal('qualification' in r.data, false);
+});
+
+test('ignores a qualification sent with the question intent', () => {
+  const r = parseApplicationForm(form({ anliegen: 'frage', abschluss: 'anderer' }));
+  assert.equal(r.ok, true);
+  assert.equal('qualification' in r.data, false);
+});
+
+test('rejects unknown and duplicate qualification values', () => {
+  assert.deepEqual(invalidFields({ anliegen: 'stelle', abschluss: 'arzt' }), ['abschluss']);
+  const body = form({ anliegen: 'stelle', abschluss: 'anerkannt' });
+  body.append('abschluss', 'anderer');
+  assert.deepEqual(parseApplicationForm(body).fields, ['abschluss']);
+});
+
+test('exports the three fixed qualification values', () => {
+  assert.deepEqual(Object.keys(QUALIFICATIONS), ['anerkannt', 'ausbildung', 'anderer']);
+  assert.deepEqual(QUALIFICATIONS.anerkannt, {
+    label: 'Ich habe einen Abschluss in Logopädie oder Sprachtherapie',
+    subject: 'Abschluss passt',
+  });
+});
+
+test('legacy posts without anliegen carry no intent and no qualification', () => {
+  const r = parseApplicationForm(form());
+  assert.equal('intent' in r.data, false);
+  assert.equal('qualification' in r.data, false);
 });
