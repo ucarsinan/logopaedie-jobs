@@ -1,5 +1,5 @@
 ---
-import { CONTACT_PATTERN_SOURCE, CONTACT_INTENTS } from '../lib/application-form.mjs';
+import { CONTACT_PATTERN_SOURCE, CONTACT_INTENTS, QUALIFICATIONS } from '../lib/application-form.mjs';
 import ContactAlternatives from './ContactAlternatives.astro';
 
 interface Props { standalone?: boolean; }
@@ -86,6 +86,16 @@ const { standalone = false } = Astro.props;
           <fieldset id="kontakt-daten" class="space-y-5">
             <legend id="kontakt-heading" tabindex="-1" class="mb-4 text-2xl font-semibold leading-tight">Wie erreichen wir dich?</legend>
             <p id="kontakt-auswahl" hidden class="text-sm text-slate-600"></p>
+            <fieldset id="kontakt-abschluss" class="space-y-3">
+              <legend class="mb-3 text-sm font-bold text-slate-800">Dein Abschluss</legend>
+              {Object.entries(QUALIFICATIONS).map(([value, { label }]) => (
+                <label class="flex min-h-14 cursor-pointer items-center gap-3 rounded-xl border border-slate-300 px-4 py-3 text-sm font-semibold transition hover:border-simsek-green has-[:checked]:border-simsek-green has-[:checked]:bg-simsek-green/10 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-simsek-green">
+                  <input type="radio" name="abschluss" value={value} class="h-4 w-4 shrink-0 accent-simsek-green" />
+                  <span class="flex-1">{label}</span>
+                </label>
+              ))}
+              <p id="abschluss-error" class="mt-2 text-sm text-red-700" aria-live="polite" hidden>Bitte wähle deinen Abschluss aus.</p>
+            </fieldset>
             <div>
               <label for="name" class="mb-2 block text-sm font-bold text-slate-800">Name</label>
               <input id="name" name="name" type="text" autocomplete="name" minlength="1" maxlength="100" required aria-describedby="name-hint" class="min-h-11 w-full rounded-lg border border-slate-300 px-3 py-2.5 text-base text-slate-900 outline-none transition focus:border-simsek-green focus:ring-2 focus:ring-simsek-green/30" />
@@ -130,7 +140,7 @@ const { standalone = false } = Astro.props;
   import { contactFieldError } from '../lib/contact-validation.mjs';
   const form = document.querySelector('#bewerbung-form');
   const statusMessage = document.querySelector('#bewerbung-status');
-  const knownFields = new Set(['name', 'kontakt', 'nachricht', 'anliegen']);
+  const knownFields = new Set(['name', 'kontakt', 'nachricht', 'anliegen', 'abschluss']);
   const queryStatus = new URLSearchParams(window.location.search).get('status');
 
   function showStatus(message) {
@@ -168,6 +178,9 @@ const { standalone = false } = Astro.props;
     const back = form.querySelector('#kontakt-zurueck');
     const summary = form.querySelector('#kontakt-auswahl');
     const radios = [...form.querySelectorAll('input[name="anliegen"]')];
+    const qualification = form.querySelector('#kontakt-abschluss');
+    const qualificationError = form.querySelector('#abschluss-error');
+    const qualificationRadios = [...form.querySelectorAll('input[name="abschluss"]')];
     let step = 1;
 
     function updateQuestion() {
@@ -187,6 +200,10 @@ const { standalone = false } = Astro.props;
       if (step === 2) {
         const selected = radios.find((radio) => radio.checked);
         summary.textContent = selected?.closest('label')?.textContent.trim() ?? '';
+        const asking = selected?.value === 'frage';
+        qualification.hidden = asking;
+        qualification.disabled = asking;
+        qualificationError.hidden = true;
       }
       if (focus) document.getElementById(step === 1 ? 'anliegen-heading' : 'kontakt-heading').focus();
     }
@@ -207,6 +224,9 @@ const { standalone = false } = Astro.props;
         updateQuestion();
         if (radio.value !== 'frage') advance();
       });
+    });
+    qualificationRadios.forEach((radio) => {
+      radio.addEventListener('change', () => { qualificationError.hidden = true; });
     });
     next.addEventListener('click', advance);
     back.addEventListener('click', () => showStep(1));
@@ -248,10 +268,17 @@ const { standalone = false } = Astro.props;
       if (step === 1) { advance(); return; }
       clearFieldErrors();
       const invalid = validatedInputs.filter(input => { touched.add(input.id); return !validateInput(input); });
+      const qualificationMissing = !qualification.disabled && !qualificationRadios.some((radio) => radio.checked);
       if (invalid.length) {
         if (invalid.some(input => input.id === 'nachricht')) showStep(1, false);
         showStatus('Bitte korrigiere die markierten Angaben.');
         invalid[0].focus();
+        return;
+      }
+      if (qualificationMissing) {
+        qualificationError.hidden = false;
+        showStatus('Bitte korrigiere die markierten Angaben.');
+        qualificationRadios[0].focus();
         return;
       }
 

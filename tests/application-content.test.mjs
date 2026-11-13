@@ -221,3 +221,17 @@ test('the landing binds the native contact pattern without Astro string-escape l
   assert.match(detail, /name="kontakt"[^>]*pattern=\{CONTACT_PATTERN_SOURCE\}[^>]*required/);
   assert.doesNotMatch(detail, /pattern="/);
 });
+
+test('step two asks for the qualification in an accessible fieldset', async () => {
+  const src = await readFile(CONTACT_PATH, 'utf8');
+  assert.match(src, /<fieldset id="kontakt-abschluss"[\s\S]*?<legend[^>]*>Dein Abschluss<\/legend>/);
+  assert.match(src, /Object\.entries\(QUALIFICATIONS\)/);
+  assert.doesNotMatch(src, /name="abschluss"[^>]*required/);
+  assert.match(src, /Bitte wähle deinen Abschluss aus\./);
+  assert.match(src, /id="abschluss-error"[^>]*aria-live="polite"/);
+});
+
+test('privacy policy names the qualification answer', async () => {
+  const src = await readFile(PRIVACY_PATH, 'utf8');
+  assert.match(src, /Angabe zu Ihrem Berufsabschluss/);
+});
