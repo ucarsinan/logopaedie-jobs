@@ -86,7 +86,7 @@ const { standalone = false } = Astro.props;
           <fieldset id="kontakt-daten" class="space-y-5">
             <legend id="kontakt-heading" tabindex="-1" class="mb-4 text-2xl font-semibold leading-tight">Wie erreichen wir dich?</legend>
             <p id="kontakt-auswahl" hidden class="text-sm text-slate-600"></p>
-            <fieldset id="kontakt-abschluss" class="space-y-3">
+            <fieldset id="kontakt-abschluss" class="space-y-3" aria-describedby="abschluss-error">
               <legend class="mb-3 text-sm font-bold text-slate-800">Dein Abschluss</legend>
               {Object.entries(QUALIFICATIONS).map(([value, { label }]) => (
                 <label class="flex min-h-14 cursor-pointer items-center gap-3 rounded-xl border border-slate-300 px-4 py-3 text-sm font-semibold transition hover:border-simsek-green has-[:checked]:border-simsek-green has-[:checked]:bg-simsek-green/10 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-simsek-green">
@@ -269,16 +269,12 @@ const { standalone = false } = Astro.props;
       clearFieldErrors();
       const invalid = validatedInputs.filter(input => { touched.add(input.id); return !validateInput(input); });
       const qualificationMissing = !qualification.disabled && !qualificationRadios.some((radio) => radio.checked);
-      if (invalid.length) {
-        if (invalid.some(input => input.id === 'nachricht')) showStep(1, false);
+      qualificationError.hidden = !qualificationMissing;
+      if (invalid.length || qualificationMissing) {
+        const messageInvalid = invalid.some(input => input.id === 'nachricht');
+        if (messageInvalid) showStep(1, false);
         showStatus('Bitte korrigiere die markierten Angaben.');
-        invalid[0].focus();
-        return;
-      }
-      if (qualificationMissing) {
-        qualificationError.hidden = false;
-        showStatus('Bitte korrigiere die markierten Angaben.');
-        qualificationRadios[0].focus();
+        (messageInvalid ? message : qualificationMissing ? qualificationRadios[0] : invalid[0]).focus();
         return;
       }
 
