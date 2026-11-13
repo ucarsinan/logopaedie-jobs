@@ -261,8 +261,13 @@ test('ignores a qualification sent with the question intent', () => {
   assert.equal('qualification' in r.data, false);
 });
 
-test('rejects unknown and duplicate qualification values', () => {
-  assert.deepEqual(invalidFields({ anliegen: 'stelle', abschluss: 'arzt' }), ['abschluss']);
+test('accepts an unknown qualification and treats it as not given', () => {
+  const r = parseApplicationForm(form({ anliegen: 'stelle', abschluss: 'arzt' }));
+  assert.equal(r.ok, true);
+  assert.equal('qualification' in r.data, false);
+});
+
+test('rejects duplicate qualification fields', () => {
   const body = form({ anliegen: 'stelle', abschluss: 'anerkannt' });
   body.append('abschluss', 'anderer');
   assert.deepEqual(parseApplicationForm(body).fields, ['abschluss']);

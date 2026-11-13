@@ -216,11 +216,20 @@ test('returns invalid_form and fields for invalid JSON requests', async () => {
   assert.deepEqual(await json(response), { ok: false, code: 'invalid_form', fields: ['name'] });
 });
 
-test('reports an invalid qualification as a public invalid field', async () => {
+test('delivers an application with an unknown qualification value', async () => {
   const response = await endpoint()({
     request: request(new URLSearchParams({ ...Object.fromEntries(VALID_FORM), anliegen: 'stelle', abschluss: 'arzt' }).toString()),
     redirect,
   });
+
+  assert.equal(response.status, 200);
+  assert.deepEqual(await json(response), { ok: true });
+});
+
+test('reports a duplicate qualification as a public invalid field', async () => {
+  const params = new URLSearchParams({ ...Object.fromEntries(VALID_FORM), anliegen: 'stelle', abschluss: 'anerkannt' });
+  params.append('abschluss', 'anderer');
+  const response = await endpoint()({ request: request(params.toString()), redirect });
 
   assert.equal(response.status, 422);
   assert.deepEqual(await json(response), { ok: false, code: 'invalid_form', fields: ['abschluss'] });

@@ -215,6 +215,13 @@ test('the public response promise matches the internal deadline rule', async () 
   }
 });
 
+test('the landing CSS styles only the step legends, not the qualification legend', async () => {
+  const css = await readFile('src/styles/recruiting-landing.css', 'utf8');
+  assert.doesNotMatch(css, /#kontaktformular legend/);
+  assert.match(css, /#kontaktformular #anliegen-heading/);
+  assert.match(css, /#kontaktformular #kontakt-heading/);
+});
+
 test('the landing binds the native contact pattern without Astro string-escape loss', async () => {
   const detail = await readFile(JOB_DETAIL_PATH, 'utf8');
   assert.match(detail, /import \{ CONTACT_PATTERN_SOURCE(?:, QUALIFICATIONS)? \} from '\.\.\/\.\.\/lib\/application-form\.mjs'/);

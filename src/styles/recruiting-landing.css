@@ -79,7 +79,7 @@
 #bewerbung #bewerbung-form{display:flex;flex-direction:column;gap:16px}#bewerbung #bewerbung-form>*{margin-top:0;margin-bottom:0}
 #bewerbung #kontakt-progress{font-size:12px;line-height:18px;letter-spacing:.04em;color:#6b6560}
 #bewerbung #kontakt-zurueck{align-self:flex-start;font-size:14px;line-height:20px;min-height:44px;padding:8px 12px}
-#bewerbung #kontaktformular legend{font-size:22px;line-height:28px;margin-bottom:12px}
+#bewerbung #kontaktformular #anliegen-heading,#bewerbung #kontaktformular #kontakt-heading{font-size:22px;line-height:28px;margin-bottom:12px}
 #bewerbung #kontakt-direkt-hint{font-size:14px;line-height:22px;margin-bottom:12px}
 #bewerbung #kontakt-daten>div{margin-top:14px}#bewerbung #kontaktformular label{margin-bottom:6px}
 #bewerbung #kontakt-auswahl{font-size:14px;line-height:22px;margin:0 0 12px}
@@ -121,7 +121,7 @@ footer #footer-navigation a{display:flex;align-items:center;min-height:44px;padd
 #bewerbung .contact-invitation li{margin:0 0 8px;padding-left:0;line-height:24px}
 #bewerbung .contact-invitation li:last-child{margin-bottom:0}
 #bewerbung #kontaktformular{grid-area:form;order:0;min-width:0;padding:24px 20px;border:0;border-radius:0;background:#ffffff;box-shadow:none}
-#bewerbung #kontaktformular legend{font-family:"Fraunces",Georgia,serif;font-size:28px;line-height:36px}
+#bewerbung #kontaktformular #anliegen-heading,#bewerbung #kontaktformular #kontakt-heading{font-family:"Fraunces",Georgia,serif;font-size:28px;line-height:36px}
 #bewerbung #kontakt-einstieg{font-size:14px;line-height:20px;margin:0 0 16px}
 #bewerbung .contact-unity-footer{grid-area:footer;display:grid;grid-template-columns:minmax(0,1fr);gap:20px;padding:20px;border-top:1px solid #e2d8cf;background:#e6f4f1;min-width:0}
 #bewerbung .contact-unity-footer [data-response-promise]{display:flex;align-items:flex-start;gap:12px;max-width:none;margin:0;padding:0;border:0;border-radius:0;background:transparent;color:#1c1916;font-size:14px;line-height:22px}
@@ -233,7 +233,7 @@ footer #footer-navigation a{display:flex;align-items:center;min-height:44px;padd
   }
 }
 
-@media(max-width:899px){#bewerbung #kontaktformular legend{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-size:22px;line-height:28px}}
+@media(max-width:899px){#bewerbung #kontaktformular #anliegen-heading,#bewerbung #kontaktformular #kontakt-heading{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-size:22px;line-height:28px}}
 
 
 

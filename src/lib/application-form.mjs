@@ -105,7 +105,6 @@ export function parseApplicationForm(body) {
   }
   if (contactFieldError('nachricht', intent && intent !== 'frage' ? '' : body.get('nachricht'))) fields.push('nachricht');
   if (!Object.hasOwn(KNOWN_JOBS, jobSlug)) fields.push('stelle');
-  if (qualification && !Object.hasOwn(QUALIFICATIONS, qualification)) fields.push('abschluss');
 
   if (fields.length > 0) {
     return { ok: false, code: 'invalid_form', fields };
@@ -118,7 +117,7 @@ export function parseApplicationForm(body) {
   const data = { name, contact, message: fullMessage, jobSlug };
 
   if (Object.hasOwn(CONTACT_INTENTS, intent)) data.intent = intent;
-  if (qualification && intent !== 'frage') {
+  if (Object.hasOwn(QUALIFICATIONS, qualification) && intent !== 'frage') {
     data.qualification = /** @type {'anerkannt' | 'ausbildung' | 'anderer'} */ (qualification);
   }
 
