@@ -73,3 +73,12 @@ Sinan autorisiert Commit/Push/Veröffentlichung ausschließlich B01–B26/B31–
 ## Herkunftsrückbau und offene Nachweise — 30.10.2026, nur lokal
 
 Sinans Folgeauftrag: B27–B30 lesend prüfen und Herkunftszuordnung lokal entfernen; keine Veröffentlichung. Beide Formulare sammeln keine Kampagnen-/Referrer-/Sessionherkunft mehr, Parser und Mail ohne Quelle. Legacy-quelle wird ignoriert, Schutzfunktionen bleiben erhalten. Build und151Tests bestanden, unabhängiger Review und Browser-Schritt/Rückweg bestanden. Typecheck nicht eingerichtet. B27 produktiv weiterhin offen, B28 Konto-/Vertragsnachweise und B29 Betriebsumsetzung offen; B30 Aufsicht öffentlich belegt, individuelle Berufsangaben folgen. Vorhandene Rechtstextentwürfe unverändert. Vollständiger Nachweis im Bericht docs/agent-reports/2026-10-30-herkunft-rueckbau-v01.md und zentralen Projekt. Kein Staging/Commit/Push/Deployment/Versand/Kontoeingriff. Nächster Schritt Kontoprüfung nach Anmeldung und Emels Angaben ergänzen.
+
+## Qualifikationsfilter im Kurzformular — 13.11.2026 (lokal, nicht veröffentlicht)
+
+- Ziel: Erstkontakte nach Abschluss sortierbar machen, ohne jemanden abzuweisen. Anlass und Entscheidung: DEC-457 / SRC-842 im Repo `Logopädie` (`docs/research/RECRUITING_AGENTUR_BLACKLYNE_V1.md`).
+- Stand: Branch `feat/qualifikationsfilter`. Neues Feld `abschluss` mit den Werten `anerkannt`, `ausbildung`, `anderer` (Commit `53d09c6` Server, `b048ac1` Formular und Datenschutzerklärung). Fieldset „Dein Abschluss“, Pflicht nur clientseitig; der Server akzeptiert eine fehlende Angabe. Beim Anliegen „Frage“ wird das Feld ignoriert.
+- Mail: Betreff-Zusatz `Abschluss passt`, `in Ausbildung`, `anderer Abschluss` oder `Abschluss nicht angegeben`; Zeile `Abschluss: …` im Text. Keine Bewerbung wird wegen des Abschlusses abgewiesen.
+- Datenschutz: Die Abschlussangabe ist die einzige neue Datenkategorie; die Datenschutzerklärung wurde im selben Commit angepasst. Tests ohne echte Bewerberdaten (`example.test`).
+- Prüfanleitung Google-Jobs-Nachweis: `docs/operations/GOOGLE_JOBS_NACHWEIS.md`. Ergebnisse stehen aus, Prüfungen führt Sinan aus.
+- Offen: Push/PR, Preview-Deploy, Testanfrage und Production sind nicht freigegeben. Live-Wirkung erst danach. Zählung je Betreff-Zusatz liegt in `../Logopädie/reports/2026-11-12-recruiting-abgleich-v01/ZAEHLUNG.md`.
