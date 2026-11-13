@@ -10,6 +10,8 @@
 
 **Spec:** Analyse im Chat vom 13.11.2026 (Blacklyne-Abgleich), Kanalrecherche `../Logopädie/docs/research/RECRUITING_KANAELE_V1.md`, Ergebnis „0 passende Bewerbungen bis 12.11.“ in `../Logopädie/docs/ai/CURRENT_HANDOFF.md`. Die Analyse wird in Task 4 als `docs/research/RECRUITING_AGENTUR_BLACKLYNE_V1.md` im Repo `Logopädie` abgelegt und ist ab dann die Spec-Quelle.
 
+> **Nachtrag 13.11.2026 (Entscheidung Sinan):** Das Feld ist nach Umsetzung auf **optional** umgestellt (Label „Dein Abschluss (optional)“, Hinweistext statt Fehlermeldung, keine Client-Pflicht). Zweite Option jetzt „Ich bin noch in Ausbildung, im Studium oder im Anerkennungsverfahren“, Betreff-Zusatz `in Ausbildung/Anerkennung`. Unbekannte Werte werden ignoriert statt abgelehnt. Die Tabelle unten ist der ursprüngliche Planstand.
+
 ## Global Constraints
 
 - Markenname immer vollständig `Praxis für Logopädie Şimşek`.

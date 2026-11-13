@@ -230,16 +230,16 @@ test('the landing binds the native contact pattern without Astro string-escape l
 });
 
 for (const [name, path] of [['component', CONTACT_PATH], ['job landing page', JOB_DETAIL_PATH]]) {
-  test(`step two asks for the qualification in an accessible fieldset (${name})`, async () => {
+  test(`step two offers an optional qualification question (${name})`, async () => {
     const src = await readFile(path, 'utf8');
-    assert.match(src, /<fieldset id="kontakt-abschluss"[\s\S]*?<legend[^>]*>Dein Abschluss<\/legend>/);
-    assert.match(src, /<fieldset id="kontakt-abschluss"[^>]*aria-describedby="abschluss-error"/);
+    assert.match(src, /<fieldset id="kontakt-abschluss"[\s\S]*?<legend[^>]*>Dein Abschluss <span[^>]*>\(optional\)<\/span><\/legend>/);
+    assert.match(src, /<fieldset id="kontakt-abschluss"[^>]*aria-describedby="abschluss-hint"/);
     assert.match(src, /Object\.entries\(QUALIFICATIONS\)/);
     assert.match(src, /import \{[^}]*QUALIFICATIONS[^}]*\} from/);
     assert.doesNotMatch(src, /name="abschluss"[^>]*required/);
-    assert.match(src, /Bitte wähle deinen Abschluss aus\./);
-    assert.match(src, /id="abschluss-error"[^>]*aria-live="polite"/);
-    assert.match(src, /qualificationMissing/);
+    assert.match(src, /id="abschluss-hint"[^>]*>Hilft uns, das Gespräch vorzubereiten\. Du kannst auch ohne Angabe absenden\.</);
+    // Optional field: no client-side blocking error.
+    assert.doesNotMatch(src, /abschluss-error|qualificationMissing|Bitte wähle deinen Abschluss aus/);
   });
 }
 

@@ -83,7 +83,7 @@
 #bewerbung #kontakt-direkt-hint{font-size:14px;line-height:22px;margin-bottom:12px}
 #bewerbung #kontakt-daten>div{margin-top:14px}#bewerbung #kontaktformular label{margin-bottom:6px}
 #bewerbung #kontakt-auswahl{font-size:14px;line-height:22px;margin:0 0 12px}
-#bewerbung #name-hint,#bewerbung #kontakt-hint{font-size:13px;line-height:20px;margin-top:4px}
+#bewerbung #name-hint,#bewerbung #kontakt-hint,#bewerbung #abschluss-hint{font-size:13px;line-height:20px;margin-top:4px}
 #bewerbung #kontakt-daten>p:last-of-type{font-size:13px;line-height:20px;margin-top:16px}
 #bewerbung #kontakt-daten>p:last-of-type a{display:inline;min-height:0;font-size:13px;line-height:20px}
 #bewerbung #kontakt-daten>button[type=submit]{margin-top:16px}

@@ -20,8 +20,8 @@ export const QUALIFICATIONS = Object.freeze({
     subject: 'Abschluss passt',
   }),
   ausbildung: Object.freeze({
-    label: 'Ich bin noch in Ausbildung oder im Studium',
-    subject: 'in Ausbildung',
+    label: 'Ich bin noch in Ausbildung, im Studium oder im Anerkennungsverfahren',
+    subject: 'in Ausbildung/Anerkennung',
   }),
   anderer: Object.freeze({
     label: 'Ich habe einen anderen Berufsabschluss',

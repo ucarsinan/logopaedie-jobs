@@ -229,8 +229,8 @@ test('laesst die Quelle-Zeile weg, wenn keine Herkunft bekannt ist', () => {
 
 test('mail subject and text carry the qualification', () => {
   const mail = buildApplicationMail({ ...DATA, intent: 'stelle', qualification: 'ausbildung' }, CONFIG);
-  assert.match(mail.subject, / – in Ausbildung$/);
-  assert.match(mail.text, /^Abschluss: Ich bin noch in Ausbildung oder im Studium$/m);
+  assert.match(mail.subject, / – in Ausbildung\/Anerkennung$/);
+  assert.match(mail.text, /^Abschluss: Ich bin noch in Ausbildung, im Studium oder im Anerkennungsverfahren$/m);
   assert.match(mail.text, /^Kontakt: .*\nAbschluss: /m);
 });
 
