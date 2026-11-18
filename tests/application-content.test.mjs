@@ -215,9 +215,35 @@ test('the public response promise matches the internal deadline rule', async () 
   }
 });
 
+test('the landing CSS styles only the step legends, not the qualification legend', async () => {
+  const css = await readFile('src/styles/recruiting-landing.css', 'utf8');
+  assert.doesNotMatch(css, /#kontaktformular legend/);
+  assert.match(css, /#kontaktformular #anliegen-heading/);
+  assert.match(css, /#kontaktformular #kontakt-heading/);
+});
+
 test('the landing binds the native contact pattern without Astro string-escape loss', async () => {
   const detail = await readFile(JOB_DETAIL_PATH, 'utf8');
-  assert.match(detail, /import \{ CONTACT_PATTERN_SOURCE \} from '\.\.\/\.\.\/lib\/application-form\.mjs'/);
+  assert.match(detail, /import \{ CONTACT_PATTERN_SOURCE(?:, QUALIFICATIONS)? \} from '\.\.\/\.\.\/lib\/application-form\.mjs'/);
   assert.match(detail, /name="kontakt"[^>]*pattern=\{CONTACT_PATTERN_SOURCE\}[^>]*required/);
   assert.doesNotMatch(detail, /pattern="/);
+});
+
+for (const [name, path] of [['component', CONTACT_PATH], ['job landing page', JOB_DETAIL_PATH]]) {
+  test(`step two offers an optional qualification question (${name})`, async () => {
+    const src = await readFile(path, 'utf8');
+    assert.match(src, /<fieldset id="kontakt-abschluss"[\s\S]*?<legend[^>]*>Dein Abschluss <span[^>]*>\(optional\)<\/span><\/legend>/);
+    assert.match(src, /<fieldset id="kontakt-abschluss"[^>]*aria-describedby="abschluss-hint"/);
+    assert.match(src, /Object\.entries\(QUALIFICATIONS\)/);
+    assert.match(src, /import \{[^}]*QUALIFICATIONS[^}]*\} from/);
+    assert.doesNotMatch(src, /name="abschluss"[^>]*required/);
+    assert.match(src, /id="abschluss-hint"[^>]*>Hilft uns, das Gespräch vorzubereiten\. Du kannst auch ohne Angabe absenden\.</);
+    // Optional field: no client-side blocking error.
+    assert.doesNotMatch(src, /abschluss-error|qualificationMissing|Bitte wähle deinen Abschluss aus/);
+  });
+}
+
+test('privacy policy names the qualification answer', async () => {
+  const src = await readFile(PRIVACY_PATH, 'utf8');
+  assert.match(src, /Angabe zu Ihrem Berufsabschluss/);
 });

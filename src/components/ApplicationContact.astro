@@ -1,5 +1,5 @@
 ---
-import { CONTACT_PATTERN_SOURCE, CONTACT_INTENTS } from '../lib/application-form.mjs';
+import { CONTACT_PATTERN_SOURCE, CONTACT_INTENTS, QUALIFICATIONS } from '../lib/application-form.mjs';
 import ContactAlternatives from './ContactAlternatives.astro';
 
 interface Props { standalone?: boolean; }
@@ -54,7 +54,6 @@ const { standalone = false } = Astro.props;
 
         <form id="bewerbung-form" aria-describedby="kontakt-einstieg" method="post" action="/bewerbung/senden/" class="space-y-5">
           <input type="hidden" name="stelle" value="logopaedin-sprachtherapeut-duisburg" />
-          <input type="hidden" name="quelle" id="quelle" value="" />
           <div class="absolute -left-[10000px] h-px w-px overflow-hidden" aria-hidden="true">
             <label for="website">Website</label>
             <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
@@ -87,6 +86,16 @@ const { standalone = false } = Astro.props;
           <fieldset id="kontakt-daten" class="space-y-5">
             <legend id="kontakt-heading" tabindex="-1" class="mb-4 text-2xl font-semibold leading-tight">Wie erreichen wir dich?</legend>
             <p id="kontakt-auswahl" hidden class="text-sm text-slate-600"></p>
+            <fieldset id="kontakt-abschluss" class="space-y-3" aria-describedby="abschluss-hint">
+              <legend class="mb-3 text-sm font-bold text-slate-800">Dein Abschluss <span class="font-normal text-slate-500">(optional)</span></legend>
+              <p id="abschluss-hint" class="text-xs text-slate-500">Hilft uns, das Gespräch vorzubereiten. Du kannst auch ohne Angabe absenden.</p>
+              {Object.entries(QUALIFICATIONS).map(([value, { label }]) => (
+                <label class="flex min-h-14 cursor-pointer items-center gap-3 rounded-xl border border-slate-300 px-4 py-3 text-sm font-semibold transition hover:border-simsek-green has-[:checked]:border-simsek-green has-[:checked]:bg-simsek-green/10 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-simsek-green">
+                  <input type="radio" name="abschluss" value={value} class="h-4 w-4 shrink-0 accent-simsek-green" />
+                  <span class="flex-1">{label}</span>
+                </label>
+              ))}
+            </fieldset>
             <div>
               <label for="name" class="mb-2 block text-sm font-bold text-slate-800">Name</label>
               <input id="name" name="name" type="text" autocomplete="name" minlength="1" maxlength="100" required aria-describedby="name-hint" class="min-h-11 w-full rounded-lg border border-slate-300 px-3 py-2.5 text-base text-slate-900 outline-none transition focus:border-simsek-green focus:ring-2 focus:ring-simsek-green/30" />
@@ -131,61 +140,8 @@ const { standalone = false } = Astro.props;
   import { contactFieldError } from '../lib/contact-validation.mjs';
   const form = document.querySelector('#bewerbung-form');
   const statusMessage = document.querySelector('#bewerbung-status');
-  const knownFields = new Set(['name', 'kontakt', 'nachricht', 'anliegen']);
+  const knownFields = new Set(['name', 'kontakt', 'nachricht', 'anliegen', 'abschluss']);
   const queryStatus = new URLSearchParams(window.location.search).get('status');
-
-  const SOURCE_STORAGE_KEY = 'bewerbung-quelle';
-  const SOURCE_PARAMS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
-  const MAX_SOURCE_LENGTH = 200;
-
-  function readStoredSource() {
-    try {
-      return window.sessionStorage.getItem(SOURCE_STORAGE_KEY) ?? '';
-    } catch {
-      return '';
-    }
-  }
-
-  function storeSource(value) {
-    try {
-      window.sessionStorage.setItem(SOURCE_STORAGE_KEY, value);
-    } catch {
-      // Privater Modus oder blockierter Speicher: Herkunft gilt nur fuer diesen Aufruf.
-    }
-  }
-
-  function detectSource(search, referrer) {
-    const params = new URLSearchParams(search);
-    const utm = SOURCE_PARAMS
-      .map((key) => (params.get(key) ?? '').trim())
-      .filter(Boolean);
-
-    if (utm.length > 0) return utm.join(' | ').slice(0, MAX_SOURCE_LENGTH);
-    // Meta haengt fbclid auch ohne UTM an: belegt die Herkunft als Rueckfallebene.
-    if (params.get('fbclid')) return 'meta | klick-id';
-
-    if (referrer) {
-      try {
-        const host = new URL(referrer).hostname;
-        if (host && host !== window.location.hostname) {
-          return ('referrer | ' + host).slice(0, MAX_SOURCE_LENGTH);
-        }
-      } catch {
-        // Unlesbarer Referrer zaehlt als direkt.
-      }
-    }
-
-    return 'direkt';
-  }
-
-  const sourceField = document.querySelector('#quelle');
-  if (sourceField instanceof HTMLInputElement) {
-    // Erstkontakt gewinnt: wer ueber eine Kampagne kommt und danach im
-    // Berufshandbuch weiterliest, behaelt die Kampagne als Herkunft.
-    const detected = detectSource(window.location.search, document.referrer);
-    if (detected !== 'direkt') storeSource(detected);
-    sourceField.value = detected === 'direkt' ? (readStoredSource() || 'direkt') : detected;
-  }
 
   function showStatus(message) {
     if (!(statusMessage instanceof HTMLElement)) return;
@@ -222,6 +178,7 @@ const { standalone = false } = Astro.props;
     const back = form.querySelector('#kontakt-zurueck');
     const summary = form.querySelector('#kontakt-auswahl');
     const radios = [...form.querySelectorAll('input[name="anliegen"]')];
+    const qualification = form.querySelector('#kontakt-abschluss');
     let step = 1;
 
     function updateQuestion() {
@@ -241,6 +198,9 @@ const { standalone = false } = Astro.props;
       if (step === 2) {
         const selected = radios.find((radio) => radio.checked);
         summary.textContent = selected?.closest('label')?.textContent.trim() ?? '';
+        const asking = selected?.value === 'frage';
+        qualification.hidden = asking;
+        qualification.disabled = asking;
       }
       if (focus) document.getElementById(step === 1 ? 'anliegen-heading' : 'kontakt-heading').focus();
     }
@@ -303,9 +263,10 @@ const { standalone = false } = Astro.props;
       clearFieldErrors();
       const invalid = validatedInputs.filter(input => { touched.add(input.id); return !validateInput(input); });
       if (invalid.length) {
-        if (invalid.some(input => input.id === 'nachricht')) showStep(1, false);
+        const messageInvalid = invalid.some(input => input.id === 'nachricht');
+        if (messageInvalid) showStep(1, false);
         showStatus('Bitte korrigiere die markierten Angaben.');
-        invalid[0].focus();
+        (messageInvalid ? message : invalid[0]).focus();
         return;
       }
 

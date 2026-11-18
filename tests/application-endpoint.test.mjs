@@ -216,6 +216,25 @@ test('returns invalid_form and fields for invalid JSON requests', async () => {
   assert.deepEqual(await json(response), { ok: false, code: 'invalid_form', fields: ['name'] });
 });
 
+test('delivers an application with an unknown qualification value', async () => {
+  const response = await endpoint()({
+    request: request(new URLSearchParams({ ...Object.fromEntries(VALID_FORM), anliegen: 'stelle', abschluss: 'arzt' }).toString()),
+    redirect,
+  });
+
+  assert.equal(response.status, 200);
+  assert.deepEqual(await json(response), { ok: true });
+});
+
+test('reports a duplicate qualification as a public invalid field', async () => {
+  const params = new URLSearchParams({ ...Object.fromEntries(VALID_FORM), anliegen: 'stelle', abschluss: 'anerkannt' });
+  params.append('abschluss', 'anderer');
+  const response = await endpoint()({ request: request(params.toString()), redirect });
+
+  assert.equal(response.status, 422);
+  assert.deepEqual(await json(response), { ok: false, code: 'invalid_form', fields: ['abschluss'] });
+});
+
 test('does not reflect unknown fields or the hidden job slug in JSON errors', async () => {
   const unknownField = await endpoint()({
     request: request(new URLSearchParams({ ...Object.fromEntries(VALID_FORM), neutral: 'Textbaustein' }).toString()),
@@ -595,4 +614,24 @@ test('announced oversize never acquires a reader or cancels', async () => {
   req.body.cancel = () => { assert.fail('must not cancel'); };
   const response = await endpoint({ sendApplication: async () => { assert.fail('must not send'); } })({ request: req, redirect });
   assert.equal(response.status, 413);
+});
+
+
+test('JSON and no-JS submissions ignore legacy attribution before the mail boundary', async () => {
+  for (const accept of ['application/json', 'text/html']) {
+    let delivered;
+    const handler = endpoint({ sendApplication: async (data) => { delivered = data; return 'sent'; } });
+    const body = new URLSearchParams(VALID_FORM);
+    body.set('quelle', 'synthetic-attribution-marker');
+    const response = await handler({ request: request(body.toString(), {
+      accept, referer: 'https://external.example.test/?utm_source=synthetic-referrer',
+    }, ENDPOINT_URL + '?utm_source=synthetic-query&fbclid=synthetic-click'), redirect });
+    assert.equal(response.status, accept === 'application/json' ? 200 : 303);
+    assert.deepEqual(delivered, {
+      name: 'Erika Muster', contact: 'erika@example.test', message: 'Neutrale Nachricht',
+      jobSlug: JOB_SLUG, replyTo: 'erika@example.test',
+    });
+    if (accept === 'application/json') assert.equal((await json(response)).ok, true);
+    else assert.equal(response.headers.get('location'), '/bewerbung/danke/');
+  }
 });

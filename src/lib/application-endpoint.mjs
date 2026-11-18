@@ -5,7 +5,7 @@ const CANONICAL_ORIGIN = 'https://xn--logopdiejobs-kcb.de';
 const SUCCESS_LOCATION = '/bewerbung/danke/';
 const INVALID_FORM_LOCATION = '/kontakt/?status=invalid_form#bewerbung';
 const UNAVAILABLE_LOCATION = '/kontakt/?status=service_unavailable#bewerbung';
-const PUBLIC_INVALID_FIELDS = new Set(['name', 'kontakt', 'nachricht']);
+const PUBLIC_INVALID_FIELDS = new Set(['name', 'kontakt', 'nachricht', 'abschluss']);
 
 /**
  * @typedef {(data: import('./application-form.mjs').ApplicationData) => Promise<'sent' | 'unavailable'>} ApplicationSender

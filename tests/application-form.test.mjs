@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
-import { CONTACT_PATTERN_SOURCE, KNOWN_JOBS, MAX_BODY_BYTES, parseApplicationForm } from '../src/lib/application-form.mjs';
+import { CONTACT_PATTERN_SOURCE, KNOWN_JOBS, MAX_BODY_BYTES, QUALIFICATIONS, parseApplicationForm } from '../src/lib/application-form.mjs';
 
 const JOB_SLUG = 'logopaedin-sprachtherapeut-duisburg';
 const EMAIL = 'erika@example.test';
@@ -181,49 +181,32 @@ test('rejects unknown fields before classifying a filled honeypot as a bot', () 
   });
 });
 
-const CRLF = String.fromCharCode(13, 10);
-
-test('nimmt die Herkunft entgegen und reicht sie als source durch', () => {
-  const quelle = 'meta | paid_social | recruiting_duisburg | 52564079917169 | Instagram_Feed';
-  const result = parseApplicationForm(form({ quelle }));
-
+test('accepts legacy attribution without exposing it in application data', () => {
+  const result = parseApplicationForm(form({ quelle: 'synthetic-campaign' }));
   assert.equal(result.ok, true);
-  assert.equal(result.data.source, quelle);
+  assert.deepEqual(result.data, {
+    name: NAME, contact: EMAIL, message: NEUTRAL_MESSAGE, jobSlug: JOB_SLUG, replyTo: EMAIL,
+  });
 });
 
-test('laesst source weg, wenn keine Herkunft mitgeschickt wird', () => {
-  const result = parseApplicationForm(form());
-
-  assert.equal(result.ok, true);
-  assert.equal(Object.hasOwn(result.data, 'source'), false);
+test('does not read legacy attribution values while checking field names', () => {
+  const body = form({ quelle: 'synthetic-campaign' });
+  for (const method of ['get', 'getAll']) {
+    const original = body[method].bind(body);
+    body[method] = (key) => {
+      assert.notEqual(key, 'quelle', `must not read attribution via ${method}`);
+      return original(key);
+    };
+  }
+  assert.equal(parseApplicationForm(body).ok, true);
 });
 
-test('entfernt Zeilenumbrueche und Sonderzeichen aus der Herkunft', () => {
-  const result = parseApplicationForm(form({
-    quelle: 'meta' + CRLF + 'Bcc: angreifer@example.test' + CRLF + '<script>',
-  }));
-
-  assert.equal(result.ok, true);
-  assert.equal(result.data.source.includes(String.fromCharCode(10)), false);
-  assert.equal(result.data.source.includes(String.fromCharCode(13)), false);
-  assert.equal(result.data.source.includes('<'), false);
-  assert.equal(result.data.source.startsWith('meta '), true);
+test('rejects duplicate legacy attribution and unknown source field names', () => {
+  const body = form({ quelle: 'first' });
+  body.append('quelle', 'second');
+  assert.deepEqual(parseApplicationForm(body), { ok: false, code: 'invalid_form', fields: ['quelle'] });
+  assert.deepEqual(invalidFields({ source: 'synthetic-campaign' }), ['source']);
 });
-
-test('kuerzt eine uebergrosse Herkunft auf 200 Zeichen', () => {
-  const result = parseApplicationForm(form({ quelle: 'a'.repeat(500) }));
-
-  assert.equal(result.ok, true);
-  assert.equal(result.data.source.length, 200);
-});
-
-test('eine unbrauchbare Herkunft weist die Bewerbung nicht ab', () => {
-  const result = parseApplicationForm(form({ quelle: String.fromCharCode(0, 7) + '\u{1F600}' }));
-
-  assert.equal(result.ok, true);
-  assert.equal(Object.hasOwn(result.data, 'source'), false);
-});
-
 
 test('contact intents reach the existing message field without requiring free text', () => {
   for (const [anliegen, expected] of Object.entries({ kennenlernen: 'Die Praxis kennenlernen', stelle: 'Mehr über die Stelle erfahren', frage: 'Eine Frage stellen' })) {
@@ -257,4 +240,49 @@ test('rejects implausible names and contacts while accepting international names
 test('rejects duplicate fields instead of silently choosing one value', () => {
   const body = form(); body.append('kontakt', 'other@example.test');
   assert.equal(parseApplicationForm(body).ok, false);
+});
+
+test('passes a known qualification for application intents', () => {
+  const r = parseApplicationForm(form({ anliegen: 'stelle', abschluss: 'anerkannt' }));
+  assert.equal(r.ok, true);
+  assert.equal(r.data.qualification, 'anerkannt');
+  assert.equal(r.data.intent, 'stelle');
+});
+
+test('accepts a missing qualification from cached pages', () => {
+  const r = parseApplicationForm(form({ anliegen: 'kennenlernen' }));
+  assert.equal(r.ok, true);
+  assert.equal('qualification' in r.data, false);
+});
+
+test('ignores a qualification sent with the question intent', () => {
+  const r = parseApplicationForm(form({ anliegen: 'frage', abschluss: 'anderer' }));
+  assert.equal(r.ok, true);
+  assert.equal('qualification' in r.data, false);
+});
+
+test('accepts an unknown qualification and treats it as not given', () => {
+  const r = parseApplicationForm(form({ anliegen: 'stelle', abschluss: 'arzt' }));
+  assert.equal(r.ok, true);
+  assert.equal('qualification' in r.data, false);
+});
+
+test('rejects duplicate qualification fields', () => {
+  const body = form({ anliegen: 'stelle', abschluss: 'anerkannt' });
+  body.append('abschluss', 'anderer');
+  assert.deepEqual(parseApplicationForm(body).fields, ['abschluss']);
+});
+
+test('exports the three fixed qualification values', () => {
+  assert.deepEqual(Object.keys(QUALIFICATIONS), ['anerkannt', 'ausbildung', 'anderer']);
+  assert.deepEqual(QUALIFICATIONS.anerkannt, {
+    label: 'Ich habe einen Abschluss in Logopädie oder Sprachtherapie',
+    subject: 'Abschluss passt',
+  });
+});
+
+test('legacy posts without anliegen carry no intent and no qualification', () => {
+  const r = parseApplicationForm(form());
+  assert.equal('intent' in r.data, false);
+  assert.equal('qualification' in r.data, false);
 });

@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 
+// Released 2026-11-18 on Sinan's decision; open operator/contract evidence (B28-B30)
+// remains tracked in docs/agent-reports/2026-10-30-recht-offene-betriebsnachweise-v01.md.
 // Google-Analytics-Abschnitt nur, wenn Analytics tatsächlich konfiguriert ist.
 const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 ---
@@ -38,7 +40,7 @@ const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 
       <div class="article-body">
         <h2>1. Datenschutz auf einen Blick</h2>
-        <p>Diese Website wird als statische HTML-Seite über Vercel ausgeliefert. Beim Aufruf der Seite werden technisch notwendige Server-Logs von Vercel (IP-Adresse, Zeitstempel, aufgerufene URL) zur Bereitstellung und Absicherung der Website verarbeitet.{gaConfigured && ' Optionale Statistik-Cookies (Google Analytics) werden ausschließlich nach Ihrer aktiven Einwilligung über den Cookie-Banner gesetzt — siehe Abschnitt 8.'}</p>
+        <p>Diese Website wird über Vercel bereitgestellt; die Kontaktanfrage wird über eine serverseitige Funktion übermittelt. Beim Aufruf der Seite werden technisch notwendige Server-Logs von Vercel (IP-Adresse, Zeitstempel, aufgerufene URL) zur Bereitstellung und Absicherung der Website verarbeitet.{gaConfigured && ' Optionale Statistik-Cookies (Google Analytics) werden ausschließlich nach Ihrer aktiven Einwilligung über den Cookie-Banner gesetzt — siehe Abschnitt 9.'}</p>
 
         <h2>2. Verantwortlicher</h2>
         <p>
@@ -49,19 +51,12 @@ const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
         </p>
 
         <h2>3. Bewerbung und Kontaktaufnahme</h2>
-        <p>Wenn Sie die Kontaktanfrage absenden, verarbeiten wir Ihren Namen, Ihre Rückkontaktmöglichkeit und Ihre
+        <p>Wenn Sie die Kontaktanfrage absenden, verarbeiten wir Ihren Namen, Ihre Rückkontaktmöglichkeit, die freiwillige Angabe zu Ihrem Berufsabschluss und Ihre
           freiwillige Nachricht zur Bearbeitung Ihrer Bewerbung und zur Entscheidung über die Begründung eines
           Beschäftigungsverhältnisses (§ 26 Abs. 1 BDSG).</p>
         <p>Die technische Übermittlung erfolgt über Vercel an das bei STRATO gehostete Bewerbungspostfach. Alternativ können
           Sie uns direkt per E-Mail unter <a href="mailto:social@logopaedie-simsek.de">social@logopaedie-simsek.de</a>
           kontaktieren.</p>
-        <p>Mit der Kontaktanfrage wird zusätzlich eine technische Herkunftsangabe übermittelt. Sie entsteht beim
-          Aufruf der Seite aus den Kampagnenparametern der Adresszeile, einer Klick-Kennung der Werbeplattform oder
-          der verweisenden Seite und benennt ausschließlich den Kanal, über den Sie zu uns gefunden haben, etwa
-          &bdquo;meta | paid_social&ldquo; oder &bdquo;direkt&ldquo;. Sie enthält keine Angaben zu Ihrer Person, wird
-          allein zusammen mit Ihrer Bewerbung im Bewerbungspostfach gespeichert und mit dieser gelöscht. Sie dient
-          uns dazu, die Wirksamkeit unserer Stellenausschreibungen zu beurteilen.</p>
-        <!-- Vor Veroeffentlichung: Rechtsgrundlage der Herkunftsangabe abschliessend pruefen. -->
         <p>Daten erfolgloser oder zurückgezogener Bewerbungen werden spätestens sechs Monate nach Abschluss des
           Verfahrens gelöscht. Es wird kein Talentpool angelegt.</p>
 
@@ -69,11 +64,14 @@ const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
         <p>WhatsApp ist ein freiwilliger und ausschließlich für Bewerbungen vorgesehener Kontaktweg. Das Formular auf
           unserer Kontaktseite bleibt der primäre Weg; außerdem können Sie uns telefonisch, per E-Mail oder
           per Post kontaktieren. WhatsApp wird nicht für Patient:innenkommunikation, Terminvereinbarungen oder
-          Gesundheitsberatung verwendet; es werden keine Gesundheitsdaten über diesen Weg verarbeitet.</p>
+          Gesundheitsberatung verwendet. Bitte senden Sie über WhatsApp keine Gesundheitsdaten, Befunde oder anderen
+          sensiblen Unterlagen. Auch bei dieser Zweckbegrenzung können unaufgefordert sensible Angaben eingehen.</p>
         <p>Wenn Sie WhatsApp nutzen, verarbeiten wir die von Ihnen mitgeteilten Kontaktdaten, Profilangaben, Nachrichten
           und freiwillig gesendeten Dateien nur zur Bearbeitung Ihrer Bewerbung und zur Entscheidung über die Begründung
           eines Beschäftigungsverhältnisses (§ 26 Abs. 1 BDSG). Unterlagen werden über WhatsApp nicht aktiv angefordert.
           Emel Şimşek-Uçar ist die alleinige reguläre Inhaltsberechtigte für diesen Bewerbungsweg.</p>
+        <!-- Offen (B29): bestätigter Prozess für unerwünschte sensible Eingänge,
+             Berechtigungen, Aufbewahrung und Löschung; keine tatsächlichen Eingänge behauptet. -->
         <p>WhatsApp und Meta können bei der Nutzung insbesondere Konto-, Nutzungs-, Interaktions-, Geräte- und
           Verbindungsdaten verarbeiten; auch eine internationale Verarbeitung ist möglich. Die konkrete Rolle von
           WhatsApp/Meta und die Datenflüsse richten sich nach dem tatsächlich eingerichteten Businesskonto und sind nicht
@@ -100,7 +98,11 @@ const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
             Wir verwenden keine eigenen Analyse-Events zur Erfassung von Bewerbungsinhalten.</p>
         <p>Anbieter ist Vercel Inc., USA. Weitere Informationen:
           <a href="https://vercel.com/docs/analytics/privacy-policy">Datenschutz bei Vercel Web Analytics</a>.</p>
-        <!-- Vor Veröffentlichung: Rechtsgrundlage, Aufbewahrung und Anbieterrollen abschließend prüfen. -->
+        <p>Der Verzicht auf Cookies allein beantwortet nicht, ob für die konkrete Verarbeitung eine Einwilligung
+          erforderlich ist. Maßgeblich sind die tatsächlich eingesetzte Technik und ihre rechtliche Einordnung.</p>
+        <!-- Offen (B28): Hosting und Analytics getrennt zu Rechtsgrundlagen,
+             Speicherfristen/-kriterien, Anbieterrollen, Verträgen und Drittlandgarantien nachweisen.
+             Keine Rechtsgrundlage oder konkrete Frist aus Anbieterwerbung ableiten. -->
 
         <h2>8. Google Maps</h2>
         <p>Auf der Startseite können Sie eine Karte von Google Maps laden. Erst nach Ihrem Klick auf „Karte laden“
@@ -114,17 +116,19 @@ const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
         {gaConfigured && (
           <Fragment>
             <h2>9. Webanalyse mit Google Analytics 4</h2>
-            <p>Diese Website nutzt Google Analytics 4, einen Webanalysedienst der Google Ireland Limited (Gordon House, Barrow Street, Dublin 4, Irland). Google Analytics verwendet Cookies, die eine anonymisierte Analyse Ihrer Nutzung der Website ermöglichen (z. B. besuchte Seiten, Verweildauer, Schritte im Bewerbungs-Formular).</p>
-            <p><strong>Einsatz nur mit Einwilligung:</strong> Google Analytics wird erst geladen, nachdem Sie im Cookie-Banner aktiv eingewilligt haben. Vor Ihrer Einwilligung werden keine Analyse-Cookies gesetzt und keine Daten an Google übertragen. Die IP-Adresse wird anonymisiert verarbeitet.</p>
+            <p>Diese Website nutzt Google Analytics 4, einen Webanalysedienst der Google Ireland Limited (Gordon House, Barrow Street, Dublin 4, Irland). Google Analytics verwendet Cookies zur Analyse Ihrer Nutzung der Website, beispielsweise für Seitenaufrufe und Nutzungsereignisse. Dabei können personenbezogene Online-Kennungen und Nutzungsdaten verarbeitet werden.</p>
+            <p><strong>Einsatz nur mit Einwilligung:</strong> Die Einbindung von Google Analytics erfolgt im Quellcode erst nach Ihrer aktiven Zustimmung im Cookie-Banner. Diese Einbindung allein ist kein Nachweis einer vollständig anonymen Verarbeitung.</p>
             <p><strong>Rechtsgrundlage:</strong> Ihre Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO sowie § 25 Abs. 1 TDDDG. Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen, indem Sie im Footer auf „Cookie-Einstellungen" klicken und die Statistik-Cookies deaktivieren.</p>
-            <p><strong>Datenübertragung in die USA:</strong> Bei der Nutzung von Google Analytics kann es zu einer Übertragung personenbezogener Daten an Google in die USA kommen. Google verarbeitet die Daten als Auftragsverarbeiter auf Grundlage der Google Ads Data Processing Terms, die bei der Nutzung von Google Analytics automatisch Anwendung finden.</p>
-            <p><strong>Speicherdauer:</strong> Die Aufbewahrungsdauer der nutzer- und ereignisbezogenen Daten richtet sich nach der in den Google-Analytics-Einstellungen gewählten Konfiguration (Google-Standard: 2 Monate, maximal 14 Monate).</p>
+            <p><strong>Datenübertragung in die USA:</strong> Bei der Nutzung von Google Analytics kann es zu einer Übertragung personenbezogener Daten an Google in die USA kommen. Die für das konkrete Konto geltenden Anbieterrollen, Verträge und Übermittlungsgarantien müssen zum tatsächlichen Einsatz passen.</p>
+            <p><strong>Speicherdauer:</strong> Die Aufbewahrungsdauer der nutzer- und ereignisbezogenen Daten richtet sich nach der in den Google-Analytics-Einstellungen gewählten Konfiguration; eine allgemeine Standardangabe ersetzt nicht die tatsächliche Kontoeinstellung.</p>
           </Fragment>
         )}
         <p>Sie können unter den gesetzlichen Voraussetzungen außerdem Datenübertragbarkeit verlangen,
           einer Verarbeitung widersprechen und erteilte Einwilligungen für die Zukunft widerrufen.
           Sie haben das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren, insbesondere bei der LDI Nordrhein-Westfalen.</p>
-        <p>Stand: September 2026.</p>
+        <p>Rechtliche Grundlagen und Betroffenenrechte: <a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj?locale=de">Datenschutz-Grundverordnung (insbesondere Art. 4, 6, 9, 13 und Kapitel V)</a>
+          und <a href="https://www.gesetze-im-internet.de/bdsg_2018/__26.html">§ 26 BDSG für Bewerbungen</a>.</p>
+        <p>Stand: 18. November 2026.</p>
       </div>
 
     </article>

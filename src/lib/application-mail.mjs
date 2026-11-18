@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
 
-import { KNOWN_JOBS } from './application-form.mjs';
+import { KNOWN_JOBS, QUALIFICATIONS } from './application-form.mjs';
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -148,9 +148,13 @@ export function buildApplicationMail(data, config) {
   const job = KNOWN_JOBS[data.jobSlug];
   if (!job) throw new Error('Unknown application job');
 
+  const tagged = Boolean(data.intent) && data.intent !== 'frage';
+  const qualification = tagged && data.qualification ? QUALIFICATIONS[data.qualification] : undefined;
+  const subjectSuffix = tagged ? ` – ${qualification ? qualification.subject : 'Abschluss nicht angegeben'}` : '';
+
   /** @type {MailOptions} */
   const mail = {
-    subject: `Neue Bewerbung: ${job}`,
+    subject: `Neue Bewerbung: ${job}${subjectSuffix}`,
     from: config.from,
     to: config.to,
     text: [
@@ -159,8 +163,8 @@ export function buildApplicationMail(data, config) {
       `Stelle: ${job}`,
       `Name: ${data.name}`,
       `Kontakt: ${data.contact}`,
+      ...(tagged ? [`Abschluss: ${qualification ? qualification.label : 'nicht angegeben'}`] : []),
       ...(data.message ? ['', 'Nachricht:', data.message] : []),
-      ...(data.source ? ['', `Quelle: ${data.source}`] : []),
       '',
       `Antwort fällig bis: ${formatResponseDeadline(data.receivedAt ?? new Date())}`,
       'Bitte zuerst anrufen. Eine kurze Rückmeldung genügt für die Frist.',
