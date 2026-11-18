@@ -3,8 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 
-// Lokaler Korrekturstand, nicht veröffentlichungsreif: offene Betreiber-/Vertragsnachweise
-// siehe docs/agent-reports/2026-10-30-recht-offene-betriebsnachweise-v01.md.
+// Released 2026-11-18 on Sinan's decision; open operator/contract evidence (B28-B30)
+// remains tracked in docs/agent-reports/2026-10-30-recht-offene-betriebsnachweise-v01.md.
 // Google-Analytics-Abschnitt nur, wenn Analytics tatsächlich konfiguriert ist.
 const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 ---
@@ -51,24 +51,12 @@ const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
         </p>
 
         <h2>3. Bewerbung und Kontaktaufnahme</h2>
-        <p>Wenn Sie die Kontaktanfrage absenden, verarbeiten wir Ihren Namen, Ihre Rückkontaktmöglichkeit, die Angabe zu Ihrem Berufsabschluss und Ihre
+        <p>Wenn Sie die Kontaktanfrage absenden, verarbeiten wir Ihren Namen, Ihre Rückkontaktmöglichkeit, die freiwillige Angabe zu Ihrem Berufsabschluss und Ihre
           freiwillige Nachricht zur Bearbeitung Ihrer Bewerbung und zur Entscheidung über die Begründung eines
           Beschäftigungsverhältnisses (§ 26 Abs. 1 BDSG).</p>
         <p>Die technische Übermittlung erfolgt über Vercel an das bei STRATO gehostete Bewerbungspostfach. Alternativ können
           Sie uns direkt per E-Mail unter <a href="mailto:social@logopaedie-simsek.de">social@logopaedie-simsek.de</a>
           kontaktieren.</p>
-        <p>Mit der Kontaktanfrage wird zusätzlich eine Herkunftsangabe übermittelt. Das Formular bildet sie aus
-          vorhandenen Kampagnenparametern der Adresszeile oder der Domain einer verweisenden Seite. Ist eine
-          Meta-Klickkennung vorhanden, wird daraus die Kanalangabe &bdquo;meta | klick-id&ldquo; gebildet;
-          die Klickkennung selbst wird nicht in dieses Feld übernommen. Ohne solche Angaben lautet der Wert
-          &bdquo;direkt&ldquo;. Kampagnenwerte können bis zu insgesamt 200 Zeichen in die Herkunftsangabe eingehen.</p>
-        <p>Die Herkunftsangabe wird im Sitzungsspeicher des Browsers zwischengespeichert und beim Absenden
-          zusammen mit den Kontaktdaten an das Bewerbungspostfach übermittelt. Durch diese Zuordnung gehört sie
-          zu den personenbezogenen Bewerbungsdaten. Die Auswertung der Wirksamkeit unserer Stellenausschreibungen
-          ist ein zusätzlicher Zweck neben der Bearbeitung der Bewerbung.</p>
-        <!-- Veröffentlichung gesperrt: Herkunftsauswertung und sessionStorage benötigen eine bestätigte
-             Rechtsgrundlage samt Prüfung der Freiwilligkeit/Einwilligung; § 26 BDSG wird hier nicht auf
-             die Werbewirkungsanalyse erstreckt. Siehe interner Nachweisbericht. -->
         <p>Daten erfolgloser oder zurückgezogener Bewerbungen werden spätestens sechs Monate nach Abschluss des
           Verfahrens gelöscht. Es wird kein Talentpool angelegt.</p>
 
@@ -82,7 +70,7 @@ const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
           und freiwillig gesendeten Dateien nur zur Bearbeitung Ihrer Bewerbung und zur Entscheidung über die Begründung
           eines Beschäftigungsverhältnisses (§ 26 Abs. 1 BDSG). Unterlagen werden über WhatsApp nicht aktiv angefordert.
           Emel Şimşek-Uçar ist die alleinige reguläre Inhaltsberechtigte für diesen Bewerbungsweg.</p>
-        <!-- Veröffentlichung gesperrt bis zum bestätigten Prozess für unerwünschte sensible Eingänge,
+        <!-- Offen (B29): bestätigter Prozess für unerwünschte sensible Eingänge,
              Berechtigungen, Aufbewahrung und Löschung; keine tatsächlichen Eingänge behauptet. -->
         <p>WhatsApp und Meta können bei der Nutzung insbesondere Konto-, Nutzungs-, Interaktions-, Geräte- und
           Verbindungsdaten verarbeiten; auch eine internationale Verarbeitung ist möglich. Die konkrete Rolle von
@@ -112,7 +100,7 @@ const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
           <a href="https://vercel.com/docs/analytics/privacy-policy">Datenschutz bei Vercel Web Analytics</a>.</p>
         <p>Der Verzicht auf Cookies allein beantwortet nicht, ob für die konkrete Verarbeitung eine Einwilligung
           erforderlich ist. Maßgeblich sind die tatsächlich eingesetzte Technik und ihre rechtliche Einordnung.</p>
-        <!-- Veröffentlichung gesperrt: Hosting und Analytics getrennt zu Rechtsgrundlagen,
+        <!-- Offen (B28): Hosting und Analytics getrennt zu Rechtsgrundlagen,
              Speicherfristen/-kriterien, Anbieterrollen, Verträgen und Drittlandgarantien nachweisen.
              Keine Rechtsgrundlage oder konkrete Frist aus Anbieterwerbung ableiten. -->
 
@@ -140,7 +128,7 @@ const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
           Sie haben das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren, insbesondere bei der LDI Nordrhein-Westfalen.</p>
         <p>Rechtliche Grundlagen und Betroffenenrechte: <a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj?locale=de">Datenschutz-Grundverordnung (insbesondere Art. 4, 6, 9, 13 und Kapitel V)</a>
           und <a href="https://www.gesetze-im-internet.de/bdsg_2018/__26.html">§ 26 BDSG für Bewerbungen</a>.</p>
-        <p>Stand: 30. Oktober 2026.</p>
+        <p>Stand: 18. November 2026.</p>
       </div>
 
     </article>
