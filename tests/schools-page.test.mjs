@@ -13,7 +13,6 @@ test('schools page states approved wording verbatim', async () => {
   assert.ok(page.includes('Berufsanfänger:innen sind willkommen.'));
   assert.ok(page.includes('Intensive strukturierte Einarbeitung, schrittweiser Terminaufbau und jederzeit eine Ansprechperson.'));
   assert.ok(page.includes('Dokumentation, Berichte und Organisation sind eingeplante Arbeitszeit.'));
-  assert.ok(page.includes('Je nach Erfahrungslevel 23–26 EUR brutto pro Stunde; bei 38,5 Stunden ungefähr 3.840–4.338 EUR brutto im Monat.'));
   assert.ok(page.includes('Hospitation oder Probearbeit'));
   assert.equal(page.split(INTERNSHIP).length - 1, 1);
 });
@@ -33,6 +32,9 @@ test('schools page uses existing components only', async () => {
     '../components/Footer.astro',
     '../components/PracticeBrand.astro',
     '../components/ContactAlternatives.astro',
+    '../content/jobs/logopaedin-sprachtherapeut-duisburg.json',
+    '../lib/job-model.mjs',
+    '../lib/job-publication-artifacts.mjs',
   ]);
 
   assert.ok(imports.length >= 4);

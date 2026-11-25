@@ -2,6 +2,7 @@
 // Astro v6 Content Collections — Konfiguration mit Glob-Loadern.
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { jobSchema } from './lib/job-model.mjs';
 
 const ratgeber = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/ratgeber' }),
@@ -32,6 +33,11 @@ const ratgeber = defineCollection({
   }),
 });
 
+const jobs = defineCollection({
+  loader: glob({ pattern: '*.json', base: './src/content/jobs' }),
+  schema: jobSchema,
+});
+
 // seiten-Collection wird angelegt, sobald der Bereich aktiv bespielt wird.
 
-export const collections = { ratgeber };
+export const collections = { ratgeber, jobs };

@@ -33,6 +33,15 @@ function json(body, status) {
   });
 }
 
+/** @param {Request} request */
+function applicationsClosed(request) {
+  if (wantsJson(request)) return json({ ok: false, code: 'applications_closed' }, 410);
+  return new Response('Für diese Stelle werden aktuell keine Bewerbungen angenommen.', {
+    status: 410,
+    headers: { 'content-type': 'text/plain; charset=utf-8' },
+  });
+}
+
 /**
  * @param {string[]} fields
  * @returns {string[]}
@@ -138,10 +147,11 @@ function getPreviewOrigin(environment, hostname) {
  * Creates the POST handler used by the Astro adapter. Dependency injection is
  * limited to tests so no live SMTP transport is ever needed there.
  *
- * @param {{ sendApplication?: ApplicationSender, isDevelopment?: boolean, vercelEnvironment?: string, vercelUrl?: string }} [deps]
+ * @param {{ sendApplication?: ApplicationSender, acceptApplications?: () => boolean, isDevelopment?: boolean, vercelEnvironment?: string, vercelUrl?: string }} [deps]
  */
 export function createApplicationEndpoint({
   sendApplication: applicationSender = sendApplication,
+  acceptApplications = () => false,
   isDevelopment = false,
   vercelEnvironment = process.env.VERCEL_ENV,
   vercelUrl = process.env.VERCEL_URL,
@@ -150,6 +160,14 @@ export function createApplicationEndpoint({
 
   /** @param {{ request: Request, redirect: Redirect }} context */
   return async function postApplication({ request, redirect }) {
+    let applicationWindowOpen = false;
+    try {
+      applicationWindowOpen = acceptApplications() === true;
+    } catch {
+      applicationWindowOpen = false;
+    }
+    if (!applicationWindowOpen) return applicationsClosed(request);
+
     if (!hasFormContentType(request)) return new Response(null, { status: 415 });
     if (exceedsAnnouncedBodyLimit(request)) return new Response(null, { status: 413 });
     if (!hasAllowedOrigin(request, isDevelopment, previewOrigin)) return new Response(null, { status: 403 });

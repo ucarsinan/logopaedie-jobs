@@ -13,27 +13,37 @@ import LogopaedieDefinition from '../components/LogopaedieDefinition.astro';
 import Footer from '../components/Footer.astro';
 import JobSchema from '../components/JobSchema.astro';
 import FaqSchema from '../components/FaqSchema.astro';
+import jobSource from '../content/jobs/logopaedin-sprachtherapeut-duisburg.json';
+import { jobSchema } from '../lib/job-model.mjs';
+import { publicationArtifacts } from '../lib/job-publication-artifacts.mjs';
 
 const currentYear = new Date().getFullYear();
-const pageTitle = `Logopädie Jobs Duisburg | Logopädin gesucht ${currentYear}`;
-const pageDescription = "Logopädie-Job in Duisburg: 3.840–4.338 € brutto/Monat bei Vollzeit + Weihnachtsgeld. Entscheide im Team mit. Lerne Emel und uns unverbindlich kennen.";
+const { presentation } = publicationArtifacts(jobSchema.parse(jobSource));
+const activeJob = presentation.active;
+const isActive = Boolean(activeJob);
+const pageTitle = isActive
+  ? `Logopädie Jobs Duisburg | Logopädin gesucht ${currentYear}`
+  : 'Karriere Logopädie Duisburg | Praxis für Logopädie Şimşek';
+const pageDescription = activeJob
+  ? `Logopädie-Job in Duisburg: ${activeJob.monthlySalaryLabel} brutto/Monat bei Vollzeit + Weihnachtsgeld. Entscheide im Team mit. Lerne Emel und uns unverbindlich kennen.`
+  : 'Karriereinformationen der Praxis für Logopädie Şimşek in Duisburg.';
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
   <Fragment slot="head">
     <JobSchema />
-    <FaqSchema />
+    <FaqSchema isActive={isActive} salaryAnswer={activeJob?.salaryAnswer} />
   </Fragment>
   <Navigation />
   <main id="main-content" tabindex="-1">
-    <Hero />
-    <Benefits />
+    <Hero isActive={isActive} monthlySalaryLabel={activeJob?.monthlySalaryLabel} hourlySalaryLabel={activeJob?.hourlySalaryLabel} />
+    <Benefits monthlySalaryLabel={activeJob?.monthlySalaryLabel} />
     <Aufgaben />
-    <Anforderungen />
+    <Anforderungen hourlySalaryLabel={activeJob?.hourlySalaryLabel} />
     <QuickApply />
     <About />
     <Gallery />
-    <FaqSection />
+    <FaqSection isActive={isActive} salaryAnswer={activeJob?.salaryAnswer} />
     <LogopaedieDefinition />
   </main>
   <Footer />

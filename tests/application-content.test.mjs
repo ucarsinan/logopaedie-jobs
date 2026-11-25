@@ -96,12 +96,14 @@ test('FAQ, schema and privacy describe WhatsApp as recruiting-only', async () =>
   assert.match(privacy, /mailto:social@logopaedie-simsek\.de/);
 });
 
-test('all FAQ contact-way enumerations use the same WhatsApp-inclusive answer', async () => {
+test('homepage FAQs retain their answer while the job FAQ renders the route-aware presentation', async () => {
   const [faq, schema, detail] = await Promise.all(
     [FAQ_PATH, FAQ_SCHEMA_PATH, JOB_DETAIL_PATH].map((path) => readFile(path, 'utf8')),
   );
 
-  for (const source of [faq, schema, detail]) assert.ok(source.includes(CONTACT_ANSWER));
+  for (const source of [faq, schema]) assert.ok(source.includes(CONTACT_ANSWER));
+  assert.match(detail, /presentation\.faqs\.map\(\(\[question, answer\]\)/);
+  assert.equal(detail.includes(CONTACT_ANSWER), false);
 });
 
 test('FAQ content points to the central contact page', async () => {
@@ -130,9 +132,10 @@ test('the job landing makes qualification and salary conditions explicit', async
   const qualification = detail.match(/<section\b[^>]*id="qualifikation"[\s\S]*?<\/section>/)?.[0] ?? '';
 
   assert.match(hero, /<h1\b[^>]*>[\s\S]*?Logopäd:in\?[\s\S]*?Sprachtherapeut:in \(m\/w\/d\)[\s\S]*?Arbeitsort: Duisburg[\s\S]*?<\/h1>/);
-  assert.match(hero, /3\.840–4\.338 €/);
-  assert.match(hero, /brutto\/Monat bei 38,5 Std\.\/Woche · je nach Erfahrung/);
-  assert.match(hero, /Grundlage: 23–26 € brutto pro Stunde/);
+  assert.match(hero, /\{presentation\.active\.monthlySalaryLabel\}/);
+  assert.match(hero, /brutto\/Monat im Jahresmittel · je nach Erfahrung/);
+  assert.doesNotMatch(hero, /auf Cent gerundet/);
+  assert.match(hero, /Grundlage: \{presentation\.active\.hourlySalaryLabel\} brutto pro Stunde/);
   assert.match(qualification, /staatlich anerkannt und zugelassen/);
   assert.match(qualification, /sehr gute Deutschkenntnisse/);
   assert.match(qualification, /Berufserfahrung ist keine Voraussetzung/);
@@ -143,10 +146,10 @@ test('the production landing retains native metadata without preview blockers or
   const detail = await readFile(JOB_DETAIL_PATH, 'utf8');
 
   assert.match(detail, /<Layout\b/);
-  assert.match(detail, /set:html=\{JSON\.stringify\(jobPostingSchema\)\}/);
-  assert.match(detail, /set:html=\{JSON\.stringify\(faqSchema\)\}/);
+  assert.match(detail, /jobPosting && <script[^>]+set:html=\{JSON\.stringify\(jobPosting\)\}/);
+  assert.match(detail, /faqPage && <script[^>]+set:html=\{JSON\.stringify\(faqPage\)\}/);
+  assert.match(detail, /robots=\{robots\}/);
   assert.match(detail, /import .*recruiting-landing\.css/);
-  assert.doesNotMatch(detail, /<meta\b[^>]*name="robots"[^>]*content="noindex/);
   assert.doesNotMatch(detail, /(?:id|class)="(?:preview-bar|preview-note)"/);
   assert.doesNotMatch(detail, /href="\/(?:bisher|vorher-v\d+|entwurf)\.html"/);
   assert.doesNotMatch(detail, /stopImmediatePropagation|Lokale Vorschau:|Dieser Link bleibt/);
@@ -162,7 +165,8 @@ test('the everyday section presents six labeled employment facts with expandable
   assert.deepEqual(labels, ['Arbeitsmodell', 'Vertrag', 'Urlaub', 'Fortbildung', 'Eigenständig planen', 'Zeit für deine Arbeit']);
   assert.equal((facts.match(/<dd>/g) ?? []).length, 6);
   assert.match(facts, /30 Tage bei fünf Arbeitstagen, bei weniger Arbeitstagen anteilig/);
-  assert.match(facts, /Dokumentation, Berichte und Organisation sind eingeplante Arbeitszeit/);
+  assert.match(facts, /\{presentation\.conditions\.training\}/);
+  assert.match(facts, /\{presentation\.conditions\.documentation\}/);
   assert.match(everyday, /<details class="short-full-details"><summary>Alle Details zu Arbeitsalltag und Ausstattung<\/summary>/);
 });
 
@@ -171,9 +175,7 @@ test('the team section explains onboarding and keeps individual specialties acce
   const team = detail.match(/<section\b[^>]*id="team"[\s\S]*?<\/section>/)?.[0] ?? '';
 
   assert.match(team, /<h2\b[^>]*id="team-heading"[^>]*>Lerne Emel und unser Team kennen\.<\/h2>/);
-  assert.match(team, /Strukturierte Einarbeitung<\/strong> und schrittweiser Terminaufbau/);
-  assert.match(team, /jederzeit eine Ansprechperson/);
-  assert.match(team, /Berufsanfänger:innen willkommen/);
+  assert.match(team, /\{presentation\.conditions\.onboarding\}/);
   assert.match(team, /<details class="short-team-details"><summary>Team und fachliche Schwerpunkte<\/summary>/);
   for (const name of ['Mara Nießalla', 'Şeyma Bozoğlan', 'Kristina Imping', 'Emel Şimşek-Uçar']) assert.ok(team.includes(name));
 });
@@ -196,24 +198,23 @@ test('application endpoint avoids Vercels reserved root API directory and suppor
   await assert.rejects(access(RESERVED_API_ENDPOINT_PATH));
 });
 
-test('the public response promise matches the internal deadline rule', async () => {
-  const contact = await readFile(
-    new URL('../src/components/ApplicationContact.astro', import.meta.url),
-    'utf8',
-  );
-  const thanks = await readFile(
-    new URL('../src/pages/bewerbung/danke.astro', import.meta.url),
-    'utf8',
-  );
+for (const [name, path] of [
+  ['contact form', CONTACT_PATH],
+  ['job landing page', JOB_DETAIL_PATH],
+  ['thank-you page', THANK_YOU_PATH],
+]) {
+  test(`${name} promises a personal response within one working day`, async () => {
+    const source = await readFile(path, 'utf8');
+    const promises = source.match(/<p\b[^>]*\bdata-response-promise\b[^>]*>[\s\S]*?<\/p>/g) ?? [];
 
-  for (const source of [contact, thanks]) {
-    assert.match(source, /Wir melden uns innerhalb von 12 Stunden/);
-    // Die Nachtregel muss mitgenannt werden, sonst verspricht die Seite mehr
-    // als die interne Frist aus DEC-135 hergibt.
-    assert.match(source, /Anfragen zwischen 20 und 8 Uhr beantworten wir am Morgen\./);
-    assert.match(source, /auch am Wochenende/);
-  }
-});
+    assert.ok(promises.length > 0);
+    for (const promise of promises) {
+      const copy = promise.replace(/<[^>]+>/g, '').trim();
+      assert.match(copy, /innerhalb eines Arbeitstags persönlich/);
+    }
+    assert.doesNotMatch(source, /(?:12|zwölf) Stunden|auch am Wochenende|zwischen 20 und 8 Uhr/i);
+  });
+}
 
 test('the landing CSS styles only the step legends, not the qualification legend', async () => {
   const css = await readFile('src/styles/recruiting-landing.css', 'utf8');
