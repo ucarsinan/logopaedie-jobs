@@ -4,6 +4,17 @@
 
 Name: logopaedie-jobs
 
+## Verbund mit der Praxiswebsite
+
+Dieses Repository wird gemeinsam mit der Praxiswebsite betrachtet:
+
+| Bereich | Repository | Produktive Domain | Aufgabe |
+| --- | --- | --- | --- |
+| Recruiting | `/Users/sinan/Development/logopaedie-jobs` | `logopädiejobs.de` | Stellen, Arbeitgeberkommunikation und Bewerbungswege der Praxis für Logopädie Şimşek |
+| Praxis | `/Users/sinan/Development/logopaedie-simsek-3` | `logopaedie-simsek.de` | Praxis-, Therapie-, Team- und Kontaktinformationen auf Deutsch und Türkisch |
+
+Bei Aufgaben zu SEO, Karriere, internen Links, Marke oder Conversion sind beide Websites auf widerspruchsfreie Aussagen und eine klare Suchintention zu prüfen. Änderungen bleiben dennoch repository-spezifisch: Vor Arbeiten im Schwester-Repository sind dessen eigene `AGENTS.md` und Pflichtdokumente zu lesen und dessen Checks auszuführen.
+
 ## Zweck
 
 `logopaedie-jobs` ist aktuell eine Astro/Vercel-Website fuer Stellen und Karriereinhalte der Praxis für Logopädie Şimşek.

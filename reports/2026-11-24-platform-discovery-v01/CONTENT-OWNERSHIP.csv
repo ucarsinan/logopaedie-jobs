@@ -1,0 +1,65 @@
+url,repository,audience,intent,owner_domain,canonical,cross_domain_cta,jobposting_count,status
+/,jobs,Fachkräfte und Arbeitgeber,career,logopädiejobs.de,,,0,SUPPORTED
+/404/,jobs,allgemein,mixed,,,,0,INSUFFICIENT_EVIDENCE
+/berufshandbuch/,jobs,Fachkräfte und Arbeitgeber,career,logopädiejobs.de,https://xn--logopdiejobs-kcb.de/berufshandbuch/,,0,SUPPORTED
+/berufshandbuch/[slug]/,jobs,Fachkräfte und Arbeitgeber,career,logopädiejobs.de,https://xn--logopdiejobs-kcb.de/berufshandbuch/${beitrag.id}/,,0,SUPPORTED
+/berufshandbuch/4-tage-woche-logopaedie/,jobs,Fachkräfte und Arbeitgeber,career,logopädiejobs.de,,,0,SUPPORTED
+/berufshandbuch/arbeiten-duisburg/,jobs,Fachkräfte und Arbeitgeber,career,logopädiejobs.de,,,0,SUPPORTED
+/berufshandbuch/ausbildung-nrw-2026/,jobs,Fachkräfte und Arbeitgeber,career,logopädiejobs.de,,,0,SUPPORTED
+/berufshandbuch/bewerbung-logopaedie-tipps/,jobs,Fachkräfte und Arbeitgeber,career,logopädiejobs.de,,,0,SUPPORTED
+/berufshandbuch/bilinguale-sprachtherapie/,jobs,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,CONFLICTING
+/berufshandbuch/deutsch-tuerkische-logopaedie-duisburg/,jobs,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,CONFLICTING
+/berufshandbuch/freie-praxis-oder-klinik-logopaedie/,jobs,Fachkräfte und Arbeitgeber,career,logopädiejobs.de,,,0,SUPPORTED
+/berufshandbuch/gehalt-logopaedie-nrw/,jobs,Fachkräfte und Arbeitgeber,career,logopädiejobs.de,,,0,SUPPORTED
+/berufshandbuch/logopaedie-bewerbung-ohne-anschreiben/,jobs,Fachkräfte und Arbeitgeber,career,logopädiejobs.de,,,0,SUPPORTED
+/berufshandbuch/logopaedin-duisburg-gesucht/,jobs,Fachkräfte und Arbeitgeber,career,logopädiejobs.de,,,0,SUPPORTED
+/berufshandbuch/stottertherapie-spezialisierung/,jobs,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,CONFLICTING
+/berufshandbuch/teilzeit-modelle/,jobs,Fachkräfte und Arbeitgeber,career,logopädiejobs.de,,,0,SUPPORTED
+/berufshandbuch/willkommen/,jobs,Fachkräfte und Arbeitgeber,career,logopädiejobs.de,,,0,SUPPORTED
+/bewerbung/danke/,jobs,Fachkräfte und Arbeitgeber,career,logopädiejobs.de,,,0,SUPPORTED
+/datenschutz/,jobs,allgemein,mixed,,,,0,INSUFFICIENT_EVIDENCE
+/gehaltsrechner/,jobs,Fachkräfte und Arbeitgeber,career,logopädiejobs.de,,,0,SUPPORTED
+/impressum/,jobs,allgemein,mixed,,,,0,INSUFFICIENT_EVIDENCE
+/jobs/,jobs,Fachkräfte und Arbeitgeber,career,logopädiejobs.de,,,0,SUPPORTED
+/jobs/logopaedin-sprachtherapeut-duisburg/,jobs,Fachkräfte und Arbeitgeber,career,logopädiejobs.de,https://xn--logopdiejobs-kcb.de/jobs/logopaedin-sprachtherapeut-duisburg/,https://logopaedie-simsek.de/,1,SUPPORTED
+/kontakt/,jobs,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,CONFLICTING
+/llms.txt,jobs,Fachkräfte und Arbeitgeber,career,logopädiejobs.de,,https://logopaedie-simsek.de/karriere/ | https://logopaedie-simsek.de/kariyer/,0,SUPPORTED
+/robots.txt,jobs,allgemein,mixed,,,,0,INSUFFICIENT_EVIDENCE
+/schulen/,jobs,Fachkräfte und Arbeitgeber,career,logopädiejobs.de,,,0,SUPPORTED
+/,practice,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,SUPPORTED
+/anasayfa/,practice,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,SUPPORTED
+/barrierefreiheit/,practice,allgemein,mixed,,,,0,INSUFFICIENT_EVIDENCE
+/datenschutz/,practice,allgemein,mixed,,,https://xn--logopdiejobs-kcb.de/jobs/logopaedin-sprachtherapeut-duisburg/#bewerbung,0,INSUFFICIENT_EVIDENCE
+/ekip/,practice,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,SUPPORTED
+/fruehfoerderung-duisburg/,practice,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,SUPPORTED
+/hausbesuche-duisburg/,practice,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,SUPPORTED
+/iletisim/,practice,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,SUPPORTED
+/impressum/,practice,allgemein,mixed,,,,0,INSUFFICIENT_EVIDENCE
+/kariyer/,practice,Fachkräfte und Arbeitgeber,career,logopädiejobs.de,,https://xn--logopdiejobs-kcb.de/jobs/logopaedin-sprachtherapeut-duisburg/#bewerbung | https://xn--logopdiejobs-kcb.de/jobs/logopaedin-sprachtherapeut-duisburg/?utm_source=logopaedie-simsek.de&utm_medium=kariyer&utm_campaign=portal-bridge,1,CONFLICTING
+/karriere/,practice,Fachkräfte und Arbeitgeber,career,logopädiejobs.de,,https://xn--logopdiejobs-kcb.de/jobs/logopaedin-sprachtherapeut-duisburg/#bewerbung | https://xn--logopdiejobs-kcb.de/ | https://xn--logopdiejobs-kcb.de/jobs/logopaedin-sprachtherapeut-duisburg/?utm_source=logopaedie-simsek.de&utm_medium=karriere&utm_campaign=portal-bridge,1,CONFLICTING
+/kontakt/,practice,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,SUPPORTED
+/kostenuebernahme/,practice,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,SUPPORTED
+/llms.txt,practice,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,https://xn--logopdiejobs-kcb.de/,0,SUPPORTED
+/logopaedie-duisburg/,practice,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,SUPPORTED
+/robots.txt,practice,allgemein,mixed,,,,0,INSUFFICIENT_EVIDENCE
+/team/,practice,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,SUPPORTED
+/team/emel-simsek-ucar/,practice,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,SUPPORTED
+/team/kristina-imping/,practice,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,SUPPORTED
+/team/mara-niessalla/,practice,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,SUPPORTED
+/team/seyma-bozoglan/,practice,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,SUPPORTED
+/terapi/,practice,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,SUPPORTED
+/terapi/dil-bozuklugu/,practice,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,SUPPORTED
+/terapi/konusma-bozuklugu/,practice,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,SUPPORTED
+/terapi/ses-terapisi/,practice,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,SUPPORTED
+/terapi/yutma-bozuklugu/,practice,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,SUPPORTED
+/therapie/,practice,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,SUPPORTED
+/therapie/erwachsene/,practice,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,SUPPORTED
+/therapie/kinder-und-jugendliche/,practice,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,SUPPORTED
+/therapie/schluckstoerungen/,practice,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,SUPPORTED
+/therapie/sprachstoerungen/,practice,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,SUPPORTED
+/therapie/sprechstoerungen/,practice,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,SUPPORTED
+/therapie/stimmtherapie/,practice,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,SUPPORTED
+/therapieangebot/,practice,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,SUPPORTED
+/tr/kostenuebernahme/,practice,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,SUPPORTED
+/tuerkische-logopaedie-duisburg/,practice,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,SUPPORTED
+/tuerkische-sprachtherapie/,practice,Patient:innen und Angehörige,patient,logopaedie-simsek.de,,,0,SUPPORTED

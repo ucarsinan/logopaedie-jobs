@@ -1,0 +1,108 @@
+{
+  "schema_version": "1.0",
+  "job_id": "LOGO-JOB-DUI-2026-01",
+  "slug": "logopaedin-sprachtherapeut-duisburg",
+  "canonical_url": "https://xn--logopdiejobs-kcb.de/jobs/logopaedin-sprachtherapeut-duisburg/",
+  "employer": "Praxis für Logopädie Şimşek",
+  "publication_status": "ACTIVE",
+  "published_at": "2026-09-27",
+  "last_reviewed_at": "2026-11-25",
+  "expires_at": "2027-01-18",
+  "editorial_owner": "Praxisleitung",
+  "title": "Logopädin / Logopäde / Sprachtherapeutin / Sprachtherapeut (m/w/d)",
+  "location": {
+    "street_address": "Tonhallenstraße 21",
+    "locality": "Duisburg",
+    "postal_code": "47051",
+    "region": "Nordrhein-Westfalen",
+    "country": "DE"
+  },
+  "employment_types": ["FULL_TIME", "PART_TIME"],
+  "contract_type": "PERMANENT",
+  "weekly_hours": { "full_time": 38.5, "part_time": { "negotiable": true } },
+  "schedule": {
+    "workdays": ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY"],
+    "four_day_option": true,
+    "regular_times": ["Stundenumfang und Verteilung auf Arbeitstage werden flexibel individuell vereinbart."]
+  },
+  "salary": { "min": 23, "max": 26, "currency": "EUR", "unit": "HOUR" },
+  "salary_context": "Die Einordnung innerhalb der Gehaltsspanne richtet sich nach der Berufserfahrung.",
+  "tariff_status": { "status": "NO_TARIFF" },
+  "role_summary": "Diagnostik und Therapie mit Kindern, Jugendlichen und Erwachsenen in Duisburg-Mitte.",
+  "responsibilities": [
+    "Diagnostik und Therapie bei Kindern, Jugendlichen und Erwachsenen",
+    "Dokumentation und Elternberatung",
+    "Fallbesprechungen und fachlicher Austausch"
+  ],
+  "treatment_units": [
+    { "minutes": 30, "conditions": "Je nach ärztlicher Verordnung" },
+    { "minutes": 45, "conditions": "Je nach ärztlicher Verordnung" },
+    { "minutes": 60, "conditions": "Je nach ärztlicher Verordnung" }
+  ],
+  "treatment_load": {
+    "period": "WEEK",
+    "min": 42,
+    "max": 45,
+    "buffer": "Bei 38,5 Wochenstunden bleibt neben den Therapien ausdrücklich Arbeitszeit für Vor- und Nachbereitung sowie weitere organisatorische Aufgaben."
+  },
+  "documentation_time": {
+    "paid": true,
+    "planning": "Dokumentation, Vor- und Nachbereitung, Berichte und Organisation sind als Arbeitszeit eingeplant; Termine, Pausen und Puffer werden eigenständig auf Vertrauensbasis geplant.",
+    "scope": ["Dokumentation", "Vor- und Nachbereitung", "Berichte", "Organisation"]
+  },
+  "onboarding": {
+    "components": [
+      "Intensive strukturierte Einarbeitung",
+      "Fachliche Begleitung durch Emel und das Team",
+      "Jederzeit eine Ansprechperson"
+    ],
+    "phases": [
+      "Strukturierter Einstieg",
+      "Schrittweiser Terminaufbau",
+      "Selbstständige Arbeit mit erreichbarer Ansprechperson"
+    ],
+    "appointment_ramp_up": "Der Terminplan wächst schrittweise; eine feste Dauer wird nicht pauschal vorgegeben."
+  },
+  "continuing_education": {
+    "time": "Zusätzliche freie Tage für Fortbildungen",
+    "costs": "Kurs- und Teilnahmegebühren der ausgewählten Fortbildung werden übernommen.",
+    "leave": "Zusätzliche freie Tage; eine feste Anzahl ist nicht pauschal zugesagt.",
+    "conditions": "Die beschäftigte Person wählt die Fortbildung aus. Reise- und Übernachtungskosten sind von dieser Zusage nicht umfasst."
+  },
+  "overtime_policy": {
+    "status": "NOT_EXPECTED",
+    "compensation": "Freizeitausgleich oder Auszahlung nach individueller Vereinbarung",
+    "compensation_period": "Flexibel nach individueller Vereinbarung; keine starre Ausgleichsfrist"
+  },
+  "home_visits": {
+    "status": "OPTIONAL",
+    "travel_time": "Fahrzeit für freiwillige Hausbesuche ist bezahlte Arbeitszeit.",
+    "travel_costs": "Fahrtkosten und Parkkosten werden erstattet."
+  },
+  "team_support": [
+    "Fachliche Begleitung durch Emel und das Team",
+    "Jederzeit eine Ansprechperson",
+    "Wöchentlicher fachlicher Austausch und Supervision"
+  ],
+  "required_qualifications": [
+    "Staatlich anerkannter und zugelassener Abschluss in Logopädie oder Sprachtherapie oder ein gleichgestellter sprachtherapeutischer Abschluss mit Kassenzulassung"
+  ],
+  "recognition_requirement": { "status": "REQUIRED", "details": "Staatliche Anerkennung und Zulassung" },
+  "experience_requirement": { "status": "NONE", "details": "Berufserfahrung ist keine Voraussetzung." },
+  "language_requirements": [{ "language": "Deutsch", "level": "Sehr gute Kenntnisse" }],
+  "application_routes": ["SHORT_FORM", "WHATSAPP", "PHONE", "EMAIL", "POST"],
+  "first_step_policy": { "account_required": false, "cover_letter_required": false, "cv_required": false },
+  "process_steps": [
+    "Unverbindlicher Erstkontakt ohne klassische Bewerbungsunterlagen",
+    "Persönliche Rückmeldung innerhalb eines Arbeitstags",
+    "Kennenlerngespräch",
+    "Optionale Hospitation oder Probearbeit",
+    "Prüfung der erforderlichen fachlichen Nachweise"
+  ],
+  "acknowledgement": {
+    "method": "AUTOMATIC",
+    "details": "Nach erfolgreicher Übermittlung des Kurzformulars wird die Bewerbungs-Dankeseite angezeigt."
+  },
+  "response_window": { "amount": 1, "unit": "WORKDAYS" },
+  "privacy_notice_url": "https://xn--logopdiejobs-kcb.de/datenschutz/"
+}

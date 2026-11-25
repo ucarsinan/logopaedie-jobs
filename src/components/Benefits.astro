@@ -1,4 +1,9 @@
 ---
+interface Props {
+  monthlySalaryLabel?: string;
+}
+
+const { monthlySalaryLabel } = Astro.props;
 ---
 <section id="benefits" class="py-12 md:py-24 bg-white text-left">
   <div class="max-w-7xl mx-auto px-6">
@@ -17,17 +22,17 @@
     <div class="grid md:grid-cols-3 gap-8">
 
       <!-- Gehalt -->
-      <div class="p-px rounded-4xl bg-slate-100 hover:bg-simsek-green/10 transition-all duration-300 group/card">
+      {monthlySalaryLabel && <div class="p-px rounded-4xl bg-slate-100 hover:bg-simsek-green/10 transition-all duration-300 group/card">
         <div class="h-full p-5 sm:p-8 rounded-[1.9rem] bg-slate-50 group-hover/card:bg-white transition-colors duration-200">
           <div class="flex items-center gap-4 mb-4 sm:block sm:mb-0">
             <div class="w-10 h-10 sm:w-14 sm:h-14 shrink-0 bg-white rounded-xl sm:rounded-2xl shadow-sm flex items-center justify-center text-simsek-green sm:mb-6 group-hover/card:scale-110 transition-transform duration-200">
               <svg class="w-5 h-5 sm:w-8 sm:h-8" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
             </div>
-            <h3 class="text-lg sm:text-xl font-semibold text-slate-900 sm:mb-3">3.840–4.338 € im Monat</h3>
+            <h3 class="text-lg sm:text-xl font-semibold text-slate-900 sm:mb-3">{monthlySalaryLabel} im Monat</h3>
           </div>
           <p class="text-slate-600 leading-relaxed text-sm">Brutto bei 38,5 Stunden Vollzeit, je nach Erfahrung. <strong class="block text-simsek-green mt-2">+ Weihnachtsgeld</strong></p>
         </div>
-      </div>
+      </div>}
 
       <!-- Lage -->
       <div class="p-px rounded-4xl bg-slate-100 hover:bg-simsek-green/10 transition-all duration-300 group/card">

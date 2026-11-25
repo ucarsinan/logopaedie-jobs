@@ -2,6 +2,8 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 
 import { createApplicationEndpoint } from '../src/lib/application-endpoint.mjs';
+import { isApplicationOpen, publicationArtifacts } from '../src/lib/job-publication-artifacts.mjs';
+import { minimalInactiveJob, syntheticJob } from './fixtures/job-record.mjs';
 
 const ENDPOINT_URL = 'https://xn--logopdiejobs-kcb.de/bewerbung/senden/';
 const JOB_SLUG = 'logopaedin-sprachtherapeut-duisburg';
@@ -48,12 +50,61 @@ function redirect(location, status) {
 function endpoint(deps = {}) {
   return createApplicationEndpoint({
     sendApplication: async () => 'sent',
+    acceptApplications: () => true,
     isDevelopment: false,
     vercelEnvironment: 'production',
     vercelUrl: '',
     ...deps,
   });
 }
+
+for (const status of ['DRAFT', 'PAUSED', 'FILLED', 'EXPIRED']) {
+  test(`${status} rejects a direct application before reading or sending personal data`, async () => {
+    let calls = 0;
+    const job = minimalInactiveJob(status);
+    const response = await endpoint({
+      acceptApplications: () => publicationArtifacts(job).showApplication,
+      sendApplication: async () => {
+        calls += 1;
+        return 'sent';
+      },
+    })({ request: request(), redirect });
+
+    assert.equal(response.status, 410);
+    assert.deepEqual(await json(response), { ok: false, code: 'applications_closed' });
+    assert.equal(calls, 0);
+  });
+}
+
+test('an ACTIVE job closes at runtime after its valid-through date', async () => {
+  const job = { ...syntheticJob('ACTIVE'), expires_at: '2026-11-24' };
+  let calls = 0;
+  const response = await endpoint({
+    acceptApplications: () => isApplicationOpen(job, new Date('2026-11-25T12:00:00+01:00')),
+    sendApplication: async () => {
+      calls += 1;
+      return 'sent';
+    },
+  })({ request: request(), redirect });
+
+  assert.equal(response.status, 410);
+  assert.deepEqual(await json(response), { ok: false, code: 'applications_closed' });
+  assert.equal(calls, 0);
+});
+
+test('the endpoint is fail-closed when no publication decision is injected', async () => {
+  let calls = 0;
+  const handler = createApplicationEndpoint({
+    sendApplication: async () => {
+      calls += 1;
+      return 'sent';
+    },
+  });
+  const response = await handler({ request: request(), redirect });
+
+  assert.equal(response.status, 410);
+  assert.equal(calls, 0);
+});
 
 function utf8Bytes(value) {
   return new TextEncoder().encode(value).byteLength;
@@ -264,7 +315,9 @@ test('acknowledges a honeypot bot without calling the transport', async () => {
 });
 
 test('maps missing SMTP configuration to JSON 503 without transport detail', async () => {
-  const response = await withoutSmtpConfiguration(() => createApplicationEndpoint()({
+  const response = await withoutSmtpConfiguration(() => createApplicationEndpoint({
+    acceptApplications: () => true,
+  })({
     request: request(),
     redirect,
   }));

@@ -4,12 +4,17 @@ import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 import PracticeBrand from '../components/PracticeBrand.astro';
 import ContactAlternatives from '../components/ContactAlternatives.astro';
+import jobSource from '../content/jobs/logopaedin-sprachtherapeut-duisburg.json';
+import { jobSchema } from '../lib/job-model.mjs';
+import { publicationArtifacts } from '../lib/job-publication-artifacts.mjs';
 
 // Emel hat die Zeile „Praktikum“ in EMPLOYER_TRUTH.md am 06.10.2026 bestätigt (GATE-002, DEC-156). Auf false setzen, um sie wieder auszublenden.
 const INTERNSHIP_CONFIRMED = true;
 
 const pageTitle = 'Berufseinstieg Logopädie Duisburg | Praxis für Logopädie Şimşek';
 const pageDescription = 'Berufsanfänger:innen sind willkommen: Einarbeitung, eingeplante Dokumentationszeit, Hospitation oder Probearbeit in Duisburg.';
+const { presentation } = publicationArtifacts(jobSchema.parse(jobSource));
+const activeJob = presentation.active;
 ---
 
 <Layout
@@ -55,7 +60,9 @@ const pageDescription = 'Berufsanfänger:innen sind willkommen: Einarbeitung, ei
           <div>
             <dt class="font-semibold text-slate-900">Was verdiene ich?</dt>
             <dd>
-              Je nach Erfahrungslevel 23–26&nbsp;EUR brutto pro&nbsp;Stunde; bei 38,5&nbsp;Stunden ungefähr 3.840–4.338&nbsp;EUR brutto im&nbsp;Monat. Zusätzlich wird Weihnachtsgeld gezahlt.
+              {activeJob
+                ? <>Je nach Erfahrungslevel {activeJob.hourlySalaryLabel} brutto pro Stunde; bei 38,5 Stunden {activeJob.monthlySalaryLabel} brutto im Monat. Zusätzlich wird Weihnachtsgeld gezahlt.</>
+                : <>Aktuell ist keine Stelle zur Bewerbung freigegeben.</>}
               <a href="/gehaltsrechner/" class="font-semibold text-simsek-blue underline underline-offset-4 hover:text-simsek-green focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-950">Zum Gehaltsrechner</a>
             </dd>
           </div>
