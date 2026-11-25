@@ -9,6 +9,7 @@ Dieses Repository soll auch bei kurzen Aufgaben kontrolliert bearbeitet werden. 
 1. `AGENTS.md` und Pflichtdokumente lesen.
 2. `git status --short` pruefen.
 3. Ziel, Nicht-Ziele, betroffene Dateien und Risiken ableiten.
+   Bei SEO-, Karriere-, Marken- oder Conversion-Aufgaben zusätzlich prüfen, ob die Praxiswebsite in `/Users/sinan/Development/logopaedie-simsek-3` betroffen ist. Änderungen in beiden Repositories getrennt planen, prüfen und berichten.
 4. Rolle waehlen: Planner, Implementer oder Reviewer.
 5. Worker-Bereich aus `docs/agents/worker-map.md` bestimmen.
 6. Aenderungen eng begrenzen.
