@@ -123,6 +123,7 @@ const publicationFields = z.strictObject({
   onboarding: z.strictObject({ components: textList, phases: textList, appointment_ramp_up: text }),
   continuing_education: z.strictObject({ time: text, costs: text, leave: text, conditions: text }),
   required_qualifications: textList,
+  credential_category: z.enum(['high school', 'associate degree', 'bachelor degree', 'professional certificate', 'postgraduate degree']).optional(),
   recognition_requirement: z.strictObject({
     status: z.enum(['REQUIRED', 'IN_PROGRESS_ACCEPTED', 'NOT_APPLICABLE']),
     details: text,
@@ -270,7 +271,9 @@ export function toJobPosting(job) {
     identifier: { '@type': 'PropertyValue', name: job.employer, value: job.job_id },
     employmentType: job.employment_types,
     workHours,
-    educationRequirements: job.required_qualifications.join('\n'),
+    ...(job.credential_category && {
+      educationRequirements: { '@type': 'EducationalOccupationalCredential', credentialCategory: job.credential_category },
+    }),
     experienceRequirements: experience,
     hiringOrganization: {
       '@type': 'Organization',

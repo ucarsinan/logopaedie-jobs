@@ -25,7 +25,10 @@ test('the publication adapter preserves the concrete JobPosting fields', () => {
   assert.equal(jobPosting.validThrough, '2099-12-31');
   assert.equal(jobPosting.directApply, true);
   assert.equal(jobPosting.experienceRequirements, 'no requirements');
-  assert.equal(jobPosting.educationRequirements, 'Staatlich anerkannter Abschluss in Logopädie');
+  assert.deepEqual(jobPosting.educationRequirements, {
+    '@type': 'EducationalOccupationalCredential', credentialCategory: 'professional certificate',
+  });
+  assert.equal(jobPosting.qualifications, 'Staatlich anerkannter Abschluss in Logopädie');
   assert.deepEqual(jobPosting.employmentType, ['FULL_TIME', 'PART_TIME']);
   assert.equal(jobPosting.jobLocation.address.streetAddress, 'Beispielstraße 1');
   assert.equal(jobPosting.jobLocation.address.addressLocality, 'Musterstadt');
