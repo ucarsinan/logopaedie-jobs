@@ -139,6 +139,7 @@ test('does not use a phone contact as replyTo', () => {
   }, CONFIG);
 
   assert.equal('replyTo' in mail, false);
+  assert.match(mail.text, /Bitte zuerst anrufen/);
 });
 
 test('does not use a non-email replyTo value even when it has no line breaks', () => {
@@ -198,13 +199,14 @@ for (const [arrival, receivedAt, expected] of RESPONSE_DEADLINE_CASES) {
   });
 }
 
-test('application mail carries the internal deadline and the call-first note', () => {
+test('application mail carries the internal deadline and an email response instruction for an email contact', () => {
   const mail = buildApplicationMail(
     { ...DATA, receivedAt: new Date('2026-09-18T07:30:00Z') },
     CONFIG,
   );
   assert.match(mail.text, /Antwort fällig bis: Mo, 21\.09\.2026, 18:00 Uhr/);
-  assert.match(mail.text, /Bitte zuerst anrufen/);
+  assert.match(mail.text, /Bitte per E-Mail antworten/);
+  assert.doesNotMatch(mail.text, /anrufen/);
 });
 
 test('never includes legacy attribution in an outgoing message', () => {

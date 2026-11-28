@@ -1,6 +1,7 @@
 import nodemailer from 'nodemailer';
 
 import { KNOWN_JOBS, QUALIFICATIONS } from './application-form.mjs';
+import { isContactEmail } from './contact-validation.mjs';
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -122,7 +123,9 @@ export function buildApplicationMail(data, config) {
       ...(data.message ? ['', 'Nachricht:', data.message] : []),
       '',
       `Antwort fällig bis: ${formatResponseDeadline(data.receivedAt ?? new Date())}`,
-      'Bitte zuerst anrufen. Eine kurze Rückmeldung genügt für die Frist.',
+      isContactEmail(data.contact)
+        ? 'Bitte per E-Mail antworten. Eine kurze Rückmeldung genügt für die Frist.'
+        : 'Bitte zuerst anrufen. Eine kurze Rückmeldung genügt für die Frist.',
     ].join('\n'),
   };
 
