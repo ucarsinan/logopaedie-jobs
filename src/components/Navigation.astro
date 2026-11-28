@@ -4,6 +4,7 @@ import Logo from './Logo.astro';
 const { pathname } = Astro.url;
 const isContact = pathname.replace(/\/$/, '') === '/kontakt';
 const pageLinks = [
+  { href: '/berufseinstieg/', label: 'Berufseinstieg & Wechsel', active: pathname.startsWith('/berufseinstieg/') },
   { href: '/jobs/logopaedin-sprachtherapeut-duisburg/', label: 'Team & Stelle', active: pathname.startsWith('/jobs') },
   { href: '/berufshandbuch/', label: 'Berufshandbuch', active: pathname.startsWith('/berufshandbuch') },
   { href: '/gehaltsrechner/', label: 'Gehaltsrechner', active: pathname.startsWith('/gehaltsrechner') },

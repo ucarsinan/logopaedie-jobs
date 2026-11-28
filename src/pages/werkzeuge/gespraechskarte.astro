@@ -1,0 +1,41 @@
+---
+import Druckkontakt from '../../components/Druckkontakt.astro';
+import Gespraechshilfe from '../../layouts/Gespraechshilfe.astro';
+const karten = [
+  { thema: 'Termin', frage: 'Was möchten Sie am Termin ändern?', woerter: ['Tag', 'Uhrzeit', 'Ort'] },
+  { thema: 'Gesprächsthema', frage: 'Worüber möchten Sie sprechen?', woerter: ['Familie', 'Freizeit', 'Arbeit'] },
+  { thema: 'Unterstützung', frage: 'Was würde Ihnen jetzt helfen?', woerter: ['Aufschreiben', 'Zeigen', 'Pause'] },
+];
+---
+<Gespraechshilfe title="Gesprächskarte" description="Wähle eine Frage für euer Gespräch. Lies die Wörter bei Bedarf vor und lass Zeit zum Zeigen. Fass anschließend zusammen und frage nach, ob du die Antwort richtig verstanden hast."
+  article="/berufshandbuch/aphasie-termin-klaeren/" articleTitle="Zum Beitrag über Terminabsprachen bei Aphasie" printLabel="Karte drucken">
+  <div class="blatt-optionen" data-kartenwahl hidden>
+    <label for="kartenfrage">Thema der Karte</label>
+    <select id="kartenfrage">{karten.map(karte => <option value={karte.thema}>{karte.thema}</option>)}</select>
+  </div>
+  <noscript>Hier findest du die drei Karten untereinander.</noscript>
+  <div aria-live="polite">
+    {karten.map(karte => <section class="arbeitsblatt" data-karte={karte.thema}>
+      <h2>{karte.frage}</h2>
+      <ul class="wortkarten">{[...karte.woerter, 'Etwas anderes'].map(wort => <li>{wort}</li>)}</ul>
+      <p class="korrektur">Das meine ich anders.</p>
+      {karte.thema === 'Termin' && <div class="terminnotiz">
+        <h3>Unser Termin</h3>
+        <p>Tragt hier den Termin ein, sobald ihr ihn gemeinsam bestätigt habt.</p>
+      </div>}
+      <Druckkontakt />
+    </section>)}
+  </div>
+</Gespraechshilfe>
+<script>
+  const select = document.querySelector<HTMLSelectElement>('#kartenfrage');
+  const controls = document.querySelector<HTMLElement>('[data-kartenwahl]');
+  const sheets = document.querySelectorAll<HTMLElement>('[data-karte]');
+  if (select && controls) {
+    const update = () => sheets.forEach(sheet => { sheet.hidden = sheet.dataset.karte !== select.value; });
+    update();
+    select.addEventListener('change', update);
+    window.addEventListener('pageshow', update);
+    controls.hidden = false;
+  }
+</script>

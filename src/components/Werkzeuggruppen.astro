@@ -1,0 +1,39 @@
+---
+interface Props {
+  werkzeuggruppen: {
+    id: string;
+    titel: string;
+    icon: string;
+    links: { titel: string; href: string; text: string }[];
+  }[];
+}
+
+const { werkzeuggruppen } = Astro.props;
+// Eine gemeinsame Zeile für die Rubrik, danach je eine für Titel und Beschreibung.
+const gruppenzeilen = 1 + 2 * Math.max(...werkzeuggruppen.map(gruppe => gruppe.links.length));
+---
+<section id="werkzeuge" class="ressorts tools" tabindex="-1" aria-labelledby="werkzeugtitel">
+  <h2 id="werkzeugtitel">Werkzeuge</h2>
+  <div class="werkzeuggruppen" style={`--gruppenzeilen: ${gruppenzeilen}`}>
+    {werkzeuggruppen.map(gruppe => <section aria-labelledby={gruppe.id}>
+      <h3 id={gruppe.id}>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={gruppe.icon} /></svg>
+        {gruppe.titel}
+      </h3>
+      {gruppe.links.map(link => <a href={link.href}><strong>{link.titel}</strong><span>{link.text}</span></a>)}
+    </section>)}
+  </div>
+</section>
+
+<style>
+  .werkzeuggruppen { display: grid; gap: 1.5rem 2rem; }
+  @media (min-width: 46rem) {
+    .werkzeuggruppen { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 0; }
+    .werkzeuggruppen > section, .tools .werkzeuggruppen a {
+      display: grid;
+      grid-template-rows: subgrid;
+    }
+    .werkzeuggruppen > section { grid-row: span var(--gruppenzeilen); }
+    .werkzeuggruppen a { grid-row: span 2; }
+  }
+</style>

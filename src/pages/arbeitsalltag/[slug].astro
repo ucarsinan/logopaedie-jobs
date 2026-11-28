@@ -1,0 +1,41 @@
+---
+import PraxisgeschichteSchema from '../../components/PraxisgeschichteSchema.astro';
+import { getCollection, render } from 'astro:content';
+import Fachportal from '../../layouts/Fachportal.astro';
+
+export async function getStaticPaths() {
+  return (await getCollection('arbeitsalltag')).map(entry => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { title, shortTitle, description } = entry.data;
+const { Content } = await render(entry);
+const trail = [
+  { name: 'Startseite', href: '/' },
+  { name: 'Arbeitsalltag', href: '/arbeitsalltag/' },
+  { name: shortTitle, href: Astro.url.pathname },
+];
+---
+<Fachportal title={`${title} | Logopädie Jobs`} {description} {trail} active="alltag" ogType="article" ogImage={entry.data.articleImage}>
+  <PraxisgeschichteSchema slot="head" headline={title} {description} image={entry.data.articleImage} />
+  <article class="geschichte">
+    <header class="fallbeispiel-kopf">
+      <h1 class="long">{title}</h1>
+      <p class="vorspann">{description}</p>
+    </header>
+    <figure class="fallbild">
+      <img src={entry.data.articleImage}
+        srcset={`${entry.data.thumbnail} 480w, ${entry.data.articleImage} 960w`}
+        sizes="(min-width: 42rem) 12rem, (min-width: 25rem) 8rem, 32vw"
+        alt={entry.data.imageAlt} width="960" height="960" />
+      <figcaption>KI-Illustration zum Fallbeispiel</figcaption>
+    </figure>
+    <Content />
+    {import.meta.env.DEV && entry.id === 'ueben-zu-hause' &&
+      <p>Eine Frage aus dem Therapiealltag, einmal im Monat. <a href="/vorschau/praxispost/#probe">Die Probeausgabe der Praxispost lesen</a></p>}
+  </article>
+  <a class="rueckweg" href="/arbeitsalltag/#therapie">← Zu den Beiträgen für den Therapiealltag</a>
+</Fachportal>

@@ -1,50 +1,64 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navigation from '../components/Navigation.astro';
-import Hero from '../components/Hero.astro';
-import Aufgaben from '../components/Aufgaben.astro';
-import Anforderungen from '../components/Anforderungen.astro';
-import QuickApply from '../components/QuickApply.astro';
-import Benefits from '../components/Benefits.astro';
-import About from '../components/About.astro';
-import Gallery from '../components/Gallery.astro';
-import FaqSection from '../components/FaqSection.astro';
-import LogopaedieDefinition from '../components/LogopaedieDefinition.astro';
-import Footer from '../components/Footer.astro';
-import JobSchema from '../components/JobSchema.astro';
-import FaqSchema from '../components/FaqSchema.astro';
-import jobSource from '../content/jobs/logopaedin-sprachtherapeut-duisburg.json';
-import { jobSchema } from '../lib/job-model.mjs';
-import { publicationArtifacts } from '../lib/job-publication-artifacts.mjs';
+import TitelgeschichteBild from '../components/TitelgeschichteBild.astro';
+import Werkzeuggruppen from '../components/Werkzeuggruppen.astro';
+import Fachportal from '../layouts/Fachportal.astro';
 
-const currentYear = new Date().getFullYear();
-const { presentation } = publicationArtifacts(jobSchema.parse(jobSource));
-const activeJob = presentation.active;
-const isActive = Boolean(activeJob);
-const pageTitle = isActive
-  ? `Logopädie Jobs Duisburg | Logopädin gesucht ${currentYear}`
-  : 'Karriere Logopädie Duisburg | Praxis für Logopädie Şimşek';
-const pageDescription = activeJob
-  ? `Logopädie-Job in Duisburg: ${activeJob.monthlySalaryLabel} brutto/Monat bei Vollzeit + Weihnachtsgeld. Entscheide im Team mit. Lerne Emel und uns unverbindlich kennen.`
-  : 'Karriereinformationen der Praxis für Logopädie Şimşek in Duisburg.';
+const topics = [
+  { id: 'arbeitsalltag', title: 'Arbeitsalltag', question: 'Wenn Angehörige das Gespräch übernehmen.', image: '/bilder/arbeitsalltag/angehoerigengespraech.webp', href: '/arbeitsalltag/angehoerigengespraech/' },
+  { id: 'fachwissen', title: 'Fachwissen', question: 'Welche Spezialisierung interessiert mich?', image: '/bilder/berufshandbuch/spezialisierung.webp', href: '/berufshandbuch/#fachwissen-spezialisierung' },
+  { id: 'berufseinstieg', title: 'Berufseinstieg & Wechsel', question: 'Wie komme ich in den Beruf?', image: '/bilder/berufseinstieg/ankommen.webp', href: '/berufseinstieg/' },
+];
+const werkzeuggruppen = [
+  {
+    titel: 'Gespräche vorbereiten',
+    id: 'gespraeche',
+    icon: 'M5 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-8l-6 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2ZM7 9h10M7 13h6',
+    links: [
+      { titel: 'Gesprächskarte', href: '/werkzeuge/gespraechskarte/', text: 'Eine Frage und passende Wörter zum Zeigen auswählen.' },
+      ...(import.meta.env.DEV ? [{ titel: 'Teammappe', href: '/vorschau/teammappe/', text: 'Üben zu Hause gemeinsam planen. Mit frei druckbarer Musterseite.' }] : []),
+      { titel: 'Fragen zur Sprachbiografie', href: '/werkzeuge/sprachbiografie/', text: 'Einen Leitfaden für das Elterngespräch zusammenstellen.' },
+    ],
+  },
+  {
+    titel: 'Arbeitszeit und Gehalt',
+    id: 'arbeitszeit-gehalt',
+    icon: 'M20.5 12a8.5 8.5 0 1 1-17 0 8.5 8.5 0 0 1 17 0ZM12 7v5l3.5 2',
+    links: [
+      { titel: 'Wochenübersicht', href: '/werkzeuge/wochenuebersicht/', text: 'Geplante und tatsächliche Arbeitszeit vergleichen.' },
+      { titel: 'Gehaltsrechner', href: '/gehaltsrechner/', text: 'Aus Stundenlohn und Wochenstunden das Monatsbrutto errechnen.' },
+    ],
+  },
+];
 ---
+<Fachportal ogImage="/bilder/berufseinstieg/zwischen-zwei-terminen.webp" title="Logopädie Jobs – Wissen, Praxisalltag und Berufseinstieg" description="Fachwissen, Gesprächskarten und Rechner für deinen logopädischen Alltag. Lerne die Praxis für Logopädie Şimşek in Duisburg und ihre Arbeitsbedingungen kennen.">
+  <section class="titelgeschichte" aria-labelledby="titel">
+    <h1 id="titel">Zwischen zwei<br />Terminen.</h1>
+    <figure>
+      <div class="titelbild">
+        <TitelgeschichteBild sizes="(max-width: 60rem) 94vw, (min-width: 110rem) 81rem, 73vw" fetchpriority="high" alt="Eine Kollegin hebt eine Bildkarte an, während die andere ihre Beobachtungen notiert." />
+        <a class="film-link" href="/arbeitsalltag/zwischen-zwei-terminen/#kurzfilm"><span aria-hidden="true">▶</span> Kurzfilm · 22 Sek.</a>
+      </div>
+      <figcaption>KI-Illustration aus dem Praxisalltag</figcaption>
+    </figure>
+    <p class="vorspann">Wo bleibt Zeit für Vorbereitung, Dokumentation und Austausch?</p>
+    <div class="lesewege"><a href="/arbeitsalltag/zwischen-zwei-terminen/">Beitrag lesen</a><a class="werkzeug" href="/werkzeuge/wochenuebersicht/">Zur Wochenübersicht</a></div>
+  </section>
+  <section id="themen" class="ressorts">
+    <h2>Themen entdecken</h2>
+    <ul>{topics.map(topic => <li id={topic.id}><a href={topic.href}>
+      <img src={topic.image} width="128" height="128" loading="lazy" alt="" />
+      <div><p>{topic.title}</p><h3>{topic.question} <span aria-hidden="true">→</span></h3></div>
+    </a></li>)}</ul>
+  </section>
+  <Werkzeuggruppen {werkzeuggruppen} />
 
-<Layout title={pageTitle} description={pageDescription}>
-  <Fragment slot="head">
-    <JobSchema />
-    <FaqSchema isActive={isActive} salaryAnswer={activeJob?.salaryAnswer} />
-  </Fragment>
-  <Navigation />
-  <main id="main-content" tabindex="-1">
-    <Hero isActive={isActive} monthlySalaryLabel={activeJob?.monthlySalaryLabel} hourlySalaryLabel={activeJob?.hourlySalaryLabel} />
-    <Benefits monthlySalaryLabel={activeJob?.monthlySalaryLabel} />
-    <Aufgaben />
-    <Anforderungen hourlySalaryLabel={activeJob?.hourlySalaryLabel} />
-    <QuickApply />
-    <About />
-    <Gallery />
-    <FaqSection isActive={isActive} salaryAnswer={activeJob?.salaryAnswer} />
-    <LogopaedieDefinition />
-  </main>
-  <Footer />
-</Layout>
+<script is:inline>
+  // Externe Lesezeichen zur früheren Praxis-Startseite enthalten weiterhin diese Fragmente.
+  function followPracticeBookmark() {
+    const fragments = ['#benefits', '#faq', '#apply', '#aufgaben', '#anforderungen', '#galerie', '#praxisbilder', '#map-notice'];
+    if (fragments.includes(location.hash)) location.replace('/praxis/' + location.search + location.hash);
+  }
+  followPracticeBookmark();
+  window.addEventListener('hashchange', followPracticeBookmark);
+</script>
+</Fachportal>

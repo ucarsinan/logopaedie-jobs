@@ -1,38 +1,30 @@
 ---
-interface Props {
-  class?: string;
-  dark?: boolean;
-  compact?: boolean;
-}
-const { class: className, dark = false, compact = false } = Astro.props;
----
+import practiceLogo from '../assets/brand/praxis-simsek-horizontal.svg?raw';
+import '../styles/fonts.css';
 
-<div class:list={[
-  'flex items-center min-w-0',
-  compact ? 'gap-2 py-0' : 'gap-3.5 max-[640px]:gap-2.5 py-3',
-  className,
-]}>
-  <img
-    src="/praxis-simsek-logo.svg"
-    alt=""
-    aria-hidden="true"
-    width="48"
-    height="48"
-    class:list={[
-      'object-contain shrink-0',
-      compact ? 'ml-0 w-8 h-8 sm:w-9 sm:h-9' : 'ml-3 w-12 h-12 max-[640px]:w-10 max-[640px]:h-10',
-    ]}
-  />
-  <div class="min-w-0">
-    <p class:list={[
-      'font-bold leading-[1.25] uppercase tracking-[.02em] break-words',
-      compact ? 'text-[0.66rem] sm:text-[0.75rem]' : 'text-[.875rem] max-[640px]:text-[0.78rem]',
-      dark ? 'text-white' : 'text-slate-900',
-    ]}>Praxis für Logopädie <span lang="tr">Şimşek</span></p>
-    <span class:list={[
-      'block font-normal tracking-[.03em] mt-px',
-      compact ? 'text-[0.58rem] sm:text-[0.64rem]' : 'text-[.6875rem] max-[640px]:text-[0.62rem]',
-      dark ? 'text-slate-300' : 'text-slate-500',
-    ]}>Logopädie Duisburg</span>
-  </div>
-</div>
+interface Props { class?: string; dark?: boolean; }
+const { class: className, dark = false } = Astro.props;
+
+// Bei mehreren Logos pro Seite braucht jede SVG eigene Beschriftungs-IDs.
+const id = `praxis-${crypto.randomUUID()}`;
+const logo = practiceLogo
+  .replace('<svg ', '<svg width="256" height="79" ')
+  .replace('aria-labelledby="title desc"', `aria-labelledby="${id}-title ${id}-desc"`)
+  .replace('id="title"', `id="${id}-title"`)
+  .replace('id="desc"', `id="${id}-desc"`);
+---
+<span class:list={['praxis-marke', { dunkel: dark }, className]} set:html={logo} />
+
+<style>
+  .praxis-marke {
+    display: block;
+    width: 16rem;
+    max-width: 100%;
+    min-width: 0;
+    font-weight: 400;
+    letter-spacing: normal;
+    text-transform: none;
+  }
+  .praxis-marke :global(svg) { display: block; max-width: 100%; height: auto; }
+  .dunkel { background: white; }
+</style>

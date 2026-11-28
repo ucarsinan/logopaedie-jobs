@@ -1,0 +1,173 @@
+---
+import PracticeBrand from '../components/PracticeBrand.astro';
+import { currentJob } from '../lib/current-job.mjs';
+import Layout from './Layout.astro';
+import Logo from '../components/Logo.astro';
+import '../styles/berufseinstieg.css';
+
+interface Props {
+  title: string;
+  description: string;
+  trail?: { name: string; href: string }[];
+  active?: 'alltag' | 'wissen' | 'einstieg';
+  canonicalUrl?: string;
+  robots?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+}
+const { title, description, trail = [{ name: 'Startseite', href: '/' }], active, canonicalUrl, robots, ogType, ogImage = '/bilder/logopaediejobs-vorschau.png' } = Astro.props;
+const breadcrumbs = trail.map(({ name, href }) => ({ name, url: new URL(href, Astro.site).href }));
+const areas = [
+  { key: 'alltag', label: 'Arbeitsalltag', href: '/arbeitsalltag/', icon: 'M5 4h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-9l-6 4v-4a2 2 0 0 1-1-2V6a2 2 0 0 1 2-2ZM7 9h10M7 13h6' },
+  { key: 'wissen', label: 'Fachwissen', href: '/berufshandbuch/', icon: 'M3 5q5-1 9 2 4-3 9-2v14q-5-1-9 2-4-3-9-2zM12 7v14' },
+  { key: 'einstieg', label: 'Berufseinstieg & Wechsel', href: '/berufseinstieg/', icon: 'M12 3v2m0 6v10M4 5h13l4 3-4 3H4z' },
+];
+// Jedes Ziel gehört je nach Aufgabe zur Lektüre, zu den Rechnern oder zum Praxiskontakt.
+const jobLinkLabel = currentJob.showApplication ? 'Offene Stellen' : 'Stellenstatus';
+const linkGroups = [
+  { id: 'themen', title: 'Themen', links: areas },
+  { id: 'werkzeuge', title: 'Werkzeuge', links: [
+    { label: 'Alle Werkzeuge', href: '/#werkzeuge', icon: 'M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z' },
+    { label: 'Wochenübersicht', href: '/werkzeuge/wochenuebersicht/', icon: 'M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2ZM7 3v4m10-4v4M3 10h18m-13 4h2m4 0h2m-8 3h2' },
+    { label: 'Gehaltsrechner', href: '/gehaltsrechner/', icon: 'M6 3h12a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1ZM8 7h8M8 12h1m6 0h1m-8 5h1m6 0h1' },
+  ] },
+  { id: 'praxis', title: 'Praxis & Kontakt', links: [
+    { label: 'Unsere Praxis', href: '/praxis/', icon: 'M3 21h18M5 21V6l11-3v18m0-13h4v13M8 9h1m3-1h1m-5 5h1m3-1h1m-5 9v-4h4v4' },
+    { label: 'Praxis-Website', href: 'https://logopaedie-simsek.de/', icon: 'M13 4h7v7m0-7L10 14m9 0v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5' },
+    { label: jobLinkLabel, href: '/jobs/logopaedin-sprachtherapeut-duisburg/', icon: 'M4 7h16v13H4zM8 7V4h8v3M4 12h16m-10 0v2h4v-2' },
+    { label: 'Kontakt', href: '/kontakt/', icon: 'M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1ZM4 7l8 6 8-6' },
+  ] },
+];
+const currentPath = Astro.url.pathname.replace(/\/?$/, '/');
+const currentLink = linkGroups.flatMap(group => group.links).find(link => link.href === currentPath)
+  ?? areas.find(area => area.key === active);
+const menuLocation = currentLink?.label ?? (currentPath === '/' ? 'Startseite' : undefined);
+---
+<Layout {canonicalUrl} {robots} title={title} description={description} breadcrumbs={trail.length > 1 ? breadcrumbs : undefined} ogImage={ogImage} {ogType}>
+  <slot name="head" slot="head" />
+  <div class="einstieg">
+    <header class="mast">
+      <a href="/" aria-label="Logopädie Jobs – zur Startseite"><Logo class="wortmarke" /></a>
+      <p class="mast-titel">
+        <span class="fachzeile">Logopädie und Sprachtherapie</span>
+        <span class="mast-leitsatz">Wissen und Werkzeuge für deinen Praxisalltag</span>
+      </p>
+    </header>
+    <div class="satz">
+      <nav class="bereiche" aria-label="Bereiche">
+        <button type="button" class="menue-schalter" hidden aria-expanded="false" aria-controls="portal-menue">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+            <path class="menue-auf" d="M3 6h18M3 12h18M3 18h18" />
+            <path class="menue-zu" d="m5 5 14 14M19 5 5 19" />
+          </svg>
+          Menü
+          {menuLocation && <span class="menue-ort" aria-hidden="true">{menuLocation}</span>}
+        </button>
+        <div id="portal-menue">
+          {linkGroups.map(group => (
+            <section aria-labelledby={`nav-${group.id}`}>
+              <h2 id={`nav-${group.id}`}>{group.title}</h2>
+              {group.links.map(link => {
+                const external = link.href.startsWith('https://');
+                return (
+                  <a href={link.href} target={external ? '_blank' : undefined} rel={external ? 'noopener' : undefined}
+                    aria-current={currentPath === link.href ? 'page' : link === currentLink ? 'location' : undefined}>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                      <path d={link.icon} />
+                    </svg>
+                    <span>{link.label}</span>
+                    {external && <span class="sr-only"> (externe Website, öffnet in einem neuen Tab)</span>}
+                  </a>
+                );
+              })}
+            </section>
+          ))}
+        </div>
+      </nav>
+      <main id="main-content" tabindex="-1">
+        {trail.length > 1 && <nav class="pfad" aria-label="Seitenpfad">
+          <ol>
+            {breadcrumbs.map((item, i) => <li>
+              {i === breadcrumbs.length - 1 ? <span aria-current="page">{item.name}</span> : <a href={trail[i].href}>{item.name}</a>}
+            </li>)}
+          </ol>
+        </nav>}
+        <slot />
+      </main>
+    </div>
+    <footer class="abschluss" id="seitenfuss">
+      <div class="abschluss-gruppen">
+        <div class="herausgeber">
+          <p class="fachzeile">Herausgegeben von der</p>
+          <PracticeBrand />
+        </div>
+        <nav aria-labelledby="footer-weiterlesen">
+          <h2 id="footer-weiterlesen">Weiterlesen <span>&amp; Werkzeuge</span></h2>
+          <ul>
+            <li><a href="/#themen">Themenübersicht</a></li>
+            {import.meta.env.DEV && <li><a href="/vorschau/praxispost/">Praxispost</a></li>}
+            <li><a href="/werkzeuge/wochenuebersicht/">Wochenübersicht</a></li>
+            <li><a href="/gehaltsrechner/">Gehaltsrechner</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="footer-praxis">
+          <h2 id="footer-praxis">Praxis <span>&amp; Einstieg</span></h2>
+          <ul>
+            <li><a href="/praxis/">Unsere Praxis</a></li>
+            <li><a href="/berufseinstieg/">Berufseinstieg</a></li>
+            <li><a href="/schulen/">Für Auszubildende und Studierende</a></li>
+            <li><a href="/jobs/logopaedin-sprachtherapeut-duisburg/">{jobLinkLabel}</a></li>
+            <li><a href="/kontakt/">Kontakt</a></li>
+          </ul>
+        </nav>
+      </div>
+      <nav class="abschluss-recht" aria-label="Rechtliches">
+        <a href="/impressum/">Impressum</a>
+        <a href="/datenschutz/">Datenschutz</a>
+        {import.meta.env.PUBLIC_GA_MEASUREMENT_ID && <button type="button" data-cc="show-preferencesModal">Cookie-Einstellungen</button>}
+      </nav>
+    </footer>
+  </div>
+</Layout>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.menue-schalter');
+  const panel = document.getElementById('portal-menue');
+  if (toggle && panel) initMenu(toggle, panel);
+
+  function initMenu(toggle: HTMLButtonElement, panel: HTMLElement) {
+    const compact = window.matchMedia('(max-width: 60rem)');
+    function setExpanded(expanded: boolean) {
+      toggle.setAttribute('aria-expanded', String(expanded));
+      panel.hidden = !expanded;
+    }
+    function syncLayout() {
+      const focusInPanel = panel.contains(document.activeElement);
+      const focusOnToggle = document.activeElement === toggle;
+      toggle.hidden = !compact.matches;
+      setExpanded(!compact.matches);
+      if (compact.matches && focusInPanel) toggle.focus();
+      if (!compact.matches && focusOnToggle) panel.querySelector('a')?.focus();
+    }
+    syncLayout();
+    compact.addEventListener('change', syncLayout);
+    toggle.addEventListener('click', () => setExpanded(panel.hidden));
+    panel.addEventListener('click', event => {
+      if (!compact.matches || event.defaultPrevented || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      const link = event.target instanceof Element ? event.target.closest('a') : null;
+      if (!link?.hash || link.origin !== location.origin || link.pathname !== location.pathname || link.search !== location.search) return;
+      const destination = document.getElementById(link.hash.slice(1));
+      if (destination) {
+        setExpanded(false);
+        destination.focus({ preventScroll: true });
+      }
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && compact.matches && !panel.hidden) {
+        setExpanded(false);
+        toggle.focus();
+      }
+    });
+  }
+</script>

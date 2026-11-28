@@ -1,0 +1,24 @@
+---
+import Berufseinstieg from '../../layouts/Berufseinstieg.astro';
+
+const topics = [
+  { photo: 'ausbildung', href: '/berufshandbuch/ausbildung-nrw-2026/', question: 'Wie werde ich Logopädin oder Logopäde?', detail: 'Ausbildung und Studium vergleichen.' },
+  { photo: 'pflichtpraktikum', href: '/berufseinstieg/pflichtpraktikum/', question: 'Ich brauche ein Pflichtpraktikum.', detail: 'Lernziele, Zeitraum und Anleitung klären.' },
+  { photo: 'hospitation', href: '/berufseinstieg/hospitation/', question: 'Ich möchte bei der Arbeit zuschauen.', detail: 'Eine Hospitation in der Praxis planen.' },
+  { photo: 'erste-stelle', href: '/schulen/', question: 'Wie finde ich meine erste Stelle?', detail: 'Einarbeitung und Arbeitsbedingungen kennenlernen.' },
+];
+---
+<Berufseinstieg title="Berufseinstieg & Wechsel in der Logopädie | Logopädie Jobs" description="Wege in die Logopädie. Finde Informationen zu Ausbildung, Studium, Pflichtpraktikum, Hospitation und deiner ersten Stelle.">
+  <h1>Wie komme ich<br />in den Beruf?</h1>
+  <p class="vorspann">Vielleicht hast du deine Ausbildung noch vor dir. Vielleicht steht schon dein erstes Gespräch mit einer Praxis an. Wo stehst du gerade?</p>
+  <figure class="aufmacher">
+    <img src="/bilder/berufseinstieg/ankommen.webp" width="1440" height="960" fetchpriority="high" alt="Eine Besucherin mit Schultertasche wird am Eingang einer Praxis begrüßt." />
+    <figcaption>Ankommen in der Praxis · Alle Szenen auf dieser Seite sind KI-Illustrationen.</figcaption>
+  </figure>
+  <ul class="themen" id="themen" aria-label="Vier Wege in den Beruf" tabindex="-1">
+    {topics.map(topic => <li><a href={topic.href}>
+      <img src={`/bilder/berufseinstieg/${topic.photo}.webp`} width="460" height="460" alt="" loading="lazy" />
+      <div><h2>{topic.question} <span aria-hidden="true">→</span></h2><p>{topic.detail}</p></div>
+    </a></li>)}
+  </ul>
+</Berufseinstieg>

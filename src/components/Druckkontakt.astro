@@ -1,0 +1,35 @@
+---
+import { RECRUITING_PHONE_DISPLAY, WHATSAPP_NUMBER } from '../lib/recruiting-whatsapp.mjs';
+
+const profile = [
+  ['Instagram', 'https://www.instagram.com/logopaediesimsek/'],
+  ['Facebook', 'https://www.facebook.com/logopaediesimsek/'],
+  ['YouTube', 'https://www.youtube.com/@logopaediesimsek'],
+  ['TikTok', 'https://www.tiktok.com/@logopaediesimsek'],
+  ['X', 'https://x.com/logosimsek'],
+];
+---
+<footer class="druckkontakt" aria-label="Kontakt zur Praxis">
+  <strong>Praxis für Logopädie Şimşek · Duisburg</strong>
+  <address>
+    <div><a href="tel:+4920334868690">Termintelefon 0203 34 86 86 90</a> · <a href="mailto:info@logopaedie-simsek.de">info@logopaedie-simsek.de</a> · <a href="https://logopaedie-simsek.de/">logopaedie-simsek.de</a></div>
+    <div><a href={'https://wa.me/' + WHATSAPP_NUMBER}>WhatsApp {RECRUITING_PHONE_DISPLAY}</a> · {profile.map(([name, url], index) => <>{index > 0 && ' · '}<a href={url}>{name}</a></>)}</div>
+  </address>
+</footer>
+<style>
+  .druckkontakt { display: none; }
+  @media print {
+    .druckkontakt {
+      display: block;
+      margin-top: 5mm;
+      padding-top: 2mm;
+      border-top: 0.75pt solid #1f85c2;
+      break-inside: avoid;
+      color: #182a32;
+      font: 9pt/1.35 Arial, sans-serif;
+    }
+    .druckkontakt strong { font-size: 10pt; }
+    .druckkontakt address { font-style: normal; }
+    .druckkontakt a { color: inherit; text-decoration: none; white-space: nowrap; }
+  }
+</style>

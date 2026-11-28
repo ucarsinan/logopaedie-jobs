@@ -1,0 +1,31 @@
+---
+import TitelgeschichteBild from '../../components/TitelgeschichteBild.astro';
+import Fachportal from '../../layouts/Fachportal.astro';
+import { getCollection } from 'astro:content';
+const beitraege = (await getCollection('arbeitsalltag')).sort((a, b) => a.data.order - b.data.order);
+const trail = [{ name: 'Startseite', href: '/' }, { name: 'Arbeitsalltag', href: '/arbeitsalltag/' }];
+---
+<Fachportal title="Arbeitsalltag in der Logopädie | Logopädie Jobs" description="Praxisgeschichten und Beiträge für den Therapiealltag. Ziele vereinbaren, Übungen für zu Hause besprechen und Fortschritte einordnen." {trail} active="alltag">
+  <h1>Arbeitsalltag</h1>
+  <p class="vorspann">Was passiert zwischen zwei Terminen? Wer kommt im Gespräch zu Wort?</p>
+  <ul class="themen alltagsliste">
+    <li><a href="/arbeitsalltag/zwischen-zwei-terminen/"><TitelgeschichteBild sizes="(max-width: 36rem) 24vw, 9rem" alt="" /><div><h2>Zwischen zwei Terminen.</h2><p>Mit Kurzfilm und Wochenübersicht.</p></div></a></li>
+    <li><a href="/arbeitsalltag/angehoerigengespraech/"><img src="/bilder/arbeitsalltag/angehoerigengespraech.webp" alt="" width="144" height="144" /><div><h2>Wenn Angehörige das Gespräch übernehmen.</h2><p>Eine Praxisgeschichte über das Zuhören.</p></div></a></li>
+  </ul>
+  <section class="therapiebeitraege" id="therapie" aria-labelledby="therapie-titel">
+    <h2 id="therapie-titel">Für den Therapiealltag</h2>
+    <ul class="themen">{beitraege.map(({ id, data }) => <li><a href={`/arbeitsalltag/${id}/`}>
+      <img src={data.thumbnail} width="480" height="480" loading="lazy" alt="" />
+      <div><h3>{data.title}</h3><p>{data.description}</p></div>
+    </a></li>)}</ul>
+    <small>KI-Illustrationen zu den Fallbeispielen</small>
+  </section>
+</Fachportal>
+
+<style>
+  .therapiebeitraege { margin-top: 3rem; border-top: 2px solid; padding-top: 1rem; }
+  .therapiebeitraege h2 { margin-bottom: 1rem; font-size: clamp(1.9rem, 3.3vw, 3rem); line-height: 1.05; }
+  .therapiebeitraege h3 { font-size: 1.25rem; line-height: 1.2; }
+  .therapiebeitraege a:is(:hover, :focus-visible) h3 { text-decoration: underline; }
+  .therapiebeitraege small { color: #505050; }
+</style>

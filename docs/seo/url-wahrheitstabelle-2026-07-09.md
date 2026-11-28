@@ -2,6 +2,8 @@
 
 Datum: 2026-07-09
 
+Historischer Stand. Seit der Umstellung der Stellenübersicht führt `/jobs/` dauerhaft zur Duisburger Stellenanzeige. Der vor V8 öffentlich gemessene Bestand und die aktuelle Prüfung sind im [Relaunch-Protokoll](../agent-reports/2026-11-28-v8-suchmaschinen.md) dokumentiert.
+
 Zweck: Lokaler SEO-Contract fuer Phase 1 der Indexierungsreparatur.
 
 Canonical host: `https://xn--logopdiejobs-kcb.de`

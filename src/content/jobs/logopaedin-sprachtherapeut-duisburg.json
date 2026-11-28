@@ -86,9 +86,9 @@
   ],
   "credential_category": "professional certificate",
   "required_qualifications": [
-    "Staatlich anerkannter und zugelassener Abschluss in Logopädie oder Sprachtherapie oder ein gleichgestellter sprachtherapeutischer Abschluss mit Kassenzulassung"
+    "Staatlich anerkannter Abschluss in Logopädie oder Sprachtherapie oder ein gleichgestellter sprachtherapeutischer Abschluss, der für die Behandlung gesetzlich Versicherter qualifiziert. Eine eigene Praxiszulassung brauchst du für die Anstellung nicht."
   ],
-  "recognition_requirement": { "status": "REQUIRED", "details": "Staatliche Anerkennung und Zulassung" },
+  "recognition_requirement": { "status": "REQUIRED", "details": "Staatliche Anerkennung und fachliche Qualifikation für die Behandlung gesetzlich Versicherter" },
   "experience_requirement": { "status": "NONE", "details": "Berufserfahrung ist keine Voraussetzung." },
   "language_requirements": [{ "language": "Deutsch", "level": "Sehr gute Kenntnisse" }],
   "application_routes": ["SHORT_FORM", "WHATSAPP", "PHONE", "EMAIL", "POST"],

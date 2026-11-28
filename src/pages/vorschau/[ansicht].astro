@@ -1,0 +1,22 @@
+---
+import Fachportal from '../../layouts/Fachportal.astro';
+import Praxispost from '../../components/praxispost/Praxispost.astro';
+import Teammappe from '../../components/praxispost/Teammappe.astro';
+import Geraetevergleich from '../../components/praxispost/Geraetevergleich.astro';
+import '../../styles/praxispost.css';
+
+export function getStaticPaths() {
+  return import.meta.env.DEV
+    ? ['praxispost', 'teammappe', 'post-und-material'].map(ansicht => ({ params: { ansicht } }))
+    : [];
+}
+const { ansicht } = Astro.params;
+const brief = ansicht === 'praxispost';
+const title = brief ? 'Praxispost' : 'Teammappe';
+const description = brief ? 'Der monatliche Newsletter für Logopädinnen mit einer frei lesbaren Probeausgabe.' : 'Vier Arbeitsblätter für die Teambesprechung mit frei druckbarer Musterseite.';
+const trail = [{ name: 'Startseite', href: '/' }, ...(!brief ? [{ name: 'Werkzeuge', href: '/#werkzeuge' }] : []), { name: title, href: Astro.url.pathname }];
+---
+{ansicht === 'post-und-material' ? <Geraetevergleich /> :
+  <Fachportal title={title + ' | Logopädie Jobs'} {description} {trail} robots="noindex, nofollow">
+    {brief ? <Praxispost /> : <Teammappe />}
+  </Fachportal>}

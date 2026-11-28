@@ -1,0 +1,321 @@
+.einstieg {
+  --papier: #fff;
+  --tinte: #101010;
+  --blau: #1f85c2;
+  --gruen: #7fb719;
+  --seitenleiste: clamp(13rem, 21vw, 22rem);
+  --rand: clamp(1rem, 3.3vw, 3.5rem);
+  max-width: 110rem;
+  margin: auto;
+  background: var(--papier);
+  color: var(--tinte);
+  font: 1rem/1.48 "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.einstieg :is(h1,h2,h3) { font-family: inherit; font-weight: 700; color: inherit; letter-spacing: -.05em; }
+.einstieg a { color: inherit; text-underline-offset: .16em; }
+.einstieg :focus-visible { outline: 3px solid var(--tinte); outline-offset: 2px; box-shadow: 0 0 0 5px white; }
+.einstieg .mast { display: grid; grid-template-columns: minmax(0,1fr); align-items: center; gap: .55rem 1rem; padding: .85rem var(--rand); border-bottom: 1px solid; }
+.einstieg .wortmarke { display: block; width: clamp(6rem, 10vw, 10rem); height: auto; }
+.mast > a:first-child { justify-self: start; }
+.mast-titel { grid-area: 2 / 1 / 3 / -1; display: grid; min-width: 0; gap: .18rem; border-inline-start: 6px solid var(--gruen); padding-inline-start: .75rem; }
+.einstieg .fachzeile { color: #155e89; font-size: .69rem; font-weight: 700; line-height: 1.3; letter-spacing: .09em; text-transform: uppercase; }
+.mast-titel .fachzeile { font-size: .88rem; letter-spacing: 0; text-transform: none; }
+.mast-leitsatz { font-size: clamp(1.36rem, 2.1vw, 1.9rem); font-weight: 700; line-height: 1.1; letter-spacing: -.045em; }
+@media (min-width: 38rem) {
+  .einstieg .mast { grid-template-columns: auto minmax(0,1fr); }
+  .mast-titel { grid-area: 1 / 2; }
+}
+.einstieg .bereiche { --rubrikblau: color-mix(in srgb, var(--blau) 92%, #000); background: var(--rubrikblau); color: white; padding: 1.3rem 1rem; }
+.einstieg .bereiche a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  gap: .65rem;
+  padding-block: .4rem;
+  color: white;
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.25;
+  text-decoration: none;
+}
+.bereiche a svg { flex: none; }
+.einstieg .bereiche a[aria-current] { font-weight: 700; }
+.bereiche section + section { border-top: 1px solid rgb(255 255 255 / 45%); margin-top: .7rem; padding-top: .95rem; }
+.einstieg .bereiche h2 { margin-bottom: .3rem; font-size: .76rem; letter-spacing: .075em; text-transform: uppercase; line-height: 1.3; }
+.bereiche .menue-schalter:not([hidden]) { display:flex; width:100%; min-height:48px; align-items:center; gap:.65rem; color:white; font:inherit; font-weight:700; text-align:left; }
+.menue-ort { margin-left:auto; font-size:.83rem; font-weight:500; }
+.menue-schalter[aria-expanded="false"] .menue-zu, .menue-schalter[aria-expanded="true"] .menue-auf { display:none; }
+.einstieg .bereiche a:is([aria-current],:hover) { text-decoration: underline; }
+.einstieg main { min-width: 0; padding: 0 var(--rand) 3rem; }
+.einstieg .pfad { background: var(--papier); border-bottom: 1px solid #ccc; margin-bottom: 1.4rem; }
+.einstieg .pfad ol { display: flex; flex-wrap: wrap; align-items: center; gap: 0 .4rem; padding: .4rem 0; list-style: none; font-size: .88rem; }
+.einstieg .pfad li + li::before { content: '/ ' / ''; color: #666; }
+.einstieg .pfad a { display: inline-block; padding: .35rem 0; }
+@media (pointer: coarse) {
+  .einstieg .pfad a { display: inline-flex; align-items: center; min-height: 44px; }
+  .einstieg .pfad ol { padding-block: .125rem; }
+  .einstieg summary { min-height: 44px; align-content: center; }
+}
+.einstieg .pfad [aria-current] { font-weight: 700; }
+.einstieg h1 { font-size: clamp(3.15rem,7.1vw,7.6rem); line-height: .94; letter-spacing: -.07em; margin: .1em 0 .28em; }
+.einstieg .vorspann { max-width: 40em; font-size: clamp(1.35rem,2.25vw,2.15rem); line-height: 1.2; letter-spacing: -.035em; }
+.einstieg figure { margin: 1.25rem 0; }
+.einstieg figure img { display: block; width: 100%; height: auto; }
+.einstieg .aufmacher img { max-height: 25rem; object-fit: cover; object-position: 50% 40%; }
+.einstieg figcaption { margin-top: .4rem; font-size: .82rem; color: #484848; }
+.einstieg .themen { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 2rem; list-style: none; padding: 0; scroll-margin-top: 4.2rem; }
+.einstieg .themen li { border-top: 1px solid; }
+.einstieg .themen a { display: grid; grid-template-columns: clamp(6rem,9vw,9rem) minmax(0,1fr); align-items: center; gap: 1rem; padding: 1rem 0; text-decoration: none; }
+.einstieg .themen img { width: 100%; aspect-ratio: 1; }
+.einstieg .themen h2 { font-size: clamp(1.3rem,2.1vw,2.25rem); line-height: 1.08; }
+.einstieg .themen h2 span { font-size: .75em; }
+.einstieg .themen a:is(:hover,:focus-visible) h2 { text-decoration: underline; }
+.einstieg .themen p { margin-top: .4rem; line-height: 1.3; }
+.einstieg .geschichte { max-width: 48rem; }
+.einstieg .geschichte > p { max-width: 62ch; margin: 1rem 0; }
+.einstieg .geschichte > p:not(.vorspann) { font-size: 1.125rem; }
+.einstieg .geschichte h2 { font-size: clamp(1.7rem,3vw,2.8rem); line-height: 1.08; margin-top: 1.6rem; }
+.geschichte .fallbeispiel-kopf {
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid #ccc;
+}
+.geschichte .fallbeispiel-kopf .vorspann { max-width: 48ch; }
+@media (width < 25rem) {
+  .einstieg .fallbeispiel-kopf h1 { font-size: clamp(2.55rem, 12.6vw, 3.15rem); }
+}
+.einstieg .geschichte .fallbild {
+  float: right;
+  width: min(32%, 8rem);
+  margin: 0 0 .6rem 1rem;
+}
+.geschichte .fallbild ~ h2 { clear: both; }
+@media (min-width: 42rem) {
+  .einstieg .geschichte .fallbild { width: 12rem; margin-left: 1.75rem; }
+}
+.einstieg .szene img { max-height: 24rem; object-fit: cover; object-position: 50% 38%; }
+.einstieg .nachweise { font-size: .9rem; margin: 2rem 0; padding-top: 1rem; border-top: 1px solid #aaa; }
+.einstieg .nachweise ul { padding-left: 1.2rem; list-style: disc; }
+.einstieg .rueckweg { display: inline-flex; align-items: center; min-height: 44px; font-weight: bold; }
+.einstieg .abschluss {
+  padding: 1.15rem var(--rand) .25rem;
+  background: var(--papier);
+  border-top: 1px solid var(--tinte);
+}
+.abschluss-gruppen { display: grid; align-items: start; gap: .9rem 1rem; }
+.abschluss .herausgeber { min-width: 0; }
+.herausgeber .praxis-marke { margin-top: .35rem; transform: translateX(-4.8276%); }
+.abschluss-gruppen nav { min-width: 0; border-inline-start: 4px solid var(--blau); padding-inline-start: .7rem; }
+.abschluss-gruppen nav:last-child { border-color: var(--gruen); }
+.abschluss-gruppen h2 { font-size: 1.1rem; line-height: 1.12; }
+.abschluss-gruppen li { min-width: 0; }
+.abschluss-gruppen a { max-width: 100%; }
+.abschluss-gruppen ul { display: grid; margin: .15rem 0 0; padding: 0; list-style: none; }
+.einstieg .abschluss :is(a,button) { display: inline-flex; align-items: center; min-height: 44px; color: #155e89; line-height: 1.3; }
+.einstieg .abschluss :is(a,button):is(:hover,:focus-visible) { text-decoration: underline; }
+.abschluss-recht { display: flex; flex-wrap: wrap; gap: 0 1.25rem; margin-top: .8rem; border-top: 1px solid #bdc9cc; }
+.einstieg .abschluss-recht :is(a,button) { color: #465157; font-size: .875rem; }
+@media (min-width: 23rem) {
+  .abschluss-gruppen { grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); }
+  .abschluss .herausgeber { grid-column: 1 / -1; }
+}
+@media (min-width: 45rem) {
+  .abschluss-gruppen { grid-template-columns: minmax(0, .85fr) minmax(0, 1.12fr) minmax(0, 1.25fr); gap: 1.5rem; }
+  .abschluss .herausgeber { grid-column: auto; }
+}
+@media (hover: hover) and (pointer: fine) {
+  .einstieg .abschluss-gruppen a { min-height: 27px; }
+}
+@media (width > 60rem) {
+  .einstieg .satz { display: grid; grid-template-columns: var(--seitenleiste) minmax(0,1fr); }
+  .einstieg .mast {
+    display: grid;
+    grid-template-columns: var(--seitenleiste) minmax(0,1fr);
+    column-gap: 0;
+    padding-inline-start: 0;
+  }
+  .mast > a:first-child { justify-self: start; margin-inline-start: var(--rand); }
+  .mast-titel { margin-inline-start: var(--rand); }
+  .abschluss-gruppen {
+    grid-template-columns: var(--seitenleiste) minmax(0, 17.5rem) minmax(0, 19rem);
+    column-gap: var(--rand);
+    margin-inline-start: calc(-1 * var(--rand));
+  }
+  .abschluss .herausgeber { padding-inline: var(--rand) .75rem; }
+  .abschluss-recht { margin-inline-start: var(--seitenleiste); }
+}
+@media(min-height:35rem) {
+  .einstieg .pfad { position: sticky; z-index: 1; top: 0; }
+  .einstieg main :focus { scroll-margin-block-start: 5.5rem; }
+}
+@media(max-width:60rem) {
+  .einstieg .bereiche { padding:0 var(--rand); }
+  .bereiche #portal-menue:not([hidden]) { display:grid; padding-block:.85rem 1.15rem; border-top:1px solid rgb(255 255 255 / 45%); }
+  .einstieg .themen { grid-template-columns: minmax(0,1fr); }
+}
+@media(max-width:36rem) {
+  .einstieg .themen a { grid-template-columns: clamp(5.3rem,24vw,7rem) minmax(0,1fr); gap: .85rem; padding: .8rem 0; }
+  .einstieg .themen h2 { font-size: 1.28rem; }
+  .einstieg .themen p { font-size: .94rem; }
+}
+.einstieg :is(.pfad,.geschichte) a, .einstieg .rueckweg { text-decoration: underline; }
+
+.einstieg .titelbild { position: relative; }
+.einstieg .titelbild img { display: block; width: 100%; height: auto; aspect-ratio: 1.55; object-fit: cover; object-position: center 44%; }
+.einstieg .film-link { position: absolute; left: 0; bottom: 0; background: #101010; color: white; padding: .7rem .9rem; min-height: 44px; font-weight: 700; }
+.einstieg .titelgeschichte { padding-top: clamp(1.5rem,3vw,3.5rem); }
+.einstieg .lesewege { display: flex; flex-wrap: wrap; gap: 0 1.5rem; border-block: 1px solid; margin-top: 1.5rem; }
+.einstieg .lesewege a { display: flex; align-items: center; gap: .65rem; min-height: 3.5rem; font-weight: 700; font-size: clamp(1.12rem,1.6vw,1.55rem); }
+.einstieg .lesewege a::before, .einstieg .tools strong::before { content: ''; width: .72em; height: .72em; background: var(--blau); display: inline-block; flex: none; }
+.einstieg .lesewege .werkzeug::before, .einstieg .tools strong::before { background: #7fb719; }
+.einstieg .ressorts { margin-top: clamp(2.5rem,4.5vw,5rem); }
+.einstieg .ressorts h2 { font-size: clamp(2rem,3.5vw,3.5rem); line-height: 1; margin-bottom: 1rem; }
+.einstieg .ressorts ul { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1.3rem; }
+.einstieg .ressorts li { border-top: 1px solid; padding-top: .8rem; }
+.einstieg .ressorts img { width: 100%; aspect-ratio: 1.6; object-fit: cover; }
+.einstieg .ressorts li p { margin-top: .6rem; font-size: .9rem; }
+.einstieg .ressorts h3 { font-size: clamp(1.35rem,1.9vw,2.1rem); line-height: 1.08; margin: .25rem 0; }
+.einstieg .ressorts li a { display: block; }
+.einstieg .ressorts a:hover :is(h3,strong), .einstieg .lesewege a:hover, .einstieg .film-link:hover { text-decoration: underline; }
+.einstieg .werkzeuggruppen h3 {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  margin: 0;
+  padding: .65rem .8rem;
+  border-top: 3px solid var(--blau);
+  background: color-mix(in srgb, var(--blau) 8%, white);
+  color: #155e89;
+  font-size: .9375rem;
+  line-height: 1.35;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+.einstieg .werkzeuggruppen h3 svg { flex: none; }
+.einstieg .tools a { display: block; padding: .9rem 0; border-bottom: 1px solid #bbb; }
+.einstieg .tools strong { display: block; font-size: 1.25rem; }
+.einstieg .tools strong::before { margin-right: .6rem; }
+.einstieg .artikelbild img { max-height: 28rem; object-fit: cover; }
+.einstieg .zeitvergleich { margin: 1.5rem 0; padding: 1rem 0; border-block: 1px solid; max-width: 30rem; }
+.einstieg .zeitvergleich :is(div,section) { display: flex; align-items: baseline; justify-content: space-around; }
+.einstieg .zeitvergleich b { font-size: 3.5rem; line-height: 1.15; }
+.einstieg blockquote { border-block: 1px solid; border-top: 4px solid var(--blau); margin: 1.6rem 0; padding: 1rem 0; font-size: 2rem; font-weight: 700; line-height: 1.1; }
+.einstieg blockquote small { display: block; margin-top: .7rem; font-size: .85rem; font-weight: 400; }
+.einstieg video { width: 100%; height: auto; margin-block: .7rem; }
+.einstieg summary, .einstieg button { cursor: pointer; }
+.einstieg .alltagsliste { margin-top: 2rem; }
+.einstieg .alltagsliste img { object-fit: cover; }
+.einstieg #woche { max-width: 36rem; padding-block: 1rem; border-top: 5px solid #7fb719; }
+.einstieg #woche table { width: 100%; text-align: left; border-collapse: collapse; }
+.einstieg #woche caption { text-align: left; font-weight: bold; }
+.einstieg #woche :is(td,th) { padding: .55rem .12rem; border-bottom: 1px solid #ccc; }
+.einstieg #woche input { width: 4.25rem; min-height: 44px; border: 1px solid #666; padding: .4rem; }
+.einstieg #woche small { display: block; font-weight: 400; }
+.einstieg #bilanz { margin: .75rem 0; }
+.einstieg #woche button { min-height: 44px; background: #eee; padding: .6rem 1rem; }
+@media (width > 60rem) {
+  .einstieg .titelbild img { aspect-ratio: 2 / 1; }
+}
+@media(max-width:40rem) {
+  .einstieg .ressorts ul { grid-template-columns: 1fr; gap: .8rem; }
+  .einstieg .ressorts li a { display: grid; grid-template-columns: 6rem minmax(0,1fr); gap: .85rem; align-items: center; }
+  .einstieg .ressorts li p { margin: 0; }
+  .einstieg .ressorts img { aspect-ratio: 1; }
+  .einstieg .lesewege { display: block; }
+  .einstieg .lesewege a + a { border-top: 1px solid; }
+}
+
+/* Interior pages share the cover's type, paper, rules and photographic treatment. */
+.einstieg .portal-inhalt { min-width: 0; overflow-wrap: break-word; }
+.einstieg .portal-inhalt h1 {
+  font: 700 clamp(2.65rem, 5.6vw, 5.6rem)/1.02 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: -.055em;
+  hyphens: auto;
+  text-wrap: balance;
+}
+.einstieg .portal-inhalt h2 { line-height: 1.12; letter-spacing: -.04em; hyphens: auto; }
+.einstieg .praxisprofil :is(h1,h2,h3) {
+  hyphens: none;
+  overflow-wrap: normal;
+  word-break: normal;
+  text-wrap: balance;
+}
+.einstieg .portal-inhalt :where(article,section,header,aside,fieldset,form) { min-width: 0; }
+.einstieg .portal-inhalt :is(.shadow-sm,.shadow-md,.shadow-lg,.shadow-xl) { box-shadow: none; }
+.einstieg .portal-inhalt :where(div,article,aside,section,a,button,details,fieldset,label) { border-radius: 0; }
+.einstieg :where(textarea, select, input:not([type]), input:is([type=text], [type=email], [type=tel], [type=number], [type=search], [type=url], [type=password], [type=date])) {
+  border-radius: .625rem;
+}
+@media (forced-colors: none) {
+  .einstieg select:not([multiple], [size]) {
+    appearance: none;
+    padding-right: 2.75rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='m3 6 5 5 5-5' fill='none' stroke='%23155e89' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right .875rem center;
+    background-size: 1rem;
+  }
+}
+.einstieg .portal-inhalt img:not([src*="logo"]) { filter: grayscale(1); }
+.einstieg .leseseite > :is(article,section) { max-width: 49rem; margin-inline: 0; padding: .5rem 0 2rem; }
+.einstieg .leseseite > article > header { margin-bottom: 1.8rem; }
+.einstieg .leseseite header .whitespace-nowrap { white-space: normal; }
+.einstieg .leseseite header > :is(.rounded-full,.rubrikname), .einstieg .rubrikname {
+  display: inline-block; color: #555; background: transparent; border: 0;
+  padding: 0; margin: 0 0 .5rem; font-size: .9rem; font-weight: 600; text-transform: none; letter-spacing: 0;
+}
+.einstieg .leseseite header > .h-px { margin-top: 1rem; background: var(--tinte); }
+.einstieg .leseseite header > p { font-size: clamp(1.2rem,2vw,1.65rem); line-height: 1.4; }
+.einstieg .portal-inhalt .praxisverweis { margin-block: 2rem; padding-block: .9rem; border-block: 1px solid #c6c6c6; }
+.einstieg .praxisverweis a, .einstieg .artikelbezug { text-decoration: underline; }
+.einstieg .artikelbezug { display: inline-flex; align-items: center; min-height: 44px; margin-bottom: .5rem; }
+.einstieg .registergruppe { margin-top: 3rem; border-top: 2px solid; padding-top: 1rem; }
+.einstieg .registergruppe h2 { font-size: clamp(1.9rem,3.3vw,3rem); line-height: 1.05; }
+.einstieg .registergruppe ul { list-style: none; padding: 0; margin: 1rem 0 .5rem; }
+.einstieg .registergruppe li { border-top: 1px solid #ccc; }
+.einstieg .registergruppe li a { display: block; padding: 1rem 0; }
+.einstieg .registergruppe strong { display: block; font-size: 1.25rem; line-height: 1.2; }
+.einstieg .registergruppe li a:hover strong { text-decoration: underline; }
+.einstieg .registergruppe li span { display: block; max-width: 65ch; margin-top: .35rem; }
+.einstieg .registergruppe .rueckweg { margin-right: 1.5rem; }
+.einstieg .portal-inhalt .themen img { object-fit: cover; }
+.einstieg .praxisprofil > :is(header,section) { padding: clamp(1.25rem,3.5vw,3rem) 0; border-bottom: 1px solid #ccc; }
+.einstieg .praxisprofil > section > .max-w-7xl { padding-inline: 0; }
+.einstieg .praxisprofil #apply { margin-inline: 0; }
+.einstieg #gehaltsrechner { border-top: 4px solid #7fb719; padding: 1.5rem clamp(.6rem,2vw,2rem); }
+.einstieg .leseseite .aufmacher img { width: min(100%,35rem); height: clamp(12rem,29vw,21rem); }
+@media (min-width: 48rem) {
+  .einstieg .registergruppe ul { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); column-gap: 2rem; }
+}
+.einstieg .bildhinweis { color: #515151; font-size: .82rem; margin-top: .6rem; }
+.einstieg .handbuch .vorspann { margin-bottom: 1.6rem; }
+.einstieg .portal-inhalt a.text-white { color: white; }
+.einstieg .portal-inhalt .praxisverweis a:hover { text-decoration-thickness: 2px; }
+.einstieg:has(.stellenprofil) .abschluss { padding-bottom: 5rem; }
+.einstieg .portal-inhalt figure img { object-fit: cover; }
+@media (min-width: 48rem) {
+  .einstieg:has(.stellenprofil) .abschluss { padding-bottom: 1.75rem; }
+}
+.einstieg .handbuch header { margin-bottom: 1.4rem; }
+.einstieg .bildhinweis { color: #555; font-size: .82rem; margin-top: .65rem; }
+.einstieg .portal-inhalt a.text-white { color: white; }
+.einstieg .portal-inhalt #galerie { padding-top: 1.2rem; }
+.einstieg #raumtitel { margin-bottom: 1rem; font-size: clamp(1.65rem,2.6vw,2.7rem); }
+.einstieg .raumstrecke { gap: 1rem; }
+.einstieg .raumaufnahme { flex: 0 0 100%; min-width: 0; margin: 0; scroll-snap-align: center; }
+.einstieg .raumaufnahme img { width: 100%; height: auto; aspect-ratio: 4/3; object-fit: cover; filter: grayscale(1) contrast(1.12); }
+.einstieg .raumaufnahme figcaption { border-top: 1px solid #aaa; margin-top: .6rem; padding-top: .55rem; max-width: 60ch; }
+.einstieg .raumaufnahme strong { display: block; font-size: 1.1rem; color: var(--tinte); }
+@media (min-width: 48rem) {
+  .einstieg .raumstrecke { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); overflow: visible; gap: 1.5rem; align-items: start; }
+  .einstieg .raumaufnahme img { aspect-ratio: 1.55; }
+}
+.einstieg .praxisregister, .einstieg .praxiskanaele nav { display: flex; flex-wrap: wrap; gap: 0 1.25rem; }
+.einstieg .praxisregister a, .einstieg .praxiskanaele a, .einstieg .praxiskanaele summary { align-content: center; min-height: 44px; padding-block: .6rem; text-decoration: underline; }
+.einstieg .praxisregister { border-bottom: 1px solid #ccc; }
+.einstieg .handbuchfoto img { max-width: 36rem; aspect-ratio: 1.65; object-fit: cover; object-position: center 42%; }
+
+@media (38rem <= width <= 60rem) {
+  .bereiche #portal-menue:not([hidden]) { grid-template-columns:1.15fr .85fr 1fr; gap:1.2rem; }
+  .bereiche section + section { margin:0; padding:0; border:0; }
+}

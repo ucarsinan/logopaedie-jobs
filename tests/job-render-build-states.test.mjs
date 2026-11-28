@@ -14,7 +14,8 @@ import { publicationArtifacts } from '../src/lib/job-publication-artifacts.mjs';
 const execFileAsync = promisify(execFile);
 const root = fileURLToPath(new URL('..', import.meta.url));
 const routePath = 'jobs/logopaedin-sprachtherapeut-duisburg/index.html';
-const homePath = 'index.html';
+const practicePath = 'praxis/index.html';
+const contactPath = 'kontakt/index.html';
 const schoolsPath = 'schulen/index.html';
 const recordPath = 'src/content/jobs/logopaedin-sprachtherapeut-duisburg.json';
 const statusCopy = {
@@ -47,7 +48,7 @@ function visibleFaq(html) {
 }
 
 function visibleConditions(html) {
-  const match = html.match(/<section\b[^>]*\bid="stellenkonditionen"[^>]*>[\s\S]*?<\/section>/);
+  const match = html.match(/<section\b[^>]*\bid="praxisalltag"[^>]*>[\s\S]*?<\/section>/);
   assert.ok(match, 'Die reale ACTIVE-Seite muss einen sichtbaren Abschnitt mit Stellenkonditionen enthalten.');
   return match[0];
 }
@@ -77,9 +78,9 @@ test('the normal build renders every authorized production condition from the re
       maxBuffer: 10 * 1024 * 1024,
     });
 
-    const [html, homeHtml, schoolsHtml, source] = await Promise.all([
+    const [html, practiceHtml, schoolsHtml, source] = await Promise.all([
       readFile(join(temporaryRoot, 'dist/client', routePath), 'utf8'),
-      readFile(join(temporaryRoot, 'dist/client', homePath), 'utf8'),
+      readFile(join(temporaryRoot, 'dist/client', practicePath), 'utf8'),
       readFile(join(temporaryRoot, 'dist/client', schoolsPath), 'utf8'),
       readFile(join(temporaryRoot, recordPath), 'utf8'),
     ]);
@@ -128,16 +129,16 @@ test('the normal build renders every authorized production condition from the re
     assert.match(presentation.conditions.training, /Reise- und Übernachtungskosten.*nicht/);
     assert.match(presentation.conditions.onboarding, /schrittweise/);
 
-    for (const publicHtml of [homeHtml, schoolsHtml]) {
+    for (const publicHtml of [practiceHtml, schoolsHtml]) {
       assert.match(publicHtml, /ca\. 3\.840–4\.340 € brutto/);
       assert.match(publicHtml, /23–26 € brutto pro Stunde/);
       assert.doesNotMatch(publicHtml, /3\.840–4\.338 €|3\.840–4\.338 EUR/);
     }
 
-    const homeFaq = jsonLd(homeHtml).find((entry) => entry['@type'] === 'FAQPage');
-    assert.ok(homeFaq, 'Die Startseite muss ihr FAQ-Schema weiterhin ausgeben.');
-    const salaryFaq = homeFaq.mainEntity.find((entry) => entry.name === 'Wie hoch ist das Gehalt?');
-    assert.ok(salaryFaq, 'Das Startseiten-FAQ-Schema muss die Gehaltsfrage enthalten.');
+    const practiceFaq = jsonLd(practiceHtml).find((entry) => entry['@type'] === 'FAQPage');
+    assert.ok(practiceFaq, 'Die Praxisseite muss ihr FAQ-Schema weiterhin ausgeben.');
+    const salaryFaq = practiceFaq.mainEntity.find((entry) => entry.name === 'Wie hoch ist das Gehalt?');
+    assert.ok(salaryFaq, 'Das Praxis-FAQ-Schema muss die Gehaltsfrage enthalten.');
     assert.equal(
       salaryFaq.acceptedAnswer.text,
       'ca. 3.840–4.340 € brutto im Monat im rechnerischen Jahresmittel bei Vollzeit mit 38,5 Stunden, je nach Erfahrung. Die Grundlage sind 23–26 € brutto pro Stunde.',
@@ -170,10 +171,11 @@ test('real Astro builds enforce every publication state without mutating the pro
         maxBuffer: 10 * 1024 * 1024,
       });
 
-      const [html, homeHtml, schoolsHtml, sitemap] = await Promise.all([
+      const [html, practiceHtml, schoolsHtml, contactHtml, sitemap] = await Promise.all([
         readFile(join(temporaryRoot, 'dist/client', routePath), 'utf8'),
-        readFile(join(temporaryRoot, 'dist/client', homePath), 'utf8'),
+        readFile(join(temporaryRoot, 'dist/client', practicePath), 'utf8'),
         readFile(join(temporaryRoot, 'dist/client', schoolsPath), 'utf8'),
+        readFile(join(temporaryRoot, 'dist/client', contactPath), 'utf8'),
         readFile(join(temporaryRoot, 'dist/client/sitemap-0.xml'), 'utf8'),
       ]);
       const structuredData = jsonLd(html);
@@ -224,21 +226,23 @@ test('real Astro builds enforce every publication state without mutating the pro
         assert.doesNotMatch(renderedPage, /Therapieeinheiten dauern|Behandlungseinheiten|Tarifbindung|Tarifvertrag/);
         assert.doesNotMatch(renderedPage, /30, 45 oder 60 Minuten/);
         assert.doesNotMatch(renderedPage, /flexiblem Stundenumfang|flexibel individuell vereinbart/);
-        assert.match(homeHtml, /ca\. 3\.840–4\.340 € brutto/);
+        assert.match(practiceHtml, /ca\. 3\.840–4\.340 € brutto/);
         assert.match(schoolsHtml, /ca\. 3\.840–4\.340 € brutto/);
-        assert.match(homeHtml, /Logopädin gesucht/);
-        assert.match(homeHtml, /Wir suchen Logopäd:innen/);
+        assert.match(contactHtml, /id="bewerbung-form"/);
+        assert.match(practiceHtml, /Wir suchen mehrere/);
       } else {
         assert.match(html, /<meta name="robots" content="noindex, follow">/);
         assert.equal(jobPostings.length, 0);
         assert.equal(faqPages.length, 0);
         assert.doesNotMatch(html, /id="bewerbung-form"/);
+        assert.doesNotMatch(contactHtml, /id="bewerbung-form"|Offene Stellen/);
+        assert.match(contactHtml, new RegExp(statusCopy[status]));
         assert.equal(sitemapContainsJob, false);
         assert.match(html, new RegExp(statusCopy[status]));
-        assert.doesNotMatch(homeHtml, /23–26 €|3\.840–4\.340 €/);
+        assert.doesNotMatch(practiceHtml, /23–26 €|3\.840–4\.340 €/);
         assert.doesNotMatch(schoolsHtml, /23–26 €|3\.840–4\.340 €/);
-        assert.doesNotMatch(homeHtml, /Logopädin gesucht|Wir suchen Logopäd:innen|Wir suchen mehrere/);
-        assert.match(homeHtml, /Karriereinformationen der Praxis für Logopädie Şimşek/);
+        assert.doesNotMatch(practiceHtml, /Logopädin gesucht|Wir suchen Logopäd:innen|Wir suchen mehrere/);
+        assert.match(practiceHtml, /Karriereinformationen der Praxis für Logopädie Şimşek/);
       }
     }
   } finally {

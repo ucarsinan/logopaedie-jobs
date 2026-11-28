@@ -1,6 +1,9 @@
 ---
 title: "Logopädie Ausbildung Quereinsteiger NRW — Wege 2026"
 description: "Logopädie-Ausbildung und Quereinstieg in NRW: dreijährige Ausbildung, Schulgeldfreiheit, Bachelor in Bochum und der Unterschied zwischen Berufserlaubnis und Praxiszulassung."
+heroImage: "/bilder/berufseinstieg/ausbildung.webp"
+heroImageAlt: "Zwei Lernende betrachten gemeinsam ein Kehlkopfmodell."
+heroImageCaption: "Anatomieunterricht am Kehlkopfmodell · KI-Illustration"
 kategorie: "Karriere"
 topic: "karriere-bewerbung"
 intent: "bewerbung"

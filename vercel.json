@@ -1,6 +1,51 @@
 {
   "redirects": [
     {
+      "source": "/_astro/praxis-bild-1.:variant(dPuSCGZj_2rwjK3|dPuSCGZj_B4wWD|dPuSCGZj_GoR3N|dPuSCGZj_Z14tbnn|dPuSCGZj_Z1DErsc|dPuSCGZj_Z28ECKx|dPuSCGZj_ZCn8Dh|dPuSCGZj_Zhvsuu).webp",
+      "destination": "/praxis-bild-1.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/_astro/praxis-bild-2.:variant(B55VjYEq_1iiHV8|B55VjYEq_I7rQj|B55VjYEq_ZfRTJn|B55VjYEq_e7gxX).webp",
+      "destination": "/praxis-bild-2.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/_astro/praxis-bild-3.:variant(BtVFLtx8_2rHTJf|BtVFLtx8_Z14hAob|BtVFLtx8_Z1DsQt0|BtVFLtx8_Z28t2Ll).webp",
+      "destination": "/praxis-bild-3.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/_astro/team-group-editorial-draft.:variant(UaPGfC8k_OcSuA|UaPGfC8k_Z23VW5J|UaPGfC8k_Z24CqPv|UaPGfC8k_Z2bYoyy|UaPGfC8k_ZJxvQb|UaPGfC8k_xnnSR).webp",
+      "destination": "/bilder/archiv/team-group-editorial-draft.webp",
+      "permanent": true
+    },
+    {
+      "source": "/_astro/team-specialties-editorial-draft.:variant(BtGO8a_j_1Metv2|BtGO8a_j_1YXgOc|BtGO8a_j_Z21M31F|BtGO8a_j_Z287UI0).webp",
+      "destination": "/bilder/archiv/team-specialties-editorial-draft.webp",
+      "permanent": true
+    },
+    {
+      "source": "/datenschutz.html",
+      "destination": "/datenschutz/",
+      "permanent": true
+    },
+    {
+      "source": "/impressum.html",
+      "destination": "/impressum/",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap-jobs.xml",
+      "destination": "/sitemap-index.xml",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap-index.xml",
+      "permanent": true
+    },
+    {
       "source": "/index.html",
       "destination": "/",
       "permanent": true
@@ -123,6 +168,36 @@
     {
       "source": "/ratgeber/",
       "destination": "/berufshandbuch/",
+      "permanent": true
+    },
+    {
+      "source": "/ratgeber/gehalt",
+      "destination": "/berufshandbuch/gehalt-logopaedie-nrw/",
+      "permanent": true
+    },
+    {
+      "source": "/ratgeber/gehalt/",
+      "destination": "/berufshandbuch/gehalt-logopaedie-nrw/",
+      "permanent": true
+    },
+    {
+      "source": "/ratgeber/bilingual",
+      "destination": "/berufshandbuch/bilinguale-sprachtherapie/",
+      "permanent": true
+    },
+    {
+      "source": "/ratgeber/bilingual/",
+      "destination": "/berufshandbuch/bilinguale-sprachtherapie/",
+      "permanent": true
+    },
+    {
+      "source": "/ratgeber/4-tage-woche",
+      "destination": "/berufshandbuch/4-tage-woche-logopaedie/",
+      "permanent": true
+    },
+    {
+      "source": "/ratgeber/4-tage-woche/",
+      "destination": "/berufshandbuch/4-tage-woche-logopaedie/",
       "permanent": true
     },
     {

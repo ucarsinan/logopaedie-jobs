@@ -1,0 +1,77 @@
+/* Praxisporträt im gemeinsamen V8-Seitenrahmen. */
+.einstieg .praxisprofil { --leseblau: #155e89; --linie: #c6cacb; }
+.einstieg .praxisprofil > section { padding-block: clamp(1.8rem, 4vw, 4.3rem); border-bottom: 1px solid var(--linie); }
+.praxisprofil [id] { scroll-margin-top: 4.5rem; }
+.einstieg .praxis-auftakt header { padding: 0; }
+.einstieg .praxis-auftakt .praxis-signatur { margin-bottom: .8rem; }
+.einstieg .praxisprofil .praxis-auftakt h1 { margin: 0 0 .45em; font-size: clamp(2rem, 5vw, 4.5rem); }
+.praxis-auftakt h1 span { color: var(--leseblau); }
+.praxis-auftakt .vorspann { max-width: 51ch; }
+.praxis-aufmacher { display: grid; gap: 1.2rem; margin-top: clamp(1.3rem, 3vw, 2.5rem); }
+.einstieg .praxis-aufmacher figure { margin: 0; min-width: 0; }
+.einstieg .praxis-titelbild img { width: 100%; aspect-ratio: 1.7; object-fit: cover; object-position: 65% 58%; filter: grayscale(1) contrast(1.07); }
+.einstieg .praxis-titelbild figcaption { margin-top: .5rem; font-size: .85rem; }
+.einstieg .praxis-zitat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1.2rem, 2.4vw, 2.6rem);
+  background: #f0f5f7;
+  border-top: .25rem solid var(--blau);
+}
+.einstieg .praxis-zitat blockquote {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: clamp(1.45rem, 2.4vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.14;
+  letter-spacing: -.035em;
+  text-wrap: pretty;
+}
+.einstieg .praxis-zitat figcaption { margin-top: 1.3rem; color: #42494c; font-size: .9rem; }
+.praxis-zitat figcaption strong { display: block; color: var(--leseblau); }
+.einstieg .praxisregister { gap: .15rem 1.5rem; margin-top: 1.25rem; border-top: 1px solid var(--linie); padding-block: .45rem; }
+.einstieg .praxisregister a { display: inline-flex; gap: .4rem; align-items: center; font-weight: 650; color: var(--leseblau); text-decoration: none; }
+.praxisregister svg { width: 1.1rem; height: 1.1rem; flex: none; fill: none; stroke: currentColor; stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 39.99rem) {
+  .einstieg .praxisregister { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 0 .35rem; }
+  .einstieg .praxisregister a { font-size: .88rem; }
+}
+@media (max-width: 22rem) {
+  .einstieg .praxisregister { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+.einstieg .praxisregister a:hover { text-decoration: underline; }
+.einstieg .praxis-kapitel h2, .einstieg .praxisprofil #raumtitel { margin: 0 0 .55em; font-size: clamp(1.8rem,3.5vw,3.7rem); line-height: 1.05; }
+.praxis-kapitel > p, .praxis-frage p { max-width: 64ch; }
+.praxis-textpaar { display: grid; gap: .8rem 2.3rem; max-width: 64rem; }
+.praxis-zahlen, .praxis-fachgebiete { display: grid; margin-top: 1.4rem; }
+.praxis-zahlen > div { display: flex; align-items: baseline; gap: 1rem; border-top: 1px solid var(--linie); padding: .65rem 0; }
+.praxis-zahlen dt { font-size: .95rem; line-height: 1.3; }
+.praxis-zahlen dd { order: -1; min-width: 2.5em; color: var(--leseblau); font-size: clamp(2rem, 3.4vw, 3.5rem); font-weight: 600; letter-spacing: -.045em; line-height: 1.15; }
+.praxis-notiz { margin-top: 1.2rem; }
+.praxis-fachgebiete { gap: 0 2.3rem; }
+.praxis-fachgebiete > div { border-top: 1px solid var(--linie); padding: .85rem 0; }
+.praxis-fachgebiete dt { margin-bottom: .2rem; font-size: 1.25rem; font-weight: 700; }
+.praxisprofil .praxis-textlink, .praxis-karte a { display: inline-flex; align-items: center; min-height: 44px; gap: .5em; color: var(--leseblau); text-decoration: underline; font-weight: 600; }
+.praxis-stellenwege { display: flex; flex-wrap: wrap; gap: 0 1.5rem; margin-top: .8rem; }
+.praxis-frage { border-bottom: 1px solid var(--linie); }
+.praxis-frage summary { display: list-item; min-height: 44px; padding: .85rem 0; font-weight: 600; }
+.praxis-frage summary::marker { color: var(--leseblau); }
+.praxis-frage > div { padding-bottom: 1rem; }
+.praxis-karte { margin-top: 1rem; padding: 1rem; background: #f2f5f6; }
+.praxis-karte [data-map-load] { background: var(--leseblau); min-height: 44px; margin: .65rem .85rem .65rem 0; }
+@media (min-width: 40rem) {
+  .praxis-auftakt header { display: grid; grid-template-columns: minmax(0, 1fr) minmax(11rem, 27%); align-items: center; gap: 1.25rem 1rem; }
+  .einstieg .praxis-auftakt .praxis-signatur { grid-area: 1 / 2; justify-self: end; margin: 0; }
+  .einstieg .praxisprofil .praxis-auftakt h1 { grid-area: 1 / 1; margin: 0; }
+  .praxis-auftakt .vorspann { grid-column: 1 / -1; }
+  .praxis-zahlen { grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1.3rem; }
+  .praxis-zahlen > div { flex-direction: column; gap: .3rem; }
+  .praxis-fachgebiete, .praxis-textpaar { grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+@media (min-width: 48rem) {
+  .praxis-aufmacher { grid-template-columns: 1.1fr 1fr; gap: 1.1rem; align-items: stretch; }
+  .praxis-titelbild { display: grid; grid-template-rows: 1fr auto; }
+  .einstieg .praxis-titelbild img { height: 100%; min-height: 15rem; }
+}

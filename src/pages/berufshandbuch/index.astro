@@ -1,12 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import Layout from '../../layouts/Layout.astro';
-import Navigation from '../../components/Navigation.astro';
-import Footer from '../../components/Footer.astro';
-import TopicCard from '../../components/TopicCard.astro';
-import IntentEntry from '../../components/IntentEntry.astro';
-import ToolCallout from '../../components/ToolCallout.astro';
-import ArticleCluster from '../../components/ArticleCluster.astro';
+import Fachportal from '../../layouts/Fachportal.astro';
 
 const beitraege = (await getCollection('ratgeber', ({ data }) => !data.draft)).sort((a, b) => {
   if (a.data.topic !== b.data.topic) return a.data.topic.localeCompare(b.data.topic);
@@ -18,95 +12,52 @@ const topics = [
   {
     id: 'karriere-bewerbung',
     title: 'Karriere & Bewerbung',
-    kicker: 'Berufseinstieg',
+    image: '/bilder/berufshandbuch/bewerbung.webp',
     description: 'Bewerbung, Quereinstieg, Anerkennung, Praxiswechsel und Stellenwahl konkret einordnen.',
-    href: '#karriere-bewerbung',
-    accent: 'green',
   },
   {
     id: 'gehalt-arbeitsmodelle',
     title: 'Gehalt & Arbeitsmodelle',
-    kicker: 'Verhandlung',
+    image: '/bilder/berufshandbuch/arbeitsmodell.webp',
     description: 'Gehalt in NRW, Teilzeit, 4-Tage-Woche und Arbeitszeitmodelle realistisch bewerten.',
-    href: '#gehalt-arbeitsmodelle',
-    accent: 'blue',
   },
   {
     id: 'fachwissen-spezialisierung',
     title: 'Fachwissen & Spezialisierung',
-    kicker: 'Entwicklung',
-    description: 'Fachliche Schwerpunkte wie Stottern, Mehrsprachigkeit und Therapieprofile beruflich nutzen.',
-    href: '#fachwissen-spezialisierung',
-    accent: 'violet',
+    image: '/bilder/berufshandbuch/spezialisierung.webp',
+    description: 'Frühe Sprachentwicklung, Bildschirmmedien, Mehrsprachigkeit und Stottern im Praxisalltag.',
   },
   {
     id: 'praxisalltag-region',
     title: 'Praxisalltag & Region',
-    kicker: 'Arbeitsrealität',
+    image: '/bilder/berufshandbuch/region.webp',
     description: 'Freie Praxis, Klinik, Duisburg, Ruhrgebiet und Teamkultur aus Berufsperspektive verstehen.',
-    href: '#praxisalltag-region',
-    accent: 'amber',
   },
 ] as const;
 
 type TopicId = typeof topics[number]['id'];
 
-const groupedArticles = Object.fromEntries(
-  topics.map((topic) => [
-    topic.id,
-    beitraege.filter((article) => article.data.topic === topic.id),
-  ])
-) as Record<TopicId, typeof beitraege>;
+type ArticleGroup = { id?: string; title?: string; articles: typeof beitraege };
+const groupedArticles = Object.fromEntries(topics.map(topic => {
+  const articles = beitraege.filter(article => article.data.topic === topic.id);
+  const groups: ArticleGroup[] = topic.id === 'fachwissen-spezialisierung'
+    ? [
+        { id: 'fruehe-sprache', title: 'Frühe Sprache und Bildschirmmedien', articles: articles.filter(article => article.data.series === 'fruehe-sprache') },
+        { title: 'Weitere Fachthemen', articles: articles.filter(article => !article.data.series) },
+      ]
+    : [{ articles }];
+  return [topic.id, groups];
+})) as Record<TopicId, ArticleGroup[]>;
 
-const featuredArticles = beitraege
-  .filter((article) => article.data.featured)
-  .sort((a, b) => a.data.priority - b.data.priority)
-  .slice(0, 6);
-
-const latestArticles = [...beitraege]
-  .sort((a, b) => (b.data.updatedDate ?? b.data.pubDate).getTime() - (a.data.updatedDate ?? a.data.pubDate).getTime())
-  .slice(0, 4);
-
-const intentEntries = [
-  {
-    question: 'Was ist mein Gehalt als Logopädin in NRW realistisch wert?',
-    answer: 'Ordne amtliche Gehaltsdaten ein und rechne ein konkretes Angebot anhand von Stundenlohn und Wochenstunden um.',
-    href: '/berufshandbuch/gehalt-logopaedie-nrw/',
-    label: 'Gehalt',
-    accent: 'blue',
-  },
-  {
-    question: 'Wie bewerbe ich mich schnell und trotzdem professionell?',
-    answer: 'Kläre Unterlagen, Anschreiben, E-Mail-Erstkontakt und Vorstellungsgespräch ohne unnötige Hürden.',
-    href: '/berufshandbuch/bewerbung-logopaedie-tipps/',
-    label: 'Bewerbung',
-    accent: 'green',
-  },
-  {
-    question: 'Welche Arbeitszeit passt zu meiner Lebensphase?',
-    answer: 'Vergleiche Teilzeit, 4-Tage-Woche und flexible Modelle mit Blick auf Praxisorganisation und Gehalt.',
-    href: '/berufshandbuch/teilzeit-modelle/',
-    label: 'Arbeitszeit',
-    accent: 'amber',
-  },
-  {
-    question: 'Welche Spezialisierung stärkt meine fachliche Position?',
-    answer: 'Ordne Stottertherapie, bilinguale Therapie und Fortbildungen beruflich und strategisch ein.',
-    href: '/berufshandbuch/stottertherapie-spezialisierung/',
-    label: 'Fachwissen',
-    accent: 'violet',
-  },
-] as const;
 ---
 
-<Layout
+<Fachportal active="wissen" trail={[
+  { name: 'Startseite', href: '/' },
+  { name: 'Berufshandbuch', href: Astro.url.pathname }
+]}
   title="Logopädie-Berufshandbuch — Karriere, Gehalt, Fachwissen | Logopädiejobs.de"
   description="Das Berufshandbuch für Logopädinnen und Sprachtherapeuten: Karriere, Gehalt, Bewerbung, Arbeitszeit, Fachwissen und Praxisalltag in NRW."
   canonicalUrl="https://xn--logopdiejobs-kcb.de/berufshandbuch/"
-  breadcrumbs={[
-    { name: 'Startseite', url: 'https://xn--logopdiejobs-kcb.de/' },
-    { name: 'Berufshandbuch', url: 'https://xn--logopdiejobs-kcb.de/berufshandbuch/' },
-  ]}
 >
   <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify({
     '@context': 'https://schema.org',
@@ -134,140 +85,33 @@ const intentEntries = [
     })),
   })} />
 
-  <Navigation />
+  <div class="portal-inhalt handbuch">
+    <header>
+      <h1>Berufs&shy;handbuch</h1>
+      <p class="vorspann">Welche Frage beschäftigt dich gerade?</p>
+    </header>
+    <ul class="themen" id="einstiege" aria-label="Themen im Berufshandbuch">
+      {topics.map(topic => <li><a href={`#${topic.id}`}>
+        <img src={topic.image} alt="" width="160" height="160" />
+        <div><h2>{topic.title} <span aria-hidden="true">↓</span></h2><p>{topic.description}</p></div>
+      </a></li>)}
+    </ul>
+    <p class="bildhinweis">Die vier Themenbilder sind KI-Illustrationen.</p>
+    {topics.map(topic => <section id={topic.id} class="registergruppe">
+      <h2>{topic.title}</h2>
+      {groupedArticles[topic.id].map(group => <div>
+        {group.title && <h3 id={group.id} class="register-untertitel">{group.title}</h3>}
+        <ul>{group.articles.map(article => <li>
+          <a href={`/berufshandbuch/${article.id}/`}><strong>{article.data.title}</strong>
+          <span>{article.data.description}</span></a>
+        </li>)}</ul>
+      </div>)}
+      {topic.id === 'gehalt-arbeitsmodelle' && <a class="rueckweg" href="/gehaltsrechner/">Zum Gehaltsrechner →</a>}
+      <a class="rueckweg" href="#einstiege">Zur Themenauswahl ↑</a>
+    </section>)}
+  </div>
+</Fachportal>
 
-  <main id="main-content" tabindex="-1">
-    <section class="bg-slate-950 text-white">
-      <div class="mx-auto grid max-w-7xl gap-10 px-6 py-16 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:py-24">
-        <header class="min-w-0 max-w-3xl">
-          <p class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-simsek-green">
-            Berufliche Orientierung
-          </p>
-          <h1 class="mt-6 text-4xl font-semibold leading-tight tracking-normal text-white md:text-6xl">
-            Logopädie-Berufshandbuch
-          </h1>
-          <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-            Karriere, Gehalt, Bewerbung, Arbeitszeit und Fachthemen für Logopädinnen, Logopäden und Sprachtherapeutinnen. Herausgegeben von der Praxis für Logopädie Şimşek. Sachangaben werden mit verlinkten Originalquellen eingeordnet; Praxisangebote sind als solche erkennbar.
-          </p>
-          <div class="mt-8 flex flex-wrap gap-3">
-            <a href="#einstiege" class="inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 text-sm font-bold text-slate-950 no-underline transition-colors duration-150 hover:bg-slate-100">
-              Thema finden
-              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M19 9l-7 7-7-7" />
-              </svg>
-            </a>
-            <a href="/gehaltsrechner/" class="inline-flex items-center gap-2 rounded-lg border border-white/15 px-5 py-3 text-sm font-bold text-white no-underline transition-colors duration-150 hover:bg-white/10">
-              Gehaltsrechner öffnen
-            </a>
-          </div>
-        </header>
-
-        <aside class="min-w-0 rounded-lg border border-white/10 bg-white/[0.04] p-5 md:p-6">
-          <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400">Schnellzugriff</p>
-          <div class="mt-5 grid gap-3">
-            {featuredArticles.slice(0, 4).map((article) => (
-              <a href={`/berufshandbuch/${article.id}/`} class="rounded-lg border border-white/10 bg-white/[0.04] p-4 no-underline transition-colors duration-150 hover:bg-white/[0.08]">
-                <span class="text-[10px] font-bold uppercase tracking-widest text-simsek-green">{article.data.kategorie}</span>
-                <span class="mt-2 block break-words text-sm font-bold leading-snug text-white">{article.data.title}</span>
-              </a>
-            ))}
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section id="einstiege" class="bg-slate-50">
-      <div class="mx-auto max-w-7xl px-6 py-14 md:py-18">
-        <div class="mb-8 max-w-2xl">
-          <p class="text-[11px] font-bold uppercase tracking-widest text-slate-600">Geführte Einstiege</p>
-          <h2 class="mt-2 text-3xl font-semibold text-slate-950">Was möchtest du beruflich klären?</h2>
-        </div>
-        <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {intentEntries.map((entry) => <IntentEntry {...entry} />)}
-        </div>
-      </div>
-    </section>
-
-    <section class="mx-auto max-w-7xl px-6 py-14 md:py-18">
-      <div class="mb-8 flex flex-col justify-between gap-5 md:flex-row md:items-end">
-        <div class="max-w-2xl">
-          <p class="text-[11px] font-bold uppercase tracking-widest text-slate-600">Themenwelten</p>
-          <h2 class="mt-2 text-3xl font-semibold text-slate-950">Das Berufshandbuch nach beruflichen Fragen</h2>
-          <p class="mt-3 text-base leading-7 text-slate-600">
-            Die Themenbereiche bündeln zusammengehörige Artikel. Quellen und Aktualisierungsstand findest du in den Beiträgen.
-          </p>
-        </div>
-        <p class="text-sm font-semibold text-slate-500">{beitraege.length} veröffentlichte Artikel</p>
-      </div>
-
-      <div class="grid gap-5 lg:grid-cols-2">
-        {topics.map((topic) => <TopicCard topic={topic} articles={groupedArticles[topic.id]} />)}
-      </div>
-    </section>
-
-    <section class="bg-slate-50">
-      <div class="mx-auto grid max-w-7xl gap-5 px-6 py-14 md:grid-cols-3 md:py-18">
-        <ToolCallout
-          kicker="Tool"
-          title="Gehalt konkret einschätzen"
-          description="Rechne einen vereinbarten Bruttostundenlohn mit deinen Wochenstunden in Monats- und Jahreswerte um."
-          href="/gehaltsrechner/"
-          label="Zum Gehaltsrechner"
-        />
-        <ToolCallout
-          kicker="Stelle"
-          title="Logopädie-Job in Duisburg"
-          description="Aktuelle Stellen in zentraler Lage: Vier-Tage-Woche möglich, Fortbildungen finanziell und zeitlich unterstützt."
-          href="/jobs/logopaedin-sprachtherapeut-duisburg/"
-          label="Aktuelle Stellen ansehen"
-          variant="dark"
-        />
-        <ToolCallout
-          kicker="Kontakt"
-          title="Ohne Anschreiben starten"
-          description="Für den ersten Kontakt genügen dein Name und eine Rückkontaktmöglichkeit. Ein Lebenslauf ist freiwillig."
-          href="/kontakt/"
-          label="Unverbindlich Kontakt aufnehmen"
-        />
-      </div>
-    </section>
-
-    <section class="mx-auto max-w-7xl px-6 py-14 md:py-18">
-      <div class="mb-10 max-w-2xl">
-        <p class="text-[11px] font-bold uppercase tracking-widest text-slate-600">Alle Artikel</p>
-        <h2 class="mt-2 text-3xl font-semibold text-slate-950">Nach Themenwelt sortiert</h2>
-      </div>
-
-      <div class="space-y-12">
-        {topics.map((topic) => (
-          <ArticleCluster
-            id={topic.id}
-            title={topic.title}
-            description={topic.description}
-            articles={groupedArticles[topic.id]}
-          />
-        ))}
-      </div>
-    </section>
-
-    <section class="border-t border-slate-200 bg-white">
-      <div class="mx-auto max-w-7xl px-6 py-12">
-        <div class="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
-          <div>
-            <p class="text-[11px] font-bold uppercase tracking-widest text-slate-600">Neu im Berufshandbuch</p>
-            <h2 class="mt-2 text-2xl font-semibold text-slate-950">Aktuelle Beiträge</h2>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            {latestArticles.map((article) => (
-              <a href={`/berufshandbuch/${article.id}/`} class="rounded-lg border border-slate-200 px-3 py-2 text-xs font-bold text-slate-600 no-underline hover:border-simsek-green/40 hover:text-simsek-green">
-                {article.data.title}
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <Footer />
-</Layout>
+<style>
+  .register-untertitel { margin-block: 1.4rem .55rem; font-size: 1.25rem; scroll-margin-top: 5rem; }
+</style>

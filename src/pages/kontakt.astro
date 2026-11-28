@@ -1,14 +1,20 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navigation from '../components/Navigation.astro';
-import Footer from '../components/Footer.astro';
+import { currentJob } from '../lib/current-job.mjs';
+import Fachportal from '../layouts/Fachportal.astro';
 import ApplicationContact from '../components/ApplicationContact.astro';
 ---
 
-<Layout title="Unverbindlich kennenlernen | Praxis für Logopädie Şimşek" description="Lerne die Praxis für Logopädie Şimşek unverbindlich kennen. Wähle dein Anliegen und hinterlasse uns deine Kontaktdaten – ohne Anschreiben.">
-  <Navigation />
-  <main id="main-content" tabindex="-1">
-    <ApplicationContact standalone />
-  </main>
-  <Footer />
-</Layout>
+<Fachportal trail={[
+  { name: 'Startseite', href: '/' },
+  { name: 'Kontakt', href: Astro.url.pathname }
+]} title="Unverbindlich kennenlernen | Praxis für Logopädie Şimşek" description={currentJob.showApplication ? "Lerne die Praxis für Logopädie Şimşek unverbindlich kennen. Wähle dein Anliegen und hinterlasse uns deine Kontaktdaten – ohne Anschreiben." : currentJob.presentation.pageDescription}>
+  <div class="portal-inhalt kontaktseite">
+    {currentJob.showApplication ? <ApplicationContact standalone /> : (
+      <section class="job-section" id="bewerbung">
+        <h1>Kontakt zur Praxis</h1>
+        <p>{currentJob.presentation.statusMessage}</p>
+        <p><a href="/praxis/#standort">Standort und allgemeiner Praxiskontakt</a></p>
+      </section>
+    )}
+  </div>
+</Fachportal>

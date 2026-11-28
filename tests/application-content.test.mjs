@@ -4,7 +4,7 @@ import test from 'node:test';
 
 const CONTACT_PATH = new URL('../src/components/ApplicationContact.astro', import.meta.url);
 const ALTERNATIVES_PATH = new URL('../src/components/ContactAlternatives.astro', import.meta.url);
-const ABOUT_PATH = new URL('../src/components/About.astro', import.meta.url);
+const REQUIREMENTS_PATH = new URL('../src/components/Anforderungen.astro', import.meta.url);
 const TASKS_PATH = new URL('../src/components/Aufgaben.astro', import.meta.url);
 const HERO_PATH = new URL('../src/components/Hero.astro', import.meta.url);
 const QUICK_APPLY_PATH = new URL('../src/components/QuickApply.astro', import.meta.url);
@@ -18,20 +18,20 @@ const RESERVED_API_ENDPOINT_PATH = new URL('../src/pages/api/bewerbung/index.ts'
 
 const CONTACT_ANSWER = 'Über das kurze Formular auf unserer Kontaktseite auf LogopädieJobs.de, über WhatsApp, telefonisch unter +49 155 10062296, per E-Mail an social@logopaedie-simsek.de oder per Post an die Tonhallenstraße 21, 47051 Duisburg. Ein Lebenslauf ist freiwillig.';
 
-test('the complete green application card links to the central form', async () => {
-  const about = await readFile(ABOUT_PATH, 'utf8');
-
-  assert.match(about, /<a[\s\S]*?href="\/kontakt\/"[\s\S]*?aria-label="Jetzt unverbindlich Kontakt aufnehmen"[\s\S]*?>[\s\S]*?Dabei\?[\s\S]*?Kennenlernen[\s\S]*?<\/a>/);
-  assert.doesNotMatch(about, /<a href="\/#apply"/);
+test('the practice profile links to the central form and the job details', async () => {
+  const section = await readFile(REQUIREMENTS_PATH, 'utf8');
+  assert.match(section, /id="apply"/);
+  assert.match(section, /href="\/kontakt\/"/);
+  assert.match(section, /href="\/jobs\/logopaedin-sprachtherapeut-duisburg\/"/);
 });
 
-test('specialty cards use compact mobile headers and retain their desktop spacing', async () => {
+test('the practice profile explains the four specialties and links to bilingual therapy', async () => {
   const tasks = await readFile(TASKS_PATH, 'utf8');
-
-  assert.equal((tasks.match(/p-5 sm:p-8/g) ?? []).length, 4);
-  assert.equal((tasks.match(/flex items-center gap-4 mb-4 sm:block sm:mb-0/g) ?? []).length, 4);
-  assert.equal((tasks.match(/w-10 h-10 sm:w-12 sm:h-12/g) ?? []).length, 4);
-  assert.equal((tasks.match(/w-5 h-5 sm:w-6 sm:h-6/g) ?? []).length, 4);
+  for (const field of ['Kindersprache', 'Neurologie', 'Redefluss', 'Beratung']) {
+    assert.ok(tasks.includes(field));
+  }
+  assert.match(tasks, /<dl class="praxis-fachgebiete">/);
+  assert.match(tasks, /href="\/berufshandbuch\/bilinguale-sprachtherapie\/"/);
 });
 
 test('all recruiting contact surfaces use the shared WhatsApp CTA without color overrides', async () => {
@@ -64,11 +64,13 @@ test('form errors do not draw a ring around the direct contact alternatives', as
   assert.doesNotMatch(contact, /showStatus\([^\n]*, true\)/);
 });
 
-test('shared alternatives stay before the embedded form and after the standalone form', async () => {
-  const contact = await readFile(CONTACT_PATH, 'utf8');
-  const form = contact.indexOf('<form id="bewerbung-form"');
-  assert.ok(contact.indexOf('{!standalone && <ContactAlternatives />}') < form);
-  assert.ok(contact.indexOf('{standalone && <ContactAlternatives />}') > form);
+test('both contact routes render the same form with alternatives after it', async () => {
+  const [component, standalone, job] = await Promise.all(
+    [CONTACT_PATH, new URL('../src/pages/kontakt.astro', import.meta.url), JOB_DETAIL_PATH].map(path => readFile(path, 'utf8')),
+  );
+  assert.match(standalone, /<ApplicationContact standalone \/>/);
+  assert.match(job, /<ApplicationContact \/>/);
+  assert.match(component, /<form id="bewerbung-form"[\s\S]*?<\/form>[\s\S]*?<ContactAlternatives \/>/);
 });
 
 test('direct phone and email links are full-width and retain their decorative icons', async () => {
@@ -136,7 +138,8 @@ test('the job landing makes qualification and salary conditions explicit', async
   assert.match(hero, /brutto\/Monat im Jahresmittel · je nach Erfahrung/);
   assert.doesNotMatch(hero, /auf Cent gerundet/);
   assert.match(hero, /Grundlage: \{presentation\.active\.hourlySalaryLabel\} brutto pro Stunde/);
-  assert.match(qualification, /staatlich anerkannt und zugelassen/);
+  assert.match(qualification, /staatlich anerkannten Abschluss/);
+  assert.match(qualification, /keine eigene Praxiszulassung/);
   assert.match(qualification, /sehr gute Deutschkenntnisse/);
   assert.match(qualification, /Berufserfahrung ist keine Voraussetzung/);
   assert.match(qualification, /href="\/schulen\/"/);
@@ -145,7 +148,7 @@ test('the job landing makes qualification and salary conditions explicit', async
 test('the production landing retains native metadata without preview blockers or build hashes', async () => {
   const detail = await readFile(JOB_DETAIL_PATH, 'utf8');
 
-  assert.match(detail, /<Layout\b/);
+  assert.match(detail, /<Fachportal\b/);
   assert.match(detail, /jobPosting && <script[^>]+set:html=\{JSON\.stringify\(jobPosting\)\}/);
   assert.match(detail, /faqPage && <script[^>]+set:html=\{JSON\.stringify\(faqPage\)\}/);
   assert.match(detail, /robots=\{robots\}/);
@@ -156,17 +159,12 @@ test('the production landing retains native metadata without preview blockers or
   assert.doesNotMatch(detail, /(?:src|href|srcset)="\/_astro\//);
 });
 
-test('the everyday section presents six labeled employment facts with expandable details', async () => {
+test('the everyday section renders validated conditions alongside leave and practical details', async () => {
   const detail = await readFile(JOB_DETAIL_PATH, 'utf8');
   const everyday = detail.match(/<section\b[^>]*id="praxisalltag"[\s\S]*?<\/section>/)?.[0] ?? '';
-  const facts = everyday.match(/<dl class="short-facts">([\s\S]*?)<\/dl>/)?.[1] ?? '';
-  const labels = [...facts.matchAll(/<dt\b[^>]*>[\s\S]*?<span>([^<]+)<\/span><\/dt>/g)].map(match => match[1]);
-
-  assert.deepEqual(labels, ['Arbeitsmodell', 'Vertrag', 'Urlaub', 'Fortbildung', 'Eigenständig planen', 'Zeit für deine Arbeit']);
-  assert.equal((facts.match(/<dd>/g) ?? []).length, 6);
-  assert.match(facts, /30 Tage bei fünf Arbeitstagen, bei weniger Arbeitstagen anteilig/);
-  assert.match(facts, /\{presentation\.conditions\.training\}/);
-  assert.match(facts, /\{presentation\.conditions\.documentation\}/);
+  assert.match(everyday, /presentation\.conditionItems\.map/);
+  assert.match(everyday, /30 Tage bei fünf Arbeitstagen, bei weniger Arbeitstagen anteilig/);
+  assert.match(everyday, /Mit iPrax legst du Termine, Pausen und Puffer selbst fest/);
   assert.match(everyday, /<details class="short-full-details"><summary>Alle Details zu Arbeitsalltag und Ausstattung<\/summary>/);
 });
 
@@ -175,7 +173,7 @@ test('the team section explains onboarding and keeps individual specialties acce
   const team = detail.match(/<section\b[^>]*id="team"[\s\S]*?<\/section>/)?.[0] ?? '';
 
   assert.match(team, /<h2\b[^>]*id="team-heading"[^>]*>Lerne Emel und unser Team kennen\.<\/h2>/);
-  assert.match(team, /\{presentation\.conditions\.onboarding\}/);
+  assert.match(team, /Strukturierte Einarbeitung/);
   assert.match(team, /<details class="short-team-details"><summary>Team und fachliche Schwerpunkte<\/summary>/);
   for (const name of ['Mara Nießalla', 'Şeyma Bozoğlan', 'Kristina Imping', 'Emel Şimşek-Uçar']) assert.ok(team.includes(name));
 });
@@ -200,7 +198,6 @@ test('application endpoint avoids Vercels reserved root API directory and suppor
 
 for (const [name, path] of [
   ['contact form', CONTACT_PATH],
-  ['job landing page', JOB_DETAIL_PATH],
   ['thank-you page', THANK_YOU_PATH],
 ]) {
   test(`${name} promises a personal response within one working day`, async () => {
@@ -223,26 +220,24 @@ test('the landing CSS styles only the step legends, not the qualification legend
   assert.match(css, /#kontaktformular #kontakt-heading/);
 });
 
-test('the landing binds the native contact pattern without Astro string-escape loss', async () => {
-  const detail = await readFile(JOB_DETAIL_PATH, 'utf8');
-  assert.match(detail, /import \{ CONTACT_PATTERN_SOURCE(?:, QUALIFICATIONS)? \} from '\.\.\/\.\.\/lib\/application-form\.mjs'/);
+test('the shared form binds the native contact pattern without Astro string-escape loss', async () => {
+  const detail = await readFile(CONTACT_PATH, 'utf8');
+  assert.match(detail, /import \{ CONTACT_PATTERN_SOURCE(?:, QUALIFICATIONS)? \} from '\.\.\/lib\/application-form\.mjs'/);
   assert.match(detail, /name="kontakt"[^>]*pattern=\{CONTACT_PATTERN_SOURCE\}[^>]*required/);
   assert.doesNotMatch(detail, /pattern="/);
 });
 
-for (const [name, path] of [['component', CONTACT_PATH], ['job landing page', JOB_DETAIL_PATH]]) {
-  test(`step two offers an optional qualification question (${name})`, async () => {
-    const src = await readFile(path, 'utf8');
-    assert.match(src, /<fieldset id="kontakt-abschluss"[\s\S]*?<legend[^>]*>Dein Abschluss <span[^>]*>\(optional\)<\/span><\/legend>/);
-    assert.match(src, /<fieldset id="kontakt-abschluss"[^>]*aria-describedby="abschluss-hint"/);
-    assert.match(src, /Object\.entries\(QUALIFICATIONS\)/);
-    assert.match(src, /import \{[^}]*QUALIFICATIONS[^}]*\} from/);
-    assert.doesNotMatch(src, /name="abschluss"[^>]*required/);
-    assert.match(src, /id="abschluss-hint"[^>]*>Hilft uns, das Gespräch vorzubereiten\. Du kannst auch ohne Angabe absenden\.</);
-    // Optional field: no client-side blocking error.
-    assert.doesNotMatch(src, /abschluss-error|qualificationMissing|Bitte wähle deinen Abschluss aus/);
-  });
-}
+test('step two offers an optional qualification question', async () => {
+  const src = await readFile(CONTACT_PATH, 'utf8');
+  assert.match(src, /<fieldset id="kontakt-abschluss"[\s\S]*?<legend[^>]*>Dein Abschluss <span[^>]*>\(optional\)<\/span><\/legend>/);
+  assert.match(src, /<fieldset id="kontakt-abschluss"[^>]*aria-describedby="abschluss-hint"/);
+  assert.match(src, /Object\.entries\(QUALIFICATIONS\)/);
+  assert.match(src, /import \{[^}]*QUALIFICATIONS[^}]*\} from/);
+  assert.doesNotMatch(src, /name="abschluss"[^>]*required/);
+  assert.match(src, /id="abschluss-hint"[^>]*>Hilft uns, das Gespräch vorzubereiten\. Du kannst auch ohne Angabe absenden\.</);
+  // Optional field: no client-side blocking error.
+  assert.doesNotMatch(src, /abschluss-error|qualificationMissing|Bitte wähle deinen Abschluss aus/);
+});
 
 test('privacy policy names the qualification answer', async () => {
   const src = await readFile(PRIVACY_PATH, 'utf8');

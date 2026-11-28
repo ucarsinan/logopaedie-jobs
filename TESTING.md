@@ -16,6 +16,10 @@
 - `git diff --check`
 - Whitespace-/EOF-Check fuer relevante untracked Dateien
 
+Vor dem V8-Relaunch nach dem Build `python3 scripts/check-search.py` und
+`npm test` ausführen. Der erste Befehl vergleicht die frühere öffentliche
+Sitemap mit den gebauten Seiten und prüft deren interne Verlinkung.
+
 ## Freigabepflichtige Checks
 
 Nur mit ausdruecklicher Freigabe:

@@ -4,23 +4,29 @@ import test from 'node:test';
 
 const read = (path) => readFile(new URL(`../${path}`, import.meta.url), 'utf8');
 
-test('the mobile navigation exposes state and uses reliable touch targets', async () => {
-  const navigation = await read('src/components/Navigation.astro');
-
-  assert.match(navigation, /id="mobile-menu-btn"[\s\S]*?aria-controls="mobile-menu"[\s\S]*?aria-expanded="false"/);
-  assert.match(navigation, /id="mobile-menu-btn"[\s\S]*?class="[^"]*min-h-11[^"]*min-w-11/);
-  assert.match(navigation, /aria-current=\{link\.active \? 'page' : undefined\}/);
-  assert.match(navigation, /setAttribute\('aria-expanded'/);
-  assert.match(navigation, /setAttribute\('aria-label', isOpen \? 'Menü schließen' : 'Menü öffnen'\)/);
-  assert.doesNotMatch(navigation, /mobile-nav-link[^\n]*py-2\.5/);
+test('the shared section navigation labels its icons and identifies the current section', async () => {
+  const layout = await read('src/layouts/Fachportal.astro');
+  const css = await read('src/styles/berufseinstieg.css');
+  assert.match(layout, /<nav class="bereiche" aria-label="Bereiche"/);
+  assert.match(layout, /currentPath === link.href \? 'page' : link === currentLink \? 'location'/);
+  assert.match(layout, /aria-controls="portal-menue"/);
+  assert.match(layout, /id="portal-menue"/);
+  assert.match(layout, /aria-hidden="true" focusable="false"/);
+  assert.match(layout, /<span>\{link.label\}<\/span>/);
+  assert.match(css, /\.bereiche a \{[^}]*min-height: 44px/);
 });
 
 test('every public page offers a skip link and a focusable main target', async () => {
   const layout = await read('src/layouts/Layout.astro');
   assert.match(layout, /href="#main-content"[\s\S]*?>\s*Zum Hauptinhalt/);
 
+  const homepage = await read('src/pages/index.astro');
+  assert.match(homepage, /import Fachportal from '\.\.\/layouts\/Fachportal\.astro'/);
+  assert.match(homepage, /<Fachportal\b/);
+
   const pages = [
-    'src/pages/index.astro',
+    'src/pages/kontakt.astro',
+    'src/pages/praxis.astro',
     'src/pages/404.astro',
     'src/pages/datenschutz.astro',
     'src/pages/impressum.astro',
@@ -32,38 +38,30 @@ test('every public page offers a skip link and a focusable main target', async (
     'src/pages/schulen.astro',
   ];
 
+  assert.match(await read('src/layouts/Fachportal.astro'), /<main[^>]*id="main-content"[^>]*tabindex="-1"/);
   for (const page of pages) {
-    assert.match(await read(page), /<main[^>]*id="main-content"[^>]*tabindex="-1"/);
+    assert.match(await read(page), /<Fachportal\b/);
   }
 });
 
-test('the handbook tablet grid cannot overflow its columns', async () => {
-  const handbook = await read('src/pages/berufshandbuch/index.astro');
-
-  assert.match(handbook, /md:grid-cols-\[minmax\(0,1\.1fr\)_minmax\(0,0\.9fr\)\]/);
-  assert.match(handbook, /<header class="[^"]*min-w-0/);
-  assert.match(handbook, /<aside class="[^"]*min-w-0/);
-  assert.match(handbook, /article\.data\.title[\s\S]*?break-words/);
+test('the handbook indexes every topic and links to its article group', async () => {
+  const page = await read('src/pages/berufshandbuch/index.astro');
+  assert.ok(page.includes('href={`#${topic.id}`}'));
+  assert.match(page, /<section id=\{topic.id\}/);
+  assert.match(page, /groupedArticles\[topic.id\]\.map/);
+  assert.match(page, /href="\/gehaltsrechner\/"/);
 });
 
-test('informational recruiting CTAs lead to the central contact flow', async () => {
-  const [salary, handbook, article] = await Promise.all([
-    read('src/pages/gehaltsrechner.astro'),
-    read('src/pages/berufshandbuch/index.astro'),
-    read('src/pages/berufshandbuch/[slug].astro'),
-  ]);
-
-  for (const source of [salary, handbook, article]) {
-    assert.match(source, /\/kontakt\//);
-    assert.doesNotMatch(source, /RECRUITING_EMAIL_HREF/);
-  }
-  assert.match(article, /RecruitingWhatsAppLink/);
+test('reading pages keep recruiting links at the end and provide the shared contact route', async () => {
+  const article = await read('src/pages/berufshandbuch/[slug].astro');
+  const portal = await read('src/layouts/Fachportal.astro');
+  assert.match(portal, /href="\/kontakt\/"/);
+  assert.match(article, /<Content \/>[\s\S]*beitrag.data.topic === 'karriere-bewerbung'[\s\S]*href="\/jobs\//);
 });
 
 test('content images provide responsive candidates and sizes', async () => {
   const files = [
     'src/components/Hero.astro',
-    'src/components/About.astro',
     'src/components/Gallery.astro',
     'src/pages/jobs/logopaedin-sprachtherapeut-duisburg.astro',
   ];
@@ -101,12 +99,11 @@ test('key mobile labels retain readable contrast and footer links remain tappabl
   assert.match(footer, /href="\/datenschutz\/" class="[^"]*min-h-11/);
 });
 
-test('the four about metrics share equal mobile grid rows', async () => {
+test('the practice portrait pairs the original room photograph with an attributed quotation', async () => {
   const about = await read('src/components/About.astro');
-
-  assert.match(about, /grid grid-cols-2 auto-rows-fr/);
-  assert.equal((about.match(/h-full p-6 rounded-3xl/g) ?? []).length, 3);
-  assert.match(about, /class="group h-full p-px rounded-3xl/);
+  assert.match(about, /<h1 id="praxis-vorstellung"/);
+  assert.match(about, /<Image src=\{therapieraum\} alt="[^"]+"/);
+  assert.match(about, /<figure class="praxis-zitat">[\s\S]*?<blockquote>[\s\S]*?<figcaption><strong>Emel Şimşek-Uçar<\/strong>/);
 });
 
 test('the mobile gallery is a calm manual carousel with accessible controls', async () => {
@@ -115,25 +112,25 @@ test('the mobile gallery is a calm manual carousel with accessible controls', as
   assert.match(gallery, /data-mobile-gallery/);
   assert.match(gallery, /data-gallery-track/);
   assert.match(gallery, /snap-x snap-mandatory/);
-  assert.match(gallery, /md:grid md:grid-cols-3/);
+  assert.match(await read('src/styles/berufseinstieg.css'), /\.raumstrecke \{ display: grid; grid-template-columns:/);
   assert.match(gallery, /data-gallery-prev/);
   assert.match(gallery, /data-gallery-next/);
-  assert.equal((gallery.match(/data-gallery-dot/g) ?? []).length, 4);
+  assert.match(gallery, /rooms\.map\(\(_, i\) => \([\s\S]*?<button type="button" data-gallery-dot/);
   assert.doesNotMatch(gallery, /setInterval|autoplay/i);
 });
 
 test('the job landing keeps native contact paths available without JavaScript', async () => {
-  const page = await read('src/pages/jobs/logopaedin-sprachtherapeut-duisburg.astro');
+  const page = await read('src/components/ApplicationContact.astro');
   const form = page.match(/<form\b[^>]*id="bewerbung-form"[\s\S]*?<\/form>/)?.[0] ?? '';
-  const alternatives = page.match(/<div id="bewerbung-alternativen"[\s\S]*?<\/details>/)?.[0] ?? '';
+  const alternatives = await read('src/components/ContactAlternatives.astro');
 
   assert.match(form, /method="post" action="\/bewerbung\/senden\/"/);
   assert.doesNotMatch(form, /<form[^>]*(?:novalidate|hidden)/);
   assert.doesNotMatch(form, /<fieldset[^>]*(?:hidden|disabled)/);
   assert.match(form, /<button type="submit"/);
-  assert.match(alternatives, /href="https:\/\/wa\.me\/4915510062296\?/);
+  assert.match(alternatives, /<RecruitingWhatsAppLink\b/);
   assert.match(alternatives, /href="tel:\+4915510062296"/);
-  assert.match(alternatives, /href="mailto:social@logopaedie-simsek\.de\?/);
+  assert.match(alternatives, /href=\{RECRUITING_EMAIL_HREF\}/);
 });
 
 test('the job hero leads to its embedded form and retains the native workplace film', async () => {
@@ -147,13 +144,14 @@ test('the job hero leads to its embedded form and retains the native workplace f
 });
 
 test('landing contact targets are unique and its page stylesheet preserves touch and focus support', async () => {
-  const [page, css] = await Promise.all([
+  const [component, page, css] = await Promise.all([
+    read('src/components/ApplicationContact.astro'),
     read('src/pages/jobs/logopaedin-sprachtherapeut-duisburg.astro'),
     read('src/styles/recruiting-landing.css'),
   ]);
 
   for (const id of ['kontaktformular', 'bewerbung-form', 'bewerbung-status', 'kontakt-anliegen', 'kontakt-daten']) {
-    assert.equal((page.match(new RegExp(`id="${id}"`, 'g')) ?? []).length, 1, `${id} must be unique`);
+    assert.equal((component.match(new RegExp(`id="${id}"`, 'g')) ?? []).length, 1, `${id} must be unique`);
   }
   const contactLinks = [...page.matchAll(/<a\b[^>]*href="#kontaktformular"[^>]*>[\s\S]*?<\/a>/g)];
   assert.ok(contactLinks.length >= 1);

@@ -27,17 +27,13 @@ test('schools page uses existing components only', async () => {
   const page = await read(PAGE);
   const imports = [...page.matchAll(/^import\s+.+?\s+from\s+'([^']+)';$/gm)].map((match) => match[1]);
   const allowed = new Set([
-    '../layouts/Layout.astro',
-    '../components/Navigation.astro',
-    '../components/Footer.astro',
+    '../layouts/Fachportal.astro',
     '../components/PracticeBrand.astro',
     '../components/ContactAlternatives.astro',
-    '../content/jobs/logopaedin-sprachtherapeut-duisburg.json',
-    '../lib/job-model.mjs',
-    '../lib/job-publication-artifacts.mjs',
+    '../lib/current-job.mjs',
   ]);
 
-  assert.ok(imports.length >= 4);
+  assert.ok(imports.length === allowed.size);
   for (const source of imports) assert.ok(allowed.has(source), `unexpected import ${source}`);
   assert.match(page, /<ContactAlternatives \/>/);
   assert.match(page, /href="\/kontakt\/"/);
@@ -46,9 +42,10 @@ test('schools page uses existing components only', async () => {
 test('schools page is accessible and branded', async () => {
   const page = await read(PAGE);
 
-  assert.match(page, /<main id="main-content" tabindex="-1"/);
+  assert.match(page, /<Fachportal/);
+  assert.match(await read('src/layouts/Fachportal.astro'), /<main id="main-content" tabindex="-1"/);
   assert.ok(page.includes('Praxis für Logopädie Şimşek'));
-  assert.ok(page.includes('https://xn--logopdiejobs-kcb.de/schulen/'));
+  assert.ok(page.includes('active="einstieg"'));
   assert.doesNotMatch(page, /<script/i);
 });
 
@@ -80,13 +77,13 @@ test('schools page canonical keeps the trailing slash configured site-wide', asy
 
   assert.match(config, /trailingSlash:\s*'always'/);
   assert.match(layout, /new URL\(Astro\.url\.pathname, Astro\.site\)/);
-  assert.match(page, /url: 'https:\/\/xn--logopdiejobs-kcb\.de\/schulen\/'/);
+  assert.match(page, /name: 'Erste Stelle', href: Astro.url.pathname/);
 });
 
 test('schools page leads with the career-entry benefit and a searchable title', async () => {
   const page = await read(PAGE);
 
-  assert.ok(page.includes('Berufseinstieg als Logopäd:in in Duisburg'));
+  assert.ok(page.replace(/<[^>]+>/g, '').includes('Berufseinstieg als Logopäd:in in Duisburg'));
   assert.match(page, /const pageTitle = 'Berufseinstieg Logopädie Duisburg \| Praxis für Logopädie Şimşek';/);
   assert.ok(page.includes('Berufsanfänger:innen sind willkommen.'));
 });
@@ -94,7 +91,7 @@ test('schools page leads with the career-entry benefit and a searchable title', 
 test('schools page answers graduates questions with approved wording', async () => {
   const page = await read(PAGE);
   const approved = [
-    'Staatlich anerkannte und zugelassene Logopädie oder Sprachtherapie nach Ausbildung oder Studium.',
+    'Dein Ausbildungs- oder Studienabschluss in Logopädie oder Sprachtherapie muss dich für die Behandlung gesetzlich Versicherter qualifizieren.',
     'Sehr gute Deutschkenntnisse sind erforderlich',
     'Vollzeit umfasst 38,5 Wochenstunden. Teilzeit ist mit flexiblem Stundenumfang möglich.',
     'Eine Vier-Tage-Woche ist möglich.',
@@ -138,8 +135,7 @@ test('schools page links are keyboard and hover friendly and headings balance', 
 });
 
 test('footer links to the schools page without touching the main navigation', async () => {
-  const [footer, navigation] = await Promise.all([read('src/components/Footer.astro'), read('src/components/Navigation.astro')]);
-
-  assert.ok(footer.includes("{ href: '/schulen/', label: 'Für Auszubildende und Studierende' }"));
-  assert.doesNotMatch(navigation, /\/schulen\//);
+  const portal = await read('src/layouts/Fachportal.astro');
+  assert.match(portal, /<footer[\s\S]*href="\/schulen\/">Für Auszubildende und Studierende/);
+  assert.doesNotMatch(portal.split('const areas = [')[1].split('];')[0], /\/schulen\//);
 });

@@ -6,7 +6,7 @@ topic: "karriere-bewerbung"
 intent: "bewerbung"
 featured: true
 priority: 10
-updatedDate: 2026-10-30
+updatedDate: 2026-11-28
 pubDate: 2026-04-18
 author: "Redaktion"
 draft: false
@@ -35,7 +35,7 @@ Welche Unterlagen gewünscht sind, steht in der jeweiligen Anzeige. Als Vorberei
 
 **Lebenslauf:** Als Orientierung empfehlen wir eine tabellarische Darstellung auf etwa zwei Seiten, aktuellste Station zuerst. Nützlich sind: Fortbildungen mit Zertifikat, Spezialisierungen (z. B. Stottertherapie, bilinguale Therapie, AAC) und Praxisfelder, die du bereits kennst (Pädiatrie, Neurologie, Geriatrie, HNO). Keine Lücken verschweigen — fehlende Monate lassen sich kurz erklären.
 
-**Arbeitszeugnisse:** Auch wenn du gerade erst fertig bist, hast du Praktikums- oder Praxisanleitungsnachweise. Die gehören rein. Wähle die Zeugnisse nach ihrer Relevanz für die konkrete Stelle aus und beachte die dort genannten Anforderungen.
+**Arbeitszeugnisse:** Wenn du gerade erst fertig bist, können Nachweise über Praktika oder angeleitete Praxis deine Erfahrungen zeigen. Prüfe in der Anzeige, welche Unterlagen der Arbeitgeber in diesem Schritt braucht.
 
 **Zertifikate und Fortbildungen:** Nur einlegen, was wirklich relevant ist. Kein allgemeines Erste-Hilfe-Zertifikat, wenn es nicht gefordert wurde.
 
@@ -92,4 +92,4 @@ Die [Praxis für Logopädie Şimşek sucht mehrere Logopäd:innen und Sprachther
 
 ## Redaktion und Einordnung
 
-Stand der redaktionellen Überarbeitung: **30.10.2026**. Herausgeberin ist die Praxis für Logopädie Şimşek. Die verlinkten Quellen ermöglichen die Prüfung der allgemeinen Aussagen; dieser Beitrag weist keine gesonderte fachliche Abnahme aus. Informationen zu unserer Stelle sind Praxisangebote und keine allgemeinen Branchenbedingungen.
+Stand der redaktionellen Überarbeitung: **28.11.2026**. Herausgeberin ist die Praxis für Logopädie Şimşek. Die verlinkten Quellen ermöglichen die Prüfung der allgemeinen Aussagen; dieser Beitrag weist keine gesonderte fachliche Abnahme aus. Informationen zu unserer Stelle sind Praxisangebote und keine allgemeinen Branchenbedingungen.

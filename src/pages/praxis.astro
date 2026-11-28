@@ -1,0 +1,64 @@
+---
+import Fachportal from '../layouts/Fachportal.astro';
+import Aufgaben from '../components/Aufgaben.astro';
+import Anforderungen from '../components/Anforderungen.astro';
+import PraxisStandort from '../components/PraxisStandort.astro';
+import Benefits from '../components/Benefits.astro';
+import About from '../components/About.astro';
+import Gallery from '../components/Gallery.astro';
+import FaqSection from '../components/FaqSection.astro';
+import '../styles/praxisprofil.css';
+import JobSchema from '../components/JobSchema.astro';
+import FaqSchema from '../components/FaqSchema.astro';
+
+import { currentJob } from '../lib/current-job.mjs';
+const { showApplication, presentation } = currentJob;
+const sections = [
+  { id: 'benefits', label: 'Arbeitsalltag', icon: 'M4 7h16v13H4zM8 7V4h8v3M4 12h16m-10 0v2h4v-2' },
+  { id: 'aufgaben', label: 'Fachgebiete', icon: 'M3 5q5-1 9 2 4-3 9-2v14q-5-1-9 2-4-3-9-2zM12 7v14' },
+  { id: 'galerie', label: 'Räume', icon: 'M3 20h18M5 20V4h14v16M8 20V7l7-1v14m-3-7h.3' },
+  { id: 'standort', label: 'Anfahrt', icon: 'M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0ZM15 10a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z' },
+  { id: 'faq', label: 'Fragen', icon: 'M3 4h18v13H9l-5 4v-4H3zM9 9a3 3 0 0 1 6 0c0 2-3 2-3 4m0 2h.01' },
+  { id: 'anforderungen', label: 'Stelle', icon: 'M6 3h9l4 4v14H6zM14 3v5h5M9 12h7m-7 4h5' },
+];
+const pageTitle = 'Arbeiten in der Praxis für Logopädie Şimşek | Duisburg';
+const pageDescription = 'Lerne Arbeitsalltag, Vorteile, Aufgaben und die Praxisräume der Praxis für Logopädie Şimşek in Duisburg kennen.';
+---
+
+<Fachportal trail={[
+  { name: 'Startseite', href: '/' },
+  { name: 'Unsere Praxis', href: Astro.url.pathname }
+]} title={pageTitle} description={pageDescription}>
+  <Fragment slot="head">
+    <JobSchema />
+    <FaqSchema isActive={showApplication} salaryAnswer={presentation.active?.salaryAnswer} />
+  </Fragment>
+  <div class="portal-inhalt praxisprofil">
+    <About>
+      <nav class="praxisregister" aria-label="Auf dieser Praxisseite">
+        {sections.map(({ id, label, icon }) => (
+          <a href={`#${id}`}>
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d={icon} /></svg>{label}
+          </a>
+        ))}
+      </nav>
+    </About>
+    <Benefits activeJob={presentation.active} />
+    <Aufgaben />
+    <Gallery />
+    <PraxisStandort />
+    <FaqSection isActive={showApplication} salaryAnswer={presentation.active?.salaryAnswer} />
+    <Anforderungen {showApplication} />
+    <details class="praxiskanaele">
+      <summary>Praxiswebsite und weitere Kanäle</summary>
+      <nav aria-label="Praxis im Netz">
+        <a href="https://logopaedie-simsek.de/">Praxis für Logopädie Şimşek</a>
+        <a href="https://www.facebook.com/logopaediesimsek/">Facebook</a>
+        <a href="https://www.instagram.com/logopaediesimsek/">Instagram</a>
+        <a href="https://www.youtube.com/@logopaediesimsek">YouTube</a>
+        <a href="https://www.tiktok.com/@logopaediesimsek">TikTok</a>
+        <a href="https://x.com/logosimsek">X</a>
+      </nav>
+    </details>
+  </div>
+</Fachportal>

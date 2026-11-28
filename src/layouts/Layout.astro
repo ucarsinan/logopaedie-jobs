@@ -12,11 +12,12 @@ interface Props {
     description: string;
     canonicalUrl?: string;
     ogImage?: string;
+    ogType?: 'website' | 'article';
     breadcrumbs?: BreadcrumbItem[];
     robots?: string;
 }
 
-const { title, description, canonicalUrl, ogImage, breadcrumbs, robots } = Astro.props;
+const { title, description, canonicalUrl, ogImage, ogType = 'website', breadcrumbs, robots } = Astro.props;
 const canonicalURL = canonicalUrl ? new URL(canonicalUrl, Astro.site) : new URL(Astro.url.pathname, Astro.site);
 const isLegalPage = ['/impressum', '/datenschutz'].some(p => Astro.url.pathname.startsWith(p));
 // Consent-Banner + GA nur einbinden, wenn eine Measurement-ID konfiguriert ist.
@@ -35,18 +36,18 @@ const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
         <link rel="alternate" hreflang="de" href={canonicalURL} />
         <link rel="alternate" hreflang="x-default" href={canonicalURL} />
 
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content={ogType} />
         <meta property="og:locale" content="de_DE" />
         <meta property="og:url" content={canonicalURL} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={ogImage ? new URL(ogImage, Astro.site) : new URL('/og-image.jpg', Astro.site)} />
 
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content={canonicalURL} />
-        <meta property="twitter:title" content={title} />
-        <meta property="twitter:description" content={description} />
-        <meta property="twitter:image" content={ogImage ? new URL(ogImage, Astro.site) : new URL('/og-image.jpg', Astro.site)} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={canonicalURL} />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImage ? new URL(ogImage, Astro.site) : new URL('/og-image.jpg', Astro.site)} />
 
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
@@ -61,7 +62,7 @@ const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
           "name": "Logopädiejobs.de",
           "url": new URL('/', Astro.site).href,
           "inLanguage": "de",
-          "description": "Karriere-Portal der Praxis für Logopädie Şimşek in Duisburg — Stellenangebote, Berufshandbuch und Gehaltsinformationen für Logopädinnen und Sprachtherapeuten.",
+          "description": "Praxisgeschichten, Fachwissen und Werkzeuge für Logopädie und Sprachtherapie. Herausgegeben von der Praxis für Logopädie Şimşek in Duisburg.",
           "publisher": {
             "@type": "Organization",
             "name": "Praxis für Logopädie Şimşek",

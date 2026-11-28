@@ -6,7 +6,7 @@ topic: "fachwissen-spezialisierung"
 intent: "fachwissen"
 featured: false
 priority: 30
-updatedDate: 2026-10-30
+updatedDate: 2026-11-28
 pubDate: 2026-04-29
 author: "Redaktion"
 draft: false
@@ -21,7 +21,7 @@ faq:
     a: "Sie kann zu einem konkreten Aufgabenprofil passen. Ein allgemeiner Gehaltsaufschlag oder eine schnellere Stellenfindung sind hier nicht belegt."
 ---
 
-Duisburg ist eine mehrsprachige Stadt. Viele Kinder wachsen mit Deutsch und Türkisch auf, andere mit Arabisch, Russisch, Kurdisch oder weiteren Familiensprachen. Für die Logopädie ist das kein Randthema, sondern Alltag.
+Eine Familie erzählt im Erstgespräch, dass ihr Kind mit der Großmutter Türkisch und in der Kita Deutsch spricht. Was versteht und erzählt das Kind in jeder dieser Situationen? Genau hier beginnt die Sprachbiografie.
 
 Deutsch-türkische Kompetenz kann Gespräche und die Erhebung der Sprachbiografie unterstützen. Wie sie in Diagnostik und Therapie genutzt wird, hängt von der fachlichen Qualifikation und dem konkreten Fall ab.
 

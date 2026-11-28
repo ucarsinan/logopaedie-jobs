@@ -12,7 +12,7 @@ const faqs = [
   {
     q: 'Welche Stellen bietet die Praxis für Logopädie Şimşek an?',
     a: isActive
-      ? 'Wir suchen mehrere staatlich anerkannte und zugelassene Logopäd:innen oder Sprachtherapeut:innen (m/w/d) für unbefristete Stellen in Vollzeit oder Teilzeit.'
+      ? 'Wir suchen mehrere Logopäd:innen oder Sprachtherapeut:innen (m/w/d) mit anerkannter fachlicher Qualifikation für unbefristete Stellen in Vollzeit oder Teilzeit.'
       : 'Aktuell ist keine Stelle zur Bewerbung freigegeben. Auf dieser Seite findest du weiterhin Karriereinformationen der Praxis für Logopädie Şimşek.'
   },
   ...(salaryAnswer ? [{
@@ -45,50 +45,25 @@ const faqs = [
   },
   {
     q: 'Wie kann ich Kontakt aufnehmen?',
-    a: 'Über das kurze Formular auf unserer Kontaktseite auf LogopädieJobs.de, über WhatsApp, telefonisch unter +49 155 10062296, per E-Mail an social@logopaedie-simsek.de oder per Post an die Tonhallenstraße 21, 47051 Duisburg. Ein Lebenslauf ist freiwillig.'
+    a: !isActive ? 'Für die Praxis und ihren Standort findest du die Kontaktinformationen auf der Praxiswebsite.' : 'Über das kurze Formular auf unserer Kontaktseite auf LogopädieJobs.de, über WhatsApp, telefonisch unter +49 155 10062296, per E-Mail an social@logopaedie-simsek.de oder per Post an die Tonhallenstraße 21, 47051 Duisburg. Ein Lebenslauf ist freiwillig.'
   }
 ];
 ---
 
-<section id="faq" class="py-24 bg-slate-50">
-  <div class="max-w-3xl mx-auto px-6">
-    <div class="text-center mb-6">
-      <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-simsek-green/10 text-simsek-green border border-simsek-green/20 mb-4">
-        FAQ
-      </span>
-    </div>
-    <h2 class="text-4xl md:text-5xl font-semibold text-slate-900 mb-4 leading-tight text-center">Häufige Fragen zum Logopädie-Job</h2>
-    <div class="h-px bg-simsek-green mb-6"></div>
-    <p class="text-lg text-slate-600 text-center mb-12">Alles Wichtige im Überblick.</p>
-
-    <div class="space-y-4">
-      {faqs.map((faq) => (
-        <details class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden group">
-          <summary class="w-full text-left px-6 py-5 flex justify-between items-center gap-4 font-semibold text-slate-900 hover:bg-slate-50 transition-colors cursor-pointer list-none">
-            <span>{faq.q}</span>
-            <svg class="w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </summary>
-          <div class="px-6 pb-5">
-            <p class="text-slate-600 leading-relaxed">{faq.a}</p>
-            {faq.q === 'Wie kann ich Kontakt aufnehmen?' && (
-              <RecruitingWhatsAppLink
-                label="Schreib uns auf WhatsApp"
-                class="mt-4"
-              />
-            )}
+<section id="faq" class="praxis-kapitel" aria-labelledby="praxis-fragen">
+  <h2 id="praxis-fragen">Fragen zur Arbeit in der Praxis</h2>
+  {faqs.map(faq => (
+    <details class="praxis-frage">
+      <summary>{faq.q}</summary>
+      <div>
+        <p>{faq.a}</p>
+        {isActive && faq.q === 'Wie kann ich Kontakt aufnehmen?' && (
+          <div class="praxis-stellenwege">
+            <a class="praxis-textlink" href="/kontakt/">Zum Kontaktformular</a>
+            <RecruitingWhatsAppLink label="Schreib uns auf WhatsApp" />
           </div>
-        </details>
-      ))}
-    </div>
-
-    <div class="mt-12 text-center">
-      <p class="text-xl font-bold text-slate-900 mb-4">Noch Fragen?</p>
-      <a href="/kontakt/" class="inline-flex items-center gap-2 px-6 py-3 bg-simsek-green text-white font-bold rounded-lg shadow-md  hover:shadow-lg  hover:-translate-y-0.5  transition-all duration-200 no-underline text-sm">
-        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-        Unverbindlich Kontakt aufnehmen
-      </a>
-    </div>
-  </div>
+        )}
+      </div>
+    </details>
+  ))}
 </section>

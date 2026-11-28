@@ -1,0 +1,45 @@
+<section class="postformular" id="anmeldung">
+  <p class="rubrik">Newsletter · monatlich</p>
+  <h2>Praxispost abonnieren</h2>
+  <p>Ich möchte einmal im Monat die Praxispost der Praxis für Logopädie Şimşek erhalten. Über den Link in jeder Ausgabe kann ich sie abbestellen.</p>
+  <form hidden>
+    <label for="demo-mail">E-Mail-Adresse</label>
+    <input id="demo-mail" type="email" required placeholder="kollegin@example.org" autocomplete="off" aria-describedby="demo-hinweis" />
+    <small id="demo-hinweis">Lokale Vorschau. Verwende eine Beispieladresse. Es wird nichts versendet oder gespeichert.</small>
+    <button class="aktion" type="submit">Praxispost abonnieren</button>
+  </form>
+  <noscript>Aktiviere JavaScript, um den E-Mail-Schritt lokal auszuprobieren.</noscript>
+  <div class="demo-status" role="status" tabindex="-1"></div>
+  <button class="aktion" type="button" data-bestaetigen hidden>Anmeldung in der Vorschau bestätigen</button>
+  <button class="leselink" type="button" data-abbestellen hidden>Praxispost abbestellen</button>
+</section>
+<script>
+  for (const box of document.querySelectorAll<HTMLElement>('.postformular')) {
+    const form = box.querySelector('form')!;
+    const status = box.querySelector<HTMLElement>('[role="status"]')!;
+    const confirm = box.querySelector<HTMLButtonElement>('[data-bestaetigen]')!;
+    const cancel = box.querySelector<HTMLButtonElement>('[data-abbestellen]')!;
+    function announce(text: string) {
+      status.textContent = text;
+      status.focus({preventScroll:true});
+    }
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      form.reset();
+      form.hidden = true;
+      announce('Bestätigungsmail simuliert. Erst deine Bestätigung aktiviert das monatliche Abo.');
+      confirm.hidden = false;
+    });
+    confirm.addEventListener('click', () => {
+      confirm.hidden = true;
+      cancel.hidden = false;
+      announce('Dein Monatsabo ist in dieser Vorschau bestätigt.');
+    });
+    cancel.addEventListener('click', () => {
+      cancel.hidden = true;
+      form.hidden = false;
+      announce('Die Praxispost ist in dieser Vorschau abbestellt.');
+    });
+    form.hidden = false;
+  }
+</script>

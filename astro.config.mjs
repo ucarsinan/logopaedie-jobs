@@ -3,6 +3,8 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
+import externeQuellen from './src/lib/externe-quellen.mjs';
+
 import jobSource from './src/content/jobs/logopaedin-sprachtherapeut-duisburg.json' with { type: 'json' };
 import { jobSchema } from './src/lib/job-model.mjs';
 import { publicationArtifacts } from './src/lib/job-publication-artifacts.mjs';
@@ -10,6 +12,8 @@ import { publicationArtifacts } from './src/lib/job-publication-artifacts.mjs';
 const JOB_PATH = '/jobs/logopaedin-sprachtherapeut-duisburg/';
 const job = jobSchema.parse(jobSource);
 const { includeInSitemap } = publicationArtifacts(job);
+
+const site = 'https://xn--logopdiejobs-kcb.de';
 
 const excludedSitemapPaths = new Set([
   '/4-tage-woche/',
@@ -29,8 +33,9 @@ const isPublicIndexablePage = (page) => {
 };
 
 export default defineConfig({
-  site: 'https://xn--logopdiejobs-kcb.de',
+  site,
   trailingSlash: 'always',
+  markdown: { rehypePlugins: [[externeQuellen, { site }]] },
 
   adapter: vercel(),
 

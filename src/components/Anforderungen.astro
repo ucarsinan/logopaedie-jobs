@@ -1,77 +1,13 @@
 ---
-interface Props {
-  hourlySalaryLabel?: string;
-}
-
-const { hourlySalaryLabel } = Astro.props;
+interface Props { showApplication: boolean; }
+const { showApplication } = Astro.props;
 ---
-<section id="anforderungen" class="py-12 md:py-24 bg-white">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="grid lg:grid-cols-2 gap-16 items-start">
 
-      <div>
-        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-simsek-green/10 text-simsek-green border border-simsek-green/20 mb-4">
-          Anforderungen
-        </span>
-        <h2 class="text-4xl md:text-5xl font-semibold text-slate-900 mb-4 leading-tight">
-          Logopädin in Duisburg <br/><span class="text-simsek-blue">gesucht — Voll- & Teilzeit</span>
-        </h2>
-        <div class="h-px bg-simsek-green mb-6"></div>
-        <p class="text-lg text-slate-600 leading-relaxed mb-8">
-          Du musst keine Übermensch sein. Aber du solltest Lust haben, wirklich gute Therapie zu machen – und dabei du selbst zu sein.
-        </p>
-
-        <div class="space-y-4">
-          <div class="flex items-start gap-4">
-            <div class="w-8 h-8 rounded-full bg-simsek-green/10 flex items-center justify-center shrink-0 mt-0.5">
-              <svg class="w-4 h-4 text-simsek-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
-            </div>
-            <div>
-              <p class="font-semibold text-slate-900">Staatlich anerkannt und zugelassen</p>
-              <p class="text-sm text-slate-500">Ausbildung oder Studium in Logopädie beziehungsweise Sprachtherapie.</p>
-            </div>
-          </div>
-          <div class="flex items-start gap-4">
-            <div class="w-8 h-8 rounded-full bg-simsek-green/10 flex items-center justify-center shrink-0 mt-0.5">
-              <svg class="w-4 h-4 text-simsek-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
-            </div>
-            <div>
-              <p class="font-semibold text-slate-900">Sehr gute Deutschkenntnisse</p>
-              <p class="text-sm text-slate-500">Weitere Sprachen sind willkommen, aber keine Voraussetzung.</p>
-            </div>
-          </div>
-          <div class="flex items-start gap-4">
-            <div class="w-8 h-8 rounded-full bg-simsek-green/10 flex items-center justify-center shrink-0 mt-0.5">
-              <svg class="w-4 h-4 text-simsek-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
-            </div>
-            <div>
-              <p class="font-semibold text-slate-900">Berufsanfänger:innen willkommen</p>
-              <p class="text-sm text-slate-500">Berufserfahrung und fertige Spezialisierungen sind nicht erforderlich.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="space-y-6">
-        <div class="bg-slate-900 text-white p-8 rounded-4xl">
-          <h3 class="text-xl font-semibold mb-6 text-simsek-green normal-case tracking-wide">Auf einen Blick</h3>
-          <ul class="space-y-3 text-sm">
-            <li class="flex items-center gap-3"><span class="text-simsek-green font-bold text-lg">✓</span> Vollzeit (38,5 Std.) oder Teilzeit mit variablem Umfang</li>
-            <li class="flex items-center gap-3"><span class="text-simsek-green font-bold text-lg">✓</span> Vier-Tage-Woche möglich</li>
-            {hourlySalaryLabel && <li class="flex items-center gap-3"><span class="text-simsek-green font-bold text-lg">✓</span> {hourlySalaryLabel} brutto pro Stunde plus jährliches Weihnachtsgeld</li>}
-            <li class="flex items-center gap-3"><span class="text-simsek-green font-bold text-lg">✓</span> Eigene fachliche Schwerpunkte</li>
-            <li class="flex items-center gap-3"><span class="text-simsek-green font-bold text-lg">✓</span> Berufsanfänger:innen willkommen</li>
-            <li class="flex items-center gap-3"><span class="text-simsek-green font-bold text-lg">✓</span> Tonhallenstraße 21, Duisburg (2 Min. Hbf)</li>
-          </ul>
-          <div class="mt-8 pt-6 border-t border-white/10">
-            <a href="/jobs/logopaedin-sprachtherapeut-duisburg/" class="inline-flex items-center gap-2 px-6 py-3 bg-simsek-green text-white font-bold rounded-lg shadow-md  hover:shadow-lg  hover:-translate-y-0.5  transition-all duration-200 no-underline text-sm">
-              Stellendetails ansehen
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-            </a>
-          </div>
-        </div>
-        <p class="text-xs text-slate-600 text-center">Mehrere unbefristete Stellen · Eintrittstermin nach individueller Vereinbarung</p>
-      </div>
-    </div>
+<section id="anforderungen" class="praxis-kapitel" aria-labelledby="stellen-titel">
+  <h2 id="stellen-titel">Arbeiten bei uns</h2>
+  {showApplication ? <p>Für unsere unbefristeten Stellen in Duisburg suchen wir Logopäd:innen und Sprachtherapeut:innen mit einem für die Behandlung gesetzlich Versicherter anerkannten Abschluss und sehr guten Deutschkenntnissen. Du kannst direkt nach der Ausbildung oder dem Studium einsteigen.</p> : <p>Aktuell ist keine Stelle zur Bewerbung freigegeben.</p>}
+  <div class="praxis-stellenwege" id="apply">
+    <a class="praxis-textlink" href="/jobs/logopaedin-sprachtherapeut-duisburg/">{showApplication ? 'Stelle und Konditionen ansehen' : 'Stellenstatus ansehen'} <span aria-hidden="true">→</span></a>
+    {showApplication && <a class="praxis-textlink" href="/kontakt/">Unverbindlich Kontakt aufnehmen <span aria-hidden="true">→</span></a>}
   </div>
 </section>

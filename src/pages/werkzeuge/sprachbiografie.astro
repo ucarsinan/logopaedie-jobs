@@ -1,0 +1,55 @@
+---
+import Druckkontakt from '../../components/Druckkontakt.astro';
+import Gespraechshilfe from '../../layouts/Gespraechshilfe.astro';
+const themen = [
+  { titel: 'Familie', fragen: ['Mit wem hat Ihr Kind heute schon gesprochen? In welchen Sprachen?', 'Wann hat es Ihnen zuletzt von sich aus etwas erzählt? Wie ging das Gespräch weiter?'] },
+  { titel: 'Kita', fragen: ['Seit wann besucht Ihr Kind die Kita, und welche Sprachen hört es dort?', 'Was erzählen die Fachkräfte über das Spielen zu zweit und über Gespräche in der Gruppe?'] },
+  { titel: 'Schule', fragen: ['Welche Sprachen nutzt Ihr Kind im Unterricht und auf dem Schulhof?', 'Wie erzählt es zu Hause von etwas, das es in der Schule gelernt hat?'] },
+  { titel: 'Veränderungen', fragen: ['Hat sich verändert, mit wem Ihr Kind regelmäßig spricht? Seit wann?', 'Was ist Ihnen seitdem beim Verstehen, Erzählen oder Fragen aufgefallen?'] },
+];
+---
+<Gespraechshilfe title="Fragen zur Sprachbiografie" description="Stell einen Leitfaden für das Elterngespräch zusammen. Die Grundfragen gehören auf jedes Blatt. Für Antworten ist auf dem Ausdruck Platz."
+  article="/berufshandbuch/sprachbiografie-elterngespraech/" articleTitle="Zum Beitrag über das mehrsprachige Elterngespräch" printLabel="Leitfaden drucken">
+  <fieldset class="blatt-optionen" data-themenwahl hidden>
+    <legend>Was möchtest du zusätzlich besprechen?</legend>
+    <div class="themenwahl">{themen.map((thema, i) => <label>
+      <input type="checkbox" value={thema.titel} checked={i === 0} />{thema.titel}
+    </label>)}</div>
+    <output aria-live="polite" id="auswahlstand"></output>
+  </fieldset>
+  <section class="arbeitsblatt leitfaden">
+    <h2>Sprachbiografie im Elterngespräch</h2>
+    <h3>Zum Einstieg</h3>
+    <ul>
+      <li>Welche Sprachen begleiten Ihr Kind seit wann? Mit wem hört oder spricht es sie?</li>
+      <li>Was versteht es in den einzelnen Sprachen gut? Was sagt oder erzählt es selbst?</li>
+      <li>Gibt es ein Beispiel für etwas, das Ihrem Kind schwerfällt? In welchen Sprachen oder Situationen fällt es Ihnen auf?</li>
+    </ul>
+    {themen.map(thema => <section data-fragen={thema.titel}>
+      <h3>{thema.titel}</h3><ul>{thema.fragen.map(frage => <li>{frage}</li>)}</ul>
+    </section>)}
+    <section class="gespraechsabschluss">
+      <h3>Am Ende gemeinsam festhalten</h3>
+      <p>Wer hat was beobachtet?</p>
+      <p>Welche Frage ist noch offen?</p>
+      <p>Wer klärt das bis wann?</p>
+    </section>
+    <Druckkontakt />
+  </section>
+</Gespraechshilfe>
+<script>
+  const picker = document.querySelector<HTMLFieldSetElement>('[data-themenwahl]');
+  const output = document.querySelector<HTMLOutputElement>('#auswahlstand');
+  const blocks = document.querySelectorAll<HTMLElement>('[data-fragen]');
+  if (picker && output) {
+    const update = () => {
+      const selected = new Set(Array.from(picker.querySelectorAll<HTMLInputElement>('input:checked'), input => input.value));
+      blocks.forEach(block => { block.hidden = !selected.has(block.dataset.fragen ?? ''); });
+      output.value = selected.size === 0 ? 'Nur Grundfragen' : 'Grundfragen und ' + selected.size + (selected.size === 1 ? ' Zusatzthema' : ' Zusatzthemen');
+    };
+    update();
+    picker.addEventListener('change', update);
+    window.addEventListener('pageshow', update);
+    picker.hidden = false;
+  }
+</script>

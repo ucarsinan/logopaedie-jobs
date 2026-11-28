@@ -1,0 +1,61 @@
+.mappenblaetter, .mappenseite { display: none; }
+.postseite { --akzent: #155e89; --papierfarbe: #edf5f9; max-width: 54rem; }
+.postseite.mappe { --akzent: #45680c; --papierfarbe: #f1f5e9; }
+.postseite .rubrik {
+  display: flex; align-items: center; gap: .5rem; margin: 0;
+  color: var(--akzent); font-weight: 700; font-size: .8rem; letter-spacing: .055em; text-transform: uppercase;
+}
+.rubrik svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linejoin: round; }
+.postseite .postkopf h1 { margin-block: .16em .22em; }
+.postkopf .vorspann { max-width: 33ch; text-wrap: pretty; }
+.postwege { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem 1.25rem; margin-top: 1.1rem; }
+.postseite .postwege a, .postseite .leselink { display: inline-flex; align-items: center; gap: .55rem; min-height: 44px; color: var(--akzent); font-weight: bold; text-decoration: underline; text-underline-offset: .2em; }
+.postseite .postwege a:first-child, .postseite .aktion {
+  background: var(--akzent); color: white; border-radius: 1.6rem; padding: .65rem 1rem; min-height: 44px;
+  font-weight: 700; text-decoration: none;
+}
+.postseite .postwege a:first-child:hover, .postseite button:hover { text-decoration: underline; }
+.postseite h2 { font-size: clamp(1.65rem, 3.2vw, 3rem); line-height: 1.07; text-wrap: pretty; }
+.postseite h3 { font-size: 1.12rem; line-height: 1.3; }
+.postseite :is(section,article)[id] { scroll-margin-top: 5.5rem; }
+.postseite .lesebrief, .postseite #muster, .postseite .postformular, .postseite .inhalt { margin-top: clamp(1.8rem,4vw,3.5rem); }
+.lesebrief { max-width: 44rem; padding: clamp(1rem,3vw,2rem); background: var(--papierfarbe); border-top: 4px solid var(--blau); }
+.postseite .lesebrief h2 { max-width: 21ch; margin-block: .55rem 1.4rem; }
+.lesebrief > p + p, .papier > p + h3 { margin-top: .85rem; }
+.postseite .lesebrief blockquote { font-size: clamp(1.3rem,2vw,1.85rem); border: 0; border-left: 3px solid var(--blau); padding: .15rem 0 .15rem 1rem; }
+.postseite a:not(.postwege a) { text-decoration: underline; text-underline-offset: .18em; }
+.blattkopf { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .45rem; padding-bottom: .6rem; }
+.papier { max-width: 44rem; padding: clamp(1.25rem,3vw,2.3rem); border: 1px solid #bec5b5; border-top: 4px solid #7fb719; }
+.papier h2, .postformular h2 { margin: .4rem 0 .8rem; }
+.schreibraum { margin-block: 1.1rem; padding-bottom: 2rem; border-bottom: 1px solid #aeb5ab; }
+.postseite small { display: block; color: #465057; font-size: .87rem; }
+.postseite .postformular { background: var(--papierfarbe); padding: clamp(1rem,3vw,2rem); max-width: 44rem; }
+.postformular label { display: block; font-weight: 700; margin: 1.1rem 0 .25rem; }
+.postformular input { display: block; width: 100%; max-width: 28rem; border: 1px solid #687b86; background: white; padding: .7rem .8rem; border-radius: .55rem; }
+.postformular small { margin-block: .45rem .9rem; }
+.postformular .demo-status:not(:empty) { margin-block: 1rem .5rem; font-weight: 650; }
+.postseite [hidden] { display: none !important; }
+@media print {
+  @page { size: A4; margin: 17mm; }
+  body:has(.postseite) :is(.mast,.bereiche,.pfad,.abschluss,.fixed,#cc-main,astro-dev-toolbar,.postkopf,.blattkopf,.inhalt,.postformular,noscript) { display: none !important; }
+  body:has(.postseite) .satz { display: block; }
+  body:has(.postseite) main { padding: 0; }
+  .brief #probe { margin: 0; padding: 0; max-width: none; border: 0; background: white; }
+  .brief .lesebrief h2 { max-width: none; font-size: 23pt; }
+  .brief .lesebrief .leselink { display: none; }
+  .mappe.postseite { display: flex; flex-direction: column; max-width: none; }
+  .mappe #muster { margin: 0; }
+  .mappe .bildschirm-absender { display: none; }
+  .mappe[data-gesamtdruck] .mappenblaetter { display: contents !important; }
+  .mappe[data-gesamtdruck] #muster { order: 3; }
+  .mappe[data-gesamtdruck] .mappenseite { display: inline; }
+  .mappe[data-gesamtdruck] .mappenblaetter > .papier:nth-child(1) { order: 1; }
+  .mappe[data-gesamtdruck] .mappenblaetter > .papier:nth-child(2) { order: 2; }
+  .mappe[data-gesamtdruck] .mappenblaetter > .papier:nth-child(3) { order: 4; }
+  .mappe[data-gesamtdruck] .papier { break-after: page; }
+  .mappe[data-gesamtdruck] .mappenblaetter > .papier:last-child { break-after: auto; }
+  .mappe .papier { display: flex; flex-direction: column; min-height: 258mm; border: 0; color: black; padding: 0; margin: 0; max-width: none; }
+  .mappe .druckkontakt { margin-top: auto; }
+  .mappe .papier h2 { font-size: 24pt; margin-block: 6mm; }
+  .mappe .schreibraum { margin-top: 8mm; padding-bottom: 21mm; }
+}

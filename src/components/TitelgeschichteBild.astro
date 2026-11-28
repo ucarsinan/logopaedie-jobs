@@ -1,0 +1,11 @@
+---
+interface Props {
+  alt: string;
+  sizes: string;
+  fetchpriority?: 'high';
+}
+const { alt, sizes, fetchpriority } = Astro.props;
+const bild = '/bilder/berufseinstieg/zwischen-zwei-terminen';
+const srcset = [320, 640, 960].map(width => `${bild}-${width}.webp ${width}w`).concat(`${bild}.webp 1536w`).join(', ');
+---
+<img src={`${bild}.webp`} {srcset} {sizes} {alt} {fetchpriority} width="1536" height="1024" />

@@ -1,0 +1,19 @@
+---
+interface Props {
+  headline: string;
+  description: string;
+  image: string;
+}
+const { headline, description, image } = Astro.props;
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline,
+  description,
+  image: new URL(image, Astro.site).href,
+  inLanguage: 'de',
+  mainEntityOfPage: new URL(Astro.url.pathname, Astro.site).href,
+  publisher: { '@type': 'Organization', name: 'Praxis für Logopädie Şimşek', url: 'https://logopaedie-simsek.de/' },
+};
+---
+<script type="application/ld+json" is:inline set:html={JSON.stringify(schema).replace(/</g, '\\u003c')} />

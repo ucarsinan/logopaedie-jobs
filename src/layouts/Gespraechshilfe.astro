@@ -1,0 +1,35 @@
+---
+import Fachportal from './Fachportal.astro';
+import '../styles/gespraechshilfen.css';
+interface Props {
+  title: string;
+  description: string;
+  article: string;
+  articleTitle: string;
+  printLabel: string;
+}
+const { title, description, article, articleTitle, printLabel } = Astro.props;
+const trail = [
+  { name: 'Startseite', href: '/' },
+  { name: 'Werkzeuge', href: '/#werkzeuge' },
+  { name: title, href: Astro.url.pathname },
+];
+---
+<Fachportal title={title + ' | Logopädie Jobs'} {description} {trail}>
+  <article class="gespraechshilfe">
+    <header><h1>{title}</h1><p class="vorspann">{description}</p></header>
+    <slot />
+    <div class="blatt-aktionen">
+      <button type="button" data-drucken hidden>{printLabel}</button>
+      <noscript>Mit der Druckfunktion deines Browsers kannst du die Vorlage ausdrucken.</noscript>
+      <a href={article}>{articleTitle}</a>
+    </div>
+  </article>
+</Fachportal>
+<script>
+  const printButton = document.querySelector<HTMLButtonElement>('[data-drucken]');
+  if (printButton) {
+    printButton.hidden = false;
+    printButton.addEventListener('click', () => window.print());
+  }
+</script>

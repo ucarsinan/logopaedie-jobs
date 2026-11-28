@@ -1,0 +1,68 @@
+---
+import Fachportal from '../../layouts/Fachportal.astro';
+const trail = [
+  { name: 'Startseite', href: '/' },
+  { name: 'Werkzeuge', href: '/#werkzeuge' },
+  { name: 'Wochenübersicht', href: Astro.url.pathname },
+];
+const days = [
+  { day: 'Mo', task: 'Bericht', minutes: [15,25] },
+  { day: 'Di', task: 'Bildkarten sortieren', minutes: [10,10] },
+  { day: 'Mi', task: 'Rücksprache', minutes: [15,20] },
+  { day: 'Do', task: 'Vorbereitung', minutes: [20,15] },
+  { day: 'Fr', task: 'Dokumentation', minutes: [10,10] },
+];
+const columns = ['Geplant','Gebraucht'];
+---
+<Fachportal title="Wochenübersicht für den Praxisalltag | Logopädie Jobs" description="Vergleiche für fünf Aufgaben die geplante und die tatsächlich benötigte Zeit. Die Beispielwoche lässt sich direkt im Browser anpassen." {trail}>
+  <article class="geschichte">
+    <a class="artikelbezug" href="/arbeitsalltag/zwischen-zwei-terminen/#woche-vergleichen">← Zum Beitrag „Zwischen zwei Terminen“</a>
+    <h1>Wochen&shy;übersicht</h1>
+    <p class="vorspann">Wie viel Zeit brauchst du zwischen den Terminen?</p>
+    <p>Ändere die Minuten in der Beispielwoche. Unten siehst du, wie sich der Aufwand über fünf Tage verteilt. Deine Eingaben bleiben in dieser Ansicht.</p>
+    <form id="woche">
+      <table>
+        <caption>Beispielwoche · Angaben in Minuten</caption>
+        <thead><tr><th scope="col">Tag und Aufgabe</th>{columns.map(column => <th scope="col">{column}</th>)}</tr></thead>
+        <tbody>{days.map(({ day, task, minutes }) => <tr>
+          <th scope="row">{day}<small>{task}</small></th>
+          {minutes.map((value, index) => <td><input name={day + '-' + columns[index]} type="number" inputmode="numeric" min="0" max="1440" step="1" required value={value} data-col={columns[index]} aria-label={`${day}, ${task}, ${columns[index]} in Minuten`} /></td>)}
+        </tr>)}</tbody>
+        <tfoot><tr><th scope="row">Summe</th><td id="geplant">70</td><td id="gebraucht">80</td></tr></tfoot>
+      </table>
+      <p id="bilanz" aria-live="polite">Die fünf Aufgaben dauerten insgesamt 10 Minuten länger als geplant.</p>
+      <button type="reset">Beispiel wiederherstellen</button>
+      <noscript>Für die Neuberechnung aktiviere bitte JavaScript.</noscript>
+    </form>
+    <h2>Was fällt dir auf?</h2><p>Für welche Aufgabe würdest du dir in der nächsten Woche mehr Zeit einplanen?</p>
+    <a class="rueckweg" href="/arbeitsalltag/zwischen-zwei-terminen/#woche-vergleichen">Zur Praxisgeschichte „Zwischen zwei Terminen“</a>
+  </article>
+
+<script is:inline>
+  const week = document.getElementById('woche');
+  const balance = document.getElementById('bilanz');
+  function updateWeek() {
+    const totals = {};
+    for (const column of ['Geplant', 'Gebraucht']) {
+      const fields = [...week.querySelectorAll('[data-col="' + column + '"]')];
+      totals[column] = fields.every(field => field.validity.valid)
+        ? fields.reduce((sum, field) => sum + field.valueAsNumber, 0)
+        : null;
+      document.getElementById(column.toLowerCase()).textContent = totals[column] ?? '–';
+    }
+    if (Object.values(totals).includes(null)) {
+      balance.textContent = 'Trage für jede Aufgabe ganze Minuten zwischen 0 und 1440 ein.';
+      return;
+    }
+    const difference = totals.Gebraucht - totals.Geplant;
+    const amount = Math.abs(difference);
+    balance.textContent = difference === 0 ? 'Für die fünf Aufgaben stimmen geplante und gebrauchte Zeit in der Summe überein.'
+      : 'Die fünf Aufgaben dauerten insgesamt ' + amount + (amount === 1 ? ' Minute ' : ' Minuten ')
+        + (difference > 0 ? 'länger' : 'kürzer') + ' als geplant.';
+  }
+  week.addEventListener('input', updateWeek);
+  week.addEventListener('reset', () => requestAnimationFrame(updateWeek));
+  week.addEventListener('submit', event => event.preventDefault());
+  window.addEventListener('pageshow', updateWeek);
+</script>
+</Fachportal>

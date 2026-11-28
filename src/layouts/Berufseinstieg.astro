@@ -1,0 +1,19 @@
+---
+import Fachportal from './Fachportal.astro';
+interface Props {
+  title: string;
+  description: string;
+  topic?: string;
+  image?: string;
+}
+const { title, description, topic, image = 'ankommen' } = Astro.props;
+const trail = [
+  { name: 'Startseite', href: '/' },
+  { name: 'Berufseinstieg & Wechsel', href: '/berufseinstieg/' },
+];
+if (topic) trail.push({ name: topic, href: Astro.url.pathname });
+---
+<Fachportal {title} {description} {trail} active="einstieg" ogImage={`/bilder/berufseinstieg/${image}.webp`}>
+  <slot />
+  {topic && <a class="rueckweg" href="/berufseinstieg/#themen">← Zurück zu den vier Themen</a>}
+</Fachportal>

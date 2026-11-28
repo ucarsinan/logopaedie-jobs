@@ -1,0 +1,56 @@
+.gespraechshilfe { max-width: 52rem; }
+.einstieg .gespraechshilfe h1 { font-size: clamp(2.25rem, 5vw, 4.75rem); line-height: 1.03; }
+.blatt-optionen { margin-block: 1.6rem; }
+.blatt-optionen legend, .blatt-optionen > label { display: block; font-weight: 700; }
+.blatt-optionen select {
+  max-width: 100%; min-height: 44px; margin-top: .4rem; padding: .45rem 2.6rem .45rem .8rem;
+  border: 1px solid #708998; border-radius: .55rem; appearance: none;
+  background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='m3 6 5 5 5-5' fill='none' stroke='%23155e89' stroke-width='2'/%3E%3C/svg%3E") right .8rem center / 1rem no-repeat;
+}
+.themenwahl, .blatt-aktionen { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1rem; }
+.themenwahl label { display: flex; align-items: center; gap: .45rem; min-height: 44px; cursor: pointer; }
+.themenwahl input { width: 1.15rem; height: 1.15rem; accent-color: #155e89; }
+.blatt-optionen output { color: #42545e; font-size: .9rem; }
+.arbeitsblatt { border-top: 3px solid var(--blau); background: #eff5f7; padding: clamp(1rem, 3vw, 2.5rem); margin-block: 1rem; }
+.einstieg .arbeitsblatt h2 { font-size: clamp(1.65rem, 3vw, 2.6rem); line-height: 1.15; }
+.wortkarten { list-style: none; padding: 0; display: grid; gap: .6rem; margin-block: 1.4rem; }
+.wortkarten li, .korrektur { padding: .9rem; background: white; border: 1px solid #879da9; font-size: clamp(1.4rem, 3vw, 2.4rem); font-weight: 650; }
+.korrektur { border-inline-start: 4px solid #155e89; }
+.terminnotiz { margin-top: 1.5rem; }
+.terminnotiz h3 { font-size: 1.4rem; font-weight: 700; }
+.gespraechsabschluss p + p { margin-top: .5rem; }
+.leitfaden h3 { margin: 1.35rem 0 .3rem; font-size: 1.3rem; }
+.leitfaden ul { list-style: disc; padding-inline-start: 1.25rem; }
+.leitfaden li + li { margin-top: .4rem; }
+.blatt-aktionen { margin-top: 1rem; }
+.blatt-aktionen button { min-height: 44px; background: #155e89; color: white; font-weight: 700; padding: .6rem 1.15rem; border-radius: 2rem; }
+.blatt-aktionen a { text-decoration: underline; padding-block: .65rem; }
+@media (min-width: 32rem) { .wortkarten { grid-template-columns: 1fr 1fr; } }
+@media print {
+  @page { size: A4; margin: 15mm; }
+  body:has(.gespraechshilfe) :is(.mast, .bereiche, .pfad, .abschluss, .blatt-optionen, .blatt-aktionen, .gespraechshilfe > header, #cc-main, .fixed, astro-dev-toolbar, noscript) { display: none; }
+  .einstieg:has(.gespraechshilfe) .satz { display: block; }
+  .einstieg:has(.gespraechshilfe) main { padding: 0; }
+  .gespraechshilfe { max-width: none; }
+  .arbeitsblatt { background: white; padding: 0; border: 0; }
+  [data-karte]:not([hidden]) ~ [data-karte]:not([hidden]) { break-before: page; }
+  .wortkarten { grid-template-columns: 1fr 1fr; }
+  .wortkarten li, .korrektur { padding: 1.5rem; font-size: 24pt; }
+  [data-karte]:not([hidden]) { display: flex; flex-direction: column; min-height: 261mm; margin-block: 0; }
+  [data-karte] .druckkontakt { margin-top: auto; }
+  .terminnotiz { margin-top: 12mm; padding-bottom: 45mm; border-bottom: 1px solid #879da9; }
+  .terminnotiz p { display: none; }
+  .terminnotiz h3 { font-size: 20pt; }
+  .leitfaden { margin-block: 0; }
+  .leitfaden h3 { margin-top: 3mm; }
+  .leitfaden h3 { break-after: avoid; }
+  .leitfaden section, .leitfaden li { break-inside: avoid; }
+  .leitfaden :nth-child(3 of [data-fragen]:not([hidden])) { break-before: page; }
+  .leitfaden :nth-child(3 of [data-fragen]:not([hidden]))::before {
+    content: 'Sprachbiografie im Elterngespräch · Fortsetzung';
+    display: block;
+    font-weight: 700;
+  }
+  .leitfaden li::after, .gespraechsabschluss p::after { content: ''; display: block; height: 10mm; border-bottom: 1px solid #888; }
+  .gespraechsabschluss p + p { margin-top: 1mm; }
+}

@@ -1,0 +1,29 @@
+---
+import PraxisgeschichteSchema from '../../components/PraxisgeschichteSchema.astro';
+import Fachportal from '../../layouts/Fachportal.astro';
+const trail = [
+  { name: 'Startseite', href: '/' },
+  { name: 'Arbeitsalltag', href: '/arbeitsalltag/' },
+  { name: 'Wenn Angehörige das Gespräch übernehmen', href: Astro.url.pathname },
+];
+const headline = 'Wenn Angehörige das Gespräch übernehmen';
+const description = 'Ein Gespräch zu dritt über einen Besuch im Café. Eine illustrative Szene zum Zuhören in der logopädischen Praxis.';
+const image = '/bilder/arbeitsalltag/angehoerigengespraech.webp';
+---
+<Fachportal title={headline + ' | Logopädie Jobs'} {description} ogImage={image} ogType="article" {trail} active="alltag">
+  <PraxisgeschichteSchema slot="head" {headline} {description} {image} />
+  <article class="geschichte">
+    <h1 class="long">Wenn Angehörige das Gespräch übernehmen.</h1>
+    <figure class="artikelbild"><img src="/bilder/arbeitsalltag/angehoerigengespraech.webp" alt="Eine Frau gestikuliert beim Erzählen. Ihre Tochter und der Logopäde hören ihr zu."><figcaption>Fiktive Szene · KI-Illustration · Eine Gesprächsszene zu dritt</figcaption></figure>
+    <p class="vorspann">Die Frage gilt der Mutter. Ihre Tochter antwortet zuerst. Der Logopäde legt seinen Stift hin.</p>
+    <p>„Wie war das Frühstück heute?“ Die Mutter holt Luft. „Viel besser“, sagt ihre Tochter und erzählt schon vom Sonntag, als beide im Café waren. Die Mutter lächelt. Dann hebt sie die Hand.</p>
+    <blockquote>„Den Kaffee habe ich selbst bestellt.“<small>Die Mutter in dieser fiktiven Szene</small></blockquote>
+    <h2>Wessen Geschichte hören wir?</h2>
+    <p>Der Logopäde dreht sich zur Mutter. Was hat sie bestellt? Einen Milchkaffee, sagt sie, und zwar den großen. Ihre Tochter lacht. Dieses Detail hatte sie vergessen. Für einen Moment haben beide dieselbe Geschichte aus zwei Richtungen erzählt.</p>
+    <h2>Eine Frage für dein Team</h2>
+    <p>Vielleicht kennst du so einen Augenblick. Jemand springt ein, weil er helfen möchte. Woran merkst du, dass die Person neben ihm gerade selbst etwas sagen will?</p>
+    <p>Wenn du an dein letztes Gespräch zu dritt denkst, an wen ging die erste Frage? Und wer bekam Zeit für die zweite Antwort?</p>
+    <p><a href="/berufshandbuch/aphasie-termin-klaeren/">Weiterlesen: Gemeinsam einen Termin klären, wenn die Wörter fehlen.</a></p>
+  </article>
+  <a class="rueckweg" href="/arbeitsalltag/">← Zum Arbeitsalltag</a>
+</Fachportal>

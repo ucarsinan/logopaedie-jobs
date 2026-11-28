@@ -1,0 +1,42 @@
+---
+import Druckkontakt from '../Druckkontakt.astro';
+import Mappenblaetter from './Mappenblaetter.astro';
+const downloadUrl = import.meta.env.DEV
+  ? (await import('../../assets/material/teammappe-ueben-zu-hause.pdf?url')).default
+  : undefined;
+---
+<article class="postseite mappe">
+  <header class="postkopf">
+    <p class="rubrik"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M2 7V5h7l3 3h10v12H2z"/></svg>Arbeitsmaterial · PDF zum Download</p>
+    <h1>Teammappe</h1>
+    <p class="vorspann">Üben zu Hause gemeinsam planen. Vier A4-Seiten für eure nächste Teambesprechung.</p>
+    <div class="postwege">
+      <button class="aktion" type="button" data-muster-drucken hidden>Familienblatt drucken · 1 Seite</button>
+      <noscript><a href="#muster">Familienblatt zum Ausdrucken · 1 Seite</a></noscript>
+      <a href={downloadUrl} download="teammappe-ueben-zu-hause.pdf">Für die Teambesprechung herunterladen · 4 Seiten</a>
+    </div>
+  </header>
+  <section id="muster" aria-labelledby="muster-titel">
+    <div class="blattkopf"><p class="rubrik">Familienblatt · A4</p></div>
+    <div class="musterblatt papier">
+      <p class="rubrik">Vereinbarungsblatt · Elternarbeit<span class="mappenseite"> · 3 von 4</span></p>
+      <h2 id="muster-titel">So üben wir zu Hause</h2>
+      <p>Füllt das Blatt am Ende der Stunde gemeinsam aus. Die Familie nimmt es mit und bringt ihre Fragen zum nächsten Termin mit.</p>
+      {['Wann und wo passt die Übung in unseren Tag?', 'Was mache oder sage ich zuerst? Was macht mein Kind dann?', 'Woran merke ich, dass mein Kind Hilfe möchte? Was mache ich dann?', 'Darüber sprechen wir beim nächsten Termin'].map(frage => <div class="schreibraum"><h3>{frage}</h3></div>)}
+      <small class="bildschirm-absender">Praxis für Logopädie Şimşek</small>
+      <Druckkontakt />
+    </div>
+    <noscript>Wähle im Browser „Drucken“, um das Familienblatt als einzelne Seite auszudrucken.</noscript>
+  </section>
+  <section class="inhalt"><h2>In der ganzen Mappe</h2>
+    <ol><li>Fallvignette für den Einstieg</li><li>Rollenkarte für die Übung zu zweit</li><li>Vereinbarungsblatt für die Familie</li><li>Rückblick für die Teambesprechung</li></ol>
+  </section>
+  <div class="mappenblaetter"><Mappenblaetter /></div>
+</article>
+<script>
+  const druckknopf = document.querySelector<HTMLButtonElement>('[data-muster-drucken]');
+  if (druckknopf) {
+    druckknopf.hidden = false;
+    druckknopf.addEventListener('click', () => window.print());
+  }
+</script>

@@ -2,70 +2,27 @@
 import { Image } from 'astro:assets';
 import praxisBild1 from '../assets/praxis-bild-1.jpg';
 import praxisBild2 from '../assets/praxis-bild-2.jpg';
-import praxisBild3 from '../assets/praxis-bild-3.jpg';
+const rooms = [
+  { image: praxisBild2, title: 'Platz auf dem Boden', detail: 'Zwischen Spielhaus, Teppich und Tisch bleibt Raum für Bewegung.', alt: 'Ein Teppich vor dem kleinen Spielhaus, dahinter ein Tisch mit Kinderstühlen.', focus: '47% 64%' },
+  { image: praxisBild1, title: 'Vor dem Termin', detail: 'Vom Eingang geht der Blick über die Stuhlreihe bis zum Fenster.', alt: 'Blick durch die geöffnete Glastür in den Wartebereich mit Stühlen und niedrigem Tisch.', focus: '35% 56%' },
+];
 ---
-<section id="galerie" class="py-12 md:py-24 bg-slate-50">
-  <div class="max-w-7xl mx-auto px-6 text-center">
-    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-slate-100 text-slate-600 border border-slate-200 mb-4">
-      Praxiseinblick
-    </span>
-    <h2 class="text-3xl font-semibold text-slate-900 mb-3 leading-tight">Einblicke in unsere Praxis</h2>
-    <div class="h-px bg-simsek-green mb-8 md:mb-10"></div>
-
+<section id="galerie" aria-labelledby="raumtitel">
+  <div>
+    <h2 id="raumtitel">Unsere Praxisräume</h2>
     <div data-mobile-gallery>
-      <div
-        id="praxisbilder"
-        data-gallery-track
-        role="region"
-        aria-roledescription="Karussell"
-        aria-label="Einblicke in die Praxisräume"
-        tabindex="0"
-        class="gallery-track flex overflow-x-auto snap-x snap-mandatory scroll-smooth motion-reduce:scroll-auto gap-4 md:grid md:grid-cols-3 md:gap-12 md:overflow-visible md:snap-none"
-      >
-        <div class="group relative min-w-full snap-center md:min-w-0" role="group" aria-label="Bild 1 von 3">
-          <div class="aspect-square rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-xl md:shadow-2xl border-8 border-white bg-white transition-transform duration-500 group-hover:scale-[1.02] motion-reduce:transition-none">
-            <Image
-              src={praxisBild1}
-              alt="Einblick in die Räume der Praxis für Logopädie Şimşek in Duisburg"
-              width={800}
-              height={800}
-              widths={[320, 480, 640, 800]}
-              sizes="(max-width: 767px) calc(100vw - 64px), 33vw"
-              class="w-full h-full object-cover"
-              loading="lazy"
-            />
-          </div>
-        </div>
-
-        <div class="group relative min-w-full snap-center md:min-w-0" role="group" aria-label="Bild 2 von 3">
-          <div class="aspect-square rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-xl md:shadow-2xl border-8 border-white bg-white transition-transform duration-500 group-hover:scale-[1.02] motion-reduce:transition-none">
-            <Image
-              src={praxisBild2}
-              alt="Therapiematerial und Spielbereich der Logopädie-Praxis Duisburg"
-              width={800}
-              height={800}
-              widths={[320, 480, 640, 800]}
-              sizes="(max-width: 767px) calc(100vw - 64px), 33vw"
-              class="w-full h-full object-cover"
-              loading="lazy"
-            />
-          </div>
-        </div>
-
-        <div class="group relative min-w-full snap-center md:min-w-0" role="group" aria-label="Bild 3 von 3">
-          <div class="aspect-square rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-xl md:shadow-2xl border-8 border-white bg-white transition-transform duration-500 group-hover:scale-[1.02] motion-reduce:transition-none">
-            <Image
-              src={praxisBild3}
-              alt="Heller Therapieraum in der Praxis für Logopädie Şimşek"
-              width={800}
-              height={800}
-              widths={[320, 480, 640, 800]}
-              sizes="(max-width: 767px) calc(100vw - 64px), 33vw"
-              class="w-full h-full object-cover"
-              loading="lazy"
-            />
-          </div>
-        </div>
+      <div id="praxisbilder" data-gallery-track role="region" aria-roledescription="Karussell"
+        aria-label="Originalaufnahmen der Praxisräume" tabindex="0"
+        class="raumstrecke gallery-track flex overflow-x-auto snap-x snap-mandatory scroll-smooth motion-reduce:scroll-auto">
+        {rooms.map((room, i) => (
+          <figure class="raumaufnahme" role="group" aria-label={`Bild ${i + 1} von ${rooms.length}`}>
+            <Image src={room.image} alt={room.alt} widths={[420, 700, 1000, 1400]}
+              sizes="(min-width: 961px) 50vw, (min-width: 768px) 60vw, 100vw"
+              width={1400} height={933} loading="lazy"
+              style={`object-position: ${room.focus}`} />
+            <figcaption><strong>{room.title}</strong>{room.detail}</figcaption>
+          </figure>
+        ))}
       </div>
 
       <div class="mt-5 flex items-center justify-center gap-2 md:hidden" aria-label="Galeriesteuerung">
@@ -80,15 +37,11 @@ import praxisBild3 from '../assets/praxis-bild-3.jpg';
         </button>
 
         <div class="flex items-center" aria-label="Bild auswählen">
-          <button type="button" data-gallery-dot aria-controls="praxisbilder" aria-label="Praxisbild 1 anzeigen" aria-current="true" class="group/dot inline-flex min-h-11 min-w-11 items-center justify-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-simsek-green">
-            <span class="h-2.5 w-2.5 rounded-full bg-simsek-green transition-transform group-aria-[current=true]/dot:scale-125"></span>
-          </button>
-          <button type="button" data-gallery-dot aria-controls="praxisbilder" aria-label="Praxisbild 2 anzeigen" aria-current="false" class="group/dot inline-flex min-h-11 min-w-11 items-center justify-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-simsek-green">
-            <span class="h-2.5 w-2.5 rounded-full bg-slate-300 transition-transform group-aria-[current=true]/dot:scale-125"></span>
-          </button>
-          <button type="button" data-gallery-dot aria-controls="praxisbilder" aria-label="Praxisbild 3 anzeigen" aria-current="false" class="group/dot inline-flex min-h-11 min-w-11 items-center justify-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-simsek-green">
-            <span class="h-2.5 w-2.5 rounded-full bg-slate-300 transition-transform group-aria-[current=true]/dot:scale-125"></span>
-          </button>
+          {rooms.map((_, i) => (
+            <button type="button" data-gallery-dot aria-controls="praxisbilder" aria-label={`Praxisbild ${i + 1} anzeigen`} aria-current={i === 0 ? 'true' : 'false'} class="group/dot inline-flex min-h-11 min-w-11 items-center justify-center">
+              <span class="h-2.5 w-2.5 rounded-full bg-slate-300 group-aria-[current=true]/dot:bg-simsek-green"></span>
+            </button>
+          ))}
         </div>
 
         <button
@@ -100,7 +53,7 @@ import praxisBild3 from '../assets/praxis-bild-3.jpg';
         >
           <svg class="h-5 w-5" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
         </button>
-        <span data-gallery-status class="sr-only" aria-live="polite">Bild 1 von 3</span>
+        <span data-gallery-status class="sr-only" aria-live="polite">Bild 1 von {rooms.length}</span>
       </div>
     </div>
   </div>

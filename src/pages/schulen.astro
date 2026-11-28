@@ -1,32 +1,26 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navigation from '../components/Navigation.astro';
-import Footer from '../components/Footer.astro';
+import Fachportal from '../layouts/Fachportal.astro';
 import PracticeBrand from '../components/PracticeBrand.astro';
 import ContactAlternatives from '../components/ContactAlternatives.astro';
-import jobSource from '../content/jobs/logopaedin-sprachtherapeut-duisburg.json';
-import { jobSchema } from '../lib/job-model.mjs';
-import { publicationArtifacts } from '../lib/job-publication-artifacts.mjs';
+import { currentJob } from '../lib/current-job.mjs';
 
 // Emel hat die Zeile „Praktikum“ in EMPLOYER_TRUTH.md am 06.10.2026 bestätigt (GATE-002, DEC-156). Auf false setzen, um sie wieder auszublenden.
 const INTERNSHIP_CONFIRMED = true;
 
 const pageTitle = 'Berufseinstieg Logopädie Duisburg | Praxis für Logopädie Şimşek';
 const pageDescription = 'Berufsanfänger:innen sind willkommen: Einarbeitung, eingeplante Dokumentationszeit, Hospitation oder Probearbeit in Duisburg.';
-const { presentation } = publicationArtifacts(jobSchema.parse(jobSource));
-const activeJob = presentation.active;
+const activeJob = currentJob.presentation.active;
 ---
 
-<Layout
+<Fachportal active="einstieg" trail={[
+  { name: 'Startseite', href: '/' },
+  { name: 'Berufseinstieg & Wechsel', href: '/berufseinstieg/' },
+  { name: 'Erste Stelle', href: Astro.url.pathname }
+]}
   title={pageTitle}
   description={pageDescription}
-  breadcrumbs={[
-    { name: 'Startseite', url: 'https://xn--logopdiejobs-kcb.de/' },
-    { name: 'Für Auszubildende und Studierende', url: 'https://xn--logopdiejobs-kcb.de/schulen/' },
-  ]}
 >
-  <Navigation />
-  <main id="main-content" tabindex="-1">
+  <div class="portal-inhalt leseseite">
     <article class="mx-auto max-w-4xl px-4 py-10 sm:px-6 md:py-24">
       <header class="mb-12">
         <PracticeBrand class="mb-6" />
@@ -34,13 +28,15 @@ const activeJob = presentation.active;
           Für Auszubildende und Studierende
         </span>
         <h1 class="mb-6 text-balance text-2xl font-semibold leading-tight text-slate-900 sm:text-4xl md:text-5xl">
-          Berufseinstieg als Logopäd:in in Duisburg
+          Berufseinstieg als <span class="text-[var(--blau)]">Logopäd:in</span> in Duisburg
         </h1>
         <p class="text-xl leading-relaxed text-slate-600">
           Du schließt bald Ausbildung oder Studium der Logopädie ab? Berufsanfänger:innen sind willkommen. Bei der <span translate="no" class="whitespace-nowrap">Praxis für Logopädie Şimşek</span> findest du hier die Antworten auf die wichtigsten Fragen zum Start.
         </p>
         <div class="mt-8 h-px bg-simsek-green"></div>
       </header>
+
+      <figure class="aufmacher"><img src="/bilder/berufseinstieg/erste-stelle.webp" width="460" height="460" alt="Zwei Kolleginnen besprechen den Einstieg in die Praxis." /><figcaption>Berufseinstieg · KI-Illustration</figcaption></figure>
 
       <section class="mb-12">
         <h2 class="mb-6 text-balance border-l-4 border-simsek-green pl-4 text-2xl font-semibold text-slate-900 md:text-3xl">Fragen zum Einstieg</h2>
@@ -51,7 +47,7 @@ const activeJob = presentation.active;
           </div>
           <div>
             <dt class="font-semibold text-slate-900">Was brauche ich formal?</dt>
-            <dd>Staatlich anerkannte und zugelassene Logopädie oder Sprachtherapie nach Ausbildung oder Studium. Sehr gute Deutschkenntnisse sind erforderlich; weitere Sprachen sind willkommen, aber keine Voraussetzung.</dd>
+            <dd>Dein Ausbildungs- oder Studienabschluss in Logopädie oder Sprachtherapie muss dich für die Behandlung gesetzlich Versicherter qualifizieren. Sehr gute Deutschkenntnisse sind erforderlich; weitere Sprachen sind willkommen, aber keine Voraussetzung.</dd>
           </div>
           <div>
             <dt class="font-semibold text-slate-900">Wer begleitet mich am Anfang?</dt>
@@ -61,7 +57,7 @@ const activeJob = presentation.active;
             <dt class="font-semibold text-slate-900">Was verdiene ich?</dt>
             <dd>
               {activeJob
-                ? <>Je nach Erfahrungslevel {activeJob.hourlySalaryLabel} brutto pro Stunde; bei 38,5 Stunden {activeJob.monthlySalaryLabel} brutto im Monat. Zusätzlich wird Weihnachtsgeld gezahlt.</>
+                ? <>Je nach Erfahrungslevel {activeJob.hourlySalaryLabel} brutto pro Stunde; bei {activeJob.fullTimeHoursLabel} Stunden {activeJob.monthlySalaryLabel} brutto im Monat. Zusätzlich wird Weihnachtsgeld gezahlt.</>
                 : <>Aktuell ist keine Stelle zur Bewerbung freigegeben.</>}
               <a href="/gehaltsrechner/" class="font-semibold text-simsek-blue underline underline-offset-4 hover:text-simsek-green focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-950">Zum Gehaltsrechner</a>
             </dd>
@@ -105,11 +101,11 @@ const activeJob = presentation.active;
           </div>
         </dl>
         <a href="/jobs/logopaedin-sprachtherapeut-duisburg/" class="mt-8 inline-flex min-h-11 items-center justify-center rounded-lg border-2 border-slate-200 px-6 py-3 text-sm font-bold text-slate-800 no-underline transition-colors duration-200 hover:border-simsek-green focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-950">
-          Alle Details zur Stelle in Duisburg
+          {activeJob ? 'Alle Details zur Stelle in Duisburg' : 'Stellenstatus ansehen'}
         </a>
       </section>
 
-      <section class="mb-12 rounded-3xl bg-slate-900 px-5 py-8 text-white sm:px-8">
+      {activeJob && <section class="mb-12 rounded-3xl bg-slate-900 px-5 py-8 text-white sm:px-8">
         <h2 class="mb-3 text-balance text-2xl font-semibold md:text-3xl">Sprich uns an</h2>
         <p class="mb-6 max-w-xl text-slate-300">
           Ansprechpartnerin: Emel Şimşek-Uçar. Unverbindlicher Erstkontakt ohne klassische Unterlagen; Lebenslauf freiwillig.
@@ -118,7 +114,7 @@ const activeJob = presentation.active;
           Zum Kontaktformular
         </a>
         <ContactAlternatives />
-      </section>
+      </section>}
 
       <section class="rounded-3xl border border-slate-200 bg-white px-5 py-8 sm:px-8">
         <h2 class="mb-3 text-balance text-2xl font-semibold text-slate-900 md:text-3xl">Für Schulen und Hochschulen</h2>
@@ -129,7 +125,7 @@ const activeJob = presentation.active;
           <a href="tel:+4915510062296" class="font-semibold text-simsek-blue underline underline-offset-4 hover:text-simsek-green focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-950">+49&nbsp;155&nbsp;10062296</a>.
         </p>
       </section>
+      <a href="/berufseinstieg/#themen" class="mt-6 inline-flex min-h-11 items-center font-semibold underline underline-offset-4 hover:decoration-2 focus-visible:outline-2 focus-visible:outline-offset-4">← Zurück zu den vier Themen im Berufseinstieg</a>
     </article>
-  </main>
-  <Footer />
-</Layout>
+  </div>
+</Fachportal>

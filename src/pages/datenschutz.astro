@@ -1,7 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navigation from '../components/Navigation.astro';
-import Footer from '../components/Footer.astro';
+import Fachportal from '../layouts/Fachportal.astro';
 
 // Released 2026-11-18 on Sinan's decision; open operator/contract evidence (B28-B30)
 // remains tracked in docs/agent-reports/2026-10-30-recht-offene-betriebsnachweise-v01.md.
@@ -9,24 +7,15 @@ import Footer from '../components/Footer.astro';
 const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 ---
 
-<Layout
+<Fachportal trail={[
+  { name: 'Startseite', href: '/' },
+  { name: 'Datenschutz', href: Astro.url.pathname }
+]}
   title="Datenschutz | Praxis für Logopädie Şimşek"
   description="Datenschutzerklärung der Praxis für Logopädie Şimşek"
-  breadcrumbs={[
-    { name: "Logopädie Jobs Duisburg", url: "https://xn--logopdiejobs-kcb.de/" },
-    { name: "Datenschutz", url: "https://xn--logopdiejobs-kcb.de/datenschutz" }
-  ]}
 >
-  <Navigation />
-  <main id="main-content" tabindex="-1">
+  <div class="portal-inhalt leseseite">
     <article class="max-w-3xl mx-auto px-6 py-16 md:py-24">
-
-      <!-- Breadcrumb -->
-      <nav class="flex items-center gap-2 text-xs text-slate-600 mb-10 font-medium flex-wrap" aria-label="Breadcrumb">
-        <a href="/" class="hover:text-simsek-green transition-colors duration-150 no-underline">Startseite</a>
-        <svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-        <span class="text-slate-600">Datenschutz</span>
-      </nav>
 
       <header class="mb-12">
         <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-slate-100 text-slate-600 border border-slate-200 mb-6">
@@ -79,9 +68,9 @@ const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
         <p>Bewerbungs-Chats und freiwillige Anhänge werden während des laufenden Bewerbungsverfahrens aufbewahrt und bei
           Absage oder Rückzug spätestens nach sechs Monaten gelöscht. Die Löschung erfolgt auf kontrollierten Geräten,
           aus Downloads und aus technisch beeinflussbaren Backups, soweit dies jeweils möglich ist.</p>
-        <p>Aktuelle Informationen von WhatsApp: <a href="https://www.whatsapp.com/legal/privacy-policy-eea">EEA Privacy Policy</a>,
-          <a href="https://www.whatsapp.com/legal/business-terms">Business Terms</a> und
-          <a href="https://www.whatsapp.com/legal/business-data-processing-terms">Business Data Processing Terms</a>.</p>
+        <p>Aktuelle Informationen von WhatsApp: <a href="https://www.whatsapp.com/legal/privacy-policy-eea" target="_blank" rel="noopener">EEA Privacy Policy<span class="sr-only"> (öffnet in einem neuen Tab)</span></a>,
+          <a href="https://www.whatsapp.com/legal/business-terms" target="_blank" rel="noopener">Business Terms<span class="sr-only"> (öffnet in einem neuen Tab)</span></a> und
+          <a href="https://www.whatsapp.com/legal/business-data-processing-terms" target="_blank" rel="noopener">Business Data Processing Terms<span class="sr-only"> (öffnet in einem neuen Tab)</span></a>.</p>
 
         <h2>5. Externe Links</h2>
         <p>Diese Website kann Links zu externen Websites enthalten. Für deren Inhalte und Datenschutzpraktiken sind wir nicht verantwortlich.</p>
@@ -97,7 +86,7 @@ const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
             die zugehörige Sitzung wird nach 24 Stunden verworfen. Dies ist nicht die Speicherdauer sämtlicher Statistikdaten.
             Wir verwenden keine eigenen Analyse-Events zur Erfassung von Bewerbungsinhalten.</p>
         <p>Anbieter ist Vercel Inc., USA. Weitere Informationen:
-          <a href="https://vercel.com/docs/analytics/privacy-policy">Datenschutz bei Vercel Web Analytics</a>.</p>
+          <a href="https://vercel.com/docs/analytics/privacy-policy" target="_blank" rel="noopener">Datenschutz bei Vercel Web Analytics<span class="sr-only"> (öffnet in einem neuen Tab)</span></a>.</p>
         <p>Der Verzicht auf Cookies allein beantwortet nicht, ob für die konkrete Verarbeitung eine Einwilligung
           erforderlich ist. Maßgeblich sind die tatsächlich eingesetzte Technik und ihre rechtliche Einordnung.</p>
         <!-- Offen (B28): Hosting und Analytics getrennt zu Rechtsgrundlagen,
@@ -105,10 +94,10 @@ const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
              Keine Rechtsgrundlage oder konkrete Frist aus Anbieterwerbung ableiten. -->
 
         <h2>8. Google Maps</h2>
-        <p>Auf der Startseite können Sie eine Karte von Google Maps laden. Erst nach Ihrem Klick auf „Karte laden“
+        <p>Auf der Seite „Arbeiten in der Praxis“ können Sie eine Karte von Google Maps laden. Erst nach Ihrem Klick auf „Karte laden“
           wird eine Verbindung zu Google hergestellt. Dabei können insbesondere Ihre IP-Adresse und Browserinformationen
           an Google übertragen werden. Anbieter ist Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland.
-          Eine Verarbeitung in den USA ist möglich. Informationen: <a href="https://policies.google.com/privacy?hl=de">Google-Datenschutzerklärung</a>.</p>
+          Eine Verarbeitung in den USA ist möglich. Informationen: <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener">Google-Datenschutzerklärung<span class="sr-only"> (öffnet in einem neuen Tab)</span></a>.</p>
         <p>Das Laden erfolgt mit Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Sie können die Karte über
           „Karte schließen“ entfernen. Bereits erfolgte Übermittlungen werden dadurch nicht rückgängig gemacht.
           Ohne Freigabe können Sie die Adresse und den Link zur Routenplanung verwenden.</p>
@@ -126,21 +115,20 @@ const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
         <p>Sie können unter den gesetzlichen Voraussetzungen außerdem Datenübertragbarkeit verlangen,
           einer Verarbeitung widersprechen und erteilte Einwilligungen für die Zukunft widerrufen.
           Sie haben das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren, insbesondere bei der LDI Nordrhein-Westfalen.</p>
-        <p>Rechtliche Grundlagen und Betroffenenrechte: <a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj?locale=de">Datenschutz-Grundverordnung (insbesondere Art. 4, 6, 9, 13 und Kapitel V)</a>
-          und <a href="https://www.gesetze-im-internet.de/bdsg_2018/__26.html">§ 26 BDSG für Bewerbungen</a>.</p>
+        <p>Rechtliche Grundlagen und Betroffenenrechte: <a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj?locale=de" target="_blank" rel="noopener">Datenschutz-Grundverordnung (insbesondere Art. 4, 6, 9, 13 und Kapitel V)<span class="sr-only"> (öffnet in einem neuen Tab)</span></a>
+          und <a href="https://www.gesetze-im-internet.de/bdsg_2018/__26.html" target="_blank" rel="noopener">§ 26 BDSG für Bewerbungen<span class="sr-only"> (öffnet in einem neuen Tab)</span></a>.</p>
         <p>Stand: 18. November 2026.</p>
       </div>
 
     </article>
-  </main>
-  <Footer />
-</Layout>
+  </div>
+</Fachportal>
 
 <style>
   :global(.article-body) {
     font-size: 1.0625rem;
     line-height: 1.8;
-    color: #514B46;
+    color: #313131;
   }
 
   :global(.article-body p) {
@@ -150,16 +138,16 @@ const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
   :global(.article-body h2) {
     font-size: 1.25rem;
     font-weight: 700;
-    color: #1C1916;
+    color: #101010;
     margin-top: 2.5rem;
     margin-bottom: 1rem;
     padding-left: 1rem;
-    border-left: 3px solid rgb(42 127 111);
+    border-left: 3px solid rgb(65 101 20);
     line-height: 1.3;
   }
 
   :global(.article-body a) {
-    color: rgb(155 82 52);
+    color: rgb(23 105 149);
     text-decoration: underline;
     text-underline-offset: 3px;
     font-weight: 500;
@@ -167,11 +155,11 @@ const gaConfigured = !!import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
   }
 
   :global(.article-body a:hover) {
-    color: rgb(42 127 111);
+    color: rgb(65 101 20);
   }
 
   :global(.article-body strong) {
     font-weight: 600;
-    color: #1C1916;
+    color: #101010;
   }
 </style>

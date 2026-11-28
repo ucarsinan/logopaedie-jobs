@@ -1,0 +1,37 @@
+---
+import PraxisgeschichteSchema from '../../components/PraxisgeschichteSchema.astro';
+import TitelgeschichteBild from '../../components/TitelgeschichteBild.astro';
+import Fachportal from '../../layouts/Fachportal.astro';
+const trail = [
+  { name: 'Startseite', href: '/' },
+  { name: 'Arbeitsalltag', href: '/arbeitsalltag/' },
+  { name: 'Zwischen zwei Terminen', href: Astro.url.pathname },
+];
+const headline = 'Zwischen zwei Terminen';
+const description = 'Eine Praxisgeschichte über Vorbereitung, Berichte und Austausch. Mit einer Wochenübersicht zum Selbstvergleichen.';
+const image = '/bilder/berufseinstieg/zwischen-zwei-terminen.webp';
+---
+<Fachportal title={headline + ' | Logopädie Jobs'} {description} ogImage={image} ogType="article" {trail} active="alltag">
+  <PraxisgeschichteSchema slot="head" {headline} {description} {image} />
+  <article class="geschichte">
+    <h1>Zwischen zwei<br>Terminen.</h1>
+    <p class="vorspann">Eine Viertelstunde ist im Kalender frei. Auf dem Tisch liegt noch die letzte Bildkarte.</p>
+    <figure class="artikelbild"><TitelgeschichteBild sizes="(max-width: 51rem) 94vw, 48rem" alt="Eine Kollegin nimmt eine Bildkarte auf, die andere schreibt ins Heft." /><figcaption>Fiktive Szene · KI-Illustration · Material sichten und Notizen festhalten</figcaption></figure>
+    <p>Die Tür fällt zu. Eine Kollegin sammelt die Karten ein. Bei der mit dem Apfel hält sie kurz inne. Heute hat das Kind das Wort zum ersten Mal von sich aus benutzt. Bevor die Karte im Stapel verschwindet, schreibt sie sich den Moment auf.</p>
+    <h2>Was in die Lücke passt</h2>
+    <p>Für den Bericht hat sie fünfzehn Minuten eingeplant. Dann fragt die Kollegin, welche Bilder sie für den nächsten Termin bereitlegen soll. Die beiden blättern noch einmal durch das Heft. Als der Bericht fertig ist, sind fünfundzwanzig Minuten vergangen.</p>
+    <section class="zeitvergleich"><small>Bericht am Montag · fiktives Beispiel</small><div><b>15</b><em>→</em><b>25</b></div><section><span>Minuten geplant</span><span>Minuten gebraucht</span></section></section>
+    <h2 id="woche-vergleichen">Eine Woche lang hinsehen</h2>
+    <p>Was würdest du beim Blick auf den Kalender später noch wissen? Vielleicht nur, wann der nächste Termin begann. Eine kurze Notiz hält auch fest, wofür du die Zeit dazwischen gebraucht hast.</p>
+    <p>Nimm eine Aufgabe, die in deiner Woche wiederkehrt. Schreib auf, wie viel Zeit du dafür vorsiehst und wie lange sie am Ende dauert. Am Freitag kannst du beides nebeneinanderlegen.</p>
+
+    <div class="lesewege"><a class="werkzeug" href="/werkzeuge/wochenuebersicht/">Meine Woche vergleichen</a></div>
+    <section id="kurzfilm" aria-labelledby="filmtitel">
+      <h2 id="filmtitel">Eine Woche auf dem Papier</h2>
+      <p>Kurzfilm · 22 Sekunden · ohne Ton</p>
+      <video controls playsinline preload="metadata" aria-label="Eine Woche auf dem Papier" width="1280" height="720" src="/videos/arbeitsalltag/arbeitswoche.mp4"></video>
+      <details><summary>Textfassung lesen</summary><p>Im Kalender stehen Therapie, Bericht und Austausch. Im Beispiel braucht ein Bericht 25 Minuten. Geplant waren 15. Was würdest du für die nächste Woche eintragen?</p></details>
+    </section>
+  </article>
+  <a class="rueckweg" href="/arbeitsalltag/">← Zum Arbeitsalltag</a>
+</Fachportal>

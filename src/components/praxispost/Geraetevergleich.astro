@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="de">
+  <head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="robots" content="noindex,nofollow" /><title>V8-Vergleich · Praxispost und Teammappe</title></head>
+  <body>
+    <main class="vergleich">
+      <header>
+        <h1>Praxispost und Teammappe</h1>
+        <fieldset><legend>Ansichtsgröße</legend>
+          {['Smartphone', 'Tablet', 'Desktop'].map((name,i) => <label><input type="radio" name="geraet" value={i} checked={i === 0}/>{name}</label>)}
+        </fieldset>
+      </header>
+      <div class="paar">
+        {['praxispost','teammappe'].map((slug,i) => <section>
+          <h2><a href={`/vorschau/${slug}/`}>{i === 0 ? 'Praxispost' : 'Teammappe'} <span aria-hidden="true">↗</span></a></h2>
+          <div class="rahmen"><iframe src={`/vorschau/${slug}/`} title={i === 0 ? 'Praxispost in der Vorschau' : 'Teammappe in der Vorschau'}></iframe></div>
+        </section>)}
+      </div>
+    </main>
+  </body>
+</html>
+<style>
+  body { margin: 0; font: 1rem/1.4 "Helvetica Neue", Arial, sans-serif; background: #f2f5f6; color: #101010; }
+  .vergleich { padding: clamp(.8rem, 2vw, 2rem); max-width: 1560px; margin: auto; }
+  header { display: flex; justify-content: space-between; align-items: end; flex-wrap: wrap; gap: .8rem; padding-bottom: 1rem; border-bottom: 1px solid #93a5ae; }
+  h1 { font-size: clamp(1.6rem,3vw,2.6rem); line-height: 1.08; letter-spacing: -.055em; font-weight: 700; }
+  fieldset { display: flex; flex-wrap: wrap; gap: .2rem; border: 0; }
+  legend { font-size: .82rem; font-weight: 600; }
+  label { display: flex; align-items: center; min-height: 44px; gap: .3rem; padding: 0 .5rem; cursor: pointer; }
+  input { accent-color: #155e89; }
+  .paar { display: grid; grid-template-columns: minmax(0,1fr); gap: clamp(.5rem,2vw,2rem); }
+  .paar > section { min-width: 0; }
+  h2 { font-size: 1.1rem; font-weight: 700; padding-block: .7rem; }
+  h2 a { color: #155e89; text-decoration: underline; }
+  .rahmen { max-width: 100%; overflow: hidden; margin-inline: auto; outline: 1px solid #b8c4ca; background: white; }
+  iframe { display: block; border: 0; transform-origin: top left; }
+  @media (width > 38rem) { .paar { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+</style>
+<script>
+  const devices = [[393,852],[768,1024],[1139,799]];
+  const pair = document.querySelector<HTMLElement>('.paar')!;
+  function fit() {
+    const selected = document.querySelector<HTMLInputElement>('input[name="geraet"]:checked')!;
+    const [width,height] = devices[Number(selected.value)];
+    pair.querySelectorAll<HTMLElement>('.rahmen').forEach(frame => {
+      const scale = Math.min(frame.parentElement!.clientWidth / width, 1);
+      frame.style.width = width * scale + 'px';
+      frame.style.height = height * scale + 'px';
+      const iframe = frame.querySelector('iframe')!;
+      iframe.style.width = width + 'px';
+      iframe.style.height = height + 'px';
+      iframe.style.transform = 'scale(' + scale + ')';
+    });
+  }
+  document.querySelector('fieldset')!.addEventListener('change',fit);
+  new ResizeObserver(fit).observe(pair);
+  fit();
+</script>

@@ -20,16 +20,31 @@ const ratgeber = defineCollection({
     ]),
     intent: z.enum(['gehalt', 'bewerbung', 'arbeitszeit', 'fachwissen', 'praxisalltag']),
     featured: z.boolean().default(false),
+    series: z.literal('fruehe-sprache').optional(),
     priority: z.number().int().min(0).default(100),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     author: z.string().default('Redaktion'),
     heroImage: z.string().optional(),
     heroImageAlt: z.string().optional(),
+    heroImageCaption: z.string().optional(),
     draft: z.boolean().default(false),
     relatedArticles: z.array(z.string()).optional(),
     definition: z.string().optional(),
     faq: z.array(z.object({ q: z.string(), a: z.string() })).optional(),
+  }),
+});
+
+const arbeitsalltag = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/arbeitsalltag' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    shortTitle: z.string(),
+    thumbnail: z.string(),
+    articleImage: z.string(),
+    imageAlt: z.string().min(1),
+    order: z.number().int(),
   }),
 });
 
@@ -38,6 +53,4 @@ const jobs = defineCollection({
   schema: jobSchema,
 });
 
-// seiten-Collection wird angelegt, sobald der Bereich aktiv bespielt wird.
-
-export const collections = { ratgeber, jobs };
+export const collections = { ratgeber, arbeitsalltag, jobs };
