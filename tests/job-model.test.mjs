@@ -13,7 +13,16 @@ test('accepts the complete active record', () => {
   assert.deepEqual(jobSchema.parse(syntheticJob()), syntheticJob());
 });
 
-for (const requiredField of Object.keys(syntheticJob())) {
+test('preserves qualifications when an older record has no Google credential category', () => {
+  const job = syntheticJob();
+  delete job.credential_category;
+  const markup = toJobPosting(jobSchema.parse(job));
+  assert.equal('educationRequirements' in markup, false);
+  assert.equal(markup.qualifications, job.required_qualifications.join('\n'));
+  assertInvalid({ ...job, credential_category: 'unmapped degree' }, 'credential_category');
+});
+
+for (const requiredField of Object.keys(syntheticJob()).filter(key => key !== 'credential_category')) {
   test(`rejects an active record without ${requiredField}`, () => {
     const job = syntheticJob();
     delete job[requiredField];
@@ -169,7 +178,10 @@ test('maps the source to serializable JobPosting markup with hourly salary and e
   assert.equal(markup.validThrough, '2099-12-31');
   assert.equal(markup.directApply, true);
   assert.equal(markup.experienceRequirements, 'no requirements');
-  assert.equal(markup.educationRequirements, 'Staatlich anerkannter Abschluss in Logopädie');
+  assert.deepEqual(markup.educationRequirements, {
+    '@type': 'EducationalOccupationalCredential', credentialCategory: 'professional certificate',
+  });
+  assert.equal(markup.qualifications, 'Staatlich anerkannter Abschluss in Logopädie');
   assert.equal(markup.hiringOrganization.name, 'Praxis für Logopädie Şimşek');
   assert.equal(markup.identifier.value, 'TEST-01');
   assert.deepEqual(markup.employmentType, ['FULL_TIME', 'PART_TIME']);

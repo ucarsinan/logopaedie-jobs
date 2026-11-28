@@ -54,6 +54,7 @@ export function syntheticJob(publicationStatus = 'ACTIVE') {
       leave: 'Bezahlte Freistellung',
       conditions: 'Vorher abstimmen',
     },
+    credential_category: 'professional certificate',
     required_qualifications: ['Staatlich anerkannter Abschluss in Logopädie'],
     recognition_requirement: { status: 'REQUIRED', details: 'Staatliche Anerkennung' },
     experience_requirement: { status: 'NONE', details: 'Berufseinstieg möglich' },
